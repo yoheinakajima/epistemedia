@@ -1,0 +1,185 @@
+from __future__ import annotations
+
+import asyncio
+import json
+from pathlib import Path
+
+import pytest
+
+from epistemedia.core import (
+    PROTOCOL_VERSION,
+    PublicCatalog,
+    audit_public,
+    build_public,
+    stable_id,
+    topic_projection,
+    validate_repository,
+)
+from epistemedia.server import Gateway, Request
+
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_repository_is_valid() -> None:
+    assert validate_repository(ROOT) == []
+
+
+def test_catalog_is_deterministic() -> None:
+    first = PublicCatalog.build(ROOT)
+    second = PublicCatalog.build(ROOT)
+    assert first.catalog_id == second.catalog_id
+    assert first.frontier == second.frontier
+    assert [obj.id for obj in first.objects] == [obj.id for obj in second.objects]
+
+
+def test_deployment_url_does_not_change_catalog_identity(tmp_path: Path) -> None:
+    a = build_public(ROOT, tmp_path / "a", base_url="https://epistemedia.com")
+    b = build_public(ROOT, tmp_path / "b", base_url="https://mirror.example")
+    assert a["catalog_id"] == b["catalog_id"]
+    assert a["frontier"] == b["frontier"]
+    # A release manifest includes rendered files, so its own ID may change with links.
+    assert (tmp_path / "a" / "catalog.json").read_text() == (tmp_path / "b" / "catalog.json").read_text()
+
+
+def test_public_build_emits_every_interface(tmp_path: Path) -> None:
+    public = tmp_path / "public"
+    manifest = build_public(ROOT, public)
+    expected = [
+        "index.html",
+        "index.md",
+        "llms.txt",
+        "llms-full.txt",
+        "catalog.json",
+        "search.json",
+        "status.json",
+        "manifest.json",
+        "openapi.json",
+        ".well-known/epistemedia.json",
+        "mcp/server.json",
+        "docs/llms.txt",
+    ]
+    assert all((public / path).exists() for path in expected)
+    assert manifest["file_count"] > 10
+    assert audit_public(ROOT, public) == []
+
+
+def test_topic_lenses_share_source_frontier() -> None:
+    catalog = PublicCatalog.build(ROOT)
+    topic = catalog.topics[0]
+    encyclopedia = topic_projection(catalog, topic, "encyclopedia", "https://a.example")
+    skeptical = topic_projection(catalog, topic, "skeptical", "https://b.example")
+    assert encyclopedia["catalog_id"] == skeptical["catalog_id"]
+    assert encyclopedia["frontier"] == skeptical["frontier"]
+    assert [o["id"] for o in encyclopedia["objects"]] == [o["id"] for o in skeptical["objects"]]
+    assert encyclopedia["projection_id"] != skeptical["projection_id"]
+
+
+def test_object_ids_are_content_and_path_addressed() -> None:
+    catalog = PublicCatalog.build(ROOT)
+    obj = catalog.objects[0]
+    assert obj.id.startswith("em:")
+    assert len(obj.content_digest) == 64
+    assert obj.id == stable_id(obj.kind, {"path": obj.path, "content_digest": obj.content_digest, "media_type": obj.media_type})
+
+
+def test_search_is_stable() -> None:
+    catalog = PublicCatalog.build(ROOT)
+    assert catalog.search("Epistemedia") == catalog.search("Epistemedia")
+
+
+def test_api_and_mcp_expose_same_catalog() -> None:
+    gateway = Gateway(ROOT)
+    status, _, api = gateway.handle_api(Request("GET", "/v1/status", {}, {}, b""))
+    assert status == 200
+    mcp = gateway.mcp_method("server/discover", {})
+    assert api["catalog_id"] == gateway.catalog().catalog_id
+    assert mcp["protocolVersion"] == PROTOCOL_VERSION
+
+
+def test_mcp_tool_result_carries_catalog_and_frontier() -> None:
+    gateway = Gateway(ROOT)
+    result = gateway.mcp_method("tools/call", {"name": "search_knowledge", "arguments": {"query": "governance"}})
+    structured = result["structuredContent"]
+    assert structured["catalog_id"] == gateway.catalog().catalog_id
+    assert structured["frontier"] == gateway.catalog().frontier
+    assert result["isError"] is False
+
+
+def test_mcp_rejects_unknown_protocol() -> None:
+    gateway = Gateway(ROOT)
+    status, _, result = gateway.handle_mcp(
+        Request(
+            "POST",
+            "/mcp",
+            {},
+            {"mcp-protocol-version": "1900-01-01"},
+            json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {}}).encode(),
+        )
+    )
+    assert status == 400
+    assert result["error"]["message"] == "UnsupportedProtocolVersion"
+
+
+def test_mcp_rejects_untrusted_origin() -> None:
+    gateway = Gateway(ROOT)
+    status, _, _ = gateway.handle_mcp(
+        Request(
+            "POST",
+            "/mcp",
+            {},
+            {"origin": "https://attacker.example", "mcp-protocol-version": PROTOCOL_VERSION},
+            json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {}}).encode(),
+        )
+    )
+    assert status == 403
+
+
+def test_public_projection_excludes_private_tree(tmp_path: Path) -> None:
+    root = tmp_path / "realm"
+    root.mkdir()
+    (root / "README.md").write_text("# Public\n\nPublic statement.\n")
+    (root / "AGENTS.md").write_text("# Agents\n")
+    (root / "pyproject.toml").write_text("[project]\nname='x'\nversion='0'\n")
+    private = root / "private"
+    private.mkdir()
+    (private / "secret.md").write_text("PRIVATE-ONLY-EVIDENCE")
+    catalog = PublicCatalog.build(root)
+    serialized = json.dumps(catalog.public_dict())
+    assert "PRIVATE-ONLY-EVIDENCE" not in serialized
+    assert all(not obj.path.startswith("private/") for obj in catalog.objects)
+
+
+def test_private_mutation_has_no_public_effect(tmp_path: Path) -> None:
+    root = tmp_path / "realm"
+    root.mkdir()
+    (root / "README.md").write_text("# Public\n\nPublic statement.\n")
+    (root / "AGENTS.md").write_text("# Agents\n")
+    (root / "pyproject.toml").write_text("[project]\nname='x'\nversion='0'\n")
+    private = root / "private"
+    private.mkdir()
+    (private / "secret.md").write_text("first")
+    first = PublicCatalog.build(root)
+    (private / "secret.md").write_text("second and contradictory")
+    second = PublicCatalog.build(root)
+    assert first.catalog_id == second.catalog_id
+    assert first.frontier == second.frontier
+
+
+def test_asgi_status_smoke() -> None:
+    gateway = Gateway(ROOT)
+    sent: list[dict] = []
+    incoming = iter([
+        {"type": "http.request", "body": b"", "more_body": False},
+    ])
+
+    async def receive() -> dict:
+        return next(incoming)
+
+    async def send(message: dict) -> None:
+        sent.append(message)
+
+    asyncio.run(gateway({"type": "http", "method": "GET", "path": "/v1/status", "query_string": b"", "headers": []}, receive, send))
+    assert sent[0]["status"] == 200
+    body = json.loads(sent[1]["body"])
+    assert body["catalog_id"] == gateway.catalog().catalog_id
