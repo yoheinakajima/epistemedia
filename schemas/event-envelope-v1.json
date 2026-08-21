@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://epistemedia.com/schemas/event-envelope-v1.json",
+  "title": "Epistemedia Event Envelope v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "event_id",
+    "event_type",
+    "realm_id",
+    "actor",
+    "recorded_time",
+    "payload",
+    "payload_digest",
+    "parents"
+  ],
+  "properties": {
+    "schema": {"const": "https://epistemedia.com/schemas/event-envelope-v1.json"},
+    "event_id": {"type": "string", "pattern": "^em:event:sha256:[a-f0-9]{64}$"},
+    "event_type": {"type": "string", "minLength": 3},
+    "realm_id": {"type": "string", "minLength": 3},
+    "actor": {
+      "type": "object",
+      "required": ["id", "kind"],
+      "properties": {
+        "id": {"type": "string"},
+        "kind": {"enum": ["human", "agent", "instrument", "service", "collective"]},
+        "lineage": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "valid_time": {"$ref": "#/$defs/timeRange"},
+    "observed_time": {"$ref": "#/$defs/timeRange"},
+    "recorded_time": {"type": "string", "format": "date-time"},
+    "payload": {"type": "object"},
+    "payload_digest": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "parents": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^em:event:sha256:[a-f0-9]{64}$"},
+      "uniqueItems": true
+    },
+    "signatures": {"type": "array", "items": {"type": "object"}},
+    "supersedes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "visibility": {"enum": ["public", "internal", "restricted", "private"], "default": "internal"}
+  },
+  "$defs": {
+    "timeRange": {
+      "oneOf": [
+        {"type": "string", "format": "date-time"},
+        {
+          "type": "object",
+          "required": ["start"],
+          "properties": {
+            "start": {"type": "string", "format": "date-time"},
+            "end": {"type": ["string", "null"], "format": "date-time"},
+            "precision": {"type": "string"},
+            "timezone": {"type": "string"}
+          },
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
