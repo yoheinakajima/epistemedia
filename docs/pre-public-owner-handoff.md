@@ -47,4 +47,4 @@ After the first successful CI run has registered the exact check names, create a
 
 ## Stop point
 
-Stop after the repository is public, untrusted CI is green, and `main` is protected. Pages, `epistemedia.com`, API/MCP deployment, GHCR, GitHub Releases, PyPI Trusted Publishing, and MCP Registry publication are the next activation phase.
+Stop after the repository is public, untrusted CI is green, and `main` is protected. Pages, `epistemedia.org`, the `episte.media` redirect, API/MCP deployment, GHCR, GitHub Releases, PyPI Trusted Publishing, and MCP Registry publication are the next activation phase.

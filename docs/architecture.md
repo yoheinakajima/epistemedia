@@ -129,4 +129,4 @@ Evaluating with private evidence and merely hiding the private citation leaks in
 
 ## Deployment identity
 
-Catalog and frontier identities exclude deployment URLs and timestamps. A local node, GitHub Pages mirror, and `epistemedia.com` may expose different links while representing the same accepted catalog. Rendered release manifests include deployment-specific files and therefore identify the exact published representation separately.
+Catalog and frontier identities exclude deployment URLs and timestamps. A local node and the canonical `epistemedia.org` deployment may expose different links while representing the same accepted catalog. `episte.media` is a path-preserving redirect, not a second projection. Rendered release manifests include deployment-specific files and therefore identify the exact published representation separately.

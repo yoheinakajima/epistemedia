@@ -79,7 +79,7 @@ def parser() -> argparse.ArgumentParser:
     receipt = repo_sub.add_parser("receipt", help="Record a local append-only run receipt proposal")
     receipt.add_argument("task_id")
     receipt.add_argument("--run", required=True)
-    receipt.add_argument("--command", required=True)
+    receipt.add_argument("--command", dest="run_command", required=True)
 
     mcp = sub.add_parser("mcp", help="MCP utilities")
     mcp_sub = mcp.add_subparsers(dest="mcp_command", required=True)
@@ -277,7 +277,7 @@ def main(argv: list[str] | None = None) -> int:
             print(path.relative_to(root))
             return 0
         if args.repo_command == "receipt":
-            path = append_local_proposal(root, "run-receipt", {"task_id": args.task_id, "run_id": args.run, "command": args.command, "status": "reported"})
+            path = append_local_proposal(root, "run-receipt", {"task_id": args.task_id, "run_id": args.run, "command": args.run_command, "status": "reported"})
             print(path.relative_to(root))
             return 0
     if command == "mcp":

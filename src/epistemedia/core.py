@@ -15,9 +15,9 @@ from urllib.parse import quote
 
 VERSION = "0.2.0"
 PROTOCOL_VERSION = "2026-07-28"
-DEFAULT_BASE_URL = "https://epistemedia.com"
-DEFAULT_API_URL = "https://api.epistemedia.com/v1"
-DEFAULT_MCP_URL = "https://mcp.epistemedia.com/mcp"
+DEFAULT_BASE_URL = "https://epistemedia.org"
+DEFAULT_API_URL = "https://api.epistemedia.org/v1"
+DEFAULT_MCP_URL = "https://mcp.epistemedia.org/mcp"
 
 LENSES: dict[str, str] = {
     "encyclopedia": "A coherent general overview with explicit provenance and disagreement.",

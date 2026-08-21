@@ -4,9 +4,10 @@ Run only after a deployment claims to be live. Record exact responses and hashes
 
 ## Human and static
 
-- `https://epistemedia.com/` returns HTTPS 200 and the expected canonical URL.
+- `https://epistemedia.org/` returns HTTPS 200 and the expected canonical URL.
 - `/llms.txt`, `/docs/llms.txt`, `/index.md`, `/openapi.json`, `/.well-known/epistemedia.json`, `/manifest.json`, and `/status.json` resolve.
 - `www` redirects once to the accepted apex.
+- `https://episte.media/<representative-path>` redirects once, preserves the path and query, and lands on `https://epistemedia.org/<representative-path>` without serving duplicate content.
 - HTML pages link to deterministic Markdown twins and the governing `llms.txt`.
 
 ## Identity

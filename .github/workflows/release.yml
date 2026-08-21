@@ -1,51 +1,95 @@
 name: release
 
 on:
-  push:
-    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing accepted release tag to build.
+        required: true
+        type: string
+      publish_github_release:
+        description: Create the permanent GitHub Release.
+        required: true
+        default: false
+        type: boolean
+      publish_pypi:
+        description: Publish the immutable package version to PyPI.
+        required: true
+        default: false
+        type: boolean
 
-permissions:
-  contents: write
-  id-token: write
+permissions: {}
 
 jobs:
   build:
+    if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      RELEASE_TAG: ${{ inputs.tag }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
+          ref: ${{ inputs.tag }}
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.12"
-      - run: python -m pip install --upgrade build
+      - name: Verify accepted release tag and package version
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo 'Release tag must have the exact form vMAJOR.MINOR.PATCH.'
+            exit 1
+          fi
+          RELEASE_SHA="$(git rev-parse "refs/tags/${RELEASE_TAG}^{commit}")"
+          test "$(git rev-parse HEAD)" = "$RELEASE_SHA"
+          git fetch origin main --no-tags
+          git merge-base --is-ancestor "$RELEASE_SHA" origin/main
+          PACKAGE_VERSION="$(python -c 'import pathlib, tomllib; print(tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"])')"
+          test "$RELEASE_TAG" = "v$PACKAGE_VERSION"
+      - run: python -m pip install build==1.5.0
       - run: python -m pip install -e '.[dev]'
       - run: make check
       - run: python -m build
       - name: Create source and catalog bundles
         run: |
-          tar --exclude=.git --exclude=.venv --exclude=generated/public -czf epistemedia-${GITHUB_REF_NAME}-source.tar.gz .
+          RELEASE_SHA="$(git rev-parse "refs/tags/${RELEASE_TAG}^{commit}")"
+          git archive --format=tar.gz --prefix="epistemedia-${RELEASE_TAG}/" --output=/tmp/epistemedia-${RELEASE_TAG}-source.tar.gz "$RELEASE_SHA"
           python -m epistemedia build --output generated/public
-          tar -C generated/public -czf epistemedia-${GITHUB_REF_NAME}-public-catalog.tar.gz .
-          sha256sum dist/* epistemedia-${GITHUB_REF_NAME}-*.tar.gz > SHA256SUMS
-      - uses: actions/upload-artifact@v4
+          tar -C generated/public -czf /tmp/epistemedia-${RELEASE_TAG}-public-catalog.tar.gz .
+          mv /tmp/epistemedia-${RELEASE_TAG}-source.tar.gz .
+          mv /tmp/epistemedia-${RELEASE_TAG}-public-catalog.tar.gz .
+          sha256sum dist/* epistemedia-${RELEASE_TAG}-*.tar.gz > SHA256SUMS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: release-artifacts
           path: |
             dist/*
             epistemedia-*.tar.gz
             SHA256SUMS
-      - uses: softprops/action-gh-release@v2
+  github-release:
+    if: inputs.publish_github_release
+    needs: build
+    runs-on: ubuntu-latest
+    environment: github-release
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
-          generate_release_notes: true
-          files: |
-            dist/*
-            epistemedia-*.tar.gz
-            SHA256SUMS
+          name: release-artifacts
+          path: artifacts
+      - name: Create permanent GitHub Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: gh release create "$RELEASE_TAG" artifacts/dist/* artifacts/epistemedia-*.tar.gz artifacts/SHA256SUMS --generate-notes --verify-tag --repo "$GITHUB_REPOSITORY"
 
   pypi:
+    if: inputs.publish_pypi
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -54,11 +98,10 @@ jobs:
     permissions:
       id-token: write
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:
           name: release-artifacts
           path: artifacts
-      - uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: pypa/gh-action-pypi-publish@dc37677b2e1c63e2034f94d8a5b11f265b73ba33 # release/v1
         with:
-          packages-dir: artifacts
-          skip-existing: true
+          packages-dir: artifacts/dist

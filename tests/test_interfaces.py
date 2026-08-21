@@ -4,8 +4,7 @@ import asyncio
 import json
 from pathlib import Path
 
-import pytest
-
+from epistemedia.cli import main
 from epistemedia.core import (
     PROTOCOL_VERSION,
     PublicCatalog,
@@ -21,6 +20,30 @@ from epistemedia.server import Gateway, Request
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def test_repo_receipt_command_does_not_overwrite_cli_dispatch(tmp_path: Path) -> None:
+    result = main(
+        [
+            "--root",
+            str(tmp_path),
+            "repo",
+            "receipt",
+            "EM-0008",
+            "--run",
+            "local-test",
+            "--command",
+            "make check",
+        ]
+    )
+    assert result == 0
+    receipts = list((tmp_path / "runs" / "proposals").glob("*.json"))
+    assert len(receipts) == 1
+    receipt = json.loads(receipts[0].read_text())
+    assert receipt["kind"] == "run-receipt"
+    assert receipt["task_id"] == "EM-0008"
+    assert receipt["run_id"] == "local-test"
+    assert receipt["command"] == "make check"
+
+
 def test_repository_is_valid() -> None:
     assert validate_repository(ROOT) == []
 
@@ -34,7 +57,7 @@ def test_catalog_is_deterministic() -> None:
 
 
 def test_deployment_url_does_not_change_catalog_identity(tmp_path: Path) -> None:
-    a = build_public(ROOT, tmp_path / "a", base_url="https://epistemedia.com")
+    a = build_public(ROOT, tmp_path / "a", base_url="https://epistemedia.org")
     b = build_public(ROOT, tmp_path / "b", base_url="https://mirror.example")
     assert a["catalog_id"] == b["catalog_id"]
     assert a["frontier"] == b["frontier"]
@@ -62,6 +85,11 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert all((public / path).exists() for path in expected)
     assert manifest["file_count"] > 10
     assert audit_public(ROOT, public) == []
+
+    discovery = json.loads((public / ".well-known" / "epistemedia.json").read_text())
+    assert discovery["human"] == "https://epistemedia.org"
+    assert discovery["api"] == "https://api.epistemedia.org/v1"
+    assert discovery["mcp"] == "https://mcp.epistemedia.org/mcp"
 
 
 def test_topic_lenses_share_source_frontier() -> None:
@@ -133,6 +161,21 @@ def test_mcp_rejects_untrusted_origin() -> None:
         )
     )
     assert status == 403
+
+
+def test_mcp_accepts_controlled_production_origin() -> None:
+    gateway = Gateway(ROOT)
+    status, _, result = gateway.handle_mcp(
+        Request(
+            "POST",
+            "/mcp",
+            {},
+            {"origin": "https://epistemedia.org", "mcp-protocol-version": PROTOCOL_VERSION},
+            json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {}}).encode(),
+        )
+    )
+    assert status == 200
+    assert result["id"] == 1
 
 
 def test_public_projection_excludes_private_tree(tmp_path: Path) -> None:
