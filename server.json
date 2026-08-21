@@ -1,0 +1,29 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.epistemedia/knowledge",
+  "description": "Read and trace disclosure-safe Epistemedia knowledge projections.",
+  "version": "0.2.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.epistemedia.com/mcp"
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "epistemedia",
+      "version": "0.2.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "runtimeHint": "uvx",
+      "runtimeArguments": ["epistemedia"],
+      "packageArguments": ["mcp", "serve"]
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/yoheinakajima/epistemedia",
+    "source": "github"
+  }
+}
