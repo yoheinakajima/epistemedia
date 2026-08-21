@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://epistemedia.com/schemas/public-catalog-v1.json",
+  "title": "Epistemedia Public Catalog v1",
+  "type": "object",
+  "required": ["catalog_id", "frontier", "commit", "compiler", "objects", "topics", "lenses", "policies"],
+  "properties": {
+    "catalog_id": {"type": "string", "pattern": "^em:catalog:sha256:[a-f0-9]{64}$"},
+    "frontier": {"type": "string", "pattern": "^em:frontier:sha256:[a-f0-9]{64}$"},
+    "commit": {"type": "string"},
+    "compiler": {"type": "string"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "object_count": {"type": "integer", "minimum": 0},
+    "topic_count": {"type": "integer", "minimum": 0},
+    "objects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "path", "content_digest", "visibility"],
+        "properties": {
+          "id": {"type": "string"},
+          "kind": {"type": "string"},
+          "path": {"type": "string"},
+          "title": {"type": "string"},
+          "summary": {"type": "string"},
+          "media_type": {"type": "string"},
+          "content_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "visibility": {"const": "public"},
+          "metadata": {"type": "object"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "topics": {"type": "array", "items": {"type": "object"}},
+    "lenses": {"type": "object"},
+    "policies": {"type": "object"}
+  },
+  "additionalProperties": true
+}
