@@ -1,0 +1,29 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0003",
+  "title": "Activate production domains and public service deployment",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Connect epistemedia.com, api.epistemedia.com, and mcp.epistemedia.com to deployments built from one accepted release manifest, then verify identity and disclosure equivalence across every surface.",
+  "depends_on": ["EM-0001"],
+  "authority": {
+    "allowed_paths": [".github/**", "ops/hosting/**", "docs/**", "tests/**", "runs/**", "releases/**"],
+    "forbidden_paths": ["constitution/**", "schemas/**", "policies/**"]
+  },
+  "required_external_authority": [
+    "domain DNS management for epistemedia.com",
+    "GitHub repository visibility and Pages settings",
+    "production runtime account for API and MCP",
+    "package and MCP Registry publisher identities"
+  ],
+  "acceptance": [
+    "the human site serves the accepted static manifest over HTTPS",
+    "API and MCP serve the same catalog and frontier as the human site",
+    "root and path-scoped llms.txt and Markdown alternates resolve",
+    "custom-domain redirects and canonical URLs are correct",
+    "MCP protocol, Origin, caching, and error tests pass against production",
+    "anonymous reads have declared rate and resource limits",
+    "deployment does not receive contribution or integration authority",
+    "a production run receipt records DNS, commit, manifests, checksums, endpoints, and observed limitations"
+  ]
+}
