@@ -1,0 +1,18 @@
+{
+  "schema": "https://epistemedia.com/schemas/policy-manifest-v1.json",
+  "epistemic": "commons-balanced-v0.1",
+  "disclosure": "public-noninterference-v0.1",
+  "selection": "repository-public-v0.1",
+  "federation": "sovereign-import-v0.1",
+  "governance": "machine-constitutional-v0.1",
+  "resource": "bounded-public-service-v0.1",
+  "compiler": "epistemedia/0.2.0",
+  "invariants": [
+    "evaluations are policy-relative",
+    "contradictions remain representable",
+    "remote signatures establish origin and integrity, not truth",
+    "disclosure eligibility precedes public evaluation",
+    "a proposal cannot evaluate or authorize itself",
+    "stable identifiers are never repurposed"
+  ]
+}
