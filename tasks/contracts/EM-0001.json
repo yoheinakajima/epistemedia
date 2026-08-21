@@ -1,0 +1,50 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0001",
+  "title": "Bootstrap the Epistemedia public interface",
+  "status": "completed",
+  "change_class": "ordinary-implementation",
+  "objective": "Expose one disclosure-safe public catalog through deterministic HTML, Markdown, llms.txt, API, MCP, CLI, discovery, and release manifests.",
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "AGENTS.md",
+      "CONTRIBUTING.md",
+      "SECURITY.md",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "catalog/**",
+      "schemas/**",
+      ".github/**",
+      "Dockerfile",
+      "compose.yaml",
+      "pyproject.toml",
+      "Makefile"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "governance/events/**",
+      "policies/federation/trusted-roots/**"
+    ]
+  },
+  "acceptance": [
+    "all interfaces expose the same catalog and frontier identity",
+    "public compilation is deterministic for a pinned accepted commit",
+    "deployment URL changes do not change canonical catalog identity",
+    "public disclosure audit passes",
+    "MCP supports discovery, resource reads, read-only tools, protocol errors, and Origin checks",
+    "remote CLI reads do not require a local clone",
+    "untrusted pull-request validation receives no secrets or write authority",
+    "site, API/MCP container, and agent documentation have reproducible deployment adapters"
+  ],
+  "evidence": [
+    {"type": "owner-statement", "context": "Build the complete Epistemedia human and agent-facing project surface."},
+    {"type": "repo-artifact", "path": "AGENTS.md"},
+    {"type": "repo-artifact", "path": "tests/test_interfaces.py"}
+  ],
+  "limitations": [
+    "DNS, production cloud accounts, package registries, and external signing roots require separately authorized credentials.",
+    "A successful interface build does not establish the truth of represented source content."
+  ]
+}
