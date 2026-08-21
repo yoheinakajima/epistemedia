@@ -1,0 +1,53 @@
+name: publish-pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.repository == 'yoheinakajima/epistemedia'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: python -m pip install -e '.[dev]'
+      - name: Validate, build, test, audit
+        run: |
+          python -m epistemedia validate
+          python -m epistemedia build --output generated/public --base-url https://epistemedia.com --api-url https://api.epistemedia.com/v1 --mcp-url https://mcp.epistemedia.com/mcp
+          python -m pytest -q
+          python -m epistemedia audit --public generated/public
+      - name: Attach custom domain
+        run: printf '%s\n' epistemedia.com > generated/public/CNAME
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: generated/public
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
