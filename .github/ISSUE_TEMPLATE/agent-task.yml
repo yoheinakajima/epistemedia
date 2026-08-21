@@ -1,0 +1,57 @@
+name: Agent task proposal
+description: Coordinate a proposed task before an immutable contract is accepted
+title: "[task] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues coordinate work but do not create canonical task authority. Accepted work requires a validated immutable task contract in `tasks/contracts/`.
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: State one bounded result.
+    validations:
+      required: true
+  - type: dropdown
+    id: change_class
+    attributes:
+      label: Change class
+      options:
+        - maintenance
+        - ordinary implementation
+        - research
+        - protocol normative
+        - governance normative
+        - disclosure normative
+        - federation normative
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and sources
+      description: List exact sources, versions, repository artifacts, and missing evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: authority
+    attributes:
+      label: Proposed authority boundary
+      description: Allowed, protected, and forbidden paths or actions.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Falsifiable acceptance predicates
+      description: Describe objective tests and required independent evaluation.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Security, disclosure, and governance risks
+    validations:
+      required: true
