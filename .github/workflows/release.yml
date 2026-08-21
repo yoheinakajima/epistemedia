@@ -1,0 +1,64 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --upgrade build
+      - run: python -m pip install -e '.[dev]'
+      - run: make check
+      - run: python -m build
+      - name: Create source and catalog bundles
+        run: |
+          tar --exclude=.git --exclude=.venv --exclude=generated/public -czf epistemedia-${GITHUB_REF_NAME}-source.tar.gz .
+          python -m epistemedia build --output generated/public
+          tar -C generated/public -czf epistemedia-${GITHUB_REF_NAME}-public-catalog.tar.gz .
+          sha256sum dist/* epistemedia-${GITHUB_REF_NAME}-*.tar.gz > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts
+          path: |
+            dist/*
+            epistemedia-*.tar.gz
+            SHA256SUMS
+      - uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/*
+            epistemedia-*.tar.gz
+            SHA256SUMS
+
+  pypi:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/epistemedia
+    permissions:
+      id-token: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: release-artifacts
+          path: artifacts
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: artifacts
+          skip-existing: true
