@@ -1,0 +1,68 @@
+{
+  "$schema": "https://epistemedia.com/schemas/constitution-v1.json",
+  "id": "constitution:epistemedia:v0.1",
+  "title": "Epistemedia Genesis Constitution",
+  "status": "accepted",
+  "principles": [
+    {
+      "id": "C-001",
+      "name": "Forkability",
+      "rule": "Accepted data, schemas, policies, compilers, and manifests must be exportable so a realm can continue without permission from the default operator."
+    },
+    {
+      "id": "C-002",
+      "name": "Provenance preservation",
+      "rule": "No accepted projection may sever a represented claim from the accepted sources, observations, methods, policies, and transformations used to produce it."
+    },
+    {
+      "id": "C-003",
+      "name": "Dissent preservation",
+      "rule": "A contradiction, rebuttal, qualifier, minority result, or failed replication cannot be deleted merely because another evaluation dominates it."
+    },
+    {
+      "id": "C-004",
+      "name": "No self-authorization",
+      "rule": "An actor, model, prompt lineage, or contribution cannot independently propose, evaluate, promote, and integrate the same normative change."
+    },
+    {
+      "id": "C-005",
+      "name": "Disclosure noninterference",
+      "rule": "Objects ineligible for a public projection cannot change that projection's status, ranking, counts, wording, topology, or recommendations unless policy explicitly permits disclosure of the effect."
+    },
+    {
+      "id": "C-006",
+      "name": "Policy-explicit evaluation",
+      "rule": "Truth-like status is the output of a named versioned policy over a named frontier and disclosure boundary, never an intrinsic global field on a proposition."
+    },
+    {
+      "id": "C-007",
+      "name": "Sovereign import",
+      "rule": "A realm may verify, quarantine, map, accept, partially accept, defer, or reject an imported bundle under local policy. Remote verdicts do not automatically become local authority."
+    },
+    {
+      "id": "C-008",
+      "name": "Append-only accepted history",
+      "rule": "Merged epistemic events, task contracts, governance events, run receipts, and release manifests are superseded by later records rather than rewritten or deleted."
+    },
+    {
+      "id": "C-009",
+      "name": "Reproducible projection",
+      "rule": "Every public result must identify its accepted commit, event frontier, policies, compiler, source objects, and content digest sufficiently to reproduce or audit it."
+    },
+    {
+      "id": "C-010",
+      "name": "Bounded machine power",
+      "rule": "Automated contributors and integrators receive the minimum capabilities required by a declared task and may not widen their own authority."
+    }
+  ],
+  "amendment_process": [
+    "propose a versioned constitutional change",
+    "declare affected rules and authority boundaries",
+    "instantiate an isolated fork",
+    "run static, schema, replay, property, adversarial, and disclosure tests",
+    "evaluate with independently rooted machine evaluators loaded from the accepted base",
+    "execute a bounded canary under precommitted promotion predicates",
+    "promote, reject, quarantine, or fork",
+    "record an immutable outcome and monitor for forward-only disablement"
+  ]
+}
