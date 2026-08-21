@@ -1,0 +1,49 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install
+        run: python -m pip install -e '.[dev]'
+      - name: Validate accepted inputs
+        run: python -m epistemedia validate
+      - name: Rebuild public projection
+        run: python -m epistemedia build --output generated/public
+      - name: Test
+        run: python -m pytest -q
+      - name: Audit public projection
+        run: python -m epistemedia audit --public generated/public
+      - name: Verify deterministic rebuild
+        run: |
+          cp -a generated/public /tmp/public-first
+          python -m epistemedia build --output generated/public
+          diff -ru /tmp/public-first generated/public
+      - name: Reject tracked-state drift
+        run: |
+          if [ -n "$(git status --porcelain --untracked-files=all)" ]; then
+            git status --short
+            echo 'The accepted branch and deterministic build are not in sync.'
+            exit 1
+          fi
