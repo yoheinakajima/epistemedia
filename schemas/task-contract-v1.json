@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "title": "Epistemedia Task Contract v1",
+  "type": "object",
+  "required": ["id", "title", "status", "change_class", "objective", "authority", "acceptance"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^EM-[0-9]{4,}$"},
+    "title": {"type": "string", "minLength": 5},
+    "status": {"enum": ["proposed", "blocked", "ready", "claimed", "in-progress", "verification", "completed", "cancelled", "superseded"]},
+    "change_class": {"enum": ["maintenance", "ordinary-implementation", "research", "protocol-normative", "governance-normative", "disclosure-normative", "federation-normative"]},
+    "objective": {"type": "string"},
+    "depends_on": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "authority": {
+      "type": "object",
+      "required": ["allowed_paths"],
+      "properties": {
+        "allowed_paths": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "forbidden_paths": {"type": "array", "items": {"type": "string"}},
+        "protected_paths": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "acceptance": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "required_evaluation": {"type": "array", "items": {"type": "string"}},
+    "evidence": {"type": "array", "items": {"type": "object"}},
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "supersedes": {"type": "string"}
+  },
+  "additionalProperties": false
+}
