@@ -17,7 +17,9 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0001` — public interface bootstrap (completed)
 - `EM-0002` — normative event envelope v0.1 (ready; governance path required)
 - `EM-0003` — original production-domain activation contract (superseded by `EM-0004` after the owner corrected the domain)
-- `EM-0004` — corrected `epistimedia.com` deployment and public services (ready; external credentials required)
-- `EM-0005` — protected identifier-namespace migration (ready; governance path and independent evaluation required)
+- `EM-0004` — first corrected-domain activation contract (superseded by `EM-0006` after the owner selected `episte.media`)
+- `EM-0005` — first protected namespace-migration contract (superseded by `EM-0007`)
+- `EM-0006` — owned `episte.media` deployment and public services (ready; external credentials required)
+- `EM-0007` — `episte.media` protected identifier-namespace migration (ready; governance path and independent evaluation required)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.

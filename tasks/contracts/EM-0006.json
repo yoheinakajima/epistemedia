@@ -1,0 +1,62 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0006",
+  "title": "Activate the owned episte.media production domain",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Replace superseded deployment targets with episte.media, api.episte.media, and mcp.episte.media, then activate public services from one accepted release manifest without rewriting protected identifiers or accepted history.",
+  "depends_on": ["EM-0001"],
+  "supersedes": "EM-0004",
+  "authority": {
+    "allowed_paths": [
+      ".github/**",
+      "README.md",
+      "docs/**",
+      "ops/**",
+      "src/**",
+      "tests/**",
+      "runs/**",
+      "releases/**",
+      "pyproject.toml",
+      "server.json",
+      "llms.txt",
+      "Dockerfile",
+      "compose.yaml"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "schemas/**",
+      "policies/**",
+      "governance/events/**",
+      "tasks/contracts/EM-0001.json",
+      "tasks/contracts/EM-0002.json",
+      "tasks/contracts/EM-0003.json",
+      "tasks/contracts/EM-0004.json",
+      "tasks/contracts/EM-0005.json"
+    ]
+  },
+  "acceptance": [
+    "all active deployment configuration and current-state documentation use episte.media and its declared subdomains",
+    "historical accepted records and protected identifier namespaces are not silently rewritten",
+    "the default-hostname Pages bootstrap publishes without a CNAME before custom-domain activation",
+    "the human site serves one accepted static manifest over HTTPS",
+    "API and MCP serve the same catalog and frontier as the human site when externally activated",
+    "root and path-scoped llms.txt and Markdown alternates resolve",
+    "custom-domain redirects and canonical URLs are correct after verified DNS activation",
+    "MCP protocol, Origin, caching, and error tests pass against production",
+    "anonymous reads have declared rate and resource limits",
+    "deployment does not receive contribution or integration authority",
+    "a production run receipt records DNS, commit, manifests, checksums, endpoints, and observed limitations"
+  ],
+  "evidence": [
+    {
+      "type": "owner-statement",
+      "context": "The owner controls episte.media and selected it as the production domain."
+    }
+  ],
+  "limitations": [
+    "Existing schema and policy identifiers under epistemedia.com are protected protocol identifiers; EM-0007 governs their migration.",
+    "Public DNS for episte.media was not delegated or populated when this contract was registered.",
+    "DNS management, production runtime credentials, package publisher identity, and irreversible registry publication remain separately gated."
+  ]
+}
