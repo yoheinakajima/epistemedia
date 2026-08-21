@@ -1,0 +1,31 @@
+services:
+  gateway:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      EPISTEMEDIA_ROOT: /app
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+  site:
+    image: nginx:1.27-alpine
+    depends_on:
+      - gateway
+    ports:
+      - "8000:80"
+    volumes:
+      - ./generated/public:/usr/share/nginx/html:ro
+    read_only: true
+    tmpfs:
+      - /var/cache/nginx
+      - /var/run
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
