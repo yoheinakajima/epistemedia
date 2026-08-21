@@ -1,0 +1,58 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0005",
+  "title": "Govern the canonical identifier namespace migration",
+  "status": "ready",
+  "change_class": "protocol-normative",
+  "objective": "Migrate active canonical schema, policy, discovery, and record identifier namespaces from the unowned epistemedia.com domain to epistimedia.com while preserving replay, historical identity, and explicit compatibility semantics.",
+  "depends_on": ["EM-0001"],
+  "authority": {
+    "allowed_paths": [
+      "schemas/**",
+      "constitution/**",
+      "policies/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "tasks/**",
+      "governance/proposals/**",
+      "runs/**"
+    ],
+    "protected_paths": [
+      "schemas/**",
+      "constitution/**",
+      "policies/**",
+      "catalog/**"
+    ],
+    "forbidden_paths": [
+      "governance/events/**"
+    ]
+  },
+  "required_evaluation": [
+    "independent protocol evaluator",
+    "accepted-history replay and canonicalization tests",
+    "legacy-to-current identifier compatibility analysis",
+    "catalog and frontier impact declaration",
+    "domain-control and disclosure review"
+  ],
+  "acceptance": [
+    "new canonical identifiers use epistimedia.com without repurposing any previously accepted stable ID",
+    "accepted historical records retain their original bytes and identifiers",
+    "an explicit migration map distinguishes legacy identifiers from current identifiers",
+    "validators and replay fixtures define whether and how legacy identifiers remain accepted",
+    "all schema const values, generated discovery records, and local proposal identifiers follow the approved compatibility rule",
+    "catalog, frontier, and content-digest changes are measured and recorded",
+    "independent evaluation is loaded from the accepted base and recorded before promotion"
+  ],
+  "evidence": [
+    {
+      "type": "owner-statement",
+      "context": "The controlled project domain is epistimedia.com; epistemedia.com must not be assumed controllable."
+    }
+  ],
+  "limitations": [
+    "This task does not authorize rewriting merged task contracts, run receipts, governance events, or release records.",
+    "Domain control proves namespace custody, not the truth of represented knowledge."
+  ]
+}
