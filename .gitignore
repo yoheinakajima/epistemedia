@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+*.egg-info/
+
+# JavaScript
+node_modules/
+
+# Deterministic disposable projections
+generated/public/
+dist/
+build/
+
+# Local realm and secret state
+.env
+.env.*
+!.env.example
+private/
+internal/
+.local/
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
