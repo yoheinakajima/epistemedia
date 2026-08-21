@@ -1,0 +1,28 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0002",
+  "title": "Specify and implement the normative event envelope v0.1",
+  "status": "ready",
+  "change_class": "protocol-normative",
+  "objective": "Turn the draft event envelope into a canonical, replay-tested protocol object covering identity, parents, actor lineage, valid/observed/recorded time, payload digest, visibility, signatures, and supersession.",
+  "depends_on": ["EM-0001"],
+  "authority": {
+    "allowed_paths": ["schemas/**", "src/**", "tests/**", "docs/**", "tasks/**", "governance/proposals/**"],
+    "protected_paths": ["schemas/event-envelope-v1.json", "constitution/**", "policies/**"]
+  },
+  "required_evaluation": [
+    "independent protocol evaluator",
+    "replay and canonicalization property tests",
+    "cross-language canonical byte fixtures",
+    "backward/forward compatibility analysis",
+    "disclosure metadata review"
+  ],
+  "acceptance": [
+    "canonical bytes and event IDs are specified without implementation ambiguity",
+    "parent and chain validation reject missing, cyclic, and equivocated history",
+    "three-time semantics are represented without forcing false precision",
+    "unknown actor lineage remains explicit",
+    "supersession never mutates accepted prior events",
+    "reference fixtures replay identically in a clean clone"
+  ]
+}
