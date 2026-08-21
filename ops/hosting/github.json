@@ -1,0 +1,45 @@
+{
+  "schema": "https://epistemedia.com/schemas/hosting-policy-v1.json",
+  "repository": "yoheinakajima/epistemedia",
+  "visibility": "public",
+  "default_branch": "main",
+  "homepage": "https://epistemedia.com",
+  "description": "Knowledge that can show its work — an open, federated knowledge network for humans and agents.",
+  "features": {
+    "issues": true,
+    "discussions": true,
+    "projects": false,
+    "wiki": false,
+    "security_advisories": true,
+    "private_vulnerability_reporting": true
+  },
+  "merge": {
+    "squash": true,
+    "merge_commit": false,
+    "rebase": false,
+    "auto_merge": true,
+    "delete_head_branch": true
+  },
+  "branch_protection": {
+    "branch": "main",
+    "require_pull_request": true,
+    "required_approvals": 0,
+    "dismiss_stale_reviews": true,
+    "require_conversation_resolution": true,
+    "require_linear_history": true,
+    "allow_force_pushes": false,
+    "allow_deletions": false,
+    "required_checks": ["check"],
+    "require_signed_commits": false,
+    "note": "Normative independence is enforced by machine lineage policy and trusted integration receipts, not a human approval count."
+  },
+  "pages": {
+    "source": "github-actions",
+    "custom_domain": "epistemedia.com",
+    "enforce_https": true
+  },
+  "packages": {
+    "container": "ghcr.io/yoheinakajima/epistemedia",
+    "python": "epistemedia"
+  }
+}
