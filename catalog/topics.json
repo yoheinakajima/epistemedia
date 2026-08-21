@@ -1,0 +1,82 @@
+{
+  "schema": "https://epistemedia.com/schemas/topic-catalog-v1.json",
+  "topics": [
+    {
+      "slug": "epistemedia",
+      "title": "Epistemedia",
+      "description": "The public project, knowledge network, reference implementation, and current operating state.",
+      "include": ["README.md", "docs/**", "releases/**"],
+      "tags": ["project", "knowledge-network"]
+    },
+    {
+      "slug": "epistemic-mesh",
+      "title": "Epistemic Mesh Protocol",
+      "description": "The event, provenance, federation, evaluation, disclosure, and projection architecture beneath Epistemedia.",
+      "include": ["schemas/**", "policies/**", "docs/**", "src/epistemedia/core.py"],
+      "tags": ["protocol", "provenance", "federation"]
+    },
+    {
+      "slug": "knowledge-objects",
+      "title": "Knowledge Objects",
+      "description": "How sources, spans, observations, propositions, assertions, evidence, derivations, evaluations, and projections are represented.",
+      "include": ["schemas/**", "docs/**", "src/epistemedia/core.py"],
+      "tags": ["knowledge-representation", "claims", "sources"]
+    },
+    {
+      "slug": "governance",
+      "title": "Autonomous Governance",
+      "description": "Executable constitutional governance without routine discretionary human decisions or self-authorization.",
+      "include": ["constitution/**", "policies/**", "governance/**", "docs/**"],
+      "tags": ["governance", "constitution", "agents"]
+    },
+    {
+      "slug": "disclosure",
+      "title": "Disclosure and Public Projection",
+      "description": "Why public eligibility must precede epistemic evaluation and how noninterference is tested.",
+      "include": ["policies/disclosure/**", "schemas/**", "docs/**", "tests/**"],
+      "tags": ["privacy", "disclosure", "noninterference"]
+    },
+    {
+      "slug": "federation",
+      "title": "Sovereign Realm Federation",
+      "description": "How local-first realms exchange immutable bundles without inheriting remote verdicts or one global ontology.",
+      "include": ["policies/federation/**", "schemas/**", "docs/**"],
+      "tags": ["federation", "local-first", "ontology"]
+    },
+    {
+      "slug": "agent-operations",
+      "title": "Agent Operations",
+      "description": "How unfamiliar coding and research agents orient, select bounded work, validate it, and hand it off.",
+      "include": ["AGENTS.md", "tasks/**", "docs/agent-ops/**", ".github/**"],
+      "tags": ["agents", "contribution", "operations"]
+    },
+    {
+      "slug": "public-interfaces",
+      "title": "Human and Agent Interfaces",
+      "description": "The human site, Markdown twins, llms.txt, API, MCP, CLI, and cross-interface identity contract.",
+      "include": ["src/epistemedia/**", "tests/**", ".github/**", "docs/**"],
+      "tags": ["api", "mcp", "cli", "llms-txt"]
+    },
+    {
+      "slug": "security",
+      "title": "Security and Adversarial Robustness",
+      "description": "Threats including source prompt injection, evaluator collusion, Sybils, ontology poisoning, lineage laundering, and privilege escalation.",
+      "include": ["SECURITY.md", "policies/security/**", "tests/**", "docs/**"],
+      "tags": ["security", "threat-model", "adversarial"]
+    },
+    {
+      "slug": "research-program",
+      "title": "Research Program",
+      "description": "Falsifiable questions, benchmarks, experiments, and unresolved design tradeoffs for collective epistemic systems.",
+      "include": ["research/**", "tasks/**", "docs/**"],
+      "tags": ["research", "benchmarks", "collective-intelligence"]
+    },
+    {
+      "slug": "releases",
+      "title": "Releases and Reproducibility",
+      "description": "Accepted commits, deterministic outputs, manifests, checksums, validation receipts, and deployment identity.",
+      "include": ["releases/**", "runs/**", ".github/workflows/**", "docs/**"],
+      "tags": ["releases", "reproducibility", "supply-chain"]
+    }
+  ]
+}
