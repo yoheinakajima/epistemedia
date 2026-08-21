@@ -29,9 +29,9 @@ server = ["uvicorn>=0.30"]
 epistemedia = "epistemedia.cli:main"
 
 [project.urls]
-Homepage = "https://epistemedia.com"
+Homepage = "https://epistemedia.org"
 Repository = "https://github.com/yoheinakajima/epistemedia"
-Documentation = "https://epistemedia.com/docs/"
+Documentation = "https://epistemedia.org/docs/"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/epistemedia"]

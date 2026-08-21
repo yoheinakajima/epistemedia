@@ -178,8 +178,8 @@ class Gateway:
             return 405, {}, self.rpc_error(None, -32600, "MCP requires POST")
         origin = request.headers.get("origin")
         allowed_origins = {
-            "https://epistemedia.com",
-            "https://www.epistemedia.com",
+            "https://epistemedia.org",
+            "https://www.epistemedia.org",
             "http://localhost",
             "http://127.0.0.1",
         }

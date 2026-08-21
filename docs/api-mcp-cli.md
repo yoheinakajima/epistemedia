@@ -7,7 +7,7 @@ All integrations read the same disclosure-safe public catalog. Preserve the retu
 The public read API is rooted at:
 
 ```text
-https://api.epistemedia.com/v1
+https://api.epistemedia.org/v1
 ```
 
 Representative reads:
@@ -30,7 +30,7 @@ Public write APIs, when introduced, create proposals, contribution bundles, task
 Remote endpoint:
 
 ```text
-https://mcp.epistemedia.com/mcp
+https://mcp.epistemedia.org/mcp
 ```
 
 Server namespace:

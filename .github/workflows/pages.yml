@@ -2,11 +2,17 @@ name: publish-pages
 
 on:
   workflow_dispatch:
+    inputs:
+      deployment_mode:
+        description: Publish at the GitHub hostname first; attach the custom domain only after DNS is ready.
+        required: true
+        default: bootstrap
+        type: choice
+        options:
+          - bootstrap
+          - custom-domain
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+permissions: {}
 
 concurrency:
   group: pages
@@ -14,15 +20,20 @@ concurrency:
 
 jobs:
   build:
-    if: github.repository == 'yoheinakajima/epistemedia'
+    if: github.repository == 'yoheinakajima/epistemedia' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: read
+      pages: read
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      EPISTEMEDIA_BASE_URL: ${{ inputs.deployment_mode == 'custom-domain' && 'https://epistemedia.org' || 'https://yoheinakajima.github.io/epistemedia' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
         with:
           python-version: "3.12"
           cache: pip
@@ -30,16 +41,23 @@ jobs:
       - name: Validate, build, test, audit
         run: |
           python -m epistemedia validate
-          python -m epistemedia build --output generated/public --base-url https://epistemedia.com --api-url https://api.epistemedia.com/v1 --mcp-url https://mcp.epistemedia.com/mcp
+          python -m epistemedia build --output generated/public --base-url "$EPISTEMEDIA_BASE_URL" --api-url https://api.epistemedia.org/v1 --mcp-url https://mcp.epistemedia.org/mcp
           python -m pytest -q
           python -m epistemedia audit --public generated/public
       - name: Attach custom domain
-        run: printf '%s\n' epistemedia.com > generated/public/CNAME
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+        if: inputs.deployment_mode == 'custom-domain'
+        run: printf '%s\n' epistemedia.org > generated/public/CNAME
+      - name: Keep bootstrap independent from custom-domain DNS
+        if: inputs.deployment_mode == 'bootstrap'
+        run: test ! -e generated/public/CNAME
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
         with:
           path: generated/public
   deploy:
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -48,4 +66,4 @@ jobs:
     steps:
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

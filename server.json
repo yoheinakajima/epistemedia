@@ -6,7 +6,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://mcp.epistemedia.com/mcp"
+      "url": "https://mcp.epistemedia.org/mcp"
     }
   ],
   "packages": [

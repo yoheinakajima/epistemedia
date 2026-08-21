@@ -4,7 +4,7 @@
 >
 > An open, federated knowledge system for humans and agents—built from sources, claims, evidence, provenance, policies, and reproducible projections rather than one canonical page.
 
-**Status:** pre-public alpha. The repository, local site, API, MCP server, CLI, governance substrate, and deterministic build pipeline are implemented. Public hosting at `epistemedia.com` and the production API/MCP endpoints are not activated yet.
+**Status:** pre-public alpha. The repository, local site, API, MCP server, CLI, governance substrate, and deterministic build pipeline are implemented. Public hosting at `epistemedia.org` and the production API/MCP endpoints are not activated yet.
 
 ## What Epistemedia is
 
@@ -254,12 +254,14 @@ tests/               Unit, integration, disclosure, protocol, and adversarial te
 Planned production destinations after activation:
 
 ```text
-https://epistemedia.com                 Human site and documentation
-https://epistemedia.com/llms.txt        Agent orientation
-https://api.epistemedia.com/v1          Read-only public API
-https://api.epistemedia.com/openapi.json
-https://mcp.epistemedia.com/mcp         Remote MCP
+https://epistemedia.org                 Human site and documentation
+https://epistemedia.org/llms.txt        Agent orientation
+https://api.epistemedia.org/v1          Read-only public API
+https://api.epistemedia.org/openapi.json
+https://mcp.epistemedia.org/mcp         Remote MCP
 ```
+
+`https://episte.media/<path>` is reserved as a shorter sharing URL that redirects to the same path on `https://epistemedia.org`; it does not host a second canonical copy.
 
 The public write boundary, when introduced, will create proposals, contribution bundles, task claims, and receipts. It will not directly edit accepted pages, policies, or truth status.
 
@@ -306,7 +308,7 @@ Implemented locally and in the repository:
 
 Not yet asserted as live:
 
-- `epistemedia.com` hosting;
+- `epistemedia.org` hosting and the `episte.media` sharing redirect;
 - public API/MCP runtime;
 - PyPI package publication;
 - MCP Registry publication;

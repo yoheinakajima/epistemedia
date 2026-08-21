@@ -3,7 +3,7 @@
   "repository": "yoheinakajima/epistemedia",
   "visibility": "public",
   "default_branch": "main",
-  "homepage": "https://epistemedia.com",
+  "homepage": "https://epistemedia.org",
   "description": "Knowledge that can show its work — an open, federated knowledge network for humans and agents.",
   "features": {
     "issues": true,
@@ -35,9 +35,17 @@
   },
   "pages": {
     "source": "github-actions",
-    "custom_domain": "epistemedia.com",
+    "custom_domain": "epistemedia.org",
     "enforce_https": true
   },
+  "redirects": [
+    {
+      "from": "https://episte.media",
+      "to": "https://epistemedia.org",
+      "status": 308,
+      "preserve_path": true
+    }
+  ],
   "packages": {
     "container": "ghcr.io/yoheinakajima/epistemedia",
     "python": "epistemedia"
