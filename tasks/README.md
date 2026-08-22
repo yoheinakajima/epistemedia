@@ -23,5 +23,7 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0007` — first owned-domain namespace contract (superseded by `EM-0009`)
 - `EM-0008` — canonical `epistemedia.org` deployment with `episte.media` sharing redirect (ready; external credentials required)
 - `EM-0009` — `epistemedia.org` protected identifier-namespace migration (ready; governance path and independent evaluation required)
+- `EM-0010` — deterministic local and CI generated-state contract (ready)
+- `EM-0011` — canonical Apache-2.0 license text and detection (ready)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.

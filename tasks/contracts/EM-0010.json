@@ -1,0 +1,50 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0010",
+  "title": "Make generated public state reproducible locally and in CI",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Make local and CI validation independently prove that the disposable public projection is byte-for-byte reproducible from one accepted commit, without wall-clock races or claims that ignored output must be committed.",
+  "depends_on": [
+    "EM-0001"
+  ],
+  "authority": {
+    "allowed_paths": [
+      ".github/workflows/ci.yml",
+      "Makefile",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "schemas/**",
+      "policies/**",
+      "catalog/**",
+      "governance/events/**",
+      "tasks/contracts/EM-0001.json",
+      "tasks/contracts/EM-0002.json",
+      "tasks/contracts/EM-0003.json",
+      "tasks/contracts/EM-0004.json",
+      "tasks/contracts/EM-0005.json",
+      "tasks/contracts/EM-0006.json",
+      "tasks/contracts/EM-0007.json",
+      "tasks/contracts/EM-0008.json",
+      "tasks/contracts/EM-0009.json"
+    ]
+  },
+  "acceptance": [
+    "public generated_at metadata is derived deterministically from the accepted Git commit rather than the build wall clock",
+    "two public builds separated across wall-clock seconds are byte-for-byte identical",
+    "make check validates, builds, tests, audits, compares independent builds, and rejects source-tree drift from a clean checkout",
+    "local and CI validation implement the same generated-state contract",
+    "documentation describes generated/public as ignored disposable output rather than tracked state",
+    "deployment time remains separately observable in provider runs and activation receipts"
+  ],
+  "limitations": [
+    "This task does not change protected schema or policy identifiers.",
+    "The public generated_at field represents the accepted source frontier time, not the later provider deployment time."
+  ]
+}
