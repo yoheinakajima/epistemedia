@@ -52,6 +52,39 @@ EPISTEMEDIA_ALLOWED_ORIGINS=https://epistemedia.org,https://www.epistemedia.org
 
 No secret is required for anonymous reads. Do not add repository tokens, publisher credentials, DNS credentials, or contribution authority to this service.
 
+## Container build identity
+
+The image deliberately excludes `.git`, developer environments, caches, local
+realms, secret-shaped files, and disposable projections from its build
+context. Production builds therefore require two public, immutable build
+arguments:
+
+```text
+EPISTEMEDIA_ACCEPTED_COMMIT=<exact 40-character lowercase release commit>
+SOURCE_DATE_EPOCH=<that commit's non-negative Unix timestamp>
+```
+
+The protected container workflow derives both values from the verified release
+tag after confirming that its commit is reachable from `main`. The Dockerfile
+rejects missing or malformed values before installing or compiling the public
+projection. At runtime, Git metadata is absent and the gateway uses these
+validated values to preserve the accepted commit and deterministic source time.
+They are public identity metadata, not credentials.
+
+For a local smoke build from an accepted checkout, derive and pass them
+explicitly:
+
+```bash
+export EPISTEMEDIA_ACCEPTED_COMMIT="$(git rev-parse HEAD)"
+export SOURCE_DATE_EPOCH="$(git show -s --format=%ct HEAD)"
+docker compose build gateway
+docker compose up gateway
+```
+
+Do not use `unknown`, a branch name, an abbreviated hash, or the wall clock for
+a release image. A successful local build remains local evidence until its
+HTTP endpoints and manifest identity pass the external smoke contract.
+
 ## Required external smoke checks
 
 After deployment, run the routes in `ops/hosting/production-smoke.md` and additionally verify:

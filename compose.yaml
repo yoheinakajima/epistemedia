@@ -1,6 +1,10 @@
 services:
   gateway:
-    build: .
+    build:
+      context: .
+      args:
+        EPISTEMEDIA_ACCEPTED_COMMIT: ${EPISTEMEDIA_ACCEPTED_COMMIT:?set the exact accepted 40-character commit}
+        SOURCE_DATE_EPOCH: ${SOURCE_DATE_EPOCH:?set the accepted commit Unix timestamp}
     ports:
       - "8080:8080"
     environment:

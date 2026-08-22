@@ -106,21 +106,31 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def accepted_commit(root: Path) -> str:
+    """Return Git HEAD or a validated immutable build-time fallback."""
+    value = git_value(root, "rev-parse", "HEAD", default="")
+    if value:
+        return value
+    value = os.environ.get("EPISTEMEDIA_ACCEPTED_COMMIT", "")
+    if not value:
+        return "unknown"
+    if re.fullmatch(r"[0-9a-f]{40}", value) is None:
+        raise ValueError("accepted commit must be exactly 40 lowercase hexadecimal characters")
+    return value
+
+
 def accepted_timestamp(root: Path) -> str:
     """Return the accepted commit time used by reproducible public projections."""
     value = git_value(root, "show", "-s", "--format=%ct", "HEAD", default="")
     if not value:
         value = os.environ.get("SOURCE_DATE_EPOCH", "0")
+    if re.fullmatch(r"0|[1-9][0-9]*", value) is None:
+        raise ValueError("accepted source timestamp must be non-negative Unix epoch seconds")
     try:
-        epoch = int(value)
-    except ValueError as exc:
-        raise ValueError("accepted source timestamp must be Unix epoch seconds") from exc
-    return (
-        datetime.fromtimestamp(epoch, timezone.utc)
-        .replace(microsecond=0)
-        .isoformat()
-        .replace("+00:00", "Z")
-    )
+        accepted = datetime.fromtimestamp(int(value), timezone.utc)
+    except (OverflowError, OSError, ValueError) as exc:
+        raise ValueError("accepted source timestamp is outside the supported range") from exc
+    return accepted.replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def git_value(root: Path, *args: str, default: str = "unknown") -> str:
@@ -277,7 +287,7 @@ class PublicCatalog:
 
         topics = load_topics(root, objects)
         policies = load_policies(root)
-        commit = git_value(root, "rev-parse", "HEAD")
+        commit = accepted_commit(root)
         # Frontier is accepted content, not a deploy URL or build timestamp.
         frontier_material = {
             "commit": commit,
