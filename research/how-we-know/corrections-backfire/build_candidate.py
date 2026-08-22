@@ -630,7 +630,9 @@ def source_works() -> list[dict[str, Any]]:
         {
             "key": "work-ecker-hogan-2017",
             "kind": "paper",
-            "title": "Reminders and Repetition of Misinformation: Helping or Hindering Its Retraction?",
+            "title": (
+                "Reminders and Repetition of Misinformation: Helping or Hindering Its Retraction?"
+            ),
             "creators": ["Ullrich K. H. Ecker", "Joshua L. Hogan", "Stephan Lewandowsky"],
             "canonical_uri": "https://doi.org/10.1016/j.jarmac.2017.01.014",
             "license": (
@@ -1459,7 +1461,10 @@ def editions() -> list[dict[str, Any]]:
                     excerpt("Experiment 1; participants", PRIKE_2023_RECRUITMENT),
                     excerpt("Ethics approval", PRIKE_2023_ETHICS),
                     excerpt("General discussion; sample comparison", PRIKE_2023_AUTRY_SAMPLE),
-                    excerpt("Introduction; bounded counterevidence search", PRIKE_2023_COUNTER_SEARCH),
+                    excerpt(
+                        "Introduction; bounded counterevidence search",
+                        PRIKE_2023_COUNTER_SEARCH,
+                    ),
                     excerpt("Introduction; standalone-correction search", PRIKE_2023_GORDON_SEARCH),
                 ],
             },
