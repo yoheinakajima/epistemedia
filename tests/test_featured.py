@@ -225,9 +225,9 @@ def test_static_html_markdown_and_json_preserve_one_view_identity(tmp_path: Path
     assert 'aria-current="page"' in html
     assert "<script" not in html
     assert "source-xray" in html
-    assert f'href="https://epistemedia.org/how-we-know/{SLUG}/#apparent-support"' in html
-    assert f'href="https://epistemedia.org/how-we-know/{SLUG}/#supporting-roots"' in html
-    assert f'href="https://epistemedia.org/how-we-know/{SLUG}/#counter-roots"' in html
+    assert 'href="#apparent-support"' in html
+    assert 'href="#supporting-roots"' in html
+    assert 'href="#counter-roots"' in html
     assert 'id="unresolved-lineage"' in html
     assert 'id="apparent-support"' in html
     assert 'id="supporting-roots"' in html
@@ -240,6 +240,18 @@ def test_static_html_markdown_and_json_preserve_one_view_identity(tmp_path: Path
     assert "86 exact spans" in home
     assert home.index("Does repeating misinformation") < home.index(
         "Explore how the record is built"
+    )
+    assert (
+        f'href="https://epistemedia.org/how-we-know/{SLUG}/#unresolved-lineage"'
+        in home
+    )
+
+    skeptical_html = (case / "skeptical" / "index.html").read_text()
+    assert 'href="#apparent-support"' in skeptical_html
+    assert 'href="#supporting-roots"' in skeptical_html
+    assert 'href="#counter-roots"' in skeptical_html
+    assert f'href="https://epistemedia.org/how-we-know/{SLUG}/#apparent-support"' not in (
+        skeptical_html
     )
 
 

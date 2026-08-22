@@ -908,11 +908,15 @@ def _policy_switch(data: dict[str, Any], base_url: str) -> str:
     return '<nav class="policy-switch" aria-label="Evidence policy">' + "".join(links) + "</nav>"
 
 
-def evidence_tally(data: dict[str, Any], base_url: str) -> str:
+def evidence_tally(
+    data: dict[str, Any], base_url: str, *, local_fragments: bool = False
+) -> str:
     counts = data["counts"]
-    case_url = (
-        f'{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
-    )
+    case_url = ""
+    if not local_fragments:
+        case_url = (
+            f'{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
+        )
     return (
         '<div class="evidence-tally" aria-label="Evidence lineage summary">'
         f'<a class="tally-cell" href="{case_url}#apparent-support" '
@@ -1119,8 +1123,9 @@ def feature_home_html(envelope: dict[str, Any], base_url: str) -> str:
         'Share the scoreboard</a></p></div>'
         f'<aside class="case-docket">{evidence_tally(data, base_url)}'
         '<p class="docket-note"><strong>Ten source assertions sound like support. Four '
-        'target-comparable participant-data roots do. One 2007 lineage remains '
-        'unresolved.</strong> '
+        'target-comparable participant-data roots do. '
+        f'<a href="{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
+        '#unresolved-lineage">One 2007 lineage remains unresolved.</a></strong> '
         'Open the count to inspect the exact editions, shared programs, failed replications, and '
         'unresolved data lineage.</p>'
         f'<p class="docket-meta">{data["source_work_count"]} works · '
@@ -1193,7 +1198,7 @@ def feature_page_html(envelope: dict[str, Any], base_url: str) -> str:
         '<p class="stranger-definition">The Stranger Test asks how many apparently separate '
         'claims still count as independent evidence after their data lineage and target fit are '
         'traced.</p>'
-        f'{evidence_tally(data, base_url)}'
+        f'{evidence_tally(data, base_url, local_fragments=True)}'
         f'<p>{html.escape(data["counts"]["counting_unit"])}</p>'
         '<p class="scope-note"><strong>Scope:</strong>'
         f'<span>{html.escape(data["scope"])}</span></p></section>'
