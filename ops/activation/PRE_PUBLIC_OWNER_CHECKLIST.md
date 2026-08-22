@@ -1,5 +1,7 @@
 # Owner activation checklist
 
+> **Archived bootstrap checklist.** These gates have been completed and superseded by the provider read-back in [`2026-08-22-pages-bootstrap.md`](2026-08-22-pages-bootstrap.md). The unchecked boxes below preserve the original owner handoff; they are not current work state.
+
 - [ ] Verify `prepublic-ready` exists and `main` contains the full implementation.
 - [ ] Make `yoheinakajima/epistemedia` public.
 - [ ] Verify the public repository from a logged-out browser.

@@ -1,5 +1,7 @@
 # Pre-public owner handoff
 
+> **Archived bootstrap handoff.** The repository-publication and protected-contribution steps below are complete. The default-hostname Pages bootstrap is also live. Use [`ops/activation/2026-08-22-pages-bootstrap.md`](../ops/activation/2026-08-22-pages-bootstrap.md) for current evidence and remaining owner boundaries. `prepublic-ready` is no longer an active recovery instruction; its exact identity and cleanup decision are preserved in that record.
+
 This document starts at the GitHub account boundary. The code, tests, deterministic site compiler, API/MCP gateway, CLI package, workflows, and provider declarations are prepared before this point.
 
 ## Verify promotion
