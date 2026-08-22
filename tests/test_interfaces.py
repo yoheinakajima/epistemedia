@@ -102,6 +102,11 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert unquote(route_key) == file_key
     assert (public / "objects" / file_key / "index.html").exists()
     assert (public / "objects" / f"{file_key}.md").exists()
+    assert '<link rel="canonical" href="https://epistemedia.org/docs/">' in docs_html
+
+    object_html = (public / "objects" / file_key / "index.html").read_text()
+    expected_canonical = f'https://epistemedia.org/objects/{route_key}/'
+    assert f'<link rel="canonical" href="{expected_canonical}">' in object_html
 
 
 def test_topic_lenses_share_source_frontier() -> None:
