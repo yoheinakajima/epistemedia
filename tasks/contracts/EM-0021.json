@@ -1,0 +1,62 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0021",
+  "title": "Complete the first How We Know evidence experience",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Supersede EM-0020 with authority to compile the first accepted How We Know dossier across human and machine interfaces while correcting every compiled current-state document to distinguish the bounded application-level dossier graph from the self-describing repository corpus and the still-unimplemented normative replay architecture.",
+  "depends_on": [
+    "EM-0017",
+    "EM-0019"
+  ],
+  "supersedes": "EM-0020",
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "sentence-to-span and edition identity tests",
+    "lineage-count derivation and shared-ancestor adversarial tests",
+    "encyclopedia-versus-skeptical output-difference tests",
+    "HTML, Markdown, JSON, API, MCP, and CLI parity tests",
+    "compiled README and launch-document current-state audit",
+    "no-JavaScript fallback and keyboard-accessibility review",
+    "desktop and mobile visual inspection",
+    "public disclosure noninterference audit",
+    "external route and content-type read-back after accepted deployment"
+  ],
+  "acceptance": [
+    "the homepage leads with one accepted finding about the world rather than a directory of project internals",
+    "a reader can reveal the exact accepted edition and span behind every material dossier sentence",
+    "raw mention count and independent-lineage count are visibly distinguished and deterministically reproduced",
+    "encyclopedia and skeptical views share the accepted source objects while producing a material, explained policy-relative difference",
+    "contradictions, qualifiers, unknown dependence, and unresolved defeaters remain visible",
+    "the existing self-describing project corpus remains available through Explore and documentation routes",
+    "README and launch-facing documentation accurately distinguish the implemented application-level dossier projection from the target normative replay architecture and from externally unverified deployment",
+    "the featured selection is an explicit accepted compiler input rather than detached hand-authored marketing",
+    "all public interfaces expose the same dossier, catalog, frontier, policies, compiler, accepted commit, and content digest",
+    "make check passes without changing accepted source state",
+    "the accepted Pages deployment passes route, canonical URL, keyboard, mobile, content-type, and manifest read-back"
+  ],
+  "limitations": [
+    "This task does not claim that one dossier validates the full Epistemedia thesis, that the application-level dossier model is the normative event graph, or that the promoted policies are universally correct.",
+    "Correct current-state documentation does not prove a hosted deployment; live status still requires provider and route read-back.",
+    "Hosted API/MCP activation, automated capture, scaled seeding, and federation remain separate tasks.",
+    "Human-comprehension claims require real-reader evidence rather than synthetic review."
+  ]
+}

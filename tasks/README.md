@@ -33,6 +33,7 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0017` — implement the forensic-editorial public design system (ready; depends on `EM-0016`)
 - `EM-0018` — implement a reversible claim-dossier model (ready; application-level, not protocol-normative)
 - `EM-0019` — research the first How We Know lineage case (ready; depends on `EM-0018`)
-- `EM-0020` — compile the first How We Know evidence experience (ready; depends on `EM-0017` and `EM-0019`)
+- `EM-0020` — original first How We Know evidence-experience contract (superseded by `EM-0021` after exact-head review found its README authority incomplete)
+- `EM-0021` — complete the first How We Know evidence experience with truthful compiled current-state documentation (ready; depends on `EM-0017` and `EM-0019`)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.
