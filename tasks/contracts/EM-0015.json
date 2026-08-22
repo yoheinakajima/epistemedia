@@ -1,0 +1,68 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0015",
+  "title": "Make the installed wheel CLI self-contained",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Make a clean wheel installation import and execute the Epistemedia CLI without relying on checkout-level sitecustomize hooks or other editable-source side effects.",
+  "depends_on": [
+    "EM-0013",
+    "EM-0014"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "sitecustomize.py",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**",
+      "pyproject.toml"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "schemas/**",
+      "policies/**",
+      "catalog/**",
+      "governance/events/**",
+      "tasks/contracts/EM-0001.json",
+      "tasks/contracts/EM-0002.json",
+      "tasks/contracts/EM-0003.json",
+      "tasks/contracts/EM-0004.json",
+      "tasks/contracts/EM-0005.json",
+      "tasks/contracts/EM-0006.json",
+      "tasks/contracts/EM-0007.json",
+      "tasks/contracts/EM-0008.json",
+      "tasks/contracts/EM-0009.json",
+      "tasks/contracts/EM-0010.json",
+      "tasks/contracts/EM-0011.json",
+      "tasks/contracts/EM-0012.json",
+      "tasks/contracts/EM-0013.json",
+      "tasks/contracts/EM-0014.json"
+    ]
+  },
+  "required_evaluation": [
+    "isolated source import without repository sitecustomize",
+    "clean wheel installation and CLI version smoke test",
+    "wheel and source-distribution metadata and license inspection",
+    "existing API, MCP, and repository checks"
+  ],
+  "acceptance": [
+    "the installed wheel CLI executes on the declared minimum supported Python without a repository checkout on sys.path",
+    "the lazy gateway loader registers its private implementation module before executing dataclass declarations",
+    "checkout-level compatibility sitecustomize hooks are no longer required and are removed",
+    "an isolated subprocess test fails if the package again depends on checkout bootstrap state",
+    "wheel and source distribution versions, entry point, license expression, and included license remain consistent",
+    "make check passes without changing accepted source state"
+  ],
+  "evidence": [
+    {
+      "type": "local-run",
+      "context": "A clean installation of epistemedia-0.2.0-py3-none-any.whl on Python 3.11 failed while executing a dataclass because epistemedia._server_implementation was absent from sys.modules."
+    }
+  ],
+  "limitations": [
+    "This task does not select a release version, create a tag, upload to PyPI, or publish any registry record.",
+    "A successful clean-install smoke test is release-readiness evidence, not proof of every supported platform or Python environment."
+  ]
+}
