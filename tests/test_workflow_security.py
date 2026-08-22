@@ -74,6 +74,11 @@ def test_pull_request_validation_has_no_secret_or_write_authority() -> None:
     assert "run: make check" in text
 
 
+def test_validation_does_not_inject_a_global_clock() -> None:
+    assert not (ROOT / "usercustomize.py").exists()
+    assert not (ROOT / "src" / "usercustomize.py").exists()
+
+
 def test_active_deployment_configuration_uses_controlled_domain() -> None:
     paths = [
         ROOT / "pyproject.toml",
