@@ -29,7 +29,7 @@ The accepted repository and live site already prove several parts of the operati
 - public Pages hosting at `https://epistemedia.org` with HTTPS enforced;
 - visible catalog, frontier, accepted commit, and compiler receipts.
 
-The current reader experience remains a bootstrap projection:
+Before the first reviewed vertical slice, the reader experience remained a bootstrap projection:
 
 - the homepage is a directory of eleven project-self topics;
 - public objects are principally repository files represented by path, text, media type, and digest;
@@ -38,7 +38,11 @@ The current reader experience remains a bootstrap projection:
 - the visual shell is legible but spacious, generic, and missing a distinctive evidence interaction;
 - duplicate topic headings and stale public-status prose undermine finish and trust.
 
-These are implementation gaps, not evidence that the constitutional direction should be discarded.
+The accepted research dossier and EM-0020 compiler work address that first-vertical-slice gap in
+repository source: the homepage leads with an external question, source spans are inspectable,
+lineage counts are derived, and two named policies materially differ. Wider coverage, hosted
+API/MCP activation, and evidence from real-reader comprehension remain open work. Deployment is
+only live when the Pages provider and public routes pass read-back.
 
 ## Product promise
 
@@ -54,17 +58,29 @@ A reader should be able to:
 
 The stranger test is not "does this look like a documentation site?" It is whether a reader notices that apparently separate support collapses under lineage inspection and can see exactly why.
 
-## Initial dossier candidates
+## First dossier selection
 
-These are research questions and candidate case-file titles, not accepted conclusions:
+The first selected case is:
 
-1. **When many sources are really one source** — a real lineage-collapse case with exact upstream evidence.
+> Does repeating misinformation in a correction make it more believable?
+
+Its accepted research packet contains exact source spans, known and unknown lineages,
+counterevidence, qualifications, and independent review. The application presents its conclusion
+as policy-relative and bounded; the selection does not establish a universal rule about every
+repetition, correction, audience, delay, or outcome.
+
+Later research questions and candidate case-file titles include:
+
+1. **When many sources are really one source** — another lineage-collapse case with exact upstream evidence.
 2. **Information is not meaning** — distinctions among syntactic information, semantic content, and truth.
 3. **When justified true belief still is not knowledge** — luck, defeaters, and responses to Gettier-style cases.
-4. **Why repetition can change belief without adding evidence** — empirical and conceptual treatment of repetition, testimony, and copying.
+4. **Why repetition can change belief without adding evidence** — a broader conceptual treatment beyond the first correction dossier.
 5. **What can an AI responsibly claim to know?** — attribution, retrieval, calibration, memory, and uncertainty.
 
-The first accepted dossier will be selected by a bounded research task. It must have accessible primary or authoritative sources, exact spans, a defensible license and snapshot plan, meaningful dependence structure, relevant counterevidence, and no provenance dead ends. If no candidate passes, the task records that negative result rather than manufacturing a demonstration.
+Future dossiers retain the same admission bar: accessible primary or authoritative sources, exact
+spans, defensible license and snapshot treatment, meaningful dependence structure, relevant
+counterevidence, and no provenance dead ends. A failed candidate records a negative result rather
+than manufacturing a demonstration.
 
 ## Visual direction
 
@@ -93,7 +109,7 @@ The distinctive brand behavior is the evidence interaction itself: select a sent
 
 ## Homepage direction
 
-Once an accepted dossier exists, the homepage becomes a compiled findings surface:
+With an accepted dossier, the homepage becomes a compiled findings surface:
 
 1. one featured dossier with a real finding and exact scope;
 2. raw mention count beside independent lineage count;

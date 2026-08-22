@@ -21,8 +21,10 @@ from .core import (
     audit_public,
     build_public,
     discover_root,
+    envelope,
     validate_repository,
 )
+from .featured import FEATURE_VIEWS, load_featured_dossier
 from .server import Gateway, MCPRequestError
 
 
@@ -69,6 +71,12 @@ def parser() -> argparse.ArgumentParser:
     project.add_argument("--lens", default="encyclopedia")
     project.add_argument("--remote", action="store_true")
     project.add_argument("--api", default=DEFAULT_API_URL)
+
+    dossier = sub.add_parser("dossier", help="Get an accepted How We Know dossier")
+    dossier.add_argument("slug")
+    dossier.add_argument("--policy", choices=FEATURE_VIEWS, default="encyclopedia")
+    dossier.add_argument("--remote", action="store_true")
+    dossier.add_argument("--api", default=DEFAULT_API_URL)
 
     repo = sub.add_parser("repo", help="Repository-native agent operations")
     repo_sub = repo.add_subparsers(dest="repo_command", required=True)
@@ -249,6 +257,15 @@ def main(argv: list[str] | None = None) -> int:
     if command == "project" and args.remote:
         print_json(remote_get(args.api, "topics/" + urllib.parse.quote(args.slug, safe=""), {"lens": args.lens}))
         return 0
+    if command == "dossier" and args.remote:
+        print_json(
+            remote_get(
+                args.api,
+                "dossiers/" + urllib.parse.quote(args.slug, safe=""),
+                {"policy": args.policy},
+            )
+        )
+        return 0
 
     root = resolve_root(args)
     assert root is not None
@@ -310,6 +327,13 @@ def main(argv: list[str] | None = None) -> int:
         if not topic:
             raise SystemExit(f"unknown topic: {args.slug}")
         print_json(topic_projection(catalog, topic, args.lens, DEFAULT_BASE_URL))
+        return 0
+    if command == "dossier":
+        catalog = PublicCatalog.build(root)
+        featured = load_featured_dossier(root)
+        if featured is None or args.slug != featured.slug:
+            raise SystemExit(f"unknown dossier: {args.slug}")
+        print_json(envelope(catalog, featured.projection(args.policy)))
         return 0
     if command == "repo":
         if args.repo_command == "next":

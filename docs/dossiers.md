@@ -77,7 +77,11 @@ The source dossier ID may change when private records change. The public dossier
 - an MCP resource;
 - CLI JSON text.
 
-Every form carries the same public `dossier_id`. These adapters prove identity portability; they do not make a dossier publicly discoverable or activate hosted API/MCP routes. Public routing begins only after a reviewed dossier is admitted and the compiler work in EM-0020 is accepted.
+Every form carries the same public `dossier_id`. After independent review, an explicit feature
+manifest may bind one exact dossier and review receipt into the public compiler. The first such
+manifest produces HTML, Markdown, static JSON, local API, MCP, and CLI representations from the
+same disclosure-safe object. This makes the dossier publicly discoverable on the static site; it
+does not activate the reserved hosted API/MCP runtime.
 
 ## Construction and validation
 
@@ -90,7 +94,10 @@ public_projection = DossierProjection.from_dossier(dossier)
 print(public_projection.id)
 ```
 
-The synthetic fixture builder and adversarial mutations are in `tests/test_dossiers.py`. They demonstrate mechanics only and make no empirical or philosophical claims.
+The synthetic fixture builder and adversarial mutations are in `tests/test_dossiers.py`. The first
+real application is selected in `catalog/dossiers/corrections-and-familiarity-backfire.json` and
+remains byte-bound to its independent review receipt. Synthetic fixtures demonstrate mechanics
+only and make no empirical or philosophical claims.
 
 ## Promotion boundary
 

@@ -1,8 +1,10 @@
 # Forensic-editorial design system
 
-Status: implemented public-shell convention for the truthful bootstrap corpus.
+Status: implemented public-shell and first reviewed dossier interaction.
 
-This system gives Epistemedia the feel of a readable publication joined to an inspectable evidence docket. It prepares the shell for later source-span and lineage interactions without simulating dossiers, findings, evidence counts, or policy effects that do not exist yet.
+This system gives Epistemedia the feel of a readable publication joined to an inspectable evidence
+docket. The public shell remains useful for the repository corpus; the accepted How We Know case
+adds real source-span, lineage-count, and policy interactions compiled from reviewed dossier data.
 
 ## Design principles
 
@@ -51,6 +53,24 @@ Object pages separate page identity from embedded source content. The object tit
 
 The receipt carries the complete reproducibility identity in a compact definition list. Long identifiers wrap without being truncated. Topic receipts add projection and policy IDs; home and status receipts show catalog, frontier, accepted commit, and compiler.
 
+### Evidence tally
+
+The featured case separates raw assertions, participant-data roots, target-comparable roots,
+unresolved roots, and counterevidence. Counts are derived from dossier relations and lineage
+records; no displayed total is maintained as independent marketing copy.
+
+### Evidence-policy switch
+
+Encyclopedia and skeptical views use ordinary links and an accessible named navigation region.
+They share the exact dossier and source works while selecting different evaluations and relations.
+The current view is stated in text and with `aria-current`, not color alone.
+
+### Exact source x-ray
+
+Each material featured relation opens through native `details` and `summary` controls. The expanded
+record exposes the accepted edition, locator, exact span, source-work identity, license treatment,
+and content-addressed IDs without JavaScript.
+
 ## Responsive and accessibility contract
 
 - representative widths: desktop at `1440 × 900` and mobile at `390 × 844`;
@@ -63,6 +83,9 @@ The receipt carries the complete reproducibility identity in a compact definitio
 
 Automated tests cover structure, identities, tokens, focus and responsive rules, and overflow-sensitive markup. Browser inspection remains required because passing string and DOM assertions is not evidence of good visual hierarchy.
 
-## Deferred dossier interaction
+## Implemented dossier interaction
 
-The shell intentionally does not draw source highlights, dependence brackets, lineage collapse, evidence counts, or policy switches. Those components become meaningful only after accepted dossier objects exist. EM-0018 defines the reversible application model; EM-0019 supplies reviewed evidence; EM-0020 compiles the first real interaction.
+EM-0018 defines the reversible application model, EM-0019 supplies independently reviewed evidence,
+and EM-0020 compiles the first real interaction. It deliberately stops short of client-side text
+selection, animated dependence graphs, or a universal scoring system. The distinctive behavior is
+the reviewable path from a policy-relative sentence to an exact span and its lineage.
