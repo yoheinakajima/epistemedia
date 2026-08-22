@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import asyncio
 import json
+import subprocess
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, unquote
 
@@ -55,6 +57,21 @@ def test_catalog_is_deterministic() -> None:
     assert first.catalog_id == second.catalog_id
     assert first.frontier == second.frontier
     assert [obj.id for obj in first.objects] == [obj.id for obj in second.objects]
+
+
+def test_public_timestamp_is_the_accepted_commit_time() -> None:
+    epoch = int(
+        subprocess.check_output(
+            ["git", "show", "-s", "--format=%ct", "HEAD"], cwd=ROOT, text=True
+        ).strip()
+    )
+    expected = (
+        datetime.fromtimestamp(epoch, timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z")
+    )
+    assert PublicCatalog.build(ROOT).generated_at == expected
 
 
 def test_deployment_url_does_not_change_catalog_identity(tmp_path: Path) -> None:

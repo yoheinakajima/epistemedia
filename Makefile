@@ -17,8 +17,8 @@ test:
 audit:
 	@$(PYTHON) -m epistemedia audit --public generated/public
 
-check: validate build test audit
-	@git diff --exit-code -- generated/public || (echo "generated/public is stale; commit the deterministic rebuild" && exit 1)
+check:
+	@$(PYTHON) -m epistemedia.check
 
 serve:
 	@$(PYTHON) -m epistemedia serve --public generated/public --port 8000
