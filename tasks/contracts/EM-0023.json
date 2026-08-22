@@ -1,0 +1,61 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0023",
+  "title": "Turn Case 001 into a living evidence report",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Replace the flat same-size report presentation with a deterministic forensic-editorial evidence composition that makes the verdict, practical meaning, evidence counts, complete root ledger, typed relations, unresolved lineage, terminology, and shareable scoreboard understandable without reducing epistemic precision or changing the accepted dossier.",
+  "depends_on": [
+    "EM-0022"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "research/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "complete scoreboard-to-assertion and scoreboard-to-lineage derivation tests",
+    "source-closure tests for every displayed finding, relation, qualifier, practical reading, and unresolved item",
+    "same-dossier encyclopedia-versus-skeptical editorial-difference tests",
+    "deterministic share-card content and identity tests",
+    "HTML, Markdown, JSON, local API, MCP, and CLI parity tests",
+    "no-JavaScript fallback, semantic-heading, keyboard, focus, contrast, and reduced-motion review",
+    "desktop and mobile visual inspection at representative narrow and wide viewports",
+    "public disclosure noninterference audit",
+    "external route, content-type, canonical, share-card, and release-identity read-back after accepted deployment"
+  ],
+  "acceptance": [
+    "Case 001 reads as a deliberately composed evidence report rather than generic rendered Markdown and uniform bullets",
+    "the Stranger Test is defined in one plain sentence near the scoreboard",
+    "every scoreboard count links to the complete deterministically derived list it summarizes",
+    "the page exposes a compact visible lexicon for apparent support assertion, participant-data root, target-comparable, unresolved lineage, and policy view",
+    "a plainly labeled and source-closed practical reading explains what the selected view means for someone writing corrections while preserving the no-universal-practice-rule limitation",
+    "relations form a visually sequenced annotated argument and the unresolved 2007 lineage remains first-class",
+    "a deterministic share card derives its question, verdict, counts, unresolved marker, dossier identity, and canonical route from the accepted projection",
+    "encyclopedia and skeptical first screens remain materially different views of the exact same dossier rather than a cosmetic toggle",
+    "the accepted Case 001 dossier, independent receipt, and research packet remain byte-identical",
+    "make check passes without changing accepted source state",
+    "the accepted Pages deployment passes route, canonical URL, keyboard, mobile, content-type, share-card, and manifest read-back"
+  ],
+  "limitations": [
+    "This task changes presentation and deterministic projection structure, not the accepted research packet, evidence counts, relation meanings, review receipt, or policy definitions.",
+    "The practical reading is a policy-relative interpretation with visible qualifiers, not universal professional or medical advice.",
+    "A lexicon reduces terminology cost but does not prove first-time-reader comprehension; real-reader evidence remains future work.",
+    "Case 002, a third public lens, additional corpus seeding, hosted API/MCP activation, workflow mutation, DNS changes, publication, and release are out of scope."
+  ]
+}
