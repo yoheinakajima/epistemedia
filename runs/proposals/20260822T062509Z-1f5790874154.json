@@ -1,0 +1,10 @@
+{
+  "command": "make check PYTHON=.venv/bin/python; build_candidate.py --check; verify_retrievals.py --artifact-dir /tmp",
+  "id": "em:run-receipt:sha256:1f579087415499ce456d18418b546485bcba0687c22870ce336106c35eccb2b2",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-22T06:25:09Z",
+  "run_id": "candidate-final-20260822T062502Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0019"
+}

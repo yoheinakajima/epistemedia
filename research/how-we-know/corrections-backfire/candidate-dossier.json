@@ -1,0 +1,955 @@
+{
+  "assertions": [
+    {
+      "actor": {
+        "id": "doi:10.1086/426605#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2005-03-01T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:ffa807a06b2295fb0c0ea4ee8a3fd4148a5e741e52625ffe6b7bf94f0b9b35a7",
+      "key": "assert-skurnik-result",
+      "lineage_key": "lineage-skurnik-data",
+      "proposition_key": "prop-older-adult-result",
+      "span_keys": [
+        "span-skurnik-summary"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "web:debunking-handbook-2011#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2011-11-18T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:4ae96234c6b3b889a9945a4e728332e3244f5534bc994fb3c95890a3a5dba893",
+      "key": "assert-handbook-claim",
+      "lineage_key": "lineage-handbook-guidance",
+      "proposition_key": "prop-general-backfire",
+      "span_keys": [
+        "span-handbook-claim",
+        "span-handbook-advice"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1177/237946151600200110#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2016-04-01T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:805eba810cedeb0dc72e417fe56d0bbf7930b2d9d57018db2db628608109c1e8",
+      "key": "assert-schwarz-claim",
+      "lineage_key": "lineage-schwarz-review",
+      "proposition_key": "prop-general-backfire",
+      "span_keys": [
+        "span-schwarz-claim"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1186/s41235-020-00241-6#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2020-08-26T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:37f6ba7501b5e215539506b62e2f85d88b2c14059c6a6522cdfa2bae9f195c82",
+      "key": "assert-ecker-2020-result",
+      "lineage_key": "lineage-ecker-2020-data",
+      "proposition_key": "prop-general-backfire",
+      "span_keys": [
+        "span-ecker-2020-result",
+        "span-ecker-2020-guidance-conclusion"
+      ],
+      "stance": "questions",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1186/s41235-020-00241-6#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2020-08-26T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:8fc3c0d578ad84c5f51c7f2c969b4bea8626925c3acad1b2bcc477c8cd2c4471",
+      "key": "assert-ecker-2020-guidance",
+      "lineage_key": "lineage-ecker-2020-data",
+      "proposition_key": "prop-guidance-overreach",
+      "span_keys": [
+        "span-ecker-2020-guidance-overreach"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1186/s41235-023-00492-z#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2023-07-03T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:fb07d9f80cb854e67c743f8581eaf698abe106da6284e48e00b87a585c3ad56a",
+      "key": "assert-prike-2023-result",
+      "lineage_key": "lineage-prike-2023-data",
+      "proposition_key": "prop-general-backfire",
+      "span_keys": [
+        "span-prike-2023-result"
+      ],
+      "stance": "questions",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1186/s41235-023-00492-z#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2023-07-03T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:1e1e6d3626b6fe4a486ccfb42b033b165069caf2216e0aa52f2ea00a8366ee76",
+      "key": "assert-prike-2023-skepticism",
+      "lineage_key": "lineage-prike-2023-data",
+      "proposition_key": "prop-skepticism-boundary",
+      "span_keys": [
+        "span-prike-2023-result"
+      ],
+      "stance": "hypothesizes",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1371/journal.pone.0281140#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2023-04-12T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:ad70a87c36bcf5f0356553c4bebaabef3bffdcea2222581352a50a0b04eadddf",
+      "key": "assert-ecker-2023-result",
+      "lineage_key": "lineage-ecker-2023-data",
+      "proposition_key": "prop-general-backfire",
+      "span_keys": [
+        "span-ecker-2023-result"
+      ],
+      "stance": "questions",
+      "visibility": "public"
+    }
+  ],
+  "claim_families": [
+    {
+      "assertion_keys": [
+        "assert-skurnik-result",
+        "assert-handbook-claim",
+        "assert-schwarz-claim",
+        "assert-ecker-2020-result",
+        "assert-ecker-2020-guidance",
+        "assert-prike-2023-result",
+        "assert-prike-2023-skepticism",
+        "assert-ecker-2023-result"
+      ],
+      "id": "em:dossier-claim-family:sha256:4a9e6e5dcc3bb898548473160c313bee72133b1793215ffae65fdba4d35e588c",
+      "key": "family-familiarity-backfire",
+      "proposition_keys": [
+        "prop-general-backfire",
+        "prop-older-adult-result",
+        "prop-guidance-overreach",
+        "prop-skepticism-boundary"
+      ],
+      "question": "Does repeating misinformation within a correction generally make the misinformation more believable?",
+      "relation_keys": [
+        "relation-skurnik-qualifies-general",
+        "relation-handbook-supports-general",
+        "relation-schwarz-supports-general",
+        "relation-handbook-depends-skurnik",
+        "relation-update-qualifies-handbook",
+        "relation-ecker-2020-rebuts-general",
+        "relation-ecker-undercuts-guidance",
+        "relation-ecker-undercuts-review",
+        "relation-prike-rebuts-general",
+        "relation-prike-qualifies-boundary",
+        "relation-ecker-2023-rebuts-general"
+      ],
+      "title": "Familiarity backfire from corrective repetition",
+      "visibility": "public"
+    }
+  ],
+  "dossier_id": "em:dossier:sha256:999dfd06596c965578f663b00380abac8cec5d8139b4735d2399c4b8207c6947",
+  "editions": [
+    {
+      "content": {
+        "artifact": {
+          "bytes": 331989,
+          "custody": "Temporary research download; full PDF not committed.",
+          "retrieved_from": "https://bear.warrington.ufl.edu/brenner/mar7588/Papers/skurnik-jcr2005.pdf",
+          "sha256": "c4893504537d256cff0c37a58b17aca0d6ceda11d9c5cea1aa3c066a544108f2"
+        },
+        "excerpts": [
+          {
+            "locator": "PDF page 1; journal page 713; abstract sentences 1–2",
+            "text": "Telling people that a consumer claim is false can make them misremember it as true. In two experiments, older adults were especially susceptible to this “illusion of truth” effect."
+          }
+        ]
+      },
+      "content_digest": "sha256:d9724a533b7b0984ded70404818d7f52075f1bbece6817d71048497e90e270e7",
+      "content_length": 540,
+      "edition_label": "Journal PDF, volume 31, issue 4, pages 713–724; excerpt packet",
+      "id": "em:dossier-edition:sha256:6af4c9029aa633167234dd75c9af03e949ddda64fa26dfce0ddeec8ec52e8e8a",
+      "key": "edition-skurnik-2005",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T06:13:51Z",
+      "visibility": "public",
+      "work_key": "work-skurnik-2005"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 89663,
+          "custody": "Temporary HTML capture; full page not committed.",
+          "retrieved_from": "https://skepticalscience.com/Debunking-Handbook-Part-2-Familiarity-Backfire-Effect.html",
+          "sha256": "bfd2e4ff7e2a5cc5a0c8f2e7aee70680cdc5eabbcf2333c4ef2a7ac3e3cfc3c4"
+        },
+        "excerpts": [
+          {
+            "locator": "2011 body; paragraph beginning 'Hence'",
+            "text": "Hence the backfire effect is real."
+          },
+          {
+            "locator": "2011 body; paragraph beginning 'How does one avoid'",
+            "text": "Ideally, avoid mentioning the myth altogether while correcting it."
+          },
+          {
+            "locator": "References; item 1",
+            "text": "Skurnik, I., Yoon, C., Park, D., & Schwarz, N. (2005). How warnings about false claims become recommendations. Journal of Consumer Research, 31, 713-724."
+          },
+          {
+            "locator": "2020 update notice",
+            "text": "For the most current information about this elusive effect please read the relevant excerpt from the new version of the handbook here."
+          }
+        ]
+      },
+      "content_digest": "sha256:83e4fc1c065ea0ec55b062e44956072f5a0c971c55cdb8aaee6c327440bc5bc3",
+      "content_length": 897,
+      "edition_label": "Live HTML page including 2017 and 2020 update notices; excerpt packet",
+      "id": "em:dossier-edition:sha256:95c3e0e6b12c4227f0ab38228815d5ca241a9b6413f957c646d540373d4bf6f2",
+      "key": "edition-handbook-2011",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T06:13:51Z",
+      "visibility": "public",
+      "work_key": "work-handbook-2011"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": null,
+          "custody": "Authoritative publisher text independently visible through web read-back; automated byte capture returned HTTP 403.",
+          "retrieved_from": "https://journals.sagepub.com/doi/10.1177/237946151600200110",
+          "sha256": null
+        },
+        "excerpts": [
+          {
+            "locator": "Publisher HTML abstract; opening sentences",
+            "text": "Erroneous beliefs are difficult to correct. Worse, popular correction strategies, such as the myth-versus-fact article format, may backfire because they subtly reinforce the myths through repetition and further increase the spread and acceptance of misinformation."
+          },
+          {
+            "locator": "Publisher HTML references; item 42",
+            "text": "Skurnik I., Yoon C., Park D. C., & Schwarz N. (2005). How warnings about false claims become recommendations Journal of Consumer Research, 31, 713–724"
+          }
+        ]
+      },
+      "content_digest": "sha256:86a6a683857ddf8c2cddff8012a1d889258e9271abc1ce976df0ce6595f431d5",
+      "content_length": 803,
+      "edition_label": "Publisher HTML abstract and reference-list transcript; excerpt packet",
+      "id": "em:dossier-edition:sha256:bdfd1508a4f1eb3dfbf0eb183404285dee37952060e8a09daa238cffdc54ba4f",
+      "key": "edition-schwarz-2016",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T06:13:51Z",
+      "visibility": "public",
+      "work_key": "work-schwarz-2016"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 208195,
+          "custody": "Temporary CC BY 4.0 XML download; exact excerpts committed.",
+          "retrieved_from": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7447737/fullTextXML",
+          "sha256": "15620a5e73fe87bb19f3f37c84a4d1a0f7efa9b50be3a5d2749a07f588eb4047"
+        },
+        "excerpts": [
+          {
+            "locator": "General discussion; opening result sentences",
+            "text": "Experiment 1 found some evidence for a familiarity backfire effect, but the evidence was statistically weak and the result failed to occur in an exact replication with greater experimental power (Experiment 2) as well as a close replication that added only a trivial secondary task (the no-load condition of Experiment 3). In fact, both Experiments 2 and 3 yielded substantial evidence against the presence of a familiarity backfire effect, even under conditions that should maximize reliance on familiarity and thus facilitate occurrence of familiarity backfire, viz. the combination of novel claims that maximized the familiarity boost conveyed by first exposure, a relatively long 1-week retention interval, and correction encoding under cognitive load (the load condition of Experiment 3)."
+          },
+          {
+            "locator": "General discussion; practical implications opening",
+            "text": "The practical implications of this research are clear: recommendations to front-line educators and communicators to entirely avoid repeating misinformation when debunking (Cook & Lewandowsky, 2011; Lewandowsky et al., 2012; Peter & Koch, 2016; Schwarz et al., 2007, 2016) were unwarranted."
+          },
+          {
+            "locator": "General discussion; practical implications conclusion",
+            "text": "Finally, the present study suggests that exposure to a correction does not cause familiarity backfire relative to a no-exposure control even with novel claims, and thus corrections do not seem to spread misinformation to new audiences easily."
+          }
+        ]
+      },
+      "content_digest": "sha256:c8b7de5e8487be186e5db01f046ef8505e8365cdaad74ed1278ece89dabc521f",
+      "content_length": 1827,
+      "edition_label": "Europe PMC JATS XML, PMCID PMC7447737; excerpt packet",
+      "id": "em:dossier-edition:sha256:0fc430751f97f4356d41892e84329b9ef0933c06f477722de6d610817bafb279",
+      "key": "edition-ecker-2020",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T06:13:51Z",
+      "visibility": "public",
+      "work_key": "work-ecker-2020"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 172943,
+          "custody": "Temporary CC BY 4.0 XML download; exact excerpts committed.",
+          "retrieved_from": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10317933/fullTextXML",
+          "sha256": "a546f640397adf7ac208f040634e480181588e5c29e1a2c76f5a301ef728e019"
+        },
+        "excerpts": [
+          {
+            "locator": "Abstract; results and qualification sentences",
+            "text": "Across three experiments (total N = 1156) we found that standalone corrections did not backfire immediately (Experiment 1) or after a one-week delay (Experiment 2). However, there was some mixed evidence suggesting corrections may backfire when there is skepticism regarding the correction (Experiment 3). Specifically, in Experiment 3, we found the standalone correction to backfire in open-ended responses, but only when there was skepticism towards the correction. However, this did not replicate with the rating scales measure."
+          }
+        ]
+      },
+      "content_digest": "sha256:f878488a525adf7e2ea28be61aa5036bf5e5e5c136878b44c7110d6428e126a2",
+      "content_length": 887,
+      "edition_label": "Europe PMC JATS XML, PMCID PMC10317933; excerpt packet",
+      "id": "em:dossier-edition:sha256:519a52c977133aaf5eeda77e7e2a49b0cf6e00f181457defce0f75dd839dd7d5",
+      "key": "edition-prike-2023",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T06:13:51Z",
+      "visibility": "public",
+      "work_key": "work-prike-2023"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 167791,
+          "custody": "Temporary CC BY 4.0 XML download; exact excerpts committed.",
+          "retrieved_from": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10096191/fullTextXML",
+          "sha256": "44ebae212686059b211ae7a9e8757958d8851d73b51513c6f9a2f9c9a518f88e"
+        },
+        "excerpts": [
+          {
+            "locator": "Abstract; outcome sentences",
+            "text": "We found that the myths vs. facts condition reduced vaccine misconceptions. None of the conditions increased vaccine misconceptions relative to control at either timepoint, or relative to a pre-intervention baseline; thus, no backfire effects were observed. This failure to replicate adds to the mounting evidence against familiarity backfire effects and has implications for vaccination communications and the design of debunking interventions."
+          }
+        ]
+      },
+      "content_digest": "sha256:409bf883b488854126a2f2eec2eeaf0a52f97bc44d867fb68e8a55f8c1adc173",
+      "content_length": 779,
+      "edition_label": "Europe PMC JATS XML, PMCID PMC10096191.1; excerpt packet",
+      "id": "em:dossier-edition:sha256:b162049e6a4c49c71eb01ae9cc13f9350cbff92dd14d4c8707ae7f6f15b06dce",
+      "key": "edition-ecker-2023",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T06:13:51Z",
+      "visibility": "public",
+      "work_key": "work-ecker-2023"
+    }
+  ],
+  "evaluations": [
+    {
+      "claim_family_key": "family-familiarity-backfire",
+      "frontier": "research-candidate-em-0019",
+      "id": "em:dossier-evaluation:sha256:a43bd0f47d26577e4e1275a44225d42ac65d63c78ac71064c443106eba43f55d",
+      "key": "evaluation-encyclopedia",
+      "label": "The tested correction formats usually did not produce familiarity backfire; early narrower results and an unresolved skepticism boundary remain visible.",
+      "policy_id": "em:application-policy:encyclopedia-v0.1",
+      "reason_codes": [
+        "early-result-narrower-than-general-rule",
+        "later-data-roots-rebut-general-rule",
+        "skepticism-boundary-unresolved",
+        "continued-influence-is-distinct"
+      ],
+      "visibility": "public"
+    },
+    {
+      "claim_family_key": "family-familiarity-backfire",
+      "frontier": "research-candidate-em-0019",
+      "id": "em:dossier-evaluation:sha256:8f3cb24657c2d18c700148a39a86ba9af186ffd614299ac1632ae4b149fb832c",
+      "key": "evaluation-skeptical",
+      "label": "No universal rule is admitted: supportive scope was overgeneralized, one review lineage is unresolved, and later studies share some authors and methods despite using new participant data.",
+      "policy_id": "em:application-policy:skeptical-v0.1",
+      "reason_codes": [
+        "unresolved-review-lineage",
+        "team-and-method-overlap",
+        "measure-specific-qualifier",
+        "population-and-context-limits"
+      ],
+      "visibility": "public"
+    }
+  ],
+  "evidence_relations": [
+    {
+      "basis_span_keys": [
+        "span-skurnik-summary"
+      ],
+      "from_ref": "assert-skurnik-result",
+      "id": "em:dossier-evidence-relation:sha256:babd2a14b35fd93db745b0ca1328a5c17a6b20190e55607bd42968dd5e457a4c",
+      "key": "relation-skurnik-qualifies-general",
+      "note": "Shows a possible effect in a narrower older-adult consumer-claim setting.",
+      "relation_type": "qualification",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-handbook-claim",
+        "span-handbook-advice"
+      ],
+      "from_ref": "assert-handbook-claim",
+      "id": "em:dossier-evidence-relation:sha256:9300eaa93570c089b0ad6f256a6502b7163555570af8f94720d55165427f3632",
+      "key": "relation-handbook-supports-general",
+      "note": "A broad public-facing claim and recommendation.",
+      "relation_type": "support",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-schwarz-claim"
+      ],
+      "from_ref": "assert-schwarz-claim",
+      "id": "em:dossier-evidence-relation:sha256:f1dd4a700cdc49fa413e9fc7b44bb78a8d94d2b47de34f38aac5bfe836393fe4",
+      "key": "relation-schwarz-supports-general",
+      "note": "A second broad review-level mention with unresolved sentence-level lineage.",
+      "relation_type": "support",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-handbook-reference"
+      ],
+      "from_ref": "lineage-handbook-guidance",
+      "id": "em:dossier-evidence-relation:sha256:4e78c840a12543e9c9714ffbbcdd8f7f447bf237e109517c98977519a996810d",
+      "key": "relation-handbook-depends-skurnik",
+      "note": "The 2011 page has one numbered reference: Skurnik et al. 2005.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-skurnik-data",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-handbook-update"
+      ],
+      "from_ref": "span-handbook-update",
+      "id": "em:dossier-evidence-relation:sha256:d94e6fc56326b6dd5d12f970a9d36cebee2fc73d85826e607022ac19113787a1",
+      "key": "relation-update-qualifies-handbook",
+      "note": "The live page now directs readers to newer treatment of the effect.",
+      "relation_type": "qualification",
+      "to_ref": "assert-handbook-claim",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ecker-2020-result",
+        "span-ecker-2020-guidance-conclusion"
+      ],
+      "from_ref": "assert-ecker-2020-result",
+      "id": "em:dossier-evidence-relation:sha256:2642c1e286c80408fa6843c6b6927af39841a25208889765be61507c08df828b",
+      "key": "relation-ecker-2020-rebuts-general",
+      "note": "Later experiments did not reproduce a general effect in their tested conditions.",
+      "relation_type": "rebuttal",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ecker-2020-guidance-overreach"
+      ],
+      "from_ref": "assert-ecker-2020-guidance",
+      "id": "em:dossier-evidence-relation:sha256:b7f326f46c02f14bf192620938c81f7f2a6e0bf282399901606cd159fa9c6bf5",
+      "key": "relation-ecker-undercuts-guidance",
+      "note": "Challenges the inference from familiarity concern to blanket repetition advice.",
+      "relation_type": "undercutting",
+      "to_ref": "assert-handbook-claim",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ecker-2020-guidance-overreach"
+      ],
+      "from_ref": "assert-ecker-2020-guidance",
+      "id": "em:dossier-evidence-relation:sha256:029e2e8719afdc57c81ad84ca79fed64b49b954e42397287439ead9b9b0353c8",
+      "key": "relation-ecker-undercuts-review",
+      "note": "Challenges broad review-level wording using later experimental evidence.",
+      "relation_type": "undercutting",
+      "to_ref": "assert-schwarz-claim",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-prike-2023-result"
+      ],
+      "from_ref": "assert-prike-2023-result",
+      "id": "em:dossier-evidence-relation:sha256:ab8796188784822b2490b52c65066fdf6adb7ed201b3a93d7d9c119c5e6730b8",
+      "key": "relation-prike-rebuts-general",
+      "note": "No immediate or delayed effect in two experiments; third result was measure-specific.",
+      "relation_type": "rebuttal",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-prike-2023-result"
+      ],
+      "from_ref": "assert-prike-2023-skepticism",
+      "id": "em:dossier-evidence-relation:sha256:07cc3b3d226bbd04fb07616344ea1fdf879db6ebe893b10773aef0513525b870",
+      "key": "relation-prike-qualifies-boundary",
+      "note": "Preserves the induced-skepticism open-response result as an unresolved boundary.",
+      "relation_type": "qualification",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ecker-2023-result"
+      ],
+      "from_ref": "assert-ecker-2023-result",
+      "id": "em:dossier-evidence-relation:sha256:0daa67719412e996594c2f2c51d2126106fbf8c025554a01423fb8aec2469212",
+      "key": "relation-ecker-2023-rebuts-general",
+      "note": "A separate vaccine-context study did not observe the predicted effect.",
+      "relation_type": "rebuttal",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    }
+  ],
+  "format": "epistemedia-dossier-v0.1",
+  "lineages": [
+    {
+      "assertion_keys": [
+        "assert-skurnik-result"
+      ],
+      "basis_span_keys": [
+        "span-skurnik-summary"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "apparatus"
+      ],
+      "id": "em:dossier-lineage:sha256:ce9493943fa490993b3d2366ec8db442512cccfa7927d5c61f3a3abadfa2efa8",
+      "key": "lineage-skurnik-data",
+      "note": "Original participant-data root. Its older-adult and consumer-claim scope must not silently become a general population result.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-handbook-claim"
+      ],
+      "basis_span_keys": [
+        "span-handbook-reference"
+      ],
+      "depends_on": [
+        "lineage-skurnik-data"
+      ],
+      "dimensions": [
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:e781cb1fd3085f4e6828ee14d070a2d74da56000e270a899f56491fe2b514240",
+      "key": "lineage-handbook-guidance",
+      "note": "The page makes the broad claim and recommendation, and its sole numbered reference is Skurnik et al. 2005. It therefore adds a mention, not a new participant-data root.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-schwarz-claim"
+      ],
+      "basis_span_keys": [
+        "span-schwarz-claim",
+        "span-schwarz-reference"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "source",
+        "method"
+      ],
+      "id": "em:dossier-lineage:sha256:f61ae7a731c552a0ecf43ae4502a538f6842f7457ffa9a206ad20f10b4955957",
+      "key": "lineage-schwarz-review",
+      "note": "Unknown sentence-level upstream lineage: the publisher abstract makes the claim and the bibliography includes Skurnik et al. 2005, but the accessible HTML does not expose which references support that exact abstract sentence.",
+      "status": "unknown",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-ecker-2020-result",
+        "assert-ecker-2020-guidance"
+      ],
+      "basis_span_keys": [
+        "span-ecker-2020-result",
+        "span-ecker-2020-guidance-overreach",
+        "span-ecker-2020-guidance-conclusion"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "apparatus"
+      ],
+      "id": "em:dossier-lineage:sha256:f39615ff8c29e14e23437bed3cb4c5d8e4b41a02a6ead9fa7b47e7e50b41c663",
+      "key": "lineage-ecker-2020-data",
+      "note": "New participant-data root for the dossier count. Shared authors and method traditions are visible, so this is not a claim of full team or method independence.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-prike-2023-result",
+        "assert-prike-2023-skepticism"
+      ],
+      "basis_span_keys": [
+        "span-prike-2023-result"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "apparatus"
+      ],
+      "id": "em:dossier-lineage:sha256:8bcd752ae2ae71e5583885c76ee86e1f2486df967387ae9dd7af877a7f492c23",
+      "key": "lineage-prike-2023-data",
+      "note": "New participant-data root. It shares Ecker and the broader experimental tradition with other records; only the participant-data root is counted separately.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-ecker-2023-result"
+      ],
+      "basis_span_keys": [
+        "span-ecker-2023-result"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "apparatus"
+      ],
+      "id": "em:dossier-lineage:sha256:e5faa7559af28558c0998fa705b956eaf97e53a793552eedb8fbabf5a421abf5",
+      "key": "lineage-ecker-2023-data",
+      "note": "New vaccine-study participant-data root. It shares Ecker and Swire-Thompson with another later record, so research-team independence is not claimed.",
+      "status": "known",
+      "visibility": "public"
+    }
+  ],
+  "propositions": [
+    {
+      "id": "em:dossier-proposition:sha256:04a1403e5e68b890e238d32f98356e29094e709f229c114ef0ddaa73f4fbbc06",
+      "key": "prop-general-backfire",
+      "scope": "Group-level familiarity backfire from corrective repetition; excludes continued influence, worldview backfire, and one-person anecdotes.",
+      "text": "Repeating misinformation inside an evidence-based correction generally makes recipients believe or rely on the misinformation more than a no-correction or pre-correction baseline.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:f4d4be7b83c3a2b65703c3f031d4dabc58a0d97490c37b0d3b402d8be987b316",
+      "key": "prop-older-adult-result",
+      "scope": "Older adults, consumer claims, and the tested delays in the 2005 paper.",
+      "text": "Skurnik et al. reported delayed misremembering of warned-against consumer claims among older adults in two experiments.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:9da78fe5baa446dde07adef2feb33be4f567249e3cc92a48d21712911b85bb5e",
+      "key": "prop-guidance-overreach",
+      "scope": "The recommendation sources named by Ecker et al. 2020.",
+      "text": "Some communicator guidance advised avoiding repetition more generally than the later experimental record warranted.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:d752ee299e74fb9d8c06f24db370e292aacc9ce2443069bdecbc4dcd4deae67c",
+      "key": "prop-skepticism-boundary",
+      "scope": "Prike et al. 2023 Experiment 3; open-ended response result did not repeat on the rating-scale measure.",
+      "text": "Skepticism toward a correction may be a boundary condition under which a standalone correction can backfire on some measures.",
+      "visibility": "public"
+    }
+  ],
+  "question": "When a correction repeats a false claim, does familiarity generally cause belief or reliance to rise above an uncorrected or pre-correction baseline?",
+  "scope": "A lineage audit of the familiarity backfire claim. Independent counts refer to participant-data roots, not complete independence of authors, methods, or research programs. Worldview backfire and continued influence are distinct.",
+  "source_works": [
+    {
+      "canonical_uri": "https://doi.org/10.1086/426605",
+      "creators": [
+        "Ian Skurnik",
+        "Carolyn Yoon",
+        "Denise C. Park",
+        "Norbert Schwarz"
+      ],
+      "id": "em:dossier-source-work:sha256:af03f408b7385327a2cea7a9934aef302800cb809be9ecd2144f5796a9c93ee5",
+      "key": "work-skurnik-2005",
+      "kind": "paper",
+      "license": "All rights reserved in the examined journal PDF; only two short attributed abstract sentences are retained and the PDF is not redistributed.",
+      "title": "How Warnings about False Claims Become Recommendations",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://skepticalscience.com/Debunking-Handbook-Part-2-Familiarity-Backfire-Effect.html",
+      "creators": [
+        "John Cook",
+        "Stephan Lewandowsky"
+      ],
+      "id": "em:dossier-source-work:sha256:a6ed071b8d7364c6cd833f3e9bb26867d8caab5241402cdd9332a3c9850272f8",
+      "key": "work-handbook-2011",
+      "kind": "webpage",
+      "license": "Copyright notice present and no page-wide reuse license confirmed; only short attributed excerpts and one bibliographic reference are retained.",
+      "title": "The Debunking Handbook Part 2: The Familiarity Backfire Effect",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1177/237946151600200110",
+      "creators": [
+        "Norbert Schwarz",
+        "Eryn Newman",
+        "William Leach"
+      ],
+      "id": "em:dossier-source-work:sha256:1da4c88d89674d26ecee83c374659ec3040527ea90636b0feca4936081382b2d",
+      "key": "work-schwarz-2016",
+      "kind": "paper",
+      "license": "Publisher states that site manuscript content uses Creative Commons licenses but does not identify the variant on the article page; only an exact publisher-rendered abstract excerpt and reference are retained.",
+      "title": "Making the Truth Stick & the Myths Fade: Lessons from Cognitive Psychology",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1186/s41235-020-00241-6",
+      "creators": [
+        "Ullrich K. H. Ecker",
+        "Stephan Lewandowsky",
+        "Matthew Chadwick"
+      ],
+      "id": "em:dossier-source-work:sha256:8c63e817ae4507033e479dfb6bea86f49b6cfb8ab141438f21f23d0036c018c2",
+      "key": "work-ecker-2020",
+      "kind": "paper",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "title": "Can corrections spread misinformation to new audiences? Testing for the elusive familiarity backfire effect",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1186/s41235-023-00492-z",
+      "creators": [
+        "Toby Prike",
+        "Phoebe Blackley",
+        "Briony Swire-Thompson",
+        "Ullrich K. H. Ecker"
+      ],
+      "id": "em:dossier-source-work:sha256:93322d96e61c8b2cf44d29bdd4652a6776496cd8f6a3060dca727ea92c846adf",
+      "key": "work-prike-2023",
+      "kind": "paper",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "title": "Examining the replicability of backfire effects after standalone corrections",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1371/journal.pone.0281140",
+      "creators": [
+        "Ullrich K. H. Ecker",
+        "Caitlin X. M. Sharkey",
+        "Briony Swire-Thompson"
+      ],
+      "id": "em:dossier-source-work:sha256:fdbeb75dd77f50c8836e9693ccb572c534f78aba6f45b8ccadd5a557748ac128",
+      "key": "work-ecker-2023",
+      "kind": "paper",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "title": "Correcting vaccine misinformation: A failure to replicate familiarity or fear-driven backfire effects",
+      "visibility": "public"
+    }
+  ],
+  "spans": [
+    {
+      "digest": "sha256:2d22f873d571fdff486238903423656cbfc3898b9e24f75717bb0362a11aac07",
+      "edition_key": "edition-skurnik-2005",
+      "extent": {
+        "type": "json-value",
+        "value": "Telling people that a consumer claim is false can make them misremember it as true. In two experiments, older adults were especially susceptible to this “illusion of truth” effect."
+      },
+      "id": "em:dossier-span:sha256:f1642a42d66b10e6ed4f9f14faa48babfecefd449f6b3d936c7c6db8bf4b5447",
+      "key": "span-skurnik-summary",
+      "locator": {
+        "label": "PDF p. 1 / journal p. 713, abstract sentences 1–2",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:30a1cfc7e15d1e118eef5e5ced5f740a25844257ed42d072e9cbc01d67b9b3cc",
+      "edition_key": "edition-handbook-2011",
+      "extent": {
+        "type": "json-value",
+        "value": "Hence the backfire effect is real."
+      },
+      "id": "em:dossier-span:sha256:a4a6a37280017889bcbf073221e4a504fa5dcd15056ce854f26c2ebf21030387",
+      "key": "span-handbook-claim",
+      "locator": {
+        "label": "2011 body claim",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:b2236b1babdadf09a41a73c9a17357394acb7c199311616c3462316bb422c1c3",
+      "edition_key": "edition-handbook-2011",
+      "extent": {
+        "type": "json-value",
+        "value": "Ideally, avoid mentioning the myth altogether while correcting it."
+      },
+      "id": "em:dossier-span:sha256:671030b547845dbf0042a028d65f3f01704dfd285f944dfbdf5e3878bd4e6f1a",
+      "key": "span-handbook-advice",
+      "locator": {
+        "label": "2011 body advice",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:2362dd80c41ec84228322fff7193530cc56f492705bab352f5512de96799a20d",
+      "edition_key": "edition-handbook-2011",
+      "extent": {
+        "type": "json-value",
+        "value": "Skurnik, I., Yoon, C., Park, D., & Schwarz, N. (2005). How warnings about false claims become recommendations. Journal of Consumer Research, 31, 713-724."
+      },
+      "id": "em:dossier-span:sha256:a6bf8ed7c8abeae1a7f7192f9dc39b139dce6bd8837ba9b41d51930b59c18331",
+      "key": "span-handbook-reference",
+      "locator": {
+        "label": "Reference 1",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:7ad3246f10605d4d66d88507f91cc933719dbe541f3bb3376f97ea3c95d7fe6d",
+      "edition_key": "edition-handbook-2011",
+      "extent": {
+        "type": "json-value",
+        "value": "For the most current information about this elusive effect please read the relevant excerpt from the new version of the handbook here."
+      },
+      "id": "em:dossier-span:sha256:06d4e3209e73e115c22c5061bd867ab02f61aab8236f7db1834ca136eb088712",
+      "key": "span-handbook-update",
+      "locator": {
+        "label": "2020 update notice",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:6410a398d753e08aabd80552eb9f3cc0efeab1292b9bf29a4296ec2deadffc46",
+      "edition_key": "edition-schwarz-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "Erroneous beliefs are difficult to correct. Worse, popular correction strategies, such as the myth-versus-fact article format, may backfire because they subtly reinforce the myths through repetition and further increase the spread and acceptance of misinformation."
+      },
+      "id": "em:dossier-span:sha256:37e5f7bc661aa17aa8276a0394159347ade29cfa6100e47d0e4fe76bb46e48a5",
+      "key": "span-schwarz-claim",
+      "locator": {
+        "label": "Publisher HTML abstract opening",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:58cad5a6ff36281e65313fb9a769fd35f6565b2e4a4b95e142b1ef3b7517ecde",
+      "edition_key": "edition-schwarz-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "Skurnik I., Yoon C., Park D. C., & Schwarz N. (2005). How warnings about false claims become recommendations Journal of Consumer Research, 31, 713–724"
+      },
+      "id": "em:dossier-span:sha256:08b934ec5f5e402c917079b1fb6adb01499ba71f243945f304c3fdd9d4e1b345",
+      "key": "span-schwarz-reference",
+      "locator": {
+        "label": "Publisher HTML reference 42",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:4c0a3af551327003421586e6171d14f4fcb0263f5565c8ef4b13c66a80606461",
+      "edition_key": "edition-ecker-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "Experiment 1 found some evidence for a familiarity backfire effect, but the evidence was statistically weak and the result failed to occur in an exact replication with greater experimental power (Experiment 2) as well as a close replication that added only a trivial secondary task (the no-load condition of Experiment 3). In fact, both Experiments 2 and 3 yielded substantial evidence against the presence of a familiarity backfire effect, even under conditions that should maximize reliance on familiarity and thus facilitate occurrence of familiarity backfire, viz. the combination of novel claims that maximized the familiarity boost conveyed by first exposure, a relatively long 1-week retention interval, and correction encoding under cognitive load (the load condition of Experiment 3)."
+      },
+      "id": "em:dossier-span:sha256:5bce7b41c23d1b27b5d6a0cacd6e1becbfe6fb57e4e521751971d5c09c714b1c",
+      "key": "span-ecker-2020-result",
+      "locator": {
+        "label": "General discussion result",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:bcb9535c1b74df2e08512c9332dfeb916e1a8b8a4dc21eeab2afd99cebbc1915",
+      "edition_key": "edition-ecker-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "The practical implications of this research are clear: recommendations to front-line educators and communicators to entirely avoid repeating misinformation when debunking (Cook & Lewandowsky, 2011; Lewandowsky et al., 2012; Peter & Koch, 2016; Schwarz et al., 2007, 2016) were unwarranted."
+      },
+      "id": "em:dossier-span:sha256:f022f035499681e019eb4f3c79f695f15e719db496ce94793e7fe3a0123fbdfb",
+      "key": "span-ecker-2020-guidance-overreach",
+      "locator": {
+        "label": "General discussion practical implications opening",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:2d3a6e20694cdfe944069ad69fbd09c3549a313666ae5c6e273eb979328c81e3",
+      "edition_key": "edition-ecker-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "Finally, the present study suggests that exposure to a correction does not cause familiarity backfire relative to a no-exposure control even with novel claims, and thus corrections do not seem to spread misinformation to new audiences easily."
+      },
+      "id": "em:dossier-span:sha256:538f49e91d6bf5fb256a3e3602616895beefb849551ddee8116c54161658da92",
+      "key": "span-ecker-2020-guidance-conclusion",
+      "locator": {
+        "label": "General discussion practical implications conclusion",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e44347d354ee736e558729127188099a1289b94334b3e7f8058573dec9843860",
+      "edition_key": "edition-prike-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "Across three experiments (total N = 1156) we found that standalone corrections did not backfire immediately (Experiment 1) or after a one-week delay (Experiment 2). However, there was some mixed evidence suggesting corrections may backfire when there is skepticism regarding the correction (Experiment 3). Specifically, in Experiment 3, we found the standalone correction to backfire in open-ended responses, but only when there was skepticism towards the correction. However, this did not replicate with the rating scales measure."
+      },
+      "id": "em:dossier-span:sha256:312a906bf71acd0b989eff19d01ea6e6874ddff21546c2956a6809af1baaa99a",
+      "key": "span-prike-2023-result",
+      "locator": {
+        "label": "Abstract results and qualification",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:c77a5feb5aa278ff7dcd816ff676af0e8ed1ee06c3688ba6981e5b82df10b40b",
+      "edition_key": "edition-ecker-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "We found that the myths vs. facts condition reduced vaccine misconceptions. None of the conditions increased vaccine misconceptions relative to control at either timepoint, or relative to a pre-intervention baseline; thus, no backfire effects were observed. This failure to replicate adds to the mounting evidence against familiarity backfire effects and has implications for vaccination communications and the design of debunking interventions."
+      },
+      "id": "em:dossier-span:sha256:13f977e372e0ecd2ab4dd46be74904c634e41c7c8770c8d381ac38232d378a76",
+      "key": "span-ecker-2023-result",
+      "locator": {
+        "label": "Abstract outcome",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    }
+  ],
+  "stage": "draft",
+  "title": "Does repeating misinformation in a correction make it more believable?",
+  "visibility": "public"
+}
