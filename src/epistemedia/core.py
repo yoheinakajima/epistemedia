@@ -1942,6 +1942,75 @@ def verify_release_identity(public: Path) -> list[str]:
     if any(not isinstance(value, str) or not value for value in expected.values()):
         return ["release identity check found an incomplete catalog identity"]
 
+    manifest_path = public / "manifest.json"
+    if not manifest_path.exists():
+        findings.append("release identity check lacks manifest.json")
+    else:
+        try:
+            manifest = json.loads(manifest_path.read_text())
+        except json.JSONDecodeError:
+            findings.append("release identity check cannot parse manifest.json")
+            manifest = {}
+        inventory = manifest.get("files")
+        if not isinstance(inventory, list):
+            findings.append("release manifest files must be a list")
+            inventory = []
+        expected_manifest_id = stable_id(
+            "release-manifest",
+            {
+                "catalog_id": manifest.get("catalog_id"),
+                "frontier": manifest.get("frontier"),
+                "commit": manifest.get("commit"),
+                "files": [
+                    (item.get("path"), item.get("sha256"))
+                    for item in inventory
+                    if isinstance(item, dict)
+                ],
+            },
+        )
+        if manifest.get("manifest_id") != expected_manifest_id:
+            findings.append("release manifest identity does not match its declared inventory")
+        if manifest.get("file_count") != len(inventory) + 1:
+            findings.append("release manifest file count does not match its inventory")
+
+        declared_paths: set[str] = set()
+        for item in inventory:
+            if not isinstance(item, dict):
+                findings.append("release manifest inventory contains a non-object entry")
+                continue
+            relative = item.get("path")
+            if not isinstance(relative, str) or not relative:
+                findings.append("release manifest inventory contains an invalid path")
+                continue
+            candidate = (public / relative).resolve()
+            try:
+                candidate.relative_to(public.resolve())
+            except ValueError:
+                findings.append(f"release manifest path escapes public root: {relative}")
+                continue
+            if relative in declared_paths:
+                findings.append(f"release manifest path is duplicated: {relative}")
+                continue
+            declared_paths.add(relative)
+            if not candidate.is_file():
+                findings.append(f"release manifest file is missing: {relative}")
+                continue
+            if item.get("bytes") != candidate.stat().st_size:
+                findings.append(f"release manifest byte count differs: {relative}")
+            actual_sha256 = hashlib.sha256(candidate.read_bytes()).hexdigest()
+            if item.get("sha256") != actual_sha256:
+                findings.append(f"release manifest digest differs: {relative}")
+
+        actual_paths = {
+            path.relative_to(public).as_posix()
+            for path in public.rglob("*")
+            if path.is_file() and path != manifest_path
+        }
+        for relative in sorted(actual_paths - declared_paths):
+            findings.append(f"generated file is absent from release manifest: {relative}")
+        for relative in sorted(declared_paths - actual_paths):
+            findings.append(f"release manifest declares an absent generated file: {relative}")
+
     for path in sorted(public.rglob("index.html")):
         rendered = path.read_text(errors="ignore")
         for identity_field, value in expected.items():

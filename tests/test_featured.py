@@ -9,7 +9,7 @@ from urllib.parse import urlparse
 import pytest
 
 from epistemedia.cli import main
-from epistemedia.core import PublicCatalog, build_public, verify_release_identity
+from epistemedia.core import PublicCatalog, build_public, stable_id, verify_release_identity
 from epistemedia.dossier import independence_summary
 from epistemedia.featured import FEATURE_VIEWS, FeaturedDossier, FeaturedDossierError
 from epistemedia.server import Gateway, Request
@@ -225,9 +225,39 @@ def test_release_identity_verifier_rejects_mixed_build(tmp_path: Path) -> None:
     home = public / "index.html"
     catalog = json.loads((public / "catalog.json").read_text())
     home.write_text(home.read_text().replace(catalog["commit"], "0" * 40, 1))
-    assert verify_release_identity(public) == [
-        "mixed release identity in index.html: missing commit"
-    ]
+    findings = verify_release_identity(public)
+    assert "mixed release identity in index.html: missing commit" in findings
+    assert "release manifest digest differs: index.html" in findings
+
+
+def test_release_identity_verifier_recomputes_manifest_and_closes_inventory(
+    tmp_path: Path,
+) -> None:
+    public = tmp_path / "public"
+    build_public(ROOT, public)
+    manifest_path = public / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["manifest_id"] = "em:release-manifest:sha256:" + "0" * 64
+    manifest_path.write_text(json.dumps(manifest))
+    assert "release manifest identity does not match its declared inventory" in (
+        verify_release_identity(public)
+    )
+
+    manifest["manifest_id"] = stable_id(
+        "release-manifest",
+        {
+            "catalog_id": manifest["catalog_id"],
+            "frontier": manifest["frontier"],
+            "commit": manifest["commit"],
+            "files": [(item["path"], item["sha256"]) for item in manifest["files"]],
+        },
+    )
+    manifest["files"][0]["bytes"] += 1
+    manifest_path.write_text(json.dumps(manifest))
+    assert any(
+        finding.startswith("release manifest byte count differs:")
+        for finding in verify_release_identity(public)
+    )
 
 
 def test_api_mcp_cli_and_static_json_are_exactly_equivalent(
