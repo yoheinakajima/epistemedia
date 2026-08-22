@@ -2,12 +2,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from pathlib import Path
+from urllib.parse import urlparse
 
 import pytest
 
 from epistemedia.cli import main
-from epistemedia.core import PublicCatalog, build_public
+from epistemedia.core import PublicCatalog, build_public, stable_id, verify_release_identity
 from epistemedia.dossier import independence_summary
 from epistemedia.featured import FEATURE_VIEWS, FeaturedDossier, FeaturedDossierError
 from epistemedia.server import Gateway, Request
@@ -149,9 +151,112 @@ def test_static_html_markdown_and_json_preserve_one_view_identity(tmp_path: Path
     assert 'aria-current="page"' in html
     assert "<script" not in html
     assert "source-xray" in html
+    assert 'href="https://epistemedia.org/how-we-know/' + SLUG + '/#unresolved-lineage"' in html
+    assert 'id="unresolved-lineage"' in html
     assert "86 exact spans" in home
     assert home.index("Does repeating misinformation") < home.index(
         "Explore how the record is built"
+    )
+
+
+def test_public_review_receipt_is_exact_sanitized_and_linked(tmp_path: Path) -> None:
+    public = tmp_path / "public"
+    build_public(ROOT, public)
+    featured = FeaturedDossier.load(ROOT)
+    expected = featured.review_envelope(PublicCatalog.build(ROOT))
+    review = public / "how-we-know" / SLUG / "review"
+
+    assert json.loads((review / "index.json").read_text()) == expected
+    html = (review / "index.html").read_text()
+    markdown = (review / "index.md").read_text()
+    home = (public / "index.html").read_text()
+    case = (public / "how-we-know" / SLUG / "index.html").read_text()
+    assert expected["data"]["review"]["reviewer_id"] in html
+    assert expected["data"]["review"]["reviewed_head"] in html
+    assert expected["data"]["review"]["receipt_sha256"] in html
+    assert "29 source receipts" in html
+    assert "86 span records" in html
+    assert "Independence conditions" in markdown
+    assert "/private/tmp" not in html + markdown + (review / "index.json").read_text()
+    assert "Review receipt" in home
+    assert "Review receipt" in case
+    assert "Independently reviewed</span>" not in home
+
+
+def test_cold_start_agent_discovers_and_summarizes_case_from_llms(tmp_path: Path) -> None:
+    public = tmp_path / "public"
+    build_public(ROOT, public)
+    llms = (public / "llms.txt").read_text()
+    links = dict(re.findall(r"^- \[([^]]+)\]\(([^)]+)\)$", llms, re.MULTILINE))
+    markdown_url = links["Featured evidence dossier"]
+    json_url = links["Featured dossier JSON"]
+    assert markdown_url.endswith(f"/how-we-know/{SLUG}/index.md")
+    assert json_url.endswith(f"/how-we-know/{SLUG}/index.json")
+
+    markdown_path = public / urlparse(markdown_url).path.lstrip("/")
+    json_path = public / urlparse(json_url).path.lstrip("/")
+    dossier = json.loads(json_path.read_text())["data"]
+    summary = {
+        "question": dossier["question"],
+        "verdict": dossier["view"]["label"],
+        "apparent": dossier["counts"]["apparent_support_assertion_count"],
+        "support_known": dossier["counts"]["target_comparable_support_data_root_count"],
+        "support_unresolved": dossier["counts"][
+            "target_comparable_unresolved_data_root_count"
+        ],
+        "counter": dossier["counts"]["counter_data_root_count"],
+        "unresolved": dossier["unresolved_lineages"][0]["note"],
+    }
+    assert markdown_path.exists()
+    assert summary["question"].startswith("When a correction repeats a false claim")
+    assert (summary["apparent"], summary["support_known"], summary["support_unresolved"]) == (
+        10,
+        4,
+        1,
+    )
+    assert summary["counter"] == 12
+    assert "2007" in summary["unresolved"]
+
+
+def test_release_identity_verifier_rejects_mixed_build(tmp_path: Path) -> None:
+    public = tmp_path / "public"
+    build_public(ROOT, public)
+    assert verify_release_identity(public) == []
+    home = public / "index.html"
+    catalog = json.loads((public / "catalog.json").read_text())
+    home.write_text(home.read_text().replace(catalog["commit"], "0" * 40, 1))
+    findings = verify_release_identity(public)
+    assert "mixed release identity in index.html: missing commit" in findings
+    assert "release manifest digest differs: index.html" in findings
+
+
+def test_release_identity_verifier_recomputes_manifest_and_closes_inventory(
+    tmp_path: Path,
+) -> None:
+    public = tmp_path / "public"
+    build_public(ROOT, public)
+    manifest_path = public / "manifest.json"
+    manifest = json.loads(manifest_path.read_text())
+    manifest["manifest_id"] = "em:release-manifest:sha256:" + "0" * 64
+    manifest_path.write_text(json.dumps(manifest))
+    assert "release manifest identity does not match its declared inventory" in (
+        verify_release_identity(public)
+    )
+
+    manifest["manifest_id"] = stable_id(
+        "release-manifest",
+        {
+            "catalog_id": manifest["catalog_id"],
+            "frontier": manifest["frontier"],
+            "commit": manifest["commit"],
+            "files": [(item["path"], item["sha256"]) for item in manifest["files"]],
+        },
+    )
+    manifest["files"][0]["bytes"] += 1
+    manifest_path.write_text(json.dumps(manifest))
+    assert any(
+        finding.startswith("release manifest byte count differs:")
+        for finding in verify_release_identity(public)
     )
 
 

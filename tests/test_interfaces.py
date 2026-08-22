@@ -132,6 +132,9 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
         "how-we-know/corrections-and-familiarity-backfire/index.json",
         "how-we-know/corrections-and-familiarity-backfire/encyclopedia/index.html",
         "how-we-know/corrections-and-familiarity-backfire/skeptical/index.html",
+        "how-we-know/corrections-and-familiarity-backfire/review/index.html",
+        "how-we-know/corrections-and-familiarity-backfire/review/index.md",
+        "how-we-know/corrections-and-familiarity-backfire/review/index.json",
     ]
     assert all((public / path).exists() for path in expected)
     assert manifest["file_count"] > 10
@@ -189,6 +192,18 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     )
     assert "projection-receipt" in home_html
     assert manifest["catalog_id"] in home_html
+    assert ">Substrate</a>" in home_html
+
+    how_we_know_html = (public / "how-we-know" / "index.html").read_text()
+    assert "One admitted case" in how_we_know_html
+    assert "No second case yet" in how_we_know_html
+    assert "home-case" not in how_we_know_html
+    assert how_we_know_html.count("<h1>How We Know</h1>") == 1
+
+    explore_html = (public / "explore" / "index.html").read_text()
+    explore_markdown = (public / "explore" / "index.md").read_text()
+    assert "<h1>Substrate</h1>" in explore_html
+    assert explore_markdown.startswith("# Substrate\n")
 
     topic = PublicCatalog.build(ROOT).topics[0]
     topic_html = (public / "topics" / topic.slug / "index.html").read_text()
