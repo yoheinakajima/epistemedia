@@ -291,12 +291,20 @@ def test_topic_lenses_share_source_frontier() -> None:
 
 def test_public_status_copy_distinguishes_live_and_target_surfaces() -> None:
     readme = (ROOT / "README.md").read_text()
+    launch_docs = (ROOT / "docs" / "launch.md").read_text()
     api_docs = (ROOT / "docs" / "api-mcp-cli.md").read_text()
     assert "canonical static site live at <https://epistemedia.org/>" in readme
     assert "sharing redirect and hosted API/MCP runtime" in readme
-    assert "does **not** yet instantiate that claim/evidence graph" in readme
+    assert "one bounded, application-level dossier graph" in readme
+    assert "does not yet replay the normative event model" in readme
+    assert "first outward-facing evidence experience" in readme
+    assert "does **not** yet instantiate that claim/evidence graph" not in readme
+    assert "The first public realm dogfoods Epistemedia itself" not in readme
     assert "Target architecture" in readme
     assert "Public hosting at `epistemedia.org`" not in readme
+    assert "bootstrap topic projections from featured dossier policy views" in launch_docs
+    assert "homepage now features the first **How We Know** case" in launch_docs
+    assert "it remains in development" not in launch_docs
     assert api_docs.count("No hosted runtime at that hostname has passed") == 2
 
 

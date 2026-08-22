@@ -10,7 +10,7 @@ Start at the human site and choose a topic. A topic page is a reproducible proje
 2. Select Markdown, JSON, API, MCP, CLI, or bundle access based on the task.
 3. Preserve catalog, frontier, policy, compiler, object, and source identities.
 4. Do not report a projection label as universal truth.
-5. Do not infer challenges, qualifications, or source independence from the bootstrap projection; its repository objects do not encode them yet.
+5. Distinguish the bootstrap topic projections from featured dossier policy views: repository artifacts do not encode challenge, qualification, or source-independence relations, while an accepted dossier can expose those relations explicitly.
 6. Cache immutable objects by digest; revalidate mutable aliases through status or release manifests.
 
 ## For a person contributing through an agent
@@ -31,6 +31,6 @@ A realm can remain private and local-first. It chooses its own constitution, ont
 
 Use the static OpenAPI document with the local gateway, local stdio MCP for agent clients, the CLI for local workflows, and downloadable public projections for offline operation. The hosted API and MCP destinations remain reserved until provider read-back proves them. Avoid scraping HTML when structured objects are available. Implement content-digest verification and surface manifest metadata to downstream users.
 
-## Current bootstrap corpus
+## Current public corpus
 
-Epistemedia currently dogfoods itself. The bootstrap corpus compiles the project’s constitution, architecture, policies, task contracts, implementation, tests, security model, governance, and release records. It is useful for auditing the system, but it is not yet the outward-facing knowledge experience. The first such realm, **How We Know**, will examine truth, evidence, knowledge, and information through source-backed dossiers; it remains in development until accepted evidence objects and a compiled public projection exist.
+Epistemedia still dogfoods itself through **Explore**, where the self-describing corpus compiles the project’s constitution, architecture, policies, task contracts, implementation, tests, security model, governance, and release records. The homepage now features the first **How We Know** case, compiled from independently reviewed evidence objects into exact-source and two policy-relative projections. This is a bounded application-level dossier, not the normative replay graph or broad knowledge coverage. Hosted API and MCP remain unverified until external read-back proves them.
