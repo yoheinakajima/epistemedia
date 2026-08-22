@@ -4,6 +4,7 @@ This directory contains owner-controlled activation checklists. Contributor agen
 
 Current evidence:
 
+- [`2026-08-22-package-readiness.md`](2026-08-22-package-readiness.md) records the corrected clean-wheel CLI smoke test and the still-blocked publication identities.
 - [`2026-08-22-social-preview.md`](2026-08-22-social-preview.md) records the locally verified social-preview asset and the still-pending GitHub upload.
 - [`2026-08-22-container-readiness.md`](2026-08-22-container-readiness.md) records the bounded container context and the still-unrun Docker and publication gates.
 - [`2026-08-22-prepublic-branch-cleanup.md`](2026-08-22-prepublic-branch-cleanup.md) records the authorized deletion and provider read-back for the obsolete `prepublic-ready` branch.

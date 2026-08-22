@@ -10,17 +10,24 @@ from __future__ import annotations
 
 import importlib.util
 import os
+import sys
 from pathlib import Path
 
 _file = Path(__file__).resolve().parent.parent / "server.py"
 # In an editable checkout this is the repository root. In an installed wheel it is merely a
 # harmless package fallback; remote commands do not read it, and local commands resolve a root.
 os.environ.setdefault("EPISTEMEDIA_ROOT", str(Path(__file__).resolve().parents[3]))
-_spec = importlib.util.spec_from_file_location("epistemedia._server_implementation", _file)
+_name = "epistemedia._server_implementation"
+_spec = importlib.util.spec_from_file_location(_name, _file)
 if _spec is None or _spec.loader is None:  # pragma: no cover
     raise ImportError(f"Unable to load Epistemedia gateway from {_file}")
 _module = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_module)
+sys.modules[_name] = _module
+try:
+    _spec.loader.exec_module(_module)
+except BaseException:
+    sys.modules.pop(_name, None)
+    raise
 
 Gateway = _module.Gateway
 MCPRequestError = _module.MCPRequestError
