@@ -19,6 +19,8 @@ GET /v1/status
 GET /v1/search?q=governance&limit=20
 GET /v1/topics
 GET /v1/topics/{slug}?lens=skeptical
+GET /v1/dossiers
+GET /v1/dossiers/{slug}?policy=skeptical
 GET /v1/objects/{id}
 GET /v1/claims/{id}/trace
 ```
@@ -48,6 +50,8 @@ Read-only tools include:
 - `search_knowledge`
 - `get_object`
 - `get_topic`
+- `get_dossier`
+- `compare_dossier_policies`
 - `trace_claim`
 - `compare_lenses`
 - `get_next_contribution`
@@ -58,6 +62,7 @@ Resources use URIs such as:
 ```text
 epistemedia://status
 epistemedia://topic/{slug}
+epistemedia://dossier/{slug}/{policy}
 epistemedia://object/{id}
 ```
 
@@ -82,6 +87,7 @@ epistemedia build
 epistemedia audit
 epistemedia search "disclosure noninterference"
 epistemedia project governance --lens skeptical
+epistemedia dossier corrections-and-familiarity-backfire --policy skeptical
 epistemedia repo next
 epistemedia mcp serve
 ```
@@ -92,7 +98,12 @@ Remote reads work without a local repository:
 epistemedia search "federated knowledge" --remote
 epistemedia get <OBJECT_ID> --remote
 epistemedia project epistemic-mesh --lens evidence-first --remote
+epistemedia dossier corrections-and-familiarity-backfire --policy skeptical --remote
 ```
+
+The featured dossier's HTML, Markdown, static JSON, local REST response, MCP resource/tool output,
+and CLI output are compiled from the same disclosure-safe dossier. The machine envelopes preserve
+the exact dossier, catalog, frontier, accepted commit, policy IDs, compiler, and content digest.
 
 ## Self-hosting
 

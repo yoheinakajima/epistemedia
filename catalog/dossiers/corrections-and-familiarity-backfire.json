@@ -1,0 +1,49 @@
+{
+  "claim_family_key": "family-familiarity-backfire",
+  "counting": {
+    "target_comparable_support_proposition_keys": [
+      "prop-flu-flyer-result",
+      "prop-unlicensed-negation-boundary",
+      "prop-vaccine-myths-boundary"
+    ]
+  },
+  "default_view": "encyclopedia",
+  "dossier_id": "em:dossier:sha256:4339d6d6d52b9b534d2e63c95f52ff3cf90be5264f567762f47bab9af4d945a7",
+  "dossier_path": "research/how-we-know/corrections-backfire/candidate-dossier.json",
+  "format": "epistemedia-featured-dossier-v0.1",
+  "number": "001",
+  "review_receipt_bytes": 65611,
+  "review_receipt_format": "epistemedia-research-review-receipt-v0.1",
+  "review_receipt_path": "research/how-we-know/corrections-backfire/review-receipts/20260822T183134Z-codex-independent-reviewer.json",
+  "review_receipt_sha256": "503d16396b25b1c22d7fc10ac6fb7db2e530e6ce348d63fa8b639db5a5288f0a",
+  "reviewed_head": "37161f25cbc76380cce72f57f370275f22f96a77",
+  "reviewer_id": "codex-independent-reviewer",
+  "selection_note": "The first accepted How We Know vertical slice: a bounded question with exact spans, visible lineage collapse, counterevidence, unresolved evidence, and two materially different application-policy views.",
+  "slug": "corrections-and-familiarity-backfire",
+  "status": "accepted",
+  "target_proposition_key": "prop-general-backfire",
+  "views": {
+    "encyclopedia": {
+      "evaluation_key": "evaluation-encyclopedia",
+      "featured_relation_keys": [
+        "relation-pluviano-2017-supports-vaccine-boundary",
+        "relation-thomas-supports-unlicensed-boundary",
+        "relation-ecker-hogan-2017-rebuts-general",
+        "relation-swire-2017-rebuts-general",
+        "relation-nibat-rebuts-general",
+        "relation-prike-qualifies-boundary"
+      ]
+    },
+    "skeptical": {
+      "evaluation_key": "evaluation-skeptical",
+      "featured_relation_keys": [
+        "relation-handbook-citation-mismatch",
+        "relation-schwarz-flu-supports-boundary",
+        "relation-ecker-2023-failed-replication-pluviano-2017",
+        "relation-ecker-prike-shared-recruitment-frame",
+        "relation-ecker-2023-reuses-pluviano-materials",
+        "relation-prike-qualifies-boundary"
+      ]
+    }
+  }
+}

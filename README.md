@@ -67,7 +67,7 @@ The complete authority contract is in [`AGENTS.md`](AGENTS.md).
 - bundle validation plus task-claim and run-receipt generation;
 - reproducible builds checked against an independent comparison build.
 
-The normative schemas and architecture describe a broader source, span, proposition, assertion, evidence, derivation, evaluation, and event model. The current public compiler does **not** yet instantiate that claim/evidence graph or perform lineage-aware evidence evaluation. The reversible dossier pilot and first evidence-backed realm are the next implementation stage.
+The normative schemas and architecture describe a broader source, span, proposition, assertion, evidence, derivation, evaluation, and event model. The public compiler now instantiates one bounded, application-level dossier graph for the independently reviewed **How We Know** case and performs two named, policy-relative, lineage-aware evaluations over its disclosure-safe projection. It does not yet replay the normative event model into a general canonical epistemic graph, and the dossier format remains an alpha application contract rather than a protocol standard.
 
 ### Human-facing site
 
@@ -224,9 +224,9 @@ flowchart TD
     F --> K[CLI and snapshots]
 ```
 
-The implemented alpha currently compiles accepted, disclosure-eligible repository artifacts directly into public projections. The replayed claim/evidence graph and policy-evaluation stages above are target architecture, not a description of the present bootstrap corpus.
+The implemented alpha still compiles accepted, disclosure-eligible repository artifacts directly into the self-describing public corpus. It additionally compiles one independently reviewed, application-level dossier into exact-source and two policy-relative projections. The replayed normative graph stages above remain target architecture; the dossier pilot does not claim to implement them.
 
-The first public realm dogfoods Epistemedia itself: its constitution, architecture, governance, tasks, tests, research program, security model, and releases form the initial browsable knowledge corpus.
+The self-describing repository corpus remains available through **Explore**. The featured **How We Know** case is the first outward-facing evidence experience, derived from the same accepted Git history without replacing it as canonical truth.
 
 Read more:
 
