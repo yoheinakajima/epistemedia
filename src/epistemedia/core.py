@@ -106,6 +106,23 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
+def accepted_timestamp(root: Path) -> str:
+    """Return the accepted commit time used by reproducible public projections."""
+    value = git_value(root, "show", "-s", "--format=%ct", "HEAD", default="")
+    if not value:
+        value = os.environ.get("SOURCE_DATE_EPOCH", "0")
+    try:
+        epoch = int(value)
+    except ValueError as exc:
+        raise ValueError("accepted source timestamp must be Unix epoch seconds") from exc
+    return (
+        datetime.fromtimestamp(epoch, timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z")
+    )
+
+
 def git_value(root: Path, *args: str, default: str = "unknown") -> str:
     try:
         return subprocess.check_output(
@@ -284,7 +301,7 @@ class PublicCatalog:
             topics=topics,
             policies=policies,
             catalog_id=stable_id("catalog", catalog_material),
-            generated_at=utc_now(),
+            generated_at=accepted_timestamp(root),
         )
 
     def object_map(self) -> dict[str, PublicObject]:

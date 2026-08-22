@@ -71,6 +71,7 @@ def test_pull_request_validation_has_no_secret_or_write_authority() -> None:
     assert "secrets." not in text
     assert "permissions:\n      contents: read" in text
     assert "contents: write" not in text
+    assert "run: make check" in text
 
 
 def test_active_deployment_configuration_uses_controlled_domain() -> None:
