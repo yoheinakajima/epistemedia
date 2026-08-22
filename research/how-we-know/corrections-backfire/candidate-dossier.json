@@ -94,12 +94,16 @@
         "kind": "collective"
       },
       "asserted_at": "2015-10-25T00:00:00Z",
-      "id": "em:dossier-assertion:sha256:873f32456eec266fa211185995ce08d011be42a026fca2eade1617514084aa0b",
+      "id": "em:dossier-assertion:sha256:3f284f4893112df75f31bd55292aa2c8de303088cc688365b54090d9970f7200",
       "key": "assert-peter-koch-2016-result",
       "lineage_key": "lineage-peter-koch-2016-data",
       "proposition_key": "prop-peter-koch-boundary",
       "span_keys": [
-        "span-peter-koch-2016-result"
+        "span-peter-koch-2016-result",
+        "span-peter-koch-2016-shared-stimulus",
+        "span-peter-koch-2016-randomization",
+        "span-peter-koch-2016-measure",
+        "span-peter-koch-2016-error-definition"
       ],
       "stance": "asserts",
       "visibility": "public"
@@ -166,6 +170,98 @@
       "proposition_key": "prop-short-format-result",
       "span_keys": [
         "span-ecker-short-2020-result"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1016/j.jarmac.2017.01.014#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2017-03-18T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:1088b82a0ac678f791601ca412b35e676d57ef159d685d17afb84fd6760e599e",
+      "key": "assert-ecker-hogan-2017-result",
+      "lineage_key": "lineage-ecker-hogan-2017-data",
+      "proposition_key": "prop-ecker-hogan-2017-result",
+      "span_keys": [
+        "span-ecker-hogan-2017-result",
+        "span-ecker-hogan-2017-no-retraction-result",
+        "span-ecker-hogan-2017-repeat-result",
+        "span-ecker-hogan-2017-alternative-account"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1093/ijpor/edz037#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2019-10-19T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:8fd61aea912342ee8868372dd70a8586123a7352ce04043f95f571d86a43374c",
+      "key": "assert-carnahan-garrett-2020-result",
+      "lineage_key": "lineage-carnahan-garrett-2020-data",
+      "proposition_key": "prop-carnahan-2020-result",
+      "span_keys": [
+        "span-carnahan-2020-control-result",
+        "span-carnahan-2020-pairwise-result",
+        "span-carnahan-2020-format-null",
+        "span-carnahan-2020-processing-boundary"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1037/xlm0000155#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2015-07-06T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:a882ab778690312864ebb3586d42de7474875080ccdd1b59185778c542864266",
+      "key": "assert-rich-2016-result",
+      "lineage_key": "lineage-rich-2016-data",
+      "proposition_key": "prop-rich-2016-result",
+      "span_keys": [
+        "span-rich-2016-experiment-1-result",
+        "span-rich-2016-experiment-2-result",
+        "span-rich-2016-experiment-2-all-conditions",
+        "span-rich-2016-control-qualifier"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1037/xlm0000422#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2017-05-11T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:129db2410ae73bcfd236dd5be55c147b2ff2d95012e8165676336031c5a20b0b",
+      "key": "assert-swire-2017-result",
+      "lineage_key": "lineage-swire-2017-data",
+      "proposition_key": "prop-swire-2017-result",
+      "span_keys": [
+        "span-swire-2017-experiment-1-result",
+        "span-swire-2017-experiment-2-result",
+        "span-swire-2017-conclusion"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1016/j.jml.2019.104028#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2019-06-04T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:e836a7186a8af3d59cce80c415827c902616d8d4b36387e541fe57252124f799",
+      "key": "assert-gordon-2019-result",
+      "lineage_key": "lineage-gordon-2019-data",
+      "proposition_key": "prop-gordon-2019-result",
+      "span_keys": [
+        "span-gordon-2019-result",
+        "span-gordon-2019-qualifier"
       ],
       "stance": "asserts",
       "visibility": "public"
@@ -310,12 +406,12 @@
         "kind": "collective"
       },
       "asserted_at": "2022-07-01T00:00:00Z",
-      "id": "em:dossier-assertion:sha256:7028acf505341fb1367ac979bb6966fb307372889aa7443724aaa5a054b936b0",
-      "key": "assert-swire-thompson-2023-result",
-      "lineage_key": "lineage-swire-thompson-2023-data",
+      "id": "em:dossier-assertion:sha256:e60f61fd36ef87017305697a9061f2ec27546230ca29de90bbae5da3ad97af9a",
+      "key": "assert-swire-thompson-2022-result",
+      "lineage_key": "lineage-swire-thompson-2022-data",
       "proposition_key": "prop-reliability-counter-result",
       "span_keys": [
-        "span-swire-thompson-2023-result"
+        "span-swire-thompson-2022-result"
       ],
       "stance": "asserts",
       "visibility": "public"
@@ -334,6 +430,11 @@
         "assert-ecker-2020-result",
         "assert-ecker-2020-guidance",
         "assert-ecker-short-2020-result",
+        "assert-ecker-hogan-2017-result",
+        "assert-carnahan-garrett-2020-result",
+        "assert-rich-2016-result",
+        "assert-swire-2017-result",
+        "assert-gordon-2019-result",
         "assert-prike-2023-result",
         "assert-prike-2023-skepticism",
         "assert-ecker-2023-result",
@@ -342,9 +443,9 @@
         "assert-pluviano-2019-result",
         "assert-thomas-2024-result",
         "assert-nibat-2026-result",
-        "assert-swire-thompson-2023-result"
+        "assert-swire-thompson-2022-result"
       ],
-      "id": "em:dossier-claim-family:sha256:5eaf93797631dd5ec758999ae6bc9e871612caf3048610c0f587f5ac5c7e4a9e",
+      "id": "em:dossier-claim-family:sha256:405c5ee2757eda3aff27b0b6cbaeff89ff4eecf7d8983bfc199bb1b30bcf7860",
       "key": "family-familiarity-backfire",
       "proposition_keys": [
         "prop-general-backfire",
@@ -357,6 +458,11 @@
         "prop-peter-koch-boundary",
         "prop-cameron-flu-result",
         "prop-short-format-result",
+        "prop-ecker-hogan-2017-result",
+        "prop-carnahan-2020-result",
+        "prop-rich-2016-result",
+        "prop-swire-2017-result",
+        "prop-gordon-2019-result",
         "prop-reliability-counter-result",
         "prop-brand-correction-result"
       ],
@@ -375,6 +481,11 @@
         "relation-ecker-2020-rebuts-general",
         "relation-cameron-rebuts-general",
         "relation-ecker-short-rebuts-general",
+        "relation-ecker-hogan-2017-rebuts-general",
+        "relation-carnahan-2020-rebuts-general",
+        "relation-rich-2016-rebuts-general",
+        "relation-swire-2017-rebuts-general",
+        "relation-gordon-2019-rebuts-general",
         "relation-swire-thompson-rebuts-general",
         "relation-ecker-undercuts-guidance",
         "relation-ecker-undercuts-review",
@@ -390,6 +501,7 @@
         "relation-peter-koch-supports-boundary",
         "relation-nibat-rebuts-general",
         "relation-ecker-2023-failed-replication-pluviano-2017",
+        "relation-gordon-ecker-hogan-shared-program",
         "relation-ecker-prike-shared-recruitment-frame",
         "relation-ecker-prike-shared-ethics-series",
         "relation-ecker-2023-reuses-pluviano-materials",
@@ -399,7 +511,7 @@
       "visibility": "public"
     }
   ],
-  "dossier_id": "em:dossier:sha256:4732fc54bbca0092a262c462218699ad47de96ec09b3743d4f228bac6d9a759e",
+  "dossier_id": "em:dossier:sha256:4339d6d6d52b9b534d2e63c95f52ff3cf90be5264f567762f47bab9af4d945a7",
   "editions": [
     {
       "content": {
@@ -540,28 +652,117 @@
     {
       "content": {
         "artifact": {
-          "bytes": 10168,
-          "custody": "Temporary Crossref JSON capture; article is not redistributed.",
-          "retrieved_from": "https://api.crossref.org/works/10.1177/1075547015613523",
-          "sha256": "5c5b6743373d7d8539d21a31f6ac33ba461d4625834109e13efdcd3f87181494"
+          "bytes": 118545,
+          "custody": "Two byte-identical LMU institutional PDF retrievals; only exact quote-minimal result and method spans are committed.",
+          "landing_page": "https://epub.ub.uni-muenchen.de/42583/",
+          "retrieved_from": "https://epub.ub.uni-muenchen.de/42583/1/1075547015613523.pdf",
+          "sha256": "ab18125517a34d469a3b644e0c7a3b6cfc0a59f82ac4c39e14845a65d73bc4ec"
         },
         "excerpts": [
           {
-            "locator": "Crossref abstract; web-experiment result",
+            "locator": "PDF p. 1; abstract result",
             "text": "In a web-based experiment, we find evidence for a systematic backfire effect that occurs after a few minutes and strengthens after five days.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PDF p. 10 / journal p. 12; shared myths-and-facts stimulus",
+            "text": "the journalist reported eight scientific statements about the test and identified each statement immediately as true or false, followed by a short explanation",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PDF p. 11 / journal p. 13; randomized instruction condition",
+            "text": "Participants were randomly assigned to one of the two conditions.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PDF p. 11 / journal p. 13; truth-memory measure",
+            "text": "For each claim, we asked participants to indicate whether it was labeled as “true” or “false” in the article or whether it had not been presented in the article (“new”).",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PDF p. 12 / journal p. 14; backfire-error definition",
+            "text": "labeling an originally false statement as true (backfire error)",
             "verification": "artifact"
           }
         ]
       },
-      "content_digest": "sha256:fb074fb57aa9f63b4ee7387100a225146724c5112859f9d7067b1e94c0ea70fe",
-      "content_length": 499,
-      "edition_label": "Crossref deposited abstract record; excerpt packet",
-      "id": "em:dossier-edition:sha256:4aa92583e79899b861269932810b538418bb32060f4b4b337dc73e0abb55832e",
+      "content_digest": "sha256:5ccb1c7cf0a5e1ef562661e6caa55f28dec9a33c0c9479acf95f6c3425fba7f7",
+      "content_length": 1487,
+      "edition_label": "LMU institutional full-text PDF, 23 pages; excerpt packet",
+      "id": "em:dossier-edition:sha256:4236733a97b02e331aeaaace53b4a390ca7762babed313bf2b449521eeef69be",
       "key": "edition-peter-koch-2016",
       "media_type": "application/json",
-      "retrieved_at": "2026-08-22T16:14:38Z",
+      "retrieved_at": "2026-08-22T17:32:37Z",
       "visibility": "public",
       "work_key": "work-peter-koch-2016"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 7630,
+          "custody": "Two byte-identical PubMed XML retrievals; only quote-minimal method and result abstract spans are committed.",
+          "retrieved_from": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=18394856&retmode=xml",
+          "sha256": "230d805c865e5f4348b46e5adaeba5cb9a09081ab1d87c7a2363c4597ebc44e1"
+        },
+        "excerpts": [
+          {
+            "locator": "PubMed abstract; Methods",
+            "text": "Younger and older adults read positively and negatively worded statements and were later tested for memory of the exact statements, statements opposite in meaning due to the addition or deletion of a negation, and entirely new statements.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PubMed abstract; Results",
+            "text": "When statements reversed meanings, younger adults were more likely to accurately recognize items that changed from negative to positive than were older adults, who were more likely to incorrectly endorse changed items as intact when items began negative and became positive than the reverse.",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:d18e1569cd8890d535f50d7e1836c618eefb2afd1bcaade68f3cd8723d200e97",
+      "content_length": 1027,
+      "edition_label": "PubMed XML record, PMID 18394856; abstract excerpt packet",
+      "id": "em:dossier-edition:sha256:8c1621be87cee0063094dbbbc34cf107ce76b610c6f59613ff950ab6738910d6",
+      "key": "edition-wilson-park-2008",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:30:16Z",
+      "visibility": "public",
+      "work_key": "work-wilson-park-2008"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 209237,
+          "custody": "Two byte-identical author-hosted journal PDF retrievals; only exact quote-minimal design, result, and qualifier spans are committed.",
+          "landing_page": "https://berinsky.mit.edu/published-papers/",
+          "retrieved_from": "https://berinsky.mit.edu/files/2026/01/rumorshealthcare_2017.pdf",
+          "sha256": "d5b189db8963f8d3b412d4bbf6cddb9cfa52198f330f54929519224f99975c78"
+        },
+        "excerpts": [
+          {
+            "locator": "PDF p. 14 / journal p. 254; Study 2 design",
+            "text": "There was no control group in this experiment.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PDF p. 17 / journal p. 257; rehearsal result",
+            "text": "The increased rehearsal of the rumor – in the absence of any information about its veracity – was sufﬁcient to decrease rumor rejection rates, even when the rumor was initially presented in combination with a powerful correction.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PDF p. 17 / journal p. 257; correction-arm significance qualifier",
+            "text": "though the differences are statistically signiﬁcant at the 0.10 level only in the ‘rumor only’ condition",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:c8b1e0653a0da5cc39ea8e3b574968f15876a0bc40961f3a27546ae71c6c3c09",
+      "content_length": 1102,
+      "edition_label": "Author-hosted Cambridge journal PDF, 22 pages; excerpt packet",
+      "id": "em:dossier-edition:sha256:548de7e2e14b1017e0092c2c17f53f0199b0b8ced4cb0a630d8774927c589851",
+      "key": "edition-berinsky-2017",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:26:31Z",
+      "visibility": "public",
+      "work_key": "work-berinsky-2017"
     },
     {
       "content": {
@@ -694,6 +895,320 @@
     {
       "content": {
         "artifact": {
+          "bytes": null,
+          "captures": [
+            {
+              "bytes": 502333,
+              "retrieved_at": "2026-08-22T17:32:32Z",
+              "sha256": "350a2e197f98f657091a08f836462d3bb735694fa139e9a6cde866388a7795f6"
+            },
+            {
+              "bytes": 502333,
+              "retrieved_at": "2026-08-22T17:32:33Z",
+              "sha256": "07bb7c14021d2f74cc2c306534803d8a9c05f32f0b31fcd69ceb7816cb1f1ded"
+            }
+          ],
+          "custody": "The institutional endpoint regenerates a timestamped cover. Two raw captures produced byte-identical pdftotext output; only four exact result and method extents are committed and the PDF is not redistributed.",
+          "identity_mode": "pdftotext-stdout",
+          "retrieved_from": "https://research-information.bris.ac.uk/ws/files/153248187/EckerHoganLewan_revTC.SL.pdf",
+          "semantic_bytes": 65679,
+          "semantic_method": "pdftotext SOURCE.pdf -; raw stdout bytes",
+          "semantic_sha256": "cbf940e71d4d1eb854ccac6150418ed0bbe31a0c697cee8408f4199097806e97",
+          "sha256": null
+        },
+        "excerpts": [
+          {
+            "locator": "Accepted manuscript p. 3; abstract result",
+            "text": "Retractions that explicitly repeated the misinformation were more effective in reducing misinformation effects than retractions that avoided repetition, presumably because of enhanced salience.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Accepted manuscript p. 18; retraction-versus-control result",
+            "text": "any kind of retraction reduced reliance on misinformation compared to a control condition with no retraction",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "Accepted manuscript p. 18; explicit-repeat contrast",
+            "text": "a retraction that explicitly repeated the misinformation (condition RER) lowered reliance on misinformation more than a retraction that provided no reminder (condition RNR)",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "Accepted manuscript p. 18; alternative-account qualifier",
+            "text": "each retraction was accompanied by an alternative causal account of the event",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:8881b2cfffb49815311cd56962e4c8ff8068ee74fbecd429739c62ce8c15c87f",
+      "content_length": 1846,
+      "edition_label": "Bristol accepted manuscript, 40 pages; excerpt packet",
+      "id": "em:dossier-edition:sha256:3ac92844b24d5e23ea987d67aaa41634b7cd474f277464f8095bbad910909804",
+      "key": "edition-ecker-hogan-2017",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:32:32Z",
+      "visibility": "public",
+      "work_key": "work-ecker-hogan-2017"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 1095068,
+          "custody": "Two byte-identical coauthor-lab PDF retrievals; only exact quote-minimal abstract spans are committed.",
+          "retrieved_from": "https://www.uncgmaclab.com/_files/ugd/1c6479_d45baca048334b0fb4149962f1d7e156.pdf",
+          "sha256": "588addfe9659b726d04b1cc51e004d76a76a8cf73f6053d7bb10c00b1e378781"
+        },
+        "excerpts": [
+          {
+            "locator": "PDF p. 1; abstract design",
+            "text": "Misinformation reminders appeared before some corrections but not others.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PDF p. 1; abstract endpoint",
+            "text": "Subjects then attempted to recall facts, indicated their belief in those recalls, and indicated whether they remembered corrections and misinformation.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PDF p. 1; abstract result",
+            "text": "Reminders increased recall and belief accuracy.",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:3247bf11abe9e16a0f6b2d1f4ddaf75f61330436b62603ef28e60f812c0a082b",
+      "content_length": 836,
+      "edition_label": "Coauthor-lab publisher PDF, 15 pages; abstract excerpt packet",
+      "id": "em:dossier-edition:sha256:0664e4567150eab99fd1b9c9dd57d17460c5df686585b9dcdb370debe86ce08f",
+      "key": "edition-wahlheim-2020",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:32:34Z",
+      "visibility": "public",
+      "work_key": "work-wahlheim-2020"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 169173,
+          "custody": "Two byte-identical CC BY 4.0 XML retrievals; only exact abstract design and mixed-result spans are committed.",
+          "retrieved_from": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9481799/fullTextXML",
+          "sha256": "6a5fc0db04a875ece25cb374392b63c6a2d43d46f1b4f0ae295bce017d8606ef"
+        },
+        "excerpts": [
+          {
+            "locator": "JATS abstract; design",
+            "text": "Two experiments examined if one theory better accounts for memory updating after participants recalled actual fake news details when reading headlines that corrected misinformation.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "JATS abstract; mixed conditional result",
+            "text": "Recalling fake news when noticing corrections in Phase 2 led to better memory for real news in Phase 3 when fake news was recalled again and worse memory for real news in Phase 3 when fake news was not recalled again.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "JATS Par21; control-endpoint boundary",
+            "text": "Phase 2 included 45 headlines [15 real news from Phase 1 (Repetition); 15 real news that corrected fake news from Phase 1 (Correction); and 15 real news that appeared only in Phase 2 (Control)]. We included control headlines as a contrast condition against which to assess proactive effects of fake news exposure on memory for real news headlines.",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:be47bcc733d8772752d271785e038d62b3a2debf510408942d67efb9c705f2eb",
+      "content_length": 1326,
+      "edition_label": "Europe PMC JATS XML, PMCID PMC9481799; abstract excerpt packet",
+      "id": "em:dossier-edition:sha256:4df361bdade485ad9e79b1d5ec8c2fa36b8abfec76945cf74d62bbe8b0827864",
+      "key": "edition-kemp-2022a",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:32:36Z",
+      "visibility": "public",
+      "work_key": "work-kemp-2022a"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 113222,
+          "custody": "Two byte-identical CC BY 4.0 XML retrievals; only exact abstract design and result spans are committed.",
+          "retrieved_from": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9758464/fullTextXML",
+          "sha256": "5540d1b2e31d199bf3623bd0e1f8e1788929a617aca80bd713ac09315e0bda01"
+        },
+        "excerpts": [
+          {
+            "locator": "JATS abstract; correction/reminder design",
+            "text": "Participants then saw labeled and unlabeled real news corrections; labeled corrections appeared alone or after fake news reminders.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "JATS abstract; reminder result",
+            "text": "Reminders promoted the best memory and belief accuracy, whereas veracity labels had selective effects.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "JATS Par27; reminder-isolation limitation",
+            "text": "However, this does not fully isolate the fake news reminder effect because that would require a condition including fake news reminders alone (i.e., not followed by corrections).",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:f58a8e7019afa94e5dea66abd1d37d6eeb8086c1a3386bccab6cdf59286b0dc0",
+      "content_length": 1001,
+      "edition_label": "Europe PMC JATS XML, PMCID PMC9758464; abstract excerpt packet",
+      "id": "em:dossier-edition:sha256:712084a300ce65e03d1d225789142a2ac7cdad1e89fe98c52afaf4aa25b53d34",
+      "key": "edition-kemp-2022b",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:32:37Z",
+      "visibility": "public",
+      "work_key": "work-kemp-2022b"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": null,
+          "custody": "Authoritative publisher HTML independently readable through web read-back; automated byte capture returned HTTP 403.",
+          "retrieved_from": "https://academic.oup.com/ijpor/article/32/3/530/5599865",
+          "sha256": null
+        },
+        "excerpts": [
+          {
+            "locator": "Study 2 results; paragraph beginning 'Next we tested'; control contrast",
+            "text": "participants receiving a corrective message scored four to five points (or 10–12%) higher on the belief accuracy measure than those in the control group",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "Study 2 results; control-pairwise result",
+            "text": "pairwise comparisons between each of the correction treatment groups and the control group found these differences to be statistically significant (p < .05).",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "Study 2 results; message-format null",
+            "text": "none of the coefficients on message format are significant",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "Study 2 results; memory-based processing boundary",
+            "text": "Among those in the MB processing condition, both two-sided messages outperformed the one-sided message.",
+            "verification": "independent-readback"
+          }
+        ]
+      },
+      "content_digest": "sha256:b817b2a96ffbb591e0a5c66c344e011986da890104d68bc281a2366746104062",
+      "content_length": 1178,
+      "edition_label": "Oxford Academic publisher HTML, volume 32 issue 3, pages 530–546; excerpt packet",
+      "id": "em:dossier-edition:sha256:5806727473207af4a878acd2c1e5841ad8b773181f0e9d2e82eb5d7c04aeeddb",
+      "key": "edition-carnahan-garrett-2020",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:32:37Z",
+      "visibility": "public",
+      "work_key": "work-carnahan-garrett-2020"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": null,
+          "custody": "Authoritative APA PDF independently readable through indexed read-back; automated byte capture was blocked by anti-bot HTML.",
+          "retrieved_from": "https://www.apa.org/pubs/journals/features/xlm-0000155.pdf",
+          "sha256": null
+        },
+        "excerpts": [
+          {
+            "locator": "PDF p. 5 / journal p. 66; Experiment 1 correction effect",
+            "text": "The correction did not reliably affect performance in the control condition (Contrast 7).",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "PDF p. 7 / journal p. 68; Experiment 2 control result",
+            "text": "The pattern of results replicated those of Experiment 1, with the exception that the correction reduced misinformation reliance even in the control condition.",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "PDF p. 7 / journal p. 68; Experiment 2 correction effects",
+            "text": "there was a reliable correction effect in all three conditions (including the control condition, see Contrasts 7, 8, and 9)",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "PDF p. 5 / journal p. 66; control-story qualifier",
+            "text": "may have, to a small extent, implicated the son as a potential suspect",
+            "verification": "independent-readback"
+          }
+        ]
+      },
+      "content_digest": "sha256:2688b174311c7828cd4f0ea87b5aa05514154f13ca88e72046a52aa2507d28e8",
+      "content_length": 1176,
+      "edition_label": "APA journal PDF, volume 42 issue 1, pages 62–74; read-back excerpt packet",
+      "id": "em:dossier-edition:sha256:8761a454cc9ce9d2fd5aa89784e97a1a62674c2a1b4a1872518947d44a91c87c",
+      "key": "edition-rich-zaragoza-2016",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:32:37Z",
+      "visibility": "public",
+      "work_key": "work-rich-zaragoza-2016"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 654850,
+          "custody": "Two byte-identical coauthor-lab PDF retrievals; only exact quote-minimal result sentences are committed.",
+          "retrieved_from": "https://www.emc-lab.org/uploads/1/1/3/6/113627673/swire.2017.jeplmc.pdf",
+          "sha256": "e0f690593e78099431b4d555ea1714d448482b2dd352f1acfa451c0da433c11b"
+        },
+        "excerpts": [
+          {
+            "locator": "Manuscript p. 16; Experiment 1 result",
+            "text": "As post-manipulation belief levels remained below pre-manipulation belief levels, no true backfire effect was elicited.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Manuscript p. 22; Experiment 2 result",
+            "text": "As post-manipulation myth belief levels remained below pre-manipulation belief levels, no true backfire effect was elicited.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Manuscript p. 30; discussion conclusion",
+            "text": "However, we found no evidence for the existence of a true familiarity-based backfire effect.",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:8a4c90e2dd3ba0af95dce64797fef894007e8be149ea7e9b34da3f06cf1e7e56",
+      "content_length": 927,
+      "edition_label": "Coauthor-lab accepted manuscript, 46 pages; excerpt packet",
+      "id": "em:dossier-edition:sha256:11c69648efec7d7436f0b22681213ae965384ce1b2317ed95748d35b52e6f71b",
+      "key": "edition-swire-2017",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:32:37Z",
+      "visibility": "public",
+      "work_key": "work-swire-2017"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 747048,
+          "custody": "Two byte-identical coauthor-lab PDF retrievals; only one exact quote-minimal result sentence is committed.",
+          "retrieved_from": "https://www.emc-lab.org/uploads/1/1/3/6/113627673/gordon.2019.jml_preprint.pdf",
+          "sha256": "23d389cd19eecb76c8e21ae52a6e5f029bcd44a9e0e399f013376f1ac670cf06"
+        },
+        "excerpts": [
+          {
+            "locator": "Preprint p. 32; Experiment 2 discussion",
+            "text": "Experiment 2 clarified that only-negated narratives produced significantly fewer misinformation inferences than a control condition in which the misinformation was never mentioned.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Preprint p. 24; Bayesian result qualifier",
+            "text": "Participants mentioned the critical information significantly less following a negation than if that information was never mentioned, although the corresponding Bayesian analysis indicated only very weak evidence for a difference between the two, meaning that this interpretation must be made with some caution.",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:00ab95b7ef95dd5df13cc3aadde8dcc0561549bbf7f71506fd155be5539a0a01",
+      "content_length": 1008,
+      "edition_label": "Coauthor-lab preprint, 41 pages; excerpt packet",
+      "id": "em:dossier-edition:sha256:eef660edec7d20850504549564a19e7b0c2c25d8a7811280ab1677aeae53f54a",
+      "key": "edition-gordon-2019",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T17:32:37Z",
+      "visibility": "public",
+      "work_key": "work-gordon-2019"
+    },
+    {
+      "content": {
+        "artifact": {
           "bytes": 172943,
           "custody": "Temporary CC BY 4.0 XML download; exact excerpts committed.",
           "retrieved_from": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10317933/fullTextXML",
@@ -719,13 +1234,23 @@
             "locator": "General discussion; sample comparison",
             "text": "Additionally, Autry and Duarte only sampled undergraduates whereas our participants were recruited from MTurk without any age restrictions.",
             "verification": "artifact"
+          },
+          {
+            "locator": "Introduction; bounded counterevidence search",
+            "text": "However, there is little empirical evidence in support of this familiarity backfire effect (Cameron et al., 2013; Ecker et al., 2017; Ecker et al., 2020c; Ecker et al., 2023; Kemp et al., 2022a, 2022b; Swire et al., 2017; Wahlheim et al., 2020; for reviews, see Ecker et al., 2022; Swire-Thompson et al., 2022).",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Introduction; standalone-correction search",
+            "text": "Although these accounts offer some theoretical justification for why standalone corrections may backfire, some previous studies using standalone corrections without initial misinformation exposure have not found any evidence of deleterious effects (Ecker et al., 2020b, 2020c; Gordon et al., 2019).",
+            "verification": "artifact"
           }
         ]
       },
-      "content_digest": "sha256:9fd9966e81a2a5856fd49ad01bae1aa84169db1791e5bb544ba4f9f2c80020f7",
-      "content_length": 1795,
+      "content_digest": "sha256:5b02d38fc7eef16540cc808fa7d4300bcd9613180d3bfa98ad51169182fdb6c0",
+      "content_length": 2592,
       "edition_label": "Europe PMC JATS XML, PMCID PMC10317933; excerpt packet",
-      "id": "em:dossier-edition:sha256:47bcce0bdc6b2437cbe05a4bc23b5c515bea5682a4e111f1dd777c90d3212c54",
+      "id": "em:dossier-edition:sha256:0b0390469f562099baf4aa24f693be88f9e4649d5814abc9ff0417a4212fe6fb",
       "key": "edition-prike-2023",
       "media_type": "application/json",
       "retrieved_at": "2026-08-22T06:13:51Z",
@@ -977,12 +1502,12 @@
       "content_digest": "sha256:ff509dbb67fbd268a0fb3c9fc9048b1784f11f0664034e87a72d64830cd8746a",
       "content_length": 806,
       "edition_label": "NCBI BioC XML, PMCID PMC9283209; author-manuscript excerpt packet",
-      "id": "em:dossier-edition:sha256:b7914a4db916edf9d703109e60abb2699417f32c9f7d2dcb5fb259af58e4025d",
-      "key": "edition-swire-thompson-2023",
+      "id": "em:dossier-edition:sha256:5b1c24fe3e12bace93892678b117a96a6b357a66052c0701aa26d3954ac0b0f4",
+      "key": "edition-swire-thompson-2022",
       "media_type": "application/json",
       "retrieved_at": "2026-08-22T16:12:27Z",
       "visibility": "public",
-      "work_key": "work-swire-thompson-2023"
+      "work_key": "work-swire-thompson-2022"
     },
     {
       "content": {
@@ -1003,13 +1528,18 @@
             "locator": "PDF page 1; abstract result",
             "text": "This research finds no evidence of a familiarity backfire effect: in none of the studies, repetition increases belief in the misinformation more than correction reduces it.",
             "verification": "artifact"
+          },
+          {
+            "locator": "PDF page 3; bounded literature overview",
+            "text": "Some studies report no evidence of a familiarity backfire effect (e.g., Ecker et al., 2019, 2023; Swire et al., 2017) and even show repetition can enhance correction effectiveness (Ecker et al., 2017; Kemp et al., 2022; Wahlheim et al., 2020). Other work finds that corrections increase belief in misinformation or reliance on it, especially when brief and minimal, as with fact-checking labels (e.g., Berinsky, 2017; Peter & Koch, 2016; Pluviano et al., 2017, 2019; Skurnik et al., 2005).",
+            "verification": "artifact"
           }
         ]
       },
-      "content_digest": "sha256:d733e76f00c92c9e94e0a2d44aaa5eeedf6f9b551128c37eaeb52ab036094fb1",
-      "content_length": 851,
+      "content_digest": "sha256:d378258201f5101098aa910cd9adb597be3620ebeeec841e883a2537887d3a4a",
+      "content_length": 1430,
       "edition_label": "Sabanci University author-deposited Elsevier corrected proof; excerpt packet",
-      "id": "em:dossier-edition:sha256:f149f8dd70667a510aa7ee3bcba7be86015ff24c5dea5cb6859845bbc8c04d57",
+      "id": "em:dossier-edition:sha256:a061f49e557eb815b7172afe9da641fc489366190997b0554c4953a3a7c5dbff",
       "key": "edition-nibat-2026",
       "media_type": "application/json",
       "retrieved_at": "2026-08-22T07:11:15Z",
@@ -1227,10 +1757,82 @@
     },
     {
       "basis_span_keys": [
-        "span-swire-thompson-2023-result"
+        "span-ecker-hogan-2017-result",
+        "span-ecker-hogan-2017-no-retraction-result",
+        "span-ecker-hogan-2017-repeat-result",
+        "span-ecker-hogan-2017-alternative-account"
       ],
-      "from_ref": "assert-swire-thompson-2023-result",
-      "id": "em:dossier-evidence-relation:sha256:3432d4b7a3082ae022811e4021a3129a1def13d2b8a816d687a366fb987ed443",
+      "from_ref": "assert-ecker-hogan-2017-result",
+      "id": "em:dossier-evidence-relation:sha256:dc735edaa2c3530d7722db7ebe3cb98ed6fe2f47c75ccaf5bc90b1904de3e166",
+      "key": "relation-ecker-hogan-2017-rebuts-general",
+      "note": "Every tested retraction reduced reliance relative to no retraction, and explicit misinformation repetition improved the retraction relative to no reminder. Every retraction also supplied an alternative causal account.",
+      "relation_type": "rebuttal",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-carnahan-2020-control-result",
+        "span-carnahan-2020-pairwise-result",
+        "span-carnahan-2020-format-null",
+        "span-carnahan-2020-processing-boundary"
+      ],
+      "from_ref": "assert-carnahan-garrett-2020-result",
+      "id": "em:dossier-evidence-relation:sha256:d051ad69ef7dd5f6021e51e5430164ed83eff4eacea6e989d102d50d160a0034",
+      "key": "relation-carnahan-2020-rebuts-general",
+      "note": "Both correction formats that repeated misinformation improved accuracy relative to control; processing style remains a material qualifier.",
+      "relation_type": "rebuttal",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-rich-2016-experiment-1-result",
+        "span-rich-2016-experiment-2-result",
+        "span-rich-2016-experiment-2-all-conditions",
+        "span-rich-2016-control-qualifier"
+      ],
+      "from_ref": "assert-rich-2016-result",
+      "id": "em:dossier-evidence-relation:sha256:401a30f91e825751362b823d089ae5e10082f83f3cda8f785beccefa67ded5bc",
+      "key": "relation-rich-2016-rebuts-general",
+      "note": "A correction in the no-explicit-misinformation control did not increase reliance in either experiment; the target's prior narrative mention is retained as a licensing qualifier.",
+      "relation_type": "rebuttal",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-swire-2017-experiment-1-result",
+        "span-swire-2017-experiment-2-result",
+        "span-swire-2017-conclusion"
+      ],
+      "from_ref": "assert-swire-2017-result",
+      "id": "em:dossier-evidence-relation:sha256:948587dc8853c0ccd76af5a5f9f23a209d2b8585f53849b89ed300ec7b3f8855",
+      "key": "relation-swire-2017-rebuts-general",
+      "note": "Both experiments retained corrected belief below the pre-correction baseline despite delayed regression.",
+      "relation_type": "rebuttal",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-gordon-2019-result",
+        "span-gordon-2019-qualifier"
+      ],
+      "from_ref": "assert-gordon-2019-result",
+      "id": "em:dossier-evidence-relation:sha256:6f0112586df73a304057c3c9601ffb6415bb4415d283eff6523e81ca1d8202e2",
+      "key": "relation-gordon-2019-rebuts-general",
+      "note": "The standalone negation lowered rather than raised misinformation inference relative to the no-misinformation control in Experiment 2, with only very weak Bayesian evidence for the difference.",
+      "relation_type": "rebuttal",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-swire-thompson-2022-result"
+      ],
+      "from_ref": "assert-swire-thompson-2022-result",
+      "id": "em:dossier-evidence-relation:sha256:72da19cb6af87d6c6ee19a17eee02e218b91b86bec5a2f7dc6899c211a54ae30",
       "key": "relation-swire-thompson-rebuts-general",
       "note": "Two correction-versus-control experiments found no item-level backfire relative to either comparison baseline.",
       "relation_type": "rebuttal",
@@ -1379,12 +1981,16 @@
     },
     {
       "basis_span_keys": [
-        "span-peter-koch-2016-result"
+        "span-peter-koch-2016-result",
+        "span-peter-koch-2016-shared-stimulus",
+        "span-peter-koch-2016-randomization",
+        "span-peter-koch-2016-measure",
+        "span-peter-koch-2016-error-definition"
       ],
       "from_ref": "assert-peter-koch-2016-result",
-      "id": "em:dossier-evidence-relation:sha256:7263d76e69b3053c5de6b4b7c26ca81c4414cdfa289d67bdd324c470604793ca",
+      "id": "em:dossier-evidence-relation:sha256:a8d98e42e053757edf655166d848290a697fe3307f007b9bc2d113cccb1b1ad6",
       "key": "relation-peter-koch-supports-boundary",
-      "note": "Preserves the reported delayed result without inferring an unobserved target comparator from the abstract.",
+      "note": "Preserves the delayed truth-memory result while the full method establishes that no target baseline was present.",
       "relation_type": "support",
       "to_ref": "prop-peter-koch-boundary",
       "visibility": "public"
@@ -1413,6 +2019,23 @@
       "note": "The later study reused the 2017 materials but did not reproduce the reported backfire effect.",
       "relation_type": "failed-replication",
       "to_ref": "assert-pluviano-2017-result",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ecker-hogan-2017-no-retraction-result",
+        "span-ecker-hogan-2017-repeat-result",
+        "span-ecker-hogan-2017-alternative-account",
+        "span-gordon-2019-result",
+        "span-gordon-2019-qualifier",
+        "span-prike-2023-gordon-search"
+      ],
+      "from_ref": "lineage-gordon-2019-method",
+      "id": "em:dossier-evidence-relation:sha256:f35179648dbc1c03e015d5141786120f68f8dad85abe59dd4466d3d6536d8dde",
+      "key": "relation-gordon-ecker-hogan-shared-program",
+      "note": "The papers share Ecker and Lewandowsky and a continued-influence correction program. Their participant collections remain distinct, but independent research-program credit is not claimed.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-ecker-hogan-2017-method",
       "visibility": "public"
     },
     {
@@ -1624,15 +2247,19 @@
         "assert-peter-koch-2016-result"
       ],
       "basis_span_keys": [
-        "span-peter-koch-2016-result"
+        "span-peter-koch-2016-result",
+        "span-peter-koch-2016-shared-stimulus",
+        "span-peter-koch-2016-randomization",
+        "span-peter-koch-2016-measure",
+        "span-peter-koch-2016-error-definition"
       ],
       "depends_on": [],
       "dimensions": [
         "data"
       ],
-      "id": "em:dossier-lineage:sha256:71dd55985381ae43c59ed486e5e01e04bca57a5e085103ee73ee605ae2b666ba",
+      "id": "em:dossier-lineage:sha256:e90249f50d3cd5b73f68ccd86c8c84a3f73bc3af2b978869b8f600a7cac1100b",
       "key": "lineage-peter-koch-2016-data",
-      "note": "Publication-defined participant-data root for a delayed journalistic myth-debunking result. The captured abstract does not expose the comparator needed to classify it as target-comparable.",
+      "note": "Publication-defined participant-data root for a delayed journalistic myth-debunking result. The full method confirms that all participants read the correction article and only judgment instructions varied, so the data root is known but not target-comparable.",
       "status": "known",
       "visibility": "public"
     },
@@ -1685,6 +2312,143 @@
       "id": "em:dossier-lineage:sha256:50cd8733eef54ac4968e36d56402da86d14d1c00710a5d49d8df561f3334abf4",
       "key": "lineage-ecker-short-2020-data",
       "note": "Publication-defined two-experiment participant-data root. It shares Ecker and a correction research program with later papers, but no data reuse is asserted.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-ecker-hogan-2017-result"
+      ],
+      "basis_span_keys": [
+        "span-ecker-hogan-2017-result",
+        "span-ecker-hogan-2017-no-retraction-result",
+        "span-ecker-hogan-2017-repeat-result",
+        "span-ecker-hogan-2017-alternative-account"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:42e06f417ae288a76c41516c784c29039bfc4a9c1c3e1372cb3469dd850baeb2",
+      "key": "lineage-ecker-hogan-2017-data",
+      "note": "Publication-defined participant-data root directly comparing no retraction, retraction without a reminder, and retractions with subtle or explicit misinformation reminders. Every retraction also supplied an alternative causal account; method and research-program overlap are modeled separately.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-ecker-hogan-2017-no-retraction-result",
+        "span-ecker-hogan-2017-repeat-result",
+        "span-ecker-hogan-2017-alternative-account"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "method",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:a3692cc232368ee0de8c46ce000c2c47ddb08f93e1675c3b115c9be93e4ea4a9",
+      "key": "lineage-ecker-hogan-2017-method",
+      "note": "Continued-influence retraction-method lineage. All tested retractions paired the correction with an alternative causal account, and Ecker and Lewandowsky also appear in the later Gordon research program.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-carnahan-garrett-2020-result"
+      ],
+      "basis_span_keys": [
+        "span-carnahan-2020-control-result",
+        "span-carnahan-2020-pairwise-result",
+        "span-carnahan-2020-format-null",
+        "span-carnahan-2020-processing-boundary"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:93653156e7056c62d2c434c446baef1e6344e44eda42b5abc9ab5a2ab5a93053",
+      "key": "lineage-carnahan-garrett-2020-data",
+      "note": "Publication-defined participant-data root. Study 2 provides the target-comparable control; Study 1 lacks a true control and receives no separate target-comparable credit.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-rich-2016-result"
+      ],
+      "basis_span_keys": [
+        "span-rich-2016-experiment-1-result",
+        "span-rich-2016-experiment-2-result",
+        "span-rich-2016-experiment-2-all-conditions",
+        "span-rich-2016-control-qualifier"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:13a4c5b95cc230724c4822bc83f592ffd79c17c6d14835eb8336c35b96eeb4e4",
+      "key": "lineage-rich-2016-data",
+      "note": "Publication-defined participant-data root. Both experiments compare a correction in a no-explicit-misinformation control narrative with the uncorrected control; the narrative still mentioned the correction target.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-swire-2017-result"
+      ],
+      "basis_span_keys": [
+        "span-swire-2017-experiment-1-result",
+        "span-swire-2017-experiment-2-result",
+        "span-swire-2017-conclusion",
+        "span-prike-2023-counter-search"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:4ace6874a39d9fd0209b7f205e8ab0ffaf46049931318ed42f4a81bd4bcdb3eb",
+      "key": "lineage-swire-2017-data",
+      "note": "Publication-defined two-experiment participant-data root. It shares Ecker and Lewandowsky with other correction research but reports distinct younger and older-adult collections; program independence is not claimed.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-gordon-2019-result"
+      ],
+      "basis_span_keys": [
+        "span-gordon-2019-result",
+        "span-gordon-2019-qualifier",
+        "span-prike-2023-gordon-search"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:14d30885a097d1f5f591e31c8e4c9e0491bd001b1da24e588b7f325595fb1983",
+      "key": "lineage-gordon-2019-data",
+      "note": "Publication-defined participant-data root. Experiment 2 directly compares an only-negated narrative with a no-misinformation control; its continued-influence paradigm is a material standalone-correction boundary. Method and research-program overlap are modeled separately.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-gordon-2019-result",
+        "span-gordon-2019-qualifier",
+        "span-prike-2023-gordon-search"
+      ],
+      "depends_on": [
+        "lineage-ecker-hogan-2017-method"
+      ],
+      "dimensions": [
+        "method",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:17c0a1bf052983122a39beeaa4c7d628cc47e5df49be4377941bbfb6452399e7",
+      "key": "lineage-gordon-2019-method",
+      "note": "Continued-influence standalone-correction method lineage. Shared Ecker and Lewandowsky authorship and research-program overlap mean a separate program is not claimed; participant data remain a distinct root.",
       "status": "known",
       "visibility": "public"
     },
@@ -1900,13 +2664,14 @@
       ],
       "basis_span_keys": [
         "span-nibat-2026-scope",
-        "span-nibat-2026-result"
+        "span-nibat-2026-result",
+        "span-nibat-2026-search-overview"
       ],
       "depends_on": [],
       "dimensions": [
         "data"
       ],
-      "id": "em:dossier-lineage:sha256:36dc742ea98f0719f07a2e72f9da1988d32ca03ff9380268a43eb2c442d4ab0b",
+      "id": "em:dossier-lineage:sha256:35f5ad8a7cb1f3fe57b57558a70eb2614c7953fad45a6b1321987905ad54f47e",
       "key": "lineage-nibat-2026-data",
       "note": "Separately reported participant-data root spanning five brand-misinformation studies and 4,337 participants. Author, sample, and method independence from the earlier paper series is not inferred merely from different authorship.",
       "status": "known",
@@ -1914,17 +2679,17 @@
     },
     {
       "assertion_keys": [
-        "assert-swire-thompson-2023-result"
+        "assert-swire-thompson-2022-result"
       ],
       "basis_span_keys": [
-        "span-swire-thompson-2023-result"
+        "span-swire-thompson-2022-result"
       ],
       "depends_on": [],
       "dimensions": [
         "data"
       ],
-      "id": "em:dossier-lineage:sha256:4ef49ebaf40afd8407d7228bc7ede5f79a4b239a46e29fa6cb69cd42aee7fd9f",
-      "key": "lineage-swire-thompson-2023-data",
+      "id": "em:dossier-lineage:sha256:7f4abebcd1faf9d38a00b08af5667cfa68f0a542d3f548602f1b76fd4f49b9e5",
+      "key": "lineage-swire-thompson-2022-data",
       "note": "Publication-defined two-experiment participant-data root. Swire-Thompson also appears in other modeled papers, but the captured report describes new samples and no data-reuse dependence is asserted.",
       "status": "known",
       "visibility": "public"
@@ -1981,10 +2746,10 @@
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:d87da4689b99db4108fa561df357e8d1f09f6f8c9ec04db85b07e997d089ba7d",
+      "id": "em:dossier-proposition:sha256:6525ebebd6002f49ce46f4c980c698caa372e647a72d037d48c7225c08544b60",
       "key": "prop-peter-koch-boundary",
-      "scope": "Peter and Koch 2016 web experiment; result is visible, while target comparability remains unassessed without an exact methods span.",
-      "text": "Peter and Koch reported a delayed backfire effect after journalistic myth-and-fact coverage, but the captured abstract does not establish the target comparator design used by this dossier.",
+      "scope": "Peter and Koch 2016 web experiment; truth-memory errors after the shared article, not target-comparable belief or reliance above baseline.",
+      "text": "Peter and Koch reported a delayed backfire effect after journalistic myth-and-fact coverage, but all participants read the correction article and the study had no no-correction or pre-correction belief baseline.",
       "visibility": "public"
     },
     {
@@ -2002,9 +2767,44 @@
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:65f54fe36fb233e1258e07a13eabff70e5a2c6f7386da41292994fdb433a4dd7",
+      "id": "em:dossier-proposition:sha256:3a63a88b23e70cfc738c9c01d47ae49b0feda152f92e7595c1f1197190c4be3e",
+      "key": "prop-ecker-hogan-2017-result",
+      "scope": "Ecker, Hogan, and Lewandowsky 2017; fictional event reports, inferential reasoning, and one publication-defined participant-data series.",
+      "text": "In Ecker, Hogan, and Lewandowsky 2017, every retraction reduced misinformation reliance relative to no retraction, and a retraction that explicitly repeated the misinformation reduced reliance more than a retraction without a reminder.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:edc55f643fc79a42a5e2b3c48631318dd5b8d19a5e5c23e5a12e9e73abf36752",
+      "key": "prop-carnahan-2020-result",
+      "scope": "Carnahan and Garrett 2020 Study 2; GMO belief accuracy, one-sided and two-sided corrections, processing-style moderation, and a true control.",
+      "text": "In Carnahan and Garrett Study 2, every correction format—including two formats that repeated the misinformation—improved belief accuracy versus an unrelated-story control, with no overall disadvantage for repetition.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:dcb12f36d4d5f1f7c7daf072cb910ad60b5df98a3ed3bfdf880badc2b771e0da",
+      "key": "prop-rich-2016-result",
+      "scope": "Rich and Zaragoza 2016; control narratives mentioned the son but did not explicitly implicate him, so residual pragmatic licensing remains a design qualifier.",
+      "text": "Across two experiments, presenting a correction in a control narrative that contained no explicit misinformation did not increase misinformation reliance: Experiment 1 was null and Experiment 2 reduced reliance.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:51bcc0576de247dfdba2bb7d9df36ad5d1f3532781f86192d7b993233b60368b",
+      "key": "prop-swire-2017-result",
+      "scope": "Swire, Ecker, and Lewandowsky 2017; younger and older-adult samples, brief and detailed corrections, and pre-correction belief baselines.",
+      "text": "Across two experiments and delays up to three weeks, myth belief rebounded but remained below each experiment's pre-correction baseline; the authors reported no true familiarity backfire effect.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:f74a897886d94fe42d6fae90930b9d743b855ca1d0a11c982575128b1a6941d8",
+      "key": "prop-gordon-2019-result",
+      "scope": "Gordon, Ecker, and Lewandowsky 2019 Experiment 2; only-negated narrative versus a no-misinformation control; Bayesian evidence for the observed difference was very weak.",
+      "text": "In Gordon et al. Experiment 2, a standalone negation produced fewer misinformation inferences than a no-misinformation control rather than a familiarity-driven increase.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:9c6b99296ba054c147f4e24085e614fe2cabbc8845501e98339474a5563453aa",
       "key": "prop-reliability-counter-result",
-      "scope": "Swire-Thompson et al. 2023, published online in 2022; 21 items and two participant samples.",
+      "scope": "Swire-Thompson et al. 2022; 21 items and two participant samples.",
       "text": "Across two correction-versus-test-retest experiments, no item backfired relative to the control or initial-belief baselines.",
       "visibility": "public"
     },
@@ -2067,11 +2867,36 @@
         "Christina Peter",
         "Thomas Koch"
       ],
-      "id": "em:dossier-source-work:sha256:4754129302494bca9b3a0d698af6514a6ea32aa1320795e2cbee6cf9ef6b12da",
+      "id": "em:dossier-source-work:sha256:e2d33817cfa30d781af44a8848be014d1e79b2dffbe9a626f22a924d11cd4582",
       "key": "work-peter-koch-2016",
       "kind": "paper",
-      "license": "Crossref exposes the abstract under SAGE text-and-data-mining terms, not an open article reuse license; one quote-minimal result sentence is retained.",
+      "license": "The LMU institutional full text carries no confirmed open reuse grant; only quote-minimal attributed result and method spans are retained and the PDF is not redistributed.",
       "title": "When Debunking Scientific Myths Fails (and When It Does Not)",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1016/j.pec.2008.02.008",
+      "creators": [
+        "Elizabeth A. H. Wilson",
+        "Denise C. Park"
+      ],
+      "id": "em:dossier-source-work:sha256:a2c89382bb22443c982709fb22215e29cf55594fd68e26bba0d6daaea3d262d2",
+      "key": "work-wilson-park-2008",
+      "kind": "paper",
+      "license": "No open article reuse license was confirmed; only two quote-minimal attributed PubMed abstract spans are retained.",
+      "title": "A Case for Clarity in the Writing of Health Statements",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1017/S0007123415000186",
+      "creators": [
+        "Adam J. Berinsky"
+      ],
+      "id": "em:dossier-source-work:sha256:e70d28cde72b36d731768cb25bf9faf770e48b89b5ab550fe185c9f48fd8466d",
+      "key": "work-berinsky-2017",
+      "kind": "paper",
+      "license": "No open reuse license was confirmed for the author-hosted journal PDF; only three quote-minimal attributed design, result, and qualifier spans are retained.",
+      "title": "Rumors and Health Care Reform: Experiments in Political Misinformation",
       "visibility": "public"
     },
     {
@@ -2119,6 +2944,116 @@
       "kind": "paper",
       "license": "Crossref identifies both accepted-manuscript and version-of-record content as Creative Commons Attribution-NonCommercial-NoDerivatives 4.0; one short attributed abstract result is retained.",
       "title": "The effectiveness of short‐format refutational fact‐checks",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1016/j.jarmac.2017.01.014",
+      "creators": [
+        "Ullrich K. H. Ecker",
+        "Joshua L. Hogan",
+        "Stephan Lewandowsky"
+      ],
+      "id": "em:dossier-source-work:sha256:6030d03406bb0d2a8c5348f7497008888f9f4b410dbe9c221889bf473e964517",
+      "key": "work-ecker-hogan-2017",
+      "kind": "paper",
+      "license": "Bristol repository metadata labels the accepted manuscript CC BY-NC-ND; four quote-minimal attributed result and method extents are retained and the PDF is not redistributed.",
+      "title": "Reminders and Repetition of Misinformation: Helping or Hindering Its Retraction?",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1177/0956797620952797",
+      "creators": [
+        "Christopher N. Wahlheim",
+        "Timothy R. Alexander",
+        "Carson D. Peske"
+      ],
+      "id": "em:dossier-source-work:sha256:856df3a0deb5b7f11611d878263eee9dc608759bb44deae687626143c6db42aa",
+      "key": "work-wahlheim-2020",
+      "kind": "paper",
+      "license": "No open reuse license was confirmed for the coauthor-lab publisher PDF; only three quote-minimal attributed abstract sentences are retained.",
+      "title": "Reminders of Everyday Misinformation Statements Can Enhance Memory for and Beliefs in Corrections of Those Statements in the Short Term",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1186/s41235-022-00434-1",
+      "creators": [
+        "Paige L. Kemp",
+        "Timothy R. Alexander",
+        "Christopher N. Wahlheim"
+      ],
+      "id": "em:dossier-source-work:sha256:b87e14033b7466abd4600bd0c1e721825abdd17d49496f99ac60af769ffb7b1a",
+      "key": "work-kemp-2022a",
+      "kind": "paper",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "title": "Recalling Fake News During Real News Corrections Can Impair or Enhance Memory Updating: The Role of Recollection-Based Retrieval",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1038/s41598-022-25649-6",
+      "creators": [
+        "Paige L. Kemp",
+        "Vanessa M. Loaiza",
+        "Christopher N. Wahlheim"
+      ],
+      "id": "em:dossier-source-work:sha256:313fb4a9ba5ec5fbc63b7bd0f9349be486d0dab9a5ff2e7dea6b68cde7992946",
+      "key": "work-kemp-2022b",
+      "kind": "paper",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "title": "Fake News Reminders and Veracity Labels Differentially Benefit Memory and Belief Accuracy for News Headlines",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1093/ijpor/edz037",
+      "creators": [
+        "Dustin Carnahan",
+        "R. Kelly Garrett"
+      ],
+      "id": "em:dossier-source-work:sha256:32673b6c81706169baaa929ce9a8608553af0af4b967987fa2537bc9fc87fd34",
+      "key": "work-carnahan-garrett-2020",
+      "kind": "paper",
+      "license": "Publisher full text is publicly readable, but no open reuse license was confirmed; only four quote-minimal attributed result fragments are retained.",
+      "title": "Processing Style and Responsiveness to Corrective Information",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1037/xlm0000155",
+      "creators": [
+        "Patrick R. Rich",
+        "Maria S. Zaragoza"
+      ],
+      "id": "em:dossier-source-work:sha256:252c99e4edc12667a76555d0d997e72d7ea2b42d8f099c403aa33072b0915d31",
+      "key": "work-rich-zaragoza-2016",
+      "kind": "paper",
+      "license": "APA makes the journal PDF publicly readable but no open reuse license was confirmed; only quote-minimal result and design fragments are retained.",
+      "title": "The Continued Influence of Implied and Explicitly Stated Misinformation in News Reports",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1037/xlm0000422",
+      "creators": [
+        "Briony Swire",
+        "Ullrich K. H. Ecker",
+        "Stephan Lewandowsky"
+      ],
+      "id": "em:dossier-source-work:sha256:1c9a64b564932405a03240ed8980939c05e1833826f8e39ee319a6ca9dce83ba",
+      "key": "work-swire-2017",
+      "kind": "paper",
+      "license": "No open reuse license was confirmed for the coauthor-lab manuscript; only three quote-minimal attributed result sentences are retained and the PDF is not redistributed.",
+      "title": "The Role of Familiarity in Correcting Inaccurate Information",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1016/j.jml.2019.104028",
+      "creators": [
+        "Andrew Gordon",
+        "Ullrich K. H. Ecker",
+        "Stephan Lewandowsky"
+      ],
+      "id": "em:dossier-source-work:sha256:8da40af977f7cac08b033535888a884ef8983aed899f9dc0f95ae149fc2cbc26",
+      "key": "work-gordon-2019",
+      "kind": "paper",
+      "license": "The UWA repository record labels the accepted manuscript CC BY-NC-ND; the coauthor-lab preprint bytes are identified separately, two quote-minimal result extents are retained, and the PDF is not redistributed.",
+      "title": "Polarity and Attitude Effects in the Continued-Influence Paradigm",
       "visibility": "public"
     },
     {
@@ -2214,8 +3149,8 @@
         "David Lazer",
         "Joseph DeGutis"
       ],
-      "id": "em:dossier-source-work:sha256:fc99d91df0169ec4c0e2f0b5d4d5270e685cbd901381989e2fa07acfa24d7aed",
-      "key": "work-swire-thompson-2023",
+      "id": "em:dossier-source-work:sha256:b2d46a9474bb35939c54e0ebf73a3f8c48b14258f60def46a486888d3b21315c",
+      "key": "work-swire-thompson-2022",
       "kind": "paper",
       "license": "The examined NCBI author-manuscript XML permits text mining and fair-use treatment but states no open reuse license; only short attributed abstract results are retained.",
       "title": "The backfire effect after correcting misinformation is strongly associated with reliability",
@@ -2641,6 +3576,150 @@
       "visibility": "public"
     },
     {
+      "digest": "sha256:24f1cb722a531f9a3b7049ff57145e16fe69ce057aa72c835acd95f5345bb917",
+      "edition_key": "edition-peter-koch-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "the journalist reported eight scientific statements about the test and identified each statement immediately as true or false, followed by a short explanation"
+      },
+      "id": "em:dossier-span:sha256:01d6decb6f861eddbe77803c5c46cebd69bc7ca085653f53ace4db9a105925a2",
+      "key": "span-peter-koch-2016-shared-stimulus",
+      "locator": {
+        "label": "PDF p. 10 / journal p. 12, shared myths-and-facts stimulus",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:f79c30c88ee2a160016107aebede924e6f29f7ab8bf5e6735ddb151125a30759",
+      "edition_key": "edition-peter-koch-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "Participants were randomly assigned to one of the two conditions."
+      },
+      "id": "em:dossier-span:sha256:7af6213052d61e5175bb3569b4e0546c80d5ed236f45f0387965195165a0d7a2",
+      "key": "span-peter-koch-2016-randomization",
+      "locator": {
+        "label": "PDF p. 11 / journal p. 13, randomized instruction condition",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:627b779c2722ad55ea1c1410e05534458d1ac21249d4628eb8c9b1f5f28fdc63",
+      "edition_key": "edition-peter-koch-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "For each claim, we asked participants to indicate whether it was labeled as “true” or “false” in the article or whether it had not been presented in the article (“new”)."
+      },
+      "id": "em:dossier-span:sha256:a7f151cfe43b9c45ec196a32b5f1ecd092c45fcefd6755562b1e204a0c28f0d5",
+      "key": "span-peter-koch-2016-measure",
+      "locator": {
+        "label": "PDF p. 11 / journal p. 13, truth-memory measure",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:c54a61b5369b6815cb54ede826730bd9361f50b8597a004516808edb1acd2f90",
+      "edition_key": "edition-peter-koch-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "labeling an originally false statement as true (backfire error)"
+      },
+      "id": "em:dossier-span:sha256:a6e0177fd81f8833752e2a02019e42cb93c61109decab5f272e90031cee70e0c",
+      "key": "span-peter-koch-2016-error-definition",
+      "locator": {
+        "label": "PDF p. 12 / journal p. 14, backfire-error definition",
+        "pointer": "/excerpts/4/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:b49174f07140781f4dfc03700eb1e59e477c55d2e3f99248b99ba9d4970f4522",
+      "edition_key": "edition-wilson-park-2008",
+      "extent": {
+        "type": "json-value",
+        "value": "Younger and older adults read positively and negatively worded statements and were later tested for memory of the exact statements, statements opposite in meaning due to the addition or deletion of a negation, and entirely new statements."
+      },
+      "id": "em:dossier-span:sha256:21cf689318a333967d2bc5fa809df433300d0c5f0aac74ba7fcaf653d47c28b4",
+      "key": "span-wilson-park-2008-method",
+      "locator": {
+        "label": "PubMed abstract, Methods",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:dc1472cbb4fda23b06a5704399fac8155d166f22a229c6d57de7aeb7f93b2931",
+      "edition_key": "edition-wilson-park-2008",
+      "extent": {
+        "type": "json-value",
+        "value": "When statements reversed meanings, younger adults were more likely to accurately recognize items that changed from negative to positive than were older adults, who were more likely to incorrectly endorse changed items as intact when items began negative and became positive than the reverse."
+      },
+      "id": "em:dossier-span:sha256:fa379ffed62c3e4e47477061ba35d996bf83857bfa7adc9af22ef73a8f07a5bc",
+      "key": "span-wilson-park-2008-result",
+      "locator": {
+        "label": "PubMed abstract, Results",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:4b7de7a9c0cb1487af7038f0c8891596eeaa2618a0ae438dfef9d7a7ad6f00d4",
+      "edition_key": "edition-berinsky-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "There was no control group in this experiment."
+      },
+      "id": "em:dossier-span:sha256:2df3355cd6d667cafe3c9faf881df3128dfd446d3f169b8969f4dc2529a07756",
+      "key": "span-berinsky-2017-no-control",
+      "locator": {
+        "label": "PDF p. 14 / journal p. 254, Study 2 design",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:712f7f2e12aa3055fc14655cb208a0a47bc7880c5ad70454d75d07cebfe60682",
+      "edition_key": "edition-berinsky-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "The increased rehearsal of the rumor – in the absence of any information about its veracity – was sufﬁcient to decrease rumor rejection rates, even when the rumor was initially presented in combination with a powerful correction."
+      },
+      "id": "em:dossier-span:sha256:3cf45c55b034ced9c7cb518abfb73cd4fef33e320925b8dec0b70bcdbcdede4c",
+      "key": "span-berinsky-2017-rehearsal-result",
+      "locator": {
+        "label": "PDF p. 17 / journal p. 257, rehearsal result",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:f6b6303ad0eabda16fb6ae2de6e07e98a230f0edf462bb74ce40e2d0339459b6",
+      "edition_key": "edition-berinsky-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "though the differences are statistically signiﬁcant at the 0.10 level only in the ‘rumor only’ condition"
+      },
+      "id": "em:dossier-span:sha256:1171e12dca8a2be306914ec4ac515422ccb14c4c214b09f0c9c357f63f0e3264",
+      "key": "span-berinsky-2017-rehearsal-qualifier",
+      "locator": {
+        "label": "PDF p. 17 / journal p. 257, correction-arm significance qualifier",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
       "digest": "sha256:ec3d51daee9c7b808a781416585bb31174b1a5a5d2e86e86e68df578570b3a29",
       "edition_key": "edition-cameron-2013",
       "extent": {
@@ -2684,6 +3763,422 @@
       "locator": {
         "label": "Crossref abstract simple-retraction result",
         "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:0b66f2ed1c9e09eb6df7c10b651c8d1cfb421a9540742f507b56c8681cf4bf52",
+      "edition_key": "edition-ecker-hogan-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "Retractions that explicitly repeated the misinformation were more effective in reducing misinformation effects than retractions that avoided repetition, presumably because of enhanced salience."
+      },
+      "id": "em:dossier-span:sha256:26847f50c137b2cb2c4b7b7c08be807eed953b5da282194402fdaa7c0f6a5caf",
+      "key": "span-ecker-hogan-2017-result",
+      "locator": {
+        "label": "Accepted manuscript p. 3, abstract result",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:4b4ba61093d28b7a09ea8edbb784de85f0d3ecd443fe80524e61cccae83b6560",
+      "edition_key": "edition-ecker-hogan-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "any kind of retraction reduced reliance on misinformation compared to a control condition with no retraction"
+      },
+      "id": "em:dossier-span:sha256:ad37607dc9011334cfa46ce2d8b12f359096c8b3f3df274c6f7f8581f357eb4b",
+      "key": "span-ecker-hogan-2017-no-retraction-result",
+      "locator": {
+        "label": "Accepted manuscript p. 18, retraction-versus-control result",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:b5c7e3955926f6ba50aa891ed457eb88c70a5743c94c55a7b62b841822615422",
+      "edition_key": "edition-ecker-hogan-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "a retraction that explicitly repeated the misinformation (condition RER) lowered reliance on misinformation more than a retraction that provided no reminder (condition RNR)"
+      },
+      "id": "em:dossier-span:sha256:fccbc37a509545ac34a18dab70c72eb54b4dbdec6b9545df9f35ad292a77f62d",
+      "key": "span-ecker-hogan-2017-repeat-result",
+      "locator": {
+        "label": "Accepted manuscript p. 18, explicit-repeat contrast",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:64f132d9c1ba3aeb9fe28aeb96599a952ffaad86b5dd7ab270bc273d487ffcb0",
+      "edition_key": "edition-ecker-hogan-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "each retraction was accompanied by an alternative causal account of the event"
+      },
+      "id": "em:dossier-span:sha256:bbbe225bac116948f98caeb77ff1e777cc8d405b5d43c7f1fe47fbd1258b108d",
+      "key": "span-ecker-hogan-2017-alternative-account",
+      "locator": {
+        "label": "Accepted manuscript p. 18, alternative-account qualifier",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:11f3daf518b862413c502ea2e902ea960f42e82ec80597bb01c9d75c65db670f",
+      "edition_key": "edition-wahlheim-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "Misinformation reminders appeared before some corrections but not others."
+      },
+      "id": "em:dossier-span:sha256:0859d63df2fd2553a54bede8380c8bdcde2272e05d43bf873b472376e3ae4c5f",
+      "key": "span-wahlheim-2020-design",
+      "locator": {
+        "label": "PDF p. 1, abstract design",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:47ed2a43a0cf0303743cf2d8ab8ab618f42ffd6b51d588449458ea1bf94aba43",
+      "edition_key": "edition-wahlheim-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "Subjects then attempted to recall facts, indicated their belief in those recalls, and indicated whether they remembered corrections and misinformation."
+      },
+      "id": "em:dossier-span:sha256:6881ece1a87d920941dd9dcec4df52d8bfdb0b9f1b76148c84846d36f6c3833c",
+      "key": "span-wahlheim-2020-endpoint",
+      "locator": {
+        "label": "PDF p. 1, abstract endpoint",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:3459917b9183fd36540afe567539a8be44d13cb74b6e0662497847b569bcf5f7",
+      "edition_key": "edition-wahlheim-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "Reminders increased recall and belief accuracy."
+      },
+      "id": "em:dossier-span:sha256:39e8e325388b0fec747fadd1b7436043dda006675eaa2ef46f659177be1fc716",
+      "key": "span-wahlheim-2020-result",
+      "locator": {
+        "label": "PDF p. 1, abstract result",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:7a1ff7511b30f81598aa0da33171865527d4aad8b75e998bda407754c13d0cbb",
+      "edition_key": "edition-kemp-2022a",
+      "extent": {
+        "type": "json-value",
+        "value": "Two experiments examined if one theory better accounts for memory updating after participants recalled actual fake news details when reading headlines that corrected misinformation."
+      },
+      "id": "em:dossier-span:sha256:831dff85ce4a4ed7d27cc7a8286292bb9bcb0af6a156332944c33730f27e92b4",
+      "key": "span-kemp-2022a-design",
+      "locator": {
+        "label": "JATS abstract, design",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:5b15c9712d537f216c08bb3cf83964b95bb828a5779368617dca0986fe5449df",
+      "edition_key": "edition-kemp-2022a",
+      "extent": {
+        "type": "json-value",
+        "value": "Recalling fake news when noticing corrections in Phase 2 led to better memory for real news in Phase 3 when fake news was recalled again and worse memory for real news in Phase 3 when fake news was not recalled again."
+      },
+      "id": "em:dossier-span:sha256:467491191365bca5b7e169ff90504c73cc949faaedd6408f00ae95937f867d15",
+      "key": "span-kemp-2022a-mixed-result",
+      "locator": {
+        "label": "JATS abstract, mixed conditional result",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e7777085a66f3df63be8829f4070535e693574fda9c752d5dcc069e8ff708ca6",
+      "edition_key": "edition-kemp-2022a",
+      "extent": {
+        "type": "json-value",
+        "value": "Phase 2 included 45 headlines [15 real news from Phase 1 (Repetition); 15 real news that corrected fake news from Phase 1 (Correction); and 15 real news that appeared only in Phase 2 (Control)]. We included control headlines as a contrast condition against which to assess proactive effects of fake news exposure on memory for real news headlines."
+      },
+      "id": "em:dossier-span:sha256:92a511a8cf76fafbaa0814e2ff63fe1a137cba346eefddb816d7994a3f5fe2cd",
+      "key": "span-kemp-2022a-control-boundary",
+      "locator": {
+        "label": "JATS Par21, control-endpoint boundary",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e070ff33d9bf78a778a5834b9521abce41f4369cb02b6bd52b7642b4e8d9a2ec",
+      "edition_key": "edition-kemp-2022b",
+      "extent": {
+        "type": "json-value",
+        "value": "Participants then saw labeled and unlabeled real news corrections; labeled corrections appeared alone or after fake news reminders."
+      },
+      "id": "em:dossier-span:sha256:52f3566acd770e59ec0bbe69ed1ffadfb9689a189a2cfd0426c64344f798969a",
+      "key": "span-kemp-2022b-design",
+      "locator": {
+        "label": "JATS abstract, correction/reminder design",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:5ace0f0f90b2dd3795125cb71ad7d2e29cca42d85c65bc4b947914396641193e",
+      "edition_key": "edition-kemp-2022b",
+      "extent": {
+        "type": "json-value",
+        "value": "Reminders promoted the best memory and belief accuracy, whereas veracity labels had selective effects."
+      },
+      "id": "em:dossier-span:sha256:bee3e8d020932bf2597d468b7c0794f8ddc1c20832ec00f0818f8a991d925ef4",
+      "key": "span-kemp-2022b-result",
+      "locator": {
+        "label": "JATS abstract, reminder result",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:b727dad3501bfc141df97385fc2e143d8dace0cc3405a7f4bf3b2349dba0fa7c",
+      "edition_key": "edition-kemp-2022b",
+      "extent": {
+        "type": "json-value",
+        "value": "However, this does not fully isolate the fake news reminder effect because that would require a condition including fake news reminders alone (i.e., not followed by corrections)."
+      },
+      "id": "em:dossier-span:sha256:ebda4903ade67f6d55b641139d28948e31c317f7c8c1872bee8eb2d802295934",
+      "key": "span-kemp-2022b-limitation",
+      "locator": {
+        "label": "JATS Par27, reminder-isolation limitation",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:c858bc3b8052d2dfa10a18537034bf39abd3ecfe5736083956e38df0fe8d2ccf",
+      "edition_key": "edition-carnahan-garrett-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "participants receiving a corrective message scored four to five points (or 10–12%) higher on the belief accuracy measure than those in the control group"
+      },
+      "id": "em:dossier-span:sha256:ff462502cae1cae60a5521477fdcd50ff66987bda62e95532a14b5b4103303ee",
+      "key": "span-carnahan-2020-control-result",
+      "locator": {
+        "label": "Study 2 results, correction-versus-control result",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:3052250d8aafd21224a4ae6ef612c5b8a7f7faa17e39ff97f29e1394ff81fa23",
+      "edition_key": "edition-carnahan-garrett-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "pairwise comparisons between each of the correction treatment groups and the control group found these differences to be statistically significant (p < .05)."
+      },
+      "id": "em:dossier-span:sha256:8bf3a9d42589a14844cf750ff260aed3d5c170d5d48cbf1898187f8911bf1dd7",
+      "key": "span-carnahan-2020-pairwise-result",
+      "locator": {
+        "label": "Study 2 results, control-pairwise result",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:081dead7497b9af0d33c0d292bad683114425621dcd3cda11b6dcce1c671ca2f",
+      "edition_key": "edition-carnahan-garrett-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "none of the coefficients on message format are significant"
+      },
+      "id": "em:dossier-span:sha256:2f469e57e2679afee48a9270ef807e35dadbbefb50a4f91ca93263c29852ca30",
+      "key": "span-carnahan-2020-format-null",
+      "locator": {
+        "label": "Study 2 results, message-format null",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:21df974c5262b4f034298214c40e061dc390f586a4634188667c8187247e2a6e",
+      "edition_key": "edition-carnahan-garrett-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "Among those in the MB processing condition, both two-sided messages outperformed the one-sided message."
+      },
+      "id": "em:dossier-span:sha256:64fe7fde29a08261c1f2891afcebdda168419a31a06ee16d55a918d4a3176043",
+      "key": "span-carnahan-2020-processing-boundary",
+      "locator": {
+        "label": "Study 2 results, memory-based processing boundary",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e3a7a287276bc8e723a41e5d67cd0f2b2d27c2b5536b33f24bb0d25ea2096ac0",
+      "edition_key": "edition-rich-zaragoza-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "The correction did not reliably affect performance in the control condition (Contrast 7)."
+      },
+      "id": "em:dossier-span:sha256:e5c19410e4883f03d903e3e2a1245dbf944ed48409002348b9290e757381e036",
+      "key": "span-rich-2016-experiment-1-result",
+      "locator": {
+        "label": "PDF p. 5 / journal p. 66, Experiment 1 correction effect",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:a432378a7f3216c68230be4d71d1aa7ab1dd6c9d8fb6f14c4bcaf63e992bcb31",
+      "edition_key": "edition-rich-zaragoza-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "The pattern of results replicated those of Experiment 1, with the exception that the correction reduced misinformation reliance even in the control condition."
+      },
+      "id": "em:dossier-span:sha256:2d5c23370fc1082ec803b13a9b28e67724bfc026239bae8ecc0c6bee59bf4f87",
+      "key": "span-rich-2016-experiment-2-result",
+      "locator": {
+        "label": "PDF p. 7 / journal p. 68, Experiment 2 control result",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:addb72eaa497108662d5bbc798fe0effce293055bd0079b38d274e4e8ebe033d",
+      "edition_key": "edition-rich-zaragoza-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "there was a reliable correction effect in all three conditions (including the control condition, see Contrasts 7, 8, and 9)"
+      },
+      "id": "em:dossier-span:sha256:98131d2a11b9d1f6c6a6b89fb15787050313af2f25e77016d0a2799c8a217e72",
+      "key": "span-rich-2016-experiment-2-all-conditions",
+      "locator": {
+        "label": "PDF p. 7 / journal p. 68, Experiment 2 correction effects",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:3aa91d25e85c7c5f13b2128c0e365919a0db6d0aa332b77a9c497d5a639685f4",
+      "edition_key": "edition-rich-zaragoza-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "may have, to a small extent, implicated the son as a potential suspect"
+      },
+      "id": "em:dossier-span:sha256:1a5d163c57c608ed3c450d17611ca275351fe84b86c25a130a9a89aac0ed4a16",
+      "key": "span-rich-2016-control-qualifier",
+      "locator": {
+        "label": "PDF p. 5 / journal p. 66, control-story qualifier",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:2b7cbde31cb58b716ce4bef49b67bc69a2658c80db11ae58bef8e334c34d5cf6",
+      "edition_key": "edition-swire-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "As post-manipulation belief levels remained below pre-manipulation belief levels, no true backfire effect was elicited."
+      },
+      "id": "em:dossier-span:sha256:67cea7ef21da8067b0900ddf3bc0454934f50112ae4e5ba26a1507f3a6cd6cbf",
+      "key": "span-swire-2017-experiment-1-result",
+      "locator": {
+        "label": "Manuscript p. 16, Experiment 1 result",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:28bb00172915d296cb5b7a62697392451d874ac254d40f39ad8a66418fb345dc",
+      "edition_key": "edition-swire-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "As post-manipulation myth belief levels remained below pre-manipulation belief levels, no true backfire effect was elicited."
+      },
+      "id": "em:dossier-span:sha256:aae1631679fac26b7d5ef3902d957f820632727ccd04f164db3dbe8578c8776b",
+      "key": "span-swire-2017-experiment-2-result",
+      "locator": {
+        "label": "Manuscript p. 22, Experiment 2 result",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:4d93c225b3db9a30425b55619723c0fda057f817934daad436233f1429b194be",
+      "edition_key": "edition-swire-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "However, we found no evidence for the existence of a true familiarity-based backfire effect."
+      },
+      "id": "em:dossier-span:sha256:1dda269f69b9276d6d80febceb648db83de6bc97dc0321e263b94d97cadea100",
+      "key": "span-swire-2017-conclusion",
+      "locator": {
+        "label": "Manuscript p. 30, discussion conclusion",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:a503d253bafff59764474ce44a22eca8cebfcf1bba47fab38a044f6ebabf8b09",
+      "edition_key": "edition-gordon-2019",
+      "extent": {
+        "type": "json-value",
+        "value": "Experiment 2 clarified that only-negated narratives produced significantly fewer misinformation inferences than a control condition in which the misinformation was never mentioned."
+      },
+      "id": "em:dossier-span:sha256:30e4fa215273432bed175ffa31bf0f89a34315077f0c440e1b311e4343627579",
+      "key": "span-gordon-2019-result",
+      "locator": {
+        "label": "Preprint p. 32, Experiment 2 discussion",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:08717a12e4496e43c256759d8728e722becb574eb80dd36cb792b2974a6ba3ff",
+      "edition_key": "edition-gordon-2019",
+      "extent": {
+        "type": "json-value",
+        "value": "Participants mentioned the critical information significantly less following a negation than if that information was never mentioned, although the corresponding Bayesian analysis indicated only very weak evidence for a difference between the two, meaning that this interpretation must be made with some caution."
+      },
+      "id": "em:dossier-span:sha256:75f994f902538d88fa866eec2869dba811c809bc17fa286b8f18d278481dc76f",
+      "key": "span-gordon-2019-qualifier",
+      "locator": {
+        "label": "Preprint p. 24, Bayesian result qualifier",
+        "pointer": "/excerpts/1/text",
         "type": "json-pointer"
       },
       "visibility": "public"
@@ -2748,6 +4243,38 @@
       "locator": {
         "label": "General discussion sample comparison",
         "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:35eae3b4e2f4dc57796a88065b2592ca6628f154df8b34a76641083b60b1d21c",
+      "edition_key": "edition-prike-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "However, there is little empirical evidence in support of this familiarity backfire effect (Cameron et al., 2013; Ecker et al., 2017; Ecker et al., 2020c; Ecker et al., 2023; Kemp et al., 2022a, 2022b; Swire et al., 2017; Wahlheim et al., 2020; for reviews, see Ecker et al., 2022; Swire-Thompson et al., 2022)."
+      },
+      "id": "em:dossier-span:sha256:a9bb9ef2875d9cd890551bfff80f85970f4ae8904449846c77a2f3346db61078",
+      "key": "span-prike-2023-counter-search",
+      "locator": {
+        "label": "Introduction, bounded counterevidence search",
+        "pointer": "/excerpts/4/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:c3421868abe9a140c4d3c78ea5b9d0671a5bc7e3e2fae4e3003a3657d7b82334",
+      "edition_key": "edition-prike-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "Although these accounts offer some theoretical justification for why standalone corrections may backfire, some previous studies using standalone corrections without initial misinformation exposure have not found any evidence of deleterious effects (Ecker et al., 2020b, 2020c; Gordon et al., 2019)."
+      },
+      "id": "em:dossier-span:sha256:57a199ee13572afda1af73c38a77f00d3a8f0ed646fa45bf1a1af4662bca7dbb",
+      "key": "span-prike-2023-gordon-search",
+      "locator": {
+        "label": "Introduction, standalone-correction search",
+        "pointer": "/excerpts/5/text",
         "type": "json-pointer"
       },
       "visibility": "public"
@@ -2993,14 +4520,30 @@
       "visibility": "public"
     },
     {
+      "digest": "sha256:4458a1abfa1badf27fa59c2de81a7d6efbe3be1a8a2a15eef14e5c5dbcdf5955",
+      "edition_key": "edition-nibat-2026",
+      "extent": {
+        "type": "json-value",
+        "value": "Some studies report no evidence of a familiarity backfire effect (e.g., Ecker et al., 2019, 2023; Swire et al., 2017) and even show repetition can enhance correction effectiveness (Ecker et al., 2017; Kemp et al., 2022; Wahlheim et al., 2020). Other work finds that corrections increase belief in misinformation or reliance on it, especially when brief and minimal, as with fact-checking labels (e.g., Berinsky, 2017; Peter & Koch, 2016; Pluviano et al., 2017, 2019; Skurnik et al., 2005)."
+      },
+      "id": "em:dossier-span:sha256:21ef0a334b3e2340bf0e260128e7cd2569211a89078535e586f0cb0c49b24af8",
+      "key": "span-nibat-2026-search-overview",
+      "locator": {
+        "label": "PDF p. 3, bounded literature overview",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
       "digest": "sha256:b1f24159da1891a12efbe4ed519863c3313eb0a4f16c551902c128443d846de2",
-      "edition_key": "edition-swire-thompson-2023",
+      "edition_key": "edition-swire-thompson-2022",
       "extent": {
         "type": "json-value",
         "value": "In two nearly identical experiments, we conducted a longitudinal pre/post design with N = 388 and 532 participants. Participants rated 21 misinformation items and were assigned to a correction condition or test-retest control. We found that no items backfired more in the correction condition compared to test-retest control or initial belief ratings."
       },
-      "id": "em:dossier-span:sha256:bfb079829bc1aaf73cb115d940524810d543554aa0bdbd508fa07a6510ad8fa5",
-      "key": "span-swire-thompson-2023-result",
+      "id": "em:dossier-span:sha256:732d6b627e2fbdf70012975122e0bfe4e81381b99e7b6f26ad24ac31e22cdab9",
+      "key": "span-swire-thompson-2022-result",
       "locator": {
         "label": "BioC abstract design, controls, and no-backfire result",
         "pointer": "/excerpts/0/text",

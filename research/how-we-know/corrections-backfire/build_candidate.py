@@ -26,6 +26,7 @@ CANDIDATE_PATH = HERE / "candidate-dossier.json"
 RETRIEVED_AT = "2026-08-22T06:13:51Z"
 CORRECTION_RETRIEVED_AT = "2026-08-22T07:11:15Z"
 REVIEW_REPAIR_RETRIEVED_AT = "2026-08-22T16:14:38Z"
+SEARCH_LEDGER_RETRIEVED_AT = "2026-08-22T17:32:37Z"
 
 
 def prose(*sentences: str) -> str:
@@ -326,7 +327,7 @@ ECKER_SHORT_2020_RESULT = (
     "Regarding (1), simple retractions reduced belief in false claims, and we found no evidence "
     "for a familiarity‐driven backfire effect."
 )
-SWIRE_THOMPSON_2023_RESULT = prose(
+SWIRE_THOMPSON_2022_RESULT = prose(
     "In two nearly identical experiments, we conducted a longitudinal pre/post design with "
     "N = 388 and 532 participants.",
     "Participants rated 21 misinformation items and were assigned to a correction condition "
@@ -334,9 +335,167 @@ SWIRE_THOMPSON_2023_RESULT = prose(
     "We found that no items backfired more in the correction condition compared to test-retest "
     "control or initial belief ratings.",
 )
+SWIRE_2017_EXPERIMENT_1_RESULT = (
+    "As post-manipulation belief levels remained below pre-manipulation belief levels, no "
+    "true backfire effect was elicited."
+)
+SWIRE_2017_EXPERIMENT_2_RESULT = (
+    "As post-manipulation myth belief levels remained below pre-manipulation belief levels, "
+    "no true backfire effect was elicited."
+)
+SWIRE_2017_CONCLUSION = (
+    "However, we found no evidence for the existence of a true familiarity-based backfire "
+    "effect."
+)
+GORDON_2019_RESULT = (
+    "Experiment 2 clarified that only-negated narratives produced significantly fewer "
+    "misinformation inferences than a control condition in which the misinformation was "
+    "never mentioned."
+)
+GORDON_2019_QUALIFIER = prose(
+    "Participants mentioned the critical information significantly less following a negation "
+    "than if that information was never mentioned, although the corresponding Bayesian "
+    "analysis indicated only very weak evidence for a difference between the two, meaning "
+    "that this interpretation must be made with some caution."
+)
+RICH_2016_EXPERIMENT_1_RESULT = (
+    "The correction did not reliably affect performance in the control condition (Contrast 7)."
+)
+RICH_2016_EXPERIMENT_2_RESULT = (
+    "The pattern of results replicated those of Experiment 1, with the exception that the "
+    "correction reduced misinformation reliance even in the control condition."
+)
+RICH_2016_EXPERIMENT_2_ALL_CONDITIONS = (
+    "there was a reliable correction effect in all three conditions (including the control "
+    "condition, see Contrasts 7, 8, and 9)"
+)
+RICH_2016_CONTROL_QUALIFIER = (
+    "may have, to a small extent, implicated the son as a potential suspect"
+)
+CARNAHAN_2020_CONTROL_RESULT = (
+    "participants receiving a corrective message scored four to five points (or 10–12%) "
+    "higher on the belief accuracy measure than those in the control group"
+)
+CARNAHAN_2020_PAIRWISE_RESULT = (
+    "pairwise comparisons between each of the correction treatment groups and the control "
+    "group found these differences to be statistically significant (p < .05)."
+)
+CARNAHAN_2020_FORMAT_NULL = "none of the coefficients on message format are significant"
+CARNAHAN_2020_PROCESSING_BOUNDARY = (
+    "Among those in the MB processing condition, both two-sided messages outperformed the "
+    "one-sided message."
+)
+PRIKE_2023_COUNTER_SEARCH = (
+    "However, there is little empirical evidence in support of this familiarity backfire "
+    "effect (Cameron et al., 2013; Ecker et al., 2017; Ecker et al., 2020c; Ecker et al., "
+    "2023; Kemp et al., 2022a, 2022b; Swire et al., 2017; Wahlheim et al., 2020; for "
+    "reviews, see Ecker et al., 2022; Swire-Thompson et al., 2022)."
+)
+PRIKE_2023_GORDON_SEARCH = (
+    "Although these accounts offer some theoretical justification for why standalone "
+    "corrections may backfire, some previous studies using standalone corrections without "
+    "initial misinformation exposure have not found any evidence of deleterious effects "
+    "(Ecker et al., 2020b, 2020c; Gordon et al., 2019)."
+)
+NIBAT_2026_SEARCH_OVERVIEW = prose(
+    "Some studies report no evidence of a familiarity backfire effect (e.g., Ecker et al., "
+    "2019, 2023; Swire et al., 2017) and even show repetition can enhance correction "
+    "effectiveness (Ecker et al., 2017; Kemp et al., 2022; Wahlheim et al., 2020).",
+    "Other work finds that corrections increase belief in misinformation or reliance on it, "
+    "especially when brief and minimal, as with fact-checking labels (e.g., Berinsky, 2017; "
+    "Peter & Koch, 2016; Pluviano et al., 2017, 2019; Skurnik et al., 2005).",
+)
+WILSON_PARK_2008_METHOD = (
+    "Younger and older adults read positively and negatively worded statements and were "
+    "later tested for memory of the exact statements, statements opposite in meaning due "
+    "to the addition or deletion of a negation, and entirely new statements."
+)
+WILSON_PARK_2008_RESULT = (
+    "When statements reversed meanings, younger adults were more likely to accurately "
+    "recognize items that changed from negative to positive than were older adults, who "
+    "were more likely to incorrectly endorse changed items as intact when items began "
+    "negative and became positive than the reverse."
+)
+BERINSKY_2017_NO_CONTROL = "There was no control group in this experiment."
+BERINSKY_2017_REHEARSAL_RESULT = (
+    "The increased rehearsal of the rumor – in the absence of any information about its "
+    "veracity – was sufﬁcient to decrease rumor rejection rates, even when the rumor was "
+    "initially presented in combination with a powerful correction."
+)
+BERINSKY_2017_REHEARSAL_QUALIFIER = (
+    "though the differences are statistically signiﬁcant at the 0.10 level only in the "
+    "‘rumor only’ condition"
+)
+ECKER_HOGAN_2017_RESULT = (
+    "Retractions that explicitly repeated the misinformation were more effective in reducing "
+    "misinformation effects than retractions that avoided repetition, presumably because of "
+    "enhanced salience."
+)
+ECKER_HOGAN_2017_NO_RETRACTION_RESULT = (
+    "any kind of retraction reduced reliance on misinformation compared to a control condition "
+    "with no retraction"
+)
+ECKER_HOGAN_2017_REPEAT_RESULT = (
+    "a retraction that explicitly repeated the misinformation (condition RER) lowered reliance "
+    "on misinformation more than a retraction that provided no reminder (condition RNR)"
+)
+ECKER_HOGAN_2017_ALTERNATIVE_ACCOUNT = (
+    "each retraction was accompanied by an alternative causal account of the event"
+)
+WAHLHEIM_2020_DESIGN = (
+    "Misinformation reminders appeared before some corrections but not others."
+)
+WAHLHEIM_2020_ENDPOINT = (
+    "Subjects then attempted to recall facts, indicated their belief in those recalls, and "
+    "indicated whether they remembered corrections and misinformation."
+)
+WAHLHEIM_2020_RESULT = "Reminders increased recall and belief accuracy."
+KEMP_2022A_DESIGN = (
+    "Two experiments examined if one theory better accounts for memory updating after "
+    "participants recalled actual fake news details when reading headlines that corrected "
+    "misinformation."
+)
+KEMP_2022A_MIXED_RESULT = (
+    "Recalling fake news when noticing corrections in Phase 2 led to better memory for real "
+    "news in Phase 3 when fake news was recalled again and worse memory for real news in "
+    "Phase 3 when fake news was not recalled again."
+)
+KEMP_2022A_CONTROL_BOUNDARY = prose(
+    "Phase 2 included 45 headlines [15 real news from Phase 1 (Repetition); 15 real news that "
+    "corrected fake news from Phase 1 (Correction); and 15 real news that appeared only in "
+    "Phase 2 (Control)].",
+    "We included control headlines as a contrast condition against which to assess proactive "
+    "effects of fake news exposure on memory for real news headlines.",
+)
+KEMP_2022B_DESIGN = (
+    "Participants then saw labeled and unlabeled real news corrections; labeled corrections "
+    "appeared alone or after fake news reminders."
+)
+KEMP_2022B_RESULT = (
+    "Reminders promoted the best memory and belief accuracy, whereas veracity labels had "
+    "selective effects."
+)
+KEMP_2022B_LIMITATION = prose(
+    "However, this does not fully isolate the fake news reminder effect because that would "
+    "require a condition including fake news reminders alone (i.e., not followed by corrections)."
+)
 PETER_KOCH_2016_RESULT = (
     "In a web-based experiment, we find evidence for a systematic backfire effect that occurs "
     "after a few minutes and strengthens after five days."
+)
+PETER_KOCH_2016_SHARED_STIMULUS = (
+    "the journalist reported eight scientific statements about the test and identified each "
+    "statement immediately as true or false, followed by a short explanation"
+)
+PETER_KOCH_2016_RANDOMIZATION = (
+    "Participants were randomly assigned to one of the two conditions."
+)
+PETER_KOCH_2016_MEASURE = (
+    "For each claim, we asked participants to indicate whether it was labeled as “true” or "
+    "“false” in the article or whether it had not been presented in the article (“new”)."
+)
+PETER_KOCH_2016_ERROR_DEFINITION = (
+    "labeling an originally false statement as true (backfire error)"
 )
 
 
@@ -389,8 +548,33 @@ def source_works() -> list[dict[str, Any]]:
             "creators": ["Christina Peter", "Thomas Koch"],
             "canonical_uri": "https://doi.org/10.1177/1075547015613523",
             "license": (
-                "Crossref exposes the abstract under SAGE text-and-data-mining terms, not an "
-                "open article reuse license; one quote-minimal result sentence is retained."
+                "The LMU institutional full text carries no confirmed open reuse grant; only "
+                "quote-minimal attributed result and method spans are retained and the PDF "
+                "is not redistributed."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-wilson-park-2008",
+            "kind": "paper",
+            "title": "A Case for Clarity in the Writing of Health Statements",
+            "creators": ["Elizabeth A. H. Wilson", "Denise C. Park"],
+            "canonical_uri": "https://doi.org/10.1016/j.pec.2008.02.008",
+            "license": (
+                "No open article reuse license was confirmed; only two quote-minimal "
+                "attributed PubMed abstract spans are retained."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-berinsky-2017",
+            "kind": "paper",
+            "title": "Rumors and Health Care Reform: Experiments in Political Misinformation",
+            "creators": ["Adam J. Berinsky"],
+            "canonical_uri": "https://doi.org/10.1017/S0007123415000186",
+            "license": (
+                "No open reuse license was confirmed for the author-hosted journal PDF; only "
+                "three quote-minimal attributed design, result, and qualifier spans are retained."
             ),
             "visibility": "public",
         },
@@ -440,6 +624,111 @@ def source_works() -> list[dict[str, Any]]:
                 "Crossref identifies both accepted-manuscript and version-of-record content "
                 "as Creative Commons Attribution-NonCommercial-NoDerivatives 4.0; one short "
                 "attributed abstract result is retained."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-ecker-hogan-2017",
+            "kind": "paper",
+            "title": "Reminders and Repetition of Misinformation: Helping or Hindering Its Retraction?",
+            "creators": ["Ullrich K. H. Ecker", "Joshua L. Hogan", "Stephan Lewandowsky"],
+            "canonical_uri": "https://doi.org/10.1016/j.jarmac.2017.01.014",
+            "license": (
+                "Bristol repository metadata labels the accepted manuscript CC BY-NC-ND; "
+                "four quote-minimal attributed result and method extents are retained and "
+                "the PDF is not redistributed."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-wahlheim-2020",
+            "kind": "paper",
+            "title": (
+                "Reminders of Everyday Misinformation Statements Can Enhance Memory for and "
+                "Beliefs in Corrections of Those Statements in the Short Term"
+            ),
+            "creators": ["Christopher N. Wahlheim", "Timothy R. Alexander", "Carson D. Peske"],
+            "canonical_uri": "https://doi.org/10.1177/0956797620952797",
+            "license": (
+                "No open reuse license was confirmed for the coauthor-lab publisher PDF; only "
+                "three quote-minimal attributed abstract sentences are retained."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-kemp-2022a",
+            "kind": "paper",
+            "title": (
+                "Recalling Fake News During Real News Corrections Can Impair or Enhance "
+                "Memory Updating: The Role of Recollection-Based Retrieval"
+            ),
+            "creators": ["Paige L. Kemp", "Timothy R. Alexander", "Christopher N. Wahlheim"],
+            "canonical_uri": "https://doi.org/10.1186/s41235-022-00434-1",
+            "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+            "visibility": "public",
+        },
+        {
+            "key": "work-kemp-2022b",
+            "kind": "paper",
+            "title": (
+                "Fake News Reminders and Veracity Labels Differentially Benefit Memory and "
+                "Belief Accuracy for News Headlines"
+            ),
+            "creators": ["Paige L. Kemp", "Vanessa M. Loaiza", "Christopher N. Wahlheim"],
+            "canonical_uri": "https://doi.org/10.1038/s41598-022-25649-6",
+            "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+            "visibility": "public",
+        },
+        {
+            "key": "work-carnahan-garrett-2020",
+            "kind": "paper",
+            "title": "Processing Style and Responsiveness to Corrective Information",
+            "creators": ["Dustin Carnahan", "R. Kelly Garrett"],
+            "canonical_uri": "https://doi.org/10.1093/ijpor/edz037",
+            "license": (
+                "Publisher full text is publicly readable, but no open reuse license was "
+                "confirmed; only four quote-minimal attributed result fragments are retained."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-rich-zaragoza-2016",
+            "kind": "paper",
+            "title": (
+                "The Continued Influence of Implied and Explicitly Stated Misinformation "
+                "in News Reports"
+            ),
+            "creators": ["Patrick R. Rich", "Maria S. Zaragoza"],
+            "canonical_uri": "https://doi.org/10.1037/xlm0000155",
+            "license": (
+                "APA makes the journal PDF publicly readable but no open reuse license was "
+                "confirmed; only quote-minimal result and design fragments are retained."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-swire-2017",
+            "kind": "paper",
+            "title": "The Role of Familiarity in Correcting Inaccurate Information",
+            "creators": ["Briony Swire", "Ullrich K. H. Ecker", "Stephan Lewandowsky"],
+            "canonical_uri": "https://doi.org/10.1037/xlm0000422",
+            "license": (
+                "No open reuse license was confirmed for the coauthor-lab manuscript; only "
+                "three quote-minimal attributed result sentences are retained and the PDF "
+                "is not redistributed."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-gordon-2019",
+            "kind": "paper",
+            "title": "Polarity and Attitude Effects in the Continued-Influence Paradigm",
+            "creators": ["Andrew Gordon", "Ullrich K. H. Ecker", "Stephan Lewandowsky"],
+            "canonical_uri": "https://doi.org/10.1016/j.jml.2019.104028",
+            "license": (
+                "The UWA repository record labels the accepted manuscript CC BY-NC-ND; the "
+                "coauthor-lab preprint bytes are identified separately, two quote-minimal "
+                "result extents are retained, and the PDF is not redistributed."
             ),
             "visibility": "public",
         },
@@ -532,7 +821,7 @@ def source_works() -> list[dict[str, Any]]:
             "visibility": "public",
         },
         {
-            "key": "work-swire-thompson-2023",
+            "key": "work-swire-thompson-2022",
             "kind": "paper",
             "title": (
                 "The backfire effect after correcting misinformation is strongly associated "
@@ -681,20 +970,99 @@ def editions() -> list[dict[str, Any]]:
         edition(
             "edition-peter-koch-2016",
             "work-peter-koch-2016",
-            "Crossref deposited abstract record; excerpt packet",
+            "LMU institutional full-text PDF, 23 pages; excerpt packet",
             "application/json",
             {
                 "artifact": {
-                    "retrieved_from": ("https://api.crossref.org/works/10.1177/1075547015613523"),
-                    "sha256": "5c5b6743373d7d8539d21a31f6ac33ba461d4625834109e13efdcd3f87181494",
-                    "bytes": 10168,
-                    "custody": "Temporary Crossref JSON capture; article is not redistributed.",
+                    "retrieved_from": (
+                        "https://epub.ub.uni-muenchen.de/42583/1/1075547015613523.pdf"
+                    ),
+                    "landing_page": "https://epub.ub.uni-muenchen.de/42583/",
+                    "sha256": "ab18125517a34d469a3b644e0c7a3b6cfc0a59f82ac4c39e14845a65d73bc4ec",
+                    "bytes": 118545,
+                    "custody": (
+                        "Two byte-identical LMU institutional PDF retrievals; only exact "
+                        "quote-minimal result and method spans are committed."
+                    ),
                 },
                 "excerpts": [
-                    excerpt("Crossref abstract; web-experiment result", PETER_KOCH_2016_RESULT)
+                    excerpt("PDF p. 1; abstract result", PETER_KOCH_2016_RESULT),
+                    excerpt(
+                        "PDF p. 10 / journal p. 12; shared myths-and-facts stimulus",
+                        PETER_KOCH_2016_SHARED_STIMULUS,
+                    ),
+                    excerpt(
+                        "PDF p. 11 / journal p. 13; randomized instruction condition",
+                        PETER_KOCH_2016_RANDOMIZATION,
+                    ),
+                    excerpt(
+                        "PDF p. 11 / journal p. 13; truth-memory measure",
+                        PETER_KOCH_2016_MEASURE,
+                    ),
+                    excerpt(
+                        "PDF p. 12 / journal p. 14; backfire-error definition",
+                        PETER_KOCH_2016_ERROR_DEFINITION,
+                    ),
                 ],
             },
-            retrieved_at=REVIEW_REPAIR_RETRIEVED_AT,
+            retrieved_at=SEARCH_LEDGER_RETRIEVED_AT,
+        ),
+        edition(
+            "edition-wilson-park-2008",
+            "work-wilson-park-2008",
+            "PubMed XML record, PMID 18394856; abstract excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?"
+                        "db=pubmed&id=18394856&retmode=xml"
+                    ),
+                    "sha256": "230d805c865e5f4348b46e5adaeba5cb9a09081ab1d87c7a2363c4597ebc44e1",
+                    "bytes": 7630,
+                    "custody": (
+                        "Two byte-identical PubMed XML retrievals; only quote-minimal "
+                        "method and result abstract spans are committed."
+                    ),
+                },
+                "excerpts": [
+                    excerpt("PubMed abstract; Methods", WILSON_PARK_2008_METHOD),
+                    excerpt("PubMed abstract; Results", WILSON_PARK_2008_RESULT),
+                ],
+            },
+            retrieved_at="2026-08-22T17:30:16Z",
+        ),
+        edition(
+            "edition-berinsky-2017",
+            "work-berinsky-2017",
+            "Author-hosted Cambridge journal PDF, 22 pages; excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://berinsky.mit.edu/files/2026/01/rumorshealthcare_2017.pdf"
+                    ),
+                    "landing_page": "https://berinsky.mit.edu/published-papers/",
+                    "sha256": "d5b189db8963f8d3b412d4bbf6cddb9cfa52198f330f54929519224f99975c78",
+                    "bytes": 209237,
+                    "custody": (
+                        "Two byte-identical author-hosted journal PDF retrievals; only exact "
+                        "quote-minimal design, result, and qualifier spans are committed."
+                    ),
+                },
+                "excerpts": [
+                    excerpt("PDF p. 14 / journal p. 254; Study 2 design", BERINSKY_2017_NO_CONTROL),
+                    excerpt(
+                        "PDF p. 17 / journal p. 257; rehearsal result",
+                        BERINSKY_2017_REHEARSAL_RESULT,
+                    ),
+                    excerpt(
+                        "PDF p. 17 / journal p. 257; correction-arm significance qualifier",
+                        BERINSKY_2017_REHEARSAL_QUALIFIER,
+                    ),
+                ],
+            },
+            retrieved_at="2026-08-22T17:26:31Z",
         ),
         edition(
             "edition-cameron-2013",
@@ -795,6 +1163,284 @@ def editions() -> list[dict[str, Any]]:
             retrieved_at="2026-08-22T16:12:15Z",
         ),
         edition(
+            "edition-ecker-hogan-2017",
+            "work-ecker-hogan-2017",
+            "Bristol accepted manuscript, 40 pages; excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://research-information.bris.ac.uk/ws/files/153248187/"
+                        "EckerHoganLewan_revTC.SL.pdf"
+                    ),
+                    "identity_mode": "pdftotext-stdout",
+                    "semantic_sha256": (
+                        "cbf940e71d4d1eb854ccac6150418ed0bbe31a0c697cee8408f4199097806e97"
+                    ),
+                    "semantic_bytes": 65679,
+                    "semantic_method": "pdftotext SOURCE.pdf -; raw stdout bytes",
+                    "sha256": None,
+                    "bytes": None,
+                    "captures": [
+                        {
+                            "retrieved_at": "2026-08-22T17:32:32Z",
+                            "sha256": (
+                                "350a2e197f98f657091a08f836462d3bb735694fa139e9a6cde866388a7795f6"
+                            ),
+                            "bytes": 502333,
+                        },
+                        {
+                            "retrieved_at": "2026-08-22T17:32:33Z",
+                            "sha256": (
+                                "07bb7c14021d2f74cc2c306534803d8a9c05f32f0b31fcd69ceb7816cb1f1ded"
+                            ),
+                            "bytes": 502333,
+                        },
+                    ],
+                    "custody": (
+                        "The institutional endpoint regenerates a timestamped cover. Two raw "
+                        "captures produced byte-identical pdftotext output; only four exact "
+                        "result and method extents are committed and the PDF is not redistributed."
+                    ),
+                },
+                "excerpts": [
+                    excerpt("Accepted manuscript p. 3; abstract result", ECKER_HOGAN_2017_RESULT),
+                    excerpt(
+                        "Accepted manuscript p. 18; retraction-versus-control result",
+                        ECKER_HOGAN_2017_NO_RETRACTION_RESULT,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "Accepted manuscript p. 18; explicit-repeat contrast",
+                        ECKER_HOGAN_2017_REPEAT_RESULT,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "Accepted manuscript p. 18; alternative-account qualifier",
+                        ECKER_HOGAN_2017_ALTERNATIVE_ACCOUNT,
+                    ),
+                ],
+            },
+            retrieved_at="2026-08-22T17:32:32Z",
+        ),
+        edition(
+            "edition-wahlheim-2020",
+            "work-wahlheim-2020",
+            "Coauthor-lab publisher PDF, 15 pages; abstract excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://www.uncgmaclab.com/_files/ugd/"
+                        "1c6479_d45baca048334b0fb4149962f1d7e156.pdf"
+                    ),
+                    "sha256": "588addfe9659b726d04b1cc51e004d76a76a8cf73f6053d7bb10c00b1e378781",
+                    "bytes": 1095068,
+                    "custody": (
+                        "Two byte-identical coauthor-lab PDF retrievals; only exact "
+                        "quote-minimal abstract spans are committed."
+                    ),
+                },
+                "excerpts": [
+                    excerpt("PDF p. 1; abstract design", WAHLHEIM_2020_DESIGN),
+                    excerpt("PDF p. 1; abstract endpoint", WAHLHEIM_2020_ENDPOINT),
+                    excerpt("PDF p. 1; abstract result", WAHLHEIM_2020_RESULT),
+                ],
+            },
+            retrieved_at="2026-08-22T17:32:34Z",
+        ),
+        edition(
+            "edition-kemp-2022a",
+            "work-kemp-2022a",
+            "Europe PMC JATS XML, PMCID PMC9481799; abstract excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9481799/fullTextXML"
+                    ),
+                    "sha256": "6a5fc0db04a875ece25cb374392b63c6a2d43d46f1b4f0ae295bce017d8606ef",
+                    "bytes": 169173,
+                    "custody": (
+                        "Two byte-identical CC BY 4.0 XML retrievals; only exact abstract "
+                        "design and mixed-result spans are committed."
+                    ),
+                },
+                "excerpts": [
+                    excerpt("JATS abstract; design", KEMP_2022A_DESIGN),
+                    excerpt("JATS abstract; mixed conditional result", KEMP_2022A_MIXED_RESULT),
+                    excerpt("JATS Par21; control-endpoint boundary", KEMP_2022A_CONTROL_BOUNDARY),
+                ],
+            },
+            retrieved_at="2026-08-22T17:32:36Z",
+        ),
+        edition(
+            "edition-kemp-2022b",
+            "work-kemp-2022b",
+            "Europe PMC JATS XML, PMCID PMC9758464; abstract excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9758464/fullTextXML"
+                    ),
+                    "sha256": "5540d1b2e31d199bf3623bd0e1f8e1788929a617aca80bd713ac09315e0bda01",
+                    "bytes": 113222,
+                    "custody": (
+                        "Two byte-identical CC BY 4.0 XML retrievals; only exact abstract "
+                        "design and result spans are committed."
+                    ),
+                },
+                "excerpts": [
+                    excerpt("JATS abstract; correction/reminder design", KEMP_2022B_DESIGN),
+                    excerpt("JATS abstract; reminder result", KEMP_2022B_RESULT),
+                    excerpt("JATS Par27; reminder-isolation limitation", KEMP_2022B_LIMITATION),
+                ],
+            },
+            retrieved_at="2026-08-22T17:32:37Z",
+        ),
+        edition(
+            "edition-carnahan-garrett-2020",
+            "work-carnahan-garrett-2020",
+            "Oxford Academic publisher HTML, volume 32 issue 3, pages 530–546; excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://academic.oup.com/ijpor/article/32/3/530/5599865"
+                    ),
+                    "sha256": None,
+                    "bytes": None,
+                    "custody": (
+                        "Authoritative publisher HTML independently readable through web "
+                        "read-back; automated byte capture returned HTTP 403."
+                    ),
+                },
+                "excerpts": [
+                    excerpt(
+                        "Study 2 results; paragraph beginning 'Next we tested'; control contrast",
+                        CARNAHAN_2020_CONTROL_RESULT,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "Study 2 results; control-pairwise result",
+                        CARNAHAN_2020_PAIRWISE_RESULT,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "Study 2 results; message-format null",
+                        CARNAHAN_2020_FORMAT_NULL,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "Study 2 results; memory-based processing boundary",
+                        CARNAHAN_2020_PROCESSING_BOUNDARY,
+                        verification="independent-readback",
+                    ),
+                ],
+            },
+            retrieved_at=SEARCH_LEDGER_RETRIEVED_AT,
+        ),
+        edition(
+            "edition-rich-zaragoza-2016",
+            "work-rich-zaragoza-2016",
+            "APA journal PDF, volume 42 issue 1, pages 62–74; read-back excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://www.apa.org/pubs/journals/features/xlm-0000155.pdf"
+                    ),
+                    "sha256": None,
+                    "bytes": None,
+                    "custody": (
+                        "Authoritative APA PDF independently readable through indexed "
+                        "read-back; automated byte capture was blocked by anti-bot HTML."
+                    ),
+                },
+                "excerpts": [
+                    excerpt(
+                        "PDF p. 5 / journal p. 66; Experiment 1 correction effect",
+                        RICH_2016_EXPERIMENT_1_RESULT,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "PDF p. 7 / journal p. 68; Experiment 2 control result",
+                        RICH_2016_EXPERIMENT_2_RESULT,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "PDF p. 7 / journal p. 68; Experiment 2 correction effects",
+                        RICH_2016_EXPERIMENT_2_ALL_CONDITIONS,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "PDF p. 5 / journal p. 66; control-story qualifier",
+                        RICH_2016_CONTROL_QUALIFIER,
+                        verification="independent-readback",
+                    ),
+                ],
+            },
+            retrieved_at=SEARCH_LEDGER_RETRIEVED_AT,
+        ),
+        edition(
+            "edition-swire-2017",
+            "work-swire-2017",
+            "Coauthor-lab accepted manuscript, 46 pages; excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://www.emc-lab.org/uploads/1/1/3/6/113627673/"
+                        "swire.2017.jeplmc.pdf"
+                    ),
+                    "sha256": "e0f690593e78099431b4d555ea1714d448482b2dd352f1acfa451c0da433c11b",
+                    "bytes": 654850,
+                    "custody": (
+                        "Two byte-identical coauthor-lab PDF retrievals; only exact "
+                        "quote-minimal result sentences are committed."
+                    ),
+                },
+                "excerpts": [
+                    excerpt(
+                        "Manuscript p. 16; Experiment 1 result",
+                        SWIRE_2017_EXPERIMENT_1_RESULT,
+                    ),
+                    excerpt(
+                        "Manuscript p. 22; Experiment 2 result",
+                        SWIRE_2017_EXPERIMENT_2_RESULT,
+                    ),
+                    excerpt("Manuscript p. 30; discussion conclusion", SWIRE_2017_CONCLUSION),
+                ],
+            },
+            retrieved_at=SEARCH_LEDGER_RETRIEVED_AT,
+        ),
+        edition(
+            "edition-gordon-2019",
+            "work-gordon-2019",
+            "Coauthor-lab preprint, 41 pages; excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://www.emc-lab.org/uploads/1/1/3/6/113627673/"
+                        "gordon.2019.jml_preprint.pdf"
+                    ),
+                    "sha256": "23d389cd19eecb76c8e21ae52a6e5f029bcd44a9e0e399f013376f1ac670cf06",
+                    "bytes": 747048,
+                    "custody": (
+                        "Two byte-identical coauthor-lab PDF retrievals; only one exact "
+                        "quote-minimal result sentence is committed."
+                    ),
+                },
+                "excerpts": [
+                    excerpt("Preprint p. 32; Experiment 2 discussion", GORDON_2019_RESULT),
+                    excerpt("Preprint p. 24; Bayesian result qualifier", GORDON_2019_QUALIFIER),
+                ],
+            },
+            retrieved_at=SEARCH_LEDGER_RETRIEVED_AT,
+        ),
+        edition(
             "edition-prike-2023",
             "work-prike-2023",
             "Europe PMC JATS XML, PMCID PMC10317933; excerpt packet",
@@ -813,6 +1459,8 @@ def editions() -> list[dict[str, Any]]:
                     excerpt("Experiment 1; participants", PRIKE_2023_RECRUITMENT),
                     excerpt("Ethics approval", PRIKE_2023_ETHICS),
                     excerpt("General discussion; sample comparison", PRIKE_2023_AUTRY_SAMPLE),
+                    excerpt("Introduction; bounded counterevidence search", PRIKE_2023_COUNTER_SEARCH),
+                    excerpt("Introduction; standalone-correction search", PRIKE_2023_GORDON_SEARCH),
                 ],
             },
         ),
@@ -1028,8 +1676,8 @@ def editions() -> list[dict[str, Any]]:
             retrieved_at=CORRECTION_RETRIEVED_AT,
         ),
         edition(
-            "edition-swire-thompson-2023",
-            "work-swire-thompson-2023",
+            "edition-swire-thompson-2022",
+            "work-swire-thompson-2022",
             "NCBI BioC XML, PMCID PMC9283209; author-manuscript excerpt packet",
             "application/json",
             {
@@ -1048,7 +1696,7 @@ def editions() -> list[dict[str, Any]]:
                 "excerpts": [
                     excerpt(
                         "BioC abstract; design, controls, and no-backfire result",
-                        SWIRE_THOMPSON_2023_RESULT,
+                        SWIRE_THOMPSON_2022_RESULT,
                     )
                 ],
             },
@@ -1072,6 +1720,10 @@ def editions() -> list[dict[str, Any]]:
                 "excerpts": [
                     excerpt("PDF page 1; abstract scope", NIBAT_2026_SCOPE),
                     excerpt("PDF page 1; abstract result", NIBAT_2026_RESULT),
+                    excerpt(
+                        "PDF page 3; bounded literature overview",
+                        NIBAT_2026_SEARCH_OVERVIEW,
+                    ),
                 ],
             },
             retrieved_at=CORRECTION_RETRIEVED_AT,
@@ -1257,6 +1909,69 @@ def build_candidate() -> dict[str, Any]:
             PETER_KOCH_2016_RESULT,
         ),
         span(
+            "span-peter-koch-2016-shared-stimulus",
+            "edition-peter-koch-2016",
+            1,
+            "PDF p. 10 / journal p. 12, shared myths-and-facts stimulus",
+            PETER_KOCH_2016_SHARED_STIMULUS,
+        ),
+        span(
+            "span-peter-koch-2016-randomization",
+            "edition-peter-koch-2016",
+            2,
+            "PDF p. 11 / journal p. 13, randomized instruction condition",
+            PETER_KOCH_2016_RANDOMIZATION,
+        ),
+        span(
+            "span-peter-koch-2016-measure",
+            "edition-peter-koch-2016",
+            3,
+            "PDF p. 11 / journal p. 13, truth-memory measure",
+            PETER_KOCH_2016_MEASURE,
+        ),
+        span(
+            "span-peter-koch-2016-error-definition",
+            "edition-peter-koch-2016",
+            4,
+            "PDF p. 12 / journal p. 14, backfire-error definition",
+            PETER_KOCH_2016_ERROR_DEFINITION,
+        ),
+        span(
+            "span-wilson-park-2008-method",
+            "edition-wilson-park-2008",
+            0,
+            "PubMed abstract, Methods",
+            WILSON_PARK_2008_METHOD,
+        ),
+        span(
+            "span-wilson-park-2008-result",
+            "edition-wilson-park-2008",
+            1,
+            "PubMed abstract, Results",
+            WILSON_PARK_2008_RESULT,
+        ),
+        span(
+            "span-berinsky-2017-no-control",
+            "edition-berinsky-2017",
+            0,
+            "PDF p. 14 / journal p. 254, Study 2 design",
+            BERINSKY_2017_NO_CONTROL,
+        ),
+        span(
+            "span-berinsky-2017-rehearsal-result",
+            "edition-berinsky-2017",
+            1,
+            "PDF p. 17 / journal p. 257, rehearsal result",
+            BERINSKY_2017_REHEARSAL_RESULT,
+        ),
+        span(
+            "span-berinsky-2017-rehearsal-qualifier",
+            "edition-berinsky-2017",
+            2,
+            "PDF p. 17 / journal p. 257, correction-arm significance qualifier",
+            BERINSKY_2017_REHEARSAL_QUALIFIER,
+        ),
+        span(
             "span-cameron-2013-knowledge",
             "edition-cameron-2013",
             0,
@@ -1276,6 +1991,188 @@ def build_candidate() -> dict[str, Any]:
             0,
             "Crossref abstract simple-retraction result",
             ECKER_SHORT_2020_RESULT,
+        ),
+        span(
+            "span-ecker-hogan-2017-result",
+            "edition-ecker-hogan-2017",
+            0,
+            "Accepted manuscript p. 3, abstract result",
+            ECKER_HOGAN_2017_RESULT,
+        ),
+        span(
+            "span-ecker-hogan-2017-no-retraction-result",
+            "edition-ecker-hogan-2017",
+            1,
+            "Accepted manuscript p. 18, retraction-versus-control result",
+            ECKER_HOGAN_2017_NO_RETRACTION_RESULT,
+        ),
+        span(
+            "span-ecker-hogan-2017-repeat-result",
+            "edition-ecker-hogan-2017",
+            2,
+            "Accepted manuscript p. 18, explicit-repeat contrast",
+            ECKER_HOGAN_2017_REPEAT_RESULT,
+        ),
+        span(
+            "span-ecker-hogan-2017-alternative-account",
+            "edition-ecker-hogan-2017",
+            3,
+            "Accepted manuscript p. 18, alternative-account qualifier",
+            ECKER_HOGAN_2017_ALTERNATIVE_ACCOUNT,
+        ),
+        span(
+            "span-wahlheim-2020-design",
+            "edition-wahlheim-2020",
+            0,
+            "PDF p. 1, abstract design",
+            WAHLHEIM_2020_DESIGN,
+        ),
+        span(
+            "span-wahlheim-2020-endpoint",
+            "edition-wahlheim-2020",
+            1,
+            "PDF p. 1, abstract endpoint",
+            WAHLHEIM_2020_ENDPOINT,
+        ),
+        span(
+            "span-wahlheim-2020-result",
+            "edition-wahlheim-2020",
+            2,
+            "PDF p. 1, abstract result",
+            WAHLHEIM_2020_RESULT,
+        ),
+        span(
+            "span-kemp-2022a-design",
+            "edition-kemp-2022a",
+            0,
+            "JATS abstract, design",
+            KEMP_2022A_DESIGN,
+        ),
+        span(
+            "span-kemp-2022a-mixed-result",
+            "edition-kemp-2022a",
+            1,
+            "JATS abstract, mixed conditional result",
+            KEMP_2022A_MIXED_RESULT,
+        ),
+        span(
+            "span-kemp-2022a-control-boundary",
+            "edition-kemp-2022a",
+            2,
+            "JATS Par21, control-endpoint boundary",
+            KEMP_2022A_CONTROL_BOUNDARY,
+        ),
+        span(
+            "span-kemp-2022b-design",
+            "edition-kemp-2022b",
+            0,
+            "JATS abstract, correction/reminder design",
+            KEMP_2022B_DESIGN,
+        ),
+        span(
+            "span-kemp-2022b-result",
+            "edition-kemp-2022b",
+            1,
+            "JATS abstract, reminder result",
+            KEMP_2022B_RESULT,
+        ),
+        span(
+            "span-kemp-2022b-limitation",
+            "edition-kemp-2022b",
+            2,
+            "JATS Par27, reminder-isolation limitation",
+            KEMP_2022B_LIMITATION,
+        ),
+        span(
+            "span-carnahan-2020-control-result",
+            "edition-carnahan-garrett-2020",
+            0,
+            "Study 2 results, correction-versus-control result",
+            CARNAHAN_2020_CONTROL_RESULT,
+        ),
+        span(
+            "span-carnahan-2020-pairwise-result",
+            "edition-carnahan-garrett-2020",
+            1,
+            "Study 2 results, control-pairwise result",
+            CARNAHAN_2020_PAIRWISE_RESULT,
+        ),
+        span(
+            "span-carnahan-2020-format-null",
+            "edition-carnahan-garrett-2020",
+            2,
+            "Study 2 results, message-format null",
+            CARNAHAN_2020_FORMAT_NULL,
+        ),
+        span(
+            "span-carnahan-2020-processing-boundary",
+            "edition-carnahan-garrett-2020",
+            3,
+            "Study 2 results, memory-based processing boundary",
+            CARNAHAN_2020_PROCESSING_BOUNDARY,
+        ),
+        span(
+            "span-rich-2016-experiment-1-result",
+            "edition-rich-zaragoza-2016",
+            0,
+            "PDF p. 5 / journal p. 66, Experiment 1 correction effect",
+            RICH_2016_EXPERIMENT_1_RESULT,
+        ),
+        span(
+            "span-rich-2016-experiment-2-result",
+            "edition-rich-zaragoza-2016",
+            1,
+            "PDF p. 7 / journal p. 68, Experiment 2 control result",
+            RICH_2016_EXPERIMENT_2_RESULT,
+        ),
+        span(
+            "span-rich-2016-experiment-2-all-conditions",
+            "edition-rich-zaragoza-2016",
+            2,
+            "PDF p. 7 / journal p. 68, Experiment 2 correction effects",
+            RICH_2016_EXPERIMENT_2_ALL_CONDITIONS,
+        ),
+        span(
+            "span-rich-2016-control-qualifier",
+            "edition-rich-zaragoza-2016",
+            3,
+            "PDF p. 5 / journal p. 66, control-story qualifier",
+            RICH_2016_CONTROL_QUALIFIER,
+        ),
+        span(
+            "span-swire-2017-experiment-1-result",
+            "edition-swire-2017",
+            0,
+            "Manuscript p. 16, Experiment 1 result",
+            SWIRE_2017_EXPERIMENT_1_RESULT,
+        ),
+        span(
+            "span-swire-2017-experiment-2-result",
+            "edition-swire-2017",
+            1,
+            "Manuscript p. 22, Experiment 2 result",
+            SWIRE_2017_EXPERIMENT_2_RESULT,
+        ),
+        span(
+            "span-swire-2017-conclusion",
+            "edition-swire-2017",
+            2,
+            "Manuscript p. 30, discussion conclusion",
+            SWIRE_2017_CONCLUSION,
+        ),
+        span(
+            "span-gordon-2019-result",
+            "edition-gordon-2019",
+            0,
+            "Preprint p. 32, Experiment 2 discussion",
+            GORDON_2019_RESULT,
+        ),
+        span(
+            "span-gordon-2019-qualifier",
+            "edition-gordon-2019",
+            1,
+            "Preprint p. 24, Bayesian result qualifier",
+            GORDON_2019_QUALIFIER,
         ),
         span(
             "span-prike-2023-result",
@@ -1304,6 +2201,20 @@ def build_candidate() -> dict[str, Any]:
             3,
             "General discussion sample comparison",
             PRIKE_2023_AUTRY_SAMPLE,
+        ),
+        span(
+            "span-prike-2023-counter-search",
+            "edition-prike-2023",
+            4,
+            "Introduction, bounded counterevidence search",
+            PRIKE_2023_COUNTER_SEARCH,
+        ),
+        span(
+            "span-prike-2023-gordon-search",
+            "edition-prike-2023",
+            5,
+            "Introduction, standalone-correction search",
+            PRIKE_2023_GORDON_SEARCH,
         ),
         span(
             "span-ecker-2023-result",
@@ -1411,11 +2322,18 @@ def build_candidate() -> dict[str, Any]:
             NIBAT_2026_RESULT,
         ),
         span(
-            "span-swire-thompson-2023-result",
-            "edition-swire-thompson-2023",
+            "span-nibat-2026-search-overview",
+            "edition-nibat-2026",
+            2,
+            "PDF p. 3, bounded literature overview",
+            NIBAT_2026_SEARCH_OVERVIEW,
+        ),
+        span(
+            "span-swire-thompson-2022-result",
+            "edition-swire-thompson-2022",
             0,
             "BioC abstract design, controls, and no-backfire result",
-            SWIRE_THOMPSON_2023_RESULT,
+            SWIRE_THOMPSON_2022_RESULT,
         ),
     ]
 
@@ -1507,12 +2425,12 @@ def build_candidate() -> dict[str, Any]:
             "key": "prop-peter-koch-boundary",
             "text": (
                 "Peter and Koch reported a delayed backfire effect after journalistic "
-                "myth-and-fact coverage, but the captured abstract does not establish the "
-                "target comparator design used by this dossier."
+                "myth-and-fact coverage, but all participants read the correction article "
+                "and the study had no no-correction or pre-correction belief baseline."
             ),
             "scope": (
-                "Peter and Koch 2016 web experiment; result is visible, while target "
-                "comparability remains unassessed without an exact methods span."
+                "Peter and Koch 2016 web experiment; truth-memory errors after the shared "
+                "article, not target-comparable belief or reliance above baseline."
             ),
             "visibility": "public",
         },
@@ -1539,13 +2457,81 @@ def build_candidate() -> dict[str, Any]:
             "visibility": "public",
         },
         {
+            "key": "prop-ecker-hogan-2017-result",
+            "text": (
+                "In Ecker, Hogan, and Lewandowsky 2017, every retraction reduced "
+                "misinformation reliance relative to no retraction, and a retraction that "
+                "explicitly repeated the misinformation reduced reliance more than a "
+                "retraction without a reminder."
+            ),
+            "scope": (
+                "Ecker, Hogan, and Lewandowsky 2017; fictional event reports, inferential "
+                "reasoning, and one publication-defined participant-data series."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "prop-carnahan-2020-result",
+            "text": (
+                "In Carnahan and Garrett Study 2, every correction format—including two "
+                "formats that repeated the misinformation—improved belief accuracy versus "
+                "an unrelated-story control, with no overall disadvantage for repetition."
+            ),
+            "scope": (
+                "Carnahan and Garrett 2020 Study 2; GMO belief accuracy, one-sided and two-"
+                "sided corrections, processing-style moderation, and a true control."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "prop-rich-2016-result",
+            "text": (
+                "Across two experiments, presenting a correction in a control narrative that "
+                "contained no explicit misinformation did not increase misinformation "
+                "reliance: Experiment 1 was null and Experiment 2 reduced reliance."
+            ),
+            "scope": (
+                "Rich and Zaragoza 2016; control narratives mentioned the son but did not "
+                "explicitly implicate him, so residual pragmatic licensing remains a design "
+                "qualifier."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "prop-swire-2017-result",
+            "text": (
+                "Across two experiments and delays up to three weeks, myth belief rebounded "
+                "but remained below each experiment's pre-correction baseline; the authors "
+                "reported no true familiarity backfire effect."
+            ),
+            "scope": (
+                "Swire, Ecker, and Lewandowsky 2017; younger and older-adult samples, brief "
+                "and detailed corrections, and pre-correction belief baselines."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "prop-gordon-2019-result",
+            "text": (
+                "In Gordon et al. Experiment 2, a standalone negation produced fewer "
+                "misinformation inferences than a no-misinformation control rather than a "
+                "familiarity-driven increase."
+            ),
+            "scope": (
+                "Gordon, Ecker, and Lewandowsky 2019 Experiment 2; only-negated narrative "
+                "versus a no-misinformation control; Bayesian evidence for the observed "
+                "difference was very weak."
+            ),
+            "visibility": "public",
+        },
+        {
             "key": "prop-reliability-counter-result",
             "text": (
                 "Across two correction-versus-test-retest experiments, no item backfired "
                 "relative to the control or initial-belief baselines."
             ),
             "scope": (
-                "Swire-Thompson et al. 2023, published online in 2022; 21 items and two "
+                "Swire-Thompson et al. 2022; 21 items and two "
                 "participant samples."
             ),
             "visibility": "public",
@@ -1694,12 +2680,19 @@ def build_candidate() -> dict[str, Any]:
             "status": "known",
             "dimensions": ["data"],
             "depends_on": [],
-            "basis_span_keys": ["span-peter-koch-2016-result"],
+            "basis_span_keys": [
+                "span-peter-koch-2016-result",
+                "span-peter-koch-2016-shared-stimulus",
+                "span-peter-koch-2016-randomization",
+                "span-peter-koch-2016-measure",
+                "span-peter-koch-2016-error-definition",
+            ],
             "assertion_keys": ["assert-peter-koch-2016-result"],
             "note": (
                 "Publication-defined participant-data root for a delayed journalistic "
-                "myth-debunking result. The captured abstract does not expose the comparator "
-                "needed to classify it as target-comparable."
+                "myth-debunking result. The full method confirms that all participants read "
+                "the correction article and only judgment instructions varied, so the data "
+                "root is known but not target-comparable."
             ),
             "visibility": "public",
         },
@@ -1747,6 +2740,138 @@ def build_candidate() -> dict[str, Any]:
                 "Publication-defined two-experiment participant-data root. It shares Ecker "
                 "and a correction research program with later papers, but no data reuse is "
                 "asserted."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-ecker-hogan-2017-data",
+            "status": "known",
+            "dimensions": ["data"],
+            "depends_on": [],
+            "basis_span_keys": [
+                "span-ecker-hogan-2017-result",
+                "span-ecker-hogan-2017-no-retraction-result",
+                "span-ecker-hogan-2017-repeat-result",
+                "span-ecker-hogan-2017-alternative-account",
+            ],
+            "assertion_keys": ["assert-ecker-hogan-2017-result"],
+            "note": (
+                "Publication-defined participant-data root directly comparing no retraction, "
+                "retraction without a reminder, and retractions with subtle or explicit "
+                "misinformation reminders. Every retraction also supplied an alternative "
+                "causal account; method and research-program overlap are modeled separately."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-ecker-hogan-2017-method",
+            "status": "known",
+            "dimensions": ["method", "social"],
+            "depends_on": [],
+            "basis_span_keys": [
+                "span-ecker-hogan-2017-no-retraction-result",
+                "span-ecker-hogan-2017-repeat-result",
+                "span-ecker-hogan-2017-alternative-account",
+            ],
+            "assertion_keys": [],
+            "note": (
+                "Continued-influence retraction-method lineage. All tested retractions paired "
+                "the correction with an alternative causal account, and Ecker and Lewandowsky "
+                "also appear in the later Gordon research program."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-carnahan-garrett-2020-data",
+            "status": "known",
+            "dimensions": ["data"],
+            "depends_on": [],
+            "basis_span_keys": [
+                "span-carnahan-2020-control-result",
+                "span-carnahan-2020-pairwise-result",
+                "span-carnahan-2020-format-null",
+                "span-carnahan-2020-processing-boundary",
+            ],
+            "assertion_keys": ["assert-carnahan-garrett-2020-result"],
+            "note": (
+                "Publication-defined participant-data root. Study 2 provides the target-"
+                "comparable control; Study 1 lacks a true control and receives no separate "
+                "target-comparable credit."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-rich-2016-data",
+            "status": "known",
+            "dimensions": ["data"],
+            "depends_on": [],
+            "basis_span_keys": [
+                "span-rich-2016-experiment-1-result",
+                "span-rich-2016-experiment-2-result",
+                "span-rich-2016-experiment-2-all-conditions",
+                "span-rich-2016-control-qualifier",
+            ],
+            "assertion_keys": ["assert-rich-2016-result"],
+            "note": (
+                "Publication-defined participant-data root. Both experiments compare a "
+                "correction in a no-explicit-misinformation control narrative with the "
+                "uncorrected control; the narrative still mentioned the correction target."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-swire-2017-data",
+            "status": "known",
+            "dimensions": ["data"],
+            "depends_on": [],
+            "basis_span_keys": [
+                "span-swire-2017-experiment-1-result",
+                "span-swire-2017-experiment-2-result",
+                "span-swire-2017-conclusion",
+                "span-prike-2023-counter-search",
+            ],
+            "assertion_keys": ["assert-swire-2017-result"],
+            "note": (
+                "Publication-defined two-experiment participant-data root. It shares Ecker "
+                "and Lewandowsky with other correction research but reports distinct younger "
+                "and older-adult collections; program independence is not claimed."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-gordon-2019-data",
+            "status": "known",
+            "dimensions": ["data"],
+            "depends_on": [],
+            "basis_span_keys": [
+                "span-gordon-2019-result",
+                "span-gordon-2019-qualifier",
+                "span-prike-2023-gordon-search",
+            ],
+            "assertion_keys": ["assert-gordon-2019-result"],
+            "note": (
+                "Publication-defined participant-data root. Experiment 2 directly compares "
+                "an only-negated narrative with a no-misinformation control; its continued-"
+                "influence paradigm is a material standalone-correction boundary. Method and "
+                "research-program overlap are modeled separately."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-gordon-2019-method",
+            "status": "known",
+            "dimensions": ["method", "social"],
+            "depends_on": ["lineage-ecker-hogan-2017-method"],
+            "basis_span_keys": [
+                "span-gordon-2019-result",
+                "span-gordon-2019-qualifier",
+                "span-prike-2023-gordon-search",
+            ],
+            "assertion_keys": [],
+            "note": (
+                "Continued-influence standalone-correction method lineage. Shared Ecker and "
+                "Lewandowsky authorship and research-program overlap mean a separate program "
+                "is not claimed; participant data remain a distinct root."
             ),
             "visibility": "public",
         },
@@ -1928,7 +3053,11 @@ def build_candidate() -> dict[str, Any]:
             "status": "known",
             "dimensions": ["data"],
             "depends_on": [],
-            "basis_span_keys": ["span-nibat-2026-scope", "span-nibat-2026-result"],
+            "basis_span_keys": [
+                "span-nibat-2026-scope",
+                "span-nibat-2026-result",
+                "span-nibat-2026-search-overview",
+            ],
             "assertion_keys": ["assert-nibat-2026-result"],
             "note": (
                 "Separately reported participant-data root spanning five brand-misinformation "
@@ -1938,12 +3067,12 @@ def build_candidate() -> dict[str, Any]:
             "visibility": "public",
         },
         {
-            "key": "lineage-swire-thompson-2023-data",
+            "key": "lineage-swire-thompson-2022-data",
             "status": "known",
             "dimensions": ["data"],
             "depends_on": [],
-            "basis_span_keys": ["span-swire-thompson-2023-result"],
-            "assertion_keys": ["assert-swire-thompson-2023-result"],
+            "basis_span_keys": ["span-swire-thompson-2022-result"],
+            "assertion_keys": ["assert-swire-thompson-2022-result"],
             "note": (
                 "Publication-defined two-experiment participant-data root. Swire-Thompson "
                 "also appears in other modeled papers, but the captured report describes new "
@@ -2020,7 +3149,13 @@ def build_candidate() -> dict[str, Any]:
             "proposition_key": "prop-peter-koch-boundary",
             "actor": {"id": "doi:10.1177/1075547015613523#authors", "kind": "collective"},
             "stance": "asserts",
-            "span_keys": ["span-peter-koch-2016-result"],
+            "span_keys": [
+                "span-peter-koch-2016-result",
+                "span-peter-koch-2016-shared-stimulus",
+                "span-peter-koch-2016-randomization",
+                "span-peter-koch-2016-measure",
+                "span-peter-koch-2016-error-definition",
+            ],
             "lineage_key": "lineage-peter-koch-2016-data",
             "asserted_at": "2015-10-25T00:00:00Z",
             "visibility": "public",
@@ -2069,6 +3204,78 @@ def build_candidate() -> dict[str, Any]:
             "span_keys": ["span-ecker-short-2020-result"],
             "lineage_key": "lineage-ecker-short-2020-data",
             "asserted_at": "2019-03-02T00:00:00Z",
+            "visibility": "public",
+        },
+        {
+            "key": "assert-ecker-hogan-2017-result",
+            "proposition_key": "prop-ecker-hogan-2017-result",
+            "actor": {
+                "id": "doi:10.1016/j.jarmac.2017.01.014#authors",
+                "kind": "collective",
+            },
+            "stance": "asserts",
+            "span_keys": [
+                "span-ecker-hogan-2017-result",
+                "span-ecker-hogan-2017-no-retraction-result",
+                "span-ecker-hogan-2017-repeat-result",
+                "span-ecker-hogan-2017-alternative-account",
+            ],
+            "lineage_key": "lineage-ecker-hogan-2017-data",
+            "asserted_at": "2017-03-18T00:00:00Z",
+            "visibility": "public",
+        },
+        {
+            "key": "assert-carnahan-garrett-2020-result",
+            "proposition_key": "prop-carnahan-2020-result",
+            "actor": {"id": "doi:10.1093/ijpor/edz037#authors", "kind": "collective"},
+            "stance": "asserts",
+            "span_keys": [
+                "span-carnahan-2020-control-result",
+                "span-carnahan-2020-pairwise-result",
+                "span-carnahan-2020-format-null",
+                "span-carnahan-2020-processing-boundary",
+            ],
+            "lineage_key": "lineage-carnahan-garrett-2020-data",
+            "asserted_at": "2019-10-19T00:00:00Z",
+            "visibility": "public",
+        },
+        {
+            "key": "assert-rich-2016-result",
+            "proposition_key": "prop-rich-2016-result",
+            "actor": {"id": "doi:10.1037/xlm0000155#authors", "kind": "collective"},
+            "stance": "asserts",
+            "span_keys": [
+                "span-rich-2016-experiment-1-result",
+                "span-rich-2016-experiment-2-result",
+                "span-rich-2016-experiment-2-all-conditions",
+                "span-rich-2016-control-qualifier",
+            ],
+            "lineage_key": "lineage-rich-2016-data",
+            "asserted_at": "2015-07-06T00:00:00Z",
+            "visibility": "public",
+        },
+        {
+            "key": "assert-swire-2017-result",
+            "proposition_key": "prop-swire-2017-result",
+            "actor": {"id": "doi:10.1037/xlm0000422#authors", "kind": "collective"},
+            "stance": "asserts",
+            "span_keys": [
+                "span-swire-2017-experiment-1-result",
+                "span-swire-2017-experiment-2-result",
+                "span-swire-2017-conclusion",
+            ],
+            "lineage_key": "lineage-swire-2017-data",
+            "asserted_at": "2017-05-11T00:00:00Z",
+            "visibility": "public",
+        },
+        {
+            "key": "assert-gordon-2019-result",
+            "proposition_key": "prop-gordon-2019-result",
+            "actor": {"id": "doi:10.1016/j.jml.2019.104028#authors", "kind": "collective"},
+            "stance": "asserts",
+            "span_keys": ["span-gordon-2019-result", "span-gordon-2019-qualifier"],
+            "lineage_key": "lineage-gordon-2019-data",
+            "asserted_at": "2019-06-04T00:00:00Z",
             "visibility": "public",
         },
         {
@@ -2156,12 +3363,12 @@ def build_candidate() -> dict[str, Any]:
             "visibility": "public",
         },
         {
-            "key": "assert-swire-thompson-2023-result",
+            "key": "assert-swire-thompson-2022-result",
             "proposition_key": "prop-reliability-counter-result",
             "actor": {"id": "doi:10.1037/xge0001131#authors", "kind": "collective"},
             "stance": "asserts",
-            "span_keys": ["span-swire-thompson-2023-result"],
-            "lineage_key": "lineage-swire-thompson-2023-data",
+            "span_keys": ["span-swire-thompson-2022-result"],
+            "lineage_key": "lineage-swire-thompson-2022-data",
             "asserted_at": "2022-07-01T00:00:00Z",
             "visibility": "public",
         },
@@ -2345,11 +3552,93 @@ def build_candidate() -> dict[str, Any]:
             "visibility": "public",
         },
         {
+            "key": "relation-ecker-hogan-2017-rebuts-general",
+            "relation_type": "rebuttal",
+            "from_ref": "assert-ecker-hogan-2017-result",
+            "to_ref": "prop-general-backfire",
+            "basis_span_keys": [
+                "span-ecker-hogan-2017-result",
+                "span-ecker-hogan-2017-no-retraction-result",
+                "span-ecker-hogan-2017-repeat-result",
+                "span-ecker-hogan-2017-alternative-account",
+            ],
+            "note": (
+                "Every tested retraction reduced reliance relative to no retraction, and "
+                "explicit misinformation repetition improved the retraction relative to no "
+                "reminder. Every retraction also supplied an alternative causal account."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "relation-carnahan-2020-rebuts-general",
+            "relation_type": "rebuttal",
+            "from_ref": "assert-carnahan-garrett-2020-result",
+            "to_ref": "prop-general-backfire",
+            "basis_span_keys": [
+                "span-carnahan-2020-control-result",
+                "span-carnahan-2020-pairwise-result",
+                "span-carnahan-2020-format-null",
+                "span-carnahan-2020-processing-boundary",
+            ],
+            "note": (
+                "Both correction formats that repeated misinformation improved accuracy "
+                "relative to control; processing style remains a material qualifier."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "relation-rich-2016-rebuts-general",
+            "relation_type": "rebuttal",
+            "from_ref": "assert-rich-2016-result",
+            "to_ref": "prop-general-backfire",
+            "basis_span_keys": [
+                "span-rich-2016-experiment-1-result",
+                "span-rich-2016-experiment-2-result",
+                "span-rich-2016-experiment-2-all-conditions",
+                "span-rich-2016-control-qualifier",
+            ],
+            "note": (
+                "A correction in the no-explicit-misinformation control did not increase "
+                "reliance in either experiment; the target's prior narrative mention is "
+                "retained as a licensing qualifier."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "relation-swire-2017-rebuts-general",
+            "relation_type": "rebuttal",
+            "from_ref": "assert-swire-2017-result",
+            "to_ref": "prop-general-backfire",
+            "basis_span_keys": [
+                "span-swire-2017-experiment-1-result",
+                "span-swire-2017-experiment-2-result",
+                "span-swire-2017-conclusion",
+            ],
+            "note": (
+                "Both experiments retained corrected belief below the pre-correction "
+                "baseline despite delayed regression."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "relation-gordon-2019-rebuts-general",
+            "relation_type": "rebuttal",
+            "from_ref": "assert-gordon-2019-result",
+            "to_ref": "prop-general-backfire",
+            "basis_span_keys": ["span-gordon-2019-result", "span-gordon-2019-qualifier"],
+            "note": (
+                "The standalone negation lowered rather than raised misinformation inference "
+                "relative to the no-misinformation control in Experiment 2, with only very "
+                "weak Bayesian evidence for the difference."
+            ),
+            "visibility": "public",
+        },
+        {
             "key": "relation-swire-thompson-rebuts-general",
             "relation_type": "rebuttal",
-            "from_ref": "assert-swire-thompson-2023-result",
+            "from_ref": "assert-swire-thompson-2022-result",
             "to_ref": "prop-general-backfire",
-            "basis_span_keys": ["span-swire-thompson-2023-result"],
+            "basis_span_keys": ["span-swire-thompson-2022-result"],
             "note": (
                 "Two correction-versus-control experiments found no item-level backfire "
                 "relative to either comparison baseline."
@@ -2494,10 +3783,16 @@ def build_candidate() -> dict[str, Any]:
             "relation_type": "support",
             "from_ref": "assert-peter-koch-2016-result",
             "to_ref": "prop-peter-koch-boundary",
-            "basis_span_keys": ["span-peter-koch-2016-result"],
+            "basis_span_keys": [
+                "span-peter-koch-2016-result",
+                "span-peter-koch-2016-shared-stimulus",
+                "span-peter-koch-2016-randomization",
+                "span-peter-koch-2016-measure",
+                "span-peter-koch-2016-error-definition",
+            ],
             "note": (
-                "Preserves the reported delayed result without inferring an unobserved "
-                "target comparator from the abstract."
+                "Preserves the delayed truth-memory result while the full method establishes "
+                "that no target baseline was present."
             ),
             "visibility": "public",
         },
@@ -2519,6 +3814,26 @@ def build_candidate() -> dict[str, Any]:
             "note": (
                 "The later study reused the 2017 materials but did not reproduce the reported "
                 "backfire effect."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "relation-gordon-ecker-hogan-shared-program",
+            "relation_type": "dependence",
+            "from_ref": "lineage-gordon-2019-method",
+            "to_ref": "lineage-ecker-hogan-2017-method",
+            "basis_span_keys": [
+                "span-ecker-hogan-2017-no-retraction-result",
+                "span-ecker-hogan-2017-repeat-result",
+                "span-ecker-hogan-2017-alternative-account",
+                "span-gordon-2019-result",
+                "span-gordon-2019-qualifier",
+                "span-prike-2023-gordon-search",
+            ],
+            "note": (
+                "The papers share Ecker and Lewandowsky and a continued-influence correction "
+                "program. Their participant collections remain distinct, but independent "
+                "research-program credit is not claimed."
             ),
             "visibility": "public",
         },

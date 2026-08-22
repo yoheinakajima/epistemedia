@@ -46,8 +46,16 @@ ARTIFACTS = {
         "format": "xml",
     },
     "edition-peter-koch-2016": {
-        "filename": "crossref-peter-koch-2016.json",
-        "format": "crossref-json",
+        "filename": "peter-koch-2016.pdf",
+        "format": "pdf",
+    },
+    "edition-wilson-park-2008": {
+        "filename": "wilson-park-2008.xml",
+        "format": "xml",
+    },
+    "edition-berinsky-2017": {
+        "filename": "berinsky-2017.pdf",
+        "format": "pdf",
     },
     "edition-cameron-2013": {
         "filename": "cameron-2013-biocc.xml",
@@ -56,6 +64,31 @@ ARTIFACTS = {
     "edition-ecker-short-2020": {
         "filename": "crossref-ecker-short-2020.json",
         "format": "crossref-json",
+    },
+    "edition-ecker-hogan-2017": {
+        "filename": "ecker-hogan-2017.pdf",
+        "format": "pdf",
+        "identity": "pdftotext-stdout",
+    },
+    "edition-wahlheim-2020": {
+        "filename": "wahlheim-2020.pdf",
+        "format": "pdf",
+    },
+    "edition-kemp-2022a": {
+        "filename": "kemp-2022a.xml",
+        "format": "xml",
+    },
+    "edition-kemp-2022b": {
+        "filename": "kemp-2022b.xml",
+        "format": "xml",
+    },
+    "edition-swire-2017": {
+        "filename": "swire-2017.pdf",
+        "format": "pdf",
+    },
+    "edition-gordon-2019": {
+        "filename": "gordon-2019.pdf",
+        "format": "pdf",
     },
     "edition-prike-2023": {
         "filename": "epistemedia-pmc10317933.xml",
@@ -86,8 +119,8 @@ ARTIFACTS = {
         "filename": "nibat-2026.pdf",
         "format": "pdf",
     },
-    "edition-swire-thompson-2023": {
-        "filename": "swire-thompson-2023-biocc.xml",
+    "edition-swire-thompson-2022": {
+        "filename": "swire-thompson-2022-biocc.xml",
         "format": "xml",
     },
 }
@@ -101,9 +134,19 @@ PRIMARY_MEDIA_TYPES = {
     "edition-handbook-2011": "text/html",
     "edition-schwarz-2016": "application/pdf",
     "edition-ecker-2020": "application/xml",
-    "edition-peter-koch-2016": "application/json",
+    "edition-peter-koch-2016": "application/pdf",
+    "edition-wilson-park-2008": "application/xml",
+    "edition-berinsky-2017": "application/pdf",
     "edition-cameron-2013": "application/xml",
     "edition-ecker-short-2020": "application/json",
+    "edition-ecker-hogan-2017": "application/pdf",
+    "edition-wahlheim-2020": "application/pdf",
+    "edition-kemp-2022a": "application/xml",
+    "edition-kemp-2022b": "application/xml",
+    "edition-carnahan-garrett-2020": "text/html",
+    "edition-rich-zaragoza-2016": "application/pdf",
+    "edition-swire-2017": "application/pdf",
+    "edition-gordon-2019": "application/pdf",
     "edition-prike-2023": "application/xml",
     "edition-ecker-2023": "application/xml",
     "edition-autry-2021": "application/json",
@@ -111,7 +154,7 @@ PRIMARY_MEDIA_TYPES = {
     "edition-pluviano-2019": "application/pdf",
     "edition-thomas-2024": "application/json",
     "edition-nibat-2026": "application/pdf",
-    "edition-swire-thompson-2023": "application/xml",
+    "edition-swire-thompson-2022": "application/xml",
 }
 WORKBOOK_MEDIA_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
