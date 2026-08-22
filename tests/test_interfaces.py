@@ -125,6 +125,10 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     expected_canonical = f'https://epistemedia.org/objects/{route_key}/'
     assert f'<link rel="canonical" href="{expected_canonical}">' in object_html
 
+    home_html = (public / "index.html").read_text()
+    assert "overflow-wrap:anywhere;word-break:break-word" in home_html
+    assert "pre code{padding:0;overflow-wrap:normal;word-break:normal}" in home_html
+
 
 def test_topic_lenses_share_source_frontier() -> None:
     catalog = PublicCatalog.build(ROOT)
