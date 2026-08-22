@@ -1,77 +1,198 @@
 # Candidate dossier: corrections and familiarity backfire
 
-Status: **draft research candidate; not accepted catalog knowledge**
+Status: **draft research candidate; corrected after a failed independent review; not accepted
+catalog knowledge**
 
 Task: EM-0019
 
-Candidate identity: `em:dossier:sha256:999dfd06596c965578f663b00380abac8cec5d8139b4735d2399c4b8207c6947`
+Candidate identity:
+`em:dossier:sha256:5537f80db03930c09a0739b1066734e57b8616ddffa952d7999188ac417e68cc`
 
 ## Human question
 
-Does repeating misinformation inside an evidence-based correction generally make people believe or rely on that misinformation more than they otherwise would?
+Does repeating misinformation inside an evidence-based correction generally make people
+believe or rely on that misinformation more than they otherwise would?
 
-This is deliberately narrower than “can corrections ever fail?” It separates:
+This is narrower than “can corrections ever fail?” It separates:
 
-- **familiarity backfire**: belief or reliance rises above a no-correction or pre-correction baseline because the correction repeats the claim;
-- **continued influence**: a correction helps but does not fully erase the misinformation’s effect; and
-- **worldview backfire**: a different proposed mechanism involving identity or prior attitudes.
+- **familiarity backfire**: belief or reliance rises above a no-correction or pre-correction
+  baseline after a correction repeats a claim;
+- **continued influence**: a correction helps but does not fully erase an earlier effect;
+- **worldview backfire**: a proposed identity- or prior-attitude mechanism; and
+- **context-specific backfire**: an adverse result in one message design, sample, delay, or
+  measure that does not establish a general familiarity mechanism.
 
-Collapsing those outcomes would manufacture a stronger claim than the reviewed experiments test.
+Collapsing those outcomes would manufacture a stronger claim than the experiments test.
 
-## What the lineage audit currently shows
+## Current answer, with uncertainty preserved
 
-The candidate’s deterministic calculation reports:
+Interpretation, not admitted global fact: target-comparable backfire has been reported in
+some tested formats and contexts, including unlicensed negated corrections and two
+vaccine-message studies. Other direct tests, replications, and a 2026 five-study brand series
+report counterevidence. The evidence reviewed here does not support a blanket rule that
+communicators should avoid repeating misinformation inside corrections. It also does not show
+that backfire is impossible.
 
-| Reviewed item | Raw assertions | Confirmed participant-data roots | Unresolved lineages |
-| --- | ---: | ---: | ---: |
-| Apparent support for familiarity backfire | 3 | 1 | 1 |
-| Later counterevidence | 3 | 3 | 0 |
+The causal story remains unresolved. A result compatible with familiarity can also involve
+pragmatic licensing, worldview, measurement, correction skepticism, or another mechanism.
 
-The supportive side contains:
+## Derivable counts and their unit
 
-1. a 2005 two-experiment result explicitly scoped to older adults and consumer claims (`span-skurnik-summary`);
-2. a 2011 public handbook page that says the effect is real and advises avoiding myth repetition, while naming the 2005 study as its sole numbered reference (`span-handbook-claim`, `span-handbook-advice`, `span-handbook-reference`); and
-3. a 2016 review abstract making a broader repetition claim, whose exact sentence-level upstream basis remains unresolved (`span-schwarz-claim`, `span-schwarz-reference`).
+The builder declares one counting unit: **one participant-data lineage per paper series, not
+per experiment, author, paper mention, or dataset file**. Author, method, material, and
+research-program overlap remain separate disclosed dimensions.
 
-The later side contains three new participant-data roots:
+The deterministic calculation currently reports:
 
-- Ecker, Lewandowsky, and Chadwick (2020) report that a weak first result did not repeat in two higher-powered follow-ups (`span-ecker-2020-result`) and challenge blanket advice against repetition (`span-ecker-2020-guidance-overreach`, `span-ecker-2020-guidance-conclusion`).
-- Prike et al. (2023) report no immediate or one-week effect in two experiments and a measure-specific result under induced correction skepticism in a third (`span-prike-2023-result`).
-- Ecker, Sharkey, and Swire-Thompson (2023) report no effect in their vaccine-misinformation study conditions (`span-ecker-2023-result`).
+| Derived quantity | Count |
+| --- | ---: |
+| Apparent-support source assertions | 8 |
+| Known support-side participant-data roots | 5 |
+| Unresolved support-side participant-data roots | 1 |
+| Target-comparable supportive participant-data roots | 4 |
+| Review/report assertions receiving no new-data credit | 3 |
+| Counterevidence source assertions | 4 |
+| Counterevidence participant-data roots | 4 |
 
-Those later roots are independent only at the participant-data level. Authors, theory, and methods overlap. The dossier records that limitation and does not turn “three data roots” into “three fully independent research programs.”
+The five known support-side roots are Skurnik et al. 2005, Autry and Duarte 2021,
+Pluviano et al. 2017, Pluviano et al. 2019, and Thomas and Autry 2024. Skurnik 2005 remains
+visible but is excluded from the target-comparable subcount because Ecker et al. 2020 report
+that it lacked the baseline needed to establish actual backfire.
 
-Interpretation, not admitted fact: the popular blanket rule outran the scope and independence of its visible support. The reviewed later studies make group-level familiarity backfire look uncommon in their tested settings, not impossible in every population, format, delay, or measure. The skepticism result remains an open boundary condition.
+The unresolved root is the unpublished Skurnik, Yoon, and Schwarz 2007 flu-flyer manuscript.
+The three review/report assertions are the 2011 handbook page, Schwarz et al. 2016, and
+Ecker et al. 2020’s historical report of that unpublished work. They add mentions and lineage
+information, not participant-data roots.
+
+The four counterevidence roots are Ecker et al. 2020, Prike et al. 2023,
+Ecker et al. 2023, and Nibat et al. 2026.
+
+These are participant-data counts, not “independent research program” counts.
+
+## The corrected 2005/2007 lineage
+
+The first independent review found a material error in the initial candidate: it treated a
+flu-flyer result as if it came from the published Skurnik et al. 2005 paper. The corrected model
+keeps two roots distinct:
+
+1. **Skurnik et al. 2005** is a published two-experiment consumer-claim study, with a notable
+   older-adult result and no target-comparable baseline.
+2. **Skurnik, Yoon, and Schwarz 2007** is an unpublished flu-flyer manuscript described by later
+   sources. Its manuscript, sample record, and participant data remain unavailable, so it is an
+   unknown lineage and receives zero evidential credit.
+
+The public 2011 handbook page describes the flu flyer and a 30-minute result but gives the 2005
+paper as its sole numbered reference. Schwarz et al. 2016 instead maps its older-adult passage to
+reference 42 (the 2005 paper) and its flu-flyer passage to reference 6 (a 2007 review chapter).
+Ecker et al. 2020 identifies that review chapter as discussing the unpublished 2007 manuscript.
+
+The citation mismatch is retained as an undercutting relation. It is not silently repaired by
+making the flu-flyer proposition depend on the nonmatching 2005 data.
+
+## Source search and cutoff
+
+Search cutoff: `2026-08-22T07:11:15Z`.
+
+The search began from the 2011 handbook and Skurnik 2005, then followed backward references,
+forward discussion, author/title searches, and replication/counterevidence terms for
+“familiarity backfire,” correction, repetition, and misinformation. Exact editions and metadata
+were checked through publisher or institutional pages, Europe PMC, Crossref, and linked OSF
+projects. Inclusion required one of:
+
+- participant data testing the target or a material boundary condition;
+- an exact source span needed to resolve a data, method, or citation lineage; or
+- material replication, rebuttal, qualification, or undercutting evidence.
+
+Reviews, guidance pages, and historical reports remain visible but receive no new-data credit.
+Restricted works retain only quote-minimal attributed spans. Search results are not treated as
+source evidence.
 
 ## Source editions, custody, and reuse
 
-Only the exact review excerpts are committed. Full provider artifacts are not.
+Only exact excerpt packets are committed. Full provider artifacts and data files remain outside
+the repository.
 
-| Work | Examined edition | Artifact receipt | Public excerpt treatment |
-| --- | --- | --- | --- |
-| [Skurnik et al. 2005](https://doi.org/10.1086/426605) | University-hosted copy of the journal PDF, 12 pages | SHA-256 `c4893504537d256cff0c37a58b17aca0d6ceda11d9c5cea1aa3c066a544108f2`; 331,989 bytes | All rights reserved; two short abstract sentences only |
-| [Cook and Lewandowsky 2011](https://skepticalscience.com/Debunking-Handbook-Part-2-Familiarity-Backfire-Effect.html) | Live HTML including later update notices | SHA-256 `bfd2e4ff7e2a5cc5a0c8f2e7aee70680cdc5eabbcf2333c4ef2a7ac3e3cfc3c4`; 89,663 bytes | Copyright notice present; short excerpts and reference only |
-| [Schwarz, Newman, and Leach 2016](https://doi.org/10.1177/237946151600200110) | Publisher-rendered HTML abstract and references | Full byte snapshot unavailable: automated retrieval returned HTTP 403 | Publisher says manuscript content uses Creative Commons licenses but does not name the variant on-page; excerpt-only transcript pending independent check |
-| [Ecker, Lewandowsky, and Chadwick 2020](https://doi.org/10.1186/s41235-020-00241-6) | Europe PMC JATS XML, PMCID PMC7447737 | SHA-256 `15620a5e73fe87bb19f3f37c84a4d1a0f7efa9b50be3a5d2749a07f588eb4047`; 208,195 bytes | CC BY 4.0; exact result and implications excerpts |
-| [Prike et al. 2023](https://doi.org/10.1186/s41235-023-00492-z) | Europe PMC JATS XML, PMCID PMC10317933 | SHA-256 `a546f640397adf7ac208f040634e480181588e5c29e1a2c76f5a301ef728e019`; 172,943 bytes | CC BY 4.0; exact abstract excerpt |
-| [Ecker, Sharkey, and Swire-Thompson 2023](https://doi.org/10.1371/journal.pone.0281140) | Europe PMC JATS XML, PMCID PMC10096191.1 | SHA-256 `44ebae212686059b211ae7a9e8757958d8851d73b51513c6f9a2f9c9a518f88e`; 167,791 bytes | CC BY 4.0; exact abstract excerpt |
+| Work | Exact edition and artifact receipt | Public treatment |
+| --- | --- | --- |
+| [Skurnik et al. 2005](https://doi.org/10.1086/426605) | University-hosted journal PDF; SHA-256 `c4893504537d256cff0c37a58b17aca0d6ceda11d9c5cea1aa3c066a544108f2`; 331,989 bytes | Restricted; two short abstract sentences; PDF not redistributed |
+| [Cook and Lewandowsky 2011](https://skepticalscience.com/Debunking-Handbook-Part-2-Familiarity-Backfire-Effect.html) | Live HTML with later update notices; SHA-256 `bfd2e4ff7e2a5cc5a0c8f2e7aee70680cdc5eabbcf2333c4ef2a7ac3e3cfc3c4`; 89,663 bytes | Copyright notice present; short excerpts and reference only |
+| [Schwarz, Newman, and Leach 2016](https://doi.org/10.1177/237946151600200110) | SAGE publisher PDF, journal pp. 85–95; automated capture returned HTTP 403; legacy DOI `10.1353/bsp.2016.0009` identifies the same work | No article-specific CC grant confirmed; independently read quote-minimal spans only |
+| [Ecker, Lewandowsky, and Chadwick 2020](https://doi.org/10.1186/s41235-020-00241-6) | Europe PMC JATS XML, PMCID PMC7447737; SHA-256 `15620a5e73fe87bb19f3f37c84a4d1a0f7efa9b50be3a5d2749a07f588eb4047`; 208,195 bytes | CC BY 4.0; exact result, history, method, and implications spans |
+| [Prike et al. 2023](https://doi.org/10.1186/s41235-023-00492-z) | Europe PMC JATS XML, PMCID PMC10317933; SHA-256 `a546f640397adf7ac208f040634e480181588e5c29e1a2c76f5a301ef728e019`; 172,943 bytes | CC BY 4.0; exact outcome and method spans |
+| [Ecker, Sharkey, and Swire-Thompson 2023](https://doi.org/10.1371/journal.pone.0281140) | Europe PMC JATS XML, PMCID PMC10096191; SHA-256 `44ebae212686059b211ae7a9e8757958d8851d73b51513c6f9a2f9c9a518f88e`; 167,791 bytes | CC BY 4.0; exact outcome, sample, material, and ethics spans |
+| [Autry and Duarte 2021](https://doi.org/10.1002/acp.3823) | Crossref record; SHA-256 `39293b19eb31c866b74e5017f7af0377f52a227162b034ad1f4c84471e82906d`; 9,943 bytes. OSF experiment-data receipts: `bc069a90152b887116cd4972df4376844570ba25cefbfa1055668c78eeaca80a` (148,954 bytes) and `de9f27b026ceadea0a6309ef695be06bc06c1fa35ba9209260f246d89b108ea5` (216,736 bytes) | VOR identified as CC BY 4.0; publisher qualifier and timing spans require independent read-back |
+| [Pluviano, Watt, and Della Sala 2017](https://doi.org/10.1371/journal.pone.0181640) | Europe PMC JATS XML, PMCID PMC5547702; SHA-256 `87e363cb1cae5896c42c7e7e0295bd2e6969637473d14ff76deea3c740024377`; 114,003 bytes | CC BY 4.0; exact result and limitation spans |
+| [Pluviano et al. 2019](https://doi.org/10.1007/s10339-019-00919-w) | University of Edinburgh accepted manuscript; SHA-256 `42968a50225e7ef7c65afd35742d2fc47eec5bf0c394faca48543850c1b5fb60`; 762,139 bytes | Restricted; short result and method-dependence spans; PDF not redistributed |
+| [Thomas and Autry 2024](https://doi.org/10.1002/acp.70004) | Crossref record; SHA-256 `f71d065da32f2179ff262008a863cae22aeec81b01e59997c994a1871e87bf23`; 11,291 bytes. OSF data receipt: `4a65116f6f10b02dc34b8353a228a16604a48ebcca576b2aae91ad5073f4d66c` (644,279 bytes) | Restricted VOR; short abstract spans only |
+| [Nibat et al. 2026](https://doi.org/10.1016/j.ijresmar.2026.03.007) | Sabancı University open-access Elsevier corrected proof; SHA-256 `99075c8a58b19d3be262486ccb78b3508747887e350802e5b41b74390b13d3bc`; 2,525,138 bytes | CC BY 4.0; exact abstract scope and result spans |
 
-The artifact hashes identify what the authoring agent actually examined. A provider may later serve different bytes at the same URL. A reviewer must record any new digest rather than silently replacing these receipts.
+Artifact hashes identify the editions actually examined. If a provider later serves different
+bytes at the same URL, a reviewer must record the new digest rather than silently replacing the
+receipt.
+
+## Material qualifiers and counterevidence
+
+| Result | What must travel with it |
+| --- | --- |
+| Skurnik 2005 | Older-adult and consumer-claim scope; no baseline for target-comparable backfire |
+| Unpublished Skurnik 2007 | Later reports describe it, but the manuscript and participant-data lineage are unavailable |
+| Autry 2021 | Experiment 2’s relevant contrast was nonsignificant; Experiment 1 used a five-minute delay, Experiment 2 no delay, and longer persistence remains open |
+| Pluviano 2017 | Target-comparable result, with a convenience sample and stated generalizability limits; the result alone does not establish familiarity as mechanism |
+| Pluviano 2019 | New parent participants, but the same author program and a delay chosen for direct comparison with the 2017 study |
+| Thomas 2024 | Target-comparable unlicensed-negation result with a proposed Gricean/pragmatic mechanism, not an established familiarity mechanism |
+| Ecker 2020 | A weak first result did not recur in two follow-ups; its tested conditions do not prove impossibility elsewhere |
+| Prike 2023 | No immediate or one-week result in two experiments; a skepticism result appeared in open responses but not the rating-scale measure |
+| Ecker 2023 | No vaccine-myth backfire observed; a replication attempt using the 2017 materials |
+| Nibat 2026 | Five samples totaling 4,337 participants form one paper-series data root, not five independent roots |
+
+## Independence limits
+
+The candidate records new participant collections separately while refusing to call them fully
+independent programs:
+
+- Ecker 2020 and Prike 2023 used the same US MTurk/CloudResearch eligibility frame, including
+  5,000-HIT and 97% approval thresholds; cross-paper participant overlap is unreported.
+- Prike 2023 and Ecker 2023 share authors and UWA ethics approval RA/4/20/6423.
+- Ecker 2023 directly reused Pluviano 2017 stimuli.
+- Pluviano 2017 and 2019 share three authors and a comparison-oriented method/material family.
+- Autry 2021 and Thomas 2024 share Autry and the unlicensed-negation program. They remain separate
+  data roots, but no direct method-dependence edge is asserted without an exact Thomas methods
+  span.
+- Three counterevidence papers share Ecker. Different paper titles do not establish social or
+  theoretical independence.
+
+Method, material, and social lineages are separate from participant-data lineages. This prevents
+the current dimension-agnostic dependency traversal from collapsing a genuinely new sample merely
+because its method was reused.
 
 ## Candidate and negative-result log
 
 EM-0019 considered the initial product-direction candidates before selecting this one:
 
-- **Selected and narrowed:** “Why repetition can change belief without adding evidence” became the mechanism-specific correction question above. It has accessible primary experiments, a visible lineage collapse, counterevidence, a live qualifier, and a practical human question.
-- **Deferred:** “Information is not meaning.” Shannon, semantic-information, and truth distinctions are valuable, but the first slice would be mainly conceptual and would not expose an equally clear empirical lineage-count interaction.
-- **Deferred:** “When justified true belief still is not knowledge.” A Gettier dossier remains promising, but counting argumentative lineages without first specifying an argument-dependence model would overstate what the alpha dossier can represent.
-- **Deferred:** worldview backfire. It risks making politics the first realm, combines a different mechanism with familiarity, and would make the public question less clean.
-- **Deferred:** “What can an AI responsibly claim to know?” It is fast-moving and too adjacent to the platform itself for the first outward-facing proof.
-- **Excluded from evidential counts:** the 2012 Association for Psychological Science summary because its broad “sometimes backfire” wording does not distinguish familiarity, worldview, and continued-influence mechanisms.
-- **Excluded from independent credit:** review and guidance statements that merely cite or summarize upstream experiments.
-- **Excluded as a root:** an inaccessible/unpublished familiarity-backfire report discussed in later literature. A provenance dead end cannot receive automatic evidential credit.
+- **Selected and narrowed:** “Why repetition can change belief without adding evidence” became
+  the mechanism-specific correction question. It has accessible primary experiments, a visible
+  lineage collapse, counterevidence, qualifiers, and a practical human question.
+- **Deferred:** “Information is not meaning.” Shannon, semantic-information, and truth
+  distinctions matter, but the first slice would be mainly conceptual and would not expose an
+  equally clear empirical lineage-count interaction.
+- **Deferred:** “When justified true belief still is not knowledge.” A Gettier dossier remains
+  promising, but counting argumentative lineages before specifying an argument-dependence model
+  would overstate what the alpha dossier represents.
+- **Deferred:** worldview backfire. It risks making politics the first realm and combines a
+  different mechanism with familiarity.
+- **Deferred:** “What can an AI responsibly claim to know?” It is fast-moving and too adjacent to
+  Epistemedia itself for the first outward-facing proof.
+- **Excluded from evidential counts:** the 2012 Association for Psychological Science summary;
+  its broad “sometimes backfire” framing does not distinguish the relevant mechanisms.
+- **No new-data credit:** handbook, review, and historical-report assertions that summarize an
+  upstream experiment.
+- **Zero credit, preserved as unknown:** the unpublished 2007 flu-flyer participant-data root.
+- **Not target-comparable, preserved as known:** Skurnik 2005 because it lacks the needed baseline.
 
-These exclusions are negative results, not claims that the works are unimportant.
+The first independent review of candidate head
+`25ef8c1434034cec92b62c0c02c4b5b56e8d1926` failed materially. No pass receipt was created. The
+shared branch was not rewritten. This corrected candidate exists on a current-main successor
+branch and must receive a fresh review against its exact final head.
 
 ## Reproduce the candidate and counts
 
@@ -81,32 +202,85 @@ From the repository root:
 .venv/bin/python research/how-we-know/corrections-backfire/build_candidate.py --check
 ```
 
-Regenerate only when the reviewed material intentionally changes:
+Regenerate only when reviewed material intentionally changes:
 
 ```bash
 .venv/bin/python research/how-we-know/corrections-backfire/build_candidate.py --write
 ```
 
-With the five captured artifacts present in `/tmp`, verify their bytes and every machine-checkable excerpt:
+Place the ten captured primary artifacts and three public data workbooks under one temporary
+directory using the filenames declared in `verify_retrievals.py`, then verify their bytes and all
+artifact-backed excerpts:
 
 ```bash
 .venv/bin/python research/how-we-know/corrections-backfire/verify_retrievals.py \
-  --artifact-dir /tmp
+  --artifact-dir /tmp/em0019-artifacts
 ```
 
-`--require-complete` intentionally fails today because the Schwarz publisher excerpt still needs independently rooted read-back.
+Before an independently authored pass receipt exists, the following must fail closed:
 
-## Independent-review gate
+```bash
+.venv/bin/python research/how-we-know/corrections-backfire/verify_retrievals.py \
+  --artifact-dir /tmp/em0019-artifacts \
+  --require-complete
+```
 
-The authoring agent cannot satisfy “independently rooted reviewer” by checking its own extraction again. Before this candidate can move into `catalog/dossiers/how-we-know/` or change from `draft` to `reviewed`, another reviewer must:
+After review, validate the tracked receipt explicitly:
 
-1. retrieve the six works without relying on the authoring agent’s temporary files;
-2. verify every committed excerpt against the identified edition and locator;
-3. resolve or preserve the Schwarz lineage as unknown and identify the exact Creative Commons variant if possible;
-4. confirm that the handbook-to-Skurnik dependence is warranted by the page’s reference structure;
-5. assess whether any later participant samples or materials share an upstream data source that would reduce the three-root count;
-6. confirm the quote-minimal treatment of restricted works and the CC BY attributions;
-7. run the build, retrieval, and repository checks; and
-8. append a reviewer identity, lineage, timestamp, exact commands, source digests, findings, and limitations as a new receipt.
+```bash
+.venv/bin/python research/how-we-know/corrections-backfire/verify_retrievals.py \
+  --artifact-dir /tmp/em0019-artifacts \
+  --review-receipt \
+  research/how-we-know/corrections-backfire/review-receipts/<receipt>.json \
+  --require-complete
+```
 
-Until then, this is a reviewable research proposal, not accepted knowledge and not homepage copy.
+Finally run:
+
+```bash
+make check
+```
+
+## Independent-review receipt gate
+
+The authoring agent cannot satisfy the gate by checking its own work again. A fresh, independently
+rooted reviewer must retrieve the sources without using the authoring agent’s temporary artifacts,
+review the exact committed head, and author an append-only JSON receipt under:
+
+```text
+research/how-we-know/corrections-backfire/review-receipts/
+```
+
+The local format is `epistemedia-research-review-receipt-v0.1`; it does not claim to be a global
+protocol schema. The verifier requires:
+
+- reviewer `codex-independent-reviewer`, fresh-clone and independent-retrieval declarations, and
+  an explicit declaration that authoring-agent artifacts were not used;
+- repository URL, exact reviewed head, current base, tree, binary-diff digest, dossier identity,
+  packet digest, and digests and lengths of all four packet files;
+- UTC start and completion times;
+- exact argv, working directory, exit code, and stdout/stderr digests for the candidate build,
+  retrieval verifier, and full repository check;
+- one captured-or-unavailable receipt for every primary edition, plus recorded data and read-back
+  sources;
+- every candidate span’s locator, expected and observed extent digest, verification mode, and
+  match result;
+- findings, limitations, clean pre/post Git state, and decision `pass`.
+
+The packet digest sorts the four repository-relative paths, then hashes for each path: UTF-8 path,
+a NUL byte, ASCII byte length, a NUL byte, and the exact file bytes. The binary-diff digest hashes
+the raw output of:
+
+```bash
+git diff --binary --full-index --no-ext-diff \
+  <reviewed-base> <reviewed-head> -- \
+  research/how-we-know/corrections-backfire
+```
+
+The receipt is stale if the base, reviewed head, tree, diff, dossier, README, builder, generated
+candidate, verifier, source record, or span changes. After the reviewed head, only receipt files
+may change before validation. An ordinary task run receipt cannot substitute for this source-span
+review receipt.
+
+Until the exact corrected head has a valid independently authored pass receipt, this remains a
+reviewable research proposal, not accepted knowledge and not homepage copy.

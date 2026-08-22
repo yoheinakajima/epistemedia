@@ -6,12 +6,13 @@
         "kind": "collective"
       },
       "asserted_at": "2005-03-01T00:00:00Z",
-      "id": "em:dossier-assertion:sha256:ffa807a06b2295fb0c0ea4ee8a3fd4148a5e741e52625ffe6b7bf94f0b9b35a7",
+      "id": "em:dossier-assertion:sha256:c6424251ceb56873742dc237f93fa3efe46027356d1b835d60d748449ca69717",
       "key": "assert-skurnik-result",
-      "lineage_key": "lineage-skurnik-data",
+      "lineage_key": "lineage-skurnik-2005-data",
       "proposition_key": "prop-older-adult-result",
       "span_keys": [
-        "span-skurnik-summary"
+        "span-skurnik-summary",
+        "span-ecker-2020-no-baseline"
       ],
       "stance": "asserts",
       "visibility": "public"
@@ -22,13 +23,16 @@
         "kind": "collective"
       },
       "asserted_at": "2011-11-18T00:00:00Z",
-      "id": "em:dossier-assertion:sha256:4ae96234c6b3b889a9945a4e728332e3244f5534bc994fb3c95890a3a5dba893",
+      "id": "em:dossier-assertion:sha256:e1f3c25ab0ad173f6d250615a60ec0ce9bb8d7222b30ea0ce8b2f7ab08873562",
       "key": "assert-handbook-claim",
       "lineage_key": "lineage-handbook-guidance",
       "proposition_key": "prop-general-backfire",
       "span_keys": [
+        "span-handbook-experiment",
+        "span-handbook-delay",
         "span-handbook-claim",
-        "span-handbook-advice"
+        "span-handbook-advice",
+        "span-handbook-reference"
       ],
       "stance": "asserts",
       "visibility": "public"
@@ -39,12 +43,46 @@
         "kind": "collective"
       },
       "asserted_at": "2016-04-01T00:00:00Z",
-      "id": "em:dossier-assertion:sha256:805eba810cedeb0dc72e417fe56d0bbf7930b2d9d57018db2db628608109c1e8",
+      "id": "em:dossier-assertion:sha256:12aa1b12da88945320a3303f4d619d29d106c789b15f0963dde6b8b8d4d8907b",
       "key": "assert-schwarz-claim",
-      "lineage_key": "lineage-schwarz-review",
+      "lineage_key": "lineage-schwarz-general-review",
       "proposition_key": "prop-general-backfire",
       "span_keys": [
         "span-schwarz-claim"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1177/237946151600200110#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2016-04-01T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:06de53b370cb1d909dbae5c28cf8f3ff2b4b3725c5b09070d3aa78ed5ebf022a",
+      "key": "assert-schwarz-flu-result",
+      "lineage_key": "lineage-schwarz-flu-review",
+      "proposition_key": "prop-flu-flyer-result",
+      "span_keys": [
+        "span-schwarz-flu-2007",
+        "span-schwarz-reference-6",
+        "span-ecker-2020-unpublished-lineage"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1186/s41235-020-00241-6#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2020-08-26T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:787c94e3350819573caa69f4979e7b8b4e81a4c7c133a5da56a78c8a94004e1e",
+      "key": "assert-ecker-2020-historical-report",
+      "lineage_key": "lineage-ecker-2020-historical-report",
+      "proposition_key": "prop-flu-flyer-result",
+      "span_keys": [
+        "span-ecker-2020-unpublished-lineage"
       ],
       "stance": "asserts",
       "visibility": "public"
@@ -72,9 +110,9 @@
         "kind": "collective"
       },
       "asserted_at": "2020-08-26T00:00:00Z",
-      "id": "em:dossier-assertion:sha256:8fc3c0d578ad84c5f51c7f2c969b4bea8626925c3acad1b2bcc477c8cd2c4471",
+      "id": "em:dossier-assertion:sha256:90b22643afacbe167eac2ac461c868bfb625009d715ba0162667bda74536a50b",
       "key": "assert-ecker-2020-guidance",
-      "lineage_key": "lineage-ecker-2020-data",
+      "lineage_key": "lineage-ecker-2020-interpretation",
       "proposition_key": "prop-guidance-overreach",
       "span_keys": [
         "span-ecker-2020-guidance-overreach"
@@ -129,6 +167,92 @@
       ],
       "stance": "questions",
       "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1002/acp.3823#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2021-03-31T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:b2341eee72f4cbd3a5fa53329ce0144e7abaf1092dfd7f907383ecec5f815170",
+      "key": "assert-autry-2021-result",
+      "lineage_key": "lineage-autry-2021-data",
+      "proposition_key": "prop-unlicensed-negation-boundary",
+      "span_keys": [
+        "span-autry-2021-result",
+        "span-autry-2021-qualifier",
+        "span-autry-2021-timing-limit"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1371/journal.pone.0181640#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2017-07-27T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:8ef712d772d6ac6a04fea4cb6f504173824de03af6db9ff1dc5266f5c591dd63",
+      "key": "assert-pluviano-2017-result",
+      "lineage_key": "lineage-pluviano-2017-data",
+      "proposition_key": "prop-vaccine-myths-boundary",
+      "span_keys": [
+        "span-pluviano-2017-result",
+        "span-pluviano-2017-limitation"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1007/s10339-019-00919-w#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2019-04-08T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:6adcc6694bf70e23f0caf491bbd93358dff004d3d16bc2bb0f25ee26cadc51d6",
+      "key": "assert-pluviano-2019-result",
+      "lineage_key": "lineage-pluviano-2019-data",
+      "proposition_key": "prop-vaccine-myths-boundary",
+      "span_keys": [
+        "span-pluviano-2019-result",
+        "span-pluviano-2019-dependence"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1002/acp.70004#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2024-11-09T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:4d48b0378d1de4fcedc45b62478b303bdc114086a6f3e6a5de1261840c831b55",
+      "key": "assert-thomas-2024-result",
+      "lineage_key": "lineage-thomas-2024-data",
+      "proposition_key": "prop-unlicensed-negation-boundary",
+      "span_keys": [
+        "span-thomas-2024-result",
+        "span-thomas-2024-mechanism"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "doi:10.1016/j.ijresmar.2026.03.007#authors",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-03-27T00:00:00Z",
+      "id": "em:dossier-assertion:sha256:d755bea19f1589679f680f017bbaea73256cffd37a07f68edccd8574f658b909",
+      "key": "assert-nibat-2026-result",
+      "lineage_key": "lineage-nibat-2026-data",
+      "proposition_key": "prop-brand-correction-result",
+      "span_keys": [
+        "span-nibat-2026-scope",
+        "span-nibat-2026-result"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
     }
   ],
   "claim_families": [
@@ -137,39 +261,64 @@
         "assert-skurnik-result",
         "assert-handbook-claim",
         "assert-schwarz-claim",
+        "assert-schwarz-flu-result",
+        "assert-ecker-2020-historical-report",
         "assert-ecker-2020-result",
         "assert-ecker-2020-guidance",
         "assert-prike-2023-result",
         "assert-prike-2023-skepticism",
-        "assert-ecker-2023-result"
+        "assert-ecker-2023-result",
+        "assert-autry-2021-result",
+        "assert-pluviano-2017-result",
+        "assert-pluviano-2019-result",
+        "assert-thomas-2024-result",
+        "assert-nibat-2026-result"
       ],
-      "id": "em:dossier-claim-family:sha256:4a9e6e5dcc3bb898548473160c313bee72133b1793215ffae65fdba4d35e588c",
+      "id": "em:dossier-claim-family:sha256:e77aca2337f537cc22a713fb212c12029becbf76b387d560bec00ff81bf9ea53",
       "key": "family-familiarity-backfire",
       "proposition_keys": [
         "prop-general-backfire",
         "prop-older-adult-result",
         "prop-guidance-overreach",
-        "prop-skepticism-boundary"
+        "prop-skepticism-boundary",
+        "prop-flu-flyer-result",
+        "prop-unlicensed-negation-boundary",
+        "prop-vaccine-myths-boundary",
+        "prop-brand-correction-result"
       ],
       "question": "Does repeating misinformation within a correction generally make the misinformation more believable?",
       "relation_keys": [
         "relation-skurnik-qualifies-general",
         "relation-handbook-supports-general",
         "relation-schwarz-supports-general",
-        "relation-handbook-depends-skurnik",
+        "relation-handbook-depends-skurnik-2007",
+        "relation-handbook-citation-mismatch",
+        "relation-schwarz-flu-depends-skurnik-2007",
+        "relation-schwarz-flu-supports-boundary",
+        "relation-ecker-historical-supports-boundary",
         "relation-update-qualifies-handbook",
         "relation-ecker-2020-rebuts-general",
         "relation-ecker-undercuts-guidance",
         "relation-ecker-undercuts-review",
         "relation-prike-rebuts-general",
         "relation-prike-qualifies-boundary",
-        "relation-ecker-2023-rebuts-general"
+        "relation-ecker-2023-rebuts-general",
+        "relation-autry-qualifies-general",
+        "relation-pluviano-2017-supports-vaccine-boundary",
+        "relation-pluviano-2019-supports-vaccine-boundary",
+        "relation-thomas-qualifies-general",
+        "relation-nibat-rebuts-general",
+        "relation-ecker-2023-failed-replication-pluviano-2017",
+        "relation-ecker-prike-shared-recruitment-frame",
+        "relation-ecker-prike-shared-ethics-series",
+        "relation-ecker-2023-reuses-pluviano-materials",
+        "relation-pluviano-2019-reuses-comparison-method"
       ],
       "title": "Familiarity backfire from corrective repetition",
       "visibility": "public"
     }
   ],
-  "dossier_id": "em:dossier:sha256:999dfd06596c965578f663b00380abac8cec5d8139b4735d2399c4b8207c6947",
+  "dossier_id": "em:dossier:sha256:5537f80db03930c09a0739b1066734e57b8616ddffa952d7999188ac417e68cc",
   "editions": [
     {
       "content": {
@@ -182,14 +331,15 @@
         "excerpts": [
           {
             "locator": "PDF page 1; journal page 713; abstract sentences 1–2",
-            "text": "Telling people that a consumer claim is false can make them misremember it as true. In two experiments, older adults were especially susceptible to this “illusion of truth” effect."
+            "text": "Telling people that a consumer claim is false can make them misremember it as true. In two experiments, older adults were especially susceptible to this “illusion of truth” effect.",
+            "verification": "artifact"
           }
         ]
       },
-      "content_digest": "sha256:d9724a533b7b0984ded70404818d7f52075f1bbece6817d71048497e90e270e7",
-      "content_length": 540,
+      "content_digest": "sha256:2e4b5e85d79962357fe358774840e6891933609bd3e07a12a776209c934c0221",
+      "content_length": 566,
       "edition_label": "Journal PDF, volume 31, issue 4, pages 713–724; excerpt packet",
-      "id": "em:dossier-edition:sha256:6af4c9029aa633167234dd75c9af03e949ddda64fa26dfce0ddeec8ec52e8e8a",
+      "id": "em:dossier-edition:sha256:191690eafd1b9f4e7080c3cda4c065b9b1681fa3806486c6ad2c8a1491e76e3e",
       "key": "edition-skurnik-2005",
       "media_type": "application/json",
       "retrieved_at": "2026-08-22T06:13:51Z",
@@ -207,26 +357,40 @@
         "excerpts": [
           {
             "locator": "2011 body; paragraph beginning 'Hence'",
-            "text": "Hence the backfire effect is real."
+            "text": "Hence the backfire effect is real.",
+            "verification": "artifact"
           },
           {
             "locator": "2011 body; paragraph beginning 'How does one avoid'",
-            "text": "Ideally, avoid mentioning the myth altogether while correcting it."
+            "text": "Ideally, avoid mentioning the myth altogether while correcting it.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "2011 body; flu-vaccine flyer description",
+            "text": "To test for this backfire effect, people were shown a flyer that debunked common myths about flu vaccines.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "2011 body; 30-minute delayed result",
+            "text": "However, when queried 30 minutes after reading the flyer, some people actually scored worse after reading the flyer.",
+            "verification": "artifact"
           },
           {
             "locator": "References; item 1",
-            "text": "Skurnik, I., Yoon, C., Park, D., & Schwarz, N. (2005). How warnings about false claims become recommendations. Journal of Consumer Research, 31, 713-724."
+            "text": "Skurnik, I., Yoon, C., Park, D., & Schwarz, N. (2005). How warnings about false claims become recommendations. Journal of Consumer Research, 31, 713-724.",
+            "verification": "artifact"
           },
           {
             "locator": "2020 update notice",
-            "text": "For the most current information about this elusive effect please read the relevant excerpt from the new version of the handbook here."
+            "text": "For the most current information about this elusive effect please read the relevant excerpt from the new version of the handbook here.",
+            "verification": "artifact"
           }
         ]
       },
-      "content_digest": "sha256:83e4fc1c065ea0ec55b062e44956072f5a0c971c55cdb8aaee6c327440bc5bc3",
-      "content_length": 897,
+      "content_digest": "sha256:a0084764e9ee74aa0203bf0b1f847632be03372f63cea1838d32970932436935",
+      "content_length": 1400,
       "edition_label": "Live HTML page including 2017 and 2020 update notices; excerpt packet",
-      "id": "em:dossier-edition:sha256:95c3e0e6b12c4227f0ab38228815d5ca241a9b6413f957c646d540373d4bf6f2",
+      "id": "em:dossier-edition:sha256:44d51d01ea830ca7a56e6c5f8268d7fe169268c7003cac80e62dac68f63592e9",
       "key": "edition-handbook-2011",
       "media_type": "application/json",
       "retrieved_at": "2026-08-22T06:13:51Z",
@@ -235,27 +399,47 @@
     },
     {
       "content": {
+        "alternate_identifiers": [
+          "https://doi.org/10.1353/bsp.2016.0009"
+        ],
         "artifact": {
           "bytes": null,
           "custody": "Authoritative publisher text independently visible through web read-back; automated byte capture returned HTTP 403.",
-          "retrieved_from": "https://journals.sagepub.com/doi/10.1177/237946151600200110",
+          "retrieved_from": "https://journals.sagepub.com/doi/pdf/10.1177/237946151600200110",
           "sha256": null
         },
         "excerpts": [
           {
-            "locator": "Publisher HTML abstract; opening sentences",
-            "text": "Erroneous beliefs are difficult to correct. Worse, popular correction strategies, such as the myth-versus-fact article format, may backfire because they subtly reinforce the myths through repetition and further increase the spread and acceptance of misinformation."
+            "locator": "PDF page 1; abstract opening",
+            "text": "Erroneous beliefs are difficult to correct. Worse, popular correction strategies, such as the myth-versus-fact article format, may backfire because they subtly reinforce the myths through repetition and further increase the spread and acceptance of misinformation.",
+            "verification": "independent-readback"
           },
           {
-            "locator": "Publisher HTML references; item 42",
-            "text": "Skurnik I., Yoon C., Park D. C., & Schwarz N. (2005). How warnings about false claims become recommendations Journal of Consumer Research, 31, 713–724"
+            "locator": "PDF page 6; journal page 90; 2005 delayed older-adult result",
+            "text": "But 3 days later, after their memories had a chance to fade, participants were more likely to think that any statement they had seen was true, whether it had been presented as true or false. Older participants were particularly vulnerable to this bias, presumably because their poorer memory made it harder to remember the details of what they had heard earlier.",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "PDF page 7; journal page 91; flu-flyer result",
+            "text": "When undergraduates viewed a myths-and-facts flyer about the flu taken from the CDC website, they remembered some myths as facts after only 30 minutes. Worse, their reported intentions to get vaccinated were even lower than those of control participants who had not been exposed to any message about the flu.",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "PDF page 10; reference 6",
+            "text": "Schwarz, N., Sanna, L. J., Skurnik, I., & Yoon, C. (2007). Metacognitive experiences and the intricacies of setting people straight: Implications for debiasing and public information campaigns. Advances in Experimental Social Psychology, 39, 127–161.",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "PDF page 10; reference 42",
+            "text": "Skurnik I., Yoon C., Park D. C., & Schwarz N. (2005). How warnings about false claims become recommendations Journal of Consumer Research, 31, 713–724",
+            "verification": "independent-readback"
           }
         ]
       },
-      "content_digest": "sha256:86a6a683857ddf8c2cddff8012a1d889258e9271abc1ce976df0ce6595f431d5",
-      "content_length": 803,
-      "edition_label": "Publisher HTML abstract and reference-list transcript; excerpt packet",
-      "id": "em:dossier-edition:sha256:bdfd1508a4f1eb3dfbf0eb183404285dee37952060e8a09daa238cffdc54ba4f",
+      "content_digest": "sha256:e461259f95c2fbb9d601048e811e11605e04fcef882b2f7b0e4e5444fd26f9b7",
+      "content_length": 2166,
+      "edition_label": "Publisher PDF, volume 2 issue 1, pages 85–95; independently read excerpt packet",
+      "id": "em:dossier-edition:sha256:057a49c091f760bebd78255abb9ff22d0d5d6e4d232fb646e0e55312051c3cb9",
       "key": "edition-schwarz-2016",
       "media_type": "application/json",
       "retrieved_at": "2026-08-22T06:13:51Z",
@@ -273,22 +457,40 @@
         "excerpts": [
           {
             "locator": "General discussion; opening result sentences",
-            "text": "Experiment 1 found some evidence for a familiarity backfire effect, but the evidence was statistically weak and the result failed to occur in an exact replication with greater experimental power (Experiment 2) as well as a close replication that added only a trivial secondary task (the no-load condition of Experiment 3). In fact, both Experiments 2 and 3 yielded substantial evidence against the presence of a familiarity backfire effect, even under conditions that should maximize reliance on familiarity and thus facilitate occurrence of familiarity backfire, viz. the combination of novel claims that maximized the familiarity boost conveyed by first exposure, a relatively long 1-week retention interval, and correction encoding under cognitive load (the load condition of Experiment 3)."
+            "text": "Experiment 1 found some evidence for a familiarity backfire effect, but the evidence was statistically weak and the result failed to occur in an exact replication with greater experimental power (Experiment 2) as well as a close replication that added only a trivial secondary task (the no-load condition of Experiment 3). In fact, both Experiments 2 and 3 yielded substantial evidence against the presence of a familiarity backfire effect, even under conditions that should maximize reliance on familiarity and thus facilitate occurrence of familiarity backfire, viz. the combination of novel claims that maximized the familiarity boost conveyed by first exposure, a relatively long 1-week retention interval, and correction encoding under cognitive load (the load condition of Experiment 3).",
+            "verification": "artifact"
           },
           {
             "locator": "General discussion; practical implications opening",
-            "text": "The practical implications of this research are clear: recommendations to front-line educators and communicators to entirely avoid repeating misinformation when debunking (Cook & Lewandowsky, 2011; Lewandowsky et al., 2012; Peter & Koch, 2016; Schwarz et al., 2007, 2016) were unwarranted."
+            "text": "The practical implications of this research are clear: recommendations to front-line educators and communicators to entirely avoid repeating misinformation when debunking (Cook & Lewandowsky, 2011; Lewandowsky et al., 2012; Peter & Koch, 2016; Schwarz et al., 2007, 2016) were unwarranted.",
+            "verification": "artifact"
           },
           {
             "locator": "General discussion; practical implications conclusion",
-            "text": "Finally, the present study suggests that exposure to a correction does not cause familiarity backfire relative to a no-exposure control even with novel claims, and thus corrections do not seem to spread misinformation to new audiences easily."
+            "text": "Finally, the present study suggests that exposure to a correction does not cause familiarity backfire relative to a no-exposure control even with novel claims, and thus corrections do not seem to spread misinformation to new audiences easily.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Introduction; paragraph 7; unpublished 2007 lineage",
+            "text": "the only clear demonstration of a familiarity backfire effect was reported in an unpublished manuscript by Skurnik, Yoon, and Schwarz (2007; discussed by Schwarz et al., 2007)",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Introduction; paragraph 7; missing-baseline qualification",
+            "text": "the study also did not feature a baseline condition against which to access actual “backfire.”",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Experiment 1; participants",
+            "text": "Participants were US-based adult Amazon Mechanical Turk (MTurk) workers, who had completed at least 5000 so-called human-intelligence tasks (HITs) with 97% + approval.",
+            "verification": "artifact"
           }
         ]
       },
-      "content_digest": "sha256:c8b7de5e8487be186e5db01f046ef8505e8365cdaad74ed1278ece89dabc521f",
-      "content_length": 1827,
+      "content_digest": "sha256:d0102eb09cc9460b54b07816dcbce5a1e674d5950f4ba65d3299a15fcbd89bbc",
+      "content_length": 2632,
       "edition_label": "Europe PMC JATS XML, PMCID PMC7447737; excerpt packet",
-      "id": "em:dossier-edition:sha256:0fc430751f97f4356d41892e84329b9ef0933c06f477722de6d610817bafb279",
+      "id": "em:dossier-edition:sha256:c75c8a96e83e042610782d479f11b438ca3a358162e5fbac466b94338862740a",
       "key": "edition-ecker-2020",
       "media_type": "application/json",
       "retrieved_at": "2026-08-22T06:13:51Z",
@@ -306,14 +508,30 @@
         "excerpts": [
           {
             "locator": "Abstract; results and qualification sentences",
-            "text": "Across three experiments (total N = 1156) we found that standalone corrections did not backfire immediately (Experiment 1) or after a one-week delay (Experiment 2). However, there was some mixed evidence suggesting corrections may backfire when there is skepticism regarding the correction (Experiment 3). Specifically, in Experiment 3, we found the standalone correction to backfire in open-ended responses, but only when there was skepticism towards the correction. However, this did not replicate with the rating scales measure."
+            "text": "Across three experiments (total N = 1156) we found that standalone corrections did not backfire immediately (Experiment 1) or after a one-week delay (Experiment 2). However, there was some mixed evidence suggesting corrections may backfire when there is skepticism regarding the correction (Experiment 3). Specifically, in Experiment 3, we found the standalone correction to backfire in open-ended responses, but only when there was skepticism towards the correction. However, this did not replicate with the rating scales measure.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Experiment 1; participants",
+            "text": "To account for potential exclusions and ensure ample statistical power, 283 participants were recruited from the online testing platform Amazon Mechanical Turk (MTurk) via CloudResearch (Litman et al., 2017). Participants were eligible if they resided in the United States of America and had previously completed more than 5000 MTurk tasks (HITs) with a minimum approval rating of 97%.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Ethics approval",
+            "text": "All procedures were approved by the University of Western Australia’s Human Research Ethics Office (Ethics ID: RA/4/20/6423).",
+            "verification": "artifact"
+          },
+          {
+            "locator": "General discussion; sample comparison",
+            "text": "Additionally, Autry and Duarte only sampled undergraduates whereas our participants were recruited from MTurk without any age restrictions.",
+            "verification": "artifact"
           }
         ]
       },
-      "content_digest": "sha256:f878488a525adf7e2ea28be61aa5036bf5e5e5c136878b44c7110d6428e126a2",
-      "content_length": 887,
+      "content_digest": "sha256:9fd9966e81a2a5856fd49ad01bae1aa84169db1791e5bb544ba4f9f2c80020f7",
+      "content_length": 1795,
       "edition_label": "Europe PMC JATS XML, PMCID PMC10317933; excerpt packet",
-      "id": "em:dossier-edition:sha256:519a52c977133aaf5eeda77e7e2a49b0cf6e00f181457defce0f75dd839dd7d5",
+      "id": "em:dossier-edition:sha256:47bcce0bdc6b2437cbe05a4bc23b5c515bea5682a4e111f1dd777c90d3212c54",
       "key": "edition-prike-2023",
       "media_type": "application/json",
       "retrieved_at": "2026-08-22T06:13:51Z",
@@ -331,46 +549,261 @@
         "excerpts": [
           {
             "locator": "Abstract; outcome sentences",
-            "text": "We found that the myths vs. facts condition reduced vaccine misconceptions. None of the conditions increased vaccine misconceptions relative to control at either timepoint, or relative to a pre-intervention baseline; thus, no backfire effects were observed. This failure to replicate adds to the mounting evidence against familiarity backfire effects and has implications for vaccination communications and the design of debunking interventions."
+            "text": "We found that the myths vs. facts condition reduced vaccine misconceptions. None of the conditions increased vaccine misconceptions relative to control at either timepoint, or relative to a pre-intervention baseline; thus, no backfire effects were observed. This failure to replicate adds to the mounting evidence against familiarity backfire effects and has implications for vaccination communications and the design of debunking interventions.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Method; participants",
+            "text": "To additionally account for an expected drop-out rate of 15% between T1 and T2, a convenience sample of 440 UK-based participants was recruited using Prolific.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Method; materials source",
+            "text": "Stimuli were taken directly from Pluviano et al. (2017) and are provided in the S1 File, available at https://osf.io/dwyma/.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Method; ethics approval",
+            "text": "The experiment was approved by the Human Research Ethics Office of the University of Western Australia (RA/4/20/6423).",
+            "verification": "artifact"
           }
         ]
       },
-      "content_digest": "sha256:409bf883b488854126a2f2eec2eeaf0a52f97bc44d867fb68e8a55f8c1adc173",
-      "content_length": 779,
+      "content_digest": "sha256:1eed263643cdc603bbbae21cc125ee0a656f25a342af9d3556539f3bcaec4b62",
+      "content_length": 1426,
       "edition_label": "Europe PMC JATS XML, PMCID PMC10096191.1; excerpt packet",
-      "id": "em:dossier-edition:sha256:b162049e6a4c49c71eb01ae9cc13f9350cbff92dd14d4c8707ae7f6f15b06dce",
+      "id": "em:dossier-edition:sha256:38c5f1f91ec80e4254e1976b2d304498af9efc5b9b5212567e7297f6821cdc20",
       "key": "edition-ecker-2023",
       "media_type": "application/json",
       "retrieved_at": "2026-08-22T06:13:51Z",
       "visibility": "public",
       "work_key": "work-ecker-2023"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 9943,
+          "custody": "Temporary Crossref JSON capture; publisher HTML qualifier was read separately and requires independent read-back.",
+          "retrieved_from": "https://api.crossref.org/works/10.1002/acp.3823",
+          "sha256": "39293b19eb31c866b74e5017f7af0377f52a227162b034ad1f4c84471e82906d"
+        },
+        "data_artifacts": [
+          {
+            "bytes": 148954,
+            "file_id": "5df17dee078b52000c5ae2d2",
+            "label": "Experiment 1 inference data",
+            "license_treatment": "No separate OSF data license was confirmed; identity and digest only, with workbook bytes kept outside the repository.",
+            "project_uri": "https://osf.io/yweu6/",
+            "retrieved_from": "https://osf.io/download/37ewu/",
+            "sha256": "bc069a90152b887116cd4972df4376844570ba25cefbfa1055668c78eeaca80a"
+          },
+          {
+            "bytes": 216736,
+            "file_id": "5df17dfc18536f000c8e4c72",
+            "label": "Experiment 2 inference data",
+            "license_treatment": "No separate OSF data license was confirmed; identity and digest only, with workbook bytes kept outside the repository.",
+            "project_uri": "https://osf.io/yweu6/",
+            "retrieved_from": "https://osf.io/download/kqjm2/",
+            "sha256": "de9f27b026ceadea0a6309ef695be06bc06c1fa35ba9209260f246d89b108ea5"
+          }
+        ],
+        "excerpts": [
+          {
+            "locator": "Crossref abstract; result sentence",
+            "text": "When subjects were exposed to the target concept, negated corrections reduced mentions of the misinformation relative to no correction; however, when not exposed to the concept, negated corrections increased mentions relative to no correction.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Publisher HTML; general discussion; qualified result",
+            "text": "When subjects were not exposed, negated corrections increased mentions of the target concept compared to no correction (although this effect was nonsignificant in Experiment 2).",
+            "verification": "independent-readback"
+          },
+          {
+            "locator": "Publisher HTML; limitations; timing and persistence",
+            "text": "The effects of exposure on negated corrections occurred after a 5-min delay in Experiment 1 and no delay in Experiment 2; therefore, further research is necessary to determine whether the increased belief from negated corrections persists over longer intervals.",
+            "verification": "independent-readback"
+          }
+        ],
+        "readback_sources": [
+          {
+            "custody": "Exact qualifier and timing spans require independent publisher read-back; automated full-page capture returned HTTP 403.",
+            "label": "Wiley version-of-record HTML",
+            "retrieved_from": "https://onlinelibrary.wiley.com/doi/10.1002/acp.3823"
+          }
+        ]
+      },
+      "content_digest": "sha256:65a07ba0644dfffe76600044093dadc9d5ae8366c08aa76b8e8b6a3808c1d489",
+      "content_length": 2384,
+      "edition_label": "Publisher-deposited Crossref record plus publisher HTML qualifier; excerpt packet",
+      "id": "em:dossier-edition:sha256:ccbced44c017f86e16d77d980e25b5798235218c669e3ff43537305e81ecd802",
+      "key": "edition-autry-2021",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T07:11:15Z",
+      "visibility": "public",
+      "work_key": "work-autry-2021"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 114003,
+          "custody": "Temporary CC BY 4.0 XML capture; exact excerpt committed.",
+          "retrieved_from": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5547702/fullTextXML",
+          "sha256": "87e363cb1cae5896c42c7e7e0295bd2e6969637473d14ff76deea3c740024377"
+        },
+        "excerpts": [
+          {
+            "locator": "Results; beliefs in vaccines/autism link",
+            "text": "This time, beliefs in the vaccines/autism link were statistically significantly higher in the myths vs. facts condition compared to the visual (M = .97, SE = .22, p < .001) and control condition (M = .8, SE = .22, p = .002), and in the fear condition compared to visual condition (M = .67, SE = .22, p = .016).",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Discussion; limitations paragraph 8",
+            "text": "Some aspects of our experimental procedures may limit the generalization of the findings. Firstly, we used a convenience sample with limited variability in age and educational level.",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:a4aa1175eb7d0206dbae3665c59c5aed51dcd0df3b2ee73bfaf2b37b368490c0",
+      "content_length": 948,
+      "edition_label": "PLOS JATS XML; excerpt packet",
+      "id": "em:dossier-edition:sha256:e8dc0bf76e1b68e4af240a5be579c24305a78d660c9df3e555aed36d6ccb66bb",
+      "key": "edition-pluviano-2017",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T07:11:15Z",
+      "visibility": "public",
+      "work_key": "work-pluviano-2017"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 762139,
+          "custody": "Temporary accepted-manuscript PDF; one short result excerpt committed; full PDF not redistributed.",
+          "retrieved_from": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/82242964/Parents_belief_in_misinformation.pdf",
+          "sha256": "42968a50225e7ef7c65afd35742d2fc47eec5bf0c394faca48543850c1b5fb60"
+        },
+        "excerpts": [
+          {
+            "locator": "Accepted manuscript page 2; abstract",
+            "text": "Data provided support for the existence of backfire effects associated with the use of the myths vs. fact format, with parents in this condition having stronger vaccine misconceptions over time compared with participants in the control condition.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Accepted manuscript procedure; comparison with prior study",
+            "text": "We opted for a 7-day delay between the two tests as suggested by Nyhan et al.’s (2014) study and to allow a straight comparison with our own previous study (Pluviano et al. 2017).",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:ac4b7e25617d14ce8f9adfc46d6fca500abd91b6540bcb62b66dc9da3a1fc1dd",
+      "content_length": 965,
+      "edition_label": "University of Edinburgh accepted manuscript; excerpt packet",
+      "id": "em:dossier-edition:sha256:43517dfe002265e0bfe120942145f8e70d3d1a5b421799cce13bb452541c91aa",
+      "key": "edition-pluviano-2019",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T07:11:15Z",
+      "visibility": "public",
+      "work_key": "work-pluviano-2019"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 11291,
+          "custody": "Temporary Crossref JSON capture; article is not redistributed.",
+          "retrieved_from": "https://api.crossref.org/works/10.1002/acp.70004",
+          "sha256": "f71d065da32f2179ff262008a863cae22aeec81b01e59997c994a1871e87bf23"
+        },
+        "data_artifacts": [
+          {
+            "bytes": 644279,
+            "file_id": "654a7d79f5503205568a1111",
+            "label": "Study data workbook",
+            "license_treatment": "No separate OSF data license was confirmed; identity and digest only, with workbook bytes kept outside the repository.",
+            "project_uri": "https://osf.io/y65ke/",
+            "retrieved_from": "https://osf.io/download/fg3dy/",
+            "sha256": "4a65116f6f10b02dc34b8353a228a16604a48ebcca576b2aae91ad5073f4d66c"
+          }
+        ],
+        "excerpts": [
+          {
+            "locator": "Crossref abstract; result sentence",
+            "text": "Misinformation use was significantly greater when a correction was provided without licensing than when no information was provided at all.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "Crossref abstract; mechanism sentence fragment",
+            "text": "We suggest that the backfire effect observed in this study may be the result of a violation of the Gricean maxims of communication",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:b75d2dd4bcfac62c555bbd9ff73161f763d43ed5ffc7da218f72537e4129069d",
+      "content_length": 1119,
+      "edition_label": "Publisher-deposited Crossref record; excerpt packet",
+      "id": "em:dossier-edition:sha256:16165aadad13e262a9708a8e8aafd90dfd00cfa95897ddbff2cd43b5c3d6e4e8",
+      "key": "edition-thomas-2024",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T07:11:15Z",
+      "visibility": "public",
+      "work_key": "work-thomas-2024"
+    },
+    {
+      "content": {
+        "artifact": {
+          "bytes": 2525138,
+          "custody": "Temporary CC BY 4.0 PDF download; exact excerpts committed.",
+          "retrieved_from": "https://research.sabanciuniv.edu/id/eprint/54047/",
+          "sha256": "99075c8a58b19d3be262486ccb78b3508747887e350802e5b41b74390b13d3bc"
+        },
+        "excerpts": [
+          {
+            "locator": "PDF page 1; abstract scope",
+            "text": "Across five studies (N = 4337), this article systematically compares the competing effects of repetition and correction on belief in corporate misinformation and brand evaluations.",
+            "verification": "artifact"
+          },
+          {
+            "locator": "PDF page 1; abstract result",
+            "text": "This research finds no evidence of a familiarity backfire effect: in none of the studies, repetition increases belief in the misinformation more than correction reduces it.",
+            "verification": "artifact"
+          }
+        ]
+      },
+      "content_digest": "sha256:974e01d84ea2f59af62a66af87725567aa86d398001c6107b8b9967ee52e898f",
+      "content_length": 767,
+      "edition_label": "Sabanci University author-deposited Elsevier corrected proof; excerpt packet",
+      "id": "em:dossier-edition:sha256:037a77a629de45498a7c9057ceead601f7985704ec5282b642d0c77d4e4a9240",
+      "key": "edition-nibat-2026",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-22T07:11:15Z",
+      "visibility": "public",
+      "work_key": "work-nibat-2026"
     }
   ],
   "evaluations": [
     {
       "claim_family_key": "family-familiarity-backfire",
       "frontier": "research-candidate-em-0019",
-      "id": "em:dossier-evaluation:sha256:a43bd0f47d26577e4e1275a44225d42ac65d63c78ac71064c443106eba43f55d",
+      "id": "em:dossier-evaluation:sha256:b5693c7feb33b5e4c5d86b419993a25dfa11c3b3c811e7cd18ce0e0155d725b9",
       "key": "evaluation-encyclopedia",
-      "label": "The tested correction formats usually did not produce familiarity backfire; early narrower results and an unresolved skepticism boundary remain visible.",
+      "label": "Target-comparable backfire appears in some tested formats and contexts, while replications and later studies also report counterevidence. The record does not warrant a blanket rule against repeating misinformation inside corrections, and the causal mechanism remains unresolved.",
       "policy_id": "em:application-policy:encyclopedia-v0.1",
       "reason_codes": [
-        "early-result-narrower-than-general-rule",
-        "later-data-roots-rebut-general-rule",
+        "target-comparable-support-preserved",
+        "counterevidence-preserved",
+        "baseline-mismatch-preserved",
         "skepticism-boundary-unresolved",
-        "continued-influence-is-distinct"
+        "mechanism-attribution-unresolved"
       ],
       "visibility": "public"
     },
     {
       "claim_family_key": "family-familiarity-backfire",
       "frontier": "research-candidate-em-0019",
-      "id": "em:dossier-evaluation:sha256:8f3cb24657c2d18c700148a39a86ba9af186ffd614299ac1632ae4b149fb832c",
+      "id": "em:dossier-evaluation:sha256:8f9e0a45e45109aec7dd19499304b0ade7ce2afee7d7baaed4d7ac0902eec24e",
       "key": "evaluation-skeptical",
-      "label": "No universal rule is admitted: supportive scope was overgeneralized, one review lineage is unresolved, and later studies share some authors and methods despite using new participant data.",
+      "label": "No universal rule is admitted: supportive scope was overgeneralized, the unpublished 2007 data remain unresolved, and both supportive and counterevidence papers cluster in overlapping author, material, and method programs despite distinct participant-data roots.",
       "policy_id": "em:application-policy:skeptical-v0.1",
       "reason_codes": [
-        "unresolved-review-lineage",
+        "unpublished-data-lineage-unresolved",
         "team-and-method-overlap",
         "measure-specific-qualifier",
         "population-and-context-limits"
@@ -381,25 +814,28 @@
   "evidence_relations": [
     {
       "basis_span_keys": [
-        "span-skurnik-summary"
+        "span-skurnik-summary",
+        "span-ecker-2020-no-baseline"
       ],
       "from_ref": "assert-skurnik-result",
-      "id": "em:dossier-evidence-relation:sha256:babd2a14b35fd93db745b0ca1328a5c17a6b20190e55607bd42968dd5e457a4c",
+      "id": "em:dossier-evidence-relation:sha256:c6c10b9e96d86f8097348188795778414ed963a19d8125e9155f5be692de0cb7",
       "key": "relation-skurnik-qualifies-general",
-      "note": "Shows a possible effect in a narrower older-adult consumer-claim setting.",
+      "note": "Shows a narrower delayed older-adult effect but lacks the baseline required to establish target-comparable backfire.",
       "relation_type": "qualification",
       "to_ref": "prop-general-backfire",
       "visibility": "public"
     },
     {
       "basis_span_keys": [
+        "span-handbook-experiment",
+        "span-handbook-delay",
         "span-handbook-claim",
         "span-handbook-advice"
       ],
       "from_ref": "assert-handbook-claim",
-      "id": "em:dossier-evidence-relation:sha256:9300eaa93570c089b0ad6f256a6502b7163555570af8f94720d55165427f3632",
+      "id": "em:dossier-evidence-relation:sha256:dcdb4f3dc7e50761cd34673876e3a76cbf59368554715078c3a0034a60a01abc",
       "key": "relation-handbook-supports-general",
-      "note": "A broad public-facing claim and recommendation.",
+      "note": "A broad public-facing claim and recommendation rooted in the described 30-minute flu-flyer result.",
       "relation_type": "support",
       "to_ref": "prop-general-backfire",
       "visibility": "public"
@@ -409,23 +845,80 @@
         "span-schwarz-claim"
       ],
       "from_ref": "assert-schwarz-claim",
-      "id": "em:dossier-evidence-relation:sha256:f1dd4a700cdc49fa413e9fc7b44bb78a8d94d2b47de34f38aac5bfe836393fe4",
+      "id": "em:dossier-evidence-relation:sha256:bf52e2b1ac02b5733e123666b5ca361070558d1e5b7873d6149f6485613632aa",
       "key": "relation-schwarz-supports-general",
-      "note": "A second broad review-level mention with unresolved sentence-level lineage.",
+      "note": "A broad review-level mention; its concrete 2005 and flu-flyer examples are represented separately rather than treated as new data.",
       "relation_type": "support",
       "to_ref": "prop-general-backfire",
       "visibility": "public"
     },
     {
       "basis_span_keys": [
-        "span-handbook-reference"
+        "span-handbook-experiment",
+        "span-handbook-delay",
+        "span-ecker-2020-unpublished-lineage"
       ],
       "from_ref": "lineage-handbook-guidance",
-      "id": "em:dossier-evidence-relation:sha256:4e78c840a12543e9c9714ffbbcdd8f7f447bf237e109517c98977519a996810d",
-      "key": "relation-handbook-depends-skurnik",
-      "note": "The 2011 page has one numbered reference: Skurnik et al. 2005.",
+      "id": "em:dossier-evidence-relation:sha256:870ed29610f2f60bea6f5b05d62e715074cf25b39a4bcedc87fcc4632338bcc0",
+      "key": "relation-handbook-depends-skurnik-2007",
+      "note": "Later literature identifies the page’s flu-flyer/30-minute result as the unpublished 2007 data, not the 2005 paper named in its sole reference.",
       "relation_type": "dependence",
-      "to_ref": "lineage-skurnik-data",
+      "to_ref": "lineage-skurnik-2007-data",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-handbook-experiment",
+        "span-handbook-delay",
+        "span-handbook-reference",
+        "span-ecker-2020-unpublished-lineage",
+        "span-ecker-2020-no-baseline"
+      ],
+      "from_ref": "span-handbook-reference",
+      "id": "em:dossier-evidence-relation:sha256:3bf25c4394888d05b5dd466d5ec657076f8e1bade0a22758a9f14d71a323823e",
+      "key": "relation-handbook-citation-mismatch",
+      "note": "The visible reference names the 2005 older-adult consumer-claim study, whose design does not match the page’s flu-flyer/30-minute description.",
+      "relation_type": "undercutting",
+      "to_ref": "assert-handbook-claim",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-schwarz-flu-2007",
+        "span-schwarz-reference-6",
+        "span-ecker-2020-unpublished-lineage"
+      ],
+      "from_ref": "lineage-schwarz-flu-review",
+      "id": "em:dossier-evidence-relation:sha256:8a3ec969b5ed6dd77cc79f7f00e27eb7b5c81573bfd84eb8c5b19ef7aa512da2",
+      "key": "relation-schwarz-flu-depends-skurnik-2007",
+      "note": "The PDF’s flu-flyer passage cites reference 6, and Ecker et al. identify that review as the public discussion of the unpublished 2007 data.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-skurnik-2007-data",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-schwarz-flu-2007",
+        "span-schwarz-reference-6"
+      ],
+      "from_ref": "assert-schwarz-flu-result",
+      "id": "em:dossier-evidence-relation:sha256:80cfd40762a84bd2224897b46dd455d0082b9d648244a1f4472f897551be0b6b",
+      "key": "relation-schwarz-flu-supports-boundary",
+      "note": "A review-level report of the unresolved flu-flyer participant data.",
+      "relation_type": "support",
+      "to_ref": "prop-flu-flyer-result",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ecker-2020-unpublished-lineage"
+      ],
+      "from_ref": "assert-ecker-2020-historical-report",
+      "id": "em:dossier-evidence-relation:sha256:5778ad6d282edbe93ac15d54b73d714bb007a436110e758d73082ba3691449f9",
+      "key": "relation-ecker-historical-supports-boundary",
+      "note": "A later historical report identifies the unpublished 2007 manuscript; it is not credited as newly collected participant data.",
+      "relation_type": "support",
+      "to_ref": "prop-flu-flyer-result",
       "visibility": "public"
     },
     {
@@ -512,6 +1005,135 @@
       "relation_type": "rebuttal",
       "to_ref": "prop-general-backfire",
       "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-autry-2021-result",
+        "span-autry-2021-qualifier",
+        "span-autry-2021-timing-limit"
+      ],
+      "from_ref": "assert-autry-2021-result",
+      "id": "em:dossier-evidence-relation:sha256:7d7e99e277ee272a591a38ac4f6f84fd145514932ce0158a2ee4232c8e6adb6e",
+      "key": "relation-autry-qualifies-general",
+      "note": "Preserves an unlicensed-negation boundary while recording that the same contrast was nonsignificant in Experiment 2 and longer-interval persistence remains unresolved.",
+      "relation_type": "qualification",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-pluviano-2017-result",
+        "span-pluviano-2017-limitation"
+      ],
+      "from_ref": "assert-pluviano-2017-result",
+      "id": "em:dossier-evidence-relation:sha256:3dfb8f9ef24dbd5d669c20770cef0e5c79df2e00c275f7ec06903c48affd2d1b",
+      "key": "relation-pluviano-2017-supports-vaccine-boundary",
+      "note": "A target-comparable delayed myths-and-facts result in a student sample, subject to the paper's convenience-sample and generalizability limits.",
+      "relation_type": "support",
+      "to_ref": "prop-vaccine-myths-boundary",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-pluviano-2019-result",
+        "span-pluviano-2019-dependence"
+      ],
+      "from_ref": "assert-pluviano-2019-result",
+      "id": "em:dossier-evidence-relation:sha256:7d9c4238b9a8ce9691f6de1fbb2ed6b81eee42ac59e79e3b8025516c484e290b",
+      "key": "relation-pluviano-2019-supports-vaccine-boundary",
+      "note": "A target-comparable delayed myths-and-facts result in a parent sample from the same author and comparison-method program as the 2017 study.",
+      "relation_type": "support",
+      "to_ref": "prop-vaccine-myths-boundary",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-thomas-2024-result",
+        "span-thomas-2024-mechanism"
+      ],
+      "from_ref": "assert-thomas-2024-result",
+      "id": "em:dossier-evidence-relation:sha256:ae5292395bca9615e84712ffec21592cbb783dd184a8b97a050d19e239641c69",
+      "key": "relation-thomas-qualifies-general",
+      "note": "Preserves a target-comparable unlicensed-negation result and its proposed Gricean mechanism without generalizing it to all corrections.",
+      "relation_type": "qualification",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-nibat-2026-scope",
+        "span-nibat-2026-result"
+      ],
+      "from_ref": "assert-nibat-2026-result",
+      "id": "em:dossier-evidence-relation:sha256:a60b1d01a86ab0d6c43d18d10a47cd70196cc20aa900361707469815c3d86d9c",
+      "key": "relation-nibat-rebuts-general",
+      "note": "Five brand-misinformation studies did not observe familiarity backfire.",
+      "relation_type": "rebuttal",
+      "to_ref": "prop-general-backfire",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ecker-2023-result",
+        "span-ecker-2023-materials"
+      ],
+      "from_ref": "assert-ecker-2023-result",
+      "id": "em:dossier-evidence-relation:sha256:6eb8f7978f44d565d2741d7b67a0b0f51a9c9846220ea5a695cd938d325909e9",
+      "key": "relation-ecker-2023-failed-replication-pluviano-2017",
+      "note": "The later study reused the 2017 materials but did not reproduce the reported backfire effect.",
+      "relation_type": "failed-replication",
+      "to_ref": "assert-pluviano-2017-result",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ecker-2020-recruitment",
+        "span-prike-2023-recruitment"
+      ],
+      "from_ref": "lineage-prike-2023-method",
+      "id": "em:dossier-evidence-relation:sha256:0ca2331bcf208ebd8156a2b3b5e6d408f496c5a51f8209dc187fc7b10c7c5aea",
+      "key": "relation-ecker-prike-shared-recruitment-frame",
+      "note": "Both paper series used US MTurk workers through CloudResearch with the same 5000-HIT and 97% approval thresholds; cross-paper participant overlap is unreported.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-ecker-2020-method",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-prike-2023-ethics",
+        "span-ecker-2023-ethics"
+      ],
+      "from_ref": "lineage-ecker-2023-method",
+      "id": "em:dossier-evidence-relation:sha256:b78c38d93535392b7f54cf15ddef906c176142b436e180f9f5a68632bbe3b0c1",
+      "key": "relation-ecker-prike-shared-ethics-series",
+      "note": "The papers share authors and UWA ethics approval RA/4/20/6423; they are separate reported data collections, not independent research programs.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-prike-2023-method",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ecker-2023-materials"
+      ],
+      "from_ref": "lineage-ecker-2023-method",
+      "id": "em:dossier-evidence-relation:sha256:caed12c4a5610eb9867fd628a8f30f2487d32f88f83b5277bad2bb0f167f4e6c",
+      "key": "relation-ecker-2023-reuses-pluviano-materials",
+      "note": "The replication directly reused the 2017 stimuli, so material lineage is shared even though participant data were newly collected.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-pluviano-2017-method",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-pluviano-2019-dependence"
+      ],
+      "from_ref": "lineage-pluviano-2019-method",
+      "id": "em:dossier-evidence-relation:sha256:315e680107a597e4d7b83f009bbe97bdb5cf5dcaf1c09185fe0e7a57116d3470",
+      "key": "relation-pluviano-2019-reuses-comparison-method",
+      "note": "The 2019 study chose its seven-day delay to allow direct comparison with the authors' 2017 study; the participant-data roots remain distinct.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-pluviano-2017-method",
+      "visibility": "public"
     }
   ],
   "format": "epistemedia-dossier-v0.1",
@@ -521,7 +1143,25 @@
         "assert-skurnik-result"
       ],
       "basis_span_keys": [
-        "span-skurnik-summary"
+        "span-skurnik-summary",
+        "span-ecker-2020-no-baseline"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:435922f83b6e523c8fae783695a674e2ee644fc9ffc1de6dcb6e246dc6680c40",
+      "key": "lineage-skurnik-2005-data",
+      "note": "Published 2005 participant-data root. Its older-adult and consumer-claim scope must not silently become a general population result, and the paper did not include the baseline required for target-comparable backfire.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-ecker-2020-unpublished-lineage",
+        "span-schwarz-flu-2007",
+        "span-schwarz-reference-6"
       ],
       "depends_on": [],
       "dimensions": [
@@ -529,10 +1169,10 @@
         "method",
         "apparatus"
       ],
-      "id": "em:dossier-lineage:sha256:ce9493943fa490993b3d2366ec8db442512cccfa7927d5c61f3a3abadfa2efa8",
-      "key": "lineage-skurnik-data",
-      "note": "Original participant-data root. Its older-adult and consumer-claim scope must not silently become a general population result.",
-      "status": "known",
+      "id": "em:dossier-lineage:sha256:6a063c9ba0748a115c73aa1fbbf0c1cbc3530d0bbbd032234bd4641b714179f0",
+      "key": "lineage-skurnik-2007-data",
+      "note": "Unknown participant-data root for the unpublished Skurnik, Yoon, and Schwarz 2007 flu-flyer manuscript. Later sources describe the result, but the manuscript, data, sample record, and direct edition remain unavailable.",
+      "status": "unknown",
       "visibility": "public"
     },
     {
@@ -540,18 +1180,21 @@
         "assert-handbook-claim"
       ],
       "basis_span_keys": [
-        "span-handbook-reference"
+        "span-handbook-experiment",
+        "span-handbook-delay",
+        "span-handbook-reference",
+        "span-ecker-2020-unpublished-lineage"
       ],
       "depends_on": [
-        "lineage-skurnik-data"
+        "lineage-skurnik-2007-data"
       ],
       "dimensions": [
         "source",
         "social"
       ],
-      "id": "em:dossier-lineage:sha256:e781cb1fd3085f4e6828ee14d070a2d74da56000e270a899f56491fe2b514240",
+      "id": "em:dossier-lineage:sha256:77440f0deb11ae9d41304f1b572c55a3ecdf680f0833d8a4b13fc5f6173dee16",
       "key": "lineage-handbook-guidance",
-      "note": "The page makes the broad claim and recommendation, and its sole numbered reference is Skurnik et al. 2005. It therefore adds a mention, not a new participant-data root.",
+      "note": "The page describes the 30-minute flu-flyer study but its sole numbered reference names the nonmatching 2005 paper. Later literature identifies the described data as the unpublished 2007 study, so the page adds a mention and guidance, not a participant-data root.",
       "status": "known",
       "visibility": "public"
     },
@@ -561,38 +1204,120 @@
       ],
       "basis_span_keys": [
         "span-schwarz-claim",
-        "span-schwarz-reference"
+        "span-schwarz-skurnik-2005",
+        "span-schwarz-flu-2007",
+        "span-schwarz-reference-6",
+        "span-schwarz-reference-42"
       ],
-      "depends_on": [],
+      "depends_on": [
+        "lineage-skurnik-2005-data",
+        "lineage-skurnik-2007-data"
+      ],
       "dimensions": [
         "source",
-        "method"
+        "method",
+        "social"
       ],
-      "id": "em:dossier-lineage:sha256:f61ae7a731c552a0ecf43ae4502a538f6842f7457ffa9a206ad20f10b4955957",
-      "key": "lineage-schwarz-review",
-      "note": "Unknown sentence-level upstream lineage: the publisher abstract makes the claim and the bibliography includes Skurnik et al. 2005, but the accessible HTML does not expose which references support that exact abstract sentence.",
-      "status": "unknown",
+      "id": "em:dossier-lineage:sha256:8f1235f81394619c63afc58d2ee3fd4e1ed17ff86881b521928863dfefa8d565",
+      "key": "lineage-schwarz-general-review",
+      "note": "Review-level synthesis, not participant data. The publisher PDF maps its 2005 delayed older-adult passage to reference 42 and its separate flu-flyer passage to reference 6; the latter leads to the unknown 2007 data root.",
+      "status": "known",
       "visibility": "public"
     },
     {
       "assertion_keys": [
-        "assert-ecker-2020-result",
-        "assert-ecker-2020-guidance"
+        "assert-schwarz-flu-result"
+      ],
+      "basis_span_keys": [
+        "span-schwarz-flu-2007",
+        "span-schwarz-reference-6",
+        "span-ecker-2020-unpublished-lineage"
+      ],
+      "depends_on": [
+        "lineage-skurnik-2007-data"
+      ],
+      "dimensions": [
+        "source",
+        "method"
+      ],
+      "id": "em:dossier-lineage:sha256:010977100b8124abc6a10bccc0961ccc2ae8cd2b661f479d52913531192530b2",
+      "key": "lineage-schwarz-flu-review",
+      "note": "The 2016 flu-flyer passage cites the 2007 Schwarz et al. review, while Ecker et al. 2020 identifies that review as discussing the unpublished 2007 participant data. This is a review mention, not a new data root.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-ecker-2020-historical-report"
+      ],
+      "basis_span_keys": [
+        "span-ecker-2020-unpublished-lineage"
+      ],
+      "depends_on": [
+        "lineage-skurnik-2007-data"
+      ],
+      "dimensions": [
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:a2ab71fd7e203c29959064415bded9296d2f5ad5a5067cdff1fa3fcf75cb3abc",
+      "key": "lineage-ecker-2020-historical-report",
+      "note": "A historical report of the unpublished 2007 participant-data lineage, not a new participant-data root. It receives no independent data credit.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-ecker-2020-result"
       ],
       "basis_span_keys": [
         "span-ecker-2020-result",
-        "span-ecker-2020-guidance-overreach",
         "span-ecker-2020-guidance-conclusion"
       ],
       "depends_on": [],
       "dimensions": [
-        "data",
-        "method",
-        "apparatus"
+        "data"
       ],
-      "id": "em:dossier-lineage:sha256:f39615ff8c29e14e23437bed3cb4c5d8e4b41a02a6ead9fa7b47e7e50b41c663",
+      "id": "em:dossier-lineage:sha256:e6f7501fbec842504375fd305dc5da0ff34b44c5625c10cc344d55345639979b",
       "key": "lineage-ecker-2020-data",
-      "note": "New participant-data root for the dossier count. Shared authors and method traditions are visible, so this is not a claim of full team or method independence.",
+      "note": "One participant-data root for the Ecker et al. 2020 paper series. Method and recruitment overlap are modeled separately so they do not collapse this paper-defined data collection into another data root.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-ecker-2020-recruitment"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "method",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:bbf8bede68010f95727a6b2097585ec3ffadfcb7d49117f4a6e25fb4503e7394",
+      "key": "lineage-ecker-2020-method",
+      "note": "Recruitment-method lineage for the US MTurk and CloudResearch frame, including the 5000-HIT and 97% approval thresholds.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-ecker-2020-guidance"
+      ],
+      "basis_span_keys": [
+        "span-ecker-2020-guidance-overreach",
+        "span-ecker-2020-guidance-conclusion"
+      ],
+      "depends_on": [
+        "lineage-ecker-2020-data"
+      ],
+      "dimensions": [
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:8667c81b3d5074b5dc36ac0c331a7d94da62cb5567a4663d265836dc51ba67e3",
+      "key": "lineage-ecker-2020-interpretation",
+      "note": "Interpretive guidance derived from the paper's participant-data series.",
       "status": "known",
       "visibility": "public"
     },
@@ -606,13 +1331,29 @@
       ],
       "depends_on": [],
       "dimensions": [
-        "data",
-        "method",
-        "apparatus"
+        "data"
       ],
-      "id": "em:dossier-lineage:sha256:8bcd752ae2ae71e5583885c76ee86e1f2486df967387ae9dd7af877a7f492c23",
+      "id": "em:dossier-lineage:sha256:634e98c7c1fa2cb7928b180835b7eca07b33a23555734ae3f98ada52ed9a37b7",
       "key": "lineage-prike-2023-data",
-      "note": "New participant-data root. It shares Ecker and the broader experimental tradition with other records; only the participant-data root is counted separately.",
+      "note": "Separately reported participant-data root. It shares authors and a research program with Ecker et al. 2023 and shares the US MTurk/CloudResearch frame and thresholds with Ecker et al. 2020. Cross-paper participant overlap is unverified; only the paper-defined data collection is counted separately.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-prike-2023-recruitment",
+        "span-prike-2023-ethics",
+        "span-prike-2023-autry-sample"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "method",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:1f749e692068ecadba1d33ef9edb021956ba3ab101a1d4523e6ebdecdf7d6358",
+      "key": "lineage-prike-2023-method",
+      "note": "Method and research-team lineage. The MTurk frame matches Ecker et al. 2020, while authors and the UWA ethics series overlap Ecker et al. 2023.",
       "status": "known",
       "visibility": "public"
     },
@@ -625,13 +1366,161 @@
       ],
       "depends_on": [],
       "dimensions": [
-        "data",
-        "method",
-        "apparatus"
+        "data"
       ],
-      "id": "em:dossier-lineage:sha256:e5faa7559af28558c0998fa705b956eaf97e53a793552eedb8fbabf5a421abf5",
+      "id": "em:dossier-lineage:sha256:2242c2d5390ebf1cba776d42153e77b498318b5bcdb69e90b08eb3c773cebe4c",
       "key": "lineage-ecker-2023-data",
-      "note": "New vaccine-study participant-data root. It shares Ecker and Swire-Thompson with another later record, so research-team independence is not claimed.",
+      "note": "Separately reported UK Prolific participant-data root. It shares Ecker and Swire-Thompson, UWA ethics approval RA/4/20/6423, and a paper series with Prike et al. 2023, and it directly reuses Pluviano et al. 2017 materials. Team, ethics, and material independence are not claimed.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-ecker-2023-recruitment",
+        "span-ecker-2023-materials",
+        "span-ecker-2023-ethics"
+      ],
+      "depends_on": [
+        "lineage-pluviano-2017-method"
+      ],
+      "dimensions": [
+        "method",
+        "apparatus",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:2e432abd20aa3112a598375248d1fd2df8df83cc1f826e8a47d33cf3d9d7dfc6",
+      "key": "lineage-ecker-2023-method",
+      "note": "Replication method and apparatus lineage. It directly reused the 2017 stimuli and overlaps the Prike paper series in authors and ethics approval.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-autry-2021-result"
+      ],
+      "basis_span_keys": [
+        "span-autry-2021-result",
+        "span-autry-2021-qualifier",
+        "span-autry-2021-timing-limit",
+        "span-prike-2023-autry-sample"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:b203ce1b30cdec4cc20ed8cb122e9461af9e8225530683933ecb7beea39a0530",
+      "key": "lineage-autry-2021-data",
+      "note": "Separately reported undergraduate participant-data root. Experiment 1 found the unlicensed-negation effect; the same contrast was nonsignificant in Experiment 2. It shares Autry and a research program with Thomas 2024.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-pluviano-2017-result"
+      ],
+      "basis_span_keys": [
+        "span-pluviano-2017-result",
+        "span-pluviano-2017-limitation"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:612b9ea51a51327f7ae4b75a936ceb1679e63a24aa6404bdae889f281e082487",
+      "key": "lineage-pluviano-2017-data",
+      "note": "Participant-data root for the 2017 student vaccine-message study. It shares authors, a vaccine-message research program, and materials with the 2019 study and the later Ecker et al. replication.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-pluviano-2017-result",
+        "span-pluviano-2017-limitation"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "method",
+        "apparatus",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:f5df90b4b25ff8017b6f79913e5ae8edc557e0a471657d3328113b1e866a042c",
+      "key": "lineage-pluviano-2017-method",
+      "note": "Student-sample vaccine-message method lineage. Later work reused or deliberately compared against this material and timing family.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-pluviano-2019-result"
+      ],
+      "basis_span_keys": [
+        "span-pluviano-2019-result",
+        "span-pluviano-2019-dependence"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:45ab411423cbbbfbeccedc63a0eb5e0fa1423ba38783f9b906afd1101d287f9f",
+      "key": "lineage-pluviano-2019-data",
+      "note": "Separately reported parent participant-data root. It remains part of the same Pluviano author and vaccine-message program as the 2017 study, so program-level independence is not claimed.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-pluviano-2019-dependence"
+      ],
+      "depends_on": [
+        "lineage-pluviano-2017-method"
+      ],
+      "dimensions": [
+        "method",
+        "apparatus",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:dc05a919ce9ba9227e7c86725bbc20245849fd5b7a8f8353bf3ae0894955ead2",
+      "key": "lineage-pluviano-2019-method",
+      "note": "Parent-sample method lineage. The seven-day delay was explicitly chosen to allow straight comparison with the authors' 2017 study.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-thomas-2024-result"
+      ],
+      "basis_span_keys": [
+        "span-thomas-2024-result",
+        "span-thomas-2024-mechanism"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:775832de92cefd7df589113beab7edfea730284729d7b5875a416d57ae1b8142",
+      "key": "lineage-thomas-2024-data",
+      "note": "Separately reported participant-data root testing unlicensed negated corrections with novel-word meanings. It shares Autry and a research program with Autry and Duarte 2021; program independence is not claimed.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assert-nibat-2026-result"
+      ],
+      "basis_span_keys": [
+        "span-nibat-2026-scope",
+        "span-nibat-2026-result"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data"
+      ],
+      "id": "em:dossier-lineage:sha256:36dc742ea98f0719f07a2e72f9da1988d32ca03ff9380268a43eb2c442d4ab0b",
+      "key": "lineage-nibat-2026-data",
+      "note": "Separately reported participant-data root spanning five brand-misinformation studies and 4,337 participants. Author, sample, and method independence from the earlier paper series is not inferred merely from different authorship.",
       "status": "known",
       "visibility": "public"
     }
@@ -645,10 +1534,10 @@
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:f4d4be7b83c3a2b65703c3f031d4dabc58a0d97490c37b0d3b402d8be987b316",
+      "id": "em:dossier-proposition:sha256:ccc522da498fdbda3cc997082591c65e81430ca216114c12b96db6454476470c",
       "key": "prop-older-adult-result",
       "scope": "Older adults, consumer claims, and the tested delays in the 2005 paper.",
-      "text": "Skurnik et al. reported delayed misremembering of warned-against consumer claims among older adults in two experiments.",
+      "text": "Skurnik et al. reported delayed misremembering of warned-against consumer claims among older adults in two experiments, but the study lacked the no-correction or pre-correction baseline required by this dossier’s target.",
       "visibility": "public"
     },
     {
@@ -663,6 +1552,34 @@
       "key": "prop-skepticism-boundary",
       "scope": "Prike et al. 2023 Experiment 3; open-ended response result did not repeat on the rating-scale measure.",
       "text": "Skepticism toward a correction may be a boundary condition under which a standalone correction can backfire on some measures.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:e00621f5137bce620ef25fa0ab0faa71c6ecae2af9495cfecdd47d9bd5256278",
+      "key": "prop-flu-flyer-result",
+      "scope": "Skurnik, Yoon, and Schwarz 2007 participant data as described in later publications; the manuscript and participant-level record remain unavailable.",
+      "text": "An unpublished 2007 study reportedly found worse myth classification and lower flu-vaccination intentions after a myths-and-facts flyer than in the relevant control conditions.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:75b98c02e5882e414e8bcafbd449c21541eaff25b02ba18a0414770e72e6dbaf",
+      "key": "prop-unlicensed-negation-boundary",
+      "scope": "Autry and Duarte 2021 and Thomas and Autry 2024; novel or unexpected negated details, not all correction formats.",
+      "text": "A standalone negated correction can increase later use of a previously unseen claim when the negation lacks contextual licensing, although the exact effect did not reach significance in every experiment.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:11cba23a6eb8607fbc5342163d2ddf438894367c5e50f7faba78548817381956",
+      "key": "prop-vaccine-myths-boundary",
+      "scope": "Pluviano et al. 2017 and 2019 positive reports and Ecker et al. 2023 replication; vaccine beliefs and intentions in their tested samples.",
+      "text": "Two vaccine-message studies reported delayed outcomes worse than control for myths-and-facts formats, while a later direct replication using the same materials did not reproduce the effect.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:8d3514bdece26d74f285ed559087f9bf7f053652161da1ac303bd4a9b1d5d6c1",
+      "key": "prop-brand-correction-result",
+      "scope": "Nibat et al. 2026; corporate misinformation, fact-check labels, brand familiarity, immediate and delayed tests, and first-exposure corrections.",
+      "text": "Across five brand-misinformation studies, repetition did not increase belief more than correction reduced it.",
       "visibility": "public"
     }
   ],
@@ -704,10 +1621,10 @@
         "Eryn Newman",
         "William Leach"
       ],
-      "id": "em:dossier-source-work:sha256:1da4c88d89674d26ecee83c374659ec3040527ea90636b0feca4936081382b2d",
+      "id": "em:dossier-source-work:sha256:996f4b2da343bcea07e05935618a12ef26e0e44181602258af29b54939182a7a",
       "key": "work-schwarz-2016",
       "kind": "paper",
-      "license": "Publisher states that site manuscript content uses Creative Commons licenses but does not identify the variant on the article page; only an exact publisher-rendered abstract excerpt and reference are retained.",
+      "license": "No article-specific Creative Commons grant was visible in the exact 2016 publisher rendition; it is treated as restricted and only quote-minimal transcript extents and metadata are retained.",
       "title": "Making the Truth Stick & the Myths Fade: Lessons from Cognitive Psychology",
       "visibility": "public"
     },
@@ -752,6 +1669,78 @@
       "kind": "paper",
       "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
       "title": "Correcting vaccine misinformation: A failure to replicate familiarity or fear-driven backfire effects",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1002/acp.3823",
+      "creators": [
+        "Kevin S. Autry",
+        "Shea E. Duarte"
+      ],
+      "id": "em:dossier-source-work:sha256:2a10ca1f57de4350bf91a3360a567343d9a6565a11500788d25371024acc96d8",
+      "key": "work-autry-2021",
+      "kind": "paper",
+      "license": "Crossref identifies the version of record as CC BY 4.0; the excerpt packet also records publisher-HTML qualification and timing spans requiring independent read-back.",
+      "title": "Correcting the unknown: Negated corrections may increase belief in misinformation",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1371/journal.pone.0181640",
+      "creators": [
+        "Sara Pluviano",
+        "Caroline Watt",
+        "Sergio Della Sala"
+      ],
+      "id": "em:dossier-source-work:sha256:a83e64866f19090657cf70b7b1be8fadad3a4416275936e5a2ee4bbeaa047406",
+      "key": "work-pluviano-2017",
+      "kind": "paper",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "title": "Misinformation lingers in memory: Failure of three pro-vaccination strategies",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1007/s10339-019-00919-w",
+      "creators": [
+        "Sara Pluviano",
+        "Caroline Watt",
+        "Giovanni Ragazzini",
+        "Sergio Della Sala"
+      ],
+      "id": "em:dossier-source-work:sha256:b1bc9c756617f7f51d7403de003e87ec6592974dcb14b326853d0b990e20c1c8",
+      "key": "work-pluviano-2019",
+      "kind": "paper",
+      "license": "Examined accepted manuscript retains author or publisher rights; two short attributed excerpts are retained and the PDF is not redistributed.",
+      "title": "Parents’ beliefs in misinformation about vaccines are strengthened by pro-vaccine campaigns",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1002/acp.70004",
+      "creators": [
+        "Jacob G. Thomas",
+        "Kevin S. Autry"
+      ],
+      "id": "em:dossier-source-work:sha256:3f0e14a8fc924c9c3c94135299d3698bdc0e44a9e9616bb6bf0779dcce2299da",
+      "key": "work-thomas-2024",
+      "kind": "paper",
+      "license": "No open reuse license was confirmed for the version of record; only short attributed abstract fragments are retained and the article is not redistributed.",
+      "title": "Unlicensed Corrections Violate the Gricean Maxims of Communication: Evidence for a Cognitive Mechanism Underlying Misinformation Backfire Effects",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1016/j.ijresmar.2026.03.007",
+      "creators": [
+        "Ipek N. Nibat",
+        "Olivier Trendel",
+        "Robert Mai",
+        "Tinka Krüger",
+        "Wassili Lasarov",
+        "Stefan Hoffmann"
+      ],
+      "id": "em:dossier-source-work:sha256:0d794211d50f28d303d6de90d8490f02d2aac4a92ed30aff3b7161e8f4e18a22",
+      "key": "work-nibat-2026",
+      "kind": "paper",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "title": "Familiarity backfire effects? Disentangling the competing effects of repetition and fact-checking corrections of brand misinformation",
       "visibility": "public"
     }
   ],
@@ -805,17 +1794,49 @@
       "visibility": "public"
     },
     {
+      "digest": "sha256:ccb67c5572770ad83ed91140210055ec77b8721fd19ce9a83622015ae7b7295a",
+      "edition_key": "edition-handbook-2011",
+      "extent": {
+        "type": "json-value",
+        "value": "To test for this backfire effect, people were shown a flyer that debunked common myths about flu vaccines."
+      },
+      "id": "em:dossier-span:sha256:eb49dd726cc92813ba8d2d214745e161c18aad2aae881f65782fbd5a6162ccd2",
+      "key": "span-handbook-experiment",
+      "locator": {
+        "label": "2011 body flu-vaccine flyer description",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:814f8857c0c6e296f8d1378fc74b6b0167a73b57da2bc212f04223ded5582705",
+      "edition_key": "edition-handbook-2011",
+      "extent": {
+        "type": "json-value",
+        "value": "However, when queried 30 minutes after reading the flyer, some people actually scored worse after reading the flyer."
+      },
+      "id": "em:dossier-span:sha256:c0a250e212e11339e2fb6b2d8722ec2e76bd59a7e1862c990cd95aad78452a0c",
+      "key": "span-handbook-delay",
+      "locator": {
+        "label": "2011 body 30-minute delayed result",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
       "digest": "sha256:2362dd80c41ec84228322fff7193530cc56f492705bab352f5512de96799a20d",
       "edition_key": "edition-handbook-2011",
       "extent": {
         "type": "json-value",
         "value": "Skurnik, I., Yoon, C., Park, D., & Schwarz, N. (2005). How warnings about false claims become recommendations. Journal of Consumer Research, 31, 713-724."
       },
-      "id": "em:dossier-span:sha256:a6bf8ed7c8abeae1a7f7192f9dc39b139dce6bd8837ba9b41d51930b59c18331",
+      "id": "em:dossier-span:sha256:7d60a074c282db4e330cb3fbfae9f2a7e1a5c2810697304076081094f7f9ff95",
       "key": "span-handbook-reference",
       "locator": {
         "label": "Reference 1",
-        "pointer": "/excerpts/2/text",
+        "pointer": "/excerpts/4/text",
         "type": "json-pointer"
       },
       "visibility": "public"
@@ -827,11 +1848,11 @@
         "type": "json-value",
         "value": "For the most current information about this elusive effect please read the relevant excerpt from the new version of the handbook here."
       },
-      "id": "em:dossier-span:sha256:06d4e3209e73e115c22c5061bd867ab02f61aab8236f7db1834ca136eb088712",
+      "id": "em:dossier-span:sha256:f5563b5861f6e09040708bf354dcba3f777c54192474d3f28e80cb328e124142",
       "key": "span-handbook-update",
       "locator": {
         "label": "2020 update notice",
-        "pointer": "/excerpts/3/text",
+        "pointer": "/excerpts/5/text",
         "type": "json-pointer"
       },
       "visibility": "public"
@@ -853,17 +1874,65 @@
       "visibility": "public"
     },
     {
+      "digest": "sha256:d1709ede684645449779f61d1a454ed11f65f58d9a28959bf3e4357790be638b",
+      "edition_key": "edition-schwarz-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "But 3 days later, after their memories had a chance to fade, participants were more likely to think that any statement they had seen was true, whether it had been presented as true or false. Older participants were particularly vulnerable to this bias, presumably because their poorer memory made it harder to remember the details of what they had heard earlier."
+      },
+      "id": "em:dossier-span:sha256:b3744049ea00cb14203eff817cc91fc4b8d087e5b44e2bb58569b34a6360e3a3",
+      "key": "span-schwarz-skurnik-2005",
+      "locator": {
+        "label": "PDF p. 6 / journal p. 90, delayed older-adult result",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:59681e8f828d5fa91a9130fc2a34718b7a2fbfdfcfd76842ab050f1e3d8f919b",
+      "edition_key": "edition-schwarz-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "When undergraduates viewed a myths-and-facts flyer about the flu taken from the CDC website, they remembered some myths as facts after only 30 minutes. Worse, their reported intentions to get vaccinated were even lower than those of control participants who had not been exposed to any message about the flu."
+      },
+      "id": "em:dossier-span:sha256:ee3d123bfcf52c1dfe32138c3950bab188f60e18eb40475287036e472de6a5da",
+      "key": "span-schwarz-flu-2007",
+      "locator": {
+        "label": "PDF p. 7 / journal p. 91, flu-flyer result",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:58e989178b2ac4b46415d56795b052c8edcb6e25afe38be0a87336721c0c308a",
+      "edition_key": "edition-schwarz-2016",
+      "extent": {
+        "type": "json-value",
+        "value": "Schwarz, N., Sanna, L. J., Skurnik, I., & Yoon, C. (2007). Metacognitive experiences and the intricacies of setting people straight: Implications for debiasing and public information campaigns. Advances in Experimental Social Psychology, 39, 127–161."
+      },
+      "id": "em:dossier-span:sha256:7648b8ca6e5f6fb35dd8d3bf1195b6a26038ebd3140b80453625ec0691e49d12",
+      "key": "span-schwarz-reference-6",
+      "locator": {
+        "label": "PDF p. 10, reference 6",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
       "digest": "sha256:58cad5a6ff36281e65313fb9a769fd35f6565b2e4a4b95e142b1ef3b7517ecde",
       "edition_key": "edition-schwarz-2016",
       "extent": {
         "type": "json-value",
         "value": "Skurnik I., Yoon C., Park D. C., & Schwarz N. (2005). How warnings about false claims become recommendations Journal of Consumer Research, 31, 713–724"
       },
-      "id": "em:dossier-span:sha256:08b934ec5f5e402c917079b1fb6adb01499ba71f243945f304c3fdd9d4e1b345",
-      "key": "span-schwarz-reference",
+      "id": "em:dossier-span:sha256:1656fa26891142c04fb9fba68860f167eae93b0534fad5c545fa668bb96a26f2",
+      "key": "span-schwarz-reference-42",
       "locator": {
-        "label": "Publisher HTML reference 42",
-        "pointer": "/excerpts/1/text",
+        "label": "PDF p. 10, reference 42",
+        "pointer": "/excerpts/4/text",
         "type": "json-pointer"
       },
       "visibility": "public"
@@ -917,6 +1986,54 @@
       "visibility": "public"
     },
     {
+      "digest": "sha256:37e375687881d2db06cde263863e343274348cc9b562e2b986038295ef03c64d",
+      "edition_key": "edition-ecker-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "the only clear demonstration of a familiarity backfire effect was reported in an unpublished manuscript by Skurnik, Yoon, and Schwarz (2007; discussed by Schwarz et al., 2007)"
+      },
+      "id": "em:dossier-span:sha256:9c81d25b1a60915d89b3d9dc5c0d61f5e31c35c0b9e0362f300c6cc41b675d49",
+      "key": "span-ecker-2020-unpublished-lineage",
+      "locator": {
+        "label": "Introduction paragraph 7, unpublished 2007 lineage",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e25d7495f5db242e9eb5cfc1b1e302a33214f7241842e3251047621865d8b64c",
+      "edition_key": "edition-ecker-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "the study also did not feature a baseline condition against which to access actual “backfire.”"
+      },
+      "id": "em:dossier-span:sha256:904b6f6c39ff2ab990eb887faa445fb3a515466e5d5beb60e27f7a1155b2df7f",
+      "key": "span-ecker-2020-no-baseline",
+      "locator": {
+        "label": "Introduction paragraph 7, missing-baseline qualification",
+        "pointer": "/excerpts/4/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:4b28844116896c08d8c786e622b15b4439eac2ecff3ac4de83fe566d04f2c0a9",
+      "edition_key": "edition-ecker-2020",
+      "extent": {
+        "type": "json-value",
+        "value": "Participants were US-based adult Amazon Mechanical Turk (MTurk) workers, who had completed at least 5000 so-called human-intelligence tasks (HITs) with 97% + approval."
+      },
+      "id": "em:dossier-span:sha256:7740ac912f07e1043285fb2147d05d884154f66af713fe145badd3573a0c7569",
+      "key": "span-ecker-2020-recruitment",
+      "locator": {
+        "label": "Experiment 1 participants",
+        "pointer": "/excerpts/5/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
       "digest": "sha256:e44347d354ee736e558729127188099a1289b94334b3e7f8058573dec9843860",
       "edition_key": "edition-prike-2023",
       "extent": {
@@ -933,6 +2050,54 @@
       "visibility": "public"
     },
     {
+      "digest": "sha256:d3c00f89486560493611e12fc0432adad0802d609d96c87e554606fa301401fc",
+      "edition_key": "edition-prike-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "To account for potential exclusions and ensure ample statistical power, 283 participants were recruited from the online testing platform Amazon Mechanical Turk (MTurk) via CloudResearch (Litman et al., 2017). Participants were eligible if they resided in the United States of America and had previously completed more than 5000 MTurk tasks (HITs) with a minimum approval rating of 97%."
+      },
+      "id": "em:dossier-span:sha256:a48e75ded5d3ef41916b981244b096e74cbe8141ddfe64c5a9764d0e3930e14e",
+      "key": "span-prike-2023-recruitment",
+      "locator": {
+        "label": "Experiment 1 participants",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:59d802c2e9dc907e8560d6d91480b26c6cfc6c0d85afed0db96a6a3b02b7e0ca",
+      "edition_key": "edition-prike-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "All procedures were approved by the University of Western Australia’s Human Research Ethics Office (Ethics ID: RA/4/20/6423)."
+      },
+      "id": "em:dossier-span:sha256:6a41d4e6ea372a6733098e7e9cf21bb46db1a23e9631878c1c1d3d49fcc1472c",
+      "key": "span-prike-2023-ethics",
+      "locator": {
+        "label": "Ethics approval",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:c5cd147b5e06b9c62babf05bb1a2db8f532a280198bc85f605d0fce9b4ca84b1",
+      "edition_key": "edition-prike-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "Additionally, Autry and Duarte only sampled undergraduates whereas our participants were recruited from MTurk without any age restrictions."
+      },
+      "id": "em:dossier-span:sha256:ca888f9bcc17de648e4c62417fd636ddb00fdd018ed53d4b2f7a448511522a04",
+      "key": "span-prike-2023-autry-sample",
+      "locator": {
+        "label": "General discussion sample comparison",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
       "digest": "sha256:c77a5feb5aa278ff7dcd816ff676af0e8ed1ee06c3688ba6981e5b82df10b40b",
       "edition_key": "edition-ecker-2023",
       "extent": {
@@ -944,6 +2109,230 @@
       "locator": {
         "label": "Abstract outcome",
         "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:0039b51d4816840cdc18d14a097eba10007373f1b96cb28885470a7061db5589",
+      "edition_key": "edition-ecker-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "To additionally account for an expected drop-out rate of 15% between T1 and T2, a convenience sample of 440 UK-based participants was recruited using Prolific."
+      },
+      "id": "em:dossier-span:sha256:c4b50254ef2e557c656b44653160064ac57551c8d837c344d25de4c02e1594a0",
+      "key": "span-ecker-2023-recruitment",
+      "locator": {
+        "label": "Method participants",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:b50b401ca1f2d720c340475475030cdab8816117887120903d68ca2a0713290e",
+      "edition_key": "edition-ecker-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "Stimuli were taken directly from Pluviano et al. (2017) and are provided in the S1 File, available at https://osf.io/dwyma/."
+      },
+      "id": "em:dossier-span:sha256:1c4786d64ab763a96dd1bd631fc984198706ba79575489ceb213cfe374e91e9e",
+      "key": "span-ecker-2023-materials",
+      "locator": {
+        "label": "Method materials source",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:06febbf3809d197a651a5731ed8bab17857401967b0e4cfc9a0e7e6bf284e9bb",
+      "edition_key": "edition-ecker-2023",
+      "extent": {
+        "type": "json-value",
+        "value": "The experiment was approved by the Human Research Ethics Office of the University of Western Australia (RA/4/20/6423)."
+      },
+      "id": "em:dossier-span:sha256:d95aafba85b1436ba134fc4e97fe6387d3d3a10acba9d0d5190faf8fdd4609b1",
+      "key": "span-ecker-2023-ethics",
+      "locator": {
+        "label": "Method ethics approval",
+        "pointer": "/excerpts/3/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:31ff7efb790f648be74ac47bac566ce7a04d0688ea6e3aa4b4acf92ce8cdb3ef",
+      "edition_key": "edition-autry-2021",
+      "extent": {
+        "type": "json-value",
+        "value": "When subjects were exposed to the target concept, negated corrections reduced mentions of the misinformation relative to no correction; however, when not exposed to the concept, negated corrections increased mentions relative to no correction."
+      },
+      "id": "em:dossier-span:sha256:1d3226855baf4a7ed05db2651de50c82db897df17a68943cb05f1ab239cc824e",
+      "key": "span-autry-2021-result",
+      "locator": {
+        "label": "Crossref abstract result",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:58a401bcc23fdb9fb209077c97a74760a6b17333321614dbe6b28922f4d4d6e3",
+      "edition_key": "edition-autry-2021",
+      "extent": {
+        "type": "json-value",
+        "value": "When subjects were not exposed, negated corrections increased mentions of the target concept compared to no correction (although this effect was nonsignificant in Experiment 2)."
+      },
+      "id": "em:dossier-span:sha256:c7f4d31ff965fefcc59f83ce8b31fee7f2612ae32acdb66cf648f4ee9e6a33d0",
+      "key": "span-autry-2021-qualifier",
+      "locator": {
+        "label": "Publisher HTML general-discussion qualifier",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:7359a56d721af3578e4f8219cebd139128a5333ffc4f4c933d750e73e0fba926",
+      "edition_key": "edition-autry-2021",
+      "extent": {
+        "type": "json-value",
+        "value": "The effects of exposure on negated corrections occurred after a 5-min delay in Experiment 1 and no delay in Experiment 2; therefore, further research is necessary to determine whether the increased belief from negated corrections persists over longer intervals."
+      },
+      "id": "em:dossier-span:sha256:194976ea140bc54b03243c1bac939ced8b4502fcae6faa0d8a78091590ac40bc",
+      "key": "span-autry-2021-timing-limit",
+      "locator": {
+        "label": "Publisher HTML limitations timing and persistence",
+        "pointer": "/excerpts/2/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:4b23bfaf183c95341f30b3c2516def832bda1e644d1ec0a114fe789cf5e40d54",
+      "edition_key": "edition-pluviano-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "This time, beliefs in the vaccines/autism link were statistically significantly higher in the myths vs. facts condition compared to the visual (M = .97, SE = .22, p < .001) and control condition (M = .8, SE = .22, p = .002), and in the fear condition compared to visual condition (M = .67, SE = .22, p = .016)."
+      },
+      "id": "em:dossier-span:sha256:feca3a7abbe2eec0ae900bdad82fc92a7e28577b9bdf19509d474d8318c28252",
+      "key": "span-pluviano-2017-result",
+      "locator": {
+        "label": "Results vaccine-autism comparison",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:2d301b187fbd36def4ffd3ea220385bee76d380668933658925087446ded8c32",
+      "edition_key": "edition-pluviano-2017",
+      "extent": {
+        "type": "json-value",
+        "value": "Some aspects of our experimental procedures may limit the generalization of the findings. Firstly, we used a convenience sample with limited variability in age and educational level."
+      },
+      "id": "em:dossier-span:sha256:4eb344f23a2dfa8dfea638dad9c6d85fa48ff85dd75334634d3ecbac3d35159a",
+      "key": "span-pluviano-2017-limitation",
+      "locator": {
+        "label": "Discussion limitations paragraph 8",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:3fd55c93ccc8a422c44ffa1706f86eee8aadd938ec57ddca1c3888447c3ea397",
+      "edition_key": "edition-pluviano-2019",
+      "extent": {
+        "type": "json-value",
+        "value": "Data provided support for the existence of backfire effects associated with the use of the myths vs. fact format, with parents in this condition having stronger vaccine misconceptions over time compared with participants in the control condition."
+      },
+      "id": "em:dossier-span:sha256:2b2da5e8de8445caa839af8e7f1f644b9b8472292525ab3853ff312d4253b1f3",
+      "key": "span-pluviano-2019-result",
+      "locator": {
+        "label": "Accepted manuscript abstract result",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:8444b669d373904f9069756d7f4b5ed471e6bcfccafca63a6d8e2af62a9927d8",
+      "edition_key": "edition-pluviano-2019",
+      "extent": {
+        "type": "json-value",
+        "value": "We opted for a 7-day delay between the two tests as suggested by Nyhan et al.’s (2014) study and to allow a straight comparison with our own previous study (Pluviano et al. 2017)."
+      },
+      "id": "em:dossier-span:sha256:d1a1dbc9df530c47fdc00498431f3ecfe7418e090a8ce489a9f3cac545958b66",
+      "key": "span-pluviano-2019-dependence",
+      "locator": {
+        "label": "Procedure comparison with prior study",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:3fbe77e014d6319af253e2a148084bf791fc3324d55760d6705741d20ef49261",
+      "edition_key": "edition-thomas-2024",
+      "extent": {
+        "type": "json-value",
+        "value": "Misinformation use was significantly greater when a correction was provided without licensing than when no information was provided at all."
+      },
+      "id": "em:dossier-span:sha256:54008ff854744354478a115debea8fcde2305ddf6f0206b3883ae141922c5684",
+      "key": "span-thomas-2024-result",
+      "locator": {
+        "label": "Crossref abstract result",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:77fcdf6d947caab279118003d76095de02f088f1f6c74d937d0b09cd97155044",
+      "edition_key": "edition-thomas-2024",
+      "extent": {
+        "type": "json-value",
+        "value": "We suggest that the backfire effect observed in this study may be the result of a violation of the Gricean maxims of communication"
+      },
+      "id": "em:dossier-span:sha256:98c7768aba4cbd41d912e34fc38b4c1dda459eab7f9a3b06906af1ad967c0fe6",
+      "key": "span-thomas-2024-mechanism",
+      "locator": {
+        "label": "Crossref abstract mechanism",
+        "pointer": "/excerpts/1/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:c90d59bc538df2664e52b40a97a3f1d0922c3b45ec901d3dfa512ad89e56b4cc",
+      "edition_key": "edition-nibat-2026",
+      "extent": {
+        "type": "json-value",
+        "value": "Across five studies (N = 4337), this article systematically compares the competing effects of repetition and correction on belief in corporate misinformation and brand evaluations."
+      },
+      "id": "em:dossier-span:sha256:473baa094df666b2465ff37a9513236fffe451d903e5947babcc7aa009779a68",
+      "key": "span-nibat-2026-scope",
+      "locator": {
+        "label": "PDF p. 1 abstract scope",
+        "pointer": "/excerpts/0/text",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:ec3db4151b90bc0fbd5c4a78095c5567e9493d97554526837fe0970baf92d05e",
+      "edition_key": "edition-nibat-2026",
+      "extent": {
+        "type": "json-value",
+        "value": "This research finds no evidence of a familiarity backfire effect: in none of the studies, repetition increases belief in the misinformation more than correction reduces it."
+      },
+      "id": "em:dossier-span:sha256:b4d241739581fb1815878ad90abbf9607d93f13ab7d269037adea2d7e89ba19e",
+      "key": "span-nibat-2026-result",
+      "locator": {
+        "label": "PDF p. 1 abstract result",
+        "pointer": "/excerpts/1/text",
         "type": "json-pointer"
       },
       "visibility": "public"
