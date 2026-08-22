@@ -11,6 +11,7 @@ import hashlib
 import html
 import json
 import re
+import textwrap
 from dataclasses import dataclass
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
@@ -25,6 +26,65 @@ FEATURE_FORMAT = "epistemedia-featured-dossier-v0.1"
 PROJECTION_FORMAT = "epistemedia-featured-projection-v0.1"
 FEATURE_MANIFEST = Path("catalog/dossiers/corrections-and-familiarity-backfire.json")
 FEATURE_VIEWS = ("encyclopedia", "skeptical")
+FEATURE_LEXICON = (
+    {
+        "term": "Apparent support assertion",
+        "definition": (
+            "A modeled source-side statement that sounds supportive before shared lineage and "
+            "target fit are evaluated."
+        ),
+    },
+    {
+        "term": "Participant-data root",
+        "definition": (
+            "One declared participant dataset or publication-defined data series after known "
+            "data reuse is collapsed."
+        ),
+    },
+    {
+        "term": "Target-comparable",
+        "definition": (
+            "A study includes the baseline and outcome needed to test this dossier's exact "
+            "backfire proposition."
+        ),
+    },
+    {
+        "term": "Unresolved lineage",
+        "definition": (
+            "A reported evidence root whose underlying manuscript, data, or dependency identity "
+            "cannot currently be verified."
+        ),
+    },
+    {
+        "term": "Policy view",
+        "definition": (
+            "A declared way of selecting and framing relations from the same accepted dossier; "
+            "it does not change the source record."
+        ),
+    },
+)
+PRACTICAL_READINGS = {
+    "encyclopedia": {
+        "text": (
+            "Writing a correction? This record does not support withholding a clear correction "
+            "solely because it repeats the false claim."
+        ),
+        "qualifier": (
+            "It also does not establish one universally safe format: context, timing, audience, "
+            "and corrective explanation remain relevant limits."
+        ),
+    },
+    "skeptical": {
+        "text": (
+            "Writing a correction? Treat ‘never repeat the myth’ as unproved guidance, not a "
+            "settled rule."
+        ),
+        "qualifier": (
+            "Unmatched baselines, failed replications, overlapping research programs, and the "
+            "unresolved 2007 lineage prevent a universal practice rule."
+        ),
+    },
+}
 MANIFEST_FIELDS = {
     "claim_family_key",
     "counting",
@@ -390,6 +450,84 @@ class FeaturedDossier:
             ),
         }
 
+    def _span_sources(self, span_keys: list[str]) -> list[dict[str, str]]:
+        indexes = self.indexes()
+        selected: dict[str, dict[str, str]] = {}
+        for span_key in span_keys:
+            span = indexes["spans"][span_key]
+            edition = indexes["editions"][span["edition_key"]]
+            work = indexes["source_works"][edition["work_key"]]
+            selected[work["key"]] = {
+                "key": work["key"],
+                "id": work["id"],
+                "title": work["title"],
+                "canonical_uri": work["canonical_uri"],
+            }
+        return [selected[key] for key in sorted(selected)]
+
+    def _assertion_sources(self, assertion: dict[str, Any]) -> list[dict[str, str]]:
+        return self._span_sources(assertion["span_keys"])
+
+    def _assertion_ledger_entry(self, assertion_key: str) -> dict[str, Any]:
+        indexes = self.indexes()
+        assertion = indexes["assertions"][assertion_key]
+        proposition = indexes["propositions"][assertion["proposition_key"]]
+        lineage = indexes["lineages"][assertion["lineage_key"]]
+        return {
+            "kind": "assertion",
+            "key": assertion["key"],
+            "id": assertion["id"],
+            "statement": proposition["text"],
+            "lineage_key": lineage["key"],
+            "lineage_status": lineage["status"],
+            "source_works": self._assertion_sources(assertion),
+        }
+
+    def _lineage_ledger_entry(self, lineage_key: str) -> dict[str, Any]:
+        indexes = self.indexes()
+        lineage = indexes["lineages"][lineage_key]
+        assertion_keys = sorted(lineage.get("assertion_keys", []))
+        selected: dict[str, dict[str, str]] = {}
+        for assertion_key in assertion_keys:
+            assertion = indexes["assertions"][assertion_key]
+            for work in self._assertion_sources(assertion):
+                selected[work["key"]] = work
+        if not selected:
+            for work in self._span_sources(lineage.get("basis_span_keys", [])):
+                selected[work["key"]] = work
+        return {
+            "kind": "lineage",
+            "key": lineage["key"],
+            "id": lineage["id"],
+            "status": lineage["status"],
+            "note": lineage["note"],
+            "assertion_keys": assertion_keys,
+            "source_works": [selected[key] for key in sorted(selected)],
+        }
+
+    def evidence_ledger(self) -> dict[str, list[dict[str, Any]]]:
+        """Derive every displayed scoreboard member from accepted relation endpoints."""
+
+        counts = self.derived_counts()
+        return {
+            "apparent_support_assertions": [
+                self._assertion_ledger_entry(key)
+                for key in counts["apparent_support_assertion_keys"]
+            ],
+            "target_comparable_support_roots": [
+                self._lineage_ledger_entry(key)
+                for key in counts["target_comparable_support_data_root_keys"]
+            ],
+            "target_comparable_unresolved_roots": [
+                self._lineage_ledger_entry(key)
+                for key in counts["target_comparable_unresolved_data_root_keys"]
+            ],
+            "counter_roots": [
+                self._lineage_ledger_entry(key)
+                for key in counts["counter_data_root_keys"]
+            ],
+        }
+
     def span_trace(self, span_key: str) -> dict[str, Any]:
         indexes = self.indexes()
         span = indexes["spans"][span_key]
@@ -461,6 +599,11 @@ class FeaturedDossier:
         sources = self.receipt.get("sources", [])
         spans = self.receipt.get("spans", [])
         limitations = self.receipt.get("limitations", [])
+        featured_relations = [
+            self.relation_trace(key)
+            for key in self.manifest["views"][view]["featured_relation_keys"]
+        ]
+        practical = PRACTICAL_READINGS[view]
         return {
             "format": PROJECTION_FORMAT,
             "slug": self.slug,
@@ -485,10 +628,15 @@ class FeaturedDossier:
                 "reason_codes": evaluation["reason_codes"],
             },
             "counts": self.derived_counts(),
-            "featured_relations": [
-                self.relation_trace(key)
-                for key in self.manifest["views"][view]["featured_relation_keys"]
-            ],
+            "evidence_ledger": self.evidence_ledger(),
+            "lexicon": list(FEATURE_LEXICON),
+            "practical_reading": {
+                **practical,
+                "basis_relation_keys": [
+                    item["relation"]["key"] for item in featured_relations
+                ],
+            },
+            "featured_relations": featured_relations,
             "unresolved_lineages": unknown_lineages,
             "dependence_relations": dependence_relations,
             "source_work_count": len(self.dossier["source_works"]),
@@ -604,7 +752,18 @@ def projection_markdown(envelope: dict[str, Any]) -> str:
         "",
         f"**Scope:** {data['scope']}",
         "",
-        "## The lineage count",
+        "## Practical reading",
+        "",
+        data["practical_reading"]["text"],
+        "",
+        data["practical_reading"]["qualifier"],
+        "",
+        "## The Stranger Test",
+        "",
+        (
+            "The Stranger Test asks how many apparently separate claims still count as "
+            "independent evidence after their data lineage and target fit are traced."
+        ),
         "",
         (
             f"- Apparent support assertions: **{counts['apparent_support_assertion_count']}**"
@@ -619,6 +778,42 @@ def projection_markdown(envelope: dict[str, Any]) -> str:
         f"- Counterevidence participant-data roots: **{counts['counter_data_root_count']}**",
         "",
         counts["counting_unit"],
+        "",
+        "## Complete evidence ledger",
+        "",
+        "### Apparent support assertions",
+        "",
+    ]
+    for entry in data["evidence_ledger"]["apparent_support_assertions"]:
+        sources = "; ".join(work["title"] for work in entry["source_works"])
+        lines.append(f"- **{sources}** — {entry['statement']} — `{entry['key']}`")
+    lines += [
+        "",
+        "### Target-comparable supporting roots",
+        "",
+    ]
+    for entry in [
+        *data["evidence_ledger"]["target_comparable_support_roots"],
+        *data["evidence_ledger"]["target_comparable_unresolved_roots"],
+    ]:
+        sources = "; ".join(work["title"] for work in entry["source_works"])
+        lines.append(f"- **{sources}** — {entry['note']} — `{entry['key']}`")
+    lines += [
+        "",
+        "### Counterevidence roots",
+        "",
+    ]
+    for entry in data["evidence_ledger"]["counter_roots"]:
+        sources = "; ".join(work["title"] for work in entry["source_works"])
+        lines.append(f"- **{sources}** — {entry['note']} — `{entry['key']}`")
+    lines += [
+        "",
+        "## Five-term lexicon",
+        "",
+    ]
+    for item in data["lexicon"]:
+        lines.append(f"- **{item['term']}:** {item['definition']}")
+    lines += [
         "",
         "## Evidence record",
         "",
@@ -713,30 +908,197 @@ def _policy_switch(data: dict[str, Any], base_url: str) -> str:
     return '<nav class="policy-switch" aria-label="Evidence policy">' + "".join(links) + "</nav>"
 
 
-def evidence_tally(data: dict[str, Any], base_url: str) -> str:
+def evidence_tally(
+    data: dict[str, Any], base_url: str, *, local_fragments: bool = False
+) -> str:
     counts = data["counts"]
-    unresolved_href = (
-        f'{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
-        "#unresolved-lineage"
-    )
+    case_url = ""
+    if not local_fragments:
+        case_url = (
+            f'{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
+        )
     return (
         '<div class="evidence-tally" aria-label="Evidence lineage summary">'
-        '<div class="tally-cell"><strong>'
+        f'<a class="tally-cell" href="{case_url}#apparent-support" '
+        'aria-label="Open all apparent support assertions"><strong>'
         f'{counts["apparent_support_assertion_count"]}</strong>'
-        '<span>apparent support assertions</span></div>'
+        '<span>apparent support assertions</span></a>'
         '<span class="tally-arrow" aria-hidden="true">→</span>'
-        f'<a class="tally-cell tally-emphasis" href="{unresolved_href}" '
-        'aria-label="Open the four known and one unresolved supporting evidence roots"><strong>'
+        f'<a class="tally-cell tally-emphasis" href="{case_url}#supporting-roots" '
+        'aria-label="Open all known and unresolved supporting evidence roots"><strong>'
         f'{counts["target_comparable_support_data_root_count"]} + '
         f'{counts["target_comparable_unresolved_data_root_count"]}?</strong>'
         '<span>target-comparable support roots</span></a>'
-        '<div class="tally-cell tally-counter"><strong>'
+        f'<a class="tally-cell tally-counter" href="{case_url}#counter-roots" '
+        'aria-label="Open all counterevidence data roots"><strong>'
         f'{counts["counter_data_root_count"]}</strong>'
-        '<span>counterevidence data roots</span></div>'
+        '<span>counterevidence data roots</span></a>'
         '</div>'
     )
 
 
+def _ledger_sources(entry: dict[str, Any]) -> str:
+    if not entry["source_works"]:
+        return "Source identity unresolved"
+    return " · ".join(work["title"] for work in entry["source_works"])
+
+
+def _ledger_list(entries: list[dict[str, Any]], *, assertions: bool = False) -> str:
+    items = []
+    for entry in entries:
+        detail = entry["statement"] if assertions else entry["note"]
+        status = ""
+        if not assertions and entry["status"] == "unknown":
+            status = '<span class="ledger-status">Unresolved</span>'
+        items.append(
+            '<li><div class="ledger-entry-head">'
+            f'<strong>{html.escape(_ledger_sources(entry))}</strong>{status}</div>'
+            f'<p>{html.escape(detail)}</p>'
+            f'<code>{html.escape(entry["key"])}</code></li>'
+        )
+    return "".join(items)
+
+
+def evidence_ledger_html(data: dict[str, Any]) -> str:
+    ledger = data["evidence_ledger"]
+    support = [
+        *ledger["target_comparable_support_roots"],
+        *ledger["target_comparable_unresolved_roots"],
+    ]
+    return (
+        '<section class="evidence-ledger" aria-labelledby="complete-ledger-title">'
+        '<div class="section-head"><div><p class="eyebrow">Count, opened</p>'
+        '<h2 id="complete-ledger-title">Every number has a list</h2></div>'
+        '<p class="meta">Derived from accepted relation endpoints</p></div>'
+        '<div class="ledger-groups">'
+        '<article id="apparent-support" class="ledger-group ledger-apparent">'
+        f'<p class="ledger-number">{len(ledger["apparent_support_assertions"])}</p>'
+        '<h3>Apparent support assertions</h3><p class="ledger-intro">Source-side statements '
+        'before data-lineage and target-fit collapse.</p><ol>'
+        f'{_ledger_list(ledger["apparent_support_assertions"], assertions=True)}</ol></article>'
+        '<article id="supporting-roots" class="ledger-group ledger-support">'
+        f'<p class="ledger-number">{len(ledger["target_comparable_support_roots"])} + '
+        f'{len(ledger["target_comparable_unresolved_roots"])}?</p>'
+        '<h3>Target-comparable support roots</h3><p class="ledger-intro">Known participant-data '
+        'roots plus the lineage that cannot yet be verified.</p><ol>'
+        f'{_ledger_list(support)}</ol></article>'
+        '<article id="counter-roots" class="ledger-group ledger-counter">'
+        f'<p class="ledger-number">{len(ledger["counter_roots"])}</p>'
+        '<h3>Counterevidence data roots</h3><p class="ledger-intro">Distinct participant-data '
+        'roots that rebut the universal claim under the dossier target.</p><ol>'
+        f'{_ledger_list(ledger["counter_roots"])}</ol></article>'
+        '</div></section>'
+    )
+
+
+def practical_reading_html(data: dict[str, Any]) -> str:
+    reading = data["practical_reading"]
+    basis = "".join(
+        '<a href="#relation-'
+        f'{html.escape(key)}">{index:02d}</a>'
+        for index, key in enumerate(reading["basis_relation_keys"], start=1)
+    )
+    return (
+        '<section class="practical-reading" aria-labelledby="practical-reading-title">'
+        '<div class="practical-kicker"><span>So what?</span><span>Policy-relative reading</span>'
+        '</div><div><h2 id="practical-reading-title">'
+        f'{html.escape(reading["text"])}</h2>'
+        f'<p>{html.escape(reading["qualifier"])}</p>'
+        f'<p class="practical-basis">Trace this reading to relations {basis}.</p></div></section>'
+    )
+
+
+def lexicon_html(data: dict[str, Any]) -> str:
+    items = "".join(
+        '<div><dt>'
+        f'{html.escape(item["term"])}</dt><dd>{html.escape(item["definition"])}</dd></div>'
+        for item in data["lexicon"]
+    )
+    return (
+        '<section class="case-lexicon" aria-labelledby="lexicon-title">'
+        '<div class="section-head"><div><p class="eyebrow">Keep the precision</p>'
+        '<h2 id="lexicon-title">Five terms, in plain language</h2></div></div>'
+        f'<dl>{items}</dl></section>'
+    )
+
+
+def _svg_tspans(lines: list[str], *, x: int, y: int, step: int) -> str:
+    return "".join(
+        f'<tspan x="{x}" y="{y + index * step}">{html.escape(line)}</tspan>'
+        for index, line in enumerate(lines)
+    )
+
+
+def share_card_svg(envelope: dict[str, Any], base_url: str) -> str:
+    """Compile a deterministic, no-asset scoreboard card for one dossier policy view."""
+
+    data = envelope["data"]
+    counts = data["counts"]
+    title_lines = textwrap.wrap(
+        data["title"], width=36, break_long_words=False, break_on_hyphens=False
+    )
+    verdict_lines = textwrap.wrap(
+        data["view"]["label"], width=76, break_long_words=False, break_on_hyphens=False
+    )
+    canonical = f'{base_url}/how-we-know/{data["slug"]}/{data["view"]["id"]}/'
+    dossier_short = data["dossier_id"].rsplit(":", 1)[-1][:12]
+    return (
+        '<?xml version="1.0" encoding="UTF-8"?>\n'
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" '
+        'viewBox="0 0 1200 630" role="img" aria-labelledby="title description">'
+        f'<title id="title">{html.escape(data["title"])}</title>'
+        f'<desc id="description">{html.escape(data["view"]["label"])}</desc>'
+        '<metadata>'
+        f'<dossier>{html.escape(data["dossier_id"])}</dossier>'
+        f'<catalog>{html.escape(envelope["catalog_id"])}</catalog>'
+        f'<frontier>{html.escape(envelope["frontier"])}</frontier>'
+        f'<commit>{html.escape(envelope["commit"])}</commit>'
+        f'<content-digest>{html.escape(envelope["content_digest"])}</content-digest>'
+        f'<canonical>{html.escape(canonical)}</canonical>'
+        '</metadata>'
+        '<rect width="1200" height="630" fill="#f3f0e6"/>'
+        '<path d="M0 0H936V8H0ZM936 0H1200V8H936Z" fill="#274c3a"/>'
+        '<path d="M936 0H1200V8H936Z" fill="#a96512"/>'
+        '<g stroke="#d8d2c2" stroke-width="1" opacity=".45">'
+        + "".join(f'<path d="M{x} 0V630"/>' for x in range(40, 1200, 40))
+        + '</g><rect x="72" y="54" width="54" height="54" fill="#274c3a"/>'
+        '<text x="83" y="90" fill="#fffdf6" font-family="monospace" font-size="24" '
+        'font-weight="700">E/</text>'
+        '<text x="146" y="90" fill="#171a15" font-family="system-ui,sans-serif" '
+        'font-size="30" font-weight="750">Epistemedia</text>'
+        '<text x="1128" y="84" text-anchor="end" fill="#5e6259" '
+        'font-family="monospace" font-size="17" font-weight="700" letter-spacing="2">'
+        f'CASE {html.escape(data["number"])} · {html.escape(data["view"]["id"].upper())}</text>'
+        '<path d="M72 128H1128" stroke="#274c3a" stroke-width="4"/>'
+        '<text fill="#171a15" font-family="Georgia,serif" font-size="58" font-weight="700" '
+        'letter-spacing="-1">'
+        f'{_svg_tspans(title_lines[:3], x=72, y=196, step=61)}</text>'
+        '<rect x="72" y="365" width="8" height="118" fill="#a96512"/>'
+        '<text fill="#274c3a" font-family="Georgia,serif" font-size="27" font-weight="600">'
+        f'{_svg_tspans(verdict_lines[:4], x=102, y=391, step=31)}</text>'
+        '<g transform="translate(72 515)">'
+        '<rect width="300" height="76" fill="#fffdf6" stroke="#c9c4b5"/>'
+        '<rect x="312" width="374" height="76" fill="#f5e4bd" stroke="#a96512"/>'
+        '<rect x="698" width="358" height="76" fill="#fffdf6" stroke="#274c3a"/>'
+        f'<text x="20" y="38" fill="#171a15" font-family="Georgia,serif" font-size="34" '
+        f'font-weight="700">{counts["apparent_support_assertion_count"]}</text>'
+        '<text x="72" y="32" fill="#5e6259" font-family="monospace" font-size="13" '
+        'font-weight="700">APPARENT</text><text x="72" y="50" fill="#5e6259" '
+        'font-family="monospace" font-size="13" font-weight="700">ASSERTIONS</text>'
+        f'<text x="334" y="44" fill="#171a15" font-family="Georgia,serif" font-size="34" '
+        f'font-weight="700">{counts["target_comparable_support_data_root_count"]} + '
+        f'{counts["target_comparable_unresolved_data_root_count"]}?</text>'
+        '<text x="442" y="32" fill="#5e6259" font-family="monospace" font-size="13" '
+        'font-weight="700">SUPPORTING</text><text x="442" y="50" fill="#5e6259" '
+        'font-family="monospace" font-size="13" font-weight="700">DATA ROOTS</text>'
+        f'<text x="720" y="44" fill="#171a15" font-family="Georgia,serif" font-size="34" '
+        f'font-weight="700">{counts["counter_data_root_count"]}</text>'
+        '<text x="776" y="32" fill="#5e6259" font-family="monospace" font-size="13" '
+        'font-weight="700">COUNTEREVIDENCE</text><text x="776" y="50" fill="#5e6259" '
+        'font-family="monospace" font-size="13" font-weight="700">DATA ROOTS</text></g>'
+        '<text x="72" y="616" fill="#5e6259" font-family="monospace" font-size="12">'
+        f'dossier {html.escape(dossier_short)} · {html.escape(canonical)}</text></svg>\n'
+    )
 def feature_home_html(envelope: dict[str, Any], base_url: str) -> str:
     data = envelope["data"]
     review_url = (
@@ -756,11 +1118,16 @@ def feature_home_html(envelope: dict[str, Any], base_url: str) -> str:
         f'<a class="primary-action" href="{html.escape(base_url)}/how-we-know/'
         f'{html.escape(data["slug"])}/">Open the evidence docket</a>'
         f'<a href="{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/index.md">'
-        'Read as Markdown</a></p></div>'
+        'Read as Markdown</a>'
+        f'<a href="{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/share-card.svg">'
+        'Share the scoreboard</a></p></div>'
         f'<aside class="case-docket">{evidence_tally(data, base_url)}'
-        '<p class="docket-note">Raw mentions are not independent evidence. Open the case to '
-        'inspect the exact editions, spans, shared programs, failed replication, and unresolved '
-        '2007 participant-data lineage behind the count.</p>'
+        '<p class="docket-note"><strong>Ten source assertions sound like support. Four '
+        'target-comparable participant-data roots do. '
+        f'<a href="{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
+        '#unresolved-lineage">One 2007 lineage remains unresolved.</a></strong> '
+        'Open the count to inspect the exact editions, shared programs, failed replications, and '
+        'unresolved data lineage.</p>'
         f'<p class="docket-meta">{data["source_work_count"]} works · '
         f'{data["span_count"]} exact spans · dossier {html.escape(data["number"])}</p>'
         '</aside></div></section>'
@@ -780,7 +1147,8 @@ def feature_page_html(envelope: dict[str, Any], base_url: str) -> str:
             else f'<p class="relation-note">{html.escape(item["relation"]["note"])}</p>'
         )
         evidence.append(
-            '<article class="evidence-sentence">'
+            '<article class="evidence-sentence" id="relation-'
+            f'{html.escape(item["relation"]["key"])}">'
             '<div class="evidence-marker">'
             f'<span>{index:02d}</span><strong>{html.escape(item["relation_label"])}</strong>'
             '</div><div class="evidence-body">'
@@ -819,15 +1187,23 @@ def feature_page_html(envelope: dict[str, Any], base_url: str) -> str:
         f'<a href="{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
         f'{html.escape(data["view"]["id"])}/index.md">Markdown</a> · '
         f'<a href="{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
-        f'{html.escape(data["view"]["id"])}/index.json">JSON</a></p>'
+        f'{html.escape(data["view"]["id"])}/index.json">JSON</a> · '
+        f'<a href="{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
+        f'{html.escape(data["view"]["id"])}/share-card.svg">Share card</a></p>'
         '</div></section>'
+        f'{practical_reading_html(data)}'
         '<section class="lineage-ledger" aria-labelledby="lineage-title">'
         '<div class="section-head"><div><p class="eyebrow">The stranger test</p>'
         '<h2 id="lineage-title">Many mentions, fewer evidence roots</h2></div></div>'
-        f'{evidence_tally(data, base_url)}'
+        '<p class="stranger-definition">The Stranger Test asks how many apparently separate '
+        'claims still count as independent evidence after their data lineage and target fit are '
+        'traced.</p>'
+        f'{evidence_tally(data, base_url, local_fragments=True)}'
         f'<p>{html.escape(data["counts"]["counting_unit"])}</p>'
         '<p class="scope-note"><strong>Scope:</strong>'
         f'<span>{html.escape(data["scope"])}</span></p></section>'
+        f'{evidence_ledger_html(data)}'
+        f'{lexicon_html(data)}'
         '<section aria-labelledby="evidence-record-title">'
         '<div class="section-head"><div><p class="eyebrow">Sentence x-ray</p>'
         '<h2 id="evidence-record-title">Read the evaluated record</h2></div>'

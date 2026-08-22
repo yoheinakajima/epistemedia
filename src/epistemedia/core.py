@@ -242,10 +242,40 @@ a.tally-cell:hover{outline:2px solid var(--amber);outline-offset:-2px}
 .tally-counter{border-color:var(--forest)}
 .tally-arrow{align-self:center;color:var(--amber);font:700 1.4rem/1 var(--serif)}
 .dossier-lead{padding-top:var(--space-4)}
+.practical-reading{display:grid;grid-template-columns:180px minmax(0,1fr);gap:var(--space-5);padding:var(--space-4);border-top:6px solid var(--amber);background:var(--forest-deep);color:var(--paper-raised);box-shadow:8px 8px 0 var(--paper-deep)}
+.practical-kicker{display:flex;flex-direction:column;gap:.35rem;color:var(--amber-wash);font:720 .68rem/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.practical-kicker span:first-child{color:var(--paper-raised);font:760 clamp(1.35rem,3vw,2rem)/1 var(--serif);letter-spacing:-.02em;text-transform:none}
+.practical-reading h2{max-width:28ch;color:var(--paper-raised);font-size:clamp(1.6rem,3vw,2.55rem);line-height:1.12}
+.practical-reading p{max-width:68ch;color:#e6eadf}
+.practical-basis{display:flex;align-items:center;flex-wrap:wrap;gap:.35rem;font:650 .72rem/1.5 var(--mono);letter-spacing:.035em;text-transform:uppercase}
+.practical-basis a{display:inline-grid;place-items:center;width:2rem;height:2rem;border:1px solid #d7dcca;color:var(--paper-raised);text-decoration:none}
+.practical-basis a:hover{background:var(--paper-raised);color:var(--forest-deep)}
 .lineage-ledger{padding-top:var(--space-4)}
 .lineage-ledger>.evidence-tally{max-width:960px}
+.stranger-definition{max-width:62ch;margin:0 0 var(--space-3);font:600 clamp(1.05rem,2vw,1.28rem)/1.48 var(--serif)}
+.ledger-groups{display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3);align-items:start}
+.ledger-group{min-width:0;padding:var(--space-3);scroll-margin-top:var(--space-3);border:1px solid var(--rule);border-top:6px solid var(--rule);background:var(--paper-raised)}
+.ledger-support{border-top-color:var(--amber);background:linear-gradient(180deg,var(--amber-wash),var(--paper-raised) 13rem)}
+.ledger-counter{border-top-color:var(--forest)}
+.ledger-number{margin:0;color:var(--forest-deep);font:750 clamp(2.4rem,5vw,4.4rem)/.9 var(--serif);letter-spacing:-.045em}
+.ledger-group h3{margin-top:.45rem;font-size:1.35rem}
+.ledger-intro{min-height:4.5em;margin:.2rem 0 var(--space-3);color:var(--muted);font-size:.86rem}
+.ledger-group ol{margin:0;padding:0;list-style:none;counter-reset:ledger}
+.ledger-group li{position:relative;padding:.85rem 0 .85rem 2.1rem;border-top:1px solid var(--rule);counter-increment:ledger}
+.ledger-group li:before{position:absolute;left:0;top:.88rem;content:counter(ledger,decimal-leading-zero);color:var(--muted);font:700 .64rem/1.4 var(--mono)}
+.ledger-entry-head{display:flex;align-items:start;justify-content:space-between;gap:.5rem}
+.ledger-entry-head strong{font:650 .94rem/1.35 var(--serif)}
+.ledger-status{flex:0 0 auto;padding:.18rem .28rem;background:var(--amber);color:var(--paper-raised);font:720 .58rem/1.2 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.ledger-group li p{margin:.35rem 0;color:var(--muted);font-size:.79rem;line-height:1.46}
+.ledger-group li code{padding:0;background:transparent;color:var(--muted);font-size:.62rem}
+.case-lexicon dl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.case-lexicon dl>div{padding:var(--space-3);border-left:1px solid var(--rule)}
+.case-lexicon dl>div:first-child{border-left:0}
+.case-lexicon dt{color:var(--forest-deep);font:720 .72rem/1.35 var(--mono);letter-spacing:.035em;text-transform:uppercase}
+.case-lexicon dd{margin:.55rem 0 0;color:var(--muted);font-size:.82rem;line-height:1.48}
 .evidence-record{border-top:1px solid var(--ink)}
-.evidence-sentence{display:grid;grid-template-columns:110px minmax(0,1fr);gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--rule)}
+.evidence-sentence{display:grid;grid-template-columns:110px minmax(0,1fr);gap:var(--space-4);padding:var(--space-4);scroll-margin-top:var(--space-3);border-bottom:1px solid var(--rule);background:linear-gradient(90deg,rgba(255,253,246,.8),transparent)}
+.evidence-sentence:nth-child(even){background:linear-gradient(90deg,var(--paper-deep),transparent 70%)}
 .evidence-marker{display:flex;align-items:start;gap:.5rem;flex-direction:column;color:var(--forest-deep);font:720 .66rem/1.35 var(--mono);letter-spacing:.055em;text-transform:uppercase}
 .evidence-marker span{display:grid;place-items:center;width:2rem;height:2rem;border:1px solid var(--forest);background:var(--forest);color:var(--paper-raised)}
 .material-sentence{margin:0;max-width:64ch;font:600 clamp(1.15rem,2vw,1.48rem)/1.42 var(--serif)}
@@ -412,6 +442,13 @@ blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(
   .evidence-tally{grid-template-columns:1fr 1fr}
   .tally-arrow{display:none}
   .tally-counter{grid-column:1/-1}
+  .practical-reading{grid-template-columns:1fr;gap:var(--space-3);padding:var(--space-3);box-shadow:4px 4px 0 var(--paper-deep)}
+  .practical-kicker{flex-direction:row;justify-content:space-between}
+  .ledger-groups{grid-template-columns:1fr}
+  .ledger-intro{min-height:0}
+  .case-lexicon dl{grid-template-columns:1fr}
+  .case-lexicon dl>div{border-left:0;border-top:1px solid var(--rule)}
+  .case-lexicon dl>div:first-child{border-top:0}
   .evidence-sentence{grid-template-columns:1fr;gap:.75rem}
   .evidence-marker{align-items:center;flex-direction:row}
   .uncertainty-panel{grid-template-columns:1fr;gap:var(--space-3);padding:var(--space-3)}
@@ -897,10 +934,17 @@ def html_shell(
     base_url: str,
     canonical_url: str,
     markdown_url: str | None = None,
+    social_image_url: str | None = None,
 ) -> str:
     alternates = ""
     if markdown_url:
         alternates = f'<link rel="alternate" type="text/markdown" href="{html.escape(markdown_url)}">'
+    social_meta = ""
+    if social_image_url:
+        social_meta = (
+            f'<meta property="og:image" content="{html.escape(social_image_url)}">'
+            '<meta name="twitter:card" content="summary_large_image">'
+        )
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -911,6 +955,7 @@ def html_shell(
 <link rel="canonical" href="{html.escape(canonical_url)}">
 <link rel="describedby" href="{html.escape(base_url)}/llms.txt">
 {alternates}
+{social_meta}
 <style>{SITE_CSS}</style>
 </head>
 <body>
@@ -1118,6 +1163,7 @@ def build_public(
         load_featured_dossier,
         review_receipt_html,
         review_receipt_markdown,
+        share_card_svg,
     )
     from .featured import projection_markdown as dossier_markdown
 
@@ -1293,6 +1339,10 @@ def build_public(
             view_root = case_root / view
             write_json(view_root / "index.json", case_envelope)
             write_text(view_root / "index.md", dossier_markdown(case_envelope))
+            write_text(
+                view_root / "share-card.svg",
+                share_card_svg(case_envelope, base_url),
+            )
             case_body = feature_page_html(case_envelope, base_url) + projection_receipt_html(
                 dossier_id=case_data["dossier_id"],
                 view_policy=case_data["view"]["policy_id"],
@@ -1314,12 +1364,19 @@ def build_public(
                     markdown_url=(
                         f"{base_url}/how-we-know/{featured.slug}/{view}/index.md"
                     ),
+                    social_image_url=(
+                        f"{base_url}/how-we-know/{featured.slug}/{view}/share-card.svg"
+                    ),
                 ),
             )
 
         default_data = featured_default["data"]
         write_json(case_root / "index.json", featured_default)
         write_text(case_root / "index.md", dossier_markdown(featured_default))
+        write_text(
+            case_root / "share-card.svg",
+            share_card_svg(featured_default, base_url),
+        )
         write_text(
             case_root / "index.html",
             html_shell(
@@ -1339,6 +1396,7 @@ def build_public(
                 base_url=base_url,
                 canonical_url=f"{base_url}/how-we-know/{featured.slug}/",
                 markdown_url=f"{base_url}/how-we-know/{featured.slug}/index.md",
+                social_image_url=f"{base_url}/how-we-know/{featured.slug}/share-card.svg",
             ),
         )
         review_envelope = featured.review_envelope(catalog)
@@ -1408,6 +1466,7 @@ def build_public(
                 base_url=base_url,
                 canonical_url=f"{base_url}/how-we-know/",
                 markdown_url=f"{base_url}/how-we-know/index.md",
+                social_image_url=f"{base_url}/how-we-know/{featured.slug}/share-card.svg",
             ),
         )
 
@@ -1474,6 +1533,11 @@ def build_public(
             base_url=base_url,
             canonical_url=f"{base_url}/",
             markdown_url=f"{base_url}/index.md",
+            social_image_url=(
+                f"{base_url}/how-we-know/{featured.slug}/share-card.svg"
+                if featured is not None
+                else None
+            ),
         ),
     )
     write_text(tmp / "index.md", home_markdown)
@@ -1625,6 +1689,7 @@ def build_public(
             [
                 f"- [Featured evidence dossier]({base_url}/how-we-know/{featured.slug}/index.md)",
                 f"- [Featured dossier JSON]({base_url}/how-we-know/{featured.slug}/index.json)",
+                f"- [Featured scoreboard card]({base_url}/how-we-know/{featured.slug}/share-card.svg)",
                 f"- [Independent review receipt]({base_url}/how-we-know/{featured.slug}/review/index.md)",
             ]
             if featured is not None
@@ -1672,6 +1737,7 @@ def build_public(
             "markdown": f"{base_url}/how-we-know/{featured.slug}/index.md",
             "json": f"{base_url}/how-we-know/{featured.slug}/index.json",
             "review": f"{base_url}/how-we-know/{featured.slug}/review/",
+            "share_card": f"{base_url}/how-we-know/{featured.slug}/share-card.svg",
             "content_digest": featured_default["content_digest"],
         }
     write_json(tmp / ".well-known" / "epistemedia.json", discovery)

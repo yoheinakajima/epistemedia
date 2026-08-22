@@ -135,6 +135,9 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
         "how-we-know/corrections-and-familiarity-backfire/review/index.html",
         "how-we-know/corrections-and-familiarity-backfire/review/index.md",
         "how-we-know/corrections-and-familiarity-backfire/review/index.json",
+        "how-we-know/corrections-and-familiarity-backfire/share-card.svg",
+        "how-we-know/corrections-and-familiarity-backfire/encyclopedia/share-card.svg",
+        "how-we-know/corrections-and-familiarity-backfire/skeptical/share-card.svg",
     ]
     assert all((public / path).exists() for path in expected)
     assert manifest["file_count"] > 10
@@ -186,6 +189,9 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "How We Know" in home_html
     assert "Case 001" in home_html
     assert "evidence-tally" in home_html
+    assert "Ten source assertions sound like support" in home_html
+    assert "Share the scoreboard" in home_html
+    assert 'property="og:image"' in home_html
     assert "86 exact spans" in home_html
     assert home_html.index("Does repeating misinformation") < home_html.index(
         "Explore how the record is built"
@@ -204,6 +210,16 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     explore_markdown = (public / "explore" / "index.md").read_text()
     assert "<h1>Substrate</h1>" in explore_html
     assert explore_markdown.startswith("# Substrate\n")
+
+    share_card = (
+        public
+        / "how-we-know"
+        / "corrections-and-familiarity-backfire"
+        / "share-card.svg"
+    ).read_text()
+    assert share_card.startswith('<?xml version="1.0" encoding="UTF-8"?>')
+    assert "CASE 001" in share_card
+    assert manifest["catalog_id"] in share_card
 
     topic = PublicCatalog.build(ROOT).topics[0]
     topic_html = (public / "topics" / topic.slug / "index.html").read_text()
