@@ -458,7 +458,14 @@ def write_json(path: Path, value: Any) -> None:
     write_text(path, json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False) + "\n")
 
 
-def html_shell(title: str, body: str, *, base_url: str, markdown_url: str | None = None) -> str:
+def html_shell(
+    title: str,
+    body: str,
+    *,
+    base_url: str,
+    canonical_url: str,
+    markdown_url: str | None = None,
+) -> str:
     alternates = ""
     if markdown_url:
         alternates = f'<link rel="alternate" type="text/markdown" href="{html.escape(markdown_url)}">'
@@ -469,6 +476,7 @@ def html_shell(title: str, body: str, *, base_url: str, markdown_url: str | None
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)} · Epistemedia</title>
 <meta name="description" content="Knowledge that can show its work.">
+<link rel="canonical" href="{html.escape(canonical_url)}">
 <link rel="describedby" href="{html.escape(base_url)}/llms.txt">
 {alternates}
 <style>
@@ -663,6 +671,7 @@ def build_public(
                 obj.title,
                 body,
                 base_url=base_url,
+                canonical_url=f"{base_url}/objects/{route_key}/",
                 markdown_url=f"{base_url}/objects/{route_key}.md",
             ),
         )
@@ -688,6 +697,7 @@ def build_public(
                     f"{topic.title} — {lens}",
                     md_to_html(md),
                     base_url=base_url,
+                    canonical_url=f"{base_url}/topics/{topic.slug}/{lens}/",
                     markdown_url=f"{base_url}/topics/{topic.slug}/{lens}/index.md",
                 ),
             )
@@ -704,7 +714,13 @@ def build_public(
         )
         write_text(
             tmp / "topics" / topic.slug / "index.html",
-            html_shell(topic.title, body, base_url=base_url, markdown_url=f"{base_url}/topics/{topic.slug}/index.md"),
+            html_shell(
+                topic.title,
+                body,
+                base_url=base_url,
+                canonical_url=f"{base_url}/topics/{topic.slug}/",
+                markdown_url=f"{base_url}/topics/{topic.slug}/index.md",
+            ),
         )
         write_text(tmp / "topics" / topic.slug / "index.md", md)
 
@@ -718,16 +734,43 @@ def build_public(
         '<section class="manifest"><h2>This page is a projection</h2>'
         f'<p>Catalog <code>{html.escape(catalog.catalog_id)}</code><br>Frontier <code>{html.escape(catalog.frontier)}</code><br>Commit <code>{html.escape(catalog.commit)}</code></p></section>'
     )
-    write_text(tmp / "index.html", html_shell("Knowledge that can show its work", home_body, base_url=base_url, markdown_url=f"{base_url}/index.md"))
+    write_text(
+        tmp / "index.html",
+        html_shell(
+            "Knowledge that can show its work",
+            home_body,
+            base_url=base_url,
+            canonical_url=f"{base_url}/",
+            markdown_url=f"{base_url}/index.md",
+        ),
+    )
     write_text(tmp / "index.md", "# Epistemedia\n\nKnowledge that can show its work.\n\n" + "\n".join(f"- [{t.title}]({base_url}/topics/{t.slug}/) — {t.description}" for t in catalog.topics) + "\n")
 
     explore_body = '<section class="hero"><h1>Explore</h1><p class="dek">Browse topics and the exact public objects used to compile them.</p></section><div class="grid">' + "".join(topic_cards) + '</div>'
-    write_text(tmp / "explore" / "index.html", html_shell("Explore", explore_body, base_url=base_url, markdown_url=f"{base_url}/explore/index.md"))
+    write_text(
+        tmp / "explore" / "index.html",
+        html_shell(
+            "Explore",
+            explore_body,
+            base_url=base_url,
+            canonical_url=f"{base_url}/explore/",
+            markdown_url=f"{base_url}/explore/index.md",
+        ),
+    )
     write_text(tmp / "explore" / "index.md", "# Explore\n\n" + "\n".join(f"- [{t.title}]({base_url}/topics/{t.slug}/)" for t in catalog.topics) + "\n")
 
     docs = [obj for obj in catalog.objects if obj.kind == "documentation" or obj.path in ("README.md", "AGENTS.md")]
     docs_body = '<section class="hero"><h1>Documentation</h1><p class="dek">Human guidance and machine-operable project contracts, compiled from accepted repository content.</p></section><div class="grid">' + "".join(f'<article class="card"><h2>{html.escape(o.title)}</h2><p>{html.escape(o.summary)}</p><p><a href="{base_url}/objects/{static_object_route_key(o.id)}/">Read source projection</a></p></article>' for o in docs) + '</div>'
-    write_text(tmp / "docs" / "index.html", html_shell("Documentation", docs_body, base_url=base_url, markdown_url=f"{base_url}/docs/index.md"))
+    write_text(
+        tmp / "docs" / "index.html",
+        html_shell(
+            "Documentation",
+            docs_body,
+            base_url=base_url,
+            canonical_url=f"{base_url}/docs/",
+            markdown_url=f"{base_url}/docs/index.md",
+        ),
+    )
     write_text(tmp / "docs" / "index.md", "# Documentation\n\n" + "\n".join(f"- [{o.title}]({base_url}/objects/{static_object_route_key(o.id)}/) — `{o.path}`" for o in docs) + "\n")
 
     status_md = (
@@ -741,7 +784,16 @@ def build_public(
         f"- Projections: `{projection_count}`\n"
     )
     write_text(tmp / "status" / "index.md", status_md)
-    write_text(tmp / "status" / "index.html", html_shell("Status", md_to_html(status_md), base_url=base_url, markdown_url=f"{base_url}/status/index.md"))
+    write_text(
+        tmp / "status" / "index.html",
+        html_shell(
+            "Status",
+            md_to_html(status_md),
+            base_url=base_url,
+            canonical_url=f"{base_url}/status/",
+            markdown_url=f"{base_url}/status/index.md",
+        ),
+    )
 
     llms = [
         "# Epistemedia",
