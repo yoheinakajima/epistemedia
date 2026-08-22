@@ -126,6 +126,12 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
         ".well-known/epistemedia.json",
         "mcp/server.json",
         "docs/llms.txt",
+        "how-we-know/index.html",
+        "how-we-know/corrections-and-familiarity-backfire/index.html",
+        "how-we-know/corrections-and-familiarity-backfire/index.md",
+        "how-we-know/corrections-and-familiarity-backfire/index.json",
+        "how-we-know/corrections-and-familiarity-backfire/encyclopedia/index.html",
+        "how-we-know/corrections-and-familiarity-backfire/skeptical/index.html",
     ]
     assert all((public / path).exists() for path in expected)
     assert manifest["file_count"] > 10
@@ -136,6 +142,10 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert discovery["api"] == "https://api.epistemedia.org/v1"
     assert discovery["openapi"] == "https://epistemedia.org/openapi.json"
     assert discovery["mcp"] == "https://mcp.epistemedia.org/mcp"
+    assert discovery["featured_dossier"]["human"] == (
+        "https://epistemedia.org/how-we-know/"
+        "corrections-and-familiarity-backfire/"
+    )
 
     llms = (public / "llms.txt").read_text()
     assert "Static OpenAPI contract — hosted API not live" in llms
@@ -169,10 +179,14 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "overflow-wrap:anywhere;word-break:break-word" in home_html
     assert "pre code{padding:0;overflow-wrap:normal;word-break:normal}" in home_html
     assert "minmax(min(100%,245px),1fr)" in home_html
-    assert "Current coverage:" in home_html
-    assert "self-describing bootstrap corpus" in home_html
+    assert "Does repeating misinformation" in home_html
     assert "How We Know" in home_html
-    assert "Topic 01" in home_html
+    assert "Case 001" in home_html
+    assert "evidence-tally" in home_html
+    assert "86 exact spans" in home_html
+    assert home_html.index("Does repeating misinformation") < home_html.index(
+        "Explore how the record is built"
+    )
     assert "projection-receipt" in home_html
     assert manifest["catalog_id"] in home_html
 
@@ -203,7 +217,7 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     status_html = (public / "status" / "index.html").read_text()
     assert "Canonical human site" in status_markdown
     assert status_markdown.count("not verified live") == 3
-    assert "self-describing repository bootstrap" in status_markdown
+    assert "independently reviewed How We Know dossier" in status_markdown
     assert "Verified live · HTTPS" in status_html
     assert status_html.count("Reserved · unverified") == 3
 
@@ -247,7 +261,15 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
         assert parser.headings.count(1) == 1, relative
         assert len(parser.ids) == len(set(parser.ids)), relative
         assert "content" in parser.ids, relative
-        assert parser.nav_labels == ["Primary"], relative
+        assert parser.nav_labels[0] == "Primary", relative
+        assert parser.nav_labels.count("Primary") == 1, relative
+        if "Evidence policy" in parser.nav_labels:
+            assert parser.nav_labels == ["Primary", "Evidence policy"], relative
+            assert relative == Path("index.html") or str(relative).startswith(
+                "how-we-know/"
+            ), relative
+        else:
+            assert parser.nav_labels == ["Primary"], relative
         assert parser.skip_targets == ["#content"], relative
         assert "projection-receipt" in page_html, relative
         assert catalog.catalog_id in page_html, relative
@@ -272,7 +294,7 @@ def test_public_status_copy_distinguishes_live_and_target_surfaces() -> None:
     api_docs = (ROOT / "docs" / "api-mcp-cli.md").read_text()
     assert "canonical static site live at <https://epistemedia.org/>" in readme
     assert "sharing redirect and hosted API/MCP runtime" in readme
-    assert "does **not** yet instantiate that claim/evidence graph" in readme
+    assert "application-level claim/evidence dossier" in readme
     assert "Target architecture" in readme
     assert "Public hosting at `epistemedia.org`" not in readme
     assert api_docs.count("No hosted runtime at that hostname has passed") == 2
