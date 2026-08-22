@@ -456,6 +456,11 @@ class FeaturedDossier:
             if relation["relation_type"] == "dependence"
         ]
         reviewer = _object(self.receipt.get("reviewer"), "review receipt.reviewer")
+        repository = _object(self.receipt.get("repository"), "review receipt.repository")
+        candidate_files = repository.get("candidate_files", [])
+        sources = self.receipt.get("sources", [])
+        spans = self.receipt.get("spans", [])
+        limitations = self.receipt.get("limitations", [])
         return {
             "format": PROJECTION_FORMAT,
             "slug": self.slug,
@@ -493,10 +498,36 @@ class FeaturedDossier:
             "review": {
                 "decision": self.receipt["decision"],
                 "reviewer_id": reviewer.get("id", "unknown"),
+                "fresh_clone": reviewer.get("fresh_clone") is True,
+                "independent_retrieval": reviewer.get("independent_retrieval") is True,
+                "authoring_agent_artifacts_used": (
+                    reviewer.get("authoring_agent_artifacts_used") is True
+                ),
                 "reviewed_head": self.manifest["reviewed_head"],
+                "reviewed_base": repository.get("reviewed_base", "unknown"),
+                "reviewed_tree": repository.get("reviewed_tree", "unknown"),
+                "diff_sha256": repository.get("diff_sha256", "unknown"),
                 "receipt_path": self.manifest["review_receipt_path"],
                 "receipt_sha256": _sha256(
                     self.root / self.manifest["review_receipt_path"]
+                ),
+                "completed_at": self.receipt.get("completed_at", "unknown"),
+                "candidate_file_count": (
+                    len(candidate_files) if isinstance(candidate_files, list) else 0
+                ),
+                "source_receipt_count": len(sources) if isinstance(sources, list) else 0,
+                "span_record_count": len(spans) if isinstance(spans, list) else 0,
+                "checked_scope": [
+                    "Exact candidate bytes, dossier identity, and Git binding",
+                    "Primary artifacts, public data workbooks, and exact source spans",
+                    "Lineage topology, count derivation, target baselines, and limitations",
+                    "License treatment, deterministic rebuild, and full repository check",
+                ],
+                "limitations": (
+                    limitations
+                    if isinstance(limitations, list)
+                    and all(isinstance(item, str) for item in limitations)
+                    else []
                 ),
             },
             "dossier": self.dossier,
@@ -506,6 +537,24 @@ class FeaturedDossier:
         from .core import envelope
 
         return envelope(catalog, self.projection(view))
+
+    def review_envelope(self, catalog: PublicCatalog) -> dict[str, Any]:
+        """Return the sanitized public review view bound to the default projection."""
+
+        from .core import envelope
+
+        projection = self.projection(self.default_view)
+        return envelope(
+            catalog,
+            {
+                "format": "epistemedia-public-review-receipt-v0.1",
+                "slug": projection["slug"],
+                "number": projection["number"],
+                "title": projection["title"],
+                "dossier_id": projection["dossier_id"],
+                "review": projection["review"],
+            },
+        )
 
     def summary(self, catalog: PublicCatalog) -> dict[str, Any]:
         projection = self.envelope(catalog, self.default_view)
@@ -664,18 +713,23 @@ def _policy_switch(data: dict[str, Any], base_url: str) -> str:
     return '<nav class="policy-switch" aria-label="Evidence policy">' + "".join(links) + "</nav>"
 
 
-def evidence_tally(data: dict[str, Any]) -> str:
+def evidence_tally(data: dict[str, Any], base_url: str) -> str:
     counts = data["counts"]
+    unresolved_href = (
+        f'{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
+        "#unresolved-lineage"
+    )
     return (
         '<div class="evidence-tally" aria-label="Evidence lineage summary">'
         '<div class="tally-cell"><strong>'
         f'{counts["apparent_support_assertion_count"]}</strong>'
         '<span>apparent support assertions</span></div>'
         '<span class="tally-arrow" aria-hidden="true">→</span>'
-        '<div class="tally-cell tally-emphasis"><strong>'
+        f'<a class="tally-cell tally-emphasis" href="{unresolved_href}" '
+        'aria-label="Open the four known and one unresolved supporting evidence roots"><strong>'
         f'{counts["target_comparable_support_data_root_count"]} + '
         f'{counts["target_comparable_unresolved_data_root_count"]}?</strong>'
-        '<span>target-comparable support roots</span></div>'
+        '<span>target-comparable support roots</span></a>'
         '<div class="tally-cell tally-counter"><strong>'
         f'{counts["counter_data_root_count"]}</strong>'
         '<span>counterevidence data roots</span></div>'
@@ -685,11 +739,14 @@ def evidence_tally(data: dict[str, Any]) -> str:
 
 def feature_home_html(envelope: dict[str, Any], base_url: str) -> str:
     data = envelope["data"]
+    review_url = (
+        f'{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/review/'
+    )
     return (
         '<section class="case-hero home-case" aria-labelledby="featured-case-title">'
         '<div class="case-rule"><span>How We Know</span>'
         f'<span>Case {html.escape(data["number"])}</span>'
-        '<span>Independently reviewed</span></div>'
+        f'<a class="case-rule-link" href="{review_url}">Review receipt</a></div>'
         '<div class="case-grid"><div class="case-copy">'
         '<p class="eyebrow">Truth, evidence, knowledge, and information</p>'
         f'<h1 id="featured-case-title">{html.escape(data["title"])}</h1>'
@@ -700,7 +757,7 @@ def feature_home_html(envelope: dict[str, Any], base_url: str) -> str:
         f'{html.escape(data["slug"])}/">Open the evidence docket</a>'
         f'<a href="{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/index.md">'
         'Read as Markdown</a></p></div>'
-        f'<aside class="case-docket">{evidence_tally(data)}'
+        f'<aside class="case-docket">{evidence_tally(data, base_url)}'
         '<p class="docket-note">Raw mentions are not independent evidence. Open the case to '
         'inspect the exact editions, spans, shared programs, failed replication, and unresolved '
         '2007 participant-data lineage behind the count.</p>'
@@ -712,6 +769,9 @@ def feature_home_html(envelope: dict[str, Any], base_url: str) -> str:
 
 def feature_page_html(envelope: dict[str, Any], base_url: str) -> str:
     data = envelope["data"]
+    review_url = (
+        f'{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/review/'
+    )
     evidence = []
     for index, item in enumerate(data["featured_relations"], start=1):
         relation_note = (
@@ -748,7 +808,8 @@ def feature_page_html(envelope: dict[str, Any], base_url: str) -> str:
         '<section class="case-hero dossier-hero">'
         '<div class="case-rule"><span>How We Know</span>'
         f'<span>Case {html.escape(data["number"])}</span>'
-        f'<span>{html.escape(data["view"]["id"])} policy</span></div>'
+        f'<span>{html.escape(data["view"]["id"])} policy</span>'
+        f'<a class="case-rule-link" href="{review_url}">Review receipt</a></div>'
         '<div class="dossier-lead">'
         f'<p class="eyebrow">{html.escape(data["claim_family"]["title"])}</p>'
         f'<h1>{html.escape(data["title"])}</h1>'
@@ -763,7 +824,7 @@ def feature_page_html(envelope: dict[str, Any], base_url: str) -> str:
         '<section class="lineage-ledger" aria-labelledby="lineage-title">'
         '<div class="section-head"><div><p class="eyebrow">The stranger test</p>'
         '<h2 id="lineage-title">Many mentions, fewer evidence roots</h2></div></div>'
-        f'{evidence_tally(data)}'
+        f'{evidence_tally(data, base_url)}'
         f'<p>{html.escape(data["counts"]["counting_unit"])}</p>'
         '<p class="scope-note"><strong>Scope:</strong>'
         f'<span>{html.escape(data["scope"])}</span></p></section>'
@@ -773,7 +834,8 @@ def feature_page_html(envelope: dict[str, Any], base_url: str) -> str:
         f'<p class="meta">{len(evidence)} policy-selected relations · '
         f'{data["span_count"]} spans in full dossier</p></div>'
         f'<div class="evidence-record">{"".join(evidence)}</div></section>'
-        '<section class="uncertainty-panel" aria-labelledby="uncertainty-title">'
+        '<section id="unresolved-lineage" class="uncertainty-panel" '
+        'aria-labelledby="uncertainty-title">'
         '<div><p class="eyebrow">Kept visible</p><h2 id="uncertainty-title">What remains '
         'unresolved</h2><ul>'
         f'{unresolved}</ul></div><div><p class="eyebrow">Policy reasons</p><ul>{reason_codes}'
@@ -781,4 +843,131 @@ def feature_page_html(envelope: dict[str, Any], base_url: str) -> str:
         '<details class="source-register"><summary>Open the complete '
         f'{data["source_work_count"]}-work source register'
         f'</summary><ol>{sources}</ol></details></article>'
+    )
+
+
+def feature_index_html(envelope: dict[str, Any], base_url: str) -> str:
+    """Render the realm index without cloning the homepage hero."""
+
+    data = envelope["data"]
+    featured = data["featured"]
+    case_url = f'{html.escape(base_url)}/how-we-know/{html.escape(featured["slug"])}/'
+    counts = featured["counts"]
+    return (
+        '<section class="hero hero-compact realm-intro">'
+        '<p class="eyebrow">Evidence dossiers</p><h1>How We Know</h1>'
+        f'<p class="dek">{html.escape(data["scope"])}</p></section>'
+        '<section class="case-index" aria-labelledby="published-cases-title">'
+        '<div class="section-head"><div><p class="eyebrow">Published record</p>'
+        '<h2 id="published-cases-title">One admitted case</h2></div>'
+        '<p class="meta">No second case yet</p></div>'
+        '<article class="case-index-row"><p class="case-index-number">Case '
+        f'{html.escape(featured["number"])}</p><div class="case-index-copy">'
+        f'<h3><a href="{case_url}">{html.escape(featured["title"])}</a></h3>'
+        f'<p class="case-index-verdict">{html.escape(featured["evaluation"])}</p>'
+        '<p class="case-index-counts">'
+        f'<strong>{counts["apparent_support_assertion_count"]}</strong> apparent assertions '
+        '<span aria-hidden="true">→</span> '
+        f'<strong>{counts["target_comparable_support_data_root_count"]} + '
+        f'{counts["target_comparable_unresolved_data_root_count"]}?</strong> supporting roots · '
+        f'<strong>{counts["counter_data_root_count"]}</strong> counter roots</p></div>'
+        f'<a class="primary-action" href="{case_url}">Open case</a></article>'
+        '<p class="empty-case-note"><strong>The series starts here.</strong> A second dossier '
+        'will appear only after its evidence packet and independent review are accepted.</p>'
+        '</section>'
+    )
+
+
+def review_receipt_markdown(envelope: dict[str, Any]) -> str:
+    data = envelope["data"]
+    review = data["review"]
+    lines = [
+        f"# Review receipt — How We Know Case {data['number']}",
+        "",
+        f"**Decision:** `{review['decision']}`",
+        "",
+        f"- Reviewer: `{review['reviewer_id']}`",
+        f"- Reviewed head: `{review['reviewed_head']}`",
+        f"- Reviewed tree: `{review['reviewed_tree']}`",
+        f"- Dossier: `{data['dossier_id']}`",
+        f"- Receipt SHA-256: `{review['receipt_sha256']}`",
+        f"- Completed: `{review['completed_at']}`",
+        "",
+        "## Independence conditions",
+        "",
+        f"- Fresh independent clone: **{str(review['fresh_clone']).lower()}**",
+        f"- Independent retrieval: **{str(review['independent_retrieval']).lower()}**",
+        "- Authoring-agent artifacts used: "
+        f"**{str(review['authoring_agent_artifacts_used']).lower()}**",
+        "",
+        "## Checked scope",
+        "",
+        *[f"- {item}" for item in review["checked_scope"]],
+        "",
+        f"The receipt binds {review['candidate_file_count']} candidate files, "
+        f"{review['source_receipt_count']} source receipts, and "
+        f"{review['span_record_count']} span records.",
+        "",
+        "## Limitations",
+        "",
+        *[f"- {item}" for item in review["limitations"]],
+        "",
+        "## Projection identity",
+        "",
+        f"- Catalog: `{envelope['catalog_id']}`",
+        f"- Frontier: `{envelope['frontier']}`",
+        f"- Accepted commit: `{envelope['commit']}`",
+        f"- Compiler: `{envelope['compiler']}`",
+        f"- Content digest: `{envelope['content_digest']}`",
+    ]
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def review_receipt_html(envelope: dict[str, Any], base_url: str) -> str:
+    data = envelope["data"]
+    review = data["review"]
+    case_url = f'{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
+    raw_url = (
+        "https://github.com/yoheinakajima/epistemedia/blob/"
+        f'{html.escape(envelope["commit"])}/{html.escape(review["receipt_path"])}'
+    )
+    checked = "".join(f"<li>{html.escape(item)}</li>" for item in review["checked_scope"])
+    limitations = "".join(
+        f"<li>{html.escape(item)}</li>" for item in review["limitations"]
+    )
+    independence = (
+        '<div><dt>Fresh clone</dt><dd>Yes</dd></div>'
+        '<div><dt>Independent retrieval</dt><dd>Yes</dd></div>'
+        '<div><dt>Authoring artifacts used</dt><dd>No</dd></div>'
+    )
+    return (
+        '<article class="review-page"><section class="hero hero-compact review-hero">'
+        '<p class="eyebrow">How We Know · Independent audit</p>'
+        f'<h1>Review receipt for Case {html.escape(data["number"])}</h1>'
+        '<p class="dek">This is the public, disclosure-safe view of the exact receipt that '
+        'admitted the dossier—not a self-awarded badge.</p>'
+        f'<p><a href="{case_url}">← Return to the evidence docket</a></p></section>'
+        '<section class="review-decision" aria-labelledby="review-decision-title">'
+        '<div><p class="eyebrow">Decision</p><h2 id="review-decision-title">Pass</h2>'
+        f'<p>Reviewer <code>{html.escape(review["reviewer_id"])}</code> completed the audit '
+        f'on <time>{html.escape(review["completed_at"])}</time>.</p></div>'
+        '<span class="review-stamp">Exact-head pass</span></section>'
+        '<section class="review-grid" aria-label="Review identity">'
+        f'<dl>{independence}</dl><dl>'
+        '<div><dt>Reviewed head</dt><dd><code>'
+        f'{html.escape(review["reviewed_head"])}</code></dd></div>'
+        '<div><dt>Reviewed tree</dt><dd><code>'
+        f'{html.escape(review["reviewed_tree"])}</code></dd></div>'
+        '<div><dt>Receipt digest</dt><dd><code>'
+        f'{html.escape(review["receipt_sha256"])}</code></dd></div>'
+        '</dl></section>'
+        '<section class="review-scope" aria-labelledby="review-scope-title">'
+        '<div><p class="eyebrow">What was checked</p><h2 id="review-scope-title">Bounded scope</h2>'
+        f'<ul>{checked}</ul><p class="meta">{review["candidate_file_count"]} candidate files · '
+        f'{review["source_receipt_count"]} source receipts · '
+        f'{review["span_record_count"]} span records</p></div>'
+        '<div><p class="eyebrow">What this does not prove</p><h2>Limitations</h2>'
+        f'<ul>{limitations}</ul></div></section>'
+        f'<p class="raw-receipt-link"><a href="{raw_url}">Inspect the byte-bound JSON receipt '
+        'in the accepted repository</a></p></article>'
     )

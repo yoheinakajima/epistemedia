@@ -210,6 +210,7 @@ h4{font-size:1.08rem}
   letter-spacing:.08em;
   text-transform:uppercase;
 }
+.case-rule a{min-height:0;color:var(--forest-deep);font:inherit;text-decoration:underline}
 .case-grid{display:grid;grid-template-columns:minmax(0,1.28fr) minmax(290px,.72fr);gap:var(--space-5);padding-top:var(--space-4)}
 .case-copy{min-width:0}
 .case-copy h1,.dossier-lead h1{max-width:17ch;font-size:clamp(2.35rem,5vw,4.8rem)}
@@ -233,6 +234,8 @@ h4{font-size:1.08rem}
 .primary-action:hover{background:var(--forest-deep)}
 .evidence-tally{display:grid;grid-template-columns:1fr auto 1fr 1fr;gap:.55rem;align-items:stretch}
 .tally-cell{display:flex;min-width:0;flex-direction:column;justify-content:center;padding:.7rem;border-top:3px solid var(--rule);background:var(--paper)}
+a.tally-cell{color:inherit;text-decoration:none}
+a.tally-cell:hover{outline:2px solid var(--amber);outline-offset:-2px}
 .tally-cell strong{color:var(--ink);font:750 clamp(1.65rem,3vw,2.4rem)/1 var(--serif)}
 .tally-cell span{margin-top:.3rem;color:var(--muted);font:650 .65rem/1.35 var(--mono);letter-spacing:.035em;text-transform:uppercase}
 .tally-emphasis{border-color:var(--amber);background:var(--amber-wash)}
@@ -265,6 +268,30 @@ h4{font-size:1.08rem}
 .source-register ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.35rem var(--space-4);padding:var(--space-3) var(--space-4) var(--space-4);counter-reset:source}
 .source-register li{display:grid;grid-template-columns:1fr;min-width:0;padding:.45rem 0;border-bottom:1px solid var(--rule)}
 .source-register li span{color:var(--muted);font-size:.76rem}
+.realm-intro .dek{max-width:58ch}
+.case-index{padding-top:var(--space-4)}
+.case-index-row{display:grid;grid-template-columns:95px minmax(0,1fr) auto;gap:var(--space-4);align-items:center;padding:var(--space-4);border:1px solid var(--ink);border-top:5px solid var(--forest);background:var(--paper-raised);box-shadow:6px 6px 0 var(--paper-deep)}
+.case-index-number{align-self:start;margin:0;color:var(--forest-deep);font:760 .72rem/1.35 var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.case-index-copy h3{margin-bottom:.45rem;font-size:clamp(1.45rem,3vw,2.3rem)}
+.case-index-verdict{margin:.2rem 0 .75rem;color:var(--muted);font:600 1.02rem/1.48 var(--serif)}
+.case-index-counts{margin:0;font:690 .76rem/1.55 var(--mono);letter-spacing:.02em;text-transform:uppercase}
+.case-index-counts strong{color:var(--forest-deep);font-size:1.05rem}
+.empty-case-note{margin:var(--space-3) 0 0;padding:.75rem 0 .75rem var(--space-3);border-left:4px solid var(--amber);color:var(--muted)}
+.review-decision{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);padding:var(--space-4);border:1px solid var(--ink);border-left:6px solid var(--forest);background:var(--paper-raised)}
+.review-decision h2{font-size:clamp(2rem,4vw,3.4rem);color:var(--forest-deep)}
+.review-decision p:last-child{margin-bottom:0}
+.review-stamp{flex:0 0 auto;padding:.55rem .7rem;border:2px solid var(--forest);color:var(--forest-deep);font:760 .7rem/1.2 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.review-grid{display:grid;grid-template-columns:1fr 2fr;gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.review-grid dl{margin:0;background:var(--paper-raised)}
+.review-grid dl>div{padding:.8rem 1rem;border-top:1px solid var(--rule)}
+.review-grid dl>div:first-child{border-top:0}
+.review-grid dt{color:var(--muted);font:700 .67rem/1.45 var(--mono);letter-spacing:.055em;text-transform:uppercase}
+.review-grid dd{margin:.18rem 0 0;overflow-wrap:anywhere;word-break:break-word}
+.review-scope{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5)}
+.review-scope>div{padding-top:var(--space-3);border-top:3px solid var(--forest)}
+.review-scope>div+div{border-color:var(--amber)}
+.review-scope ul{padding-left:1.1rem}
+.raw-receipt-link{margin-top:var(--space-4);font-weight:720}
 section+section{margin-top:var(--space-5)}
 .section-head{
   display:flex;
@@ -389,6 +416,10 @@ blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(
   .evidence-marker{align-items:center;flex-direction:row}
   .uncertainty-panel{grid-template-columns:1fr;gap:var(--space-3);padding:var(--space-3)}
   .source-register ol{grid-template-columns:1fr;padding-inline:var(--space-3)}
+  .case-index-row{grid-template-columns:1fr;gap:var(--space-2);padding:var(--space-3);box-shadow:4px 4px 0 var(--paper-deep)}
+  .case-index-row .primary-action{justify-self:start}
+  .review-decision{align-items:flex-start;flex-direction:column}
+  .review-grid,.review-scope{grid-template-columns:1fr}
   .scope-note{grid-template-columns:1fr;gap:.15rem}
   .section-head{align-items:start;flex-direction:column;gap:0}
   .card{min-height:0}
@@ -886,7 +917,7 @@ def html_shell(
 <a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
   <a class="brand" href="{html.escape(base_url)}/" aria-label="Epistemedia home"><span class="brand-mark" aria-hidden="true">E/</span><span>Epistemedia</span></a>
-  <nav aria-label="Primary"><a href="{html.escape(base_url)}/how-we-know/">How We Know</a><a href="{html.escape(base_url)}/explore/">Explore</a><a href="{html.escape(base_url)}/docs/">Docs</a><a href="{html.escape(base_url)}/status/">Status</a></nav>
+  <nav aria-label="Primary"><a href="{html.escape(base_url)}/how-we-know/">How We Know</a><a href="{html.escape(base_url)}/explore/">Substrate</a><a href="{html.escape(base_url)}/docs/">Docs</a><a href="{html.escape(base_url)}/status/">Status</a></nav>
 </header>
 <main id="content" tabindex="-1">{body}</main>
 <footer class="site-footer"><p><strong>Knowledge that can show its work.</strong><br>Human and agent interfaces compile from one public projection.</p><p><a href="https://github.com/yoheinakajima/epistemedia">Source repository</a></p></footer>
@@ -1082,10 +1113,13 @@ def build_public(
     from .featured import (
         FEATURE_VIEWS,
         feature_home_html,
+        feature_index_html,
         feature_page_html,
         load_featured_dossier,
-        projection_markdown as dossier_markdown,
+        review_receipt_html,
+        review_receipt_markdown,
     )
+    from .featured import projection_markdown as dossier_markdown
 
     catalog = PublicCatalog.build(root)
     featured = load_featured_dossier(root)
@@ -1307,6 +1341,30 @@ def build_public(
                 markdown_url=f"{base_url}/how-we-know/{featured.slug}/index.md",
             ),
         )
+        review_envelope = featured.review_envelope(catalog)
+        review_root = case_root / "review"
+        write_json(review_root / "index.json", review_envelope)
+        write_text(review_root / "index.md", review_receipt_markdown(review_envelope))
+        write_text(
+            review_root / "index.html",
+            html_shell(
+                f"Review receipt — {default_data['title']}",
+                review_receipt_html(review_envelope, base_url)
+                + projection_receipt_html(
+                    dossier_id=default_data["dossier_id"],
+                    catalog_id=review_envelope["catalog_id"],
+                    frontier=review_envelope["frontier"],
+                    commit=review_envelope["commit"],
+                    epistemic_policy=review_envelope["policies"]["epistemic"],
+                    disclosure_policy=review_envelope["policies"]["disclosure"],
+                    compiler=review_envelope["compiler"],
+                    content_digest=review_envelope["content_digest"],
+                ),
+                base_url=base_url,
+                canonical_url=f"{base_url}/how-we-know/{featured.slug}/review/",
+                markdown_url=f"{base_url}/how-we-know/{featured.slug}/review/index.md",
+            ),
+        )
         how_we_know_data = {
             "realm": "How We Know",
             "scope": (
@@ -1329,12 +1387,7 @@ def build_public(
             f"- Content digest: `{featured_default['content_digest']}`\n",
         )
         how_we_know_body = (
-            feature_home_html(featured_default, base_url)
-            + '<section aria-labelledby="realm-scope-title"><div class="section-head"><div>'
-            '<p class="eyebrow">Realm scope</p><h2 id="realm-scope-title">How We Know</h2>'
-            '</div></div><p>Truth, evidence, knowledge, and information—where they agree, where '
-            'they differ, and how we can tell. This first case is a bounded lineage audit, not a '
-            'claim of general-encyclopedia coverage.</p></section>'
+            feature_index_html(how_we_know_envelope, base_url)
             + projection_receipt_html(
                 dossier_id=default_data["dossier_id"],
                 view_policy=default_data["view"]["policy_id"],
@@ -1426,7 +1479,7 @@ def build_public(
     write_text(tmp / "index.md", home_markdown)
 
     explore_body = (
-        '<section class="hero hero-compact"><p class="eyebrow">Repository index</p><h1>Explore</h1>'
+        '<section class="hero hero-compact"><p class="eyebrow">Repository index</p><h1>Substrate</h1>'
         '<p class="dek">Browse topics and the exact public objects used to compile them.</p></section>'
         '<section aria-label="Bootstrap topics"><div class="grid">'
         + "".join(topic_cards)
@@ -1443,14 +1496,14 @@ def build_public(
     write_text(
         tmp / "explore" / "index.html",
         html_shell(
-            "Explore",
+            "Substrate",
             explore_body,
             base_url=base_url,
             canonical_url=f"{base_url}/explore/",
             markdown_url=f"{base_url}/explore/index.md",
         ),
     )
-    write_text(tmp / "explore" / "index.md", "# Explore\n\n" + "\n".join(f"- [{t.title}]({base_url}/topics/{t.slug}/)" for t in catalog.topics) + "\n")
+    write_text(tmp / "explore" / "index.md", "# Substrate\n\n" + "\n".join(f"- [{t.title}]({base_url}/topics/{t.slug}/)" for t in catalog.topics) + "\n")
 
     docs = [
         obj
@@ -1572,12 +1625,13 @@ def build_public(
             [
                 f"- [Featured evidence dossier]({base_url}/how-we-know/{featured.slug}/index.md)",
                 f"- [Featured dossier JSON]({base_url}/how-we-know/{featured.slug}/index.json)",
+                f"- [Independent review receipt]({base_url}/how-we-know/{featured.slug}/review/index.md)",
             ]
             if featured is not None
             else []
         ),
         f"- [Documentation]({base_url}/docs/index.md)",
-        f"- [Explore topics]({base_url}/explore/index.md)",
+        f"- [Substrate topics]({base_url}/explore/index.md)",
         f"- [Current status]({base_url}/status/index.md)",
         f"- [Public catalog]({base_url}/catalog.json)",
         f"- [Static OpenAPI contract — hosted API not live]({base_url}/openapi.json)",
@@ -1617,6 +1671,7 @@ def build_public(
             "human": f"{base_url}/how-we-know/{featured.slug}/",
             "markdown": f"{base_url}/how-we-know/{featured.slug}/index.md",
             "json": f"{base_url}/how-we-know/{featured.slug}/index.json",
+            "review": f"{base_url}/how-we-know/{featured.slug}/review/",
             "content_digest": featured_default["content_digest"],
         }
     write_json(tmp / ".well-known" / "epistemedia.json", discovery)
@@ -1632,6 +1687,7 @@ def build_public(
     if featured is not None:
         urls += [
             f"{base_url}/how-we-know/{featured.slug}/",
+            f"{base_url}/how-we-know/{featured.slug}/review/",
             *[
                 f"{base_url}/how-we-know/{featured.slug}/{view}/"
                 for view in FEATURE_VIEWS
@@ -1841,6 +1897,9 @@ def audit_public(root: Path, public: Path) -> list[str]:
             public / "how-we-know" / featured.slug / "index.html",
             public / "how-we-know" / featured.slug / "index.md",
             public / "how-we-know" / featured.slug / "index.json",
+            public / "how-we-know" / featured.slug / "review" / "index.html",
+            public / "how-we-know" / featured.slug / "review" / "index.md",
+            public / "how-we-know" / featured.slug / "review" / "index.json",
         ]
     for path in required:
         if not path.exists():
@@ -1857,7 +1916,64 @@ def audit_public(root: Path, public: Path) -> list[str]:
         for token in forbidden:
             if token in text:
                 findings.append(f"public disclosure finding in {path.relative_to(public)}: {token}")
+    findings.extend(verify_release_identity(public))
     return sorted(set(findings))
+
+
+def verify_release_identity(public: Path) -> list[str]:
+    """Fail closed when a generated route declares or renders another release identity."""
+
+    findings: list[str] = []
+    catalog_path = public / "catalog.json"
+    if not catalog_path.exists():
+        return ["release identity check lacks catalog.json"]
+    try:
+        catalog = json.loads(catalog_path.read_text())
+    except json.JSONDecodeError:
+        return ["release identity check cannot parse catalog.json"]
+    catalog_policies = catalog.get("policies")
+    compiler = catalog_policies.get("compiler") if isinstance(catalog_policies, dict) else None
+    expected = {
+        "catalog_id": catalog.get("catalog_id"),
+        "frontier": catalog.get("frontier"),
+        "commit": catalog.get("commit"),
+        "compiler": compiler,
+    }
+    if any(not isinstance(value, str) or not value for value in expected.values()):
+        return ["release identity check found an incomplete catalog identity"]
+
+    for path in sorted(public.rglob("index.html")):
+        rendered = path.read_text(errors="ignore")
+        for identity_field, value in expected.items():
+            if value not in rendered:
+                findings.append(
+                    "mixed release identity in "
+                    f"{path.relative_to(public)}: missing {identity_field}"
+                )
+
+    for path in sorted(public.rglob("*.json")):
+        try:
+            document = json.loads(path.read_text())
+        except json.JSONDecodeError:
+            findings.append(f"invalid generated JSON: {path.relative_to(public)}")
+            continue
+        if not isinstance(document, dict):
+            continue
+        for identity_field, value in expected.items():
+            if identity_field in document and document[identity_field] != value:
+                findings.append(
+                    "mixed release identity in "
+                    f"{path.relative_to(public)}: {identity_field} differs"
+                )
+        policies = document.get("policies")
+        if isinstance(policies, dict) and policies.get("compiler") not in {
+            None,
+            expected["compiler"],
+        }:
+            findings.append(
+                f"mixed release identity in {path.relative_to(public)}: compiler differs"
+            )
+    return findings
 
 
 def envelope(catalog: PublicCatalog, data: Any) -> dict[str, Any]:
