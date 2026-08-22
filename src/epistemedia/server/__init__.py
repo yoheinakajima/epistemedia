@@ -23,8 +23,9 @@ _module = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_module)
 
 Gateway = _module.Gateway
+MCPRequestError = _module.MCPRequestError
 Request = _module.Request
 tool_definitions = _module.tool_definitions
 app = Gateway()
 
-__all__ = ["Gateway", "Request", "app", "tool_definitions"]
+__all__ = ["Gateway", "MCPRequestError", "Request", "app", "tool_definitions"]

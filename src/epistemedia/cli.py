@@ -23,7 +23,7 @@ from .core import (
     discover_root,
     validate_repository,
 )
-from .server import Gateway
+from .server import Gateway, MCPRequestError
 
 
 def parser() -> argparse.ArgumentParser:
@@ -176,21 +176,63 @@ def stdio_mcp(root: Path) -> int:
         line = line.strip()
         if not line:
             continue
+        request: Any = None
         try:
             request = json.loads(line)
-            request_id = request.get("id")
-            method = request.get("method")
-            params = request.get("params") or {}
-            if method != "server/discover":
-                version = params.get("protocolVersion")
-                if version and version != gateway.mcp_method("server/discover", {})["protocolVersion"]:
-                    raise ValueError(f"Unsupported protocol version: {version}")
+            if isinstance(request, dict) and "id" not in request:
+                if request.get("method") == "notifications/cancelled":
+                    gateway.mcp_method(
+                        "notifications/cancelled", request.get("params") or {}
+                    )
+                continue
+            request_id, method, params = gateway.validate_mcp_request(request)
             result = gateway.mcp_method(method, params)
-            if request_id is not None:
-                print(json.dumps({"jsonrpc": "2.0", "id": request_id, "result": result}, sort_keys=True), flush=True)
-        except Exception as exc:
-            request_id = request.get("id") if isinstance(locals().get("request"), dict) else None
-            print(json.dumps({"jsonrpc": "2.0", "id": request_id, "error": {"code": -32000, "message": str(exc)}}, sort_keys=True), flush=True)
+            if isinstance(result, dict):
+                result = gateway.decorate_mcp_result(result)
+            print(json.dumps({"jsonrpc": "2.0", "id": request_id, "result": result}, sort_keys=True), flush=True)
+        except json.JSONDecodeError:
+            print(json.dumps(gateway.rpc_error(None, -32700, "Parse error"), sort_keys=True), flush=True)
+        except MCPRequestError as exc:
+            request_id = request.get("id") if isinstance(request, dict) else None
+            print(
+                json.dumps(
+                    gateway.rpc_error(request_id, exc.code, str(exc), exc.data),
+                    sort_keys=True,
+                ),
+                flush=True,
+            )
+        except KeyError as exc:
+            request_id = request.get("id") if isinstance(request, dict) else None
+            print(
+                json.dumps(
+                    gateway.rpc_error(
+                        request_id,
+                        -32004,
+                        "Not found",
+                        {"id": exc.args[0] if exc.args else ""},
+                    ),
+                    sort_keys=True,
+                ),
+                flush=True,
+            )
+        except ValueError as exc:
+            request_id = request.get("id") if isinstance(request, dict) else None
+            print(
+                json.dumps(
+                    gateway.rpc_error(request_id, -32602, str(exc)),
+                    sort_keys=True,
+                ),
+                flush=True,
+            )
+        except Exception:
+            request_id = request.get("id") if isinstance(request, dict) else None
+            print(
+                json.dumps(
+                    gateway.rpc_error(request_id, -32603, "Internal error"),
+                    sort_keys=True,
+                ),
+                flush=True,
+            )
     return 0
 
 

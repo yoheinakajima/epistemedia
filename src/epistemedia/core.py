@@ -10,7 +10,7 @@ import subprocess
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 from urllib.parse import quote
 
 VERSION = "0.2.0"
@@ -912,12 +912,22 @@ def openapi_document(*, base_url: str = DEFAULT_BASE_URL, api_url: str = DEFAULT
             "schemas": {
                 "Envelope": {
                     "type": "object",
-                    "required": ["catalog_id", "frontier", "data"],
+                    "required": [
+                        "catalog_id",
+                        "frontier",
+                        "commit",
+                        "policies",
+                        "compiler",
+                        "content_digest",
+                        "data",
+                    ],
                     "properties": {
                         "catalog_id": {"type": "string"},
                         "frontier": {"type": "string"},
                         "commit": {"type": "string"},
+                        "policies": {"type": "object"},
                         "compiler": {"type": "string"},
+                        "content_digest": {"type": "string"},
                         "data": {},
                     },
                 },
@@ -1034,7 +1044,9 @@ def envelope(catalog: PublicCatalog, data: Any) -> dict[str, Any]:
         "catalog_id": catalog.catalog_id,
         "frontier": catalog.frontier,
         "commit": catalog.commit,
+        "policies": catalog.policies,
         "compiler": f"epistemedia/{VERSION}",
+        "content_digest": digest(data),
         "data": data,
     }
 

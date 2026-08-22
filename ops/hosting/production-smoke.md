@@ -18,13 +18,15 @@ Compare human status/discovery, API `/v1/status`, MCP `server/discover`, and a l
 
 - anonymous status, search, topics, topic lens, object, and trace reads succeed;
 - unknown objects and lenses return structured errors;
-- declared cache and resource limits are present;
+- declared cache and resource limits are present, and bounded probes confirm 413, 414, 429, and timeout behavior;
 - responses do not expose private paths, credentials, hidden source content, or provider internals.
 
 ## MCP
 
 - `server/discover` succeeds without prior session state;
 - supported protocol requests succeed and unsupported versions return the protocol-specific error;
+- required 2026-07-28 request metadata and mirrored headers match; mismatches return `HeaderMismatch`;
+- GET, DELETE, HTTP cancellation notifications, and unknown methods fail with the declared status and structured JSON-RPC error;
 - tools/list, resources/list, resources/read, and read-only tool calls are cacheable and carry catalog/frontier metadata;
 - untrusted browser Origins are rejected;
 - no tool grants mutation, integration, package, deployment, or secret access.

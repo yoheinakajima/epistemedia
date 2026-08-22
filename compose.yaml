@@ -5,6 +5,15 @@ services:
       - "8080:8080"
     environment:
       EPISTEMEDIA_ROOT: /app
+      EPISTEMEDIA_MAX_BODY_BYTES: "1048576"
+      EPISTEMEDIA_MAX_QUERY_BYTES: "8192"
+      EPISTEMEDIA_MAX_RESPONSE_BYTES: "8388608"
+      EPISTEMEDIA_RATE_LIMIT_PER_MINUTE: "120"
+      EPISTEMEDIA_REQUEST_TIMEOUT_SECONDS: "15"
+      EPISTEMEDIA_ALLOWED_ORIGINS: https://epistemedia.org,https://www.epistemedia.org,http://localhost,http://127.0.0.1
+    mem_limit: 512m
+    cpus: "1.0"
+    pids_limit: 128
     read_only: true
     tmpfs:
       - /tmp

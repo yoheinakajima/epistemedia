@@ -4,6 +4,7 @@
 - [Human and agent interface contract](interfaces.md)
 - [Autonomous governance](governance.md)
 - [API, MCP, and CLI](api-mcp-cli.md)
+- [Public API and MCP deployment contract](api-mcp-deployment.md)
 - [Agent operations](agent-ops/README.md)
 - [Launch and engagement](launch.md)
 - [Brand architecture](brand.md)
