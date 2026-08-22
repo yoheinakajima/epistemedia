@@ -41,6 +41,7 @@ def test_pages_bootstrap_is_manual_and_has_no_custom_domain_side_effect() -> Non
     assert "run: printf '%s\\n' epistemedia.org > generated/public/CNAME" in text
     assert "if: inputs.deployment_mode == 'bootstrap'" in text
     assert "run: test ! -e generated/public/CNAME" in text
+    assert "include-hidden-files: true" in text
 
 
 def test_irreversible_publication_workflows_are_manual_and_confirmed() -> None:
