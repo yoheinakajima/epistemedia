@@ -58,6 +58,9 @@ def test_irreversible_publication_workflows_are_manual_and_confirmed() -> None:
     assert "inputs.confirm_publish" in container
     assert "confirm_publish:" in container
     assert "environment: ghcr" in container
+    assert 'SOURCE_EPOCH="$(git show -s --format=%ct "$RELEASE_SHA")"' in container
+    assert "EPISTEMEDIA_ACCEPTED_COMMIT=${{ steps.release.outputs.sha }}" in container
+    assert "SOURCE_DATE_EPOCH=${{ steps.release.outputs.source_epoch }}" in container
     assert "if: inputs.publish_github_release" in release
     assert "if: inputs.publish_pypi" in release
     assert "environment: github-release" in release

@@ -1,0 +1,46 @@
+# Repository and developer state
+.git
+.gitignore
+.venv
+venv
+**/__pycache__
+**/*.py[cod]
+.pytest_cache
+.ruff_cache
+.mypy_cache
+node_modules
+.idea
+.vscode
+**/.DS_Store
+
+# Disposable build output
+generated/public
+dist
+build
+**/*.egg-info
+
+# Local realms and secret-shaped files
+.env
+.env.*
+**/.env
+**/.env.*
+private
+internal
+.local
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/id_rsa*
+**/credentials.*
+**/secrets.*
+
+# Accepted repository records not required by the read-only runtime
+ops
+runs
+AGENT_PROMPT.md
+INTEGRATOR_PROMPT.md
+llms.txt
+server.json
+sitecustomize.py
+tmp-inline-content-test.md
