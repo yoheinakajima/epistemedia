@@ -25,6 +25,7 @@ HERE = Path(__file__).resolve().parent
 CANDIDATE_PATH = HERE / "candidate-dossier.json"
 RETRIEVED_AT = "2026-08-22T06:13:51Z"
 CORRECTION_RETRIEVED_AT = "2026-08-22T07:11:15Z"
+REVIEW_REPAIR_RETRIEVED_AT = "2026-08-22T16:14:38Z"
 
 
 def prose(*sentences: str) -> str:
@@ -126,21 +127,25 @@ SCHWARZ_CLAIM = prose(
     "increase the spread and acceptance of misinformation.",
 )
 SCHWARZ_REFERENCE = (
-    "Skurnik I., Yoon C., Park D. C., & Schwarz N. (2005). How warnings about false "
-    "claims become recommendations Journal of Consumer Research, 31, 713–724"
+    "Skurnik, I., Yoon, C., Park, D. C., & Schwarz, N. (2005). How warnings about false "
+    "claims become recommendations. Journal of Consumer Research, 31, 713–724."
 )
-SCHWARZ_SKURNIK_2005 = prose(
+SCHWARZ_SKURNIK_2005_DELAY = (
     "But 3 days later, after their memories had a chance to fade, participants were more "
     "likely to think that any statement they had seen was true, whether it had been "
-    "presented as true or false.",
-    "Older participants were particularly vulnerable to this bias, presumably because "
-    "their poorer memory made it harder to remember the details of what they had heard earlier.",
+    "presented as true or false."
 )
-SCHWARZ_FLU_2007 = prose(
+SCHWARZ_SKURNIK_2005_OLDER = (
+    "Older participants were particularly vulnerable to this bias, presumably because "
+    "their poorer memory made it harder to remember the details of what they had heard earlier."
+)
+SCHWARZ_FLU_2007_MEMORY = (
     "When undergraduates viewed a myths-and-facts flyer about the flu taken from the CDC "
-    "website, they remembered some myths as facts after only 30 minutes.",
+    "website, they remembered some myths as facts after only 30 minutes."
+)
+SCHWARZ_FLU_2007_INTENTIONS = (
     "Worse, their reported intentions to get vaccinated were even lower than those of "
-    "control participants who had not been exposed to any message about the flu.",
+    "control participants who had not been exposed to any message about the flu."
 )
 SCHWARZ_REFERENCE_6 = (
     "Schwarz, N., Sanna, L. J., Skurnik, I., & Yoon, C. (2007). Metacognitive experiences "
@@ -182,6 +187,26 @@ ECKER_2020_NO_BASELINE = (
 ECKER_2020_RECRUITMENT = (
     "Participants were US-based adult Amazon Mechanical Turk (MTurk) workers, who had "
     "completed at least 5000 so-called human-intelligence tasks (HITs) with 97% + approval."
+)
+ECKER_2020_CLOUDRESEARCH = (
+    "The experiment was administered using Qualtrics survey software (Qualtrics, Provo, UT) "
+    "via the CloudResearch platform (formerly TurkPrime; Litman, Robinson, & Abberbock, 2017)."
+)
+ECKER_2020_ECKER_2011_SEARCH = (
+    "unlike Skurnik et al. (2005), Ecker et al. (2011) found that multiple retractions were "
+    "more effective than singular retractions at reducing continued influence."
+)
+ECKER_2020_ECKER_2017_SEARCH = (
+    "Likewise, Ecker, Hogan, and Lewandowsky (2017) found that repeating a piece of "
+    "misinformation when correcting it actually led to stronger reduction of the continued "
+    "influence effect than a correction that avoided misinformation repetition."
+)
+ECKER_2020_SWIRE_2017_SEARCH = prose(
+    "They, too, failed to observe any familiarity backfire effects: post-correction belief "
+    "in misinformation was always lower than pre-correction belief.",
+    "This reduction in false-claim belief was observed even under conditions where the impact "
+    "of familiarity (relative to recollection) should be maximal, viz. in elderly participants "
+    "and after a long retention interval of up to 3 weeks.",
 )
 
 PRIKE_2023_RESULT = prose(
@@ -288,6 +313,32 @@ NIBAT_2026_RESULT = (
     "repetition increases belief in the misinformation more than correction reduces it."
 )
 
+CAMERON_2013_KNOWLEDGE = (
+    "All participants’ knowledge scores increased significantly (p <0.05); those exposed to "
+    "the CDC Control message had a higher posttest knowledge score (adjusted mean=11.18) than "
+    "those in the Facts Only condition (adjusted mean 9.61, p=<0.02)."
+)
+CAMERON_2013_NO_COUNTERPRODUCTIVE = (
+    "We found no evidence that presenting both facts and myths is counterproductive to recall "
+    "accuracy."
+)
+ECKER_SHORT_2020_RESULT = (
+    "Regarding (1), simple retractions reduced belief in false claims, and we found no evidence "
+    "for a familiarity‐driven backfire effect."
+)
+SWIRE_THOMPSON_2023_RESULT = prose(
+    "In two nearly identical experiments, we conducted a longitudinal pre/post design with "
+    "N = 388 and 532 participants.",
+    "Participants rated 21 misinformation items and were assigned to a correction condition "
+    "or test-retest control.",
+    "We found that no items backfired more in the correction condition compared to test-retest "
+    "control or initial belief ratings.",
+)
+PETER_KOCH_2016_RESULT = (
+    "In a web-based experiment, we find evidence for a systematic backfire effect that occurs "
+    "after a few minutes and strengthens after five days."
+)
+
 
 def source_works() -> list[dict[str, Any]]:
     return [
@@ -332,6 +383,42 @@ def source_works() -> list[dict[str, Any]]:
             "visibility": "public",
         },
         {
+            "key": "work-peter-koch-2016",
+            "kind": "paper",
+            "title": "When Debunking Scientific Myths Fails (and When It Does Not)",
+            "creators": ["Christina Peter", "Thomas Koch"],
+            "canonical_uri": "https://doi.org/10.1177/1075547015613523",
+            "license": (
+                "Crossref exposes the abstract under SAGE text-and-data-mining terms, not an "
+                "open article reuse license; one quote-minimal result sentence is retained."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-cameron-2013",
+            "kind": "paper",
+            "title": (
+                "Patient Knowledge and Recall of Health Information Following Exposure to "
+                "\u201cFacts and Myths\u201d Message Format Variations"
+            ),
+            "creators": [
+                "Kenzie A. Cameron",
+                "Michael E. Roloff",
+                "Elisha M. Friesema",
+                "Tiffany Brown",
+                "Borko D. Jovanovic",
+                "Sara Hauber",
+                "David W. Baker",
+            ],
+            "canonical_uri": "https://doi.org/10.1016/j.pec.2013.06.017",
+            "license": (
+                "The examined NCBI author-manuscript XML permits text mining and fair-use "
+                "treatment but states no open reuse license; only short attributed abstract "
+                "results are retained."
+            ),
+            "visibility": "public",
+        },
+        {
             "key": "work-ecker-2020",
             "kind": "paper",
             "title": (
@@ -341,6 +428,19 @@ def source_works() -> list[dict[str, Any]]:
             "creators": ["Ullrich K. H. Ecker", "Stephan Lewandowsky", "Matthew Chadwick"],
             "canonical_uri": "https://doi.org/10.1186/s41235-020-00241-6",
             "license": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+            "visibility": "public",
+        },
+        {
+            "key": "work-ecker-short-2020",
+            "kind": "paper",
+            "title": "The effectiveness of short‐format refutational fact‐checks",
+            "creators": ["Ullrich K. H. Ecker", "Ziggy O’Reilly", "Jesse S. Reid", "Ee Pin Chang"],
+            "canonical_uri": "https://doi.org/10.1111/bjop.12383",
+            "license": (
+                "Crossref identifies both accepted-manuscript and version-of-record content "
+                "as Creative Commons Attribution-NonCommercial-NoDerivatives 4.0; one short "
+                "attributed abstract result is retained."
+            ),
             "visibility": "public",
         },
         {
@@ -428,6 +528,28 @@ def source_works() -> list[dict[str, Any]]:
             "license": (
                 "No open reuse license was confirmed for the version of record; only short "
                 "attributed abstract fragments are retained and the article is not redistributed."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "work-swire-thompson-2023",
+            "kind": "paper",
+            "title": (
+                "The backfire effect after correcting misinformation is strongly associated "
+                "with reliability"
+            ),
+            "creators": [
+                "Briony Swire-Thompson",
+                "Nicholas Miklaucic",
+                "John P. Wihbey",
+                "David Lazer",
+                "Joseph DeGutis",
+            ],
+            "canonical_uri": "https://doi.org/10.1037/xge0001131",
+            "license": (
+                "The examined NCBI author-manuscript XML permits text mining and fair-use "
+                "treatment but states no open reuse license; only short attributed abstract "
+                "results are retained."
             ),
             "visibility": "public",
         },
@@ -524,13 +646,23 @@ def editions() -> list[dict[str, Any]]:
                         verification="independent-readback",
                     ),
                     excerpt(
-                        "PDF page 6; journal page 90; 2005 delayed older-adult result",
-                        SCHWARZ_SKURNIK_2005,
+                        "PDF page 6; journal page 90; 2005 delayed result sentence",
+                        SCHWARZ_SKURNIK_2005_DELAY,
                         verification="independent-readback",
                     ),
                     excerpt(
-                        "PDF page 7; journal page 91; flu-flyer result",
-                        SCHWARZ_FLU_2007,
+                        "PDF page 6; journal page 90; 2005 older-adult sentence",
+                        SCHWARZ_SKURNIK_2005_OLDER,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "PDF page 7; journal page 91; flu-flyer memory sentence",
+                        SCHWARZ_FLU_2007_MEMORY,
+                        verification="independent-readback",
+                    ),
+                    excerpt(
+                        "PDF page 7; journal page 91; flu-flyer intentions sentence",
+                        SCHWARZ_FLU_2007_INTENTIONS,
                         verification="independent-readback",
                     ),
                     excerpt(
@@ -545,6 +677,52 @@ def editions() -> list[dict[str, Any]]:
                     ),
                 ],
             },
+        ),
+        edition(
+            "edition-peter-koch-2016",
+            "work-peter-koch-2016",
+            "Crossref deposited abstract record; excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": ("https://api.crossref.org/works/10.1177/1075547015613523"),
+                    "sha256": "5c5b6743373d7d8539d21a31f6ac33ba461d4625834109e13efdcd3f87181494",
+                    "bytes": 10168,
+                    "custody": "Temporary Crossref JSON capture; article is not redistributed.",
+                },
+                "excerpts": [
+                    excerpt("Crossref abstract; web-experiment result", PETER_KOCH_2016_RESULT)
+                ],
+            },
+            retrieved_at=REVIEW_REPAIR_RETRIEVED_AT,
+        ),
+        edition(
+            "edition-cameron-2013",
+            "work-cameron-2013",
+            "NCBI BioC XML, PMCID PMC3772650; author-manuscript excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/"
+                        "pmcoa.cgi/BioC_xml/PMC3772650/unicode"
+                    ),
+                    "sha256": "40b29203eb82caf07c0a0c8d46438f01efb21795b39941aea03b3c898cd36ecb",
+                    "bytes": 78951,
+                    "custody": (
+                        "Two byte-identical NCBI BioC XML retrievals; only exact abstract "
+                        "results are committed in the excerpt packet."
+                    ),
+                },
+                "excerpts": [
+                    excerpt("BioC abstract; knowledge-score result", CAMERON_2013_KNOWLEDGE),
+                    excerpt(
+                        "BioC abstract; no-counterproductive-recall conclusion",
+                        CAMERON_2013_NO_COUNTERPRODUCTIVE,
+                    ),
+                ],
+            },
+            retrieved_at="2026-08-22T16:12:27Z",
         ),
         edition(
             "edition-ecker-2020",
@@ -579,8 +757,42 @@ def editions() -> list[dict[str, Any]]:
                         ECKER_2020_NO_BASELINE,
                     ),
                     excerpt("Experiment 1; participants", ECKER_2020_RECRUITMENT),
+                    excerpt(
+                        "Experiment 1; procedure; administration platform",
+                        ECKER_2020_CLOUDRESEARCH,
+                    ),
+                    excerpt(
+                        "Introduction; paragraph 8; Ecker et al. 2011 search exclusion",
+                        ECKER_2020_ECKER_2011_SEARCH,
+                    ),
+                    excerpt(
+                        "Introduction; paragraph 8; Ecker et al. 2017 search exclusion",
+                        ECKER_2020_ECKER_2017_SEARCH,
+                    ),
+                    excerpt(
+                        "Introduction; paragraph 8; Swire et al. 2017 search lead",
+                        ECKER_2020_SWIRE_2017_SEARCH,
+                    ),
                 ],
             },
+        ),
+        edition(
+            "edition-ecker-short-2020",
+            "work-ecker-short-2020",
+            "Crossref deposited abstract record; excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": "https://api.crossref.org/works/10.1111/bjop.12383",
+                    "sha256": "07408e83b8ff2702d8e7615829427bc2e93c5d0d586642ee5b67d05eb78c6ee5",
+                    "bytes": 10954,
+                    "custody": "Temporary Crossref JSON capture; article is not redistributed.",
+                },
+                "excerpts": [
+                    excerpt("Crossref abstract; simple-retraction result", ECKER_SHORT_2020_RESULT)
+                ],
+            },
+            retrieved_at="2026-08-22T16:12:15Z",
         ),
         edition(
             "edition-prike-2023",
@@ -660,13 +872,17 @@ def editions() -> list[dict[str, Any]]:
                         "project_uri": "https://osf.io/yweu6/",
                         "file_id": "5df17dee078b52000c5ae2d2",
                         "retrieved_from": "https://osf.io/download/37ewu/",
+                        "license_record": (
+                            "https://api.osf.io/v2/licenses/563c1cf88c5e4a3877f9e96c/"
+                        ),
                         "sha256": (
                             "bc069a90152b887116cd4972df4376844570ba25cefbfa1055668c78eeaca80a"
                         ),
                         "bytes": 148954,
                         "license_treatment": (
-                            "No separate OSF data license was confirmed; identity and digest "
-                            "only, with workbook bytes kept outside the repository."
+                            "The OSF project yweu6 declares CC0 1.0 Universal at project scope; "
+                            "the workbook identity and digest are recorded, while its bytes "
+                            "remain outside the repository."
                         ),
                     },
                     {
@@ -674,13 +890,17 @@ def editions() -> list[dict[str, Any]]:
                         "project_uri": "https://osf.io/yweu6/",
                         "file_id": "5df17dfc18536f000c8e4c72",
                         "retrieved_from": "https://osf.io/download/kqjm2/",
+                        "license_record": (
+                            "https://api.osf.io/v2/licenses/563c1cf88c5e4a3877f9e96c/"
+                        ),
                         "sha256": (
                             "de9f27b026ceadea0a6309ef695be06bc06c1fa35ba9209260f246d89b108ea5"
                         ),
                         "bytes": 216736,
                         "license_treatment": (
-                            "No separate OSF data license was confirmed; identity and digest "
-                            "only, with workbook bytes kept outside the repository."
+                            "The OSF project yweu6 declares CC0 1.0 Universal at project scope; "
+                            "the workbook identity and digest are recorded, while its bytes "
+                            "remain outside the repository."
                         ),
                     },
                 ],
@@ -729,11 +949,35 @@ def editions() -> list[dict[str, Any]]:
                         "https://www.pure.ed.ac.uk/ws/portalfiles/portal/82242964/"
                         "Parents_belief_in_misinformation.pdf"
                     ),
-                    "sha256": "42968a50225e7ef7c65afd35742d2fc47eec5bf0c394faca48543850c1b5fb60",
-                    "bytes": 762139,
+                    "identity_mode": "pdftotext-stdout",
+                    "semantic_sha256": (
+                        "cd054a8f7e1bcb31a6d7f700b775eb936c9e0d3f43899cd8411b01f6252ff670"
+                    ),
+                    "semantic_bytes": 36848,
+                    "semantic_method": "pdftotext SOURCE.pdf -; raw stdout bytes",
+                    "sha256": None,
+                    "bytes": None,
+                    "captures": [
+                        {
+                            "retrieved_at": CORRECTION_RETRIEVED_AT,
+                            "sha256": (
+                                "42968a50225e7ef7c65afd35742d2fc47eec5bf0c394faca48543850c1b5fb60"
+                            ),
+                            "bytes": 762139,
+                        },
+                        {
+                            "retrieved_at": "2026-08-22T16:09:47Z",
+                            "sha256": (
+                                "97b7132942e3ad7772bcd0123334429fbfc3bc1169975dc26ea7dccac3be0c71"
+                            ),
+                            "bytes": 762139,
+                        },
+                    ],
                     "custody": (
-                        "Temporary accepted-manuscript PDF; one short result excerpt committed; "
-                        "full PDF not redistributed."
+                        "The institutional endpoint regenerates a timestamped cover, so raw PDF "
+                        "digests are capture-specific. Two raw captures produced byte-identical "
+                        "pdftotext output; only short excerpts are committed and the PDF is not "
+                        "redistributed."
                     ),
                 },
                 "excerpts": [
@@ -784,13 +1028,43 @@ def editions() -> list[dict[str, Any]]:
             retrieved_at=CORRECTION_RETRIEVED_AT,
         ),
         edition(
+            "edition-swire-thompson-2023",
+            "work-swire-thompson-2023",
+            "NCBI BioC XML, PMCID PMC9283209; author-manuscript excerpt packet",
+            "application/json",
+            {
+                "artifact": {
+                    "retrieved_from": (
+                        "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/"
+                        "pmcoa.cgi/BioC_xml/PMC9283209/unicode"
+                    ),
+                    "sha256": "0480d8d31af7c1525433838c91b8fc49f33997b95038ded5de40f255e54af5a2",
+                    "bytes": 93558,
+                    "custody": (
+                        "Two byte-identical NCBI BioC XML retrievals; only exact abstract "
+                        "results are committed in the excerpt packet."
+                    ),
+                },
+                "excerpts": [
+                    excerpt(
+                        "BioC abstract; design, controls, and no-backfire result",
+                        SWIRE_THOMPSON_2023_RESULT,
+                    )
+                ],
+            },
+            retrieved_at="2026-08-22T16:12:27Z",
+        ),
+        edition(
             "edition-nibat-2026",
             "work-nibat-2026",
             "Sabanci University author-deposited Elsevier corrected proof; excerpt packet",
             "application/json",
             {
                 "artifact": {
-                    "retrieved_from": "https://research.sabanciuniv.edu/id/eprint/54047/",
+                    "retrieved_from": (
+                        "https://research.sabanciuniv.edu/id/eprint/54047/1/Familiarity.pdf"
+                    ),
+                    "landing_page": "https://research.sabanciuniv.edu/id/eprint/54047/",
                     "sha256": "99075c8a58b19d3be262486ccb78b3508747887e350802e5b41b74390b13d3bc",
                     "bytes": 2525138,
                     "custody": "Temporary CC BY 4.0 PDF download; exact excerpts committed.",
@@ -864,30 +1138,44 @@ def build_candidate() -> dict[str, Any]:
             SCHWARZ_CLAIM,
         ),
         span(
-            "span-schwarz-skurnik-2005",
+            "span-schwarz-skurnik-2005-delay",
             "edition-schwarz-2016",
             1,
-            "PDF p. 6 / journal p. 90, delayed older-adult result",
-            SCHWARZ_SKURNIK_2005,
+            "PDF p. 6 / journal p. 90, delayed result sentence",
+            SCHWARZ_SKURNIK_2005_DELAY,
         ),
         span(
-            "span-schwarz-flu-2007",
+            "span-schwarz-skurnik-2005-older",
             "edition-schwarz-2016",
             2,
-            "PDF p. 7 / journal p. 91, flu-flyer result",
-            SCHWARZ_FLU_2007,
+            "PDF p. 6 / journal p. 90, older-adult sentence",
+            SCHWARZ_SKURNIK_2005_OLDER,
+        ),
+        span(
+            "span-schwarz-flu-2007-memory",
+            "edition-schwarz-2016",
+            3,
+            "PDF p. 7 / journal p. 91, flu-flyer memory sentence",
+            SCHWARZ_FLU_2007_MEMORY,
+        ),
+        span(
+            "span-schwarz-flu-2007-intentions",
+            "edition-schwarz-2016",
+            4,
+            "PDF p. 7 / journal p. 91, flu-flyer intentions sentence",
+            SCHWARZ_FLU_2007_INTENTIONS,
         ),
         span(
             "span-schwarz-reference-6",
             "edition-schwarz-2016",
-            3,
+            5,
             "PDF p. 10, reference 6",
             SCHWARZ_REFERENCE_6,
         ),
         span(
             "span-schwarz-reference-42",
             "edition-schwarz-2016",
-            4,
+            6,
             "PDF p. 10, reference 42",
             SCHWARZ_REFERENCE,
         ),
@@ -932,6 +1220,62 @@ def build_candidate() -> dict[str, Any]:
             5,
             "Experiment 1 participants",
             ECKER_2020_RECRUITMENT,
+        ),
+        span(
+            "span-ecker-2020-cloudresearch",
+            "edition-ecker-2020",
+            6,
+            "Experiment 1 procedure administration platform",
+            ECKER_2020_CLOUDRESEARCH,
+        ),
+        span(
+            "span-ecker-2020-ecker-2011-search",
+            "edition-ecker-2020",
+            7,
+            "Introduction paragraph 8 Ecker et al. 2011 exclusion",
+            ECKER_2020_ECKER_2011_SEARCH,
+        ),
+        span(
+            "span-ecker-2020-ecker-2017-search",
+            "edition-ecker-2020",
+            8,
+            "Introduction paragraph 8 Ecker et al. 2017 exclusion",
+            ECKER_2020_ECKER_2017_SEARCH,
+        ),
+        span(
+            "span-ecker-2020-swire-2017-search",
+            "edition-ecker-2020",
+            9,
+            "Introduction paragraph 8 Swire et al. 2017 search lead",
+            ECKER_2020_SWIRE_2017_SEARCH,
+        ),
+        span(
+            "span-peter-koch-2016-result",
+            "edition-peter-koch-2016",
+            0,
+            "Crossref abstract web-experiment result",
+            PETER_KOCH_2016_RESULT,
+        ),
+        span(
+            "span-cameron-2013-knowledge",
+            "edition-cameron-2013",
+            0,
+            "BioC abstract knowledge-score result",
+            CAMERON_2013_KNOWLEDGE,
+        ),
+        span(
+            "span-cameron-2013-no-counterproductive",
+            "edition-cameron-2013",
+            1,
+            "BioC abstract no-counterproductive-recall conclusion",
+            CAMERON_2013_NO_COUNTERPRODUCTIVE,
+        ),
+        span(
+            "span-ecker-short-2020-result",
+            "edition-ecker-short-2020",
+            0,
+            "Crossref abstract simple-retraction result",
+            ECKER_SHORT_2020_RESULT,
         ),
         span(
             "span-prike-2023-result",
@@ -1066,6 +1410,13 @@ def build_candidate() -> dict[str, Any]:
             "PDF p. 1 abstract result",
             NIBAT_2026_RESULT,
         ),
+        span(
+            "span-swire-thompson-2023-result",
+            "edition-swire-thompson-2023",
+            0,
+            "BioC abstract design, controls, and no-backfire result",
+            SWIRE_THOMPSON_2023_RESULT,
+        ),
     ]
 
     propositions = [
@@ -1153,6 +1504,53 @@ def build_candidate() -> dict[str, Any]:
             "visibility": "public",
         },
         {
+            "key": "prop-peter-koch-boundary",
+            "text": (
+                "Peter and Koch reported a delayed backfire effect after journalistic "
+                "myth-and-fact coverage, but the captured abstract does not establish the "
+                "target comparator design used by this dossier."
+            ),
+            "scope": (
+                "Peter and Koch 2016 web experiment; result is visible, while target "
+                "comparability remains unassessed without an exact methods span."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "prop-cameron-flu-result",
+            "text": (
+                "Cameron et al. found knowledge gains across flu-message conditions and no "
+                "evidence that presenting facts and myths was counterproductive to recall "
+                "accuracy."
+            ),
+            "scope": (
+                "Cameron et al. 2013 randomized flu-message study; knowledge and recall "
+                "outcomes over the tested one-week interval."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "prop-short-format-result",
+            "text": (
+                "Simple retractions reduced false-claim belief and did not show a "
+                "familiarity-driven backfire effect in the Ecker et al. short-format series."
+            ),
+            "scope": "Ecker et al. 2020 short-format fact-check experiments and tested delays.",
+            "visibility": "public",
+        },
+        {
+            "key": "prop-reliability-counter-result",
+            "text": (
+                "Across two correction-versus-test-retest experiments, no item backfired "
+                "relative to the control or initial-belief baselines."
+            ),
+            "scope": (
+                "Swire-Thompson et al. 2023, published online in 2022; 21 items and two "
+                "participant samples."
+            ),
+            "visibility": "public",
+        },
+        {
             "key": "prop-brand-correction-result",
             "text": (
                 "Across five brand-misinformation studies, repetition did not increase belief "
@@ -1188,7 +1586,8 @@ def build_candidate() -> dict[str, Any]:
             "depends_on": [],
             "basis_span_keys": [
                 "span-ecker-2020-unpublished-lineage",
-                "span-schwarz-flu-2007",
+                "span-schwarz-flu-2007-memory",
+                "span-schwarz-flu-2007-intentions",
                 "span-schwarz-reference-6",
             ],
             "assertion_keys": [],
@@ -1226,8 +1625,10 @@ def build_candidate() -> dict[str, Any]:
             "depends_on": ["lineage-skurnik-2005-data", "lineage-skurnik-2007-data"],
             "basis_span_keys": [
                 "span-schwarz-claim",
-                "span-schwarz-skurnik-2005",
-                "span-schwarz-flu-2007",
+                "span-schwarz-skurnik-2005-delay",
+                "span-schwarz-skurnik-2005-older",
+                "span-schwarz-flu-2007-memory",
+                "span-schwarz-flu-2007-intentions",
                 "span-schwarz-reference-6",
                 "span-schwarz-reference-42",
             ],
@@ -1245,7 +1646,8 @@ def build_candidate() -> dict[str, Any]:
             "dimensions": ["source", "method"],
             "depends_on": ["lineage-skurnik-2007-data"],
             "basis_span_keys": [
-                "span-schwarz-flu-2007",
+                "span-schwarz-flu-2007-memory",
+                "span-schwarz-flu-2007-intentions",
                 "span-schwarz-reference-6",
                 "span-ecker-2020-unpublished-lineage",
             ],
@@ -1281,9 +1683,40 @@ def build_candidate() -> dict[str, Any]:
             ],
             "assertion_keys": ["assert-ecker-2020-result"],
             "note": (
-                "One participant-data root for the Ecker et al. 2020 paper series. Method "
+                "One participant-data root for the Ecker et al. 2020 publication. Method "
                 "and recruitment overlap are modeled separately so they do not collapse "
                 "this paper-defined data collection into another data root."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-peter-koch-2016-data",
+            "status": "known",
+            "dimensions": ["data"],
+            "depends_on": [],
+            "basis_span_keys": ["span-peter-koch-2016-result"],
+            "assertion_keys": ["assert-peter-koch-2016-result"],
+            "note": (
+                "Publication-defined participant-data root for a delayed journalistic "
+                "myth-debunking result. The captured abstract does not expose the comparator "
+                "needed to classify it as target-comparable."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-cameron-2013-data",
+            "status": "known",
+            "dimensions": ["data"],
+            "depends_on": [],
+            "basis_span_keys": [
+                "span-cameron-2013-knowledge",
+                "span-cameron-2013-no-counterproductive",
+            ],
+            "assertion_keys": ["assert-cameron-2013-result"],
+            "note": (
+                "Publication-defined participant-data root for the randomized flu-message "
+                "study. Its CDC condition belongs to the historical flu-flyer family, but "
+                "the participant collection is separately reported."
             ),
             "visibility": "public",
         },
@@ -1292,11 +1725,28 @@ def build_candidate() -> dict[str, Any]:
             "status": "known",
             "dimensions": ["method", "social"],
             "depends_on": [],
-            "basis_span_keys": ["span-ecker-2020-recruitment"],
+            "basis_span_keys": [
+                "span-ecker-2020-recruitment",
+                "span-ecker-2020-cloudresearch",
+            ],
             "assertion_keys": [],
             "note": (
                 "Recruitment-method lineage for the US MTurk and CloudResearch frame, "
                 "including the 5000-HIT and 97% approval thresholds."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "lineage-ecker-short-2020-data",
+            "status": "known",
+            "dimensions": ["data"],
+            "depends_on": [],
+            "basis_span_keys": ["span-ecker-short-2020-result"],
+            "assertion_keys": ["assert-ecker-short-2020-result"],
+            "note": (
+                "Publication-defined two-experiment participant-data root. It shares Ecker "
+                "and a correction research program with later papers, but no data reuse is "
+                "asserted."
             ),
             "visibility": "public",
         },
@@ -1354,7 +1804,7 @@ def build_candidate() -> dict[str, Any]:
             "assertion_keys": ["assert-ecker-2023-result"],
             "note": (
                 "Separately reported UK Prolific participant-data root. It shares Ecker and "
-                "Swire-Thompson, UWA ethics approval RA/4/20/6423, and a paper series with "
+                "Swire-Thompson, UWA ethics approval RA/4/20/6423, and a research program with "
                 "Prike et al. 2023, and it directly reuses Pluviano et al. 2017 materials. "
                 "Team, ethics, and material independence are not claimed."
             ),
@@ -1373,7 +1823,7 @@ def build_candidate() -> dict[str, Any]:
             "assertion_keys": [],
             "note": (
                 "Replication method and apparatus lineage. It directly reused the 2017 "
-                "stimuli and overlaps the Prike paper series in authors and ethics approval."
+                "stimuli and overlaps the Prike research program in authors and ethics approval."
             ),
             "visibility": "public",
         },
@@ -1487,6 +1937,20 @@ def build_candidate() -> dict[str, Any]:
             ),
             "visibility": "public",
         },
+        {
+            "key": "lineage-swire-thompson-2023-data",
+            "status": "known",
+            "dimensions": ["data"],
+            "depends_on": [],
+            "basis_span_keys": ["span-swire-thompson-2023-result"],
+            "assertion_keys": ["assert-swire-thompson-2023-result"],
+            "note": (
+                "Publication-defined two-experiment participant-data root. Swire-Thompson "
+                "also appears in other modeled papers, but the captured report describes new "
+                "samples and no data-reuse dependence is asserted."
+            ),
+            "visibility": "public",
+        },
     ]
 
     assertions = [
@@ -1532,7 +1996,8 @@ def build_candidate() -> dict[str, Any]:
             "actor": {"id": "doi:10.1177/237946151600200110#authors", "kind": "collective"},
             "stance": "asserts",
             "span_keys": [
-                "span-schwarz-flu-2007",
+                "span-schwarz-flu-2007-memory",
+                "span-schwarz-flu-2007-intentions",
                 "span-schwarz-reference-6",
                 "span-ecker-2020-unpublished-lineage",
             ],
@@ -1548,6 +2013,29 @@ def build_candidate() -> dict[str, Any]:
             "span_keys": ["span-ecker-2020-unpublished-lineage"],
             "lineage_key": "lineage-ecker-2020-historical-report",
             "asserted_at": "2020-08-26T00:00:00Z",
+            "visibility": "public",
+        },
+        {
+            "key": "assert-peter-koch-2016-result",
+            "proposition_key": "prop-peter-koch-boundary",
+            "actor": {"id": "doi:10.1177/1075547015613523#authors", "kind": "collective"},
+            "stance": "asserts",
+            "span_keys": ["span-peter-koch-2016-result"],
+            "lineage_key": "lineage-peter-koch-2016-data",
+            "asserted_at": "2015-10-25T00:00:00Z",
+            "visibility": "public",
+        },
+        {
+            "key": "assert-cameron-2013-result",
+            "proposition_key": "prop-cameron-flu-result",
+            "actor": {"id": "doi:10.1016/j.pec.2013.06.017#authors", "kind": "collective"},
+            "stance": "asserts",
+            "span_keys": [
+                "span-cameron-2013-knowledge",
+                "span-cameron-2013-no-counterproductive",
+            ],
+            "lineage_key": "lineage-cameron-2013-data",
+            "asserted_at": "2013-09-01T00:00:00Z",
             "visibility": "public",
         },
         {
@@ -1571,6 +2059,16 @@ def build_candidate() -> dict[str, Any]:
             "span_keys": ["span-ecker-2020-guidance-overreach"],
             "lineage_key": "lineage-ecker-2020-interpretation",
             "asserted_at": "2020-08-26T00:00:00Z",
+            "visibility": "public",
+        },
+        {
+            "key": "assert-ecker-short-2020-result",
+            "proposition_key": "prop-short-format-result",
+            "actor": {"id": "doi:10.1111/bjop.12383#authors", "kind": "collective"},
+            "stance": "asserts",
+            "span_keys": ["span-ecker-short-2020-result"],
+            "lineage_key": "lineage-ecker-short-2020-data",
+            "asserted_at": "2019-03-02T00:00:00Z",
             "visibility": "public",
         },
         {
@@ -1657,9 +2155,31 @@ def build_candidate() -> dict[str, Any]:
             "asserted_at": "2026-03-27T00:00:00Z",
             "visibility": "public",
         },
+        {
+            "key": "assert-swire-thompson-2023-result",
+            "proposition_key": "prop-reliability-counter-result",
+            "actor": {"id": "doi:10.1037/xge0001131#authors", "kind": "collective"},
+            "stance": "asserts",
+            "span_keys": ["span-swire-thompson-2023-result"],
+            "lineage_key": "lineage-swire-thompson-2023-data",
+            "asserted_at": "2022-07-01T00:00:00Z",
+            "visibility": "public",
+        },
     ]
 
     relations = [
+        {
+            "key": "relation-skurnik-supports-older-adult-result",
+            "relation_type": "support",
+            "from_ref": "assert-skurnik-result",
+            "to_ref": "prop-older-adult-result",
+            "basis_span_keys": ["span-skurnik-summary", "span-ecker-2020-no-baseline"],
+            "note": (
+                "Preserves the reported delayed older-adult result while separating it from "
+                "the dossier's target-comparable general claim."
+            ),
+            "visibility": "public",
+        },
         {
             "key": "relation-skurnik-qualifies-general",
             "relation_type": "qualification",
@@ -1741,7 +2261,8 @@ def build_candidate() -> dict[str, Any]:
             "from_ref": "lineage-schwarz-flu-review",
             "to_ref": "lineage-skurnik-2007-data",
             "basis_span_keys": [
-                "span-schwarz-flu-2007",
+                "span-schwarz-flu-2007-memory",
+                "span-schwarz-flu-2007-intentions",
                 "span-schwarz-reference-6",
                 "span-ecker-2020-unpublished-lineage",
             ],
@@ -1756,7 +2277,11 @@ def build_candidate() -> dict[str, Any]:
             "relation_type": "support",
             "from_ref": "assert-schwarz-flu-result",
             "to_ref": "prop-flu-flyer-result",
-            "basis_span_keys": ["span-schwarz-flu-2007", "span-schwarz-reference-6"],
+            "basis_span_keys": [
+                "span-schwarz-flu-2007-memory",
+                "span-schwarz-flu-2007-intentions",
+                "span-schwarz-reference-6",
+            ],
             "note": "A review-level report of the unresolved flu-flyer participant data.",
             "visibility": "public",
         },
@@ -1792,6 +2317,42 @@ def build_candidate() -> dict[str, Any]:
             ],
             "note": (
                 "Later experiments did not reproduce a general effect in their tested conditions."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "relation-cameron-rebuts-general",
+            "relation_type": "rebuttal",
+            "from_ref": "assert-cameron-2013-result",
+            "to_ref": "prop-general-backfire",
+            "basis_span_keys": [
+                "span-cameron-2013-knowledge",
+                "span-cameron-2013-no-counterproductive",
+            ],
+            "note": (
+                "A randomized flu-message study reported gains across conditions and no "
+                "counterproductive facts-and-myths recall result."
+            ),
+            "visibility": "public",
+        },
+        {
+            "key": "relation-ecker-short-rebuts-general",
+            "relation_type": "rebuttal",
+            "from_ref": "assert-ecker-short-2020-result",
+            "to_ref": "prop-general-backfire",
+            "basis_span_keys": ["span-ecker-short-2020-result"],
+            "note": "Simple retractions reduced belief without the proposed backfire.",
+            "visibility": "public",
+        },
+        {
+            "key": "relation-swire-thompson-rebuts-general",
+            "relation_type": "rebuttal",
+            "from_ref": "assert-swire-thompson-2023-result",
+            "to_ref": "prop-general-backfire",
+            "basis_span_keys": ["span-swire-thompson-2023-result"],
+            "note": (
+                "Two correction-versus-control experiments found no item-level backfire "
+                "relative to either comparison baseline."
             ),
             "visibility": "public",
         },
@@ -1865,6 +2426,19 @@ def build_candidate() -> dict[str, Any]:
             "visibility": "public",
         },
         {
+            "key": "relation-autry-supports-unlicensed-boundary",
+            "relation_type": "support",
+            "from_ref": "assert-autry-2021-result",
+            "to_ref": "prop-unlicensed-negation-boundary",
+            "basis_span_keys": [
+                "span-autry-2021-result",
+                "span-autry-2021-qualifier",
+                "span-autry-2021-timing-limit",
+            ],
+            "note": "Supports the narrower unlicensed-negation boundary, with qualifiers.",
+            "visibility": "public",
+        },
+        {
             "key": "relation-pluviano-2017-supports-vaccine-boundary",
             "relation_type": "support",
             "from_ref": "assert-pluviano-2017-result",
@@ -1907,6 +2481,27 @@ def build_candidate() -> dict[str, Any]:
             "visibility": "public",
         },
         {
+            "key": "relation-thomas-supports-unlicensed-boundary",
+            "relation_type": "support",
+            "from_ref": "assert-thomas-2024-result",
+            "to_ref": "prop-unlicensed-negation-boundary",
+            "basis_span_keys": ["span-thomas-2024-result", "span-thomas-2024-mechanism"],
+            "note": "Supports the narrower unlicensed-negation boundary and proposed mechanism.",
+            "visibility": "public",
+        },
+        {
+            "key": "relation-peter-koch-supports-boundary",
+            "relation_type": "support",
+            "from_ref": "assert-peter-koch-2016-result",
+            "to_ref": "prop-peter-koch-boundary",
+            "basis_span_keys": ["span-peter-koch-2016-result"],
+            "note": (
+                "Preserves the reported delayed result without inferring an unobserved "
+                "target comparator from the abstract."
+            ),
+            "visibility": "public",
+        },
+        {
             "key": "relation-nibat-rebuts-general",
             "relation_type": "rebuttal",
             "from_ref": "assert-nibat-2026-result",
@@ -1934,10 +2529,11 @@ def build_candidate() -> dict[str, Any]:
             "to_ref": "lineage-ecker-2020-method",
             "basis_span_keys": [
                 "span-ecker-2020-recruitment",
+                "span-ecker-2020-cloudresearch",
                 "span-prike-2023-recruitment",
             ],
             "note": (
-                "Both paper series used US MTurk workers through CloudResearch with the same "
+                "Both papers used US MTurk workers through CloudResearch with the same "
                 "5000-HIT and 97% approval thresholds; cross-paper participant overlap is "
                 "unreported."
             ),
@@ -2061,55 +2657,70 @@ def build_candidate() -> dict[str, Any]:
     return stamp_dossier(material)
 
 
-APPARENT_SUPPORT_ASSERTIONS = [
-    "assert-skurnik-result",
-    "assert-handbook-claim",
-    "assert-schwarz-claim",
-    "assert-ecker-2020-historical-report",
-    "assert-autry-2021-result",
-    "assert-pluviano-2017-result",
-    "assert-pluviano-2019-result",
-    "assert-thomas-2024-result",
-]
-TARGET_COMPARABLE_SUPPORT_ASSERTIONS = [
-    "assert-autry-2021-result",
-    "assert-pluviano-2017-result",
-    "assert-pluviano-2019-result",
-    "assert-thomas-2024-result",
-]
-REVIEW_REPORT_ASSERTIONS = [
-    "assert-handbook-claim",
-    "assert-schwarz-claim",
-    "assert-ecker-2020-historical-report",
-]
-COUNTER_ASSERTIONS = [
-    "assert-ecker-2020-result",
-    "assert-prike-2023-result",
-    "assert-ecker-2023-result",
-    "assert-nibat-2026-result",
-]
+TARGET_COMPARABLE_SUPPORT_PROPOSITIONS = {
+    "prop-flu-flyer-result",
+    "prop-unlicensed-negation-boundary",
+    "prop-vaccine-myths-boundary",
+}
+
+
+def assertion_keys_for_relation_type(candidate: dict[str, Any], relation_type: str) -> list[str]:
+    assertion_keys = {record["key"] for record in candidate["assertions"]}
+    return sorted(
+        {
+            record["from_ref"]
+            for record in candidate["evidence_relations"]
+            if record["relation_type"] == relation_type and record["from_ref"] in assertion_keys
+        }
+    )
 
 
 def derived_counts(candidate: dict[str, Any]) -> dict[str, Any]:
-    supportive = independence_summary(candidate, APPARENT_SUPPORT_ASSERTIONS)
-    target_comparable = independence_summary(candidate, TARGET_COMPARABLE_SUPPORT_ASSERTIONS)
-    counter = independence_summary(candidate, COUNTER_ASSERTIONS)
+    assertions = {record["key"]: record for record in candidate["assertions"]}
+    lineages = {record["key"]: record for record in candidate["lineages"]}
+    apparent_support_assertions = assertion_keys_for_relation_type(candidate, "support")
+    counter_assertions = assertion_keys_for_relation_type(candidate, "rebuttal")
+    review_report_assertions = sorted(
+        key
+        for key in apparent_support_assertions
+        if "data" not in lineages[assertions[key]["lineage_key"]]["dimensions"]
+    )
+    target_comparable_assertions = sorted(
+        key
+        for key in apparent_support_assertions
+        if assertions[key]["proposition_key"] in TARGET_COMPARABLE_SUPPORT_PROPOSITIONS
+    )
+    supportive = independence_summary(candidate, apparent_support_assertions)
+    target_comparable = independence_summary(candidate, target_comparable_assertions)
+    counter = independence_summary(candidate, counter_assertions)
     return {
-        "raw_apparent_support_assertions": len(APPARENT_SUPPORT_ASSERTIONS),
+        "modeled_apparent_support_assertions": len(apparent_support_assertions),
+        "apparent_support_assertion_keys": apparent_support_assertions,
         "known_supporting_data_roots": supportive["independent_lineage_count"],
         "unresolved_support_data_roots": supportive["unknown_lineage_count"],
         "support_root_keys": supportive["independent_lineage_roots"],
         "unresolved_support_keys": supportive["unknown_lineages"],
         "target_comparable_supporting_data_roots": target_comparable["independent_lineage_count"],
         "target_comparable_support_root_keys": target_comparable["independent_lineage_roots"],
-        "review_report_assertions_without_new_data_credit": len(REVIEW_REPORT_ASSERTIONS),
-        "raw_counterevidence_assertions": len(COUNTER_ASSERTIONS),
-        "counterevidence_data_roots": counter["independent_lineage_count"],
+        "target_comparable_unresolved_data_roots": target_comparable["unknown_lineage_count"],
+        "target_comparable_unresolved_keys": target_comparable["unknown_lineages"],
+        "modeled_review_report_assertions_without_new_data_credit": len(review_report_assertions),
+        "review_report_assertion_keys": review_report_assertions,
+        "modeled_counterevidence_assertions": len(counter_assertions),
+        "counter_assertion_keys": counter_assertions,
+        "modeled_counterevidence_data_roots": counter["independent_lineage_count"],
         "counterevidence_root_keys": counter["independent_lineage_roots"],
         "counting_unit": (
-            "One participant-data lineage per paper series, not per experiment, author, "
-            "paper mention, or dataset file. Author, method, material, and research-program "
-            "overlap remain disclosed separately."
+            "One participant-data lineage per publication-defined data series. Multiple "
+            "experiments within one publication are collapsed; separate publications with "
+            "separately reported samples remain roots unless data reuse is evidenced. Author, "
+            "method, material, and research-program overlap remain disclosed separately."
+        ),
+        "derivation_rule": (
+            "Apparent-support and counterevidence assertion keys are the unique assertion "
+            "endpoints of modeled support and rebuttal relations. Review/report keys are the "
+            "support endpoints whose own lineage has no data dimension; root counts are then "
+            "computed by independence_summary."
         ),
     }
 

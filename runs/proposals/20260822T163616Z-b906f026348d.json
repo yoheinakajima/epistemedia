@@ -1,0 +1,10 @@
+{
+  "command": ".venv/bin/ruff check research/how-we-know/corrections-backfire/build_candidate.py research/how-we-know/corrections-backfire/verify_retrievals.py; .venv/bin/python research/how-we-know/corrections-backfire/build_candidate.py --check; .venv/bin/python research/how-we-know/corrections-backfire/verify_retrievals.py --artifact-dir /tmp/em0019-v2-artifacts; make check PYTHON=.venv/bin/python",
+  "id": "em:run-receipt:sha256:b906f026348d59675d45fc3081bd110772585ba1898080e331b9dea5c4a30b38",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-22T16:36:16Z",
+  "run_id": "review-repair-20260822T163615Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0019"
+}

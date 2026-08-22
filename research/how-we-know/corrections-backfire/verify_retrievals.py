@@ -45,6 +45,18 @@ ARTIFACTS = {
         "filename": "epistemedia-pmc7447737.xml",
         "format": "xml",
     },
+    "edition-peter-koch-2016": {
+        "filename": "crossref-peter-koch-2016.json",
+        "format": "crossref-json",
+    },
+    "edition-cameron-2013": {
+        "filename": "cameron-2013-biocc.xml",
+        "format": "xml",
+    },
+    "edition-ecker-short-2020": {
+        "filename": "crossref-ecker-short-2020.json",
+        "format": "crossref-json",
+    },
     "edition-prike-2023": {
         "filename": "epistemedia-pmc10317933.xml",
         "format": "xml",
@@ -64,6 +76,7 @@ ARTIFACTS = {
     "edition-pluviano-2019": {
         "filename": "pluviano-2019.pdf",
         "format": "pdf",
+        "identity": "pdftotext-stdout",
     },
     "edition-thomas-2024": {
         "filename": "crossref-thomas-2024.json",
@@ -72,6 +85,10 @@ ARTIFACTS = {
     "edition-nibat-2026": {
         "filename": "nibat-2026.pdf",
         "format": "pdf",
+    },
+    "edition-swire-thompson-2023": {
+        "filename": "swire-thompson-2023-biocc.xml",
+        "format": "xml",
     },
 }
 DATA_ARTIFACTS = {
@@ -84,6 +101,9 @@ PRIMARY_MEDIA_TYPES = {
     "edition-handbook-2011": "text/html",
     "edition-schwarz-2016": "application/pdf",
     "edition-ecker-2020": "application/xml",
+    "edition-peter-koch-2016": "application/json",
+    "edition-cameron-2013": "application/xml",
+    "edition-ecker-short-2020": "application/json",
     "edition-prike-2023": "application/xml",
     "edition-ecker-2023": "application/xml",
     "edition-autry-2021": "application/json",
@@ -91,6 +111,7 @@ PRIMARY_MEDIA_TYPES = {
     "edition-pluviano-2019": "application/pdf",
     "edition-thomas-2024": "application/json",
     "edition-nibat-2026": "application/pdf",
+    "edition-swire-thompson-2023": "application/xml",
 }
 WORKBOOK_MEDIA_TYPE = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 
@@ -169,15 +190,18 @@ def extract_markup(value: str) -> str:
     return normalize(" ".join(parser.parts))
 
 
+def pdftotext_stdout(path: Path) -> bytes:
+    completed = subprocess.run(
+        ["pdftotext", str(path), "-"],
+        check=True,
+        capture_output=True,
+    )
+    return completed.stdout
+
+
 def extract_text(path: Path, artifact_format: str) -> str:
     if artifact_format == "pdf":
-        completed = subprocess.run(
-            ["pdftotext", str(path), "-"],
-            check=True,
-            capture_output=True,
-            text=True,
-        )
-        return normalize(completed.stdout)
+        return normalize(pdftotext_stdout(path).decode("utf-8"))
     if artifact_format == "html":
         return extract_markup(path.read_text(encoding="utf-8"))
     if artifact_format == "crossref-json":
@@ -250,15 +274,38 @@ def verify_artifacts(artifact_dir: Path) -> tuple[dict[str, Any], dict[str, Any]
         require(path.is_file(), f"{path}: required artifact is missing")
         payload = path.read_bytes()
         observed_digest = sha256(payload)
-        require(
-            observed_digest == artifact["sha256"],
-            f"{path}: digest {observed_digest} does not match {artifact['sha256']}",
-        )
-        require(
-            len(payload) == artifact["bytes"],
-            f"{path}: byte length {len(payload)} does not match {artifact['bytes']}",
-        )
-        full_text = extract_text(path, str(spec["format"]))
+        identity = spec.get("identity", "raw-bytes")
+        semantic_digest: str | None = None
+        semantic_bytes: int | None = None
+        if identity == "pdftotext-stdout":
+            require(
+                artifact.get("identity_mode") == identity,
+                f"{path}: candidate identity mode does not match verifier",
+            )
+            semantic_payload = pdftotext_stdout(path)
+            semantic_digest = sha256(semantic_payload)
+            semantic_bytes = len(semantic_payload)
+            require(
+                semantic_digest == artifact["semantic_sha256"],
+                f"{path}: semantic digest {semantic_digest} does not match "
+                f"{artifact['semantic_sha256']}",
+            )
+            require(
+                semantic_bytes == artifact["semantic_bytes"],
+                f"{path}: semantic byte length {semantic_bytes} does not match "
+                f"{artifact['semantic_bytes']}",
+            )
+            full_text = normalize(semantic_payload.decode("utf-8"))
+        else:
+            require(
+                observed_digest == artifact["sha256"],
+                f"{path}: digest {observed_digest} does not match {artifact['sha256']}",
+            )
+            require(
+                len(payload) == artifact["bytes"],
+                f"{path}: byte length {len(payload)} does not match {artifact['bytes']}",
+            )
+            full_text = extract_text(path, str(spec["format"]))
         excerpt_count = 0
         for index, item in enumerate(edition["content"]["excerpts"]):
             if item["verification"] != "artifact":
@@ -275,6 +322,9 @@ def verify_artifacts(artifact_dir: Path) -> tuple[dict[str, Any], dict[str, Any]
                 "filename": path.name,
                 "sha256": observed_digest,
                 "bytes": len(payload),
+                "identity": identity,
+                "semantic_sha256": semantic_digest,
+                "semantic_bytes": semantic_bytes,
                 "excerpts_verified": excerpt_count,
             }
         )
@@ -333,12 +383,33 @@ def validate_snapshot(snapshot: dict[str, Any], context: str) -> None:
             isinstance(snapshot["bytes"], int) and snapshot["bytes"] > 0,
             f"{context}.bytes: must be a positive integer",
         )
+    elif status == "captured-dynamic":
+        require_exact_fields(
+            snapshot,
+            {
+                "status",
+                "sha256",
+                "bytes",
+                "semantic_sha256",
+                "semantic_bytes",
+                "semantic_method",
+            },
+            context,
+        )
+        require_sha256(snapshot["sha256"], f"{context}.sha256")
+        require_sha256(snapshot["semantic_sha256"], f"{context}.semantic_sha256")
+        for field in ("bytes", "semantic_bytes"):
+            require(
+                isinstance(snapshot[field], int) and snapshot[field] > 0,
+                f"{context}.{field}: must be a positive integer",
+            )
+        require_string(snapshot["semantic_method"], f"{context}.semantic_method")
     elif status == "unavailable":
         require_exact_fields(snapshot, {"status", "attempted_url", "http_failure"}, context)
         require_string(snapshot["attempted_url"], f"{context}.attempted_url")
         require_string(snapshot["http_failure"], f"{context}.http_failure")
     else:
-        fail(f"{context}.status: must be captured or unavailable")
+        fail(f"{context}.status: must be captured, captured-dynamic, or unavailable")
 
 
 def validate_sources(
@@ -410,7 +481,42 @@ def validate_sources(
             f"{key}: license treatment mismatch",
         )
         snapshot = source["snapshot"]
-        if artifact["sha256"] is None:
+        if artifact.get("identity_mode") == "pdftotext-stdout":
+            require(snapshot["status"] == "captured-dynamic", f"{key}: wrong snapshot status")
+            require(
+                snapshot["semantic_sha256"] == artifact["semantic_sha256"],
+                f"{key}: semantic digest mismatch",
+            )
+            require(
+                snapshot["semantic_bytes"] == artifact["semantic_bytes"],
+                f"{key}: semantic length mismatch",
+            )
+            require(
+                snapshot["semantic_method"] == artifact["semantic_method"],
+                f"{key}: semantic method mismatch",
+            )
+            require(edition_key in machine, f"{key}: dynamic bytes were not locally verified")
+            require(
+                machine[edition_key]["identity"] == artifact["identity_mode"],
+                f"{key}: local identity mode mismatch",
+            )
+            require(
+                machine[edition_key]["sha256"] == snapshot["sha256"],
+                f"{key}: local raw digest mismatch",
+            )
+            require(
+                machine[edition_key]["bytes"] == snapshot["bytes"],
+                f"{key}: local raw length mismatch",
+            )
+            require(
+                machine[edition_key]["semantic_sha256"] == snapshot["semantic_sha256"],
+                f"{key}: local semantic digest mismatch",
+            )
+            require(
+                machine[edition_key]["semantic_bytes"] == snapshot["semantic_bytes"],
+                f"{key}: local semantic length mismatch",
+            )
+        elif artifact["sha256"] is None:
             require(snapshot["status"] == "unavailable", f"{key}: must record unavailable")
             require(
                 snapshot["attempted_url"] == artifact["retrieved_from"],
