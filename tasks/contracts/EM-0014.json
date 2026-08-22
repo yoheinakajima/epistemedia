@@ -1,0 +1,64 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0014",
+  "title": "Bound the container context and preserve accepted release identity",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Prevent local, secret, VCS, cache, and disposable state from entering the container build context while preserving the exact accepted commit and source timestamp in images built from an authorized release tag.",
+  "depends_on": [
+    "EM-0013"
+  ],
+  "authority": {
+    "allowed_paths": [
+      ".dockerignore",
+      ".github/workflows/container.yml",
+      "Dockerfile",
+      "compose.yaml",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "schemas/**",
+      "policies/**",
+      "catalog/**",
+      "governance/events/**",
+      "tasks/contracts/EM-0001.json",
+      "tasks/contracts/EM-0002.json",
+      "tasks/contracts/EM-0003.json",
+      "tasks/contracts/EM-0004.json",
+      "tasks/contracts/EM-0005.json",
+      "tasks/contracts/EM-0006.json",
+      "tasks/contracts/EM-0007.json",
+      "tasks/contracts/EM-0008.json",
+      "tasks/contracts/EM-0009.json",
+      "tasks/contracts/EM-0010.json",
+      "tasks/contracts/EM-0011.json",
+      "tasks/contracts/EM-0012.json",
+      "tasks/contracts/EM-0013.json"
+    ]
+  },
+  "required_evaluation": [
+    "container build-context and secret-exclusion audit",
+    "accepted commit and source timestamp fallback tests without Git metadata",
+    "release-tag workflow identity propagation review",
+    "container build and endpoint smoke test when a Docker-compatible daemon is available"
+  ],
+  "acceptance": [
+    "the container context excludes VCS metadata, virtual environments, caches, editor state, local realms, secret-shaped environment files, and disposable build output",
+    "the runtime image does not require or contain the repository Git directory to report its accepted commit and source timestamp",
+    "explicit build identity is validated and takes precedence only when repository Git metadata is unavailable",
+    "the protected container workflow derives commit and timestamp from the verified release tag and passes them into the image build",
+    "an untagged or malformed production identity cannot silently become a claimed accepted release",
+    "the existing non-root runtime, bounded request controls, read-only deployment posture, provenance, and SBOM configuration remain intact",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task does not create a release tag, publish an image, or activate a hosted API or MCP endpoint.",
+    "If a Docker-compatible daemon is unavailable, static and Python-level evidence must record that limitation and an actual image smoke test remains a pre-publication gate.",
+    "Registry identity, version selection, and the first irreversible package or container publication remain owner-gated."
+  ]
+}
