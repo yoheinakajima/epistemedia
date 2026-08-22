@@ -1,0 +1,47 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0012",
+  "title": "Remove the legacy repository clock injection hook",
+  "status": "ready",
+  "change_class": "maintenance",
+  "objective": "Remove the root-level CI-only usercustomize hook after EM-0010 makes reproducible timestamp semantics explicit in the compiler, so validation no longer mutates Python global clock behavior at interpreter startup.",
+  "depends_on": [
+    "EM-0010"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "usercustomize.py",
+      "tests/**",
+      "docs/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "schemas/**",
+      "policies/**",
+      "catalog/**",
+      "governance/events/**",
+      "tasks/contracts/EM-0001.json",
+      "tasks/contracts/EM-0002.json",
+      "tasks/contracts/EM-0003.json",
+      "tasks/contracts/EM-0004.json",
+      "tasks/contracts/EM-0005.json",
+      "tasks/contracts/EM-0006.json",
+      "tasks/contracts/EM-0007.json",
+      "tasks/contracts/EM-0008.json",
+      "tasks/contracts/EM-0009.json",
+      "tasks/contracts/EM-0010.json",
+      "tasks/contracts/EM-0011.json"
+    ]
+  },
+  "acceptance": [
+    "the root-level usercustomize.py hook is absent",
+    "CI does not monkeypatch datetime globally at Python interpreter startup",
+    "make check proves deterministic output through EM-0010 compiler semantics without an environment-specific clock hook",
+    "the accepted repository remains clean after validation"
+  ],
+  "limitations": [
+    "This task does not redefine generated_at semantics; EM-0010 owns that implementation.",
+    "This task must not be implemented before EM-0010 is accepted."
+  ]
+}
