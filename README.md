@@ -4,11 +4,11 @@
 >
 > An open, federated knowledge system for humans and agents—built from sources, claims, evidence, provenance, policies, and reproducible projections rather than one canonical page.
 
-**Status:** public alpha with a verified default-hostname Pages bootstrap at <https://yoheinakajima.github.io/epistemedia/>. The repository, local site, API, MCP server, CLI, governance substrate, and deterministic build pipeline are implemented. Public hosting at `epistemedia.org` and the production API/MCP endpoints are not activated yet.
+**Status:** public alpha with the canonical static site live at <https://epistemedia.org/> and HTTPS enforced. `www.epistemedia.org` redirects to the canonical origin. The repository, local site, API/MCP implementation, CLI, governance substrate, and deterministic build pipeline are implemented; the `episte.media` sharing redirect and hosted API/MCP runtime have not passed production read-back and are not asserted as live.
 
 ## What Epistemedia is
 
-Epistemedia is a reference implementation and public network built on the **Epistemic Mesh** protocol.
+Epistemedia is an early reference implementation and public network built toward the **Epistemic Mesh** protocol.
 
 The core idea is simple:
 
@@ -58,28 +58,29 @@ The complete authority contract is in [`AGENTS.md`](AGENTS.md).
 
 ## What is implemented
 
-### Epistemic Mesh kernel
+### Reference compiler and repository projection
 
-- deterministic canonicalization and content-addressed IDs;
-- append-only, hash-linked epistemic event history;
-- source, proposition, assertion, evidence, derivation, evaluation, and projection objects;
-- contradiction and qualification preservation;
-- lineage-aware evidence counting;
-- disclosure-safe public projections;
-- deterministic replay, bundle validation, and audit receipts.
+- deterministic canonicalization and content-addressed repository-artifact IDs;
+- a default-deny public-source allowlist and disclosure audit;
+- topic declarations that select accepted public repository artifacts;
+- deterministic catalog, frontier, projection, and release manifests;
+- bundle validation plus task-claim and run-receipt generation;
+- reproducible builds checked against an independent comparison build.
+
+The normative schemas and architecture describe a broader source, span, proposition, assertion, evidence, derivation, evaluation, and event model. The current public compiler does **not** yet instantiate that claim/evidence graph or perform lineage-aware evidence evaluation. The reversible dossier pilot and first evidence-backed realm are the next implementation stage.
 
 ### Human-facing site
 
 The static site compiler produces:
 
 - a project home page and topic explorer;
-- topic projections through multiple lenses;
-- exact object and provenance views;
+- topic projection manifests under explicit experimental lens identifiers;
+- exact repository-object source, path, and digest views;
 - clean Markdown twins;
 - root and path-scoped `llms.txt` files;
 - public catalog, status, discovery, sitemap, and release manifests.
 
-Supported lenses include:
+The compiler accepts these experimental lens identifiers:
 
 - encyclopedia;
 - evidence-first;
@@ -88,6 +89,8 @@ Supported lenses include:
 - historical;
 - pedagogical;
 - source-only.
+
+They currently preserve the same included-object inventory. Their labels and manifest identities differ, but the public interface does not present them as materially differentiated editorial products. `encyclopedia` is the current default; additional lenses will be promoted only when their selection or semantics observably differ.
 
 ### Agent-facing interfaces
 
@@ -205,7 +208,7 @@ Useful entrypoints:
 - [`tasks/`](tasks/) — immutable task contracts and execution state;
 - [`state/current/`](state/current/) — derived current work and audit views.
 
-## Architecture
+## Target architecture
 
 ```mermaid
 flowchart TD
@@ -220,6 +223,8 @@ flowchart TD
     F --> J[MCP resources and tools]
     F --> K[CLI and snapshots]
 ```
+
+The implemented alpha currently compiles accepted, disclosure-eligible repository artifacts directly into public projections. The replayed claim/evidence graph and policy-evaluation stages above are target architecture, not a description of the present bootstrap corpus.
 
 The first public realm dogfoods Epistemedia itself: its constitution, architecture, governance, tasks, tests, research program, security model, and releases form the initial browsable knowledge corpus.
 
@@ -251,17 +256,23 @@ tests/               Unit, integration, disclosure, protocol, and adversarial te
 
 ## Public interfaces
 
-Planned production destinations after activation:
+Verified live human surfaces:
 
 ```text
 https://epistemedia.org                 Human site and documentation
 https://epistemedia.org/llms.txt        Agent orientation
+https://epistemedia.org/openapi.json    Static API contract
+https://epistemedia.org/mcp/server.json Static MCP descriptor
+```
+
+Reserved production destinations, published in static discovery metadata but not yet backed by a verified hosted runtime:
+
+```text
 https://api.epistemedia.org/v1          Read-only public API
-https://api.epistemedia.org/openapi.json
 https://mcp.epistemedia.org/mcp         Remote MCP
 ```
 
-`https://episte.media/<path>` is reserved as a shorter sharing URL that redirects to the same path on `https://epistemedia.org`; it does not host a second canonical copy.
+`https://episte.media/<path>` is reserved as a shorter path-preserving sharing redirect to `https://epistemedia.org`; the redirect is not live yet and will not host a second canonical copy.
 
 The public write boundary, when introduced, will create proposals, contribution bundles, task claims, and receipts. It will not directly edit accepted pages, policies, or truth status.
 
@@ -295,7 +306,7 @@ The threat model includes source prompt injection, evaluator collusion, Sybil sw
 
 ## Project status
 
-Current maturity: **alpha / staged public activation**.
+Current maturity: **public alpha / staged service activation**.
 
 Implemented locally and in the repository:
 
@@ -305,11 +316,11 @@ Implemented locally and in the repository:
 - CLI, API, and MCP adapters;
 - executable governance and contribution substrate;
 - CI, Pages, container, release, and package workflows;
-- default-hostname GitHub Pages bootstrap with externally verified routes and artifact identity.
+- canonical GitHub Pages deployment at `https://epistemedia.org` with externally verified HTTPS, routes, and artifact identity.
 
 Not yet asserted as live:
 
-- `epistemedia.org` hosting and the `episte.media` sharing redirect;
+- the `episte.media` sharing redirect;
 - public API/MCP runtime;
 - PyPI package publication;
 - MCP Registry publication;

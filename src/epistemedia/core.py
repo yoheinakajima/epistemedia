@@ -20,13 +20,31 @@ DEFAULT_API_URL = "https://api.epistemedia.org/v1"
 DEFAULT_MCP_URL = "https://mcp.epistemedia.org/mcp"
 
 LENSES: dict[str, str] = {
-    "encyclopedia": "A coherent general overview with explicit provenance and disagreement.",
-    "evidence-first": "Primary evidence and derivation are foregrounded before narrative.",
-    "skeptical": "Only strongly supported, independently grounded conclusions are foregrounded.",
-    "frontier": "Open questions, disputes, missing evidence, and speculative work are foregrounded.",
-    "historical": "The state visible at a selected accepted evidence frontier.",
-    "pedagogical": "A prerequisite-aware explanation for learning and exploration.",
-    "source-only": "Source objects and exact passages without generated synthesis.",
+    "encyclopedia": "The current default repository-object projection over the shared inventory.",
+    "evidence-first": (
+        "Experimental identifier reserved for foregrounding primary evidence; currently uses "
+        "the shared inventory."
+    ),
+    "skeptical": (
+        "Experimental identifier reserved for stronger support thresholds; currently uses the "
+        "shared inventory."
+    ),
+    "frontier": (
+        "Experimental identifier reserved for open questions and disputes; currently uses the "
+        "shared inventory."
+    ),
+    "historical": (
+        "Experimental identifier reserved for time-bounded views; currently uses the shared "
+        "inventory."
+    ),
+    "pedagogical": (
+        "Experimental identifier reserved for prerequisite-aware explanations; currently uses "
+        "the shared inventory."
+    ),
+    "source-only": (
+        "Experimental identifier reserved for exact-source views; currently uses the shared "
+        "inventory."
+    ),
 }
 
 TEXT_SUFFIXES = {
@@ -511,7 +529,7 @@ def html_shell(
 *{{box-sizing:border-box}} body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}}
 a{{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}} header,main,footer{{max-width:1120px;margin:auto;padding:1.25rem 2rem}}
 header{{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}} nav a{{margin-left:1rem}} h1{{font:700 clamp(2.3rem,7vw,6.7rem)/.94 ui-serif,Georgia,serif;letter-spacing:-.045em;margin:.3em 0}} h2,h3{{font-family:ui-serif,Georgia,serif}}
-.hero{{padding:5rem 0 3rem}} .dek{{font-size:1.35rem;max-width:800px;color:var(--muted)}} .grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}} .card{{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.2rem}} .meta{{color:var(--muted);font-size:.9rem}} code,pre{{background:var(--code)}} code{{padding:.12rem .3rem;border-radius:4px;overflow-wrap:anywhere;word-break:break-word}} pre{{padding:1rem;overflow:auto;border-radius:8px}} pre code{{padding:0;overflow-wrap:normal;word-break:normal}} .manifest{{border-top:1px solid var(--line);margin-top:3rem;padding-top:1rem}} footer{{color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}}
+.hero{{padding:5rem 0 3rem}} .dek{{font-size:1.35rem;max-width:800px;color:var(--muted)}} .grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1rem}} .card{{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.2rem}} .meta{{color:var(--muted);font-size:.9rem}} .lens-status{{border:1px solid var(--line);background:var(--panel);padding:1rem;margin:0 0 2rem}} .lens-status summary{{cursor:pointer;font-weight:700}} code,pre{{background:var(--code)}} code{{padding:.12rem .3rem;border-radius:4px;overflow-wrap:anywhere;word-break:break-word}} pre{{padding:1rem;overflow:auto;border-radius:8px}} pre code{{padding:0;overflow-wrap:normal;word-break:normal}} .manifest{{border-top:1px solid var(--line);margin-top:3rem;padding-top:1rem}} footer{{color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}}
 </style>
 </head>
 <body>
@@ -607,14 +625,22 @@ def topic_projection(catalog: PublicCatalog, topic: Topic, lens: str, base_url: 
     }
 
 
-def projection_markdown(projection: dict[str, Any]) -> str:
+def projection_markdown(
+    projection: dict[str, Any], *, include_topic_intro: bool = True
+) -> str:
     topic = projection["topic"]
-    lines = [
-        f"# {topic['title']}",
-        "",
-        topic.get("description", ""),
-        "",
+    lines = []
+    if include_topic_intro:
+        lines += [
+            f"# {topic['title']}",
+            "",
+            topic.get("description", ""),
+            "",
+        ]
+    lines += [
         f"**Lens:** `{projection['lens']['id']}` — {projection['lens']['description']}",
+        "",
+        "**Lens status:** Experimental manifest. Current lens policies preserve the same included-object inventory; the label does not yet indicate a materially differentiated editorial result.",
         "",
         "## Included objects",
         "",
@@ -709,7 +735,7 @@ def build_public(
         selected = catalog.selected_objects(topic)
         topic_cards.append(
             f'<article class="card"><h2><a href="{base_url}/topics/{topic.slug}/">{html.escape(topic.title)}</a></h2>'
-            f'<p>{html.escape(topic.description)}</p><p class="meta">{len(selected)} public objects · {len(LENSES)} lenses</p></article>'
+            f'<p>{html.escape(topic.description)}</p><p class="meta">{len(selected)} public objects · encyclopedia projection</p></article>'
         )
         for lens in LENSES:
             projection = topic_projection(catalog, topic, lens, base_url)
@@ -722,7 +748,10 @@ def build_public(
                 base / "index.html",
                 html_shell(
                     f"{topic.title} — {lens}",
-                    md_to_html(md),
+                    '<aside class="lens-status"><strong>Experimental lens manifest.</strong> '
+                    "Current lenses preserve the same included-object inventory; this label changes "
+                    "the projection manifest, not a differentiated editorial result.</aside>"
+                    + md_to_html(md),
                     base_url=base_url,
                     canonical_url=f"{base_url}/topics/{topic.slug}/{lens}/",
                     markdown_url=f"{base_url}/topics/{topic.slug}/{lens}/index.md",
@@ -733,11 +762,16 @@ def build_public(
         lens_links = " ".join(
             f'<a href="{base_url}/topics/{topic.slug}/{lens}/">{html.escape(lens)}</a>'
             for lens in LENSES
+            if lens != "encyclopedia"
         )
         body = (
-            f'<section class="hero"><p class="meta">Topic projection</p><h1>{html.escape(topic.title)}</h1>'
-            f'<p class="dek">{html.escape(topic.description)}</p><p>{lens_links}</p></section>'
-            + md_to_html(md)
+            f'<section class="hero"><p class="meta">Current projection · encyclopedia</p><h1>{html.escape(topic.title)}</h1>'
+            f'<p class="dek">{html.escape(topic.description)}</p></section>'
+            '<details class="lens-status"><summary>Experimental lens manifests (shared inventory)</summary>'
+            '<p>These routes currently preserve the same included-object inventory. Their labels and '
+            'manifest identities differ; they are not yet materially different editorial products.</p>'
+            f'<p>{lens_links}</p></details>'
+            + md_to_html(projection_markdown(default_projection, include_topic_intro=False))
         )
         write_text(
             tmp / "topics" / topic.slug / "index.html",
@@ -754,8 +788,9 @@ def build_public(
     home_body = (
         '<section class="hero"><p class="meta">An open knowledge network for humans and agents</p>'
         '<h1>Knowledge that can show its work.</h1>'
-        '<p class="dek">Epistemedia preserves sources, claims, disagreements, policies, and derivations, then compiles reproducible views for each reader and agent.</p></section>'
-        '<section><h2>Explore the first realm</h2><div class="grid">'
+        '<p class="dek">Epistemedia currently compiles accepted repository artifacts into reproducible human and machine-readable views. Its next public realm will test exact source-to-claim lineage.</p>'
+        '<p><strong>Current coverage:</strong> Epistemedia\'s own architecture and operations—the self-describing bootstrap corpus. The first outward-facing realm, <em>How We Know</em>, is in development.</p></section>'
+        '<section><h2>Explore the bootstrap corpus</h2><div class="grid">'
         + "".join(topic_cards)
         + '</div></section>'
         '<section class="manifest"><h2>This page is a projection</h2>'
@@ -771,7 +806,18 @@ def build_public(
             markdown_url=f"{base_url}/index.md",
         ),
     )
-    write_text(tmp / "index.md", "# Epistemedia\n\nKnowledge that can show its work.\n\n" + "\n".join(f"- [{t.title}]({base_url}/topics/{t.slug}/) — {t.description}" for t in catalog.topics) + "\n")
+    write_text(
+        tmp / "index.md",
+        "# Epistemedia\n\nKnowledge that can show its work.\n\n"
+        "**Current coverage:** Epistemedia's own architecture and operations—the "
+        "self-describing bootstrap corpus. The first outward-facing realm, *How We Know*, "
+        "is in development.\n\n"
+        + "\n".join(
+            f"- [{t.title}]({base_url}/topics/{t.slug}/) — {t.description}"
+            for t in catalog.topics
+        )
+        + "\n",
+    )
 
     explore_body = '<section class="hero"><h1>Explore</h1><p class="dek">Browse topics and the exact public objects used to compile them.</p></section><div class="grid">' + "".join(topic_cards) + '</div>'
     write_text(
@@ -802,6 +848,11 @@ def build_public(
 
     status_md = (
         "# Epistemedia status\n\n"
+        "- Canonical human site: `https://epistemedia.org` — verified live with HTTPS\n"
+        "- Sharing redirect: `https://episte.media` — reserved, not verified live\n"
+        "- Hosted API: `https://api.epistemedia.org/v1` — reserved, not verified live\n"
+        "- Hosted MCP: `https://mcp.epistemedia.org/mcp` — reserved, not verified live\n"
+        "- Corpus scope: self-describing repository bootstrap; `How We Know` is in development\n"
         f"- Version: `{VERSION}`\n"
         f"- Catalog: `{catalog.catalog_id}`\n"
         f"- Frontier: `{catalog.frontier}`\n"
@@ -832,11 +883,11 @@ def build_public(
         f"- [Explore topics]({base_url}/explore/index.md)",
         f"- [Current status]({base_url}/status/index.md)",
         f"- [Public catalog]({base_url}/catalog.json)",
-        f"- [OpenAPI]({api_url.rsplit('/v1',1)[0]}/openapi.json)",
-        f"- [MCP server]({mcp_url})",
+        f"- [Static OpenAPI contract — hosted API not live]({base_url}/openapi.json)",
+        f"- [Static MCP descriptor — remote MCP not live]({base_url}/mcp/server.json)",
         "",
         "## Agent operating rule",
-        "Treat pages as reproducible projections, not canonical truth. Preserve source, frontier, policy, disclosure boundary, compiler, and derivation metadata in downstream work.",
+        "Treat pages as reproducible projections, not canonical truth. Preserve repository path, object ID, content digest, catalog, frontier, policy, disclosure boundary, and compiler metadata in downstream work.",
     ]
     write_text(tmp / "llms.txt", "\n".join(llms) + "\n")
     write_text(tmp / "docs" / "llms.txt", "# Epistemedia documentation\n\n" + "\n".join(f"- [{o.title}]({base_url}/objects/{static_object_route_key(o.id)}.md)" for o in docs) + "\n")
@@ -855,7 +906,7 @@ def build_public(
         "human": base_url,
         "llms": f"{base_url}/llms.txt",
         "api": api_url,
-        "openapi": f"{api_url.rsplit('/v1',1)[0]}/openapi.json",
+        "openapi": f"{base_url}/openapi.json",
         "mcp": mcp_url,
         "repository": "https://github.com/yoheinakajima/epistemedia",
         "protocol_version": PROTOCOL_VERSION,
