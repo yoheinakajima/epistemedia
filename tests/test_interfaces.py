@@ -110,7 +110,15 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     discovery = json.loads((public / ".well-known" / "epistemedia.json").read_text())
     assert discovery["human"] == "https://epistemedia.org"
     assert discovery["api"] == "https://api.epistemedia.org/v1"
+    assert discovery["openapi"] == "https://epistemedia.org/openapi.json"
     assert discovery["mcp"] == "https://mcp.epistemedia.org/mcp"
+
+    llms = (public / "llms.txt").read_text()
+    assert "Static OpenAPI contract — hosted API not live" in llms
+    assert "https://epistemedia.org/openapi.json" in llms
+    assert "Static MCP descriptor — remote MCP not live" in llms
+    assert "https://epistemedia.org/mcp/server.json" in llms
+    assert "https://api.epistemedia.org/openapi.json" not in llms
 
     obj = next(obj for obj in PublicCatalog.build(ROOT).objects if obj.kind == "documentation")
     file_key = quote(obj.id, safe="")
@@ -131,6 +139,36 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     home_html = (public / "index.html").read_text()
     assert "overflow-wrap:anywhere;word-break:break-word" in home_html
     assert "pre code{padding:0;overflow-wrap:normal;word-break:normal}" in home_html
+    assert "minmax(min(100%,260px),1fr)" in home_html
+    assert "Current coverage:" in home_html
+    assert "self-describing bootstrap corpus" in home_html
+    assert "How We Know" in home_html
+
+    topic = PublicCatalog.build(ROOT).topics[0]
+    topic_html = (public / "topics" / topic.slug / "index.html").read_text()
+    topic_markdown = (public / "topics" / topic.slug / "index.md").read_text()
+    assert topic_html.count("<h1>") == 1
+    assert f"<h1>{topic.title}</h1>" in topic_html
+    assert topic_html.count(topic.description) == 1
+    assert "Experimental lens manifests (shared inventory)" in topic_html
+    assert "not yet materially different editorial products" in topic_html
+    assert topic_markdown.startswith(f"# {topic.title}\n")
+    assert (
+        f'<link rel="canonical" href="https://epistemedia.org/topics/{topic.slug}/">'
+        in topic_html
+    )
+
+    experimental_html = (
+        public / "topics" / topic.slug / "skeptical" / "index.html"
+    ).read_text()
+    assert experimental_html.count("<h1>") == 1
+    assert "Experimental lens manifest." in experimental_html
+    assert "not a differentiated editorial result" in experimental_html
+
+    status_markdown = (public / "status" / "index.md").read_text()
+    assert "Canonical human site" in status_markdown
+    assert status_markdown.count("not verified live") == 3
+    assert "self-describing repository bootstrap" in status_markdown
 
 
 def test_topic_lenses_share_source_frontier() -> None:
@@ -142,6 +180,17 @@ def test_topic_lenses_share_source_frontier() -> None:
     assert encyclopedia["frontier"] == skeptical["frontier"]
     assert [o["id"] for o in encyclopedia["objects"]] == [o["id"] for o in skeptical["objects"]]
     assert encyclopedia["projection_id"] != skeptical["projection_id"]
+
+
+def test_public_status_copy_distinguishes_live_and_target_surfaces() -> None:
+    readme = (ROOT / "README.md").read_text()
+    api_docs = (ROOT / "docs" / "api-mcp-cli.md").read_text()
+    assert "canonical static site live at <https://epistemedia.org/>" in readme
+    assert "sharing redirect and hosted API/MCP runtime" in readme
+    assert "does **not** yet instantiate that claim/evidence graph" in readme
+    assert "Target architecture" in readme
+    assert "Public hosting at `epistemedia.org`" not in readme
+    assert api_docs.count("No hosted runtime at that hostname has passed") == 2
 
 
 def test_object_ids_are_content_and_path_addressed() -> None:

@@ -4,11 +4,13 @@ All integrations read the same disclosure-safe public catalog. Preserve the retu
 
 ## REST API
 
-The public read API is rooted at:
+The implemented read-only API contract reserves this production root:
 
 ```text
 https://api.epistemedia.org/v1
 ```
+
+No hosted runtime at that hostname has passed production read-back yet. Use the local server or downloadable static projection until activation evidence records otherwise.
 
 Representative reads:
 
@@ -21,17 +23,19 @@ GET /v1/objects/{id}
 GET /v1/claims/{id}/trace
 ```
 
-The OpenAPI contract is published at `/openapi.json`. Anonymous reads are intended to remain free within bounded abuse and resource limits. Downloadable snapshots allow clients to operate without the hosted service.
+The local gateway and static projection expose the OpenAPI document at `/openapi.json`. Anonymous reads are intended to remain free within bounded abuse and resource limits once hosted. Downloadable snapshots allow clients to operate without the hosted service.
 
 Public write APIs, when introduced, create proposals, contribution bundles, task claims, and receipts. They do not directly set truth, change accepted policy, or mutate a page.
 
 ## MCP
 
-Remote endpoint:
+The implemented remote-server contract reserves this production endpoint:
 
 ```text
 https://mcp.epistemedia.org/mcp
 ```
+
+No hosted runtime at that hostname has passed production read-back yet. The local stdio adapter remains available through the CLI.
 
 Server namespace:
 
