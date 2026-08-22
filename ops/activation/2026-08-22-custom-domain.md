@@ -141,3 +141,80 @@ Published artifact identity:
 - files: `509`.
 
 This deployment changes presentation and improves truthful status disclosure; it does not admit an outward-facing research dossier. The homepage still labels the 78-object, 11-topic corpus as the self-describing bootstrap corpus. Hosted API, hosted MCP, and the `episte.media` sharing redirect remain unverified and are not represented as live.
+
+## Case 001 launch-hardening completion — 2026-08-22T23:31Z
+
+EM-0022 and EM-0023 completed the first three launch-hardening priorities without adding a second
+case, changing the accepted research packet, or activating another service.
+
+PR [#38](https://github.com/yoheinakajima/epistemedia/pull/38) admitted the entry,
+review-trust, and agent/release-parity changes as protected squash commit
+`c5b307f6960514be3d71fdbed5fe41aec5d9b00d`. PR validation run `32603681837` passed
+job `97105546780`; resulting-main run `32603767010` passed job `97105744337`. The source branch
+was deleted. The corresponding custom-domain Pages run `32603815272` passed build job
+`97105856264` and deploy job `97105921292`.
+
+PR [#39](https://github.com/yoheinakajima/epistemedia/pull/39) admitted the living-report,
+complete-ledger, terminology, practical-reading, view-divergence, and share-card changes as
+protected squash commit `74fe81c26e443d39deb664fde4d17bdab8804e58`. The exact independently
+reviewed candidate was `620ee2066fbef514650e6d81e0c75b1d1247c9d7`, tree
+`903c267f5496f9bd82f982cf857b80f7f9af4ec4`. PR validation run `32604979068`
+passed job `97108628839`; resulting-main run `32605229574` passed job `97109211579`.
+The source branch was deleted. No administrative bypass was used.
+
+The final custom-domain deployment for this implementation used `deployment_mode=custom-domain`
+on exact main commit `74fe81c26e443d39deb664fde4d17bdab8804e58`:
+
+- workflow run: `32605273577`, conclusion `success`;
+- build job: `97109314769`, conclusion `success`;
+- deploy job: `97109370422`, conclusion `success`;
+- provider URL: <https://epistemedia.org/>.
+
+External HTTPS read-back observed the following published identity:
+
+- release manifest:
+  `em:release-manifest:sha256:161bc9b22e67b529bd5ed96df1947a2c52a4d42477894f07179cf477352e8f7b`;
+- catalog:
+  `em:catalog:sha256:d5fbacd2ade655304ce5023bf8ca10dea76cc5b1db34affa58f3a2e9c5382f6c`;
+- frontier:
+  `em:frontier:sha256:86eb58d2a7c585ceebaa0bf33ebee98482dd4766f90ba226383a93f1daa7e54d`;
+- compiler: `epistemedia/0.2.0`;
+- files: `569`.
+
+The manifest ID recomputed from its declared catalog, frontier, commit, and ordered file/hash
+inventory; its file count equaled the 568 inventoried files plus the manifest itself. All 20 URLs
+listed in the sitemap returned HTTPS `200` and exposed the exact deployed commit and catalog.
+
+Agent-facing read-back returned:
+
+- `200 text/html` for `/how-we-know/` as `ClaudeBot`;
+- `200 text/markdown` for the encyclopedia dossier Markdown twin as `GPTBot`;
+- `200 application/json` for the skeptical dossier JSON twin as `ChatGPT-User`;
+- `200 image/svg+xml` for the encyclopedia scoreboard card as `ClaudeBot`.
+
+The published `llms.txt` names the featured dossier JSON, scoreboard card, disclosure-safe
+independent-review receipt, and Substrate index. `/how-we-know/` states “One admitted case” and
+“No second case yet.” The public review route identifies `codex-independent-reviewer`, exact
+reviewed head `37161f25cbc76380cce72f57f370275f22f96a77`, 29 source receipts, and 86 span
+records without exposing reviewer temporary paths.
+
+Live browser read-back at `1440 × 900` and `390 × 844` observed one `h1`, zero scripts, no
+horizontal overflow, 27 complete-ledger entries, five lexicon terms, and seven native disclosure
+controls. Encyclopedia and skeptical expose different first-screen findings and practical readings
+from the same dossier. Every skeptical tally uses a local fragment. The homepage exposes the exact
+canonical link to `#unresolved-lineage`; direct navigation lands with “What remains unresolved”
+visible at the narrow viewport.
+
+The browser automation driver did not dispatch its synthetic Tab/Enter command during the final
+live session, so this read-back does not claim an independently observed keystroke activation for
+the new homepage sentence link. The accepted page retains a native anchor, visible focus styling,
+no-script navigation, regression coverage for the exact target, and independent exact-head mobile
+route verification. A later physical-keyboard read-back can close this bounded tooling gap; it is
+not represented here as completed.
+
+The accepted dossier remained SHA-256
+`7003413e286e4d310f81441db33f4a467ba2eb3e08f41ddfa3cef5abb34707ca`
+(214,499 bytes); its independent review receipt remained SHA-256
+`503d16396b25b1c22d7fc10ac6fb7db2e530e6ce348d63fa8b639db5a5288f0a`
+(65,611 bytes). Hosted API/MCP, `episte.media`, packages, containers, and Case 002 remain outside
+this activation and are not claimed live.
