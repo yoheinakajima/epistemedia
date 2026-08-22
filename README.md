@@ -4,7 +4,7 @@
 >
 > An open, federated knowledge system for humans and agents—built from sources, claims, evidence, provenance, policies, and reproducible projections rather than one canonical page.
 
-**Status:** pre-public alpha. The repository, local site, API, MCP server, CLI, governance substrate, and deterministic build pipeline are implemented. Public hosting at `epistemedia.org` and the production API/MCP endpoints are not activated yet.
+**Status:** public alpha with a verified default-hostname Pages bootstrap at <https://yoheinakajima.github.io/epistemedia/>. The repository, local site, API, MCP server, CLI, governance substrate, and deterministic build pipeline are implemented. Public hosting at `epistemedia.org` and the production API/MCP endpoints are not activated yet.
 
 ## What Epistemedia is
 
@@ -295,7 +295,7 @@ The threat model includes source prompt injection, evaluator collusion, Sybil sw
 
 ## Project status
 
-Current maturity: **alpha / pre-public activation**.
+Current maturity: **alpha / staged public activation**.
 
 Implemented locally and in the repository:
 
@@ -304,7 +304,8 @@ Implemented locally and in the repository:
 - human and agent projections;
 - CLI, API, and MCP adapters;
 - executable governance and contribution substrate;
-- CI, Pages, container, release, and package workflows.
+- CI, Pages, container, release, and package workflows;
+- default-hostname GitHub Pages bootstrap with externally verified routes and artifact identity.
 
 Not yet asserted as live:
 
