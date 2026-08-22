@@ -1,0 +1,58 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0022",
+  "title": "Harden the doors, review trust, and agent reachability for Case 001",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Make every primary human and agent entry route lead coherently into the accepted Case 001 evidence experience, replace the unlinked independent-review badge with a bounded public review receipt, expose one first-screen path into the unresolved lineage, and encode deterministic reachability and release-identity parity checks without changing the accepted research dossier.",
+  "depends_on": [
+    "EM-0021"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "research/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "How We Know, Substrate, Case 001, skeptical, Markdown, JSON, llms.txt, robots.txt, and sitemap route tests",
+    "sanitized public review-receipt scope, reviewer, exact-head, and limitation tests",
+    "cold-start agent discovery and Case 001 summary test using only committed public outputs",
+    "whole-release catalog, frontier, compiler, accepted-commit, and manifest identity-parity test",
+    "no-JavaScript fallback and keyboard-accessibility review",
+    "desktop and mobile visual inspection",
+    "public disclosure noninterference audit",
+    "external bot-user-agent, route, content-type, canonical, and release-identity read-back after accepted deployment"
+  ],
+  "acceptance": [
+    "the How We Know route is a compact section index rather than a duplicate homepage",
+    "the existing repository-internals Explore destination is accurately labeled Substrate in primary navigation",
+    "the Case 001 review label links to a public receipt naming the reviewer, exact reviewed commit, checked scope, independence conditions, and limitations",
+    "a first-screen evidence-count control opens the unresolved 2007 lineage without requiring a long scroll",
+    "a cold-start agent can discover stable Markdown and JSON twins from llms.txt and recover the case question, policy-relative verdict, evidence counts, and unresolved lineage",
+    "all generated public routes expose one coherent release identity and deterministic verification fails on mixed-version output",
+    "the accepted Case 001 dossier, independent receipt, and research packet remain byte-identical",
+    "make check passes without changing accepted source state",
+    "the accepted Pages deployment passes human, bot, canonical URL, keyboard, mobile, content-type, and release-identity read-back"
+  ],
+  "limitations": [
+    "This task does not add, revise, or re-review Case 001 research claims, evidence spans, counts, lineage judgments, or policy conclusions.",
+    "A deterministic cold-start agent fixture establishes machine-interface reachability and parity, not general comprehension by all agents.",
+    "The Substrate label preserves the existing Explore route and self-describing repository corpus; it does not remove internals from public access.",
+    "Case 002, additional lenses, hosted API/MCP activation, workflow mutation, DNS changes, publication, and release are out of scope."
+  ]
+}
