@@ -26,7 +26,7 @@ from .core import (
     openapi_document,
     topic_projection,
 )
-
+from .featured import FEATURE_VIEWS, FeaturedDossier, load_featured_dossier
 
 DEFAULT_MAX_BODY_BYTES = 1_048_576
 DEFAULT_MAX_QUERY_BYTES = 8_192
@@ -121,6 +121,9 @@ class Gateway:
             self._catalog = PublicCatalog.build(self.root)
             self._fingerprint = fingerprint
         return self._catalog
+
+    def featured(self) -> FeaturedDossier | None:
+        return load_featured_dossier(self.root)
 
     async def __call__(self, scope: dict[str, Any], receive: Any, send: Any) -> None:
         if scope["type"] != "http":
@@ -358,22 +361,43 @@ class Gateway:
                 "version": VERSION,
                 "status": "/v1/status",
                 "search": "/v1/search?q=...",
+                "dossiers": "/v1/dossiers",
                 "topics": "/v1/topics",
                 "openapi": "/openapi.json",
                 "mcp": "/mcp",
             })
         if path == "/v1/status":
+            featured = self.featured()
             return 200, {}, envelope(catalog, {
                 "version": VERSION,
                 "protocol_version": PROTOCOL_VERSION,
                 "object_count": len(catalog.objects),
                 "topic_count": len(catalog.topics),
+                "dossier_count": 1 if featured is not None else 0,
+                "featured_dossier": featured.slug if featured is not None else None,
                 "generated_at": catalog.generated_at,
             })
         if path == "/v1/search":
             query = first(request.query, "q", "")
             limit = clamp_int(first(request.query, "limit", "20"), 1, 100, 20)
             return 200, {}, envelope(catalog, {"query": query, "results": catalog.search(query, limit)})
+        if path == "/v1/dossiers":
+            featured = self.featured()
+            summaries = [featured.summary(catalog)] if featured is not None else []
+            return 200, {}, envelope(catalog, summaries)
+        if path.startswith("/v1/dossiers/"):
+            slug = unquote(path[len("/v1/dossiers/"):])
+            featured = self.featured()
+            if featured is None or slug != featured.slug:
+                return 404, {}, api_error(catalog, "not_found", f"Unknown dossier: {slug}")
+            policy = first(request.query, "policy", featured.default_view)
+            if policy not in FEATURE_VIEWS:
+                return 400, {}, api_error(
+                    catalog,
+                    "invalid_policy",
+                    allowed=list(FEATURE_VIEWS),
+                )
+            return 200, {}, featured.envelope(catalog, policy)
         if path == "/v1/topics":
             return 200, {}, envelope(catalog, [topic.as_dict() for topic in catalog.topics])
         if path.startswith("/v1/topics/"):
@@ -631,6 +655,18 @@ class Gateway:
                 }
                 for obj in catalog.objects
             ]
+            featured = self.featured()
+            if featured is not None:
+                resources += [
+                    {
+                        "uri": f"epistemedia://dossier/{featured.slug}/{view}",
+                        "name": f"{featured.slug}-{view}",
+                        "title": f"{featured.dossier['title']} — {view}",
+                        "description": featured.dossier["scope"],
+                        "mimeType": "application/json",
+                    }
+                    for view in FEATURE_VIEWS
+                ]
             return {"resultType": "complete", "ttlMs": 60000, "cacheScope": "public", "resources": resources}
         if method == "resources/read":
             uri = params.get("uri", "")
@@ -678,6 +714,16 @@ class Gateway:
             if not obj:
                 raise KeyError(object_id)
             return obj.as_dict()
+        if uri.startswith("epistemedia://dossier/"):
+            remainder = uri[len("epistemedia://dossier/"):]
+            try:
+                slug, view = remainder.rsplit("/", 1)
+            except ValueError as exc:
+                raise KeyError(uri) from exc
+            featured = self.featured()
+            if featured is None or slug != featured.slug or view not in FEATURE_VIEWS:
+                raise KeyError(uri)
+            return featured.projection(view)
         if uri == "epistemedia://status":
             return catalog.public_dict()
         raise KeyError(uri)
@@ -701,6 +747,28 @@ class Gateway:
             if lens not in LENSES:
                 raise ValueError(f"Unknown lens: {lens}")
             return topic_projection(catalog, topic, lens, DEFAULT_BASE_URL)
+        if name == "get_dossier":
+            slug = str(arguments.get("slug", ""))
+            policy = str(arguments.get("policy", "encyclopedia"))
+            featured = self.featured()
+            if featured is None or slug != featured.slug:
+                raise KeyError(slug)
+            if policy not in FEATURE_VIEWS:
+                raise ValueError(f"Unknown dossier policy: {policy}")
+            return featured.projection(policy)
+        if name == "compare_dossier_policies":
+            slug = str(arguments.get("slug", ""))
+            featured = self.featured()
+            if featured is None or slug != featured.slug:
+                raise KeyError(slug)
+            return {
+                "slug": featured.slug,
+                "dossier_id": featured.dossier["dossier_id"],
+                "views": {
+                    view: featured.projection(view)
+                    for view in FEATURE_VIEWS
+                },
+            }
         if name == "trace_claim":
             object_id = str(arguments.get("id", ""))
             obj = catalog.object_map().get(object_id)
@@ -750,6 +818,21 @@ def tool_definitions() -> list[dict[str, Any]]:
         tool("search_knowledge", "Search disclosure-safe public objects.", {"query": {"type": "string"}, "limit": {"type": "integer", "minimum": 1, "maximum": 100}}, ["query"]),
         tool("get_object", "Get one exact object and its source metadata.", {"id": {"type": "string"}}, ["id"]),
         tool("get_topic", "Compile one topic through a selected public lens.", {"slug": {"type": "string"}, "lens": {"type": "string", "enum": sorted(LENSES)}}, ["slug"]),
+        tool(
+            "get_dossier",
+            "Get one accepted dossier through a named application policy.",
+            {
+                "slug": {"type": "string"},
+                "policy": {"type": "string", "enum": list(FEATURE_VIEWS)},
+            },
+            ["slug"],
+        ),
+        tool(
+            "compare_dossier_policies",
+            "Compare encyclopedia and skeptical views over one accepted dossier.",
+            {"slug": {"type": "string"}},
+            ["slug"],
+        ),
         tool("trace_claim", "Trace a repository claim/object to its accepted source and frontier.", {"id": {"type": "string"}}, ["id"]),
         tool("compare_lenses", "Compare policy-explicit projections without collapsing them.", {"slug": {"type": "string"}, "lenses": {"type": "array", "items": {"type": "string", "enum": sorted(LENSES)}}}, ["slug"]),
         tool("get_next_contribution", "List public task contracts suitable for an agent to inspect.", {}, []),

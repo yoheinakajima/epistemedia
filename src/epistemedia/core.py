@@ -197,6 +197,74 @@ h4{font-size:1.08rem}
   background:linear-gradient(90deg,var(--amber-wash),transparent 88%);
 }
 .scope-note strong{font:700 .72rem/1.55 var(--mono);letter-spacing:.055em;text-transform:uppercase}
+.case-hero{padding:var(--space-4) 0;border-bottom:1px solid var(--ink)}
+.case-rule{
+  display:flex;
+  justify-content:space-between;
+  gap:var(--space-2);
+  padding:.5rem 0;
+  border-top:3px solid var(--forest);
+  border-bottom:1px solid var(--rule);
+  color:var(--muted);
+  font:720 .67rem/1.3 var(--mono);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.case-grid{display:grid;grid-template-columns:minmax(0,1.28fr) minmax(290px,.72fr);gap:var(--space-5);padding-top:var(--space-4)}
+.case-copy{min-width:0}
+.case-copy h1,.dossier-lead h1{max-width:17ch;font-size:clamp(2.35rem,5vw,4.8rem)}
+.finding{
+  max-width:66ch;
+  margin:var(--space-3) 0;
+  padding:.2rem 0 .2rem var(--space-3);
+  border-left:4px solid var(--amber);
+  color:var(--forest-deep);
+  font:600 clamp(1.05rem,1.6vw,1.3rem)/1.5 var(--serif);
+}
+.case-docket{align-self:end;padding:var(--space-3);border:1px solid var(--ink);background:var(--paper-raised);box-shadow:6px 6px 0 var(--paper-deep)}
+.docket-note{margin:var(--space-3) 0;color:var(--muted);font-size:.9rem}
+.docket-meta{margin:0;padding-top:.65rem;border-top:1px solid var(--rule);color:var(--muted);font:680 .67rem/1.45 var(--mono);letter-spacing:.025em;text-transform:uppercase}
+.policy-switch{display:inline-flex;gap:0;margin:.2rem 0 var(--space-3);border:1px solid var(--forest);background:var(--paper-raised)}
+.policy-switch a{min-height:40px;padding:.55rem .85rem;color:var(--forest-deep);font:720 .72rem/1.3 var(--mono);letter-spacing:.055em;text-decoration:none;text-transform:uppercase}
+.policy-switch a+a{border-left:1px solid var(--forest)}
+.policy-switch a.current{background:var(--forest);color:var(--paper-raised)}
+.case-actions,.representation-links{display:flex;align-items:center;flex-wrap:wrap;gap:.7rem 1rem;margin:.25rem 0 0;font-size:.88rem}
+.primary-action{display:inline-flex;align-items:center;min-height:44px;padding:.65rem .85rem;background:var(--forest);color:var(--paper-raised);font-weight:750;text-decoration:none}
+.primary-action:hover{background:var(--forest-deep)}
+.evidence-tally{display:grid;grid-template-columns:1fr auto 1fr 1fr;gap:.55rem;align-items:stretch}
+.tally-cell{display:flex;min-width:0;flex-direction:column;justify-content:center;padding:.7rem;border-top:3px solid var(--rule);background:var(--paper)}
+.tally-cell strong{color:var(--ink);font:750 clamp(1.65rem,3vw,2.4rem)/1 var(--serif)}
+.tally-cell span{margin-top:.3rem;color:var(--muted);font:650 .65rem/1.35 var(--mono);letter-spacing:.035em;text-transform:uppercase}
+.tally-emphasis{border-color:var(--amber);background:var(--amber-wash)}
+.tally-counter{border-color:var(--forest)}
+.tally-arrow{align-self:center;color:var(--amber);font:700 1.4rem/1 var(--serif)}
+.dossier-lead{padding-top:var(--space-4)}
+.lineage-ledger{padding-top:var(--space-4)}
+.lineage-ledger>.evidence-tally{max-width:960px}
+.evidence-record{border-top:1px solid var(--ink)}
+.evidence-sentence{display:grid;grid-template-columns:110px minmax(0,1fr);gap:var(--space-4);padding:var(--space-4) 0;border-bottom:1px solid var(--rule)}
+.evidence-marker{display:flex;align-items:start;gap:.5rem;flex-direction:column;color:var(--forest-deep);font:720 .66rem/1.35 var(--mono);letter-spacing:.055em;text-transform:uppercase}
+.evidence-marker span{display:grid;place-items:center;width:2rem;height:2rem;border:1px solid var(--forest);background:var(--forest);color:var(--paper-raised)}
+.material-sentence{margin:0;max-width:64ch;font:600 clamp(1.15rem,2vw,1.48rem)/1.42 var(--serif)}
+.relation-note{margin:.65rem 0;color:var(--muted);font-size:.91rem}
+.source-xray{margin-top:var(--space-3);border:1px solid var(--rule);background:var(--paper-raised)}
+.source-xray summary,.source-register summary{cursor:pointer;padding:.75rem .9rem;color:var(--forest-deep);font:730 .74rem/1.4 var(--mono);letter-spacing:.035em;text-transform:uppercase}
+.source-xray[open] summary,.source-register[open] summary{border-bottom:1px solid var(--rule)}
+.xray-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:1px;background:var(--rule)}
+.xray-source{min-width:0;padding:1rem;background:var(--paper-raised)}
+.xray-source h4{font-size:1.05rem;line-height:1.25}
+.xray-index,.source-locator{margin:0 0 .45rem;color:var(--muted);font:680 .66rem/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase}
+.xray-source blockquote{color:var(--ink);font-family:var(--serif)}
+.xray-meta{display:grid;margin:0}
+.xray-meta>div{min-width:0;padding:.45rem 0;border-top:1px solid var(--rule)}
+.xray-meta dt{color:var(--muted);font:700 .62rem/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.xray-meta dd{margin:.12rem 0 0;overflow-wrap:anywhere;word-break:break-word;font-size:.78rem}
+.uncertainty-panel{display:grid;grid-template-columns:1.25fr .75fr;gap:var(--space-5);padding:var(--space-4);border-left:5px solid var(--amber);background:var(--amber-wash)}
+.uncertainty-panel ul{margin-bottom:0;padding-left:1.1rem}
+.source-register{margin-top:var(--space-5);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.source-register ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.35rem var(--space-4);padding:var(--space-3) var(--space-4) var(--space-4);counter-reset:source}
+.source-register li{display:grid;grid-template-columns:1fr;min-width:0;padding:.45rem 0;border-bottom:1px solid var(--rule)}
+.source-register li span{color:var(--muted);font-size:.76rem}
 section+section{margin-top:var(--space-5)}
 .section-head{
   display:flex;
@@ -307,6 +375,20 @@ blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(
   nav a{font-size:.68rem}
   .hero{padding:1.8rem 0 1.2rem}
   .hero-home{padding-top:2.2rem}
+  .case-rule{flex-wrap:wrap;justify-content:flex-start}
+  .case-rule span+span:before{content:"/";margin-right:.55rem;color:var(--amber)}
+  .case-grid{grid-template-columns:1fr;gap:var(--space-3);padding-top:var(--space-3)}
+  .case-copy h1,.dossier-lead h1{font-size:clamp(2.25rem,12vw,3.4rem)}
+  .case-docket{box-shadow:4px 4px 0 var(--paper-deep)}
+  .policy-switch{display:flex;width:100%}
+  .policy-switch a{flex:1;justify-content:center}
+  .evidence-tally{grid-template-columns:1fr 1fr}
+  .tally-arrow{display:none}
+  .tally-counter{grid-column:1/-1}
+  .evidence-sentence{grid-template-columns:1fr;gap:.75rem}
+  .evidence-marker{align-items:center;flex-direction:row}
+  .uncertainty-panel{grid-template-columns:1fr;gap:var(--space-3);padding:var(--space-3)}
+  .source-register ol{grid-template-columns:1fr;padding-inline:var(--space-3)}
   .scope-note{grid-template-columns:1fr;gap:.15rem}
   .section-head{align-items:start;flex-direction:column;gap:0}
   .card{min-height:0}
@@ -804,7 +886,7 @@ def html_shell(
 <a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
   <a class="brand" href="{html.escape(base_url)}/" aria-label="Epistemedia home"><span class="brand-mark" aria-hidden="true">E/</span><span>Epistemedia</span></a>
-  <nav aria-label="Primary"><a href="{html.escape(base_url)}/explore/">Explore</a><a href="{html.escape(base_url)}/docs/">Docs</a><a href="{html.escape(base_url)}/status/">Status</a></nav>
+  <nav aria-label="Primary"><a href="{html.escape(base_url)}/how-we-know/">How We Know</a><a href="{html.escape(base_url)}/explore/">Explore</a><a href="{html.escape(base_url)}/docs/">Docs</a><a href="{html.escape(base_url)}/status/">Status</a></nav>
 </header>
 <main id="content" tabindex="-1">{body}</main>
 <footer class="site-footer"><p><strong>Knowledge that can show its work.</strong><br>Human and agent interfaces compile from one public projection.</p><p><a href="https://github.com/yoheinakajima/epistemedia">Source repository</a></p></footer>
@@ -949,12 +1031,19 @@ def projection_receipt_html(
     commit: str,
     compiler: str,
     projection_id: str | None = None,
+    dossier_id: str | None = None,
+    view_policy: str | None = None,
+    content_digest: str | None = None,
     epistemic_policy: str | None = None,
     disclosure_policy: str | None = None,
 ) -> str:
     rows = []
     if projection_id:
         rows.append(("Projection", projection_id))
+    if dossier_id:
+        rows.append(("Dossier", dossier_id))
+    if view_policy:
+        rows.append(("View policy", view_policy))
     rows.extend(
         [
             ("Catalog", catalog_id),
@@ -967,6 +1056,8 @@ def projection_receipt_html(
     if disclosure_policy:
         rows.append(("Disclosure policy", disclosure_policy))
     rows.append(("Compiler", compiler))
+    if content_digest:
+        rows.append(("Content digest", content_digest))
     rendered_rows = "".join(
         f"<div><dt>{html.escape(label)}</dt><dd><code>{html.escape(value)}</code></dd></div>"
         for label, value in rows
@@ -988,7 +1079,19 @@ def build_public(
     api_url: str = DEFAULT_API_URL,
     mcp_url: str = DEFAULT_MCP_URL,
 ) -> dict[str, Any]:
+    from .featured import (
+        FEATURE_VIEWS,
+        feature_home_html,
+        feature_page_html,
+        load_featured_dossier,
+        projection_markdown as dossier_markdown,
+    )
+
     catalog = PublicCatalog.build(root)
+    featured = load_featured_dossier(root)
+    featured_default = (
+        featured.envelope(catalog, featured.default_view) if featured is not None else None
+    )
     output = output.resolve()
     tmp = output.parent / (output.name + ".tmp")
     if tmp.exists():
@@ -1005,6 +1108,8 @@ def build_public(
         "generated_at": catalog.generated_at,
         "object_count": len(catalog.objects),
         "topic_count": len(catalog.topics),
+        "dossier_count": 1 if featured is not None else 0,
+        "featured_dossier": featured.slug if featured is not None else None,
         "protocol_version": PROTOCOL_VERSION,
     })
     write_json(tmp / "search.json", {
@@ -1145,24 +1250,169 @@ def build_public(
         )
         write_text(tmp / "topics" / topic.slug / "index.md", md)
 
-    home_body = (
-        '<section class="hero hero-home"><p class="eyebrow">Open knowledge · Public alpha</p>'
-        '<h1>Knowledge that can show its work.</h1>'
-        '<p class="dek">Epistemedia currently compiles accepted repository artifacts into reproducible human and machine-readable views. Its next public realm will test exact source-to-claim lineage.</p>'
-        '<p class="scope-note"><strong>Current coverage:</strong><span>Epistemedia\'s own architecture and operations—the self-describing bootstrap corpus. The first outward-facing realm, <em>How We Know</em>, is in development.</span></p></section>'
-        '<section><div class="section-head"><div><p class="eyebrow">Current index</p><h2>Explore the bootstrap corpus</h2></div>'
-        f'<p class="meta">{len(catalog.topics)} topics · {len(catalog.objects)} public objects</p></div><div class="grid">'
-        + "".join(topic_cards)
-        + '</div></section>'
-        + projection_receipt_html(
-            catalog_id=catalog.catalog_id,
-            frontier=catalog.frontier,
-            commit=catalog.commit,
-            epistemic_policy=catalog.policies["epistemic"],
-            disclosure_policy=catalog.policies["disclosure"],
-            compiler=f"epistemedia/{VERSION}",
+    if featured is not None and featured_default is not None:
+        case_root = tmp / "how-we-know" / featured.slug
+        for view in FEATURE_VIEWS:
+            projection_count += 1
+            case_envelope = featured.envelope(catalog, view)
+            case_data = case_envelope["data"]
+            view_root = case_root / view
+            write_json(view_root / "index.json", case_envelope)
+            write_text(view_root / "index.md", dossier_markdown(case_envelope))
+            case_body = feature_page_html(case_envelope, base_url) + projection_receipt_html(
+                dossier_id=case_data["dossier_id"],
+                view_policy=case_data["view"]["policy_id"],
+                catalog_id=case_envelope["catalog_id"],
+                frontier=case_envelope["frontier"],
+                commit=case_envelope["commit"],
+                epistemic_policy=case_envelope["policies"]["epistemic"],
+                disclosure_policy=case_envelope["policies"]["disclosure"],
+                compiler=case_envelope["compiler"],
+                content_digest=case_envelope["content_digest"],
+            )
+            write_text(
+                view_root / "index.html",
+                html_shell(
+                    f"{case_data['title']} — {view}",
+                    case_body,
+                    base_url=base_url,
+                    canonical_url=f"{base_url}/how-we-know/{featured.slug}/{view}/",
+                    markdown_url=(
+                        f"{base_url}/how-we-know/{featured.slug}/{view}/index.md"
+                    ),
+                ),
+            )
+
+        default_data = featured_default["data"]
+        write_json(case_root / "index.json", featured_default)
+        write_text(case_root / "index.md", dossier_markdown(featured_default))
+        write_text(
+            case_root / "index.html",
+            html_shell(
+                default_data["title"],
+                feature_page_html(featured_default, base_url)
+                + projection_receipt_html(
+                    dossier_id=default_data["dossier_id"],
+                    view_policy=default_data["view"]["policy_id"],
+                    catalog_id=featured_default["catalog_id"],
+                    frontier=featured_default["frontier"],
+                    commit=featured_default["commit"],
+                    epistemic_policy=featured_default["policies"]["epistemic"],
+                    disclosure_policy=featured_default["policies"]["disclosure"],
+                    compiler=featured_default["compiler"],
+                    content_digest=featured_default["content_digest"],
+                ),
+                base_url=base_url,
+                canonical_url=f"{base_url}/how-we-know/{featured.slug}/",
+                markdown_url=f"{base_url}/how-we-know/{featured.slug}/index.md",
+            ),
         )
-    )
+        how_we_know_data = {
+            "realm": "How We Know",
+            "scope": (
+                "Truth, evidence, knowledge, and information—where they agree, where they "
+                "differ, and how we can tell."
+            ),
+            "featured": featured.summary(catalog),
+        }
+        how_we_know_envelope = envelope(catalog, how_we_know_data)
+        write_json(tmp / "how-we-know" / "index.json", how_we_know_envelope)
+        write_text(
+            tmp / "how-we-know" / "index.md",
+            "# How We Know\n\n"
+            "Truth, evidence, knowledge, and information—where they agree, where they differ, "
+            "and how we can tell.\n\n"
+            f"## Case {default_data['number']}\n\n"
+            f"[{default_data['title']}]({base_url}/how-we-know/{featured.slug}/)\n\n"
+            f"> {default_data['view']['label']}\n\n"
+            f"- Dossier: `{default_data['dossier_id']}`\n"
+            f"- Content digest: `{featured_default['content_digest']}`\n",
+        )
+        how_we_know_body = (
+            feature_home_html(featured_default, base_url)
+            + '<section aria-labelledby="realm-scope-title"><div class="section-head"><div>'
+            '<p class="eyebrow">Realm scope</p><h2 id="realm-scope-title">How We Know</h2>'
+            '</div></div><p>Truth, evidence, knowledge, and information—where they agree, where '
+            'they differ, and how we can tell. This first case is a bounded lineage audit, not a '
+            'claim of general-encyclopedia coverage.</p></section>'
+            + projection_receipt_html(
+                dossier_id=default_data["dossier_id"],
+                view_policy=default_data["view"]["policy_id"],
+                catalog_id=how_we_know_envelope["catalog_id"],
+                frontier=how_we_know_envelope["frontier"],
+                commit=how_we_know_envelope["commit"],
+                epistemic_policy=how_we_know_envelope["policies"]["epistemic"],
+                disclosure_policy=how_we_know_envelope["policies"]["disclosure"],
+                compiler=how_we_know_envelope["compiler"],
+                content_digest=how_we_know_envelope["content_digest"],
+            )
+        )
+        write_text(
+            tmp / "how-we-know" / "index.html",
+            html_shell(
+                "How We Know",
+                how_we_know_body,
+                base_url=base_url,
+                canonical_url=f"{base_url}/how-we-know/",
+                markdown_url=f"{base_url}/how-we-know/index.md",
+            ),
+        )
+
+        home_body = (
+            feature_home_html(featured_default, base_url)
+            + '<section><div class="section-head"><div><p class="eyebrow">'
+            'Operating substrate</p><h2>Explore how the record is built</h2></div>'
+            f'<p class="meta">{len(catalog.topics)} topics · '
+            f'{len(catalog.objects)} public objects</p></div><div class="grid">'
+            + "".join(topic_cards)
+            + '</div></section>'
+            + projection_receipt_html(
+                dossier_id=default_data["dossier_id"],
+                view_policy=default_data["view"]["policy_id"],
+                catalog_id=featured_default["catalog_id"],
+                frontier=featured_default["frontier"],
+                commit=featured_default["commit"],
+                epistemic_policy=featured_default["policies"]["epistemic"],
+                disclosure_policy=featured_default["policies"]["disclosure"],
+                compiler=featured_default["compiler"],
+                content_digest=featured_default["content_digest"],
+            )
+        )
+        home_markdown = (
+            "# Epistemedia\n\nKnowledge that can show its work.\n\n"
+            f"## How We Know · Case {default_data['number']}\n\n"
+            f"[{default_data['title']}]({base_url}/how-we-know/{featured.slug}/)\n\n"
+            f"> {default_data['view']['label']}\n\n"
+            f"- Apparent support assertions: "
+            f"**{default_data['counts']['apparent_support_assertion_count']}**\n"
+            f"- Target-comparable support roots: "
+            f"**{default_data['counts']['target_comparable_support_data_root_count']} known + "
+            f"{default_data['counts']['target_comparable_unresolved_data_root_count']} "
+            "unresolved**\n"
+            f"- Counterevidence data roots: "
+            f"**{default_data['counts']['counter_data_root_count']}**\n\n"
+            f"Dossier: `{default_data['dossier_id']}`  \n"
+            f"Content digest: `{featured_default['content_digest']}`\n\n"
+            f"[Explore the project substrate]({base_url}/explore/)\n"
+        )
+    else:
+        home_body = (
+            '<section class="hero hero-home"><p class="eyebrow">Open knowledge · Public alpha</p>'
+            '<h1>Knowledge that can show its work.</h1>'
+            '<p class="dek">No accepted featured dossier is configured in this realm.</p></section>'
+            '<section><div class="grid">'
+            + "".join(topic_cards)
+            + "</div></section>"
+            + projection_receipt_html(
+                catalog_id=catalog.catalog_id,
+                frontier=catalog.frontier,
+                commit=catalog.commit,
+                epistemic_policy=catalog.policies["epistemic"],
+                disclosure_policy=catalog.policies["disclosure"],
+                compiler=f"epistemedia/{VERSION}",
+            )
+        )
+        home_markdown = "# Epistemedia\n\nKnowledge that can show its work.\n"
     write_text(
         tmp / "index.html",
         html_shell(
@@ -1173,18 +1423,7 @@ def build_public(
             markdown_url=f"{base_url}/index.md",
         ),
     )
-    write_text(
-        tmp / "index.md",
-        "# Epistemedia\n\nKnowledge that can show its work.\n\n"
-        "**Current coverage:** Epistemedia's own architecture and operations—the "
-        "self-describing bootstrap corpus. The first outward-facing realm, *How We Know*, "
-        "is in development.\n\n"
-        + "\n".join(
-            f"- [{t.title}]({base_url}/topics/{t.slug}/) — {t.description}"
-            for t in catalog.topics
-        )
-        + "\n",
-    )
+    write_text(tmp / "index.md", home_markdown)
 
     explore_body = (
         '<section class="hero hero-compact"><p class="eyebrow">Repository index</p><h1>Explore</h1>'
@@ -1249,19 +1488,25 @@ def build_public(
     )
     write_text(tmp / "docs" / "index.md", "# Documentation\n\n" + "\n".join(f"- [{o.title}]({base_url}/objects/{static_object_route_key(o.id)}/) — `{o.path}`" for o in docs) + "\n")
 
+    corpus_scope = (
+        "one independently reviewed How We Know dossier plus the self-describing repository corpus"
+        if featured is not None
+        else "self-describing repository bootstrap"
+    )
     status_md = (
         "# Epistemedia status\n\n"
         "- Canonical human site: `https://epistemedia.org` — verified live with HTTPS\n"
         "- Sharing redirect: `https://episte.media` — reserved, not verified live\n"
         "- Hosted API: `https://api.epistemedia.org/v1` — reserved, not verified live\n"
         "- Hosted MCP: `https://mcp.epistemedia.org/mcp` — reserved, not verified live\n"
-        "- Corpus scope: self-describing repository bootstrap; `How We Know` is in development\n"
+        f"- Corpus scope: {corpus_scope}\n"
         f"- Version: `{VERSION}`\n"
         f"- Catalog: `{catalog.catalog_id}`\n"
         f"- Frontier: `{catalog.frontier}`\n"
         f"- Commit: `{catalog.commit}`\n"
         f"- Public objects: `{len(catalog.objects)}`\n"
         f"- Topics: `{len(catalog.topics)}`\n"
+        f"- Featured dossiers: `{1 if featured is not None else 0}`\n"
         f"- Projections: `{projection_count}`\n"
     )
     write_text(tmp / "status" / "index.md", status_md)
@@ -1288,13 +1533,14 @@ def build_public(
         '<p class="eyebrow">Service boundary</p><h2 id="surface-status-title">Public surfaces</h2>'
         f'</div></div><div class="status-list">{status_rows}</div></section>'
         '<section aria-labelledby="build-summary-title"><div class="section-head"><div>'
-        '<p class="eyebrow">Current compilation</p><h2 id="build-summary-title">Bootstrap corpus</h2>'
+        '<p class="eyebrow">Current compilation</p><h2 id="build-summary-title">Public corpus</h2>'
         '</div></div><dl class="object-facts">'
         f'<div><dt>Version</dt><dd><code>{VERSION}</code></dd></div>'
         f'<div><dt>Public objects</dt><dd>{len(catalog.objects)}</dd></div>'
         f'<div><dt>Topics</dt><dd>{len(catalog.topics)}</dd></div>'
+        f'<div><dt>Featured dossiers</dt><dd>{1 if featured is not None else 0}</dd></div>'
         f'<div><dt>Projections</dt><dd>{projection_count}</dd></div>'
-        '</dl><p class="scope-note"><strong>Current coverage:</strong><span>Self-describing repository bootstrap. <em>How We Know</em> is in development.</span></p></section>'
+        f'</dl><p class="scope-note"><strong>Current coverage:</strong><span>{html.escape(corpus_scope)}.</span></p></section>'
         + projection_receipt_html(
             catalog_id=catalog.catalog_id,
             frontier=catalog.frontier,
@@ -1321,6 +1567,15 @@ def build_public(
         "",
         "## Start here",
         f"- [Project overview]({base_url}/index.md)",
+        f"- [How We Know]({base_url}/how-we-know/index.md)",
+        *(
+            [
+                f"- [Featured evidence dossier]({base_url}/how-we-know/{featured.slug}/index.md)",
+                f"- [Featured dossier JSON]({base_url}/how-we-know/{featured.slug}/index.json)",
+            ]
+            if featured is not None
+            else []
+        ),
         f"- [Documentation]({base_url}/docs/index.md)",
         f"- [Explore topics]({base_url}/explore/index.md)",
         f"- [Current status]({base_url}/status/index.md)",
@@ -1338,7 +1593,7 @@ def build_public(
     openapi = openapi_document(base_url=base_url, api_url=api_url)
     write_json(tmp / "openapi.json", openapi)
     write_json(tmp / "api" / "openapi.json", openapi)
-    write_json(tmp / ".well-known" / "epistemedia.json", {
+    discovery = {
         "schema": "https://epistemedia.com/schemas/discovery-v1.json",
         "name": "Epistemedia",
         "description": "Knowledge that can show its work.",
@@ -1353,10 +1608,35 @@ def build_public(
         "repository": "https://github.com/yoheinakajima/epistemedia",
         "protocol_version": PROTOCOL_VERSION,
         "representations": ["text/html", "text/markdown", "application/json", "application/ld+json"],
-    })
+        "how_we_know": f"{base_url}/how-we-know/",
+    }
+    if featured is not None and featured_default is not None:
+        discovery["featured_dossier"] = {
+            "slug": featured.slug,
+            "dossier_id": featured_default["data"]["dossier_id"],
+            "human": f"{base_url}/how-we-know/{featured.slug}/",
+            "markdown": f"{base_url}/how-we-know/{featured.slug}/index.md",
+            "json": f"{base_url}/how-we-know/{featured.slug}/index.json",
+            "content_digest": featured_default["content_digest"],
+        }
+    write_json(tmp / ".well-known" / "epistemedia.json", discovery)
     write_json(tmp / "mcp" / "server.json", mcp_descriptor(mcp_url))
     write_text(tmp / "robots.txt", "User-agent: *\nAllow: /\nSitemap: " + base_url + "/sitemap.xml\n")
-    urls = [base_url + "/", base_url + "/docs/", base_url + "/explore/", base_url + "/status/"] + [f"{base_url}/topics/{topic.slug}/" for topic in catalog.topics]
+    urls = [
+        base_url + "/",
+        base_url + "/how-we-know/",
+        base_url + "/docs/",
+        base_url + "/explore/",
+        base_url + "/status/",
+    ] + [f"{base_url}/topics/{topic.slug}/" for topic in catalog.topics]
+    if featured is not None:
+        urls += [
+            f"{base_url}/how-we-know/{featured.slug}/",
+            *[
+                f"{base_url}/how-we-know/{featured.slug}/{view}/"
+                for view in FEATURE_VIEWS
+            ],
+        ]
     write_text(tmp / "sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(f"  <url><loc>{html.escape(url)}</loc></url>" for url in urls) + "\n</urlset>\n")
     write_text(tmp / ".well-known" / "security.txt", "Contact: https://github.com/yoheinakajima/epistemedia/security\nCanonical: " + base_url + "/.well-known/security.txt\n")
 
@@ -1406,6 +1686,31 @@ def openapi_document(*, base_url: str = DEFAULT_BASE_URL, api_url: str = DEFAULT
         "paths": {
             "/status": {"get": operation("Current public catalog status", "getStatus")},
             "/search": {"get": {**operation("Search public objects", "searchKnowledge"), "parameters": [{"name": "q", "in": "query", "required": True, "schema": {"type": "string"}}, {"name": "limit", "in": "query", "schema": {"type": "integer", "default": 20, "maximum": 100}}]}},
+            "/dossiers": {
+                "get": operation("List accepted public dossiers", "listDossiers")
+            },
+            "/dossiers/{slug}": {
+                "get": {
+                    **operation("Get an accepted dossier policy view", "getDossier"),
+                    "parameters": [
+                        {
+                            "name": "slug",
+                            "in": "path",
+                            "required": True,
+                            "schema": {"type": "string"},
+                        },
+                        {
+                            "name": "policy",
+                            "in": "query",
+                            "schema": {
+                                "type": "string",
+                                "enum": ["encyclopedia", "skeptical"],
+                                "default": "encyclopedia",
+                            },
+                        },
+                    ],
+                }
+            },
             "/topics": {"get": operation("List public topics", "listTopics")},
             "/topics/{slug}": {"get": {**operation("Get a topic projection", "getTopic"), "parameters": [{"name": "slug", "in": "path", "required": True, "schema": {"type": "string"}}, {"name": "lens", "in": "query", "schema": {"type": "string", "enum": sorted(LENSES), "default": "encyclopedia"}}]}},
             "/objects/{id}": {"get": {**operation("Get an exact public object", "getObject"), "parameters": [{"name": "id", "in": "path", "required": True, "schema": {"type": "string"}}]}},
@@ -1483,6 +1788,9 @@ def validate_repository(root: Path) -> list[str]:
                 errors.append(f"non-public object entered PublicCatalog: {obj.path}")
             if not obj.content_digest:
                 errors.append(f"object lacks content digest: {obj.path}")
+        from .featured import load_featured_dossier
+
+        load_featured_dossier(root)
     except Exception as exc:
         errors.append(str(exc))
     # Common secret patterns are hard failures in accepted text files.
@@ -1524,6 +1832,16 @@ def audit_public(root: Path, public: Path) -> list[str]:
         public / ".well-known" / "epistemedia.json",
         public / "mcp" / "server.json",
     ]
+    from .featured import load_featured_dossier
+
+    featured = load_featured_dossier(root)
+    if featured is not None:
+        required += [
+            public / "how-we-know" / "index.html",
+            public / "how-we-know" / featured.slug / "index.html",
+            public / "how-we-know" / featured.slug / "index.md",
+            public / "how-we-know" / featured.slug / "index.json",
+        ]
     for path in required:
         if not path.exists():
             findings.append(f"missing public interface: {path.relative_to(public)}")
