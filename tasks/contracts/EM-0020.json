@@ -1,0 +1,57 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0020",
+  "title": "Compile the first How We Know evidence experience",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Compile the first accepted How We Know dossier into a human-first featured homepage and corresponding Markdown, JSON, API, MCP, and CLI representations with exact span inspection, lineage collapse, and two materially different named policy views.",
+  "depends_on": [
+    "EM-0017",
+    "EM-0019"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "sentence-to-span and edition identity tests",
+    "lineage-count derivation and shared-ancestor adversarial tests",
+    "encyclopedia-versus-skeptical output-difference tests",
+    "HTML, Markdown, JSON, API, MCP, and CLI parity tests",
+    "no-JavaScript fallback and keyboard-accessibility review",
+    "desktop and mobile visual inspection",
+    "public disclosure noninterference audit",
+    "external route and content-type read-back after accepted deployment"
+  ],
+  "acceptance": [
+    "the homepage leads with one accepted finding about the world rather than a directory of project internals",
+    "a reader can reveal the exact accepted edition and span behind every material dossier sentence",
+    "raw mention count and independent-lineage count are visibly distinguished and deterministically reproduced",
+    "encyclopedia and skeptical views share the accepted source objects while producing a material, explained policy-relative difference",
+    "contradictions, qualifiers, unknown dependence, and unresolved defeaters remain visible",
+    "the existing self-describing project corpus remains available through Explore and documentation routes",
+    "the featured selection is an explicit accepted compiler input rather than detached hand-authored marketing",
+    "all public interfaces expose the same dossier, catalog, frontier, policies, compiler, accepted commit, and content digest",
+    "make check passes without changing accepted source state",
+    "the accepted Pages deployment passes route, canonical URL, mobile, content-type, and manifest read-back"
+  ],
+  "limitations": [
+    "This task does not claim that one dossier validates the full Epistemedia thesis or that the promoted policies are universally correct.",
+    "Hosted API/MCP activation, automated capture, scaled seeding, and federation remain separate tasks.",
+    "Human-comprehension claims require real-reader evidence rather than synthetic review."
+  ]
+}

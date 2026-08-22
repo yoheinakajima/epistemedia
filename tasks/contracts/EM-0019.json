@@ -1,0 +1,54 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0019",
+  "title": "Research the first How We Know lineage case",
+  "status": "ready",
+  "change_class": "research",
+  "objective": "Select, source, review, and propose one real public How We Know dossier in which multiple apparent mentions can be compared with their underlying independent evidence lineages, preserving contrary findings and reporting a negative result if no candidate satisfies the admission bar.",
+  "depends_on": [
+    "EM-0018"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "catalog/dossiers/how-we-know/**",
+      "research/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "src/**",
+      "tests/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "primary or authoritative source identity and edition review",
+    "exact source-span verification by an independently rooted reviewer",
+    "license, quotation, snapshot, and disclosure review",
+    "lineage and dependence review including unknown relationships",
+    "active counterevidence and qualifier search",
+    "reproduction of every public count and displayed relation from accepted dossier objects"
+  ],
+  "acceptance": [
+    "the selected case is about truth, evidence, knowledge, or information rather than Epistemedia itself",
+    "the case includes a useful human question and at least one material dependence, contradiction, qualification, or unresolved defeater",
+    "every public factual statement maps to an exact accepted source span or is labeled as interpretation, hypothesis, or open question",
+    "source editions, retrieval dates, custody, digests, locators, and licensing limitations are recorded",
+    "raw mention and independent-lineage counts are derivable rather than editorially typed claims",
+    "copied or shared upstream material does not receive independent evidential credit",
+    "negative candidate searches and excluded cases are retained with reasons",
+    "the work does not claim a universal resolution of a philosophical position",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "One case is an instrumented vertical slice, not evidence of general corpus quality or user comprehension.",
+    "Source availability or copyright may require public metadata and digests while restricting stored bytes.",
+    "Model-generated extraction is candidate evidence and receives no authority without source-span review."
+  ]
+}

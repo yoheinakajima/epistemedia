@@ -1,0 +1,48 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0017",
+  "title": "Implement the forensic-editorial public design system",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Replace the spacious generic static shell with a compact, distinctive, accessible forensic-editorial design system that can later host source-span, lineage, policy, and projection-receipt interactions without fabricating evidence.",
+  "depends_on": [
+    "EM-0016"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "catalog/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "desktop and mobile visual inspection of every public page type",
+    "keyboard and semantic-heading accessibility review",
+    "no-horizontal-overflow and long-identity regression tests",
+    "deterministic HTML, Markdown, manifest, and disclosure checks"
+  ],
+  "acceptance": [
+    "the first viewport reaches substantive content materially sooner than the bootstrap shell",
+    "shared design tokens and components establish paper, ink, forest, amber, typography, spacing, rule, dossier, and receipt conventions",
+    "status is never conveyed by color alone and interactive controls have keyboard-accessible semantics",
+    "manifest identity remains prominent without overwhelming the reading surface",
+    "the design works at representative desktop and 390-pixel mobile widths without clipping or horizontal scrolling",
+    "the shell introduces no unsupported findings, evidence counts, sources, or live-service claims",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task styles the truthful bootstrap corpus; it does not simulate the later dossier interactions with invented data.",
+    "Typeface or asset additions require compatible licenses to be committed and verified."
+  ]
+}
