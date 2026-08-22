@@ -26,5 +26,6 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0010` — deterministic local and CI generated-state contract (ready)
 - `EM-0011` — canonical Apache-2.0 license text and detection (ready)
 - `EM-0012` — remove the legacy root-level CI clock injection hook (blocked on `EM-0010`)
+- `EM-0013` — harden public API identity and MCP 2026-07-28 transport conformance (ready)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.
