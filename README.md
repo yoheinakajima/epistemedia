@@ -67,19 +67,13 @@ The complete authority contract is in [`AGENTS.md`](AGENTS.md).
 - bundle validation plus task-claim and run-receipt generation;
 - reproducible builds checked against an independent comparison build.
 
-The normative schemas and architecture describe a broader source, span, proposition, assertion,
-evidence, derivation, evaluation, and event model. The public compiler now includes a first reviewed
-application-level claim/evidence dossier with exact spans, lineage-aware counts, and two materially
-different policy-relative views. That reversible pilot is evidence about the model; it is not yet a
-stable protocol schema or a universal evidence evaluator.
+The normative schemas and architecture describe a broader source, span, proposition, assertion, evidence, derivation, evaluation, and event model. The current public compiler does **not** yet instantiate that claim/evidence graph or perform lineage-aware evidence evaluation. The reversible dossier pilot and first evidence-backed realm are the next implementation stage.
 
 ### Human-facing site
 
 The static site compiler produces:
 
-- a human-first How We Know homepage led by one independently reviewed external question;
-- a forensic dossier with exact source x-rays, lineage tallies, and encyclopedia/skeptical views;
-- the self-describing project corpus under Explore and documentation routes;
+- a project home page and topic explorer;
 - topic projection manifests under explicit experimental lens identifiers;
 - exact repository-object source, path, and digest views;
 - clean Markdown twins;
@@ -96,11 +90,7 @@ The compiler accepts these experimental lens identifiers:
 - pedagogical;
 - source-only.
 
-These topic-level experimental lenses currently preserve the same included-object inventory. Their
-labels and manifest identities differ, but the public interface does not present them as materially
-differentiated editorial products. They are distinct from the first dossier's encyclopedia and
-skeptical policies, whose evaluations and selected evidence relations materially differ while their
-accepted dossier and source objects remain identical.
+They currently preserve the same included-object inventory. Their labels and manifest identities differ, but the public interface does not present them as materially differentiated editorial products. `encyclopedia` is the current default; additional lenses will be promoted only when their selection or semantics observably differ.
 
 ### Agent-facing interfaces
 

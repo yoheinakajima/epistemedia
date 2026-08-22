@@ -33,8 +33,12 @@ MANIFEST_FIELDS = {
     "dossier_path",
     "format",
     "number",
+    "review_receipt_bytes",
+    "review_receipt_format",
     "review_receipt_path",
+    "review_receipt_sha256",
     "reviewed_head",
+    "reviewer_id",
     "selection_note",
     "slug",
     "status",
@@ -44,6 +48,7 @@ MANIFEST_FIELDS = {
 VIEW_FIELDS = {"evaluation_key", "featured_relation_keys"}
 COUNTING_FIELDS = {"target_comparable_support_proposition_keys"}
 SAFE_SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+SHA256 = re.compile(r"^[a-f0-9]{64}$")
 GIT_SHA = re.compile(r"^[a-f0-9]{40}$")
 
 
@@ -177,6 +182,31 @@ class FeaturedDossier:
             ),
             "feature manifest.review_receipt_path",
         )
+        receipt_digest = _string(
+            manifest["review_receipt_sha256"],
+            "feature manifest.review_receipt_sha256",
+        )
+        if SHA256.fullmatch(receipt_digest) is None:
+            raise FeaturedDossierError(
+                "feature manifest.review_receipt_sha256 must be a SHA-256 digest"
+            )
+        receipt_bytes = manifest["review_receipt_bytes"]
+        if (
+            not isinstance(receipt_bytes, int)
+            or isinstance(receipt_bytes, bool)
+            or receipt_bytes <= 0
+        ):
+            raise FeaturedDossierError(
+                "feature manifest.review_receipt_bytes must be a positive integer"
+            )
+        if _sha256(receipt_path) != receipt_digest:
+            raise FeaturedDossierError(
+                "review receipt bytes differ from the accepted feature manifest"
+            )
+        if receipt_path.stat().st_size != receipt_bytes:
+            raise FeaturedDossierError(
+                "review receipt length differs from the accepted feature manifest"
+            )
         try:
             source_dossier = _object(json.loads(dossier_path.read_text()), "selected dossier")
             receipt = _object(json.loads(receipt_path.read_text()), "review receipt")
@@ -191,6 +221,24 @@ class FeaturedDossier:
 
         if receipt.get("decision") != "pass":
             raise FeaturedDossierError("selected dossier lacks an independent pass receipt")
+        receipt_format = _string(
+            manifest["review_receipt_format"],
+            "feature manifest.review_receipt_format",
+        )
+        if receipt.get("format") != receipt_format:
+            raise FeaturedDossierError("review receipt format differs from feature manifest")
+        reviewer = _object(receipt.get("reviewer"), "review receipt.reviewer")
+        reviewer_id = _string(manifest["reviewer_id"], "feature manifest.reviewer_id")
+        if reviewer.get("id") != reviewer_id:
+            raise FeaturedDossierError("review receipt reviewer differs from feature manifest")
+        if reviewer.get("fresh_clone") is not True:
+            raise FeaturedDossierError("review receipt must attest a fresh independent clone")
+        if reviewer.get("independent_retrieval") is not True:
+            raise FeaturedDossierError("review receipt must attest independent retrieval")
+        if reviewer.get("authoring_agent_artifacts_used") is not False:
+            raise FeaturedDossierError(
+                "review receipt must reject authoring-agent artifacts"
+            )
         repository = _object(receipt.get("repository"), "review receipt.repository")
         if repository.get("reviewed_head") != reviewed_head:
             raise FeaturedDossierError("review receipt head differs from feature manifest")
@@ -365,18 +413,13 @@ class FeaturedDossier:
         from_ref = relation["from_ref"]
         assertion = indexes["assertions"].get(from_ref)
         lineage = indexes["lineages"].get(from_ref)
+        statement = relation["note"]
         if assertion:
             proposition = indexes["propositions"][assertion["proposition_key"]]
-            statement = (
-                relation["note"]
-                if assertion["stance"] == "questions"
-                else proposition["text"]
-            )
             lineage = indexes["lineages"][assertion["lineage_key"]]
             span_keys = [*assertion["span_keys"], *relation["basis_span_keys"]]
         else:
             proposition = None
-            statement = relation["note"]
             span_keys = [from_ref, *relation["basis_span_keys"]]
         span_keys = list(dict.fromkeys(key for key in span_keys if key in indexes["spans"]))
         target = None

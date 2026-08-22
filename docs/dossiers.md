@@ -79,9 +79,10 @@ The source dossier ID may change when private records change. The public dossier
 
 Every form carries the same public `dossier_id`. After independent review, an explicit feature
 manifest may bind one exact dossier and review receipt into the public compiler. The first such
-manifest produces HTML, Markdown, static JSON, local API, MCP, and CLI representations from the
-same disclosure-safe object. This makes the dossier publicly discoverable on the static site; it
-does not activate the reserved hosted API/MCP runtime.
+manifest binds the exact dossier and independent-review receipt bytes, format, reviewer identity,
+and independence attestations before producing HTML, Markdown, static JSON, local API, MCP, and CLI
+representations from the same disclosure-safe object. This makes the dossier publicly discoverable
+on the static site; it does not activate the reserved hosted API/MCP runtime.
 
 ## Construction and validation
 
