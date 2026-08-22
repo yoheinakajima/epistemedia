@@ -106,3 +106,38 @@ The representative object was `em:automation:sha256:3a90a6127614f1a6487a4ae37ab0
 - Protected identifiers under `epistemedia.com` remain unchanged. EM-0009 requires governance, compatibility mapping, replay testing, and independent evaluation.
 - No container, GitHub Release, GHCR, PyPI, or MCP Registry publication occurred in this activation.
 
+## Forensic-editorial design refresh — 2026-08-22T06:49Z
+
+PR [#29](https://github.com/yoheinakajima/epistemedia/pull/29) was squash-merged through the protected contribution path as `081419ff0e4d28005320dc1ae7ad068b98135959`. Its pull-request validation run `32557756112` passed job `96994543150`; the resulting `main` validation run `32557840163` also concluded `success`. The source branch was deleted after merge.
+
+Before merge, local browser inspection covered the homepage, explore index, topic, experimental lens, long-identifier object, documentation, and status page at `1440 × 900` and `390 × 844`. Every representative page had exactly one `h1`, no horizontal overflow, and a visible projection receipt. The desktop homepage placed four topic cards in the first viewport. The mobile header remained 58 pixels tall with 44-pixel navigation targets after a 17-pixel target defect found during inspection was corrected. Keyboard focus was visibly outlined, native `details` disclosure worked without JavaScript, status remained text-labelled, and the console had no warnings or errors.
+
+The accepted commit was then deployed with `deployment_mode=custom-domain`:
+
+- workflow run: `32557945809`, conclusion `success`;
+- build job: `96995011325`, conclusion `success`;
+- deploy job: `96995050209`, conclusion `success`;
+- GitHub deployment: `6034179354`;
+- successful deployment status: `17154918915`;
+- completed: `2026-08-22T06:49:44Z`;
+- provider URL: <https://epistemedia.org/>.
+
+The build job passed validation, deterministic compilation, 63 tests, disclosure audit, custom-domain `CNAME` attachment, Pages configuration, and artifact upload. GitHub Pages API read-back continued to report build type `workflow`, custom domain `epistemedia.org`, HTTPS enforcement `true`, and public URL `https://epistemedia.org/`.
+
+External HTTPS read-back after deployment observed the new paper, ink, forest, amber, `E/` publication shell and returned:
+
+- `200 text/html` for `/`, `/docs/`, and `/status/`;
+- `200 text/plain` for `/llms.txt`;
+- `200 application/json` content for `/.well-known/epistemedia.json`;
+- accepted commit `081419ff0e4d28005320dc1ae7ad068b98135959` in both the homepage receipt and discovery document.
+
+Published artifact identity:
+
+- release manifest: `em:release-manifest:sha256:8beaf29d2b38a606473f1bc1a9f904474b4b93f1839ae4a21cd8735cf438372d`;
+- catalog: `em:catalog:sha256:0878f30018f4a18609fc53525c437f184b39cad2fe5fc2f58866dbe843a4c22f`;
+- frontier: `em:frontier:sha256:768657ee40816484a512ba7a4d41f4a81e914d61ee31f14ea21fe0264e5625ad`;
+- compiler: `epistemedia/0.2.0`;
+- deterministic generated time: `2026-08-22T06:46:36Z`;
+- files: `509`.
+
+This deployment changes presentation and improves truthful status disclosure; it does not admit an outward-facing research dossier. The homepage still labels the 78-object, 11-topic corpus as the self-describing bootstrap corpus. Hosted API, hosted MCP, and the `episte.media` sharing redirect remain unverified and are not represented as live.
