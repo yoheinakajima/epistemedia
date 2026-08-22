@@ -7,6 +7,7 @@ import subprocess
 import sys
 import time
 from datetime import datetime, timezone
+from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import quote, unquote
 
@@ -24,6 +25,29 @@ from epistemedia.server import Gateway, Request, tool_definitions
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+class PageStructureParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.headings: list[int] = []
+        self.ids: list[str] = []
+        self.nav_labels: list[str] = []
+        self.skip_targets: list[str] = []
+
+    def handle_starttag(
+        self, tag: str, attrs: list[tuple[str, str | None]]
+    ) -> None:
+        values = dict(attrs)
+        if len(tag) == 2 and tag[0] == "h" and tag[1].isdigit():
+            self.headings.append(int(tag[1]))
+        if values.get("id"):
+            self.ids.append(str(values["id"]))
+        if tag == "nav" and values.get("aria-label"):
+            self.nav_labels.append(str(values["aria-label"]))
+        classes = (values.get("class") or "").split()
+        if tag == "a" and "skip-link" in classes and values.get("href"):
+            self.skip_targets.append(str(values["href"]))
 
 
 def test_repo_receipt_command_does_not_overwrite_cli_dispatch(tmp_path: Path) -> None:
@@ -135,14 +159,22 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     object_html = (public / "objects" / file_key / "index.html").read_text()
     expected_canonical = f'https://epistemedia.org/objects/{route_key}/'
     assert f'<link rel="canonical" href="{expected_canonical}">' in object_html
+    assert object_html.count("<h1>") == 1
+    assert 'id="source-content-title"' in object_html
+    assert '<h3>' in object_html
+    assert obj.id in object_html
+    assert manifest["catalog_id"] in object_html
 
     home_html = (public / "index.html").read_text()
     assert "overflow-wrap:anywhere;word-break:break-word" in home_html
     assert "pre code{padding:0;overflow-wrap:normal;word-break:normal}" in home_html
-    assert "minmax(min(100%,260px),1fr)" in home_html
+    assert "minmax(min(100%,245px),1fr)" in home_html
     assert "Current coverage:" in home_html
     assert "self-describing bootstrap corpus" in home_html
     assert "How We Know" in home_html
+    assert "Topic 01" in home_html
+    assert "projection-receipt" in home_html
+    assert manifest["catalog_id"] in home_html
 
     topic = PublicCatalog.build(ROOT).topics[0]
     topic_html = (public / "topics" / topic.slug / "index.html").read_text()
@@ -153,6 +185,8 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "Experimental lens manifests (shared inventory)" in topic_html
     assert "not yet materially different editorial products" in topic_html
     assert topic_markdown.startswith(f"# {topic.title}\n")
+    assert "## Projection manifest" in topic_markdown
+    assert "projection-receipt" in topic_html
     assert (
         f'<link rel="canonical" href="https://epistemedia.org/topics/{topic.slug}/">'
         in topic_html
@@ -166,9 +200,59 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "not a differentiated editorial result" in experimental_html
 
     status_markdown = (public / "status" / "index.md").read_text()
+    status_html = (public / "status" / "index.html").read_text()
     assert "Canonical human site" in status_markdown
     assert status_markdown.count("not verified live") == 3
     assert "self-describing repository bootstrap" in status_markdown
+    assert "Verified live · HTTPS" in status_html
+    assert status_html.count("Reserved · unverified") == 3
+
+
+def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path) -> None:
+    public = tmp_path / "public"
+    build_public(ROOT, public)
+    catalog = PublicCatalog.build(ROOT)
+    home_html = (public / "index.html").read_text()
+
+    for token in (
+        "--paper:",
+        "--ink:",
+        "--forest:",
+        "--amber:",
+        "--serif:",
+        "--sans:",
+        "--mono:",
+        "--space-1:",
+        "--rule:",
+    ):
+        assert token in home_html
+    assert "a:focus-visible,summary:focus-visible" in home_html
+    assert "@media (max-width:640px)" in home_html
+    assert "grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr))" in home_html
+    assert "word-break:break-word" in home_html
+    assert "brand-mark" in home_html
+    assert "docket-card" in home_html
+    assert "Reproducible projection" in home_html
+
+    pages = sorted(public.rglob("index.html"))
+    assert pages
+    for page in pages:
+        page_html = page.read_text()
+        parser = PageStructureParser()
+        parser.feed(page_html)
+        relative = page.relative_to(public)
+        assert parser.headings, relative
+        assert parser.headings[0] == 1, relative
+        assert parser.headings.count(1) == 1, relative
+        assert len(parser.ids) == len(set(parser.ids)), relative
+        assert "content" in parser.ids, relative
+        assert parser.nav_labels == ["Primary"], relative
+        assert parser.skip_targets == ["#content"], relative
+        assert "projection-receipt" in page_html, relative
+        assert catalog.catalog_id in page_html, relative
+        assert catalog.frontier in page_html, relative
+        assert catalog.policies["epistemic"] in page_html, relative
+        assert catalog.policies["disclosure"] in page_html, relative
 
 
 def test_topic_lenses_share_source_frontier() -> None:

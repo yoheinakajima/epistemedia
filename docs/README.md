@@ -10,6 +10,7 @@
 - [Brand architecture](brand.md)
 - [Product direction: How We Know](product-direction.md)
 - [Reversible claim dossiers](dossiers.md)
+- [Forensic-editorial design system](design-system.md)
 - [Production domain topology](../ops/hosting/dns.md)
 
 Machine-readable authority lives in the constitution, policies, schemas, task contracts, accepted event history, and release manifests. Documentation explains those objects but does not silently override them.
