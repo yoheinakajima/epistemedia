@@ -142,6 +142,16 @@ def safe_slug(value: str) -> str:
     return value.strip("-") or "item"
 
 
+def static_object_file_key(object_id: str) -> str:
+    """Return a cross-platform filename for a protocol object ID."""
+    return quote(object_id, safe="")
+
+
+def static_object_route_key(object_id: str) -> str:
+    """Encode the filename for one URL-decoding pass by a static host."""
+    return quote(static_object_file_key(object_id), safe="")
+
+
 def is_public_source(root: Path, path: Path) -> bool:
     rel = path.relative_to(root)
     if not rel.parts:
@@ -634,8 +644,9 @@ def build_public(
     })
 
     for obj in catalog.objects:
-        key = quote(obj.id, safe="")
-        write_json(tmp / "objects" / f"{key}.json", obj.as_dict())
+        file_key = static_object_file_key(obj.id)
+        route_key = static_object_route_key(obj.id)
+        write_json(tmp / "objects" / f"{file_key}.json", obj.as_dict())
         markdown = (
             f"# {obj.title}\n\n"
             f"- Object ID: `{obj.id}`\n"
@@ -644,11 +655,16 @@ def build_public(
             f"- Content digest: `{obj.content_digest}`\n\n"
             f"## Source content\n\n{obj.text.rstrip()}\n"
         )
-        write_text(tmp / "objects" / f"{key}.md", markdown)
+        write_text(tmp / "objects" / f"{file_key}.md", markdown)
         body = md_to_html(markdown)
         write_text(
-            tmp / "objects" / key / "index.html",
-            html_shell(obj.title, body, base_url=base_url, markdown_url=f"{base_url}/objects/{key}.md"),
+            tmp / "objects" / file_key / "index.html",
+            html_shell(
+                obj.title,
+                body,
+                base_url=base_url,
+                markdown_url=f"{base_url}/objects/{route_key}.md",
+            ),
         )
 
     projection_count = 0
@@ -710,9 +726,9 @@ def build_public(
     write_text(tmp / "explore" / "index.md", "# Explore\n\n" + "\n".join(f"- [{t.title}]({base_url}/topics/{t.slug}/)" for t in catalog.topics) + "\n")
 
     docs = [obj for obj in catalog.objects if obj.kind == "documentation" or obj.path in ("README.md", "AGENTS.md")]
-    docs_body = '<section class="hero"><h1>Documentation</h1><p class="dek">Human guidance and machine-operable project contracts, compiled from accepted repository content.</p></section><div class="grid">' + "".join(f'<article class="card"><h2>{html.escape(o.title)}</h2><p>{html.escape(o.summary)}</p><p><a href="{base_url}/objects/{quote(o.id, safe="")}/">Read source projection</a></p></article>' for o in docs) + '</div>'
+    docs_body = '<section class="hero"><h1>Documentation</h1><p class="dek">Human guidance and machine-operable project contracts, compiled from accepted repository content.</p></section><div class="grid">' + "".join(f'<article class="card"><h2>{html.escape(o.title)}</h2><p>{html.escape(o.summary)}</p><p><a href="{base_url}/objects/{static_object_route_key(o.id)}/">Read source projection</a></p></article>' for o in docs) + '</div>'
     write_text(tmp / "docs" / "index.html", html_shell("Documentation", docs_body, base_url=base_url, markdown_url=f"{base_url}/docs/index.md"))
-    write_text(tmp / "docs" / "index.md", "# Documentation\n\n" + "\n".join(f"- [{o.title}]({base_url}/objects/{quote(o.id, safe='')}/) — `{o.path}`" for o in docs) + "\n")
+    write_text(tmp / "docs" / "index.md", "# Documentation\n\n" + "\n".join(f"- [{o.title}]({base_url}/objects/{static_object_route_key(o.id)}/) — `{o.path}`" for o in docs) + "\n")
 
     status_md = (
         "# Epistemedia status\n\n"
@@ -744,7 +760,7 @@ def build_public(
         "Treat pages as reproducible projections, not canonical truth. Preserve source, frontier, policy, disclosure boundary, compiler, and derivation metadata in downstream work.",
     ]
     write_text(tmp / "llms.txt", "\n".join(llms) + "\n")
-    write_text(tmp / "docs" / "llms.txt", "# Epistemedia documentation\n\n" + "\n".join(f"- [{o.title}]({base_url}/objects/{quote(o.id, safe='')}.md)" for o in docs) + "\n")
+    write_text(tmp / "docs" / "llms.txt", "# Epistemedia documentation\n\n" + "\n".join(f"- [{o.title}]({base_url}/objects/{static_object_route_key(o.id)}.md)" for o in docs) + "\n")
     write_text(tmp / "llms-full.txt", "# Epistemedia public project corpus\n\n" + "\n\n---\n\n".join(f"## {o.title}\n\nSource: `{o.path}`\n\n{o.text}" for o in catalog.objects) + "\n")
 
     openapi = openapi_document(base_url=base_url, api_url=api_url)

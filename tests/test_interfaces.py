@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import json
 from pathlib import Path
+from urllib.parse import quote, unquote
 
 from epistemedia.cli import main
 from epistemedia.core import (
@@ -90,6 +91,17 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert discovery["human"] == "https://epistemedia.org"
     assert discovery["api"] == "https://api.epistemedia.org/v1"
     assert discovery["mcp"] == "https://mcp.epistemedia.org/mcp"
+
+    obj = next(obj for obj in PublicCatalog.build(ROOT).objects if obj.kind == "documentation")
+    file_key = quote(obj.id, safe="")
+    route_key = quote(file_key, safe="")
+    docs_html = (public / "docs" / "index.html").read_text()
+    docs_llms = (public / "docs" / "llms.txt").read_text()
+    assert f"/objects/{route_key}/" in docs_html
+    assert f"/objects/{route_key}.md" in docs_llms
+    assert unquote(route_key) == file_key
+    assert (public / "objects" / file_key / "index.html").exists()
+    assert (public / "objects" / f"{file_key}.md").exists()
 
 
 def test_topic_lenses_share_source_frontier() -> None:
