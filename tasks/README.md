@@ -29,5 +29,10 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0013` — harden public API identity and MCP 2026-07-28 transport conformance (ready)
 - `EM-0014` — bound the container context and preserve accepted release identity (ready)
 - `EM-0015` — make the installed wheel CLI self-contained (ready)
+- `EM-0016` — correct public status and projection-shell defects (ready)
+- `EM-0017` — implement the forensic-editorial public design system (ready; depends on `EM-0016`)
+- `EM-0018` — implement a reversible claim-dossier model (ready; application-level, not protocol-normative)
+- `EM-0019` — research the first How We Know lineage case (ready; depends on `EM-0018`)
+- `EM-0020` — compile the first How We Know evidence experience (ready; depends on `EM-0017` and `EM-0019`)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.

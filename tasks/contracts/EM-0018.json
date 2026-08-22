@@ -1,0 +1,54 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0018",
+  "title": "Implement a reversible claim-dossier model",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Implement a deliberately application-level, reversible dossier format sufficient to represent one How We Know vertical slice with source works, editions, exact spans, propositions, assertions, evidence relations, dependence, and claim families without prematurely declaring a stable protocol ontology.",
+  "depends_on": [
+    "EM-0016"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "catalog/dossiers/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "research/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "strict dossier validation and content-addressing tests",
+    "source-span bounds and digest verification",
+    "referential-closure and missing-dependency rejection tests",
+    "dependence-cycle and unknown-lineage handling tests",
+    "private-only mutation noninterference tests",
+    "cross-interface identity parity tests"
+  ],
+  "acceptance": [
+    "source work identity is distinct from the exact edition or snapshot examined",
+    "every represented source span names its edition, locator, exact quoted or structured extent, and digest",
+    "propositions are distinct from actor assertions and policy-relative evaluations",
+    "support, rebuttal, qualification, undercutting, replication, and dependence remain representable",
+    "unknown lineage is explicit and earns no automatic independence credit",
+    "no dossier object contains an intrinsic global truth or confidence field",
+    "invalid spans, dangling relations, duplicate stable IDs, and malformed dependence references fail closed",
+    "HTML, Markdown, JSON, API, MCP, and CLI adapters can consume one disclosure-safe dossier identity",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "The dossier format is an alpha application contract, not an accepted replacement for the normative event envelope or a universal ontology.",
+    "Promotion into schemas or protocol guarantees requires a later protocol-normative task with independent evaluation and compatibility analysis.",
+    "This task provides validated structure and fixtures; it does not admit public empirical or philosophical conclusions."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0016",
+  "title": "Correct public status and projection-shell defects",
+  "status": "ready",
+  "change_class": "maintenance",
+  "objective": "Make the accepted public documentation and static projection shell accurately describe the live canonical site and current corpus while removing duplicate headings and affordances that overstate lens differentiation.",
+  "depends_on": [
+    "EM-0001"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "docs/**",
+      "src/**",
+      "tests/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "catalog/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "live-state claims checked against accepted activation evidence",
+    "HTML heading hierarchy and canonical-link tests",
+    "desktop and narrow-viewport projection smoke tests",
+    "existing deterministic build and disclosure audit"
+  ],
+  "acceptance": [
+    "README and launch-facing documentation state that the canonical HTTPS site is live while the sharing redirect and hosted API/MCP remain unproved",
+    "the homepage honestly identifies the self-describing bootstrap corpus until an external dossier is accepted",
+    "default topic pages contain one top-level heading rather than a duplicated title and description",
+    "public lens affordances do not imply material policy divergence that the compiler does not implement",
+    "canonical URLs, Markdown twins, object routes, manifests, and machine interfaces retain their identities and expected content types",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task does not redesign the visual system, introduce an external dossier, change protocol schemas or policies, activate episte.media, or deploy API/MCP.",
+    "Correct status prose is provider-read-back documentation, not a claim that every planned public service is live."
+  ]
+}
