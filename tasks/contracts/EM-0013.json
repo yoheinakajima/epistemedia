@@ -1,0 +1,65 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0013",
+  "title": "Harden the public API and modern MCP transport",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Bring the read-only public gateway into explicit MCP 2026-07-28 Streamable HTTP conformance, expose complete public-projection identity on API responses, and define bounded request, rate, and timeout controls before external deployment.",
+  "depends_on": [
+    "EM-0008"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**",
+      "Dockerfile",
+      "compose.yaml",
+      "pyproject.toml",
+      "server.json"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "schemas/**",
+      "policies/**",
+      "catalog/**",
+      "governance/events/**",
+      "tasks/contracts/EM-0001.json",
+      "tasks/contracts/EM-0002.json",
+      "tasks/contracts/EM-0003.json",
+      "tasks/contracts/EM-0004.json",
+      "tasks/contracts/EM-0005.json",
+      "tasks/contracts/EM-0006.json",
+      "tasks/contracts/EM-0007.json",
+      "tasks/contracts/EM-0008.json",
+      "tasks/contracts/EM-0009.json",
+      "tasks/contracts/EM-0010.json",
+      "tasks/contracts/EM-0011.json",
+      "tasks/contracts/EM-0012.json"
+    ]
+  },
+  "required_evaluation": [
+    "MCP 2026-07-28 request-metadata and Streamable HTTP conformance tests",
+    "adversarial Origin, header-mismatch, malformed-message, and oversized-body tests",
+    "API and MCP public-projection identity parity tests",
+    "deployment resource-limit review"
+  ],
+  "acceptance": [
+    "the MCP endpoint implements the stateless POST shape of Streamable HTTP 2026-07-28 and rejects unsupported HTTP methods",
+    "Origin is validated before request-body processing",
+    "required Accept, Content-Type, MCP-Protocol-Version, Mcp-Method, and Mcp-Name metadata is validated against the JSON-RPC body with protocol-defined structured errors",
+    "server/discover, version mismatch, unknown method, invalid request, and notification responses follow the 2026-07-28 result and error contracts",
+    "public API envelopes expose commit, catalog, frontier, policy, compiler, and deterministic content-digest identity",
+    "anonymous request body, query, response, rate, and timeout limits are explicit and covered proportionally before deployment",
+    "the gateway performs no arbitrary network fetch and exposes no tool that writes accepted knowledge or governance",
+    "local stdio MCP remains available through the CLI",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task does not activate a hosted API or MCP endpoint and must not describe local conformance as production availability.",
+    "Provider-edge rate and timeout enforcement still requires deployment-specific read-back.",
+    "This task does not change the protected Epistemic Mesh identifier namespace governed by EM-0009."
+  ]
+}
