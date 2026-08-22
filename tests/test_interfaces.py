@@ -1,8 +1,11 @@
 from __future__ import annotations
 
 import asyncio
+import base64
 import json
 import subprocess
+import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, unquote
@@ -17,7 +20,7 @@ from epistemedia.core import (
     topic_projection,
     validate_repository,
 )
-from epistemedia.server import Gateway, Request
+from epistemedia.server import Gateway, Request, tool_definitions
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -154,13 +157,79 @@ def test_search_is_stable() -> None:
     assert catalog.search("Epistemedia") == catalog.search("Epistemedia")
 
 
+def mcp_params(**values: object) -> dict[str, object]:
+    return {
+        **values,
+        "_meta": {
+            "io.modelcontextprotocol/protocolVersion": PROTOCOL_VERSION,
+            "io.modelcontextprotocol/clientInfo": {
+                "name": "epistemedia-tests",
+                "version": "1",
+            },
+            "io.modelcontextprotocol/clientCapabilities": {},
+        },
+    }
+
+
+def mcp_request(
+    method: str,
+    params: dict[str, object] | None = None,
+    *,
+    request_id: object = 1,
+    origin: str | None = "https://epistemedia.org",
+) -> Request:
+    body_params = params or mcp_params()
+    headers = {
+        "accept": "application/json, text/event-stream",
+        "content-type": "application/json; charset=utf-8",
+        "mcp-protocol-version": str(
+            body_params.get("_meta", {}).get(
+                "io.modelcontextprotocol/protocolVersion", ""
+            )
+        ),
+        "mcp-method": method,
+    }
+    if origin is not None:
+        headers["origin"] = origin
+    if method in {"tools/call", "prompts/get"} and "name" in body_params:
+        headers["mcp-name"] = str(body_params["name"])
+    if method == "resources/read" and "uri" in body_params:
+        headers["mcp-name"] = str(body_params["uri"])
+    message = {"jsonrpc": "2.0", "method": method, "params": body_params}
+    if request_id is not None:
+        message["id"] = request_id
+    return Request("POST", "/mcp", {}, headers, json.dumps(message).encode())
+
+
 def test_api_and_mcp_expose_same_catalog() -> None:
     gateway = Gateway(ROOT)
     status, _, api = gateway.handle_api(Request("GET", "/v1/status", {}, {}, b""))
     assert status == 200
-    mcp = gateway.mcp_method("server/discover", {})
+    mcp_status, _, mcp_response = gateway.handle_mcp(mcp_request("server/discover"))
+    assert mcp_status == 200
+    mcp = mcp_response["result"]
     assert api["catalog_id"] == gateway.catalog().catalog_id
-    assert mcp["protocolVersion"] == PROTOCOL_VERSION
+    assert api["commit"] == gateway.catalog().commit
+    assert api["policies"] == gateway.catalog().policies
+    assert len(api["content_digest"]) == 64
+    assert mcp["catalog_id"] == api["catalog_id"]
+    assert mcp["frontier"] == api["frontier"]
+    assert mcp["commit"] == api["commit"]
+    assert mcp["policies"] == api["policies"]
+    assert mcp["compiler"] == api["compiler"]
+    assert len(mcp["content_digest"]) == 64
+    assert gateway.decorate_mcp_result(mcp) == mcp
+    assert mcp["supportedVersions"] == [PROTOCOL_VERSION]
+    assert mcp["resultType"] == "complete"
+    assert mcp["_meta"]["io.modelcontextprotocol/serverInfo"]["version"]
+
+    error_status, _, error = gateway.handle_api(
+        Request("GET", "/v1/objects/not-an-object", {}, {}, b"")
+    )
+    assert error_status == 404
+    assert error["commit"] == gateway.catalog().commit
+    assert error["policies"] == gateway.catalog().policies
+    assert len(error["content_digest"]) == 64
 
 
 def test_mcp_tool_result_carries_catalog_and_frontier() -> None:
@@ -169,51 +238,207 @@ def test_mcp_tool_result_carries_catalog_and_frontier() -> None:
     structured = result["structuredContent"]
     assert structured["catalog_id"] == gateway.catalog().catalog_id
     assert structured["frontier"] == gateway.catalog().frontier
+    assert structured["policies"] == gateway.catalog().policies
+    assert len(structured["content_digest"]) == 64
     assert result["isError"] is False
+
+    resource = gateway.mcp_method("resources/read", {"uri": "epistemedia://status"})
+    assert resource["resultType"] == "complete"
+    assert resource["ttlMs"] == 60000
+    assert resource["cacheScope"] == "public"
 
 
 def test_mcp_rejects_unknown_protocol() -> None:
     gateway = Gateway(ROOT)
-    status, _, result = gateway.handle_mcp(
-        Request(
-            "POST",
-            "/mcp",
-            {},
-            {"mcp-protocol-version": "1900-01-01"},
-            json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {}}).encode(),
-        )
-    )
+    request = mcp_request("tools/list")
+    request.headers["mcp-protocol-version"] = "1900-01-01"
+    message = json.loads(request.body)
+    message["params"]["_meta"]["io.modelcontextprotocol/protocolVersion"] = "1900-01-01"
+    request.body = json.dumps(message).encode()
+    status, _, result = gateway.handle_mcp(request)
     assert status == 400
-    assert result["error"]["message"] == "UnsupportedProtocolVersion"
+    assert result["error"]["code"] == -32022
+    assert result["error"]["data"] == {
+        "supported": [PROTOCOL_VERSION],
+        "requested": "1900-01-01",
+    }
 
 
 def test_mcp_rejects_untrusted_origin() -> None:
     gateway = Gateway(ROOT)
-    status, _, _ = gateway.handle_mcp(
-        Request(
-            "POST",
-            "/mcp",
-            {},
-            {"origin": "https://attacker.example", "mcp-protocol-version": PROTOCOL_VERSION},
-            json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {}}).encode(),
-        )
+    status, headers, result = gateway.handle_mcp(
+        mcp_request("tools/list", origin="https://attacker.example")
     )
     assert status == 403
+    assert "access-control-allow-origin" not in headers
+    assert result["error"]["code"] == -32003
+
+    rebinding = mcp_request("tools/list", origin="http://localhost:@attacker.example")
+    assert gateway.handle_mcp(rebinding)[0] == 403
 
 
 def test_mcp_accepts_controlled_production_origin() -> None:
     gateway = Gateway(ROOT)
-    status, _, result = gateway.handle_mcp(
-        Request(
-            "POST",
-            "/mcp",
-            {},
-            {"origin": "https://epistemedia.org", "mcp-protocol-version": PROTOCOL_VERSION},
-            json.dumps({"jsonrpc": "2.0", "id": 1, "method": "tools/list", "params": {}}).encode(),
-        )
-    )
+    status, headers, result = gateway.handle_mcp(mcp_request("tools/list"))
     assert status == 200
+    assert headers["access-control-allow-origin"] == "https://epistemedia.org"
     assert result["id"] == 1
+    assert result["result"]["resultType"] == "complete"
+    assert "io.modelcontextprotocol/serverInfo" in result["result"]["_meta"]
+
+
+def test_mcp_rejects_header_body_mismatch_and_missing_name() -> None:
+    gateway = Gateway(ROOT)
+    request = mcp_request("tools/list")
+    request.headers["mcp-method"] = "resources/list"
+    status, _, result = gateway.handle_mcp(request)
+    assert status == 400
+    assert result["error"]["code"] == -32020
+
+    call = mcp_request(
+        "tools/call",
+        mcp_params(name="search_knowledge", arguments={"query": "governance"}),
+    )
+    del call.headers["mcp-name"]
+    status, _, result = gateway.handle_mcp(call)
+    assert status == 400
+    assert result["error"]["code"] == -32020
+
+
+def test_mcp_accepts_base64_name_and_rejects_unknown_method() -> None:
+    gateway = Gateway(ROOT)
+    uri = "epistemedia://status"
+    request = mcp_request("resources/read", mcp_params(uri=uri))
+    request.headers["mcp-name"] = "=?base64?" + base64.b64encode(uri.encode()).decode() + "?="
+    assert gateway.handle_mcp(request)[0] == 200
+
+    status, _, result = gateway.handle_mcp(mcp_request("not/a-method"))
+    assert status == 404
+    assert result["error"]["code"] == -32601
+
+    status, _, result = gateway.handle_mcp(
+        mcp_request("prompts/get", mcp_params(name="not-supported"))
+    )
+    assert status == 404
+    assert result["error"]["code"] == -32601
+
+
+def test_mcp_streamable_http_rejects_get_delete_and_http_cancellation() -> None:
+    gateway = Gateway(ROOT)
+    for method in ("GET", "DELETE"):
+        status, headers, result = gateway.handle_mcp(
+            Request(method, "/mcp", {}, {"origin": "https://epistemedia.org"}, b"")
+        )
+        assert status == 405
+        assert headers["allow"] == "POST, OPTIONS"
+        assert result["error"]["code"] == -32600
+
+    status, _, result = gateway.handle_mcp(
+        mcp_request("notifications/cancelled", request_id=None)
+    )
+    assert status == 404
+    assert result["error"]["code"] == -32601
+    assert "id" not in result
+
+    missing_id = mcp_request("tools/list", request_id=None)
+    status, _, result = gateway.handle_mcp(missing_id)
+    assert status == 400
+    assert result["error"]["code"] == -32600
+    assert "id" not in result
+
+
+def test_mcp_parse_error_omits_unknown_request_id() -> None:
+    gateway = Gateway(ROOT)
+    request = mcp_request("tools/list")
+    request.body = b"{"
+    status, _, result = gateway.handle_mcp(request)
+    assert status == 400
+    assert result["error"]["code"] == -32700
+    assert "id" not in result
+
+
+def test_mcp_request_meta_is_required_for_stdio() -> None:
+    gateway = Gateway(ROOT)
+    request_id, method, params = gateway.validate_mcp_request(
+        {
+            "jsonrpc": "2.0",
+            "id": "discover",
+            "method": "server/discover",
+            "params": mcp_params(),
+        }
+    )
+    assert (request_id, method) == ("discover", "server/discover")
+    assert params["_meta"]["io.modelcontextprotocol/protocolVersion"] == PROTOCOL_VERSION
+
+
+def test_stdio_mcp_serves_modern_discovery() -> None:
+    message = {
+        "jsonrpc": "2.0",
+        "id": "discover",
+        "method": "server/discover",
+        "params": mcp_params(),
+    }
+    completed = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "epistemedia",
+            "--root",
+            str(ROOT),
+            "mcp",
+            "serve",
+        ],
+        cwd=ROOT,
+        input=json.dumps(message) + "\n",
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    response = json.loads(completed.stdout)
+    assert response["id"] == "discover"
+    assert response["result"]["supportedVersions"] == [PROTOCOL_VERSION]
+    assert response["result"]["resultType"] == "complete"
+
+
+def test_stdio_mcp_parse_error_does_not_reuse_a_prior_request_id() -> None:
+    message = {
+        "jsonrpc": "2.0",
+        "id": "first",
+        "method": "server/discover",
+        "params": mcp_params(),
+    }
+    completed = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "epistemedia",
+            "--root",
+            str(ROOT),
+            "mcp",
+            "serve",
+        ],
+        cwd=ROOT,
+        input=json.dumps(message) + "\n{\n",
+        text=True,
+        capture_output=True,
+        check=True,
+    )
+    responses = [json.loads(line) for line in completed.stdout.splitlines()]
+    assert responses[0]["id"] == "first"
+    assert responses[1]["error"]["code"] == -32700
+    assert "id" not in responses[1]
+
+
+def test_public_gateway_exposes_only_read_only_closed_world_tools() -> None:
+    source = (ROOT / "src" / "epistemedia" / "server.py").read_text()
+    assert "urlopen(" not in source
+    assert "httpx" not in source
+    assert "requests." not in source
+    tools = tool_definitions()
+    assert tools
+    assert all(tool["annotations"]["readOnlyHint"] is True for tool in tools)
+    assert all(tool["annotations"]["destructiveHint"] is False for tool in tools)
+    assert all(tool["annotations"]["openWorldHint"] is False for tool in tools)
 
 
 def test_public_projection_excludes_private_tree(tmp_path: Path) -> None:
@@ -264,3 +489,103 @@ def test_asgi_status_smoke() -> None:
     assert sent[0]["status"] == 200
     body = json.loads(sent[1]["body"])
     assert body["catalog_id"] == gateway.catalog().catalog_id
+    assert body["commit"] == gateway.catalog().commit
+    assert body["policies"] == gateway.catalog().policies
+    assert len(body["content_digest"]) == 64
+
+
+def test_asgi_rejects_origin_before_consuming_mcp_body() -> None:
+    gateway = Gateway(ROOT)
+    sent: list[dict] = []
+    receive_calls = 0
+
+    async def receive() -> dict:
+        nonlocal receive_calls
+        receive_calls += 1
+        raise AssertionError("untrusted MCP body must not be consumed")
+
+    async def send(message: dict) -> None:
+        sent.append(message)
+
+    scope = {
+        "type": "http",
+        "method": "POST",
+        "path": "/mcp",
+        "query_string": b"",
+        "headers": [(b"origin", b"https://attacker.example")],
+        "client": ("192.0.2.10", 1234),
+    }
+    asyncio.run(gateway(scope, receive, send))
+    assert receive_calls == 0
+    assert sent[0]["status"] == 403
+    assert json.loads(sent[1]["body"])["error"]["code"] == -32003
+
+
+def test_asgi_enforces_body_query_response_rate_and_timeout_limits() -> None:
+    async def invoke(
+        gateway: Gateway,
+        *,
+        path: str = "/v1/status",
+        query: bytes = b"",
+        headers: list[tuple[bytes, bytes]] | None = None,
+        body: bytes = b"",
+    ) -> list[dict]:
+        sent: list[dict] = []
+        incoming = iter(
+            [{"type": "http.request", "body": body, "more_body": False}]
+        )
+
+        async def receive() -> dict:
+            return next(incoming)
+
+        async def send(message: dict) -> None:
+            sent.append(message)
+
+        await gateway(
+            {
+                "type": "http",
+                "method": "GET" if path != "/mcp" else "POST",
+                "path": path,
+                "query_string": query,
+                "headers": headers or [],
+                "client": ("192.0.2.20", 4321),
+            },
+            receive,
+            send,
+        )
+        return sent
+
+    body_limited = Gateway(ROOT, max_body_bytes=10)
+    oversized = asyncio.run(
+        invoke(
+            body_limited,
+            path="/mcp",
+            headers=[(b"content-length", b"11")],
+        )
+    )
+    assert oversized[0]["status"] == 413
+
+    query_limited = Gateway(ROOT, max_query_bytes=4)
+    assert asyncio.run(invoke(query_limited, query=b"q=large"))[0]["status"] == 414
+
+    response_limited = Gateway(ROOT, max_response_bytes=100)
+    response = asyncio.run(invoke(response_limited))
+    assert response[0]["status"] == 500
+    assert json.loads(response[1]["body"])["error"] == "response_too_large"
+
+    rate_limited = Gateway(ROOT, rate_limit_per_minute=1)
+    assert asyncio.run(invoke(rate_limited))[0]["status"] == 200
+    rate_response = asyncio.run(invoke(rate_limited))
+    assert rate_response[0]["status"] == 429
+
+    timeout_limited = Gateway(ROOT, request_timeout_seconds=0.001)
+    original_dispatch = timeout_limited.dispatch
+
+    def slow_dispatch(request: Request) -> tuple[int, dict[str, str], object]:
+        time.sleep(0.02)
+        return original_dispatch(request)
+
+    timeout_limited.dispatch = slow_dispatch  # type: ignore[method-assign]
+    timeout_response = asyncio.run(invoke(timeout_limited))
+    assert timeout_response[0]["status"] == 504
+    assert json.loads(timeout_response[1]["body"])["error"] == "request_timeout"

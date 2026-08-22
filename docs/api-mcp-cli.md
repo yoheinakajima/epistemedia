@@ -57,7 +57,7 @@ epistemedia://topic/{slug}
 epistemedia://object/{id}
 ```
 
-The HTTP adapter enforces the supported MCP protocol version on non-discovery requests, checks browser Origins, returns protocol-level errors for unsupported versions or methods, and marks public lists as cacheable. The stdio adapter is available through the CLI for local clients.
+The HTTP adapter implements the stateless MCP 2026-07-28 Streamable HTTP binding. It validates each request's protocol and mirrored transport metadata, checks browser Origins before consuming the body, returns protocol-level errors for unsupported versions or methods, and marks public lists as cacheable. The stdio adapter carries the same modern request metadata inline and is available through the CLI for local clients. Deployment limits and exact environment variables are defined in [the public API and MCP deployment contract](api-mcp-deployment.md).
 
 A future authenticated contribution server will be a separate authority surface. Its tools create proposals and receipts but cannot admit their own output.
 
