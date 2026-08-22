@@ -119,6 +119,7 @@ a:focus-visible,summary:focus-visible{
 .brand{
   display:inline-flex;
   align-items:center;
+  min-height:44px;
   gap:.55rem;
   color:var(--ink);
   font-weight:760;
@@ -138,6 +139,9 @@ a:focus-visible,summary:focus-visible{
 }
 nav{display:flex;align-items:center;gap:1.1rem}
 nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
   color:var(--ink);
   font-size:.82rem;
   font-weight:720;

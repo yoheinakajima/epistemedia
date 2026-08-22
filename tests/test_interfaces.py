@@ -230,6 +230,7 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
     assert "@media (max-width:640px)" in home_html
     assert "grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr))" in home_html
     assert "word-break:break-word" in home_html
+    assert "min-height:44px" in home_html
     assert "brand-mark" in home_html
     assert "docket-card" in home_html
     assert "Reproducible projection" in home_html
