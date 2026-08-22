@@ -1,0 +1,1376 @@
+{
+  "format": "epistemedia-research-review-receipt-v0.1",
+  "reviewer": {
+    "id": "codex-independent-reviewer",
+    "fresh_clone": true,
+    "independent_retrieval": true,
+    "authoring_agent_artifacts_used": false,
+    "notes": "Fresh independent clone at /private/tmp/em0019-review-025677.I0LGOi/candidate. The reviewer reused only its own independently retrieved artifacts and authoritative read-backs from the immediately preceding full audit of parent 025677b. Successor 37161f2 is a one-commit formatting-only child whose candidate-dossier blob is byte-identical. Authoring-agent temporary artifacts were never used. Artifact hashes, dynamic semantic identities, every span binding, Ruff, builder drift, retrieval, receipt gate, full check, and clean Git state were rerun at the exact reviewed head."
+  },
+  "repository": {
+    "url": "https://github.com/yoheinakajima/epistemedia",
+    "reviewed_head": "37161f25cbc76380cce72f57f370275f22f96a77",
+    "reviewed_base": "fb80f1b0e740ff51ecc4dc8932648dc920cad3c2",
+    "reviewed_tree": "4bcb7f61292eb8d358ea67d63ee9baf598651852",
+    "diff_sha256": "a6a920390ef13c7931c9168b8443f0b28153b975d881081146870f8e8f6a04df",
+    "dossier_id": "em:dossier:sha256:4339d6d6d52b9b534d2e63c95f52ff3cf90be5264f567762f47bab9af4d945a7",
+    "packet_sha256": "43f06cbce51df590865cf2f9cf6b23f45cfbf35b5934b4681bdeea8c135d91d6",
+    "candidate_files": [
+      {
+        "path": "research/how-we-know/corrections-backfire/README.md",
+        "sha256": "57b2e78e0fdc278d207677fe8431671ed9741fac9a607c4e1ee379141850cb19",
+        "bytes": 34043
+      },
+      {
+        "path": "research/how-we-know/corrections-backfire/build_candidate.py",
+        "sha256": "c81ab834a68961294091c6f42495e5a7618994126bbcfdf2f86cf34106a9ac6e",
+        "bytes": 173799
+      },
+      {
+        "path": "research/how-we-know/corrections-backfire/candidate-dossier.json",
+        "sha256": "7003413e286e4d310f81441db33f4a467ba2eb3e08f41ddfa3cef5abb34707ca",
+        "bytes": 214499
+      },
+      {
+        "path": "research/how-we-know/corrections-backfire/verify_retrievals.py",
+        "sha256": "f026c8a15de276b2e4cf5a7dd77f67ee637a609b506157cf457c9c03739984bc",
+        "bytes": 38067
+      }
+    ]
+  },
+  "started_at": "2026-08-22T18:24:00Z",
+  "completed_at": "2026-08-22T18:31:34Z",
+  "git_state": {
+    "fresh_clone": true,
+    "pre_review_clean": true,
+    "post_review_clean": true,
+    "unchanged_during_review": true,
+    "pre_review_head": "37161f25cbc76380cce72f57f370275f22f96a77",
+    "post_review_head": "37161f25cbc76380cce72f57f370275f22f96a77"
+  },
+  "commands": [
+    {
+      "argv": [
+        ".venv/bin/ruff",
+        "check",
+        "research/how-we-know/corrections-backfire/build_candidate.py",
+        "research/how-we-know/corrections-backfire/verify_retrievals.py"
+      ],
+      "cwd": "/private/tmp/em0019-review-025677.I0LGOi/candidate",
+      "started_at": "2026-08-22T18:29:35Z",
+      "completed_at": "2026-08-22T18:29:47Z",
+      "exit_code": 0,
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "research/how-we-know/corrections-backfire/build_candidate.py",
+        "--check"
+      ],
+      "cwd": "/private/tmp/em0019-review-025677.I0LGOi/candidate",
+      "started_at": "2026-08-22T18:29:51Z",
+      "completed_at": "2026-08-22T18:30:04Z",
+      "exit_code": 0,
+      "stdout_sha256": "b4b8ed9c16e78d2a1183336c8fa837b0376aab30d4b39f0eebdae8b919f60237",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        ".venv/bin/python",
+        "research/how-we-know/corrections-backfire/verify_retrievals.py",
+        "--artifact-dir",
+        "/private/tmp/em0019-review-025677.I0LGOi/artifacts"
+      ],
+      "cwd": "/private/tmp/em0019-review-025677.I0LGOi/candidate",
+      "started_at": "2026-08-22T18:30:08Z",
+      "completed_at": "2026-08-22T18:30:18Z",
+      "exit_code": 0,
+      "stdout_sha256": "4ecba57a95e50c94d16bb5490fa32ba894089652eb258dfa6535101bbe25206c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "make",
+        "check",
+        "PYTHON=.venv/bin/python"
+      ],
+      "cwd": "/private/tmp/em0019-review-025677.I0LGOi/candidate",
+      "started_at": "2026-08-22T18:30:22Z",
+      "completed_at": "2026-08-22T18:30:39Z",
+      "exit_code": 0,
+      "stdout_sha256": "70daf483a26fee3d0cf45a6ebcd6043a7949c05eda1bd49a232a38f3af3c2273",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "sources": [
+    {
+      "source_key": "edition-skurnik-2005-primary",
+      "edition_key": "edition-skurnik-2005",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://bear.warrington.ufl.edu/brenner/mar7588/Papers/skurnik-jcr2005.pdf",
+      "edition_label": "Journal PDF, volume 31, issue 4, pages 713–724; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/pdf",
+      "license_treatment": "All rights reserved in the examined journal PDF; only two short attributed abstract sentences are retained and the PDF is not redistributed.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "c4893504537d256cff0c37a58b17aca0d6ceda11d9c5cea1aa3c066a544108f2",
+        "bytes": 331989
+      }
+    },
+    {
+      "source_key": "edition-handbook-2011-primary",
+      "edition_key": "edition-handbook-2011",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://skepticalscience.com/Debunking-Handbook-Part-2-Familiarity-Backfire-Effect.html",
+      "edition_label": "Live HTML page including 2017 and 2020 update notices; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "text/html",
+      "license_treatment": "Copyright notice present and no page-wide reuse license confirmed; only short attributed excerpts and one bibliographic reference are retained.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "bfd2e4ff7e2a5cc5a0c8f2e7aee70680cdc5eabbcf2333c4ef2a7ac3e3cfc3c4",
+        "bytes": 89663
+      }
+    },
+    {
+      "source_key": "edition-schwarz-2016-primary",
+      "edition_key": "edition-schwarz-2016",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://journals.sagepub.com/doi/pdf/10.1177/237946151600200110",
+      "edition_label": "Publisher PDF, volume 2 issue 1, pages 85–95; independently read excerpt packet",
+      "retrieved_at": "2026-08-22T18:15:00Z",
+      "media_type": "application/pdf",
+      "license_treatment": "No article-specific Creative Commons grant was visible in the exact 2016 publisher rendition; it is treated as restricted and only quote-minimal transcript extents and metadata are retained.",
+      "snapshot": {
+        "status": "unavailable",
+        "attempted_url": "https://journals.sagepub.com/doi/pdf/10.1177/237946151600200110",
+        "http_failure": "Automated byte capture returned HTTP 403; the authoritative SAGE publisher PDF was independently read back and all seven exact spans matched."
+      }
+    },
+    {
+      "source_key": "edition-peter-koch-2016-primary",
+      "edition_key": "edition-peter-koch-2016",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://epub.ub.uni-muenchen.de/42583/1/1075547015613523.pdf",
+      "edition_label": "LMU institutional full-text PDF, 23 pages; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/pdf",
+      "license_treatment": "The LMU institutional full text carries no confirmed open reuse grant; only quote-minimal attributed result and method spans are retained and the PDF is not redistributed.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "ab18125517a34d469a3b644e0c7a3b6cfc0a59f82ac4c39e14845a65d73bc4ec",
+        "bytes": 118545
+      }
+    },
+    {
+      "source_key": "edition-wilson-park-2008-primary",
+      "edition_key": "edition-wilson-park-2008",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=18394856&retmode=xml",
+      "edition_label": "PubMed XML record, PMID 18394856; abstract excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/xml",
+      "license_treatment": "No open article reuse license was confirmed; only two quote-minimal attributed PubMed abstract spans are retained.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "230d805c865e5f4348b46e5adaeba5cb9a09081ab1d87c7a2363c4597ebc44e1",
+        "bytes": 7630
+      }
+    },
+    {
+      "source_key": "edition-berinsky-2017-primary",
+      "edition_key": "edition-berinsky-2017",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://berinsky.mit.edu/files/2026/01/rumorshealthcare_2017.pdf",
+      "edition_label": "Author-hosted Cambridge journal PDF, 22 pages; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/pdf",
+      "license_treatment": "No open reuse license was confirmed for the author-hosted journal PDF; only three quote-minimal attributed design, result, and qualifier spans are retained.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "d5b189db8963f8d3b412d4bbf6cddb9cfa52198f330f54929519224f99975c78",
+        "bytes": 209237
+      }
+    },
+    {
+      "source_key": "edition-cameron-2013-primary",
+      "edition_key": "edition-cameron-2013",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC3772650/unicode",
+      "edition_label": "NCBI BioC XML, PMCID PMC3772650; author-manuscript excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/xml",
+      "license_treatment": "The examined NCBI author-manuscript XML permits text mining and fair-use treatment but states no open reuse license; only short attributed abstract results are retained.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "40b29203eb82caf07c0a0c8d46438f01efb21795b39941aea03b3c898cd36ecb",
+        "bytes": 78951
+      }
+    },
+    {
+      "source_key": "edition-ecker-2020-primary",
+      "edition_key": "edition-ecker-2020",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7447737/fullTextXML",
+      "edition_label": "Europe PMC JATS XML, PMCID PMC7447737; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/xml",
+      "license_treatment": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "15620a5e73fe87bb19f3f37c84a4d1a0f7efa9b50be3a5d2749a07f588eb4047",
+        "bytes": 208195
+      }
+    },
+    {
+      "source_key": "edition-ecker-short-2020-primary",
+      "edition_key": "edition-ecker-short-2020",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://api.crossref.org/works/10.1111/bjop.12383",
+      "edition_label": "Crossref deposited abstract record; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/json",
+      "license_treatment": "Crossref identifies both accepted-manuscript and version-of-record content as Creative Commons Attribution-NonCommercial-NoDerivatives 4.0; one short attributed abstract result is retained.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "07408e83b8ff2702d8e7615829427bc2e93c5d0d586642ee5b67d05eb78c6ee5",
+        "bytes": 10954
+      }
+    },
+    {
+      "source_key": "edition-ecker-hogan-2017-primary",
+      "edition_key": "edition-ecker-hogan-2017",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://research-information.bris.ac.uk/ws/files/153248187/EckerHoganLewan_revTC.SL.pdf",
+      "edition_label": "Bristol accepted manuscript, 40 pages; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/pdf",
+      "license_treatment": "Bristol repository metadata labels the accepted manuscript CC BY-NC-ND; four quote-minimal attributed result and method extents are retained and the PDF is not redistributed.",
+      "snapshot": {
+        "status": "captured-dynamic",
+        "sha256": "e2ba7cf59f48526ddaea143050a7823649a2a94379a6bb60ed9197df6c74a660",
+        "bytes": 502333,
+        "semantic_sha256": "cbf940e71d4d1eb854ccac6150418ed0bbe31a0c697cee8408f4199097806e97",
+        "semantic_bytes": 65679,
+        "semantic_method": "pdftotext SOURCE.pdf -; raw stdout bytes"
+      }
+    },
+    {
+      "source_key": "edition-wahlheim-2020-primary",
+      "edition_key": "edition-wahlheim-2020",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.uncgmaclab.com/_files/ugd/1c6479_d45baca048334b0fb4149962f1d7e156.pdf",
+      "edition_label": "Coauthor-lab publisher PDF, 15 pages; abstract excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/pdf",
+      "license_treatment": "No open reuse license was confirmed for the coauthor-lab publisher PDF; only three quote-minimal attributed abstract sentences are retained.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "588addfe9659b726d04b1cc51e004d76a76a8cf73f6053d7bb10c00b1e378781",
+        "bytes": 1095068
+      }
+    },
+    {
+      "source_key": "edition-kemp-2022a-primary",
+      "edition_key": "edition-kemp-2022a",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9481799/fullTextXML",
+      "edition_label": "Europe PMC JATS XML, PMCID PMC9481799; abstract excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/xml",
+      "license_treatment": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "6a5fc0db04a875ece25cb374392b63c6a2d43d46f1b4f0ae295bce017d8606ef",
+        "bytes": 169173
+      }
+    },
+    {
+      "source_key": "edition-kemp-2022b-primary",
+      "edition_key": "edition-kemp-2022b",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9758464/fullTextXML",
+      "edition_label": "Europe PMC JATS XML, PMCID PMC9758464; abstract excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/xml",
+      "license_treatment": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "5540d1b2e31d199bf3623bd0e1f8e1788929a617aca80bd713ac09315e0bda01",
+        "bytes": 113222
+      }
+    },
+    {
+      "source_key": "edition-carnahan-garrett-2020-primary",
+      "edition_key": "edition-carnahan-garrett-2020",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://academic.oup.com/ijpor/article/32/3/530/5599865",
+      "edition_label": "Oxford Academic publisher HTML, volume 32 issue 3, pages 530–546; excerpt packet",
+      "retrieved_at": "2026-08-22T18:15:00Z",
+      "media_type": "text/html",
+      "license_treatment": "Publisher full text is publicly readable, but no open reuse license was confirmed; only four quote-minimal attributed result fragments are retained.",
+      "snapshot": {
+        "status": "unavailable",
+        "attempted_url": "https://academic.oup.com/ijpor/article/32/3/530/5599865",
+        "http_failure": "Automated byte capture returned HTTP 403; the authoritative Oxford Academic HTML was independently read back and all four exact spans matched."
+      }
+    },
+    {
+      "source_key": "edition-rich-zaragoza-2016-primary",
+      "edition_key": "edition-rich-zaragoza-2016",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.apa.org/pubs/journals/features/xlm-0000155.pdf",
+      "edition_label": "APA journal PDF, volume 42 issue 1, pages 62–74; read-back excerpt packet",
+      "retrieved_at": "2026-08-22T18:15:00Z",
+      "media_type": "application/pdf",
+      "license_treatment": "APA makes the journal PDF publicly readable but no open reuse license was confirmed; only quote-minimal result and design fragments are retained.",
+      "snapshot": {
+        "status": "unavailable",
+        "attempted_url": "https://www.apa.org/pubs/journals/features/xlm-0000155.pdf",
+        "http_failure": "The automated request returned an anti-bot HTML challenge instead of the APA PDF; authoritative publisher-PDF read-back matched all four exact spans."
+      }
+    },
+    {
+      "source_key": "edition-swire-2017-primary",
+      "edition_key": "edition-swire-2017",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.emc-lab.org/uploads/1/1/3/6/113627673/swire.2017.jeplmc.pdf",
+      "edition_label": "Coauthor-lab accepted manuscript, 46 pages; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/pdf",
+      "license_treatment": "No open reuse license was confirmed for the coauthor-lab manuscript; only three quote-minimal attributed result sentences are retained and the PDF is not redistributed.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "e0f690593e78099431b4d555ea1714d448482b2dd352f1acfa451c0da433c11b",
+        "bytes": 654850
+      }
+    },
+    {
+      "source_key": "edition-gordon-2019-primary",
+      "edition_key": "edition-gordon-2019",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.emc-lab.org/uploads/1/1/3/6/113627673/gordon.2019.jml_preprint.pdf",
+      "edition_label": "Coauthor-lab preprint, 41 pages; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/pdf",
+      "license_treatment": "The UWA repository record labels the accepted manuscript CC BY-NC-ND; the coauthor-lab preprint bytes are identified separately, two quote-minimal result extents are retained, and the PDF is not redistributed.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "23d389cd19eecb76c8e21ae52a6e5f029bcd44a9e0e399f013376f1ac670cf06",
+        "bytes": 747048
+      }
+    },
+    {
+      "source_key": "edition-prike-2023-primary",
+      "edition_key": "edition-prike-2023",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10317933/fullTextXML",
+      "edition_label": "Europe PMC JATS XML, PMCID PMC10317933; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/xml",
+      "license_treatment": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "a546f640397adf7ac208f040634e480181588e5c29e1a2c76f5a301ef728e019",
+        "bytes": 172943
+      }
+    },
+    {
+      "source_key": "edition-ecker-2023-primary",
+      "edition_key": "edition-ecker-2023",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10096191/fullTextXML",
+      "edition_label": "Europe PMC JATS XML, PMCID PMC10096191.1; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/xml",
+      "license_treatment": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "44ebae212686059b211ae7a9e8757958d8851d73b51513c6f9a2f9c9a518f88e",
+        "bytes": 167791
+      }
+    },
+    {
+      "source_key": "edition-autry-2021-primary",
+      "edition_key": "edition-autry-2021",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://api.crossref.org/works/10.1002/acp.3823",
+      "edition_label": "Publisher-deposited Crossref record plus publisher HTML qualifier; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/json",
+      "license_treatment": "Crossref identifies the version of record as CC BY 4.0; the excerpt packet also records publisher-HTML qualification and timing spans requiring independent read-back.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "39293b19eb31c866b74e5017f7af0377f52a227162b034ad1f4c84471e82906d",
+        "bytes": 9943
+      }
+    },
+    {
+      "source_key": "edition-autry-2021-data-1",
+      "edition_key": "edition-autry-2021",
+      "role": "data-artifact",
+      "label": "Experiment 1 inference data",
+      "url": "https://osf.io/download/37ewu/",
+      "edition_label": "Publisher-deposited Crossref record plus publisher HTML qualifier; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "license_treatment": "The OSF project yweu6 declares CC0 1.0 Universal at project scope; the workbook identity and digest are recorded, while its bytes remain outside the repository.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "bc069a90152b887116cd4972df4376844570ba25cefbfa1055668c78eeaca80a",
+        "bytes": 148954
+      }
+    },
+    {
+      "source_key": "edition-autry-2021-data-2",
+      "edition_key": "edition-autry-2021",
+      "role": "data-artifact",
+      "label": "Experiment 2 inference data",
+      "url": "https://osf.io/download/kqjm2/",
+      "edition_label": "Publisher-deposited Crossref record plus publisher HTML qualifier; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "license_treatment": "The OSF project yweu6 declares CC0 1.0 Universal at project scope; the workbook identity and digest are recorded, while its bytes remain outside the repository.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "de9f27b026ceadea0a6309ef695be06bc06c1fa35ba9209260f246d89b108ea5",
+        "bytes": 216736
+      }
+    },
+    {
+      "source_key": "edition-autry-2021-readback-1",
+      "edition_key": "edition-autry-2021",
+      "role": "readback",
+      "label": "Wiley version-of-record HTML",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1002/acp.3823",
+      "edition_label": "Publisher-deposited Crossref record plus publisher HTML qualifier; excerpt packet",
+      "retrieved_at": "2026-08-22T18:15:00Z",
+      "media_type": "text/html",
+      "license_treatment": "Crossref identifies the version of record as CC BY 4.0; the excerpt packet also records publisher-HTML qualification and timing spans requiring independent read-back.",
+      "snapshot": {
+        "status": "unavailable",
+        "attempted_url": "https://onlinelibrary.wiley.com/doi/10.1002/acp.3823",
+        "http_failure": "Direct automated full-page capture returned HTTP 403; the authoritative Wiley publisher HTML was independently read back and both exact spans matched."
+      }
+    },
+    {
+      "source_key": "edition-pluviano-2017-primary",
+      "edition_key": "edition-pluviano-2017",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5547702/fullTextXML",
+      "edition_label": "PLOS JATS XML; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/xml",
+      "license_treatment": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "87e363cb1cae5896c42c7e7e0295bd2e6969637473d14ff76deea3c740024377",
+        "bytes": 114003
+      }
+    },
+    {
+      "source_key": "edition-pluviano-2019-primary",
+      "edition_key": "edition-pluviano-2019",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.pure.ed.ac.uk/ws/portalfiles/portal/82242964/Parents_belief_in_misinformation.pdf",
+      "edition_label": "University of Edinburgh accepted manuscript; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/pdf",
+      "license_treatment": "Examined accepted manuscript retains author or publisher rights; two short attributed excerpts are retained and the PDF is not redistributed.",
+      "snapshot": {
+        "status": "captured-dynamic",
+        "sha256": "97b7132942e3ad7772bcd0123334429fbfc3bc1169975dc26ea7dccac3be0c71",
+        "bytes": 762139,
+        "semantic_sha256": "cd054a8f7e1bcb31a6d7f700b775eb936c9e0d3f43899cd8411b01f6252ff670",
+        "semantic_bytes": 36848,
+        "semantic_method": "pdftotext SOURCE.pdf -; raw stdout bytes"
+      }
+    },
+    {
+      "source_key": "edition-thomas-2024-primary",
+      "edition_key": "edition-thomas-2024",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://api.crossref.org/works/10.1002/acp.70004",
+      "edition_label": "Publisher-deposited Crossref record; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/json",
+      "license_treatment": "No open reuse license was confirmed for the version of record; only short attributed abstract fragments are retained and the article is not redistributed.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "f71d065da32f2179ff262008a863cae22aeec81b01e59997c994a1871e87bf23",
+        "bytes": 11291
+      }
+    },
+    {
+      "source_key": "edition-thomas-2024-data-1",
+      "edition_key": "edition-thomas-2024",
+      "role": "data-artifact",
+      "label": "Study data workbook",
+      "url": "https://osf.io/download/fg3dy/",
+      "edition_label": "Publisher-deposited Crossref record; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "license_treatment": "No separate OSF data license was confirmed; identity and digest only, with workbook bytes kept outside the repository.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "4a65116f6f10b02dc34b8353a228a16604a48ebcca576b2aae91ad5073f4d66c",
+        "bytes": 644279
+      }
+    },
+    {
+      "source_key": "edition-swire-thompson-2022-primary",
+      "edition_key": "edition-swire-thompson-2022",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC9283209/unicode",
+      "edition_label": "NCBI BioC XML, PMCID PMC9283209; author-manuscript excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/xml",
+      "license_treatment": "The examined NCBI author-manuscript XML permits text mining and fair-use treatment but states no open reuse license; only short attributed abstract results are retained.",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "0480d8d31af7c1525433838c91b8fc49f33997b95038ded5de40f255e54af5a2",
+        "bytes": 93558
+      }
+    },
+    {
+      "source_key": "edition-nibat-2026-primary",
+      "edition_key": "edition-nibat-2026",
+      "role": "primary-artifact",
+      "label": "primary artifact",
+      "url": "https://research.sabanciuniv.edu/id/eprint/54047/1/Familiarity.pdf",
+      "edition_label": "Sabanci University author-deposited Elsevier corrected proof; excerpt packet",
+      "retrieved_at": "2026-08-22T18:12:59Z",
+      "media_type": "application/pdf",
+      "license_treatment": "Creative Commons Attribution 4.0 International (CC BY 4.0).",
+      "snapshot": {
+        "status": "captured",
+        "sha256": "99075c8a58b19d3be262486ccb78b3508747887e350802e5b41b74390b13d3bc",
+        "bytes": 2525138
+      }
+    }
+  ],
+  "spans": [
+    {
+      "span_key": "span-skurnik-summary",
+      "edition_key": "edition-skurnik-2005",
+      "locator": "PDF p. 1 / journal p. 713, abstract sentences 1–2",
+      "expected_sha256": "2d22f873d571fdff486238903423656cbfc3898b9e24f75717bb0362a11aac07",
+      "observed_sha256": "2d22f873d571fdff486238903423656cbfc3898b9e24f75717bb0362a11aac07",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-handbook-claim",
+      "edition_key": "edition-handbook-2011",
+      "locator": "2011 body claim",
+      "expected_sha256": "30a1cfc7e15d1e118eef5e5ced5f740a25844257ed42d072e9cbc01d67b9b3cc",
+      "observed_sha256": "30a1cfc7e15d1e118eef5e5ced5f740a25844257ed42d072e9cbc01d67b9b3cc",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-handbook-advice",
+      "edition_key": "edition-handbook-2011",
+      "locator": "2011 body advice",
+      "expected_sha256": "b2236b1babdadf09a41a73c9a17357394acb7c199311616c3462316bb422c1c3",
+      "observed_sha256": "b2236b1babdadf09a41a73c9a17357394acb7c199311616c3462316bb422c1c3",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-handbook-experiment",
+      "edition_key": "edition-handbook-2011",
+      "locator": "2011 body flu-vaccine flyer description",
+      "expected_sha256": "ccb67c5572770ad83ed91140210055ec77b8721fd19ce9a83622015ae7b7295a",
+      "observed_sha256": "ccb67c5572770ad83ed91140210055ec77b8721fd19ce9a83622015ae7b7295a",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-handbook-delay",
+      "edition_key": "edition-handbook-2011",
+      "locator": "2011 body 30-minute delayed result",
+      "expected_sha256": "814f8857c0c6e296f8d1378fc74b6b0167a73b57da2bc212f04223ded5582705",
+      "observed_sha256": "814f8857c0c6e296f8d1378fc74b6b0167a73b57da2bc212f04223ded5582705",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-handbook-reference",
+      "edition_key": "edition-handbook-2011",
+      "locator": "Reference 1",
+      "expected_sha256": "2362dd80c41ec84228322fff7193530cc56f492705bab352f5512de96799a20d",
+      "observed_sha256": "2362dd80c41ec84228322fff7193530cc56f492705bab352f5512de96799a20d",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-handbook-update",
+      "edition_key": "edition-handbook-2011",
+      "locator": "2020 update notice",
+      "expected_sha256": "7ad3246f10605d4d66d88507f91cc933719dbe541f3bb3376f97ea3c95d7fe6d",
+      "observed_sha256": "7ad3246f10605d4d66d88507f91cc933719dbe541f3bb3376f97ea3c95d7fe6d",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-schwarz-claim",
+      "edition_key": "edition-schwarz-2016",
+      "locator": "Publisher HTML abstract opening",
+      "expected_sha256": "6410a398d753e08aabd80552eb9f3cc0efeab1292b9bf29a4296ec2deadffc46",
+      "observed_sha256": "6410a398d753e08aabd80552eb9f3cc0efeab1292b9bf29a4296ec2deadffc46",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-schwarz-skurnik-2005-delay",
+      "edition_key": "edition-schwarz-2016",
+      "locator": "PDF p. 6 / journal p. 90, delayed result sentence",
+      "expected_sha256": "f830d9e281ead40b6e1a43b9cb9c089586e397978927f067648e0b12eba20f50",
+      "observed_sha256": "f830d9e281ead40b6e1a43b9cb9c089586e397978927f067648e0b12eba20f50",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-schwarz-skurnik-2005-older",
+      "edition_key": "edition-schwarz-2016",
+      "locator": "PDF p. 6 / journal p. 90, older-adult sentence",
+      "expected_sha256": "87c9eaf08088574308ed8a0127b3af224a57b260d88d68cf79f858c508fcb07c",
+      "observed_sha256": "87c9eaf08088574308ed8a0127b3af224a57b260d88d68cf79f858c508fcb07c",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-schwarz-flu-2007-memory",
+      "edition_key": "edition-schwarz-2016",
+      "locator": "PDF p. 7 / journal p. 91, flu-flyer memory sentence",
+      "expected_sha256": "8f10ffa8ed64e11c7c75af0c1112b5130f165b76866db442e05d8dfd535af3ab",
+      "observed_sha256": "8f10ffa8ed64e11c7c75af0c1112b5130f165b76866db442e05d8dfd535af3ab",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-schwarz-flu-2007-intentions",
+      "edition_key": "edition-schwarz-2016",
+      "locator": "PDF p. 7 / journal p. 91, flu-flyer intentions sentence",
+      "expected_sha256": "8b84ee42a2fce51ad12ca281c8247bdcad359a63eb0f33949b4ff5c24fd4ef4e",
+      "observed_sha256": "8b84ee42a2fce51ad12ca281c8247bdcad359a63eb0f33949b4ff5c24fd4ef4e",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-schwarz-reference-6",
+      "edition_key": "edition-schwarz-2016",
+      "locator": "PDF p. 10, reference 6",
+      "expected_sha256": "58e989178b2ac4b46415d56795b052c8edcb6e25afe38be0a87336721c0c308a",
+      "observed_sha256": "58e989178b2ac4b46415d56795b052c8edcb6e25afe38be0a87336721c0c308a",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-schwarz-reference-42",
+      "edition_key": "edition-schwarz-2016",
+      "locator": "PDF p. 10, reference 42",
+      "expected_sha256": "f2568e2624e37f133ff6dc3e7763871534caf7b9507620afd0a31d8ba599787a",
+      "observed_sha256": "f2568e2624e37f133ff6dc3e7763871534caf7b9507620afd0a31d8ba599787a",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-result",
+      "edition_key": "edition-ecker-2020",
+      "locator": "General discussion result",
+      "expected_sha256": "4c0a3af551327003421586e6171d14f4fcb0263f5565c8ef4b13c66a80606461",
+      "observed_sha256": "4c0a3af551327003421586e6171d14f4fcb0263f5565c8ef4b13c66a80606461",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-guidance-overreach",
+      "edition_key": "edition-ecker-2020",
+      "locator": "General discussion practical implications opening",
+      "expected_sha256": "bcb9535c1b74df2e08512c9332dfeb916e1a8b8a4dc21eeab2afd99cebbc1915",
+      "observed_sha256": "bcb9535c1b74df2e08512c9332dfeb916e1a8b8a4dc21eeab2afd99cebbc1915",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-guidance-conclusion",
+      "edition_key": "edition-ecker-2020",
+      "locator": "General discussion practical implications conclusion",
+      "expected_sha256": "2d3a6e20694cdfe944069ad69fbd09c3549a313666ae5c6e273eb979328c81e3",
+      "observed_sha256": "2d3a6e20694cdfe944069ad69fbd09c3549a313666ae5c6e273eb979328c81e3",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-unpublished-lineage",
+      "edition_key": "edition-ecker-2020",
+      "locator": "Introduction paragraph 7, unpublished 2007 lineage",
+      "expected_sha256": "37e375687881d2db06cde263863e343274348cc9b562e2b986038295ef03c64d",
+      "observed_sha256": "37e375687881d2db06cde263863e343274348cc9b562e2b986038295ef03c64d",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-no-baseline",
+      "edition_key": "edition-ecker-2020",
+      "locator": "Introduction paragraph 7, missing-baseline qualification",
+      "expected_sha256": "e25d7495f5db242e9eb5cfc1b1e302a33214f7241842e3251047621865d8b64c",
+      "observed_sha256": "e25d7495f5db242e9eb5cfc1b1e302a33214f7241842e3251047621865d8b64c",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-recruitment",
+      "edition_key": "edition-ecker-2020",
+      "locator": "Experiment 1 participants",
+      "expected_sha256": "4b28844116896c08d8c786e622b15b4439eac2ecff3ac4de83fe566d04f2c0a9",
+      "observed_sha256": "4b28844116896c08d8c786e622b15b4439eac2ecff3ac4de83fe566d04f2c0a9",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-cloudresearch",
+      "edition_key": "edition-ecker-2020",
+      "locator": "Experiment 1 procedure administration platform",
+      "expected_sha256": "6467d53ef085e424f2a5bf4bde2226d009b2d0d98af525d4ebe4dff61370283a",
+      "observed_sha256": "6467d53ef085e424f2a5bf4bde2226d009b2d0d98af525d4ebe4dff61370283a",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-ecker-2011-search",
+      "edition_key": "edition-ecker-2020",
+      "locator": "Introduction paragraph 8 Ecker et al. 2011 exclusion",
+      "expected_sha256": "6fb8473e4885c137b52698b59b88ce062b5d44dfde63dfd75df1caa4181934f5",
+      "observed_sha256": "6fb8473e4885c137b52698b59b88ce062b5d44dfde63dfd75df1caa4181934f5",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-ecker-2017-search",
+      "edition_key": "edition-ecker-2020",
+      "locator": "Introduction paragraph 8 Ecker et al. 2017 exclusion",
+      "expected_sha256": "2ad56d4287f691a4bb5c6afec21aae9c6ca4032e912697ee0d70085d1f386718",
+      "observed_sha256": "2ad56d4287f691a4bb5c6afec21aae9c6ca4032e912697ee0d70085d1f386718",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2020-swire-2017-search",
+      "edition_key": "edition-ecker-2020",
+      "locator": "Introduction paragraph 8 Swire et al. 2017 search lead",
+      "expected_sha256": "787dacf5485ce4bcb05321060db910c7fd2672972afd1e227299ee637fde927b",
+      "observed_sha256": "787dacf5485ce4bcb05321060db910c7fd2672972afd1e227299ee637fde927b",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-peter-koch-2016-result",
+      "edition_key": "edition-peter-koch-2016",
+      "locator": "Crossref abstract web-experiment result",
+      "expected_sha256": "3a4a430eb5cbb578b4fa29ca8e9bd4c2655583c7e9e8bd9b2bd1da6c8f77deed",
+      "observed_sha256": "3a4a430eb5cbb578b4fa29ca8e9bd4c2655583c7e9e8bd9b2bd1da6c8f77deed",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-peter-koch-2016-shared-stimulus",
+      "edition_key": "edition-peter-koch-2016",
+      "locator": "PDF p. 10 / journal p. 12, shared myths-and-facts stimulus",
+      "expected_sha256": "24f1cb722a531f9a3b7049ff57145e16fe69ce057aa72c835acd95f5345bb917",
+      "observed_sha256": "24f1cb722a531f9a3b7049ff57145e16fe69ce057aa72c835acd95f5345bb917",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-peter-koch-2016-randomization",
+      "edition_key": "edition-peter-koch-2016",
+      "locator": "PDF p. 11 / journal p. 13, randomized instruction condition",
+      "expected_sha256": "f79c30c88ee2a160016107aebede924e6f29f7ab8bf5e6735ddb151125a30759",
+      "observed_sha256": "f79c30c88ee2a160016107aebede924e6f29f7ab8bf5e6735ddb151125a30759",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-peter-koch-2016-measure",
+      "edition_key": "edition-peter-koch-2016",
+      "locator": "PDF p. 11 / journal p. 13, truth-memory measure",
+      "expected_sha256": "627b779c2722ad55ea1c1410e05534458d1ac21249d4628eb8c9b1f5f28fdc63",
+      "observed_sha256": "627b779c2722ad55ea1c1410e05534458d1ac21249d4628eb8c9b1f5f28fdc63",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-peter-koch-2016-error-definition",
+      "edition_key": "edition-peter-koch-2016",
+      "locator": "PDF p. 12 / journal p. 14, backfire-error definition",
+      "expected_sha256": "c54a61b5369b6815cb54ede826730bd9361f50b8597a004516808edb1acd2f90",
+      "observed_sha256": "c54a61b5369b6815cb54ede826730bd9361f50b8597a004516808edb1acd2f90",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-wilson-park-2008-method",
+      "edition_key": "edition-wilson-park-2008",
+      "locator": "PubMed abstract, Methods",
+      "expected_sha256": "b49174f07140781f4dfc03700eb1e59e477c55d2e3f99248b99ba9d4970f4522",
+      "observed_sha256": "b49174f07140781f4dfc03700eb1e59e477c55d2e3f99248b99ba9d4970f4522",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-wilson-park-2008-result",
+      "edition_key": "edition-wilson-park-2008",
+      "locator": "PubMed abstract, Results",
+      "expected_sha256": "dc1472cbb4fda23b06a5704399fac8155d166f22a229c6d57de7aeb7f93b2931",
+      "observed_sha256": "dc1472cbb4fda23b06a5704399fac8155d166f22a229c6d57de7aeb7f93b2931",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-berinsky-2017-no-control",
+      "edition_key": "edition-berinsky-2017",
+      "locator": "PDF p. 14 / journal p. 254, Study 2 design",
+      "expected_sha256": "4b7de7a9c0cb1487af7038f0c8891596eeaa2618a0ae438dfef9d7a7ad6f00d4",
+      "observed_sha256": "4b7de7a9c0cb1487af7038f0c8891596eeaa2618a0ae438dfef9d7a7ad6f00d4",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-berinsky-2017-rehearsal-result",
+      "edition_key": "edition-berinsky-2017",
+      "locator": "PDF p. 17 / journal p. 257, rehearsal result",
+      "expected_sha256": "712f7f2e12aa3055fc14655cb208a0a47bc7880c5ad70454d75d07cebfe60682",
+      "observed_sha256": "712f7f2e12aa3055fc14655cb208a0a47bc7880c5ad70454d75d07cebfe60682",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-berinsky-2017-rehearsal-qualifier",
+      "edition_key": "edition-berinsky-2017",
+      "locator": "PDF p. 17 / journal p. 257, correction-arm significance qualifier",
+      "expected_sha256": "f6b6303ad0eabda16fb6ae2de6e07e98a230f0edf462bb74ce40e2d0339459b6",
+      "observed_sha256": "f6b6303ad0eabda16fb6ae2de6e07e98a230f0edf462bb74ce40e2d0339459b6",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-cameron-2013-knowledge",
+      "edition_key": "edition-cameron-2013",
+      "locator": "BioC abstract knowledge-score result",
+      "expected_sha256": "ec3d51daee9c7b808a781416585bb31174b1a5a5d2e86e86e68df578570b3a29",
+      "observed_sha256": "ec3d51daee9c7b808a781416585bb31174b1a5a5d2e86e86e68df578570b3a29",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-cameron-2013-no-counterproductive",
+      "edition_key": "edition-cameron-2013",
+      "locator": "BioC abstract no-counterproductive-recall conclusion",
+      "expected_sha256": "ffb3b25ee41f8ae0c63ce4879ec8933a0c52e4c6c6c4ad8f933ced4b8449cfc9",
+      "observed_sha256": "ffb3b25ee41f8ae0c63ce4879ec8933a0c52e4c6c6c4ad8f933ced4b8449cfc9",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-short-2020-result",
+      "edition_key": "edition-ecker-short-2020",
+      "locator": "Crossref abstract simple-retraction result",
+      "expected_sha256": "dc38a832a44d07b563aac0435fcb13038d45b5ce21e6a85884d01f5fa6df5436",
+      "observed_sha256": "dc38a832a44d07b563aac0435fcb13038d45b5ce21e6a85884d01f5fa6df5436",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-hogan-2017-result",
+      "edition_key": "edition-ecker-hogan-2017",
+      "locator": "Accepted manuscript p. 3, abstract result",
+      "expected_sha256": "0b66f2ed1c9e09eb6df7c10b651c8d1cfb421a9540742f507b56c8681cf4bf52",
+      "observed_sha256": "0b66f2ed1c9e09eb6df7c10b651c8d1cfb421a9540742f507b56c8681cf4bf52",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-hogan-2017-no-retraction-result",
+      "edition_key": "edition-ecker-hogan-2017",
+      "locator": "Accepted manuscript p. 18, retraction-versus-control result",
+      "expected_sha256": "4b4ba61093d28b7a09ea8edbb784de85f0d3ecd443fe80524e61cccae83b6560",
+      "observed_sha256": "4b4ba61093d28b7a09ea8edbb784de85f0d3ecd443fe80524e61cccae83b6560",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-hogan-2017-repeat-result",
+      "edition_key": "edition-ecker-hogan-2017",
+      "locator": "Accepted manuscript p. 18, explicit-repeat contrast",
+      "expected_sha256": "b5c7e3955926f6ba50aa891ed457eb88c70a5743c94c55a7b62b841822615422",
+      "observed_sha256": "b5c7e3955926f6ba50aa891ed457eb88c70a5743c94c55a7b62b841822615422",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-hogan-2017-alternative-account",
+      "edition_key": "edition-ecker-hogan-2017",
+      "locator": "Accepted manuscript p. 18, alternative-account qualifier",
+      "expected_sha256": "64f132d9c1ba3aeb9fe28aeb96599a952ffaad86b5dd7ab270bc273d487ffcb0",
+      "observed_sha256": "64f132d9c1ba3aeb9fe28aeb96599a952ffaad86b5dd7ab270bc273d487ffcb0",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-wahlheim-2020-design",
+      "edition_key": "edition-wahlheim-2020",
+      "locator": "PDF p. 1, abstract design",
+      "expected_sha256": "11f3daf518b862413c502ea2e902ea960f42e82ec80597bb01c9d75c65db670f",
+      "observed_sha256": "11f3daf518b862413c502ea2e902ea960f42e82ec80597bb01c9d75c65db670f",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-wahlheim-2020-endpoint",
+      "edition_key": "edition-wahlheim-2020",
+      "locator": "PDF p. 1, abstract endpoint",
+      "expected_sha256": "47ed2a43a0cf0303743cf2d8ab8ab618f42ffd6b51d588449458ea1bf94aba43",
+      "observed_sha256": "47ed2a43a0cf0303743cf2d8ab8ab618f42ffd6b51d588449458ea1bf94aba43",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-wahlheim-2020-result",
+      "edition_key": "edition-wahlheim-2020",
+      "locator": "PDF p. 1, abstract result",
+      "expected_sha256": "3459917b9183fd36540afe567539a8be44d13cb74b6e0662497847b569bcf5f7",
+      "observed_sha256": "3459917b9183fd36540afe567539a8be44d13cb74b6e0662497847b569bcf5f7",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-kemp-2022a-design",
+      "edition_key": "edition-kemp-2022a",
+      "locator": "JATS abstract, design",
+      "expected_sha256": "7a1ff7511b30f81598aa0da33171865527d4aad8b75e998bda407754c13d0cbb",
+      "observed_sha256": "7a1ff7511b30f81598aa0da33171865527d4aad8b75e998bda407754c13d0cbb",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-kemp-2022a-mixed-result",
+      "edition_key": "edition-kemp-2022a",
+      "locator": "JATS abstract, mixed conditional result",
+      "expected_sha256": "5b15c9712d537f216c08bb3cf83964b95bb828a5779368617dca0986fe5449df",
+      "observed_sha256": "5b15c9712d537f216c08bb3cf83964b95bb828a5779368617dca0986fe5449df",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-kemp-2022a-control-boundary",
+      "edition_key": "edition-kemp-2022a",
+      "locator": "JATS Par21, control-endpoint boundary",
+      "expected_sha256": "e7777085a66f3df63be8829f4070535e693574fda9c752d5dcc069e8ff708ca6",
+      "observed_sha256": "e7777085a66f3df63be8829f4070535e693574fda9c752d5dcc069e8ff708ca6",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-kemp-2022b-design",
+      "edition_key": "edition-kemp-2022b",
+      "locator": "JATS abstract, correction/reminder design",
+      "expected_sha256": "e070ff33d9bf78a778a5834b9521abce41f4369cb02b6bd52b7642b4e8d9a2ec",
+      "observed_sha256": "e070ff33d9bf78a778a5834b9521abce41f4369cb02b6bd52b7642b4e8d9a2ec",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-kemp-2022b-result",
+      "edition_key": "edition-kemp-2022b",
+      "locator": "JATS abstract, reminder result",
+      "expected_sha256": "5ace0f0f90b2dd3795125cb71ad7d2e29cca42d85c65bc4b947914396641193e",
+      "observed_sha256": "5ace0f0f90b2dd3795125cb71ad7d2e29cca42d85c65bc4b947914396641193e",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-kemp-2022b-limitation",
+      "edition_key": "edition-kemp-2022b",
+      "locator": "JATS Par27, reminder-isolation limitation",
+      "expected_sha256": "b727dad3501bfc141df97385fc2e143d8dace0cc3405a7f4bf3b2349dba0fa7c",
+      "observed_sha256": "b727dad3501bfc141df97385fc2e143d8dace0cc3405a7f4bf3b2349dba0fa7c",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-carnahan-2020-control-result",
+      "edition_key": "edition-carnahan-garrett-2020",
+      "locator": "Study 2 results, correction-versus-control result",
+      "expected_sha256": "c858bc3b8052d2dfa10a18537034bf39abd3ecfe5736083956e38df0fe8d2ccf",
+      "observed_sha256": "c858bc3b8052d2dfa10a18537034bf39abd3ecfe5736083956e38df0fe8d2ccf",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-carnahan-2020-pairwise-result",
+      "edition_key": "edition-carnahan-garrett-2020",
+      "locator": "Study 2 results, control-pairwise result",
+      "expected_sha256": "3052250d8aafd21224a4ae6ef612c5b8a7f7faa17e39ff97f29e1394ff81fa23",
+      "observed_sha256": "3052250d8aafd21224a4ae6ef612c5b8a7f7faa17e39ff97f29e1394ff81fa23",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-carnahan-2020-format-null",
+      "edition_key": "edition-carnahan-garrett-2020",
+      "locator": "Study 2 results, message-format null",
+      "expected_sha256": "081dead7497b9af0d33c0d292bad683114425621dcd3cda11b6dcce1c671ca2f",
+      "observed_sha256": "081dead7497b9af0d33c0d292bad683114425621dcd3cda11b6dcce1c671ca2f",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-carnahan-2020-processing-boundary",
+      "edition_key": "edition-carnahan-garrett-2020",
+      "locator": "Study 2 results, memory-based processing boundary",
+      "expected_sha256": "21df974c5262b4f034298214c40e061dc390f586a4634188667c8187247e2a6e",
+      "observed_sha256": "21df974c5262b4f034298214c40e061dc390f586a4634188667c8187247e2a6e",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-rich-2016-experiment-1-result",
+      "edition_key": "edition-rich-zaragoza-2016",
+      "locator": "PDF p. 5 / journal p. 66, Experiment 1 correction effect",
+      "expected_sha256": "e3a7a287276bc8e723a41e5d67cd0f2b2d27c2b5536b33f24bb0d25ea2096ac0",
+      "observed_sha256": "e3a7a287276bc8e723a41e5d67cd0f2b2d27c2b5536b33f24bb0d25ea2096ac0",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-rich-2016-experiment-2-result",
+      "edition_key": "edition-rich-zaragoza-2016",
+      "locator": "PDF p. 7 / journal p. 68, Experiment 2 control result",
+      "expected_sha256": "a432378a7f3216c68230be4d71d1aa7ab1dd6c9d8fb6f14c4bcaf63e992bcb31",
+      "observed_sha256": "a432378a7f3216c68230be4d71d1aa7ab1dd6c9d8fb6f14c4bcaf63e992bcb31",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-rich-2016-experiment-2-all-conditions",
+      "edition_key": "edition-rich-zaragoza-2016",
+      "locator": "PDF p. 7 / journal p. 68, Experiment 2 correction effects",
+      "expected_sha256": "addb72eaa497108662d5bbc798fe0effce293055bd0079b38d274e4e8ebe033d",
+      "observed_sha256": "addb72eaa497108662d5bbc798fe0effce293055bd0079b38d274e4e8ebe033d",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-rich-2016-control-qualifier",
+      "edition_key": "edition-rich-zaragoza-2016",
+      "locator": "PDF p. 5 / journal p. 66, control-story qualifier",
+      "expected_sha256": "3aa91d25e85c7c5f13b2128c0e365919a0db6d0aa332b77a9c497d5a639685f4",
+      "observed_sha256": "3aa91d25e85c7c5f13b2128c0e365919a0db6d0aa332b77a9c497d5a639685f4",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-swire-2017-experiment-1-result",
+      "edition_key": "edition-swire-2017",
+      "locator": "Manuscript p. 16, Experiment 1 result",
+      "expected_sha256": "2b7cbde31cb58b716ce4bef49b67bc69a2658c80db11ae58bef8e334c34d5cf6",
+      "observed_sha256": "2b7cbde31cb58b716ce4bef49b67bc69a2658c80db11ae58bef8e334c34d5cf6",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-swire-2017-experiment-2-result",
+      "edition_key": "edition-swire-2017",
+      "locator": "Manuscript p. 22, Experiment 2 result",
+      "expected_sha256": "28bb00172915d296cb5b7a62697392451d874ac254d40f39ad8a66418fb345dc",
+      "observed_sha256": "28bb00172915d296cb5b7a62697392451d874ac254d40f39ad8a66418fb345dc",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-swire-2017-conclusion",
+      "edition_key": "edition-swire-2017",
+      "locator": "Manuscript p. 30, discussion conclusion",
+      "expected_sha256": "4d93c225b3db9a30425b55619723c0fda057f817934daad436233f1429b194be",
+      "observed_sha256": "4d93c225b3db9a30425b55619723c0fda057f817934daad436233f1429b194be",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-gordon-2019-result",
+      "edition_key": "edition-gordon-2019",
+      "locator": "Preprint p. 32, Experiment 2 discussion",
+      "expected_sha256": "a503d253bafff59764474ce44a22eca8cebfcf1bba47fab38a044f6ebabf8b09",
+      "observed_sha256": "a503d253bafff59764474ce44a22eca8cebfcf1bba47fab38a044f6ebabf8b09",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-gordon-2019-qualifier",
+      "edition_key": "edition-gordon-2019",
+      "locator": "Preprint p. 24, Bayesian result qualifier",
+      "expected_sha256": "08717a12e4496e43c256759d8728e722becb574eb80dd36cb792b2974a6ba3ff",
+      "observed_sha256": "08717a12e4496e43c256759d8728e722becb574eb80dd36cb792b2974a6ba3ff",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-prike-2023-result",
+      "edition_key": "edition-prike-2023",
+      "locator": "Abstract results and qualification",
+      "expected_sha256": "e44347d354ee736e558729127188099a1289b94334b3e7f8058573dec9843860",
+      "observed_sha256": "e44347d354ee736e558729127188099a1289b94334b3e7f8058573dec9843860",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-prike-2023-recruitment",
+      "edition_key": "edition-prike-2023",
+      "locator": "Experiment 1 participants",
+      "expected_sha256": "d3c00f89486560493611e12fc0432adad0802d609d96c87e554606fa301401fc",
+      "observed_sha256": "d3c00f89486560493611e12fc0432adad0802d609d96c87e554606fa301401fc",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-prike-2023-ethics",
+      "edition_key": "edition-prike-2023",
+      "locator": "Ethics approval",
+      "expected_sha256": "59d802c2e9dc907e8560d6d91480b26c6cfc6c0d85afed0db96a6a3b02b7e0ca",
+      "observed_sha256": "59d802c2e9dc907e8560d6d91480b26c6cfc6c0d85afed0db96a6a3b02b7e0ca",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-prike-2023-autry-sample",
+      "edition_key": "edition-prike-2023",
+      "locator": "General discussion sample comparison",
+      "expected_sha256": "c5cd147b5e06b9c62babf05bb1a2db8f532a280198bc85f605d0fce9b4ca84b1",
+      "observed_sha256": "c5cd147b5e06b9c62babf05bb1a2db8f532a280198bc85f605d0fce9b4ca84b1",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-prike-2023-counter-search",
+      "edition_key": "edition-prike-2023",
+      "locator": "Introduction, bounded counterevidence search",
+      "expected_sha256": "35eae3b4e2f4dc57796a88065b2592ca6628f154df8b34a76641083b60b1d21c",
+      "observed_sha256": "35eae3b4e2f4dc57796a88065b2592ca6628f154df8b34a76641083b60b1d21c",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-prike-2023-gordon-search",
+      "edition_key": "edition-prike-2023",
+      "locator": "Introduction, standalone-correction search",
+      "expected_sha256": "c3421868abe9a140c4d3c78ea5b9d0671a5bc7e3e2fae4e3003a3657d7b82334",
+      "observed_sha256": "c3421868abe9a140c4d3c78ea5b9d0671a5bc7e3e2fae4e3003a3657d7b82334",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2023-result",
+      "edition_key": "edition-ecker-2023",
+      "locator": "Abstract outcome",
+      "expected_sha256": "c77a5feb5aa278ff7dcd816ff676af0e8ed1ee06c3688ba6981e5b82df10b40b",
+      "observed_sha256": "c77a5feb5aa278ff7dcd816ff676af0e8ed1ee06c3688ba6981e5b82df10b40b",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2023-recruitment",
+      "edition_key": "edition-ecker-2023",
+      "locator": "Method participants",
+      "expected_sha256": "0039b51d4816840cdc18d14a097eba10007373f1b96cb28885470a7061db5589",
+      "observed_sha256": "0039b51d4816840cdc18d14a097eba10007373f1b96cb28885470a7061db5589",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2023-materials",
+      "edition_key": "edition-ecker-2023",
+      "locator": "Method materials source",
+      "expected_sha256": "b50b401ca1f2d720c340475475030cdab8816117887120903d68ca2a0713290e",
+      "observed_sha256": "b50b401ca1f2d720c340475475030cdab8816117887120903d68ca2a0713290e",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-ecker-2023-ethics",
+      "edition_key": "edition-ecker-2023",
+      "locator": "Method ethics approval",
+      "expected_sha256": "06febbf3809d197a651a5731ed8bab17857401967b0e4cfc9a0e7e6bf284e9bb",
+      "observed_sha256": "06febbf3809d197a651a5731ed8bab17857401967b0e4cfc9a0e7e6bf284e9bb",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-autry-2021-result",
+      "edition_key": "edition-autry-2021",
+      "locator": "Crossref abstract result",
+      "expected_sha256": "31ff7efb790f648be74ac47bac566ce7a04d0688ea6e3aa4b4acf92ce8cdb3ef",
+      "observed_sha256": "31ff7efb790f648be74ac47bac566ce7a04d0688ea6e3aa4b4acf92ce8cdb3ef",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-autry-2021-qualifier",
+      "edition_key": "edition-autry-2021",
+      "locator": "Publisher HTML general-discussion qualifier",
+      "expected_sha256": "58a401bcc23fdb9fb209077c97a74760a6b17333321614dbe6b28922f4d4d6e3",
+      "observed_sha256": "58a401bcc23fdb9fb209077c97a74760a6b17333321614dbe6b28922f4d4d6e3",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-autry-2021-timing-limit",
+      "edition_key": "edition-autry-2021",
+      "locator": "Publisher HTML limitations timing and persistence",
+      "expected_sha256": "7359a56d721af3578e4f8219cebd139128a5333ffc4f4c933d750e73e0fba926",
+      "observed_sha256": "7359a56d721af3578e4f8219cebd139128a5333ffc4f4c933d750e73e0fba926",
+      "verification": "independent-readback",
+      "match": true
+    },
+    {
+      "span_key": "span-pluviano-2017-result",
+      "edition_key": "edition-pluviano-2017",
+      "locator": "Results vaccine-autism comparison",
+      "expected_sha256": "4b23bfaf183c95341f30b3c2516def832bda1e644d1ec0a114fe789cf5e40d54",
+      "observed_sha256": "4b23bfaf183c95341f30b3c2516def832bda1e644d1ec0a114fe789cf5e40d54",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-pluviano-2017-limitation",
+      "edition_key": "edition-pluviano-2017",
+      "locator": "Discussion limitations paragraph 8",
+      "expected_sha256": "2d301b187fbd36def4ffd3ea220385bee76d380668933658925087446ded8c32",
+      "observed_sha256": "2d301b187fbd36def4ffd3ea220385bee76d380668933658925087446ded8c32",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-pluviano-2019-result",
+      "edition_key": "edition-pluviano-2019",
+      "locator": "Accepted manuscript abstract result",
+      "expected_sha256": "3fd55c93ccc8a422c44ffa1706f86eee8aadd938ec57ddca1c3888447c3ea397",
+      "observed_sha256": "3fd55c93ccc8a422c44ffa1706f86eee8aadd938ec57ddca1c3888447c3ea397",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-pluviano-2019-dependence",
+      "edition_key": "edition-pluviano-2019",
+      "locator": "Procedure comparison with prior study",
+      "expected_sha256": "8444b669d373904f9069756d7f4b5ed471e6bcfccafca63a6d8e2af62a9927d8",
+      "observed_sha256": "8444b669d373904f9069756d7f4b5ed471e6bcfccafca63a6d8e2af62a9927d8",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-thomas-2024-result",
+      "edition_key": "edition-thomas-2024",
+      "locator": "Crossref abstract result",
+      "expected_sha256": "3fbe77e014d6319af253e2a148084bf791fc3324d55760d6705741d20ef49261",
+      "observed_sha256": "3fbe77e014d6319af253e2a148084bf791fc3324d55760d6705741d20ef49261",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-thomas-2024-mechanism",
+      "edition_key": "edition-thomas-2024",
+      "locator": "Crossref abstract mechanism",
+      "expected_sha256": "77fcdf6d947caab279118003d76095de02f088f1f6c74d937d0b09cd97155044",
+      "observed_sha256": "77fcdf6d947caab279118003d76095de02f088f1f6c74d937d0b09cd97155044",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-nibat-2026-scope",
+      "edition_key": "edition-nibat-2026",
+      "locator": "PDF p. 1 abstract scope",
+      "expected_sha256": "c90d59bc538df2664e52b40a97a3f1d0922c3b45ec901d3dfa512ad89e56b4cc",
+      "observed_sha256": "c90d59bc538df2664e52b40a97a3f1d0922c3b45ec901d3dfa512ad89e56b4cc",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-nibat-2026-result",
+      "edition_key": "edition-nibat-2026",
+      "locator": "PDF p. 1 abstract result",
+      "expected_sha256": "ec3db4151b90bc0fbd5c4a78095c5567e9493d97554526837fe0970baf92d05e",
+      "observed_sha256": "ec3db4151b90bc0fbd5c4a78095c5567e9493d97554526837fe0970baf92d05e",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-nibat-2026-search-overview",
+      "edition_key": "edition-nibat-2026",
+      "locator": "PDF p. 3, bounded literature overview",
+      "expected_sha256": "4458a1abfa1badf27fa59c2de81a7d6efbe3be1a8a2a15eef14e5c5dbcdf5955",
+      "observed_sha256": "4458a1abfa1badf27fa59c2de81a7d6efbe3be1a8a2a15eef14e5c5dbcdf5955",
+      "verification": "artifact",
+      "match": true
+    },
+    {
+      "span_key": "span-swire-thompson-2022-result",
+      "edition_key": "edition-swire-thompson-2022",
+      "locator": "BioC abstract design, controls, and no-backfire result",
+      "expected_sha256": "b1f24159da1891a12efbe4ed519863c3313eb0a4f16c551902c128443d846de2",
+      "observed_sha256": "b1f24159da1891a12efbe4ed519863c3313eb0a4f16c551902c128443d846de2",
+      "verification": "artifact",
+      "match": true
+    }
+  ],
+  "findings": [
+    {
+      "severity": "informational",
+      "status": "resolved",
+      "text": "The prior exact head failed only two Ruff E501 findings. Successor 37161f2 wraps exactly those expressions; Ruff now passes and the generated dossier blob and dossier identity remain byte-for-byte unchanged."
+    },
+    {
+      "severity": "informational",
+      "status": "informational",
+      "text": "All 22 captured primary artifacts, three public data workbooks, 67 artifact-backed spans, and 19 independent publisher/read-back spans matched. The 25-work disposition ledger, 2005-versus-unpublished-2007 topology, license treatment, target baselines, 10/6/1/4/1/4 support-side counts, 12/12 counter counts, and data/method/material/social limitations were reviewed."
+    }
+  ],
+  "limitations": [
+    "This is a bounded lineage case study through the declared cutoff, not a systematic review or effect-size estimate.",
+    "The unpublished Skurnik, Yoon, and Schwarz 2007 manuscript and participant-data identity remain unavailable; that lineage is explicitly unknown and receives zero evidential credit.",
+    "Raw automated captures for Schwarz 2016, Carnahan and Garrett 2020, and Rich and Zaragoza 2016 remained unavailable; their quote-minimal exact spans were independently read from authoritative publisher renditions.",
+    "The Bristol Ecker-Hogan and Edinburgh Pluviano endpoints regenerate raw PDF covers; capture-specific raw digests changed while the declared pdftotext semantic digests and exact spans reproduced.",
+    "Distinct participant-data roots do not imply independent research programs; shared authors, recruitment frames, methods, ethics series, and materials remain separately disclosed.",
+    "Restricted works are represented by metadata, digests where available, and quote-minimal attributed excerpts; full provider artifacts are not redistributed."
+  ],
+  "decision": "pass"
+}
