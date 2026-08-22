@@ -11,7 +11,12 @@ import pytest
 from epistemedia.cli import main
 from epistemedia.core import PublicCatalog, build_public, stable_id, verify_release_identity
 from epistemedia.dossier import independence_summary
-from epistemedia.featured import FEATURE_VIEWS, FeaturedDossier, FeaturedDossierError
+from epistemedia.featured import (
+    FEATURE_VIEWS,
+    FeaturedDossier,
+    FeaturedDossierError,
+    share_card_svg,
+)
 from epistemedia.server import Gateway, Request
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -128,6 +133,75 @@ def test_policy_views_share_dossier_sources_but_materially_differ() -> None:
     assert encyclopedia["content_digest"] != skeptical["content_digest"]
 
 
+def test_scoreboard_ledger_is_complete_derived_and_source_identified() -> None:
+    featured = FeaturedDossier.load(ROOT)
+    projection = featured.projection("encyclopedia")
+    counts = projection["counts"]
+    ledger = projection["evidence_ledger"]
+
+    assert [item["key"] for item in ledger["apparent_support_assertions"]] == counts[
+        "apparent_support_assertion_keys"
+    ]
+    assert [item["key"] for item in ledger["target_comparable_support_roots"]] == counts[
+        "target_comparable_support_data_root_keys"
+    ]
+    assert [
+        item["key"] for item in ledger["target_comparable_unresolved_roots"]
+    ] == counts["target_comparable_unresolved_data_root_keys"]
+    assert [item["key"] for item in ledger["counter_roots"]] == counts[
+        "counter_data_root_keys"
+    ]
+    assert len(ledger["apparent_support_assertions"]) == 10
+    assert len(ledger["target_comparable_support_roots"]) == 4
+    assert len(ledger["target_comparable_unresolved_roots"]) == 1
+    assert len(ledger["counter_roots"]) == 12
+    for entries in ledger.values():
+        for entry in entries:
+            assert entry["source_works"]
+            assert all(work["title"] and work["canonical_uri"] for work in entry["source_works"])
+
+
+def test_practical_reading_is_policy_relative_and_relation_source_closed() -> None:
+    featured = FeaturedDossier.load(ROOT)
+    readings = {}
+    for view in FEATURE_VIEWS:
+        projection = featured.projection(view)
+        relation_keys = [
+            item["relation"]["key"] for item in projection["featured_relations"]
+        ]
+        reading = projection["practical_reading"]
+        assert reading["basis_relation_keys"] == relation_keys
+        assert "universal" in reading["qualifier"].lower()
+        assert all(item["sources"] for item in projection["featured_relations"])
+        readings[view] = reading["text"]
+    assert readings["encyclopedia"] != readings["skeptical"]
+
+
+def test_share_card_is_deterministic_view_specific_and_identity_bound() -> None:
+    catalog = PublicCatalog.build(ROOT)
+    featured = FeaturedDossier.load(ROOT)
+    encyclopedia = featured.envelope(catalog, "encyclopedia")
+    skeptical = featured.envelope(catalog, "skeptical")
+    first = share_card_svg(encyclopedia, "https://epistemedia.org")
+    second = share_card_svg(encyclopedia, "https://epistemedia.org")
+    skeptical_card = share_card_svg(skeptical, "https://epistemedia.org")
+
+    assert first == second
+    assert first != skeptical_card
+    assert encyclopedia["data"]["title"] in first
+    assert encyclopedia["data"]["view"]["label"].replace("&", "&amp;") in first
+    assert encyclopedia["data"]["dossier_id"] in first
+    assert encyclopedia["catalog_id"] in first
+    assert encyclopedia["frontier"] in first
+    assert encyclopedia["commit"] in first
+    assert "10" in first and "4 + 1?" in first and "12" in first
+    assert (
+        "https://epistemedia.org/how-we-know/corrections-and-familiarity-backfire/"
+        "encyclopedia/"
+    ) in first
+    assert "<script" not in first
+
+
 def test_static_html_markdown_and_json_preserve_one_view_identity(tmp_path: Path) -> None:
     public = tmp_path / "public"
     build_public(ROOT, public)
@@ -151,8 +225,18 @@ def test_static_html_markdown_and_json_preserve_one_view_identity(tmp_path: Path
     assert 'aria-current="page"' in html
     assert "<script" not in html
     assert "source-xray" in html
-    assert 'href="https://epistemedia.org/how-we-know/' + SLUG + '/#unresolved-lineage"' in html
+    assert f'href="https://epistemedia.org/how-we-know/{SLUG}/#apparent-support"' in html
+    assert f'href="https://epistemedia.org/how-we-know/{SLUG}/#supporting-roots"' in html
+    assert f'href="https://epistemedia.org/how-we-know/{SLUG}/#counter-roots"' in html
     assert 'id="unresolved-lineage"' in html
+    assert 'id="apparent-support"' in html
+    assert 'id="supporting-roots"' in html
+    assert 'id="counter-roots"' in html
+    assert html.count('class="ledger-entry-head"') == 27
+    assert html.count("<dt>") >= 5
+    assert "The Stranger Test asks how many apparently separate claims" in html
+    assert expected["data"]["practical_reading"]["text"] in html
+    assert "Share card" in html
     assert "86 exact spans" in home
     assert home.index("Does repeating misinformation") < home.index(
         "Explore how the record is built"
