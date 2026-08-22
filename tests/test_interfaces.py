@@ -294,7 +294,7 @@ def test_public_status_copy_distinguishes_live_and_target_surfaces() -> None:
     api_docs = (ROOT / "docs" / "api-mcp-cli.md").read_text()
     assert "canonical static site live at <https://epistemedia.org/>" in readme
     assert "sharing redirect and hosted API/MCP runtime" in readme
-    assert "application-level claim/evidence dossier" in readme
+    assert "does **not** yet instantiate that claim/evidence graph" in readme
     assert "Target architecture" in readme
     assert "Public hosting at `epistemedia.org`" not in readme
     assert api_docs.count("No hosted runtime at that hostname has passed") == 2

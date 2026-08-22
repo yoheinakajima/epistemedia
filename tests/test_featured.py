@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -64,6 +65,7 @@ def test_every_featured_sentence_resolves_exact_span_edition_and_work_identity()
         assert projection["featured_relations"]
         for item in projection["featured_relations"]:
             assert item["statement"]
+            assert item["statement"] == item["relation"]["note"]
             assert item["sources"]
             for source in item["sources"]:
                 span = source["span"]
@@ -78,6 +80,19 @@ def test_every_featured_sentence_resolves_exact_span_edition_and_work_identity()
                 assert span["extent"]["type"] in {"quote", "json-value"}
                 assert work["canonical_uri"].startswith("http")
                 assert work["license"]
+
+    encyclopedia = featured.projection("encyclopedia")
+    pluviano = encyclopedia["featured_relations"][0]
+    thomas = encyclopedia["featured_relations"][1]
+    assert "two vaccine-message studies" not in pluviano["statement"].lower()
+    assert "later direct replication" not in pluviano["statement"].lower()
+    assert {source["source_work"]["key"] for source in pluviano["sources"]} == {
+        "work-pluviano-2017"
+    }
+    assert "did not reach significance in every experiment" not in thomas["statement"]
+    assert {source["source_work"]["key"] for source in thomas["sources"]} == {
+        "work-thomas-2024"
+    }
 
 
 def test_policy_views_share_dossier_sources_but_materially_differ() -> None:
@@ -181,7 +196,7 @@ def test_api_mcp_cli_and_static_json_are_exactly_equivalent(
     assert cli == static
 
 
-def test_manifest_or_review_byte_drift_fails_closed(tmp_path: Path) -> None:
+def test_dossier_byte_drift_fails_closed(tmp_path: Path) -> None:
     manifest = json.loads(
         (ROOT / "catalog" / "dossiers" / f"{SLUG}.json").read_text()
     )
@@ -199,5 +214,39 @@ def test_manifest_or_review_byte_drift_fails_closed(tmp_path: Path) -> None:
     altered = json.loads(dossier_target.read_text())
     altered["title"] += " altered"
     dossier_target.write_text(json.dumps(altered))
+    with pytest.raises(FeaturedDossierError):
+        FeaturedDossier.load(tmp_path)
+
+
+def test_review_receipt_byte_drift_and_forged_independence_fail_closed(
+    tmp_path: Path,
+) -> None:
+    manifest = json.loads(
+        (ROOT / "catalog" / "dossiers" / f"{SLUG}.json").read_text()
+    )
+    dossier_source = ROOT / manifest["dossier_path"]
+    receipt_source = ROOT / manifest["review_receipt_path"]
+    manifest_target = tmp_path / "catalog" / "dossiers" / f"{SLUG}.json"
+    dossier_target = tmp_path / manifest["dossier_path"]
+    receipt_target = tmp_path / manifest["review_receipt_path"]
+    for target in (manifest_target, dossier_target, receipt_target):
+        target.parent.mkdir(parents=True, exist_ok=True)
+    manifest_target.write_text(json.dumps(manifest))
+    dossier_target.write_bytes(dossier_source.read_bytes())
+    receipt_target.write_bytes(receipt_source.read_bytes())
+
+    forged = json.loads(receipt_target.read_text())
+    forged["reviewer"]["id"] = "forged-author-reviewer"
+    forged["reviewer"]["independent_retrieval"] = False
+    forged["reviewer"]["authoring_agent_artifacts_used"] = True
+    receipt_target.write_text(json.dumps(forged))
+    with pytest.raises(FeaturedDossierError):
+        FeaturedDossier.load(tmp_path)
+
+    manifest["review_receipt_sha256"] = hashlib.sha256(
+        receipt_target.read_bytes()
+    ).hexdigest()
+    manifest["review_receipt_bytes"] = receipt_target.stat().st_size
+    manifest_target.write_text(json.dumps(manifest))
     with pytest.raises(FeaturedDossierError):
         FeaturedDossier.load(tmp_path)
