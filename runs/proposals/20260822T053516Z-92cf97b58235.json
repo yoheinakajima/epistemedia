@@ -1,0 +1,10 @@
+{
+  "command": "make check PYTHON=.venv/bin/python",
+  "id": "em:run-receipt:sha256:92cf97b58235b0c57707c3fb6c47b6f67bd06626bcfa2bf5e8b7f58ac01cd0a5",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-22T05:35:16Z",
+  "run_id": "structural-20260822T053509Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0017"
+}

@@ -47,6 +47,280 @@ LENSES: dict[str, str] = {
     ),
 }
 
+SITE_CSS = """
+:root{
+  color-scheme:light;
+  --paper:#f3f0e6;
+  --paper-raised:#fffdf6;
+  --paper-deep:#e9e4d5;
+  --ink:#171a15;
+  --muted:#5e6259;
+  --forest:#274c3a;
+  --forest-deep:#163426;
+  --amber:#a96512;
+  --amber-wash:#f5e4bd;
+  --rule:#c9c4b5;
+  --code:#e8e4d8;
+  --serif:ui-serif,Georgia,Cambria,"Times New Roman",serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --space-1:.35rem;
+  --space-2:.65rem;
+  --space-3:1rem;
+  --space-4:1.5rem;
+  --space-5:2.25rem;
+  --space-6:3.25rem;
+  --measure:72ch;
+  --page:1180px;
+}
+*{box-sizing:border-box}
+html{background:var(--paper);scroll-padding-top:1rem}
+body{
+  margin:0;
+  border-top:4px solid;
+  border-image:linear-gradient(90deg,var(--forest) 0 78%,var(--amber) 78% 100%) 1;
+  background:
+    linear-gradient(90deg,rgba(39,76,58,.025) 1px,transparent 1px) 0 0/24px 24px,
+    var(--paper);
+  color:var(--ink);
+  font:16px/1.58 var(--sans);
+  text-rendering:optimizeLegibility;
+}
+a{color:var(--forest-deep);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,summary:focus-visible{
+  outline:3px solid var(--amber);
+  outline-offset:4px;
+  border-radius:1px;
+}
+.skip-link{
+  position:fixed;
+  z-index:10;
+  top:.5rem;
+  left:.75rem;
+  transform:translateY(-180%);
+  background:var(--ink);
+  color:var(--paper-raised);
+  padding:.55rem .8rem;
+}
+.skip-link:focus{transform:none}
+.site-header,main,.site-footer{
+  width:min(100% - 2.5rem,var(--page));
+  margin-inline:auto;
+}
+.site-header{
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--space-3);
+  border-bottom:1px solid var(--rule);
+}
+.brand{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  gap:.55rem;
+  color:var(--ink);
+  font-weight:760;
+  letter-spacing:-.015em;
+  text-decoration:none;
+}
+.brand-mark{
+  display:inline-grid;
+  place-items:center;
+  width:1.85rem;
+  height:1.85rem;
+  border:1px solid var(--forest);
+  background:var(--forest);
+  color:var(--paper-raised);
+  font:700 .75rem/1 var(--mono);
+  letter-spacing:-.08em;
+}
+nav{display:flex;align-items:center;gap:1.1rem}
+nav a{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  color:var(--ink);
+  font-size:.82rem;
+  font-weight:720;
+  letter-spacing:.055em;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+nav a:hover{text-decoration:underline}
+main{padding-block:0 var(--space-6)}
+.site-footer{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:var(--space-4);
+  padding-block:var(--space-4);
+  border-top:1px solid var(--rule);
+  color:var(--muted);
+  font-size:.83rem;
+}
+.site-footer p{margin:0}
+p,li,blockquote{max-width:var(--measure)}
+h1,h2,h3,h4,h5,h6{
+  margin:0 0 .55em;
+  color:var(--ink);
+  font-family:var(--serif);
+  line-height:1.04;
+  text-wrap:balance;
+}
+h1{max-width:18ch;font-size:clamp(2.45rem,6vw,5.25rem);letter-spacing:-.045em}
+h2{font-size:clamp(1.55rem,2.3vw,2.15rem);letter-spacing:-.025em}
+h3{font-size:1.28rem}
+h4{font-size:1.08rem}
+.hero{padding:var(--space-5) 0 var(--space-4);border-bottom:1px solid var(--rule)}
+.hero-home{padding-top:clamp(2.25rem,5vw,4rem)}
+.hero-home h1{max-width:14ch}
+.hero-compact{padding-bottom:var(--space-3)}
+.dek{margin:.35rem 0 var(--space-3);max-width:760px;color:var(--muted);font-size:1.16rem}
+.eyebrow,.meta,.docket-number{
+  margin:0 0 .65rem;
+  color:var(--muted);
+  font:700 .72rem/1.35 var(--mono);
+  letter-spacing:.085em;
+  text-transform:uppercase;
+}
+.docket-number{color:var(--forest)}
+.scope-note{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:.7rem;
+  max-width:900px;
+  margin:var(--space-3) 0 0;
+  padding:.8rem 0 .8rem var(--space-3);
+  border-left:4px solid var(--amber);
+  background:linear-gradient(90deg,var(--amber-wash),transparent 88%);
+}
+.scope-note strong{font:700 .72rem/1.55 var(--mono);letter-spacing:.055em;text-transform:uppercase}
+section+section{margin-top:var(--space-5)}
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:var(--space-3);
+  margin-bottom:var(--space-3);
+  border-bottom:1px solid var(--ink);
+}
+.section-head h2{margin-bottom:.45rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:.75rem}
+.card{
+  position:relative;
+  display:flex;
+  min-width:0;
+  min-height:190px;
+  flex-direction:column;
+  padding:1rem;
+  border:1px solid var(--rule);
+  border-top:3px solid var(--forest);
+  border-radius:2px;
+  background:rgba(255,253,246,.78);
+}
+.card h2{font-size:1.28rem;line-height:1.08}
+.card>p:not(.card-meta):not(.docket-number){margin:.2rem 0 var(--space-3);color:var(--muted)}
+.card-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem .75rem;
+  margin:auto 0 0;
+  padding-top:.7rem;
+  border-top:1px solid var(--rule);
+  color:var(--muted);
+  font:650 .68rem/1.35 var(--mono);
+  letter-spacing:.025em;
+}
+.card:focus-within{outline:3px solid var(--amber);outline-offset:2px}
+.lens-status{
+  border:1px solid var(--rule);
+  border-left:4px solid var(--amber);
+  background:var(--paper-raised);
+  padding:.85rem 1rem;
+  margin:var(--space-4) 0;
+}
+.lens-status summary{cursor:pointer;font-weight:760}
+.lens-status p:last-child{margin-bottom:0}
+.projection-receipt{
+  margin-top:var(--space-5);
+  border:1px solid var(--ink);
+  border-top:5px solid var(--forest);
+  background:var(--paper-raised);
+  box-shadow:6px 6px 0 var(--paper-deep);
+}
+.receipt-head{
+  display:flex;
+  align-items:start;
+  justify-content:space-between;
+  gap:var(--space-3);
+  padding:1rem;
+  border-bottom:1px solid var(--rule);
+}
+.receipt-head h2{margin:0;font-size:1.45rem}
+.stamp{
+  flex:0 0 auto;
+  padding:.35rem .5rem;
+  border:2px solid var(--forest);
+  color:var(--forest-deep);
+  font:750 .65rem/1.2 var(--mono);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.receipt-grid{display:grid;margin:0}
+.receipt-grid>div{
+  display:grid;
+  grid-template-columns:minmax(110px,.22fr) 1fr;
+  gap:var(--space-3);
+  padding:.7rem 1rem;
+  border-top:1px solid var(--rule);
+}
+.receipt-grid>div:first-child{border-top:0}
+.receipt-grid dt{color:var(--muted);font:700 .7rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.receipt-grid dd{min-width:0;margin:0}
+.object-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem 1rem;margin:var(--space-3) 0 0}
+.object-facts>div{min-width:0;padding:.55rem 0;border-top:1px solid var(--rule)}
+.object-facts dt{color:var(--muted);font:700 .68rem/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.object-facts dd{margin:.2rem 0 0;overflow-wrap:anywhere;word-break:break-word}
+.source-document{padding-top:var(--space-4)}
+.source-document>h2{padding-bottom:.45rem;border-bottom:1px solid var(--ink)}
+.status-list{border-top:1px solid var(--ink)}
+.status-row{display:grid;grid-template-columns:150px 1fr auto;gap:var(--space-3);align-items:start;padding:.8rem 0;border-bottom:1px solid var(--rule)}
+.status-name{font-weight:750}
+.status-value{min-width:0;overflow-wrap:anywhere;word-break:break-word}
+.status-label{font:750 .66rem/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.status-live{color:var(--forest-deep)}
+.status-reserved{color:#704406}
+code,pre{background:var(--code);font-family:var(--mono)}
+code{padding:.1rem .28rem;border-radius:2px;overflow-wrap:anywhere;word-break:break-word}
+pre{max-width:100%;padding:1rem;overflow:auto;border:1px solid var(--rule);border-radius:2px}
+pre code{padding:0;overflow-wrap:normal;word-break:normal}
+blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(--amber);color:var(--muted)}
+.manifest{border-top:1px solid var(--rule);margin-top:var(--space-5);padding-top:var(--space-3)}
+@media (max-width:640px){
+  .site-header,main,.site-footer{width:min(100% - 2rem,var(--page))}
+  .site-header{min-height:58px;gap:.65rem}
+  .brand{font-size:.9rem}
+  .brand-mark{width:1.65rem;height:1.65rem}
+  nav{gap:.7rem}
+  nav a{font-size:.68rem}
+  .hero{padding:1.8rem 0 1.2rem}
+  .hero-home{padding-top:2.2rem}
+  .scope-note{grid-template-columns:1fr;gap:.15rem}
+  .section-head{align-items:start;flex-direction:column;gap:0}
+  .card{min-height:0}
+  .receipt-head{align-items:stretch;flex-direction:column}
+  .stamp{align-self:start}
+  .receipt-grid>div{grid-template-columns:1fr;gap:.2rem}
+  .object-facts{grid-template-columns:1fr}
+  .status-row{grid-template-columns:1fr;gap:.2rem}
+  .status-label{justify-self:start}
+  .site-footer{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+""".strip()
+
 TEXT_SUFFIXES = {
     ".md",
     ".txt",
@@ -524,23 +798,21 @@ def html_shell(
 <link rel="canonical" href="{html.escape(canonical_url)}">
 <link rel="describedby" href="{html.escape(base_url)}/llms.txt">
 {alternates}
-<style>
-:root{{--bg:#f7f5ef;--ink:#171714;--muted:#68685f;--line:#d8d5ca;--panel:#fffef9;--accent:#2f5946;--code:#efede5}}
-*{{box-sizing:border-box}} body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}}
-a{{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}} header,main,footer{{max-width:1120px;margin:auto;padding:1.25rem 2rem}}
-header{{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line)}} nav a{{margin-left:1rem}} h1{{font:700 clamp(2.3rem,7vw,6.7rem)/.94 ui-serif,Georgia,serif;letter-spacing:-.045em;margin:.3em 0}} h2,h3{{font-family:ui-serif,Georgia,serif}}
-.hero{{padding:5rem 0 3rem}} .dek{{font-size:1.35rem;max-width:800px;color:var(--muted)}} .grid{{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1rem}} .card{{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.2rem}} .meta{{color:var(--muted);font-size:.9rem}} .lens-status{{border:1px solid var(--line);background:var(--panel);padding:1rem;margin:0 0 2rem}} .lens-status summary{{cursor:pointer;font-weight:700}} code,pre{{background:var(--code)}} code{{padding:.12rem .3rem;border-radius:4px;overflow-wrap:anywhere;word-break:break-word}} pre{{padding:1rem;overflow:auto;border-radius:8px}} pre code{{padding:0;overflow-wrap:normal;word-break:normal}} .manifest{{border-top:1px solid var(--line);margin-top:3rem;padding-top:1rem}} footer{{color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}}
-</style>
+<style>{SITE_CSS}</style>
 </head>
 <body>
-<header><strong><a href="{html.escape(base_url)}/">Epistemedia</a></strong><nav><a href="{html.escape(base_url)}/explore/">Explore</a><a href="{html.escape(base_url)}/docs/">Docs</a><a href="{html.escape(base_url)}/status/">Status</a></nav></header>
-<main>{body}</main>
-<footer>Knowledge that can show its work. Human and agent interfaces compile from the same public projection.</footer>
+<a class="skip-link" href="#content">Skip to content</a>
+<header class="site-header">
+  <a class="brand" href="{html.escape(base_url)}/" aria-label="Epistemedia home"><span class="brand-mark" aria-hidden="true">E/</span><span>Epistemedia</span></a>
+  <nav aria-label="Primary"><a href="{html.escape(base_url)}/explore/">Explore</a><a href="{html.escape(base_url)}/docs/">Docs</a><a href="{html.escape(base_url)}/status/">Status</a></nav>
+</header>
+<main id="content" tabindex="-1">{body}</main>
+<footer class="site-footer"><p><strong>Knowledge that can show its work.</strong><br>Human and agent interfaces compile from one public projection.</p><p><a href="https://github.com/yoheinakajima/epistemedia">Source repository</a></p></footer>
 </body></html>
 """
 
 
-def md_to_html(text: str) -> str:
+def md_to_html(text: str, *, heading_offset: int = 0) -> str:
     # Small deterministic renderer. It deliberately supports a conservative Markdown subset.
     lines = text.splitlines()
     out: list[str] = []
@@ -562,12 +834,10 @@ def md_to_html(text: str) -> str:
         if in_code:
             code.append(line)
             continue
-        if line.startswith("### "):
-            out.append(f"<h3>{inline_md(line[4:])}</h3>")
-        elif line.startswith("## "):
-            out.append(f"<h2>{inline_md(line[3:])}</h2>")
-        elif line.startswith("# "):
-            out.append(f"<h1>{inline_md(line[2:])}</h1>")
+        heading = re.match(r"^(#{1,6})\s+(.+)$", line)
+        if heading:
+            level = min(6, len(heading.group(1)) + heading_offset)
+            out.append(f"<h{level}>{inline_md(heading.group(2))}</h{level}>")
         elif line.startswith("- "):
             if not in_list:
                 out.append("<ul>")
@@ -626,7 +896,7 @@ def topic_projection(catalog: PublicCatalog, topic: Topic, lens: str, base_url: 
 
 
 def projection_markdown(
-    projection: dict[str, Any], *, include_topic_intro: bool = True
+    projection: dict[str, Any], *, include_topic_intro: bool = True, include_manifest: bool = True
 ) -> str:
     topic = projection["topic"]
     lines = []
@@ -657,18 +927,57 @@ def projection_markdown(
             f"- Content digest: `{obj['content_digest']}`",
             "",
         ]
-    lines += [
-        "## Projection manifest",
-        "",
-        f"- Projection: `{projection['projection_id']}`",
-        f"- Catalog: `{projection['catalog_id']}`",
-        f"- Evidence frontier: `{projection['frontier']}`",
-        f"- Accepted commit: `{projection['commit']}`",
-        f"- Epistemic policy: `{projection['policies']['epistemic']}`",
-        f"- Disclosure policy: `{projection['policies']['disclosure']}`",
-        f"- Compiler: `{projection['compiler']}`",
-    ]
+    if include_manifest:
+        lines += [
+            "## Projection manifest",
+            "",
+            f"- Projection: `{projection['projection_id']}`",
+            f"- Catalog: `{projection['catalog_id']}`",
+            f"- Evidence frontier: `{projection['frontier']}`",
+            f"- Accepted commit: `{projection['commit']}`",
+            f"- Epistemic policy: `{projection['policies']['epistemic']}`",
+            f"- Disclosure policy: `{projection['policies']['disclosure']}`",
+            f"- Compiler: `{projection['compiler']}`",
+        ]
     return "\n".join(lines).strip() + "\n"
+
+
+def projection_receipt_html(
+    *,
+    catalog_id: str,
+    frontier: str,
+    commit: str,
+    compiler: str,
+    projection_id: str | None = None,
+    epistemic_policy: str | None = None,
+    disclosure_policy: str | None = None,
+) -> str:
+    rows = []
+    if projection_id:
+        rows.append(("Projection", projection_id))
+    rows.extend(
+        [
+            ("Catalog", catalog_id),
+            ("Frontier", frontier),
+            ("Accepted commit", commit),
+        ]
+    )
+    if epistemic_policy:
+        rows.append(("Epistemic policy", epistemic_policy))
+    if disclosure_policy:
+        rows.append(("Disclosure policy", disclosure_policy))
+    rows.append(("Compiler", compiler))
+    rendered_rows = "".join(
+        f"<div><dt>{html.escape(label)}</dt><dd><code>{html.escape(value)}</code></dd></div>"
+        for label, value in rows
+    )
+    return (
+        '<section class="projection-receipt" aria-labelledby="projection-receipt-title">'
+        '<div class="receipt-head"><div><p class="eyebrow">Build receipt</p>'
+        '<h2 id="projection-receipt-title">Reproduce this projection</h2></div>'
+        '<span class="stamp">Reproducible projection</span></div>'
+        f'<dl class="receipt-grid">{rendered_rows}</dl></section>'
+    )
 
 
 def build_public(
@@ -717,7 +1026,32 @@ def build_public(
             f"## Source content\n\n{obj.text.rstrip()}\n"
         )
         write_text(tmp / "objects" / f"{file_key}.md", markdown)
-        body = md_to_html(markdown)
+        summary = (
+            f'<p class="dek">{html.escape(obj.summary)}</p>' if obj.summary else ""
+        )
+        body = (
+            '<article class="object-page">'
+            f'<section class="hero hero-compact"><p class="eyebrow">Repository object · {html.escape(obj.kind)}</p>'
+            f'<h1>{html.escape(obj.title)}</h1>{summary}'
+            '<dl class="object-facts">'
+            f'<div><dt>Source path</dt><dd><code>{html.escape(obj.path)}</code></dd></div>'
+            f'<div><dt>Media type</dt><dd><code>{html.escape(obj.media_type)}</code></dd></div>'
+            f'<div><dt>Object ID</dt><dd><code>{html.escape(obj.id)}</code></dd></div>'
+            f'<div><dt>Content digest</dt><dd><code>{html.escape(obj.content_digest)}</code></dd></div>'
+            '</dl></section><section class="source-document" aria-labelledby="source-content-title">'
+            '<h2 id="source-content-title">Source content</h2>'
+            + md_to_html(obj.text, heading_offset=2)
+            + "</section>"
+            + projection_receipt_html(
+                catalog_id=catalog.catalog_id,
+                frontier=catalog.frontier,
+                commit=catalog.commit,
+                epistemic_policy=catalog.policies["epistemic"],
+                disclosure_policy=catalog.policies["disclosure"],
+                compiler=f"epistemedia/{VERSION}",
+            )
+            + "</article>"
+        )
         write_text(
             tmp / "objects" / file_key / "index.html",
             html_shell(
@@ -731,11 +1065,13 @@ def build_public(
 
     projection_count = 0
     topic_cards = []
-    for topic in catalog.topics:
+    for topic_index, topic in enumerate(catalog.topics, start=1):
         selected = catalog.selected_objects(topic)
         topic_cards.append(
-            f'<article class="card"><h2><a href="{base_url}/topics/{topic.slug}/">{html.escape(topic.title)}</a></h2>'
-            f'<p>{html.escape(topic.description)}</p><p class="meta">{len(selected)} public objects · encyclopedia projection</p></article>'
+            f'<article class="card docket-card"><p class="docket-number">Topic {topic_index:02d}</p>'
+            f'<h2><a href="{base_url}/topics/{topic.slug}/">{html.escape(topic.title)}</a></h2>'
+            f'<p>{html.escape(topic.description)}</p><p class="card-meta"><span>{len(selected)} public objects</span>'
+            '<span>Encyclopedia projection</span></p></article>'
         )
         for lens in LENSES:
             projection = topic_projection(catalog, topic, lens, base_url)
@@ -751,7 +1087,16 @@ def build_public(
                     '<aside class="lens-status"><strong>Experimental lens manifest.</strong> '
                     "Current lenses preserve the same included-object inventory; this label changes "
                     "the projection manifest, not a differentiated editorial result.</aside>"
-                    + md_to_html(md),
+                    + md_to_html(projection_markdown(projection, include_manifest=False))
+                    + projection_receipt_html(
+                        projection_id=projection["projection_id"],
+                        catalog_id=projection["catalog_id"],
+                        frontier=projection["frontier"],
+                        commit=projection["commit"],
+                        epistemic_policy=projection["policies"]["epistemic"],
+                        disclosure_policy=projection["policies"]["disclosure"],
+                        compiler=projection["compiler"],
+                    ),
                     base_url=base_url,
                     canonical_url=f"{base_url}/topics/{topic.slug}/{lens}/",
                     markdown_url=f"{base_url}/topics/{topic.slug}/{lens}/index.md",
@@ -765,13 +1110,28 @@ def build_public(
             if lens != "encyclopedia"
         )
         body = (
-            f'<section class="hero"><p class="meta">Current projection · encyclopedia</p><h1>{html.escape(topic.title)}</h1>'
+            f'<section class="hero hero-compact"><p class="eyebrow">Current projection · encyclopedia</p><h1>{html.escape(topic.title)}</h1>'
             f'<p class="dek">{html.escape(topic.description)}</p></section>'
             '<details class="lens-status"><summary>Experimental lens manifests (shared inventory)</summary>'
             '<p>These routes currently preserve the same included-object inventory. Their labels and '
             'manifest identities differ; they are not yet materially different editorial products.</p>'
             f'<p>{lens_links}</p></details>'
-            + md_to_html(projection_markdown(default_projection, include_topic_intro=False))
+            + md_to_html(
+                projection_markdown(
+                    default_projection,
+                    include_topic_intro=False,
+                    include_manifest=False,
+                )
+            )
+            + projection_receipt_html(
+                projection_id=default_projection["projection_id"],
+                catalog_id=default_projection["catalog_id"],
+                frontier=default_projection["frontier"],
+                commit=default_projection["commit"],
+                epistemic_policy=default_projection["policies"]["epistemic"],
+                disclosure_policy=default_projection["policies"]["disclosure"],
+                compiler=default_projection["compiler"],
+            )
         )
         write_text(
             tmp / "topics" / topic.slug / "index.html",
@@ -786,15 +1146,22 @@ def build_public(
         write_text(tmp / "topics" / topic.slug / "index.md", md)
 
     home_body = (
-        '<section class="hero"><p class="meta">An open knowledge network for humans and agents</p>'
+        '<section class="hero hero-home"><p class="eyebrow">Open knowledge · Public alpha</p>'
         '<h1>Knowledge that can show its work.</h1>'
         '<p class="dek">Epistemedia currently compiles accepted repository artifacts into reproducible human and machine-readable views. Its next public realm will test exact source-to-claim lineage.</p>'
-        '<p><strong>Current coverage:</strong> Epistemedia\'s own architecture and operations—the self-describing bootstrap corpus. The first outward-facing realm, <em>How We Know</em>, is in development.</p></section>'
-        '<section><h2>Explore the bootstrap corpus</h2><div class="grid">'
+        '<p class="scope-note"><strong>Current coverage:</strong><span>Epistemedia\'s own architecture and operations—the self-describing bootstrap corpus. The first outward-facing realm, <em>How We Know</em>, is in development.</span></p></section>'
+        '<section><div class="section-head"><div><p class="eyebrow">Current index</p><h2>Explore the bootstrap corpus</h2></div>'
+        f'<p class="meta">{len(catalog.topics)} topics · {len(catalog.objects)} public objects</p></div><div class="grid">'
         + "".join(topic_cards)
         + '</div></section>'
-        '<section class="manifest"><h2>This page is a projection</h2>'
-        f'<p>Catalog <code>{html.escape(catalog.catalog_id)}</code><br>Frontier <code>{html.escape(catalog.frontier)}</code><br>Commit <code>{html.escape(catalog.commit)}</code></p></section>'
+        + projection_receipt_html(
+            catalog_id=catalog.catalog_id,
+            frontier=catalog.frontier,
+            commit=catalog.commit,
+            epistemic_policy=catalog.policies["epistemic"],
+            disclosure_policy=catalog.policies["disclosure"],
+            compiler=f"epistemedia/{VERSION}",
+        )
     )
     write_text(
         tmp / "index.html",
@@ -819,7 +1186,21 @@ def build_public(
         + "\n",
     )
 
-    explore_body = '<section class="hero"><h1>Explore</h1><p class="dek">Browse topics and the exact public objects used to compile them.</p></section><div class="grid">' + "".join(topic_cards) + '</div>'
+    explore_body = (
+        '<section class="hero hero-compact"><p class="eyebrow">Repository index</p><h1>Explore</h1>'
+        '<p class="dek">Browse topics and the exact public objects used to compile them.</p></section>'
+        '<section aria-label="Bootstrap topics"><div class="grid">'
+        + "".join(topic_cards)
+        + "</div></section>"
+        + projection_receipt_html(
+            catalog_id=catalog.catalog_id,
+            frontier=catalog.frontier,
+            commit=catalog.commit,
+            epistemic_policy=catalog.policies["epistemic"],
+            disclosure_policy=catalog.policies["disclosure"],
+            compiler=f"epistemedia/{VERSION}",
+        )
+    )
     write_text(
         tmp / "explore" / "index.html",
         html_shell(
@@ -832,8 +1213,30 @@ def build_public(
     )
     write_text(tmp / "explore" / "index.md", "# Explore\n\n" + "\n".join(f"- [{t.title}]({base_url}/topics/{t.slug}/)" for t in catalog.topics) + "\n")
 
-    docs = [obj for obj in catalog.objects if obj.kind == "documentation" or obj.path in ("README.md", "AGENTS.md")]
-    docs_body = '<section class="hero"><h1>Documentation</h1><p class="dek">Human guidance and machine-operable project contracts, compiled from accepted repository content.</p></section><div class="grid">' + "".join(f'<article class="card"><h2>{html.escape(o.title)}</h2><p>{html.escape(o.summary)}</p><p><a href="{base_url}/objects/{static_object_route_key(o.id)}/">Read source projection</a></p></article>' for o in docs) + '</div>'
+    docs = [
+        obj
+        for obj in catalog.objects
+        if obj.kind == "documentation" or obj.path in ("README.md", "AGENTS.md")
+    ]
+    docs_cards = "".join(
+        f'<article class="card docket-card"><p class="docket-number">Document {index:02d}</p>'
+        f'<h2><a href="{base_url}/objects/{static_object_route_key(obj.id)}/">{html.escape(obj.title)}</a></h2>'
+        f'<p>{html.escape(obj.summary)}</p><p class="card-meta"><span>{html.escape(obj.path)}</span></p></article>'
+        for index, obj in enumerate(docs, start=1)
+    )
+    docs_body = (
+        '<section class="hero hero-compact"><p class="eyebrow">Operating library</p><h1>Documentation</h1>'
+        '<p class="dek">Human guidance and machine-operable project contracts, compiled from accepted repository content.</p></section>'
+        f'<section aria-label="Project documentation"><div class="grid">{docs_cards}</div></section>'
+        + projection_receipt_html(
+            catalog_id=catalog.catalog_id,
+            frontier=catalog.frontier,
+            commit=catalog.commit,
+            epistemic_policy=catalog.policies["epistemic"],
+            disclosure_policy=catalog.policies["disclosure"],
+            compiler=f"epistemedia/{VERSION}",
+        )
+    )
     write_text(
         tmp / "docs" / "index.html",
         html_shell(
@@ -862,11 +1265,50 @@ def build_public(
         f"- Projections: `{projection_count}`\n"
     )
     write_text(tmp / "status" / "index.md", status_md)
+    status_rows = "".join(
+        [
+            '<div class="status-row"><span class="status-name">Canonical human site</span>'
+            '<span class="status-value"><code>https://epistemedia.org</code></span>'
+            '<span class="status-label status-live">Verified live · HTTPS</span></div>',
+            '<div class="status-row"><span class="status-name">Sharing redirect</span>'
+            '<span class="status-value"><code>https://episte.media</code></span>'
+            '<span class="status-label status-reserved">Reserved · unverified</span></div>',
+            '<div class="status-row"><span class="status-name">Hosted API</span>'
+            '<span class="status-value"><code>https://api.epistemedia.org/v1</code></span>'
+            '<span class="status-label status-reserved">Reserved · unverified</span></div>',
+            '<div class="status-row"><span class="status-name">Hosted MCP</span>'
+            '<span class="status-value"><code>https://mcp.epistemedia.org/mcp</code></span>'
+            '<span class="status-label status-reserved">Reserved · unverified</span></div>',
+        ]
+    )
+    status_body = (
+        '<section class="hero hero-compact"><p class="eyebrow">Provider read-back + build identity</p>'
+        '<h1>Status</h1><p class="dek">Live means externally observed. Reserved destinations are not presented as deployed services.</p></section>'
+        '<section aria-labelledby="surface-status-title"><div class="section-head"><div>'
+        '<p class="eyebrow">Service boundary</p><h2 id="surface-status-title">Public surfaces</h2>'
+        f'</div></div><div class="status-list">{status_rows}</div></section>'
+        '<section aria-labelledby="build-summary-title"><div class="section-head"><div>'
+        '<p class="eyebrow">Current compilation</p><h2 id="build-summary-title">Bootstrap corpus</h2>'
+        '</div></div><dl class="object-facts">'
+        f'<div><dt>Version</dt><dd><code>{VERSION}</code></dd></div>'
+        f'<div><dt>Public objects</dt><dd>{len(catalog.objects)}</dd></div>'
+        f'<div><dt>Topics</dt><dd>{len(catalog.topics)}</dd></div>'
+        f'<div><dt>Projections</dt><dd>{projection_count}</dd></div>'
+        '</dl><p class="scope-note"><strong>Current coverage:</strong><span>Self-describing repository bootstrap. <em>How We Know</em> is in development.</span></p></section>'
+        + projection_receipt_html(
+            catalog_id=catalog.catalog_id,
+            frontier=catalog.frontier,
+            commit=catalog.commit,
+            epistemic_policy=catalog.policies["epistemic"],
+            disclosure_policy=catalog.policies["disclosure"],
+            compiler=f"epistemedia/{VERSION}",
+        )
+    )
     write_text(
         tmp / "status" / "index.html",
         html_shell(
             "Status",
-            md_to_html(status_md),
+            status_body,
             base_url=base_url,
             canonical_url=f"{base_url}/status/",
             markdown_url=f"{base_url}/status/index.md",
