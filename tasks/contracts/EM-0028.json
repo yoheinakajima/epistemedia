@@ -1,0 +1,64 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0028",
+  "title": "Make topic projections human-readable and relation-rich",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Replace raw Markdown-plus-metadata topic dumps with compact forensic-editorial object cards, make machine identity visibly subordinate but inspectable, and expose deterministic catalog interlinks among topic memberships, repository references, object pages, Markdown twins, and exact accepted source files without inventing semantic relatedness or changing accepted object content.",
+  "depends_on": [
+    "EM-0024"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "src/epistemedia/core.py",
+      "tests/test_interfaces.py",
+      "docs/design-system.md",
+      "docs/execution-plans/EM-0028.md",
+      "ops/activation/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "catalog/**",
+      "research/**",
+      "README.md",
+      "src/epistemedia/featured.py"
+    ]
+  },
+  "required_evaluation": [
+    "live and local baseline inspection of topic hierarchy, object-link coverage, raw metadata prominence, horizontal overflow, and unresolved relative repository links",
+    "deterministic topic-membership, source-reference, canonical object, Markdown twin, and accepted-source URL derivation checks",
+    "human-summary sanitization and machine-identity disclosure checks without changing catalog object text, IDs, or content digests",
+    "HTML topic and object-page interlink closure plus JSON, REST, MCP, and CLI topic-projection parity",
+    "desktop and mobile visual hierarchy, density, focus, native disclosure, no-JavaScript, and overflow inspection",
+    "adversarial relative-link, fragment, external-link, parent-traversal, duplicate-reference, missing-object, and long-identifier fixtures",
+    "accepted Case 001 dossier, feature manifest, review receipt, and evidence-meaning byte-preservation checks",
+    "full deterministic make check, disclosure audit, exact path-scope comparison, exact-head CI, protected merge, and post-deployment public read-back"
+  ],
+  "acceptance": [
+    "each topic route presents a compact topic header, a truthful object count, and a responsive card or index hierarchy rather than one undifferentiated stream of headings, prose, and metadata bullets",
+    "each object entry has one primary human-readable title and summary plus direct links to its canonical HTML object page, Markdown twin, and accepted source file",
+    "object ID, content digest, media type, and source path remain available in a native technical-identity disclosure rendered at smaller typographic scale than the human summary",
+    "the public topic projection derives and exposes every object's other topic memberships and every resolvable repository-object reference from the same catalog and accepted commit",
+    "repository-relative Markdown targets are resolved against the source object's directory and linked to canonical compiled object routes when the exact public object exists; unresolved, external, fragment-only, unsafe, or non-public targets are not fabricated into object relations",
+    "crosslinks are labeled by their actual relation such as 'also filed under' or 'references in source' and are never presented as semantic similarity, evidential support, or independent corroboration",
+    "canonical object pages expose their topic memberships so a reader can navigate back into the compiled catalog",
+    "HTML, static JSON, local REST, MCP resource and tool, and CLI topic projections preserve one deterministic relation set and identity envelope",
+    "representative desktop and mobile topic pages have one H1, no horizontal overflow, visible keyboard focus, usable native disclosures, and materially less visual prominence for machine identifiers than titles and summaries",
+    "all internal links introduced by the task resolve in the generated public tree and the prior broken topic-relative documentation links are absent",
+    "accepted Case 001 research, feature manifest, review receipt, evidence counts, source spans, and policy meanings remain byte-identical",
+    "make check passes without changing accepted source state",
+    "after protected merge, one GitHub Pages deployment of the accepted main commit passes canonical-domain desktop, mobile, interlink, content-type, and release-identity read-back"
+  ],
+  "limitations": [
+    "This task improves compiled navigation and presentation; it does not change topic inclusion rules, object content, object IDs, evidence meaning, dossier policy, or the canonical repository substrate.",
+    "A shared topic or source hyperlink is a navigation relation, not proof of semantic similarity, epistemic support, data independence, or agreement.",
+    "No embedding search, inferred similarity edge, recommender, analytics, user tracking, JavaScript framework, or manually curated related-content claim is authorized.",
+    "Only one normal Pages deployment from accepted main is authorized after exact-head independent review and protected merge; workflow edits, administrator bypass, DNS, hosted API/MCP activation, release, package publication, credentials, accounts, and spend remain out of scope."
+  ]
+}

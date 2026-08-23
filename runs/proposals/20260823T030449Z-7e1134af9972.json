@@ -1,0 +1,9 @@
+{
+  "agent_id": "codex-em0028-topic-implementer",
+  "id": "em:task-claim:sha256:7e1134af99720c4630784f00776ce1bfe2953c7748e194ca117afb36ae347d85",
+  "kind": "task-claim",
+  "recorded_at": "2026-08-23T03:04:49Z",
+  "schema": "https://epistemedia.com/schemas/task-claim-v1.json",
+  "status": "proposed",
+  "task_id": "EM-0028"
+}
