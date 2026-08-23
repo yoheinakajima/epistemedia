@@ -37,5 +37,6 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0021` — complete the first How We Know evidence experience with truthful compiled current-state documentation (ready; depends on `EM-0017` and `EM-0019`)
 - `EM-0022` — harden Case 001 entry routes, public review trust, agent reachability, and release-identity parity (ready; depends on `EM-0021`)
 - `EM-0023` — turn Case 001 into a living evidence report with a complete scoreboard ledger and deterministic share card (ready; depends on `EM-0022`)
+- `EM-0024` — clarify why Epistemedia matters, compress first-read typography, state review-process independence honestly, and reconcile distinct-object versus topic-membership counts (ready; depends on `EM-0023`)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.
