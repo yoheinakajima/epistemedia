@@ -60,7 +60,7 @@ The comparison is an assigned, survey-delivered exposure to a brief misinformati
 | Chan–Albarracín original/correction | One science-relevant correction synthesis and its author correction | The 2025 correction supersedes erroneous original counts/estimates. It is not independent evidence from its included reports. |
 | Butler et al. Matters Arising | Reanalysis/critique using Chan–Albarracín repository, per its data/code statements | Not independent data from the original meta-analysis; it is a methodological counteranalysis. |
 | Chan–Albarracín reply | Author response and reanalysis within the same dispute | Not a new participant-data root or independent synthesis; it answers Butler and must remain linked to the original, correction, and Matters Arising editions. |
-| Case 001 | Existing Epistemedia correction/backfire candidate | Confirmed author-program overlap: Butler coauthors Ullrich K. H. Ecker and Briony Swire-Thompson are represented throughout Case 001's correction/backfire program. Exact included-report and participant-data overlap remains unaudited; prevent double counting until item-level matching. |
+| Case 001 | Existing Epistemedia correction/backfire candidate | Confirmed author-program overlap: Butler coauthors Ullrich K. H. Ecker and Briony Swire-Thompson are represented throughout Case 001's correction/backfire program. One report-level overlap is also confirmed: the Chan–Albarracín correction identifies Swire-Thompson et al. (2022), DOI [10.1037/xge0001131](https://doi.org/10.1037/xge0001131), which Case 001 models. Exact effect-size, item, and participant-data overlap remains unaudited; prevent double counting until item-level matching. |
 
 ## 5. Counterevidence, qualifications, and boundaries
 
@@ -113,10 +113,13 @@ The anchor experiment and an openly licensed replication deposit are strongly id
 1. Retrieve/version-pin `vkygw` and `f72ay`: file inventory, licenses, bytes/hashes, current analysis/Rmd, revision dates, and whether the corrected analysis is reproducible from specified inputs.
 2. Reconcile the original 2023 counts/estimates with the 2025 correction and reply; record corrected values only from the correction/current reproducible materials, never by inference.
 3. Build a deliberately separate behavior/sharing branch with direct intervention and outcome evidence; do not transfer belief-accuracy or two-week persistence effects to behavior/reach/diffusion.
-4. Perform report/item-level overlap mapping across Walter, Chan–Albarracín, Butler,
-   PNAS/Dataverse, and Case 001 before counting evidence or describing convergence. The known
-   Ecker/Swire-Thompson author-program overlap is not itself proof of report or participant-data
-   overlap.
+4. Complete report/item-level overlap mapping across Walter, Chan–Albarracín, Butler,
+   PNAS/Dataverse, and Case 001 before counting evidence or describing convergence. One
+   report-level overlap is established: Swire-Thompson et al. (2022), DOI
+   [10.1037/xge0001131](https://doi.org/10.1037/xge0001131), appears in the
+   Chan–Albarracín correction and Case 001. The shared report and the known
+   Ecker/Swire-Thompson author-program overlap do not by themselves establish effect-size,
+   item, or participant-data overlap.
 5. Check sampling/recruitment, attrition, stimuli, and analytic scripts sufficiently to state the exact population, delay denominator, and reproducibility status.
 
 **Prohibitions preserved:** no source admission, dossier construction, public copy, verdict, repository edit, PR, credential use, deployment, or spend.
