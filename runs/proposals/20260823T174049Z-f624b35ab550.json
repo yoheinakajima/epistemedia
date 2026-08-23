@@ -1,0 +1,10 @@
+{
+  "command": "PYTHONPATH=src make check PYTHON=/private/tmp/em0028-topic-01a02db2/.venv/bin/python",
+  "id": "em:run-receipt:sha256:f624b35ab5506523284b1d01ef87cf24d5c8737585c65af8448103feef334f1b",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-23T17:40:49Z",
+  "run_id": "20260823T-review-corrections-r3",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0027"
+}
