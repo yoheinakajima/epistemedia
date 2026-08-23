@@ -80,6 +80,8 @@ in two channels.”**
   [university course scan](https://is.muni.cz/el/phil/jaro2018/PSA_034/um/Mehrabian.pdf?lang=en)
   returned a five-page PDF, 459,340 bytes, SHA-256
   `f9d91dfd98725e902ef24a1b478c4bb8aac5be66c2be2b5486cc0c4253711f84`.
+  A later independent readback returned an HTML/meta-refresh response followed by a connection
+  failure, so this carrier is explicitly unstable and receives no durable-access credit.
 - Edition: authoritative metadata and the issue header say *Journal of Consulting
   Psychology*, despite inconsistent secondary naming.
 - License/treatment: no open license; public course hosting does not establish reuse rights.
@@ -116,7 +118,8 @@ The formula's appearance in P2 is verified; the complete derivation is unresolve
 
 2. **Albert Mehrabian, *Silent Messages*.**
    - Author page identity: 1981 Wadsworth edition, pp. 75–80.
-   - Inspected lead: 1971 Wadsworth edition, ISBN `0-534-00059-2`, 160-page scan, SHA-256
+   - Inspected lead: [1971 Wadsworth scan](https://e-edu.nbu.bg/pluginfile.php/855150/mod_resource/content/1/Albert-Mehrabian%20-%20Silent%20Messages%201971%20-%20red.size.pdf),
+     ISBN `0-534-00059-2`, 160 pages, SHA-256
      `94925f4d17b626bc029ce8ae8375c8468788a179cc879f336a930b7b1273ddeb`.
    - The 1971 edition states the approximate equation and its feeling-dimension boundary but
      does not supply the missing `.07` derivation.
@@ -153,7 +156,7 @@ prevalence. Correction pages are leads, not substitutes for the primary papers.
 - No raw participant data, recordings, photographs, coding sheets, or analysis code were
   located.
 - Official publisher full text was inaccessible; third-party scans establish inspection, not
-  reuse rights.
+  reuse rights or durable availability. The independently rechecked P2 carrier was unstable.
 - No 1967 study tested three simultaneous channels.
 - P2 cites P1 as pp. 108–114, while authoritative identity is 109–114; preserve the likely
   citation discrepancy.

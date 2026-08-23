@@ -13,7 +13,15 @@
 - **Science-misinformation meta-analysis — original edition (verified identity):** Man-pui Sally Chan and Dolores Albarracín, “A meta-analysis of correction effects in science-relevant misinformation,” *Nature Human Behaviour* 7, 1514–1525 (2023), DOI <https://doi.org/10.1038/s41562-023-01623-8>, online version of record 2023-06-15; issue September 2023. Public author-hosted PDF and a public PMC record were located; the publisher page presents subscription access. The original article says data and code are at OSF <https://osf.io/vkygw/>; the current contents/version of that OSF project were **not directly inspected** in this recovery.
 - **Science meta-analysis — correction edition (verified identity):** Chan and Albarracín, “Author Correction: A meta-analysis of correction effects in science-relevant misinformation,” *Nature Human Behaviour* 9, 1992–1994 (2025), DOI <https://doi.org/10.1038/s41562-025-02294-3>, published/version of record 2025-08-08. The correction states that original counts of included studies/effect sizes were incorrect and that some effect-size estimates/codings were erroneous or imprecise. Therefore, original-edition counts and estimates must not be carried forward as the current meta-analytic result.
 - **2025 Matters Arising (verified identity):** Lucy H. Butler, Joseph DeGutis, Li Qian Tay, Ullrich K. H. Ecker, and Briony Swire-Thompson, “Corrections are effective for science misinformation,” *Nature Human Behaviour* 9, 2458–2460 (2025), DOI <https://doi.org/10.1038/s41562-025-02245-y>, published 2025-10-06. It is a response to the 2023 Chan–Albarracín article, not an independent primary intervention trial. Publisher page showed subscription access; source page says its relevant code is at <https://osf.io/f72ay/> and directs readers to Chan–Albarracín OSF data at <https://osf.io/vkygw/>. License: **not verified**.
-- **“Reply to: Corrections are effective for science misinformation” (lead only):** a public PMC search result was located, but authors, DOI, journal version, publication date, full text, and relation to the correction edition were not directly pinned in this recovery. Treat as an unresolved retrieval lead, not a source-level conclusion.
+- **2025 reply (verified identity):** Man-pui Sally Chan and Dolores Albarracín, “Reply to:
+  Corrections are effective for science misinformation,” *Nature Human Behaviour* 9,
+  2461–2470 (2025), DOI <https://doi.org/10.1038/s41562-025-02265-8>, PMID
+  [`41053228`](https://pubmed.ncbi.nlm.nih.gov/41053228/), PMCID
+  [`PMC13188179`](https://pmc.ncbi.nlm.nih.gov/articles/PMC13188179/). The version of record was
+  published 2025-10-06 with a December 2025 issue date and explicitly replies to Butler et al.
+  It is an author response/reanalysis in the same meta-analysis dispute, not a new primary
+  intervention trial. Public PMC author-manuscript access was identified; no separate
+  article-specific reuse license was confirmed, so retain metadata and quote minimally.
 
 ## 2. What the anchor experiment actually tested
 
@@ -46,6 +54,7 @@ The comparison is an assigned, survey-delivered exposure to a brief misinformati
 | Walter et al. review | Meta-analysis of political fact-checking studies | Requires report-level overlap audit before combining with the PNAS anchor or other reviews. Overlap is unknown here. |
 | Chan–Albarracín original/correction | One science-relevant correction synthesis and its author correction | The 2025 correction supersedes erroneous original counts/estimates. It is not independent evidence from its included reports. |
 | Butler et al. Matters Arising | Reanalysis/critique using Chan–Albarracín repository, per its data/code statements | Not independent data from the original meta-analysis; it is a methodological counteranalysis. |
+| Chan–Albarracín reply | Author response and reanalysis within the same dispute | Not a new participant-data root or independent synthesis; it answers Butler and must remain linked to the original, correction, and Matters Arising editions. |
 | Case 001 | Existing Epistemedia correction/backfire candidate | Exact source-program overlap has not been audited. Treat overlap as unknown and prevent double counting until item/report-level matching. |
 
 ## 5. Counterevidence, qualifications, and boundaries
@@ -53,6 +62,9 @@ The comparison is an assigned, survey-delivered exposure to a brief misinformati
 These are leads/boundaries, not an attempt to settle the literature.
 
 1. **Edition instability is active counterevidence to any simple meta-analytic claim.** The correction says original counts were wrong and notes coding/effect-size problems. Butler et al. state that the original null resulted from pooling two distinct effect types; the source page quotes their description of the original as 75 studies/245 effect sizes and an average (d=0.11), (P=0.142). Neither figure should be reported as the corrected edition’s final estimate without reading/pinning the correction and current code/data.
+   Chan and Albarracín's reply defends combining different correction approaches and reports a
+   correction-effect estimate, but that argument remains part of the same contested analytical
+   lineage and is not independent confirmation.
 2. **Outcome mismatch.** The PNAS anchor supports a randomized, assigned-exposure claim about false-belief accuracy, including a limited delay. It does not establish that fact-checks change sharing or behavior. A captured 2023 review, “Factual corrections: Concerns and current evidence,” says evidence beyond belief accuracy is less settled and describes a dearth of individual-level web-browsing studies; its exact bibliographic identity and access/license were not pinned, so it is a boundary lead only.
 3. **Scope mismatch.** Walter et al. synthesize political fact-checking; Chan–Albarracín focus science-relevant misinformation/corrections. Their intervention definitions, populations, outcomes, and inclusion rules cannot be treated as interchangeable.
 4. **Exposure/selection gap.** Survey assignment demonstrates efficacy conditional on exposure, not reach to audiences who would ordinarily select, avoid, trust, or encounter a correction. This is an interpretation of the anchor design, not a claim that no real-world effects exist.
@@ -67,7 +79,10 @@ Each quotation is under 25 words and is included solely to anchor source identit
 
 ## 7. Bounded corpus and review-cost estimate
 
-**Provisional minimum corpus:** 5 source records (PNAS article + supplement, Dataverse deposit, Walter review, Chan original plus correction treated as one version lineage, Butler Matters Arising), plus the unresolved reply and 2–4 purpose-matched behavior/sharing studies. This is a *scout* corpus, not a complete literature review.
+**Provisional minimum corpus:** 6 source records (PNAS article + supplement, Dataverse deposit,
+Walter review, Chan original plus correction treated as one version lineage, Butler Matters
+Arising, and the Chan–Albarracín reply), plus 2–4 purpose-matched behavior/sharing studies. This
+is a *scout* corpus, not a complete literature review.
 
 **Expected review units:** roughly 10–16 records/artifacts after de-duplication, including versioned article/correction/reply records, supplements, code/data deposits, and boundary studies. Estimate is uncertain because OSF/Rmd state and report-level overlap have not been inspected. No provider budget or paid access is required for the next closure pass if public endpoints remain available.
 
@@ -79,12 +94,11 @@ The anchor experiment and an openly licensed replication deposit are strongly id
 
 ### Exact closure gaps before a full Case can be scoped
 
-1. Pin and read the correct 2025 reply’s authoritative article identity, DOI, edition/date, access, and its relation to the Chan–Albarracín correction and Butler critique.
-2. Retrieve/version-pin `vkygw` and `f72ay`: file inventory, licenses, bytes/hashes, current analysis/Rmd, revision dates, and whether the corrected analysis is reproducible from specified inputs.
-3. Reconcile the original 2023 counts/estimates with the 2025 correction; record corrected values only from the correction/current reproducible materials, never by inference.
-4. Build a deliberately separate behavior/sharing branch with direct intervention and outcome evidence; do not transfer belief-accuracy or two-week persistence effects to behavior/reach/diffusion.
-5. Perform report/item-level overlap mapping across Walter, Chan–Albarracín, Butler, PNAS/Dataverse, and Case 001 before counting evidence or describing convergence.
-6. Check sampling/recruitment, attrition, stimuli, and analytic scripts sufficiently to state the exact population, delay denominator, and reproducibility status.
+1. Retrieve/version-pin `vkygw` and `f72ay`: file inventory, licenses, bytes/hashes, current analysis/Rmd, revision dates, and whether the corrected analysis is reproducible from specified inputs.
+2. Reconcile the original 2023 counts/estimates with the 2025 correction and reply; record corrected values only from the correction/current reproducible materials, never by inference.
+3. Build a deliberately separate behavior/sharing branch with direct intervention and outcome evidence; do not transfer belief-accuracy or two-week persistence effects to behavior/reach/diffusion.
+4. Perform report/item-level overlap mapping across Walter, Chan–Albarracín, Butler, PNAS/Dataverse, and Case 001 before counting evidence or describing convergence.
+5. Check sampling/recruitment, attrition, stimuli, and analytic scripts sufficiently to state the exact population, delay denominator, and reproducibility status.
 
 **Prohibitions preserved:** no source admission, dossier construction, public copy, verdict, repository edit, PR, credential use, deployment, or spend.
 
@@ -96,4 +110,6 @@ The anchor experiment and an openly licensed replication deposit are strongly id
 4. Chan–Albarracín original: <https://doi.org/10.1038/s41562-023-01623-8>.
 5. Chan–Albarracín correction: <https://doi.org/10.1038/s41562-025-02294-3>.
 6. Butler et al. Matters Arising: <https://doi.org/10.1038/s41562-025-02245-y>.
-7. Original article’s declared OSF project: <https://osf.io/vkygw/>; Butler page’s declared code project: <https://osf.io/f72ay/>.
+7. Chan–Albarracín reply: <https://doi.org/10.1038/s41562-025-02265-8>;
+   public manuscript record: <https://pmc.ncbi.nlm.nih.gov/articles/PMC13188179/>.
+8. Original article’s declared OSF project: <https://osf.io/vkygw/>; Butler page’s declared code project: <https://osf.io/f72ay/>.

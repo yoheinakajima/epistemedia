@@ -135,8 +135,11 @@ literal percentile claim or comparison-population ambiguity.
      and Law* 33, 581–604.
    - Media/access: HTML/PDF, credential-free.
    - License/treatment: CC BY 4.0.
-   - Reported anchors: July comparison about 68th; modeled approximately 62nd among
-     first-time takers and 48th among passers; these estimates depend on stated normality and
+   - Reported anchors: July comparison about 68th and modeled approximately 62nd among
+     first-time takers. The version of record is internally inconsistent for the comparison
+     among passers: Results §3.2.2 reports approximately 45th percentile, while the abstract
+     and discussion report approximately 48th. Preserve `45th/48th` as an unresolved
+     within-edition discrepancy; both estimates depend on stated normality and
      inferred-distribution assumptions.
    - Preprint: SSRN DOI `10.2139/ssrn.4441311`; no separate open license established.
 
@@ -161,6 +164,8 @@ literal percentile claim or comparison-population ambiguity.
 - Changing February to July moves the coarse Illinois comparison near the same score by about
   twenty percentile points.
 - Preserve `298` (OpenAI) and approximately `297` (Katz) as an edition/source discrepancy.
+- Preserve Martínez's approximately `45th` versus `48th` percentile among-passers statements
+  as an internal version-of-record discrepancy rather than choosing one silently.
 - Preserve distinctions among passing a jurisdictional threshold, percentile rank, essay/MBE
   component performance, and practicing-lawyer competence.
 - The proprietary snapshot, copyrighted questions, nonofficial essay grading, simulation
