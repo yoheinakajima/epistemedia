@@ -1,0 +1,65 @@
+{
+  "schema": "https://epistemedia.org/research/case-target-decision-v1.json",
+  "task_id": "EM-0026",
+  "status": "frozen-before-traces",
+  "decision": "proceed",
+  "recorded_at": "2026-08-23T02:25:00Z",
+  "evidence_cutoff": "2026-08-22",
+  "working_title": "When agent agreement is really one retrieval lineage",
+  "question": "What empirical evidence published or publicly posted by 2026-08-22 measures whether citations produced by deep-research agents resolve and actually support the claims made from them?",
+  "unit_of_analysis": "one context-isolated public-by-design agent answer captured under the frozen prompt",
+  "scope": {
+    "included": [
+      "empirical evaluations of citation existence, resolution, source relevance, exact claim support, or citation-related warrant in deep-research or citation-producing research agents",
+      "primary research artifacts and authoritative project documentation needed to identify methods, samples, metrics, and result spans",
+      "qualifications, counterevidence, negative results, and unresolved source identities found within the fixed cutoff"
+    ],
+    "excluded": [
+      "general model factuality without a citation evaluation",
+      "citation style, formatting, or bibliography quality without source resolution or claim-support measurement",
+      "private enterprise evaluations, credentialed dashboards, personal traces, and provider-confidential system material",
+      "performance changes published after the evidence cutoff",
+      "universal claims about all agents, models, prompts, retrieval systems, or public-web sources"
+    ]
+  },
+  "risk_screen": {
+    "public_interest": {
+      "result": "pass",
+      "basis": "The question bears directly on whether people and agents should rely on cited research answers."
+    },
+    "stability": {
+      "result": "pass_with_cutoff",
+      "basis": "Agent products change quickly, so the question is explicitly historical through 2026-08-22 and every result must retain model, dataset, tool, and time scope."
+    },
+    "medical": {
+      "result": "pass",
+      "basis": "The target is research-agent citation warrant, not medical diagnosis, treatment, or health advice."
+    },
+    "political": {
+      "result": "pass",
+      "basis": "The target does not require evaluating a political claim or actor."
+    },
+    "personal": {
+      "result": "pass",
+      "basis": "Only intentionally public traces and public sources are eligible; personal or inherited conversation context is excluded."
+    },
+    "vendor_volatility": {
+      "result": "pass_with_boundary",
+      "basis": "The packet evaluates a dated evidence record and must not become a current vendor leaderboard or imply that later systems behave the same way."
+    }
+  },
+  "why_suitable": [
+    "It tests the selected Case 002 lesson in the same medium the project serves: agent-produced research.",
+    "It can separate report, URL, work, edition, span, and warrant identity in one bounded packet.",
+    "It is answerable from credential-free public research without health, political, or personal-data exposure.",
+    "A negative result remains useful if exact citation and span lineage cannot be closed."
+  ],
+  "stop_conditions": [
+    "the question or evidence cutoff changes after the first trace",
+    "a trace requires disclosure of hidden reasoning, credentials, personal data, inherited private context, or provider-restricted material",
+    "an authoritative source edition or exact result span cannot be independently re-retrieved",
+    "URL identity cannot be separated from source-work, edition, span, or warrant identity",
+    "a displayed count cannot be derived from captured records and declared relations",
+    "independent review cannot reproduce the trace identities, source readbacks, span matches, or counts"
+  ]
+}
