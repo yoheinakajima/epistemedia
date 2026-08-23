@@ -1,0 +1,55 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0025",
+  "title": "Preserve the conceptual vocabulary and select the Case 002 editorial roadmap",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Preserve the owner-directed Greek and modern epistemic vocabulary as durable product-design context, synthesize the supplied Case 002 strategy and pre-research into an explicit candidate ledger, select one bounded Case 002 research direction, and sequence a small library of later cases without admitting new empirical claims or beginning Case 002 research.",
+  "depends_on": [
+    "EM-0024"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "docs/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "research/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "tasks/contracts/**",
+      "README.md"
+    ]
+  },
+  "required_evaluation": [
+    "conceptual-vocabulary coverage and episteme-versus-truth boundary review",
+    "Case 002 candidate-ledger completeness against all supplied strategy and pre-research notes",
+    "explicit separation of editorial decision, pre-research leads, accepted evidence, and public claim admission",
+    "roadmap review for verdict-shape, audience, machinery, corpus-cost, licensing, and risk diversity",
+    "exact path-scope and prohibited-surface comparison",
+    "full deterministic make check with disclosure audit and unchanged generated state",
+    "independent review of the resulting documentation from a fresh clone"
+  ],
+  "acceptance": [
+    "a durable conceptual-vocabulary document preserves the useful Greek and modern distinctions while stating that it is product orientation rather than an authoritative history of philosophy or a How We Know case",
+    "the vocabulary distinguishes truth, world state, belief, evidence, warrant, provenance, lineage, uncertainty, suspension, understanding, skill, judgment, and wisdom and connects them to concrete product implications",
+    "a standalone case-selection record synthesizes the supplied candidate arguments and pre-research without presenting those notes as accepted evidence",
+    "Case 002 is explicitly selected as a narrow agent-citation-lineage case whose empirical unit is captured agent traces rather than papers about agents",
+    "the selection fails closed if a reproducible public trace packet cannot support the claimed URL, span, derivation, and dependence counts",
+    "a sequenced library roadmap retains the strongest non-selected candidates and varies audience, verdict shape, and machinery rather than creating a one-topic debunking series",
+    "the current public feature, accepted Case 001 dossier, research packet, policies, compiler, workflows, and generated outputs remain unchanged",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task makes an editorial selection and preserves conceptual design context; it does not create, research, review, admit, feature, publish, or deploy Case 002.",
+    "Supplied model-generated pre-research is a lead ledger, not a source packet, citation, or evidentiary receipt; every empirical statement must be re-retrieved and verified under a later research contract.",
+    "The conceptual vocabulary does not establish a universal ontology of knowledge, settle historical interpretation, or make the word episteme a case or homepage hero.",
+    "No agent run, benchmark, medical claim, political claim, additional lens, public intake form, API/MCP activation, workflow mutation, DNS action, package publication, or release is authorized."
+  ]
+}
