@@ -1,0 +1,58 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0024",
+  "title": "Clarify why Epistemedia matters and compress the first-read experience",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Give a first-time reader a compact, evidence-specific explanation of what Epistemedia is for, reduce oversized public-page typography and spacing, describe the accepted Case 001 review process without implying human or cross-model-family independence, and make distinct-object versus topic-membership counts arithmetically explicit and compiler-verified without changing the accepted research dossier.",
+  "depends_on": [
+    "EM-0023"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "research/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "homepage purpose-copy structure, placement, links, and exact wording tests",
+    "desktop and mobile typography, first-viewport density, overflow, and semantic-hierarchy inspection",
+    "public review-process language and accepted-receipt source-closure tests",
+    "distinct-object and topic-membership derivation, display, and arithmetic reconciliation tests",
+    "How We Know one-case index and existing practical-reading regression tests",
+    "accepted Case 001 dossier, feature manifest, and independent receipt byte-identity checks",
+    "HTML, Markdown, JSON, llms.txt, release-identity, and disclosure noninterference checks",
+    "external desktop, mobile, review-page, count-language, canonical, and release-identity read-back after accepted deployment"
+  ],
+  "acceptance": [
+    "the homepage explains in a compact block that Epistemedia distinguishes repeated information from warranted knowledge and routes readers to the brief, skeptical view, and exact evidence docket",
+    "the purpose block uses deliberate editorial hierarchy rather than a same-size paragraph or generic bullet list and does not delay the Case 001 finding",
+    "homepage, case, and section-page headings and vertical spacing keep substantive evidence in the first viewport at representative desktop and mobile widths",
+    "the public review explanation truthfully names a separate Codex review agent, fresh-clone and authoring-artifact separation, checked scope, and scientific-truth limitation without claiming a human reviewer or another model family",
+    "the substrate summary distinguishes catalog-wide distinct public objects from per-topic memberships, displays both compiler-derived totals, and has an automated reconciliation check",
+    "the How We Know route remains a compact one-case index and the existing policy-relative practical readings remain present",
+    "the accepted Case 001 dossier, feature manifest, independent receipt, evidence counts, relation meanings, and source packet remain byte-identical",
+    "make check passes without changing accepted source state",
+    "the accepted Pages deployment passes desktop, mobile, review-copy, count-language, canonical URL, and release-identity read-back"
+  ],
+  "limitations": [
+    "This task changes public explanation, typography, review framing, and derived count labels; it does not change Case 001 research, evidence, evaluation policies, or conclusions.",
+    "The compact purpose statement is product orientation, not a universal theory or ontology of truth and not a broad essay on Greek philosophy.",
+    "Process separation for the accepted review must not be represented as human review, cross-model-family review, or proof that the scientific conclusion is true.",
+    "Case 002, additional lenses, public claim-submission intake, hosted API/MCP activation, workflow mutation, DNS changes, package publication, and release are out of scope."
+  ]
+}
