@@ -411,19 +411,27 @@ def build_ledger() -> dict[str, Any]:
                 f"{run_id}:{span_to_source[span_id]}:{span_id}"
                 for span_id in result["exact_span_ids"]
             ]
-            source_unresolved = any(
+            linked_citation_records = [
                 next(
                     item
                     for item in citation_records
                     if item["citation_occurrence_id"] == citation_id
-                )["resolution_status"]
-                == "unresolved"
+                )
                 for citation_id in linked_citations
+            ]
+            source_unresolved = any(
+                item["resolution_status"] == "unresolved"
+                for item in linked_citation_records
             )
             span_unresolved = any(
                 span_readbacks[span_id]["match_status"] == "unresolved" for span_id in linked_spans
             )
             correction_ids = corrections_by_occurrence.get(occurrence_id, [])
+            semantic_no_credit = any(
+                item["correction_id"] in correction_ids
+                and item["kind"] == "semantic-warrant"
+                for item in config["corrections"]
+            )
             no_credit_correction = any(
                 item["correction_id"] in correction_ids
                 and ("no credit" in item["effect"] or "withheld" in item["effect"])
@@ -431,6 +439,8 @@ def build_ledger() -> dict[str, Any]:
             )
             if source_unresolved or span_unresolved:
                 status = "unresolved-no-warrant-credit"
+            elif semantic_no_credit:
+                status = "independent-review-no-credit-insufficient-span-semantics"
             elif no_credit_correction:
                 status = "qualified-no-credit-for-corrected-component"
             else:
@@ -448,13 +458,20 @@ def build_ledger() -> dict[str, Any]:
                     "warrant_dimensions": config["warrant_dimension_defaults"],
                 }
             )
-            for citation_id in linked_citations:
+            for citation_id, citation_record in zip(
+                linked_citations, linked_citation_records, strict=True
+            ):
                 dependence_edges.append(
                     {
                         "dimension": "upstream_citation",
                         "from": f"claim:{occurrence_id}",
                         "to": f"citation:{citation_id}",
-                        "status": "declared-and-resolved",
+                        "status": (
+                            "declared-and-resolved"
+                            if citation_record["resolution_status"]
+                            == "resolved-and-span-matched"
+                            else "declared-but-citation-unresolved"
+                        ),
                     }
                 )
 
@@ -490,7 +507,14 @@ def build_ledger() -> dict[str, Any]:
     corrected_claims = {
         occurrence
         for correction in config["corrections"]
-        if correction["kind"] in {"scope", "internal-source-conflict", "dependence", "edition"}
+        if correction["kind"]
+        in {
+            "scope",
+            "internal-source-conflict",
+            "dependence",
+            "edition",
+            "semantic-warrant",
+        }
         for occurrence in correction["raw_occurrences"]
         if occurrence in seen_result_occurrences or occurrence.endswith(":answer")
     }
@@ -591,6 +615,19 @@ def verify() -> dict[str, Any]:
         raise SystemExit(f"dependence dimensions missing: {sorted(missing)}")
     if ledger["counts"]["independently_confirmed_warrant_roots"] != 0:
         raise SystemExit("author packet cannot self-confirm independent warrant roots")
+    citation_status = {
+        f"citation:{item['citation_occurrence_id']}": item["resolution_status"]
+        for item in ledger["citations"]
+    }
+    false_resolved_edges = [
+        item
+        for item in ledger["dependence_edges"]
+        if item["dimension"] == "upstream_citation"
+        and item["status"] == "declared-and-resolved"
+        and citation_status.get(item["to"]) != "resolved-and-span-matched"
+    ]
+    if false_resolved_edges:
+        raise SystemExit("resolved claim-to-citation edge targets an unresolved citation")
     return ledger["counts"]
 
 

@@ -66,7 +66,7 @@ editorially:
 The current deterministic ledger reports:
 
 > 8 reports → 30 cited URL strings (27 usable public readbacks) → 11 source works → 14 examined
-> editions → 72 independently matched exact-span roots → 11 author-candidate warrant roots →
+> editions → 72 independently matched exact-span roots → 7 author-candidate warrant roots →
 > 0 independently confirmed warrant roots
 
 Those compact numbers are not a clean success funnel. The raw corpus contains 48 citation
@@ -77,6 +77,11 @@ three inaccessible carriers are the Wiley version-of-record URL and the cited Op
 which returned HTTP 403, plus a PubMed URL that returned HTTP 203 with a cookie interstitial. PMC
 and ICLR provide readable authoritative editions for the same works, but their availability does
 not silently turn the original carrier readbacks into successes.
+
+Twenty claim occurrences are unsupported or force-raised after review. Nine of those were
+explicitly downgraded because their linked quote fragments establish only part of the asserted
+method, comparison, metric, scope, or direction. Four normalized warrant groups remain pending
+for the same semantic-closure reason and are excluded from the seven candidate-warrant roots.
 
 The machine records are:
 
@@ -96,8 +101,8 @@ python research/how-we-know/agent-citation-lineage/build_evidence_ledger.py veri
 ```
 
 The eight reports are observations about the collection process. They are not eight independent
-confirmations of their answers. The eleven author-candidate warrants are proposition-level roots,
-not eleven independent papers: shared task data, Jina Reader retrieval, LLM-judge methods, paper
+confirmations of their answers. The seven author-candidate warrants are proposition-level roots,
+not seven independent papers: shared task data, Jina Reader retrieval, LLM-judge methods, paper
 editions, official repositories, and supplementary artifacts remain connected in the dependence
 graph.
 
@@ -115,7 +120,11 @@ The review records, without changing any answer bytes:
 - separate papers are not automatically independent when they reuse benchmark outputs, task
   populations, extraction services, or LLM-judge methods; and
 - Mendeley landing pages were retrieved, but its credential-free file API returned 401, so
-  uncaptured supplement-file contents receive no span credit.
+  uncaptured supplement-file contents receive no span credit;
+- nine claims receive no credit because their linked spans do not entail the complete raw
+  proposition; and
+- claim-to-citation edges inherit the citation's actual resolution state instead of asserting a
+  resolved edge to an unresolved target.
 
 ## Disclosure and licensing
 
@@ -130,7 +139,8 @@ the minimal attributed span needed for warrant review.
 
 The candidate fails closed if an independently rooted reviewer cannot bind the exact branch head,
 re-retrieve the named editions, reproduce the readback and relation counts, inspect all 34
-unresolved citation occurrences, and confirm or reject each of the 11 author-candidate warrants.
+unresolved citation occurrences, and confirm or reject each of the seven author-candidate warrants
+and four pending warrant groups.
 Until that happens, the independently confirmed warrant count remains mechanically fixed at zero.
 
 No file in this directory is accepted knowledge or a public Case 002 dossier merely because the

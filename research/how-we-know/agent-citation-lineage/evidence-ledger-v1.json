@@ -75,18 +75,6 @@
       ]
     },
     {
-      "canonical_proposition": "The URL-health paper's bounded correction loop reduced non-resolving URLs but did not evaluate surviving claim support.",
-      "data_root": "data:url-health-correction-experiment",
-      "derivation_root": "derivation:url-health-correction-results",
-      "independent_review_status": "pending",
-      "method_root": "method:url-checking-correction-loop",
-      "review_status": "candidate-supported-with-semantic-exclusion",
-      "warrant_id": "warrant:url-health-correction-loop",
-      "work_ids": [
-        "work:url-health"
-      ]
-    },
-    {
       "canonical_proposition": "ReportBench compared cited statements with retrieved cited-page content and reported sub-100-percent semantic match rates in its bounded survey-task setting.",
       "data_root": "data:reportbench-100-survey-tasks",
       "derivation_root": "derivation:reportbench-table-1",
@@ -96,42 +84,6 @@
       "warrant_id": "warrant:reportbench-match-rate",
       "work_ids": [
         "work:reportbench"
-      ]
-    },
-    {
-      "canonical_proposition": "ResearcherBench separated support precision among cited claims from citation coverage across factual claims.",
-      "data_root": "data:researcherbench-65-frontier-ai-questions",
-      "derivation_root": "derivation:researcherbench-table-2",
-      "independent_review_status": "pending",
-      "method_root": "method:researcherbench-faithfulness-groundedness",
-      "review_status": "candidate-supported-with-judge-limitation",
-      "warrant_id": "warrant:researcherbench-faithfulness-groundedness",
-      "work_ids": [
-        "work:researcherbench"
-      ]
-    },
-    {
-      "canonical_proposition": "LiveResearchBench v5 separately typed inaccessible/non-resolving, irrelevant, and unsupported-claim citation errors for two task categories; its table reports per-report errors without raw denominators.",
-      "data_root": "data:liveresearchbench-wide-info-and-market-analysis",
-      "derivation_root": "derivation:liveresearchbench-v5-table-7",
-      "independent_review_status": "pending",
-      "method_root": "method:liveresearchbench-e1-e2-e3-rubric-tree",
-      "review_status": "candidate-supported-with-denominator-gap",
-      "warrant_id": "warrant:liveresearchbench-e1-e2-e3",
-      "work_ids": [
-        "work:liveresearchbench"
-      ]
-    },
-    {
-      "canonical_proposition": "A human-reviewed verifier benchmark showed that rubric-LLM citation-support judgments retain model-dependent error and directional bias.",
-      "data_root": "data:citationverbench-1248-human-reviewed-decisions",
-      "derivation_root": "derivation:citationverbench-reported-calibration",
-      "independent_review_status": "pending",
-      "method_root": "method:citationverbench-rubric-judge-comparison",
-      "review_status": "candidate-supported-with-benchmark-scope",
-      "warrant_id": "warrant:citation-verifier-calibration",
-      "work_ids": [
-        "work:citation-verifier-benchmark"
       ]
     }
   ],
@@ -1828,9 +1780,11 @@
     {
       "canonical_proposition": "DeepTRACE measured statement-source support and found between-system variation; its Gemini value is internally inconsistent between table and prose.",
       "claim_occurrence_id": "V2-SOL-02:R5_deeptrace_audit",
-      "correction_ids": [],
+      "correction_ids": [
+        "correction:independent-semantic-warrant-gaps"
+      ],
       "raw_proposition": "An ICLR 2026 audit found large between-system variation in both unsupported statements and citation accuracy among deep-research configurations.",
-      "review_status": "author-candidate-supported-pending-independent-review",
+      "review_status": "independent-review-no-credit-insufficient-span-semantics",
       "source_citation_occurrence_ids": [
         "V2-SOL-02:S6"
       ],
@@ -1954,9 +1908,11 @@
     {
       "canonical_proposition": "DeepResearch Bench evaluated binary support for deduplicated statement-URL pairs; numeric values are edition-specific.",
       "claim_occurrence_id": "V2-SOL-03:r3_deepresearch_bench_fact",
-      "correction_ids": [],
+      "correction_ids": [
+        "correction:independent-semantic-warrant-gaps"
+      ],
       "raw_proposition": "DeepResearch Bench's FACT framework measured whether retrieved page text supported each deduplicated statement-URL pair.",
-      "review_status": "author-candidate-supported-pending-independent-review",
+      "review_status": "independent-review-no-credit-insufficient-span-semantics",
       "source_citation_occurrence_ids": [
         "V2-SOL-03:s2",
         "V2-SOL-03:s7"
@@ -2085,9 +2041,11 @@
     {
       "canonical_proposition": "Within the Cited but Not Verified harness, the 2-to-150-call ablation reduced reported Fact Check scores for two setups without establishing a general causal law about search depth.",
       "claim_occurrence_id": "V2-SOL-03:r8_search_depth_ablation",
-      "correction_ids": [],
+      "correction_ids": [
+        "correction:independent-semantic-warrant-gaps"
+      ],
       "raw_proposition": "In one controlled harness, increasing the permitted tool calls left link metrics high but reduced factual-support rates for two models.",
-      "review_status": "author-candidate-supported-pending-independent-review",
+      "review_status": "independent-review-no-credit-insufficient-span-semantics",
       "source_citation_occurrence_ids": [
         "V2-SOL-03:s5"
       ],
@@ -2110,9 +2068,11 @@
     {
       "canonical_proposition": "A human-reviewed verifier benchmark showed that rubric-LLM citation-support judgments retain model-dependent error and directional bias.",
       "claim_occurrence_id": "V2-SOL-03:r9_verifier_calibration",
-      "correction_ids": [],
+      "correction_ids": [
+        "correction:independent-semantic-warrant-gaps"
+      ],
       "raw_proposition": "Automated support judgments themselves remain imperfect, including on a fully human-reviewed adversarial citation benchmark.",
-      "review_status": "author-candidate-supported-pending-independent-review",
+      "review_status": "independent-review-no-credit-insufficient-span-semantics",
       "source_citation_occurrence_ids": [
         "V2-SOL-03:s6"
       ],
@@ -2135,9 +2095,11 @@
     {
       "canonical_proposition": "Cited but Not Verified operationalized link access, topical relevance, and factual support separately and reported materially different rates.",
       "claim_occurrence_id": "V2-SOL-04:R1",
-      "correction_ids": [],
+      "correction_ids": [
+        "correction:independent-semantic-warrant-gaps"
+      ],
       "raw_proposition": "In the broadest direct end-to-end audit found, resolving and topically relevant citations were substantially more common than citations whose retrieved content supported the attributed claim.",
-      "review_status": "author-candidate-supported-pending-independent-review",
+      "review_status": "independent-review-no-credit-insufficient-span-semantics",
       "source_citation_occurrence_ids": [
         "V2-SOL-04:S1"
       ],
@@ -2161,9 +2123,11 @@
     {
       "canonical_proposition": "Within the Cited but Not Verified harness, the 2-to-150-call ablation reduced reported Fact Check scores for two setups without establishing a general causal law about search depth.",
       "claim_occurrence_id": "V2-SOL-04:R2",
-      "correction_ids": [],
+      "correction_ids": [
+        "correction:independent-semantic-warrant-gaps"
+      ],
       "raw_proposition": "Increasing the allowed search depth did not improve claim support in the controlled two-model ablation and coincided with a large decline while access and relevance remained high.",
-      "review_status": "author-candidate-supported-pending-independent-review",
+      "review_status": "independent-review-no-credit-insufficient-span-semantics",
       "source_citation_occurrence_ids": [
         "V2-SOL-04:S1"
       ],
@@ -2187,10 +2151,11 @@
       "canonical_proposition": "DeepResearch Bench evaluated binary support for deduplicated statement-URL pairs; numeric values are edition-specific.",
       "claim_occurrence_id": "V2-SOL-04:R3",
       "correction_ids": [
-        "correction:drbench-edition-drift"
+        "correction:drbench-edition-drift",
+        "correction:independent-semantic-warrant-gaps"
       ],
       "raw_proposition": "DeepResearch Bench's FACT evaluator found substantial but imperfect claim support for all four tested commercial deep-research agents.",
-      "review_status": "author-candidate-supported-pending-independent-review",
+      "review_status": "independent-review-no-credit-insufficient-span-semantics",
       "source_citation_occurrence_ids": [
         "V2-SOL-04:S2"
       ],
@@ -2215,9 +2180,11 @@
     {
       "canonical_proposition": "ReportBench compared cited statements with retrieved cited-page content and reported sub-100-percent semantic match rates in its bounded survey-task setting.",
       "claim_occurrence_id": "V2-SOL-04:R4",
-      "correction_ids": [],
+      "correction_ids": [
+        "correction:independent-semantic-warrant-gaps"
+      ],
       "raw_proposition": "ReportBench measured semantic consistency between cited statements and retrieved cited pages, finding imperfect citation match rates for both tested deep-research products.",
-      "review_status": "author-candidate-supported-pending-independent-review",
+      "review_status": "independent-review-no-credit-insufficient-span-semantics",
       "source_citation_occurrence_ids": [
         "V2-SOL-04:S3"
       ],
@@ -2324,9 +2291,11 @@
     {
       "canonical_proposition": "A human-reviewed verifier benchmark showed that rubric-LLM citation-support judgments retain model-dependent error and directional bias.",
       "claim_occurrence_id": "V2-SOL-04:R8",
-      "correction_ids": [],
+      "correction_ids": [
+        "correction:independent-semantic-warrant-gaps"
+      ],
       "raw_proposition": "A subsequent human-reviewed verifier benchmark found that scalar judge scores can conceal directional bias, qualifying confidence in LLM-judged citation-support rates.",
-      "review_status": "author-candidate-supported-pending-independent-review",
+      "review_status": "independent-review-no-credit-insufficient-span-semantics",
       "source_citation_occurrence_ids": [
         "V2-SOL-04:S7"
       ],
@@ -3002,10 +2971,29 @@
       ],
       "raw_value": "supplementary files publicly retrieved or downloadable",
       "review_value": "landing pages retrieved; credential-free API returned 401 and file bytes were not captured in this review"
+    },
+    {
+      "correction_id": "correction:independent-semantic-warrant-gaps",
+      "effect": "the complete raw proposition receives no credit; raw capture and narrower matched fragments remain visible",
+      "evidence": "Independent exact-edition review completed all 72 credited span roots and found these nine claim occurrences exceed the semantics of their linked spans.",
+      "kind": "semantic-warrant",
+      "raw_occurrences": [
+        "V2-SOL-02:R5_deeptrace_audit",
+        "V2-SOL-03:r3_deepresearch_bench_fact",
+        "V2-SOL-03:r8_search_depth_ablation",
+        "V2-SOL-03:r9_verifier_calibration",
+        "V2-SOL-04:R1",
+        "V2-SOL-04:R2",
+        "V2-SOL-04:R3",
+        "V2-SOL-04:R4",
+        "V2-SOL-04:R8"
+      ],
+      "raw_value": "author-candidate support for the complete raw proposition",
+      "review_value": "linked quote fragments establish only a subset of the asserted method, comparison, metric, scope, or directional result"
     }
   ],
   "count_grammar": {
-    "candidate_warrant_root": "one reviewed proposition plus data, method, and derivation lineage with at least one matched source span; it remains candidate until independent exact-head review",
+    "candidate_warrant_root": "one reviewed proposition plus data, method, and derivation lineage with at least one claim whose matched spans semantically support the canonical proposition; it remains candidate until independent exact-head review",
     "cited_url": "one distinct requested URL string in the eight raw answers",
     "exact_span_root": "one edition, locator, and quote identity with an independently captured normalized or ordered-fragment match",
     "examined_edition_root": "one versioned content state; mirrors and carriers do not create another edition",
@@ -3016,7 +3004,7 @@
     "unresolved_citation": "one source occurrence with an inaccessible carrier, no independently matched span, or an unresolved identity or warrant correction"
   },
   "counts": {
-    "candidate_warrant_roots": 11,
+    "candidate_warrant_roots": 7,
     "captured_reports": 8,
     "citation_occurrences": 48,
     "cited_urls": 30,
@@ -3031,7 +3019,7 @@
     "resolving_url_roots": 27,
     "source_work_roots": 11,
     "unresolved_citations": 34,
-    "unsupported_or_force_raised_claims": 12
+    "unsupported_or_force_raised_claims": 20
   },
   "dependence_edges": [
     {
@@ -3569,31 +3557,31 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-01:r1_human_dermatology_chatgpt",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-01:s1_keplinger"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-01:r1_human_dermatology_chatgpt",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-01:s1a_keplinger_data"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-01:r2_human_dermatology_lechat",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-01:s1_keplinger"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-01:r2_human_dermatology_lechat",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-01:s1a_keplinger_data"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-01:r3_deepresearch_bench_fact",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-01:s2_drbench"
     },
     {
@@ -3605,25 +3593,25 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-01:r4_deeptrace_support",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-01:s3_deeptrace"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-01:r5_cited_but_not_verified_cross_model",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-01:s4_cited_not_verified"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-01:r6_cited_but_not_verified_depth_ablation",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-01:s4_cited_not_verified"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-01:r7_url_resolution_drbench",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-01:s5_url_health"
     },
     {
@@ -3851,7 +3839,7 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-02:R1_url_resolution",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-02:S1"
     },
     {
@@ -3863,19 +3851,19 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-02:R2_human_dermatology_claim_support",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-02:S3"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-02:R3_deepresearch_bench_fact",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-02:S4"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-02:R4_reportbench_match_rate",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-02:S5"
     },
     {
@@ -3887,13 +3875,13 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-02:R6_surface_quality_vs_fact_support",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-02:S7"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-02:R7_search_depth_ablation",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-02:S7"
     },
     {
@@ -4103,13 +4091,13 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-03:r1_reference_metadata_human_audit",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-03:s1"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-03:r2_claim_support_human_audit",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-03:s1"
     },
     {
@@ -4127,13 +4115,13 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-03:r4_deeptrace_support",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-03:s3"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-03:r5_deep_agent_url_resolution",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-03:s4"
     },
     {
@@ -4145,7 +4133,7 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-03:r6_url_self_correction",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-03:s4"
     },
     {
@@ -4451,7 +4439,7 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-04:R6",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-04:S6"
     },
     {
@@ -4463,7 +4451,7 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-SOL-04:R7",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-SOL-04:S6"
     },
     {
@@ -4667,31 +4655,31 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-01:r1_deepresearchbench_fact",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-01:s1_deepresearchbench"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-01:r2_reportbench_cited_statement_match",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-01:s2_reportbench"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-01:r3_researcherbench_faithfulness_and_groundedness",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-01:s3_researcherbench"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-01:r4_cited_not_verified_source_attribution",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-01:s4_cited_not_verified"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-01:r5_urlhealth_resolution",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-01:s5_urlhealth"
     },
     {
@@ -4865,31 +4853,31 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-02:r1_deepresearchbench_fact",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-02:s1_deepresearchbench"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-02:r2_liveresearchbench_wide_info",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-02:s2_liveresearchbench"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-02:r3_liveresearchbench_market_analysis",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-02:s2_liveresearchbench"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-02:r4_deeptrace",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-02:s3_deeptrace"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-02:r5_researcherbench",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-02:s4_researcherbench"
     },
     {
@@ -5141,19 +5129,19 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-03:R1",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-03:S1"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-03:R2",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-03:S1"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-03:R3",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-03:S2"
     },
     {
@@ -5165,19 +5153,19 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-03:R4",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-03:S3"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-03:R5",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-03:S4"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-03:R5",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-03:S6"
     },
     {
@@ -5417,37 +5405,37 @@
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-04:R1_deepresearchbench_support",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-04:S1_deepresearchbench"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-04:R2_researcherbench_support",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-04:S2_researcherbench"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-04:R3_reportbench_support",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-04:S3_reportbench"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-04:R4_urlhealth_resolution",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-04:S4_urlhealth"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-04:R5_cited_not_verified_support_and_resolution",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-04:S5_cited_not_verified"
     },
     {
       "dimension": "upstream_citation",
       "from": "claim:V2-TERRA-04:R6_search_depth_ablation",
-      "status": "declared-and-resolved",
+      "status": "declared-but-citation-unresolved",
       "to": "citation:V2-TERRA-04:S5_cited_not_verified"
     }
   ],

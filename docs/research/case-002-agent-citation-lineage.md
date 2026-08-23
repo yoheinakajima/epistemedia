@@ -48,18 +48,22 @@ For each citation, later work must resolve:
 The deterministic research-only ledger currently reports:
 
 > 8 agent reports → 30 cited URL strings → 27 resolving URL roots → 11 source works → 14
-> examined editions → 72 matched exact-span roots → 11 author-candidate warrant roots → 0
+> examined editions → 72 matched exact-span roots → 7 author-candidate warrant roots → 0
 > independently confirmed warrant roots
 
 Every number is computed from captured records and relations. The raw matrix contains 48 citation
-occurrences, 127 source-span occurrences, and 52 result claims. Thirty-four citation occurrences
-remain unresolved and receive no automatic credit. Three cited carriers were inaccessible during
+occurrences, 127 source-span occurrences, and 52 result claims. Twenty claim occurrences are
+unsupported or force-raised after review, including nine whose linked quote fragments do not
+support their complete proposition. Thirty-four citation occurrences remain unresolved and
+receive no automatic credit. Three cited carriers were inaccessible during
 fresh readback: two returned HTTP 403 and PubMed returned a cookie interstitial under HTTP 203. No
 URL was malformed or found to identify a different work.
 
-The eleven author-candidate warrants are narrower than many raw answer sentences. They preserve
+The seven author-candidate warrants are narrower than many raw answer sentences. They preserve
 benchmark, time, population, metric, comparison, edition, retrieval, and judge boundaries. They
-are not independently confirmed, and no raw run or profile supplies independence.
+are not independently confirmed, and no raw run or profile supplies independence. Four additional
+normalized warrant groups remain pending because their captured spans do not close the full
+canonical proposition.
 
 ## Material corrections and negative results
 
@@ -71,7 +75,9 @@ Fresh authoritative readback found four important interpretation boundaries:
 - DeepTRACE's own table and prose disagree on the Gemini Deep Research value, 50.3% versus 40.3%;
   and
 - *Cited but Not Verified* reuses DeepResearch Bench and BrowseComp query roots, while the
-  URL-health study reuses DeepResearch Bench outputs.
+  URL-health study reuses DeepResearch Bench outputs; and
+- a resolved claim-to-citation edge is no longer asserted when the target citation remains
+  unresolved.
 
 The packet also corrects a LiveResearchBench license statement to CC BY-NC-SA 4.0 and records that
 Mendeley landing pages were accessible while the credential-free file API was not. These
