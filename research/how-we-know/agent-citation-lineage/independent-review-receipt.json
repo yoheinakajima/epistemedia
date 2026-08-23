@@ -1,0 +1,146 @@
+{
+  "schema": "https://epistemedia.org/research/independent-review-receipt-v1.json",
+  "task_id": "EM-0026",
+  "run_id": "em0026-exact-head-independent-review-20260823T183306Z",
+  "status": "passed-independent-review-exact-head",
+  "decision": "pass",
+  "reviewer": "codex-independent-em0026-final-span-review",
+  "independence_statement": "Reviewed in a fresh clean clone without accepting author conclusions as evidence. The review recomputed all credited-span containment, every claim and warrant semantic mapping, correction coverage, dependence-edge status, and displayed count against read-only source bytes captured independently of the authoring process. No new retrieval, dependency installation, provider call, credential use, or spend occurred.",
+  "completed_at": "2026-08-23T18:33:06Z",
+  "repository": {
+    "url": "https://github.com/yoheinakajima/epistemedia",
+    "pull_request": 46,
+    "branch": "codex/em-0026-agent-trace-protocol",
+    "reviewed_author_head": "49de314ddf4ef5525f5937808b3f96b6e01395da",
+    "reviewed_author_tree": "726b922b5690a74e406153516053dad16eec7b13",
+    "reviewed_base": "cbb029bd336404e5bc654e939308247317eaa153"
+  },
+  "github_ci": {
+    "workflow": "validate",
+    "run_id": 32657544852,
+    "job_id": 97238575044,
+    "head": "49de314ddf4ef5525f5937808b3f96b6e01395da",
+    "conclusion": "success"
+  },
+  "bound_run_proposal": {
+    "path": "runs/proposals/20260823T182246Z-febb82b236ec.json",
+    "id": "em:run-receipt:sha256:febb82b236ec23c20412e7e0abe234644407be0d0ac36a6ac50e74c9de085226"
+  },
+  "identity_checks": {
+    "raw_answers_and_traces": {
+      "comparison_commit": "eb3fd18ecf8840758bcd911c60132d03a40bde9c",
+      "result": "byte-identical",
+      "captured_reports": 8
+    },
+    "source_and_span_readbacks": {
+      "comparison_commit": "664796e16f2b75e28b908bffae904079c8cb38a0",
+      "result": "byte-identical",
+      "source_readbacks_sha256": "58dd334d395fda27e04f2f692d2ad7278d12224fe5e03947b963671871609146",
+      "span_readbacks_sha256": "48ddabaec9b75acf43bdfc9ab917bee6e6fece418316eba8f1012e646d59dde5"
+    }
+  },
+  "reproduced_counts": {
+    "captured_reports": 8,
+    "citation_occurrences": 48,
+    "cited_urls": 30,
+    "resolving_url_roots": 27,
+    "source_work_roots": 11,
+    "examined_edition_roots": 14,
+    "raw_span_occurrences": 127,
+    "exact_span_roots": 72,
+    "raw_claim_occurrences": 52,
+    "candidate_warrant_roots": 7,
+    "independently_confirmed_warrant_roots": 0,
+    "inaccessible_citations": 3,
+    "invalid_citations": 0,
+    "non_resolving_citations": 0,
+    "unresolved_citations": 34,
+    "unsupported_or_force_raised_claims": 20
+  },
+  "coverage": {
+    "credited_span_roots_reviewed": 72,
+    "credited_span_roots_contained_in_exact_examined_editions": 72,
+    "claim_occurrences_semantically_reviewed": 52,
+    "warrant_groups_semantically_reviewed": 11,
+    "material_span_containment_mismatches": 0,
+    "unclosed_review_roots": 0,
+    "nonmaterial_extraction_discrepancies": 5,
+    "nonmaterial_extraction_discrepancy_treatment": "Two DeepTRACE table phrases reproduced from the same captured PDF with layout-preserving extraction; three DeepResearch Bench phrases reproduced from the exact pinned README after Markdown rendering.",
+    "inaccessible_carrier_treatment": "Inaccessible carriers receive no credit. The Wiley occurrence V2-SOL-03:s1:s1_span1 remains no-credit."
+  },
+  "semantic_disposition": {
+    "correction_id": "correction:independent-semantic-warrant-gaps",
+    "no_credit_claim_occurrence_ids": [
+      "V2-SOL-02:R5_deeptrace_audit",
+      "V2-SOL-03:r3_deepresearch_bench_fact",
+      "V2-SOL-03:r8_search_depth_ablation",
+      "V2-SOL-03:r9_verifier_calibration",
+      "V2-SOL-04:R1",
+      "V2-SOL-04:R2",
+      "V2-SOL-04:R3",
+      "V2-SOL-04:R4",
+      "V2-SOL-04:R8"
+    ],
+    "pending_warrant_ids": [
+      "warrant:citation-verifier-calibration",
+      "warrant:researcherbench-faithfulness-groundedness",
+      "warrant:liveresearchbench-e1-e2-e3",
+      "warrant:url-health-correction-loop"
+    ],
+    "candidate_warrant_ids": [
+      "warrant:keplinger-metadata-versus-support",
+      "warrant:deepresearch-bench-fact",
+      "warrant:deeptrace-support-variation",
+      "warrant:cnv-link-relevance-support-gap",
+      "warrant:cnv-search-depth-ablation",
+      "warrant:url-health-resolution",
+      "warrant:reportbench-match-rate"
+    ]
+  },
+  "upstream_citation_edge_counts": {
+    "dynamic_declared_and_resolved": 18,
+    "dynamic_declared_but_citation_unresolved": 44,
+    "static_known_work_edges": 2,
+    "resolved_edges_targeting_unresolved_citations": 0
+  },
+  "commands": [
+    {
+      "command": "git diff --quiet eb3fd18ecf8840758bcd911c60132d03a40bde9c 49de314ddf4ef5525f5937808b3f96b6e01395da -- research/how-we-know/agent-citation-lineage/answers-v2 research/how-we-know/agent-citation-lineage/traces-v2",
+      "exit_status": 0,
+      "observed": "all eight raw answers and traces are byte-identical"
+    },
+    {
+      "command": "git diff --quiet 664796e16f2b75e28b908bffae904079c8cb38a0 49de314ddf4ef5525f5937808b3f96b6e01395da -- research/how-we-know/agent-citation-lineage/source-readbacks-v1.json research/how-we-know/agent-citation-lineage/span-readbacks-v1.json",
+      "exit_status": 0,
+      "observed": "committed source and span readback bodies are byte-identical"
+    },
+    {
+      "command": "PYTHONPATH=src python research/how-we-know/agent-citation-lineage/verify_protocol_v2.py --require-traces",
+      "exit_status": 0,
+      "observed": "protocol valid; exactly eight terminal v2 trace records"
+    },
+    {
+      "command": "PYTHONPATH=src python research/how-we-know/agent-citation-lineage/build_evidence_ledger.py verify",
+      "exit_status": 0,
+      "observed": "ledger deterministic; counts, semantic corrections, pending warrants, and citation-edge states reproduced"
+    },
+    {
+      "command": "ruff check research/how-we-know/agent-citation-lineage/build_evidence_ledger.py",
+      "exit_status": 0,
+      "observed": "all checks passed"
+    },
+    {
+      "command": "PYTHONPATH=src make check PYTHON=.venv/bin/python",
+      "exit_status": 0,
+      "observed": "accepted-input validation, 80 tests, disclosure audit, deterministic rebuild, and unchanged source-tree check passed"
+    }
+  ],
+  "limitations": [
+    "This receipt passes the bounded research packet only; it does not promote any warrant to independently confirmed evidence.",
+    "Thirty-four citation occurrences remain unresolved and receive no warrant credit.",
+    "Three carriers were inaccessible: Wiley and OpenReview returned HTTP 403, and PubMed returned an HTTP 203 cookie interstitial; no content was inferred from them.",
+    "Four warrant groups remain pending semantic closure and are excluded from the seven candidate-warrant count.",
+    "The seven candidate warrants remain research relations, not accepted knowledge, Case 002 admission, or public claims.",
+    "No ready-state change, merge, deployment, publication, DNS mutation, package release, credential use, provider call, or spend occurred."
+  ]
+}
