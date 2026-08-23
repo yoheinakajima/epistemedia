@@ -46,13 +46,41 @@ The shell supplies a skip link, compact wordmark, named primary navigation, boun
 
 Bootstrap topic and document cards use an ordinal label, editorial title, short description, and a ruled metadata footer. The ordinal describes position in the compiled index; it is not a dossier or evidentiary identity.
 
+### Topic index and object card
+
+A topic route is a compact catalog index, not a rendered dump of repository Markdown. Its header
+states the exact public-object count and number of object kinds; entries are grouped by actual
+catalog kind and rendered as responsive cards with one title, a cleaned human summary, and direct
+actions for the canonical object, Markdown twin, and exact accepted-commit source file.
+
+Machine identity remains available through a native `details` disclosure. Kind, source path, media
+type, object ID, and content digest use the smaller monospace receipt register so they remain
+auditable without competing with the title and summary.
+
+Topic cards expose only two compiled navigation relations:
+
+- **Also filed under** means the same exact object is selected by another accepted topic manifest.
+- **References in source** means a repository-relative Markdown link resolves to another exact
+  disclosure-safe catalog object.
+
+Relation clusters use native `details` disclosures with derived counts. This keeps dense cards
+scannable while leaving every compiled interlink available without JavaScript and by keyboard.
+
+These links never imply semantic similarity, evidentiary support, agreement, relevance, or source
+independence. External links, fragment-only targets, unsafe traversal, missing paths, non-public
+targets, duplicates, and self-links do not become catalog relations. The same relation set is
+present in static JSON and the local API, MCP, and CLI topic projections.
+
 ### Qualification panel
 
 Experimental lens manifests use an amber rule plus explicit text explaining what is and is not implemented. The native disclosure control works by keyboard and without JavaScript.
 
 ### Object sheet
 
-Object pages separate page identity from embedded source content. The object title is the sole page-level heading, source metadata appears in a definition list, and headings inside the source are demoted beneath the `Source content` section.
+Object pages separate page identity from embedded source content. The compact utility header uses the
+same cleaned human summary as its topic card; it never promotes raw Markdown navigation syntax.
+The object title is the sole page-level heading, source metadata appears in a smaller monospace
+definition list, and headings inside the source are demoted beneath the `Source content` section.
 
 ### Projection receipt
 

@@ -3,13 +3,14 @@ from __future__ import annotations
 import asyncio
 import base64
 import json
+import re
 import subprocess
 import sys
 import time
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import quote, unquote
+from urllib.parse import quote, unquote, urlsplit
 
 from epistemedia.cli import main
 from epistemedia.core import (
@@ -23,7 +24,6 @@ from epistemedia.core import (
 )
 from epistemedia.server import Gateway, Request, tool_definitions
 
-
 ROOT = Path(__file__).resolve().parents[1]
 SLUG = "corrections-and-familiarity-backfire"
 
@@ -35,6 +35,7 @@ class PageStructureParser(HTMLParser):
         self.ids: list[str] = []
         self.nav_labels: list[str] = []
         self.skip_targets: list[str] = []
+        self.hrefs: list[str] = []
 
     def handle_starttag(
         self, tag: str, attrs: list[tuple[str, str | None]]
@@ -49,6 +50,8 @@ class PageStructureParser(HTMLParser):
         classes = (values.get("class") or "").split()
         if tag == "a" and "skip-link" in classes and values.get("href"):
             self.skip_targets.append(str(values["href"]))
+        if tag == "a" and values.get("href"):
+            self.hrefs.append(str(values["href"]))
 
 
 def test_repo_receipt_command_does_not_overwrite_cli_dispatch(tmp_path: Path) -> None:
@@ -374,6 +377,195 @@ def test_topic_lenses_share_source_frontier() -> None:
     assert encyclopedia["frontier"] == skeptical["frontier"]
     assert [o["id"] for o in encyclopedia["objects"]] == [o["id"] for o in skeptical["objects"]]
     assert encyclopedia["projection_id"] != skeptical["projection_id"]
+
+
+def test_topic_relations_are_exact_catalog_navigation_only(tmp_path: Path) -> None:
+    root = tmp_path / "realm"
+    docs = root / "docs"
+    catalog_source = root / "catalog"
+    private = root / "private"
+    docs.mkdir(parents=True)
+    catalog_source.mkdir()
+    private.mkdir()
+    (root / "README.md").write_text(
+        """# Root
+
+A readable public root.
+
+[Child](docs/child.md)
+[Duplicate child](docs/child.md#detail)
+[External](https://example.com/docs/child.md)
+[Fragment](#local)
+[Root absolute](/docs/child.md)
+[Missing](docs/missing.md)
+[Private](private/secret.md)
+[Escaping traversal](../../outside.md)
+[Encoded escape](%2e%2e/%2e%2e/outside.md)
+`[Inline code](docs/code.md)`
+
+```markdown
+[Fenced code](docs/fenced.md)
+```
+
+![Image](docs/image.md)
+"""
+    )
+    (docs / "child.md").write_text(
+        """# Child
+
+Readable child summary.
+
+[Root](../README.md)
+[Local sibling](nested.md)
+[Unsafe escape](../../outside.md)
+"""
+    )
+    (docs / "nested.md").write_text("# Nested\n\nNested public object.\n")
+    (docs / "code.md").write_text("# Code\n\nMust not be inferred from inline code.\n")
+    (docs / "fenced.md").write_text("# Fenced\n\nMust not be inferred from a fence.\n")
+    (docs / "image.md").write_text("# Image\n\nMust not be inferred from image syntax.\n")
+    (private / "secret.md").write_text("not public")
+    (catalog_source / "topics.json").write_text(
+        json.dumps(
+            {
+                "topics": [
+                    {
+                        "slug": "fixture",
+                        "title": "Fixture",
+                        "description": "Fixture topic.",
+                        "include": ["README.md", "docs/**"],
+                    },
+                    {
+                        "slug": "documentation",
+                        "title": "Documentation",
+                        "description": "Documentation topic.",
+                        "include": ["docs/**"],
+                    },
+                ]
+            }
+        )
+    )
+
+    catalog = PublicCatalog.build(root)
+    topic = catalog.topic_map()["fixture"]
+    projection = topic_projection(catalog, topic, "encyclopedia", "https://example.test")
+    records = {obj["path"]: obj for obj in projection["objects"]}
+
+    assert [item["path"] for item in records["README.md"]["references_in_source"]] == [
+        "docs/child.md"
+    ]
+    assert [item["path"] for item in records["docs/child.md"]["references_in_source"]] == [
+        "README.md",
+        "docs/nested.md",
+    ]
+    assert [item["slug"] for item in records["docs/child.md"]["also_filed_under"]] == [
+        "documentation"
+    ]
+    assert records["README.md"]["also_filed_under"] == []
+    serialized = json.dumps(projection)
+    for rejected in (
+        "docs/missing.md",
+        "private/secret.md",
+        "outside.md",
+    ):
+        assert rejected not in serialized
+    assert "similar" not in serialized.lower()
+    assert "support" not in serialized.lower()
+    assert "independ" not in serialized.lower()
+
+
+def test_topic_human_surface_and_projection_parity(
+    tmp_path: Path, capsys: object
+) -> None:
+    public = tmp_path / "public"
+    catalog = PublicCatalog.build(ROOT)
+    topic = catalog.topic_map()["epistemedia"]
+    projection = topic_projection(
+        catalog,
+        topic,
+        "encyclopedia",
+        "https://epistemedia.org",
+    )
+    build_public(ROOT, public)
+    topic_root = public / "topics" / topic.slug
+    topic_html = (topic_root / "index.html").read_text()
+    topic_markdown = (topic_root / "index.md").read_text()
+    static_json = json.loads((topic_root / "index.json").read_text())
+
+    assert static_json == projection
+    assert topic_html.count('class="topic-object-card"') == projection["object_count"]
+    assert topic_html.count("<summary>Technical identity</summary>") == projection["object_count"]
+    assert "<details class=\"object-identity\" open" not in topic_html
+    assert ".object-identity dd" in topic_html
+    assert "font:.64rem/1.45 var(--mono)" in topic_html
+    assert "Also filed under" in topic_html
+    assert "References in source" in topic_html
+    assert "related objects" not in topic_html.lower()
+    assert "similar objects" not in topic_html.lower()
+    relation_labels = set(
+        re.findall(r'class="relation-label">([^<]+)</span>', topic_html)
+    )
+    assert relation_labels == {"Also filed under", "References in source"}
+    assert "/topics/epistemedia/architecture.md" not in topic_html
+    assert "## Objects" in topic_markdown
+    assert "**Also filed under:**" in topic_markdown
+    assert "**References in source:**" in topic_markdown
+    assert "<summary>Technical identity</summary>" in topic_markdown
+
+    parser = PageStructureParser()
+    parser.feed(topic_html)
+    for href in parser.hrefs:
+        parsed = urlsplit(href)
+        if parsed.netloc and parsed.netloc != "epistemedia.org":
+            continue
+        if not parsed.path:
+            continue
+        relative = unquote(parsed.path).lstrip("/") or "index.html"
+        if relative.endswith("/"):
+            relative += "index.html"
+        assert (public / relative).is_file(), href
+
+    first_object = projection["objects"][0]
+    assert first_object["links"]["html"] in topic_html
+    assert first_object["links"]["markdown"] in topic_html
+    assert first_object["links"]["accepted_source"] in topic_html
+    object_file_key = quote(first_object["id"], safe="")
+    object_html = (public / "objects" / object_file_key / "index.html").read_text()
+    object_hero = object_html.split("</section>", 1)[0]
+    assert "](" not in object_hero
+    assert "font:.72rem/1.5 var(--mono)" in object_html
+    assert "Also filed under" in object_html
+    assert f"https://epistemedia.org/topics/{topic.slug}/" in object_html
+
+    skeptical = topic_projection(
+        catalog,
+        topic,
+        "skeptical",
+        "https://epistemedia.org",
+    )
+    assert static_json["objects"] == skeptical["objects"]
+    assert static_json["relation_counts"] == skeptical["relation_counts"]
+    assert json.loads((topic_root / "skeptical" / "index.json").read_text()) == skeptical
+    skeptical_markdown = (topic_root / "skeptical" / "index.md").read_text()
+    assert "**Also filed under:**" in skeptical_markdown
+    assert "**References in source:**" in skeptical_markdown
+
+    gateway = Gateway(ROOT)
+    status, _, rest = gateway.handle_api(
+        Request("GET", f"/v1/topics/{topic.slug}", {}, {}, b"")
+    )
+    assert status == 200
+    assert rest["data"] == projection
+    assert gateway.read_resource(f"epistemedia://topic/{topic.slug}") == projection
+    assert gateway.call_tool(
+        "get_topic", {"slug": topic.slug, "lens": "encyclopedia"}
+    ) == projection
+
+    assert main(
+        ["--root", str(ROOT), "project", topic.slug, "--lens", "encyclopedia"]
+    ) == 0
+    cli_projection = json.loads(capsys.readouterr().out)  # type: ignore[attr-defined]
+    assert cli_projection == projection
 
 
 def test_public_status_copy_distinguishes_live_and_target_surfaces() -> None:
