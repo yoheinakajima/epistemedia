@@ -1,0 +1,81 @@
+{
+  "schema": "https://epistemedia.org/research/author-review-receipt-v1.json",
+  "task_id": "EM-0026",
+  "run_id": "em0026-author-source-review-20260823T164643Z",
+  "status": "passed-author-gates-independent-review-required",
+  "actor": "codex-em0026-completion-builder",
+  "started_at": "2026-08-23T16:18:00Z",
+  "completed_at": "2026-08-23T16:46:43Z",
+  "accepted_base_commit": "50af5bb295634bc17ec6ad0697e1806e6cee6ba9",
+  "reviewed_candidate_commit": "bc7de6d2e744ce28c815a5a30f698782a41756b0",
+  "reviewed_candidate_tree": "0283b77f55a3ff040bcce2fa36b62aa1e60565dc",
+  "protocol_commit": "48b7fff8b091325e9683c319980ae1d547121f55",
+  "environment": {
+    "python": "3.11.15",
+    "pytest": "9.1.1",
+    "ruff": "0.16.4",
+    "source_retrieval": "credential-free curl GET; no account, cookie, secret, provider call, or paid API"
+  },
+  "input_identities": {
+    "frozen_prompt_sha256": "d321a9cec7b5fe419157c0623e18ff0020cb0080fbe6dd9ed4fd20a0b896f670",
+    "protocol_sha256": "24422c1700387365b440ea370935d68a79241003a87168d072af0879d8d48ba2",
+    "target_decision_sha256": "ce37c73dddfe4182a399f0a73657fd2349ce247bcc300ce6d5353a98b79ce9e5",
+    "source_normalization_sha256": "36877c510ec6cb291d237c208bce935a816ccffc75dd43359d2cbb911a67d902",
+    "source_readbacks_sha256": "58dd334d395fda27e04f2f692d2ad7278d12224fe5e03947b963671871609146",
+    "span_readbacks_sha256": "48ddabaec9b75acf43bdfc9ab917bee6e6fece418316eba8f1012e646d59dde5",
+    "evidence_ledger_sha256": "11c069e3ed2902bc9e5ec50a5785f91421cf0569d8fe0e2633036544219759e6"
+  },
+  "commands": [
+    {
+      "command": ".venv/bin/python research/how-we-know/agent-citation-lineage/verify_protocol_v2.py --require-traces",
+      "exit_status": 0,
+      "observed": "protocol valid; exactly eight terminal v2 trace records"
+    },
+    {
+      "command": ".venv/bin/python research/how-we-know/agent-citation-lineage/build_evidence_ledger.py verify",
+      "exit_status": 0,
+      "observed": "ledger deterministic; all raw source, span, result, correction, and dependence records covered"
+    },
+    {
+      "command": ".venv/bin/ruff check research/how-we-know/agent-citation-lineage/build_evidence_ledger.py",
+      "exit_status": 0,
+      "observed": "all checks passed"
+    },
+    {
+      "command": "git diff --exit-code eb3fd18ecf8840758bcd911c60132d03a40bde9c -- research/how-we-know/agent-citation-lineage/answers-v2 research/how-we-know/agent-citation-lineage/traces-v2",
+      "exit_status": 0,
+      "observed": "all eight raw answers and traces remained byte-identical"
+    },
+    {
+      "command": "make check PYTHON=.venv/bin/python",
+      "exit_status": 0,
+      "observed": "accepted-input validation, 80 tests, disclosure audit, deterministic rebuild, and source-tree drift check passed"
+    }
+  ],
+  "derived_counts": {
+    "captured_reports": 8,
+    "citation_occurrences": 48,
+    "cited_urls": 30,
+    "resolving_url_roots": 27,
+    "source_work_roots": 11,
+    "examined_edition_roots": 14,
+    "raw_span_occurrences": 127,
+    "exact_span_roots": 72,
+    "raw_claim_occurrences": 52,
+    "candidate_warrant_roots": 11,
+    "independently_confirmed_warrant_roots": 0,
+    "inaccessible_citations": 3,
+    "invalid_citations": 0,
+    "unresolved_citations": 34,
+    "unsupported_or_force_raised_claims": 12
+  },
+  "limitations": [
+    "This is an author-side execution receipt and cannot satisfy the independent-review predicate.",
+    "The receipt binds the reviewed implementation commit; the final branch head also contains this receipt and an append-only run proposal.",
+    "Three URL carriers were inaccessible: two HTTP-403 responses and one HTTP-203 cookie interstitial.",
+    "Mendeley supplement file bytes were not captured because its credential-free API returned HTTP 401.",
+    "Thirty-four citation occurrences remain unresolved and receive no automatic warrant credit.",
+    "The eleven candidate warrants are scoped research relations, not accepted knowledge, public Case 002 content, or independent evidence counts.",
+    "No merge, ready-state change, publication, deployment, DNS mutation, credential use, provider call, or spend occurred."
+  ]
+}

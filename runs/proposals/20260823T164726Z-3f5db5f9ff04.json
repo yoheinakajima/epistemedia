@@ -1,0 +1,10 @@
+{
+  "command": "verify_protocol_v2.py --require-traces; build_evidence_ledger.py verify; make check PYTHON=.venv/bin/python",
+  "id": "em:run-receipt:sha256:3f5db5f9ff0466cf6fb21b4839f9bca7dbe11f9665fb2a3d8d03d96ce032f618",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-23T16:47:26Z",
+  "run_id": "em0026-author-source-review-20260823T164643Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0026"
+}
