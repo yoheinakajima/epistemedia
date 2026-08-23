@@ -9,6 +9,8 @@
 - [Launch and engagement](launch.md)
 - [Brand architecture](brand.md)
 - [Product direction: How We Know](product-direction.md)
+- [Epistemic vocabulary for product design](editorial/epistemic-vocabulary.md)
+- [How We Know case-selection record](editorial/how-we-know-case-roadmap.md)
 - [Reversible claim dossiers](dossiers.md)
 - [Forensic-editorial design system](design-system.md)
 - [Production domain topology](../ops/hosting/dns.md)

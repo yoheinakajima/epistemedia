@@ -82,6 +82,13 @@ spans, defensible license and snapshot treatment, meaningful dependence structur
 counterevidence, and no provenance dead ends. A failed candidate records a negative result rather
 than manufacturing a demonstration.
 
+The accepted editorial continuation is recorded separately in
+[`editorial/how-we-know-case-roadmap.md`](editorial/how-we-know-case-roadmap.md). It selects an
+agent-citation-lineage question for Case 002 only as a future research direction and retains a
+multi-case library queue. The Greek and modern conceptual territory behind the product is preserved
+in [`editorial/epistemic-vocabulary.md`](editorial/epistemic-vocabulary.md); it is orientation, not a
+case, protocol ontology, or substitute for sourced philosophical research.
+
 ## Visual direction
 
 The recommended design language is **forensic editorial**: a readable publication combined with an inspectable evidence docket.
