@@ -218,3 +218,73 @@ The accepted dossier remained SHA-256
 `503d16396b25b1c22d7fc10ac6fb7db2e530e6ce348d63fa8b639db5a5288f0a`
 (65,611 bytes). Hosted API/MCP, `episte.media`, packages, containers, and Case 002 remain outside
 this activation and are not claimed live.
+
+## Human-readable topic and object projections — 2026-08-23T04:12Z
+
+EM-0028 replaced the undifferentiated topic-page prose and metadata stream with compact grouped
+object cards, subordinate technical identity, canonical object and Markdown links, exact accepted
+source links, catalog-derived topic memberships, and exact repository-reference navigation. It did
+not change accepted object text, Case 001 research, topic inclusion policy, or evidence meaning.
+
+PR [#48](https://github.com/yoheinakajima/epistemedia/pull/48) passed independent exact-head
+review and was squash-merged through the protected path:
+
+- accepted base: `e9ad62b18f21594258643694c55709f78b4f9a50`;
+- reviewed candidate: `444b4af56a901778afe6a79f96b6269b827d1c58`;
+- reviewed and merged tree: `c3e416456d2f3541c6ada1ddbe938a32cf49ccca`;
+- squash commit: `a4ccdb9e4fc2e62018c77f6a6560666f6a69f83f`;
+- PR Validate run `32616552460`, job `97138142041`, conclusion `success`;
+- resulting-main Validate run `32617161851`, job `97139622644`, conclusion `success`;
+- source branch deleted; no ruleset bypass used.
+
+The one authorized custom-domain deployment was dispatched on the exact accepted main commit:
+
+- workflow run: `32617262450`, conclusion `success`;
+- build job: `97139873721`, conclusion `success`;
+- deploy job: `97139967276`, conclusion `success`;
+- GitHub deployment: `6044260511`;
+- successful deployment status: `17181336969`;
+- completed: `2026-08-23T04:12:53Z`;
+- provider URL: <https://epistemedia.org/>.
+
+The build job passed validation, deterministic compilation, tests, disclosure audit, custom-domain
+attachment, Pages configuration, and artifact upload. GitHub Pages API read-back continued to
+report build type `workflow`, custom domain `epistemedia.org`, account protection state `verified`,
+`pending_domain_unverified_at: null`, HTTPS enforcement `true`, and approved certificate coverage
+for `epistemedia.org` and `www.epistemedia.org`.
+
+External HTTPS read-back observed the following release identity:
+
+- release manifest:
+  `em:release-manifest:sha256:c69ca3eacc2718911a58f68a6d5cc4f2c00d6ffa144046cf9653c90efb6cfc69`;
+- release-manifest response: 141,538 bytes, SHA-256
+  `b0839a4d9cfe3aac07748792effdb86ae62cfd40c4fc0458159d964f8ba7d07d`;
+- catalog:
+  `em:catalog:sha256:dfb7ef6b75d7024142ff327622e44f8b0204471734bb1661b7054e21830c8233`;
+- frontier:
+  `em:frontier:sha256:c37a16901d41c94ef8c10dd3dc617facd51dd6f8d01dfcfd181044ae3b110fe0`;
+- commit: `a4ccdb9e4fc2e62018c77f6a6560666f6a69f83f`;
+- compiler: `epistemedia/0.2.0`;
+- deterministic generated time: `2026-08-23T04:09:18Z`;
+- files: `687`;
+- base URL: `https://epistemedia.org`.
+
+The canonical Epistemedia topic projection returned `27` objects grouped as `24` documentation,
+`2` release, and `1` repository-artifact card. Its JSON twin exposed `220` exact other-topic
+memberships and `15` unique exact public-object references, all labeled as navigation rather than
+semantic similarity, support, or independence. Topic HTML, Markdown, and JSON returned `200` with
+`text/html`, `text/markdown`, and `application/json`; representative object HTML and Markdown also
+returned `200` with their intended content types. The representative accepted-source link resolved
+to `docs/README.md` at the exact deployed commit.
+
+Live browser read-back at `1280 × 720` and `390 × 844`, supplementing exact-head local inspection
+at `1440 × 900` and `390 × 844`, observed one H1, zero scripts, no horizontal overflow, closed
+technical disclosures by default, visibly smaller machine metadata, grouped cards, working source
+and topic navigation, and a 3px visible focus outline. Click expansion of native `details` worked.
+The browser driver focused `summary` but again did not dispatch its Enter default action, so this
+receipt does not infer physical-keyboard activation from that synthetic driver. Native semantics,
+focusability, click behavior, and regression tests passed.
+
+Accepted Case 001 dossier, feature manifest, independent review receipt, source spans, and policy
+meanings remained byte-identical. Hosted API/MCP, `episte.media`, DNS, release/package/container
+publication, credentials, spend, and Case 002 admission were not changed or represented as live.

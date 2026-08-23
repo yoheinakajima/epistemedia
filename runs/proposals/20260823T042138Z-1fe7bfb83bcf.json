@@ -1,0 +1,10 @@
+{
+  "command": "GitHub Pages workflow 32617262450 and public provider read-back",
+  "id": "em:run-receipt:sha256:1fe7bfb83bcf3b083241f7f65a1968c25e7688f761800f55639fab8bae2ea27d",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-23T04:21:38Z",
+  "run_id": "20260823T041147Z-em0028-pages",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0028"
+}
