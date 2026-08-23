@@ -4,14 +4,15 @@ import hashlib
 import html
 import json
 import os
+import posixpath
 import re
 import shutil
 import subprocess
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, unquote, urlsplit
 
 VERSION = "0.2.0"
 PROTOCOL_VERSION = "2026-07-28"
@@ -421,6 +422,66 @@ section+section{margin-top:var(--space-5)}
   letter-spacing:.025em;
 }
 .card:focus-within{outline:3px solid var(--amber);outline-offset:2px}
+.topic-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--space-5)}
+.topic-hero>.eyebrow,.topic-hero>h1,.topic-hero>.dek{grid-column:1}
+.topic-hero h1,.object-page>.hero h1{max-width:24ch;font-size:clamp(1.8rem,2.7vw,2.4rem)}
+.topic-count{
+  grid-column:2;
+  grid-row:1/4;
+  align-self:center;
+  display:grid;
+  min-width:180px;
+  margin:0;
+  padding:var(--space-3);
+  border-left:4px solid var(--forest);
+  background:rgba(255,253,246,.7);
+  color:var(--muted);
+  font:700 .68rem/1.4 var(--mono);
+  letter-spacing:.05em;
+  text-transform:uppercase;
+}
+.topic-count strong{color:var(--forest-deep);font:750 2.35rem/.9 var(--serif);letter-spacing:-.04em}
+.topic-count span+span{margin-top:.45rem;padding-top:.45rem;border-top:1px solid var(--rule)}
+.topic-hero>.representation-links{grid-column:1;margin-top:.15rem}
+.topic-index-note{margin:0 0 .45rem;color:var(--muted);font-size:.8rem}
+.topic-group+.topic-group{margin-top:var(--space-4)}
+.topic-group-head{display:flex;align-items:end;justify-content:space-between;gap:var(--space-3);margin-bottom:.7rem}
+.topic-group-head h2{margin:0;font-size:1.45rem}
+.topic-group-head p{margin:0;color:var(--muted);font:700 .68rem/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.topic-object-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));align-items:start;gap:.75rem}
+.topic-object-card{
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  padding:var(--space-3);
+  border:1px solid var(--rule);
+  border-top:4px solid var(--forest);
+  background:rgba(255,253,246,.82);
+}
+.topic-object-card:focus-within{outline:3px solid var(--amber);outline-offset:2px}
+.object-kind{margin:0 0 .45rem;color:var(--forest);font:720 .64rem/1.35 var(--mono);letter-spacing:.075em;text-transform:uppercase}
+.topic-object-card h3{margin:0;font-size:1.22rem;line-height:1.16}
+.topic-object-card h3 a{text-decoration-thickness:1px}
+.object-summary{margin:.65rem 0 var(--space-3);color:var(--muted);font-size:.88rem;line-height:1.5}
+.object-actions{display:flex;align-items:center;flex-wrap:wrap;gap:.4rem .8rem;margin:auto 0 0;padding-top:.7rem;border-top:1px solid var(--rule);font-size:.75rem}
+.object-actions a{font-weight:680}
+.object-actions .object-primary{color:var(--forest-deep);font-weight:780}
+.object-relations{margin-top:.75rem;border-top:1px dotted var(--rule)}
+.object-relations summary{display:flex;cursor:pointer;justify-content:space-between;gap:.75rem;padding:.55rem 0 .15rem}
+.object-relations summary::marker{color:var(--forest)}
+.relation-count{color:var(--muted);font:700 .6rem/1.35 var(--mono)}
+.relation-label{margin:0;color:var(--muted);font:720 .62rem/1.35 var(--mono);letter-spacing:.065em;text-transform:uppercase}
+.relation-links{display:flex;flex-wrap:wrap;gap:.25rem .65rem;margin:.3rem 0 0;padding:0;list-style:none}
+.relation-links li{max-width:100%;font-size:.74rem;line-height:1.4}
+.object-identity{margin-top:.75rem;border-top:1px solid var(--rule)}
+.object-identity summary{cursor:pointer;padding:.65rem 0;color:var(--muted);font:720 .62rem/1.35 var(--mono);letter-spacing:.055em;text-transform:uppercase}
+.object-identity dl{display:grid;margin:0;padding:0 0 .35rem}
+.object-identity dl>div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:.5rem;padding:.34rem 0;border-top:1px dotted var(--rule)}
+.object-identity dt{color:var(--muted);font:700 .57rem/1.4 var(--mono);letter-spacing:.045em;text-transform:uppercase}
+.object-identity dd{min-width:0;margin:0;color:var(--muted);font:.64rem/1.45 var(--mono)}
+.object-identity code{padding:0;background:transparent;font:inherit;overflow-wrap:anywhere;word-break:break-word}
+.object-topic-links{margin-top:var(--space-3);padding:.75rem 0;border-top:1px solid var(--rule)}
+.object-topic-links .relation-links{margin-top:.4rem}
 .lens-status{
   border:1px solid var(--rule);
   border-left:4px solid var(--amber);
@@ -469,7 +530,8 @@ section+section{margin-top:var(--space-5)}
 .object-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem 1rem;margin:var(--space-3) 0 0}
 .object-facts>div{min-width:0;padding:.55rem 0;border-top:1px solid var(--rule)}
 .object-facts dt{color:var(--muted);font:700 .68rem/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase}
-.object-facts dd{margin:.2rem 0 0;overflow-wrap:anywhere;word-break:break-word}
+.object-facts dd{margin:.2rem 0 0;color:var(--muted);font:.72rem/1.5 var(--mono);overflow-wrap:anywhere;word-break:break-word}
+.object-facts code{padding:0;background:transparent;font:inherit}
 .source-document{padding-top:var(--space-4)}
 .source-document>h2{padding-bottom:.45rem;border-bottom:1px solid var(--ink)}
 .status-list{border-top:1px solid var(--ink)}
@@ -539,6 +601,12 @@ blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(
   .scope-note{grid-template-columns:1fr;gap:.15rem}
   .section-head{align-items:start;flex-direction:column;gap:0}
   .card{min-height:0}
+  .topic-hero{grid-template-columns:1fr}
+  .topic-hero>.eyebrow,.topic-hero>h1,.topic-hero>.dek,.topic-count,.topic-hero>.representation-links{grid-column:1;grid-row:auto}
+  .topic-hero h1,.object-page>.hero h1{font-size:clamp(1.7rem,7vw,2rem)}
+  .topic-count{min-width:0;margin-top:.2rem}
+  .topic-object-card{padding:.9rem}
+  .object-identity dl>div{grid-template-columns:1fr;gap:.1rem}
   .receipt-head{align-items:stretch;flex-direction:column}
   .stamp{align-self:start}
   .receipt-grid>div{grid-template-columns:1fr;gap:.2rem}
@@ -682,6 +750,74 @@ def first_paragraph(text: str, limit: int = 320) -> str:
         if paragraph and not paragraph.startswith("#") and not paragraph.startswith("|"):
             return paragraph[:limit]
     return ""
+
+
+def human_summary(obj: PublicObject, limit: int = 240) -> str:
+    """Return a compact prose summary without leaking Markdown link destinations."""
+
+    if obj.media_type not in {"text/markdown", "text/plain"}:
+        return f"Accepted {obj.kind.replace('-', ' ')} in the public catalog."
+    text = re.sub(r"```.*?```", "", obj.text, flags=re.S)
+    value = ""
+    for paragraph in re.split(r"\n\s*\n", text):
+        lines = [line for line in paragraph.splitlines() if line.strip()]
+        if not lines or all(re.match(r"^\s*#{1,6}\s", line) for line in lines):
+            continue
+        linked_list_lines = sum(
+            bool(re.match(r"^\s*[-+*]\s+\[[^]]+\]\(", line)) for line in lines
+        )
+        if linked_list_lines and linked_list_lines == len(lines):
+            continue
+        if all(line.lstrip().startswith("|") for line in lines):
+            continue
+        value = paragraph
+        break
+    value = re.sub(r"(?m)^\s*>\s?", "", value)
+    value = re.sub(r"(?m)^\s*#{1,6}\s+", "", value)
+    value = re.sub(r"!\[([^]]*)\]\([^)]+\)", r"\1", value)
+    value = re.sub(r"\[([^]]+)\]\([^)]+\)", r"\1", value)
+    value = re.sub(r"<((?:https?|mailto):[^>]+)>", r"\1", value)
+    value = re.sub(r"<[^>]+>", "", value)
+    value = re.sub(r"`([^`]+)`", r"\1", value)
+    value = value.replace("**", "").replace("__", "").replace("*", "")
+    value = re.sub(r"^\s*(?:[-+] |\d+[.)] )", "", value)
+    value = re.sub(r"\s+", " ", value).strip(" #-\t")
+    if not value:
+        return f"Accepted {obj.kind.replace('-', ' ')} in the public catalog."
+    if len(value) <= limit:
+        return value
+    shortened = value[: limit - 1].rsplit(" ", 1)[0].rstrip(" ,;:-")
+    return (shortened or value[: limit - 1]).rstrip() + "…"
+
+
+MARKDOWN_LINK_RE = re.compile(
+    r"(?<!!)\[[^\]]+\]\(\s*(?:<(?P<angled>[^>]+)>|(?P<plain>[^\s)]+))"
+)
+
+
+def repository_markdown_targets(source_path: str, text: str) -> list[str]:
+    """Resolve safe repository-relative Markdown links against one source path."""
+
+    without_fences = re.sub(r"```.*?```", "", text, flags=re.S)
+    without_code = re.sub(r"`[^`]*`", "", without_fences)
+    source_dir = PurePosixPath(source_path).parent.as_posix()
+    targets: list[str] = []
+    seen: set[str] = set()
+    for match in MARKDOWN_LINK_RE.finditer(without_code):
+        raw_target = (match.group("angled") or match.group("plain") or "").strip()
+        parsed = urlsplit(raw_target)
+        if parsed.scheme or parsed.netloc or not parsed.path:
+            continue
+        decoded = unquote(parsed.path)
+        if decoded.startswith("/") or "\\" in decoded or "\x00" in decoded:
+            continue
+        joined = posixpath.normpath(posixpath.join(source_dir, decoded))
+        if joined in {"", ".", ".."} or joined.startswith("../"):
+            continue
+        if joined not in seen:
+            seen.add(joined)
+            targets.append(joined)
+    return targets
 
 
 def safe_slug(value: str) -> str:
@@ -1110,18 +1246,108 @@ def inline_md(value: str) -> str:
     return escaped
 
 
+def accepted_source_url(catalog: PublicCatalog, obj: PublicObject) -> str:
+    path = quote(obj.path, safe="/")
+    return (
+        "https://github.com/yoheinakajima/epistemedia/blob/"
+        f"{quote(catalog.commit, safe='')}/{path}"
+    )
+
+
+def object_topic_memberships(
+    catalog: PublicCatalog,
+    obj: PublicObject,
+    base_url: str,
+    *,
+    exclude_slug: str | None = None,
+) -> list[dict[str, str]]:
+    memberships = []
+    for candidate in catalog.topics:
+        if candidate.slug == exclude_slug:
+            continue
+        if any(path_match(obj.path, pattern) for pattern in candidate.include):
+            memberships.append(
+                {
+                    "slug": candidate.slug,
+                    "title": candidate.title,
+                    "url": f"{base_url.rstrip('/')}/topics/{candidate.slug}/",
+                }
+            )
+    return memberships
+
+
+def object_source_references(
+    catalog: PublicCatalog, obj: PublicObject, base_url: str
+) -> list[dict[str, str]]:
+    if obj.media_type != "text/markdown":
+        return []
+    objects_by_path = {candidate.path: candidate for candidate in catalog.objects}
+    references = []
+    for target_path in repository_markdown_targets(obj.path, obj.text):
+        target = objects_by_path.get(target_path)
+        if target is None or target.id == obj.id:
+            continue
+        route_key = static_object_route_key(target.id)
+        references.append(
+            {
+                "id": target.id,
+                "title": target.title,
+                "kind": target.kind,
+                "path": target.path,
+                "html_url": f"{base_url.rstrip('/')}/objects/{route_key}/",
+                "markdown_url": f"{base_url.rstrip('/')}/objects/{route_key}.md",
+            }
+        )
+    return references
+
+
+def topic_object_record(
+    catalog: PublicCatalog, obj: PublicObject, topic: Topic, base_url: str
+) -> dict[str, Any]:
+    value = obj.as_dict(include_text=False)
+    route_key = static_object_route_key(obj.id)
+    value["summary"] = human_summary(obj)
+    value["links"] = {
+        "html": f"{base_url.rstrip('/')}/objects/{route_key}/",
+        "markdown": f"{base_url.rstrip('/')}/objects/{route_key}.md",
+        "accepted_source": accepted_source_url(catalog, obj),
+    }
+    value["also_filed_under"] = object_topic_memberships(
+        catalog, obj, base_url, exclude_slug=topic.slug
+    )
+    value["references_in_source"] = object_source_references(catalog, obj, base_url)
+    return value
+
+
 def topic_projection(catalog: PublicCatalog, topic: Topic, lens: str, base_url: str) -> dict[str, Any]:
     selected = catalog.selected_objects(topic)
+    objects = [topic_object_record(catalog, obj, topic, base_url) for obj in selected]
+    relation_material = [
+        {
+            "id": obj["id"],
+            "also_filed_under": [item["slug"] for item in obj["also_filed_under"]],
+            "references_in_source": [item["id"] for item in obj["references_in_source"]],
+        }
+        for obj in objects
+    ]
     manifest_material = {
         "catalog_id": catalog.catalog_id,
         "frontier": catalog.frontier,
         "topic": topic.slug,
         "lens": lens,
         "policies": catalog.policies,
-        "objects": [obj.id for obj in selected],
+        "objects": relation_material,
         "compiler": VERSION,
     }
     projection_id = stable_id("projection", manifest_material)
+    kind_counts = [
+        {"kind": kind, "count": sum(obj["kind"] == kind for obj in objects)}
+        for kind in sorted({obj["kind"] for obj in objects})
+    ]
+    route = f"topics/{topic.slug}/"
+    if lens != "encyclopedia":
+        route += f"{lens}/"
+    route_url = f"{base_url.rstrip('/')}/{route}"
     return {
         "projection_id": projection_id,
         "catalog_id": catalog.catalog_id,
@@ -1133,7 +1359,18 @@ def topic_projection(catalog: PublicCatalog, topic: Topic, lens: str, base_url: 
         "commit": catalog.commit,
         "generated_at": catalog.generated_at,
         "base_url": base_url,
-        "objects": [obj.as_dict(include_text=False) for obj in selected],
+        "object_count": len(objects),
+        "kind_counts": kind_counts,
+        "relation_counts": {
+            "also_filed_under": sum(len(obj["also_filed_under"]) for obj in objects),
+            "references_in_source": sum(len(obj["references_in_source"]) for obj in objects),
+        },
+        "representations": {
+            "html": route_url,
+            "markdown": f"{route_url}index.md",
+            "json": f"{route_url}index.json",
+        },
+        "objects": objects,
     }
 
 
@@ -1154,21 +1391,60 @@ def projection_markdown(
         "",
         "**Lens status:** Experimental manifest. Current lens policies preserve the same included-object inventory; the label does not yet indicate a materially differentiated editorial result.",
         "",
-        "## Included objects",
+        f"**Inventory:** {projection['object_count']} public objects across {len(projection['kind_counts'])} object kinds.",
+        "",
+        (
+            f"[HTML]({projection['representations']['html']}) · "
+            f"[Markdown]({projection['representations']['markdown']}) · "
+            f"[JSON]({projection['representations']['json']})"
+        ),
+        "",
+        "## Objects",
         "",
     ]
-    for obj in projection["objects"]:
+    for group in projection["kind_counts"]:
         lines += [
-            f"### {obj['title']}",
-            "",
-            obj.get("summary") or f"Repository artifact `{obj['path']}`.",
-            "",
-            f"- Kind: `{obj['kind']}`",
-            f"- Source path: `{obj['path']}`",
-            f"- Object ID: `{obj['id']}`",
-            f"- Content digest: `{obj['content_digest']}`",
+            f"### {group['kind'].replace('-', ' ').title()} ({group['count']})",
             "",
         ]
+        for obj in (item for item in projection["objects"] if item["kind"] == group["kind"]):
+            links = obj["links"]
+            lines += [
+                f"#### [{obj['title']}]({links['html']})",
+                "",
+                obj["summary"],
+                "",
+                (
+                    f"[Open object]({links['html']}) · "
+                    f"[Markdown twin]({links['markdown']}) · "
+                    f"[Accepted source]({links['accepted_source']})"
+                ),
+                "",
+            ]
+            if obj["also_filed_under"]:
+                labels = ", ".join(
+                    f"[{item['title']}]({item['url']})" for item in obj["also_filed_under"]
+                )
+                lines += [f"**Also filed under:** {labels}", ""]
+            if obj["references_in_source"]:
+                labels = ", ".join(
+                    f"[{item['title']}]({item['html_url']})"
+                    for item in obj["references_in_source"]
+                )
+                lines += [f"**References in source:** {labels}", ""]
+            lines += [
+                "<details>",
+                "<summary>Technical identity</summary>",
+                "",
+                f"- Kind: `{obj['kind']}`",
+                f"- Source path: `{obj['path']}`",
+                f"- Media type: `{obj['media_type']}`",
+                f"- Object ID: `{obj['id']}`",
+                f"- Content digest: `{obj['content_digest']}`",
+                "",
+                "</details>",
+                "",
+            ]
     if include_manifest:
         lines += [
             "## Projection manifest",
@@ -1182,6 +1458,99 @@ def projection_markdown(
             f"- Compiler: `{projection['compiler']}`",
         ]
     return "\n".join(lines).strip() + "\n"
+
+
+def topic_projection_html(projection: dict[str, Any], lens_links: str) -> str:
+    topic = projection["topic"]
+    representations = projection["representations"]
+    groups = []
+    for group in projection["kind_counts"]:
+        cards = []
+        objects = [obj for obj in projection["objects"] if obj["kind"] == group["kind"]]
+        for obj in objects:
+            links = obj["links"]
+            relations = []
+            if obj["also_filed_under"]:
+                relation_links = "".join(
+                    f'<li><a href="{html.escape(item["url"])}">'
+                    f'{html.escape(item["title"])}</a></li>'
+                    for item in obj["also_filed_under"]
+                )
+                relations.append(
+                    '<details class="object-relations"><summary>'
+                    '<span class="relation-label">Also filed under</span>'
+                    f'<span class="relation-count">{len(obj["also_filed_under"])}</span>'
+                    f'</summary><ul class="relation-links">{relation_links}</ul></details>'
+                )
+            if obj["references_in_source"]:
+                reference_links = "".join(
+                    f'<li><a href="{html.escape(item["html_url"])}">'
+                    f'{html.escape(item["title"])}</a></li>'
+                    for item in obj["references_in_source"]
+                )
+                relations.append(
+                    '<details class="object-relations"><summary>'
+                    '<span class="relation-label">References in source</span>'
+                    f'<span class="relation-count">{len(obj["references_in_source"])}</span>'
+                    f'</summary><ul class="relation-links">{reference_links}</ul></details>'
+                )
+            identity_rows = "".join(
+                f"<div><dt>{label}</dt><dd><code>{html.escape(str(value))}</code></dd></div>"
+                for label, value in (
+                    ("Kind", obj["kind"]),
+                    ("Source path", obj["path"]),
+                    ("Media type", obj["media_type"]),
+                    ("Object ID", obj["id"]),
+                    ("Content digest", obj["content_digest"]),
+                )
+            )
+            cards.append(
+                '<article class="topic-object-card">'
+                f'<p class="object-kind">{html.escape(obj["kind"].replace("-", " "))}</p>'
+                f'<h3><a href="{html.escape(links["html"])}">{html.escape(obj["title"])}</a></h3>'
+                f'<p class="object-summary">{html.escape(obj["summary"])}</p>'
+                '<p class="object-actions">'
+                f'<a class="object-primary" href="{html.escape(links["html"])}">Open object</a>'
+                f'<a href="{html.escape(links["markdown"])}">Markdown twin</a>'
+                f'<a href="{html.escape(links["accepted_source"])}">Accepted source</a></p>'
+                + "".join(relations)
+                + '<details class="object-identity"><summary>Technical identity</summary>'
+                f'<dl>{identity_rows}</dl></details></article>'
+            )
+        group_title = group["kind"].replace("-", " ").title()
+        groups.append(
+            '<section class="topic-group">'
+            '<div class="topic-group-head">'
+            f'<h2>{html.escape(group_title)}</h2><p>{group["count"]} '
+            f'{"object" if group["count"] == 1 else "objects"}</p></div>'
+            f'<div class="topic-object-grid">{"".join(cards)}</div></section>'
+        )
+    count = projection["object_count"]
+    return (
+        '<section class="hero hero-compact topic-hero">'
+        f'<p class="eyebrow">Topic projection · {html.escape(projection["lens"]["id"])}</p>'
+        f'<h1>{html.escape(topic["title"])}</h1>'
+        f'<p class="dek">{html.escape(topic.get("description", ""))}</p>'
+        '<p class="topic-count">'
+        f'<strong>{count}</strong><span>{"public object" if count == 1 else "public objects"}</span>'
+        f'<span>{len(projection["kind_counts"])} object kinds</span></p>'
+        '<p class="representation-links">'
+        f'<a href="{html.escape(representations["markdown"])}">Read as Markdown</a>'
+        f'<a href="{html.escape(representations["json"])}">Read as JSON</a></p></section>'
+        '<details class="lens-status"><summary>Experimental lens manifests (shared inventory)</summary>'
+        '<p><strong>Experimental lens manifest.</strong> These routes currently preserve the same '
+        'included-object inventory. Their labels and '
+        'manifest identities differ; they are not yet materially different editorial products. '
+        'This remains a manifest, not a differentiated editorial result.</p>'
+        f'<p>{lens_links}</p></details>'
+        '<section class="topic-index" aria-labelledby="topic-objects-title">'
+        '<div class="section-head"><div><p class="eyebrow">Public catalog</p>'
+        '<h2 id="topic-objects-title">Browse the objects</h2></div>'
+        '<p class="topic-index-note">Grouped by object kind. Catalog links are navigation, not '
+        'evidence of similarity or support.</p></div>'
+        + "".join(groups)
+        + "</section>"
+    )
 
 
 def projection_receipt_html(
@@ -1287,28 +1656,43 @@ def build_public(
         file_key = static_object_file_key(obj.id)
         route_key = static_object_route_key(obj.id)
         write_json(tmp / "objects" / f"{file_key}.json", obj.as_dict())
+        source_url = accepted_source_url(catalog, obj)
+        memberships = object_topic_memberships(catalog, obj, base_url)
+        membership_markdown = ", ".join(
+            f"[{item['title']}]({item['url']})" for item in memberships
+        ) or "None"
         markdown = (
             f"# {obj.title}\n\n"
             f"- Object ID: `{obj.id}`\n"
             f"- Kind: `{obj.kind}`\n"
-            f"- Repository path: `{obj.path}`\n"
+            f"- Repository path: [`{obj.path}`]({source_url})\n"
             f"- Content digest: `{obj.content_digest}`\n\n"
+            f"**Also filed under:** {membership_markdown}\n\n"
             f"## Source content\n\n{obj.text.rstrip()}\n"
         )
         write_text(tmp / "objects" / f"{file_key}.md", markdown)
-        summary = (
-            f'<p class="dek">{html.escape(obj.summary)}</p>' if obj.summary else ""
+        object_summary = human_summary(obj)
+        summary = f'<p class="dek">{html.escape(object_summary)}</p>'
+        membership_items = "".join(
+            f'<li><a href="{html.escape(item["url"])}">{html.escape(item["title"])}</a></li>'
+            for item in memberships
+        )
+        membership_html = (
+            '<div class="object-topic-links"><p class="relation-label">Also filed under</p>'
+            f'<ul class="relation-links">{membership_items}</ul></div>'
+            if membership_items
+            else ""
         )
         body = (
             '<article class="object-page">'
             f'<section class="hero hero-compact"><p class="eyebrow">Repository object · {html.escape(obj.kind)}</p>'
             f'<h1>{html.escape(obj.title)}</h1>{summary}'
             '<dl class="object-facts">'
-            f'<div><dt>Source path</dt><dd><code>{html.escape(obj.path)}</code></dd></div>'
+            f'<div><dt>Source path</dt><dd><a href="{html.escape(source_url)}"><code>{html.escape(obj.path)}</code></a></dd></div>'
             f'<div><dt>Media type</dt><dd><code>{html.escape(obj.media_type)}</code></dd></div>'
             f'<div><dt>Object ID</dt><dd><code>{html.escape(obj.id)}</code></dd></div>'
             f'<div><dt>Content digest</dt><dd><code>{html.escape(obj.content_digest)}</code></dd></div>'
-            '</dl></section><section class="source-document" aria-labelledby="source-content-title">'
+            f'</dl>{membership_html}</section><section class="source-document" aria-labelledby="source-content-title">'
             '<h2 id="source-content-title">Source content</h2>'
             + md_to_html(obj.text, heading_offset=2)
             + "</section>"
@@ -1350,15 +1734,24 @@ def build_public(
             md = projection_markdown(projection)
             base = tmp / "topics" / topic.slug / lens
             write_json(base / "manifest.json", projection)
+            write_json(base / "index.json", projection)
             write_text(base / "index.md", md)
+            lens_links = " ".join(
+                f'<a href="{base_url}/topics/{topic.slug}/{candidate}/">'
+                f'{html.escape(candidate)}</a>'
+                for candidate in LENSES
+                if candidate != lens and candidate != "encyclopedia"
+            )
+            if lens != "encyclopedia":
+                lens_links = (
+                    f'<a href="{base_url}/topics/{topic.slug}/">encyclopedia</a> '
+                    + lens_links
+                ).strip()
             write_text(
                 base / "index.html",
                 html_shell(
                     f"{topic.title} — {lens}",
-                    '<aside class="lens-status"><strong>Experimental lens manifest.</strong> '
-                    "Current lenses preserve the same included-object inventory; this label changes "
-                    "the projection manifest, not a differentiated editorial result.</aside>"
-                    + md_to_html(projection_markdown(projection, include_manifest=False))
+                    topic_projection_html(projection, lens_links)
                     + projection_receipt_html(
                         projection_id=projection["projection_id"],
                         catalog_id=projection["catalog_id"],
@@ -1375,25 +1768,14 @@ def build_public(
             )
         default_projection = topic_projection(catalog, topic, "encyclopedia", base_url)
         md = projection_markdown(default_projection)
+        write_json(tmp / "topics" / topic.slug / "index.json", default_projection)
         lens_links = " ".join(
             f'<a href="{base_url}/topics/{topic.slug}/{lens}/">{html.escape(lens)}</a>'
             for lens in LENSES
             if lens != "encyclopedia"
         )
         body = (
-            f'<section class="hero hero-compact"><p class="eyebrow">Current projection · encyclopedia</p><h1>{html.escape(topic.title)}</h1>'
-            f'<p class="dek">{html.escape(topic.description)}</p></section>'
-            '<details class="lens-status"><summary>Experimental lens manifests (shared inventory)</summary>'
-            '<p>These routes currently preserve the same included-object inventory. Their labels and '
-            'manifest identities differ; they are not yet materially different editorial products.</p>'
-            f'<p>{lens_links}</p></details>'
-            + md_to_html(
-                projection_markdown(
-                    default_projection,
-                    include_topic_intro=False,
-                    include_manifest=False,
-                )
-            )
+            topic_projection_html(default_projection, lens_links)
             + projection_receipt_html(
                 projection_id=default_projection["projection_id"],
                 catalog_id=default_projection["catalog_id"],
