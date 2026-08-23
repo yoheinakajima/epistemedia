@@ -1,0 +1,117 @@
+{
+  "schema": "https://epistemedia.org/research/agent-citation-trace-record-v1.json",
+  "task_id": "EM-0026",
+  "protocol_id": "em-0026-agent-citation-trace-v2",
+  "protocol_commit": "48b7fff8b091325e9683c319980ae1d547121f55",
+  "run_id": "V2-TERRA-03",
+  "status": "completed",
+  "started_at": "unknown",
+  "completed_at": "2026-08-23T05:21:01Z",
+  "requested_model_profile": "gpt-5.6-terra",
+  "reported_model_identity": "unknown",
+  "requested_reasoning_effort": "high",
+  "provider_system_context": "unknown",
+  "provider_sampling_parameters": "unknown",
+  "tool_configuration": {
+    "requested": "public read-only web retrieval; no browser session or account connector",
+    "reported": "unknown"
+  },
+  "inherited_conversation_turns": 0,
+  "prompt": {
+    "path": "research/how-we-know/agent-citation-lineage/frozen-prompt-v2.md",
+    "sha256": "d321a9cec7b5fe419157c0623e18ff0020cb0080fbe6dd9ed4fd20a0b896f670",
+    "bytes": 2379
+  },
+  "answer": {
+    "path": "research/how-we-know/agent-citation-lineage/answers-v2/V2-TERRA-03.json",
+    "sha256": "e211dfe49066bb9f4ff9e59b91173d3b0f45b7b1e8ca5135c7435f3882d7e264",
+    "bytes": 23183,
+    "json_valid": true
+  },
+  "citations": [
+    {
+      "source_id": "S1",
+      "url": "https://arxiv.org/html/2605.06635"
+    },
+    {
+      "source_id": "S2",
+      "url": "https://arxiv.org/html/2506.11763"
+    },
+    {
+      "source_id": "S3",
+      "url": "https://arxiv.org/html/2508.15804"
+    },
+    {
+      "source_id": "S4",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109748/"
+    },
+    {
+      "source_id": "S5",
+      "url": "https://github.com/Ayanami0730/deep_research_bench"
+    },
+    {
+      "source_id": "S6",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40904191/"
+    }
+  ],
+  "declared_retrievals": [
+    {
+      "source_id": "S1",
+      "status": "public arXiv HTML full text retrieved",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S2",
+      "status": "public arXiv HTML full text retrieved",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S3",
+      "status": "public arXiv HTML full text retrieved",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S4",
+      "status": "public primary full text was search-indexed; direct automated re-open returned a PMC browser challenge",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S5",
+      "status": "public official GitHub repository retrieved",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S6",
+      "status": "public PubMed record and figure caption retrieved",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    }
+  ],
+  "capture_limitations": [
+    "The orchestration surface did not expose an exact run-start timestamp, provider model build, sampling parameters, system context, or tool implementation, so those fields remain unknown.",
+    "The answer declares public retrieval and source locators, but this capture record does not promote any declaration into independently verified HTTP, byte, edition, span, license, source-resolution, claim-support, or warrant evidence.",
+    "The six citation URLs, source IDs, retrieval statuses, and source assertions are copied only from the answer and require separate resolution and fresh-source review before receiving evidentiary or independence credit."
+  ],
+  "disclosure_review": {
+    "hidden_reasoning_included": false,
+    "private_context_included": false,
+    "credentials_or_account_state_included": false,
+    "personal_data_included": false,
+    "review_notes": [
+      "Only the final JSON answer was retained.",
+      "No hidden reasoning, tool transcript, private context, credentials, account state, or personal data was captured."
+    ]
+  },
+  "replacement_for": null
+}
