@@ -1,6 +1,6 @@
 # Case 002 research protocol: agent citation lineage
 
-Status: frozen protocol; collection not yet started.
+Status: v1 transport preflight failed and is retained; v2 protocol frozen; no answer admitted.
 
 Case 002 asks whether apparent agreement among research agents survives inspection of the sources
 and exact spans behind their citations. The pilot is designed to teach a distinct lesson from Case
@@ -17,10 +17,16 @@ The question is about public empirical evaluations, not private vendor performan
 
 ## Collection design
 
-The protocol assigns eight context-isolated runs: four on `gpt-5.6-sol` and four on
+The active v2 protocol assigns eight context-isolated runs: four on `gpt-5.6-sol` and four on
 `gpt-5.6-terra`, each at requested high reasoning effort. Every run receives the same frozen prompt
 with no inherited conversation turns. Unavailable provider system, sampling, or retrieval settings
 remain `unknown`.
+
+Before v2 was frozen, the v1 transport preflight detected that one invocation received a prompt
+with one extra character. Both started invocations were stopped before final-answer capture. The
+failed v1 matrix is not being completed or repaired in place: its exact prompt identities, terminal
+statuses, and zero admitted answers remain a negative preflight record. V2 is a separately
+identified matrix, not a replacement run inside v1.
 
 Different runtime profiles are not different epistemic observers. The matrix gives the project a
 bounded set of outputs to inspect; it does not turn eight reports into eight evidence roots.

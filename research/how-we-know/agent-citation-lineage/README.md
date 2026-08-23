@@ -1,6 +1,6 @@
 # Case 002 research: agent citation lineage
 
-Status: **frozen trace protocol; no agent traces captured yet; research only**
+Status: **v1 preflight retained as failed; v2 frozen; no answer admitted; research only**
 
 Task: EM-0026
 
@@ -21,17 +21,28 @@ runtime profile as independent evidence.
 ## Why this protocol is frozen first
 
 The target, cutoff, prompt, run matrix, capture fields, dependence dimensions, and stop conditions
-are fixed before the first trace. That prevents the observed answers from silently changing the
-question or collection method. The immutable inputs are:
+are fixed before the first admissible trace. That prevents the observed answers from silently
+changing the question or collection method.
+
+The first transport preflight failed because one of two started invocations received one extra
+character. Both were interrupted before final-answer capture. The exact mismatch and zero-admission
+disposition remain visible in
+[`failed-preflight/20260823T031151Z-v1-transport.json`](failed-preflight/20260823T031151Z-v1-transport.json).
+Those v1 slots cannot be replaced or completed. No answer or citation from that preflight is part
+of the research corpus.
+
+The active v2 inputs are:
 
 - [`target-decision.json`](target-decision.json): the suitability and risk decision;
-- [`frozen-prompt.md`](frozen-prompt.md): the exact public prompt used in every run;
-- [`protocol.json`](protocol.json): the eight-slot matrix and verification rules; and
-- [`trace-record-template.json`](trace-record-template.json): the public trace envelope.
+- [`frozen-prompt-v2.md`](frozen-prompt-v2.md): the exact public prompt used in every v2 run;
+- [`protocol-v2.json`](protocol-v2.json): a new eight-slot matrix, bound to the failed v1 record;
+  and
+- [`trace-record-template-v2.json`](trace-record-template-v2.json): the v2 public trace envelope.
 
-`python research/how-we-know/agent-citation-lineage/verify_protocol.py` checks the frozen file
-identities and matrix. The later `--require-traces` gate also requires eight terminal records and
-verifies every completed answer artifact by digest and byte count.
+`python research/how-we-know/agent-citation-lineage/verify_protocol_v2.py` checks the v2 file
+identities, the failed-preflight linkage, and the new matrix. The later `--require-traces` gate also
+requires eight terminal v2 records and verifies every captured answer artifact by digest and byte
+count. The older `verify_protocol.py` remains available only to reproduce the frozen v1 identity.
 
 The protocol records unavailable generation, system, or retrieval settings as `unknown`. A fresh
 context excludes inherited conversation turns; it does not prove that provider system context,
