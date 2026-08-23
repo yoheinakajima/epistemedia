@@ -76,12 +76,14 @@ in two channels.”**
 - Metadata:
   [Crossref](https://api.crossref.org/works/10.1037%2Fh0024648);
   [OpenAlex](https://api.openalex.org/works/https:%2F%2Fdoi.org%2F10.1037%2Fh0024648).
-- Access: the APA target returned 403 and PubMed listed only Ovid full text. A transient
+- Access: the APA target returned 403 and PubMed listed only Ovid full text. The
   [university course scan](https://is.muni.cz/el/phil/jaro2018/PSA_034/um/Mehrabian.pdf?lang=en)
-  returned a five-page PDF, 459,340 bytes, SHA-256
+  uses a credential-free but session-dependent flow: the first anonymous request returned a
+  117-byte HTML/meta-refresh response and set an anonymous cookie; repeating the URL with that
+  cookie returned a five-page PDF, 459,340 bytes, SHA-256
   `f9d91dfd98725e902ef24a1b478c4bb8aac5be66c2be2b5486cc0c4253711f84`.
-  A later independent readback returned an HTML/meta-refresh response followed by a connection
-  failure, so this carrier is explicitly unstable and receives no durable-access credit.
+  Because the carrier depends on mutable anonymous session state, it receives no durable-access
+  credit.
 - Edition: authoritative metadata and the issue header say *Journal of Consulting
   Psychology*, despite inconsistent secondary naming.
 - License/treatment: no open license; public course hosting does not establish reuse rights.
@@ -119,8 +121,11 @@ The formula's appearance in P2 is verified; the complete derivation is unresolve
 2. **Albert Mehrabian, *Silent Messages*.**
    - Author page identity: 1981 Wadsworth edition, pp. 75–80.
    - Inspected lead: [1971 Wadsworth scan](https://e-edu.nbu.bg/pluginfile.php/855150/mod_resource/content/1/Albert-Mehrabian%20-%20Silent%20Messages%201971%20-%20red.size.pdf),
-     ISBN `0-534-00059-2`, 160 pages, SHA-256
-     `94925f4d17b626bc029ce8ae8375c8468788a179cc879f336a930b7b1273ddeb`.
+     ISBN `0-534-00059-2`, 160 pages, 19,515,952 bytes, SHA-256
+     `3223d08c89749142d9774a49e6843ee4512ef9daa70928ed8667051ef8a123c1`.
+     The previously recorded digest
+     `94925f4d17b626bc029ce8ae8375c8468788a179cc879f336a930b7b1273ddeb` was not reproduced
+     from this exact URL and receives no artifact-identity credit.
    - The 1971 edition states the approximate equation and its feeling-dimension boundary but
      does not supply the missing `.07` derivation.
    - License/treatment: all rights reserved; do not preserve or redistribute scan bytes.

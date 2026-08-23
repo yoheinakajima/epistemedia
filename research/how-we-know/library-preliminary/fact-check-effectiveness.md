@@ -9,7 +9,12 @@
 - **Task:** `EM-0027`, *Map primary-source readiness for the next How We Know library*. The immutable task contract calls for a fact-check packet covering the four-country experiment, a broad evidence review, the 2023 science-misinformation meta-analysis, a 2025 reply, durability and behavior boundaries, and overlap with Case 001. It expressly limits the work to preliminary mapping, not a conclusion.
 - **Candidate label:** “Do fact-checks work at all?” This is a circulated question, not a tested proposition. It combines materially different outcomes and intervention classes.
 - **Anchor experiment (verified):** Ethan Porter and Thomas J. Wood, “The global effectiveness of fact-checking: Evidence from simultaneous experiments in Argentina, Nigeria, South Africa, and the United Kingdom,” *Proceedings of the National Academy of Sciences* 118(37), e2104235118 (2021). Stable DOI/URL: <https://doi.org/10.1073/PNAS.2104235118>. PNAS records acceptance 2021-07-23 and publication 2021-09-10. Public full-text landing page was available without credentials when inspected; article license was **not verified** from the captured record.
-- **Broad political-fact-checking review (verified identity):** Nadine Walter, Jonathan Cohen, R. Lance Holbert, and Yasmin Morag, “Fact-Checking: A Meta-Analysis of What Works and for Whom,” *Political Communication* 37, 350–375 (2020). DOI: <https://doi.org/10.1080/10584609.2019.1668894>. The captured publisher abstract reports (k=30), (N=20,963), and a positive overall influence on political beliefs, (d=0.29). Full text/license/access beyond the publisher abstract: **not verified**.
+- **Broad political-fact-checking review (verified identity):** Nathan Walter, Jonathan Cohen,
+  R. Lance Holbert, and Yasmin Morag, “Fact-Checking: A Meta-Analysis of What Works and for
+  Whom,” *Political Communication* 37, 350–375 (2020). DOI:
+  <https://doi.org/10.1080/10584609.2019.1668894>. The captured publisher abstract reports
+  (k=30), (N=20,963), and a positive overall influence on political beliefs, (d=0.29). Full
+  text/license/access beyond the publisher abstract: **not verified**.
 - **Science-misinformation meta-analysis — original edition (verified identity):** Man-pui Sally Chan and Dolores Albarracín, “A meta-analysis of correction effects in science-relevant misinformation,” *Nature Human Behaviour* 7, 1514–1525 (2023), DOI <https://doi.org/10.1038/s41562-023-01623-8>, online version of record 2023-06-15; issue September 2023. Public author-hosted PDF and a public PMC record were located; the publisher page presents subscription access. The original article says data and code are at OSF <https://osf.io/vkygw/>; the current contents/version of that OSF project were **not directly inspected** in this recovery.
 - **Science meta-analysis — correction edition (verified identity):** Chan and Albarracín, “Author Correction: A meta-analysis of correction effects in science-relevant misinformation,” *Nature Human Behaviour* 9, 1992–1994 (2025), DOI <https://doi.org/10.1038/s41562-025-02294-3>, published/version of record 2025-08-08. The correction states that original counts of included studies/effect sizes were incorrect and that some effect-size estimates/codings were erroneous or imprecise. Therefore, original-edition counts and estimates must not be carried forward as the current meta-analytic result.
 - **2025 Matters Arising (verified identity):** Lucy H. Butler, Joseph DeGutis, Li Qian Tay, Ullrich K. H. Ecker, and Briony Swire-Thompson, “Corrections are effective for science misinformation,” *Nature Human Behaviour* 9, 2458–2460 (2025), DOI <https://doi.org/10.1038/s41562-025-02245-y>, published 2025-10-06. It is a response to the 2023 Chan–Albarracín article, not an independent primary intervention trial. Publisher page showed subscription access; source page says its relevant code is at <https://osf.io/f72ay/> and directs readers to Chan–Albarracín OSF data at <https://osf.io/vkygw/>. License: **not verified**.
@@ -55,7 +60,7 @@ The comparison is an assigned, survey-delivered exposure to a brief misinformati
 | Chan–Albarracín original/correction | One science-relevant correction synthesis and its author correction | The 2025 correction supersedes erroneous original counts/estimates. It is not independent evidence from its included reports. |
 | Butler et al. Matters Arising | Reanalysis/critique using Chan–Albarracín repository, per its data/code statements | Not independent data from the original meta-analysis; it is a methodological counteranalysis. |
 | Chan–Albarracín reply | Author response and reanalysis within the same dispute | Not a new participant-data root or independent synthesis; it answers Butler and must remain linked to the original, correction, and Matters Arising editions. |
-| Case 001 | Existing Epistemedia correction/backfire candidate | Exact source-program overlap has not been audited. Treat overlap as unknown and prevent double counting until item/report-level matching. |
+| Case 001 | Existing Epistemedia correction/backfire candidate | Confirmed author-program overlap: Butler coauthors Ullrich K. H. Ecker and Briony Swire-Thompson are represented throughout Case 001's correction/backfire program. Exact included-report and participant-data overlap remains unaudited; prevent double counting until item-level matching. |
 
 ## 5. Counterevidence, qualifications, and boundaries
 
@@ -65,7 +70,18 @@ These are leads/boundaries, not an attempt to settle the literature.
    Chan and Albarracín's reply defends combining different correction approaches and reports a
    correction-effect estimate, but that argument remains part of the same contested analytical
    lineage and is not independent confirmation.
-2. **Outcome mismatch.** The PNAS anchor supports a randomized, assigned-exposure claim about false-belief accuracy, including a limited delay. It does not establish that fact-checks change sharing or behavior. A captured 2023 review, “Factual corrections: Concerns and current evidence,” says evidence beyond belief accuracy is less settled and describes a dearth of individual-level web-browsing studies; its exact bibliographic identity and access/license were not pinned, so it is a boundary lead only.
+2. **Outcome mismatch.** The PNAS anchor supports a randomized, assigned-exposure claim about
+   false-belief accuracy, including a limited delay. It does not establish that fact-checks
+   change sharing or behavior. Ethan Porter and Thomas J. Wood, “Factual corrections: Concerns
+   and current evidence,” *Current Opinion in Psychology* 55, 101715 (2024), DOI
+   <https://doi.org/10.1016/j.copsyc.2023.101715>, PMID
+   [`37988954`](https://pubmed.ncbi.nlm.nih.gov/37988954/), was published online 2023-10-21.
+   The credential-free publisher HTML was inspected; no open license was confirmed for that
+   version, so it is link/quote-minimal. Its public preprint DOI
+   <https://doi.org/10.31234/osf.io/svbru> reports CC BY 4.0, but edition equivalence has not
+   been collated. The review distinguishes belief accuracy from the less-settled evidence on
+   attitudes, behavior, durability, and real-world exposure; it is a boundary review, not an
+   independent intervention root.
 3. **Scope mismatch.** Walter et al. synthesize political fact-checking; Chan–Albarracín focus science-relevant misinformation/corrections. Their intervention definitions, populations, outcomes, and inclusion rules cannot be treated as interchangeable.
 4. **Exposure/selection gap.** Survey assignment demonstrates efficacy conditional on exposure, not reach to audiences who would ordinarily select, avoid, trust, or encounter a correction. This is an interpretation of the anchor design, not a claim that no real-world effects exist.
 
@@ -97,7 +113,10 @@ The anchor experiment and an openly licensed replication deposit are strongly id
 1. Retrieve/version-pin `vkygw` and `f72ay`: file inventory, licenses, bytes/hashes, current analysis/Rmd, revision dates, and whether the corrected analysis is reproducible from specified inputs.
 2. Reconcile the original 2023 counts/estimates with the 2025 correction and reply; record corrected values only from the correction/current reproducible materials, never by inference.
 3. Build a deliberately separate behavior/sharing branch with direct intervention and outcome evidence; do not transfer belief-accuracy or two-week persistence effects to behavior/reach/diffusion.
-4. Perform report/item-level overlap mapping across Walter, Chan–Albarracín, Butler, PNAS/Dataverse, and Case 001 before counting evidence or describing convergence.
+4. Perform report/item-level overlap mapping across Walter, Chan–Albarracín, Butler,
+   PNAS/Dataverse, and Case 001 before counting evidence or describing convergence. The known
+   Ecker/Swire-Thompson author-program overlap is not itself proof of report or participant-data
+   overlap.
 5. Check sampling/recruitment, attrition, stimuli, and analytic scripts sufficiently to state the exact population, delay denominator, and reproducibility status.
 
 **Prohibitions preserved:** no source admission, dossier construction, public copy, verdict, repository edit, PR, credential use, deployment, or spend.
@@ -113,3 +132,6 @@ The anchor experiment and an openly licensed replication deposit are strongly id
 7. Chan–Albarracín reply: <https://doi.org/10.1038/s41562-025-02265-8>;
    public manuscript record: <https://pmc.ncbi.nlm.nih.gov/articles/PMC13188179/>.
 8. Original article’s declared OSF project: <https://osf.io/vkygw/>; Butler page’s declared code project: <https://osf.io/f72ay/>.
+9. Porter and Wood boundary review: <https://doi.org/10.1016/j.copsyc.2023.101715>;
+   PubMed <https://pubmed.ncbi.nlm.nih.gov/37988954/>; public preprint
+   <https://doi.org/10.31234/osf.io/svbru>.
