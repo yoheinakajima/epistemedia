@@ -1,0 +1,128 @@
+{
+  "schema": "https://epistemedia.org/research/agent-citation-trace-record-v1.json",
+  "task_id": "EM-0026",
+  "protocol_id": "em-0026-agent-citation-trace-v2",
+  "protocol_commit": "48b7fff8b091325e9683c319980ae1d547121f55",
+  "run_id": "V2-SOL-04",
+  "status": "completed",
+  "started_at": "unknown",
+  "completed_at": "2026-08-23T05:42:16Z",
+  "requested_model_profile": "gpt-5.6-sol",
+  "reported_model_identity": "unknown",
+  "requested_reasoning_effort": "high",
+  "provider_system_context": "unknown",
+  "provider_sampling_parameters": "unknown",
+  "tool_configuration": {
+    "requested": "public read-only web retrieval; no browser session or account connector",
+    "reported": "credential-free public web search, open, click, and find operations; no logged-in browser session or account connector"
+  },
+  "inherited_conversation_turns": 0,
+  "prompt": {
+    "path": "research/how-we-know/agent-citation-lineage/frozen-prompt-v2.md",
+    "sha256": "d321a9cec7b5fe419157c0623e18ff0020cb0080fbe6dd9ed4fd20a0b896f670",
+    "bytes": 2379
+  },
+  "answer": {
+    "path": "research/how-we-know/agent-citation-lineage/answers-v2/V2-SOL-04.json",
+    "sha256": "216552854069e32a8dc4986c57f59dc3b9b56d44f01d527167b3f311384a9261",
+    "bytes": 36500,
+    "json_valid": true
+  },
+  "citations": [
+    {
+      "source_id": "S1",
+      "url": "https://arxiv.org/html/2605.06635v1"
+    },
+    {
+      "source_id": "S2",
+      "url": "https://arxiv.org/html/2506.11763v1"
+    },
+    {
+      "source_id": "S3",
+      "url": "https://arxiv.org/html/2508.15804v1"
+    },
+    {
+      "source_id": "S4",
+      "url": "https://arxiv.org/html/2509.04499v1"
+    },
+    {
+      "source_id": "S5",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109748/"
+    },
+    {
+      "source_id": "S6",
+      "url": "https://data.mendeley.com/datasets/3s73z9zf3c/1"
+    },
+    {
+      "source_id": "S7",
+      "url": "https://arxiv.org/abs/2607.08700"
+    }
+  ],
+  "declared_retrievals": [
+    {
+      "source_id": "S1",
+      "status": "resolved; public HTML and PDF",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S2",
+      "status": "resolved; public HTML and PDF; official code link present",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S3",
+      "status": "resolved; public HTML and PDF; official GitHub and Hugging Face dataset artifacts present",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S4",
+      "status": "resolved; public arXiv HTML/PDF and official ICLR proceedings page",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S5",
+      "status": "primary PMC full text was publicly indexed; direct open encountered a reCAPTCHA during this audit",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S6",
+      "status": "resolved; public landing page and downloadable files",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "S7",
+      "status": "resolved; public abstract, HTML, and PDF",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    }
+  ],
+  "capture_limitations": [
+    "The orchestration surface did not expose an exact run-start timestamp, provider model build, sampling parameters, or provider system context, so those fields remain unknown.",
+    "The answer declares public retrieval and source locators, but this capture record does not promote any declaration into independently verified HTTP, byte, edition, span, license, source-resolution, claim-support, or warrant evidence.",
+    "The seven citation URLs, source IDs, retrieval statuses, and source assertions are copied only from the answer and require separate resolution and fresh-source review before receiving evidentiary or independence credit."
+  ],
+  "disclosure_review": {
+    "hidden_reasoning_included": false,
+    "private_context_included": false,
+    "credentials_or_account_state_included": false,
+    "personal_data_included": false,
+    "review_notes": [
+      "Only the final JSON answer was retained.",
+      "No hidden reasoning, tool transcript, private context, credentials, account state, or personal data was captured."
+    ]
+  },
+  "replacement_for": null
+}
