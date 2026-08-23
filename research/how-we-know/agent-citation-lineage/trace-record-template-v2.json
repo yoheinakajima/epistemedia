@@ -1,0 +1,42 @@
+{
+  "schema": "https://epistemedia.org/research/agent-citation-trace-record-v1.json",
+  "task_id": "EM-0026",
+  "protocol_id": "em-0026-agent-citation-trace-v2",
+  "protocol_commit": "unknown",
+  "run_id": "unknown",
+  "status": "unstarted",
+  "started_at": "unknown",
+  "completed_at": "unknown",
+  "requested_model_profile": "unknown",
+  "reported_model_identity": "unknown",
+  "requested_reasoning_effort": "unknown",
+  "provider_system_context": "unknown",
+  "provider_sampling_parameters": "unknown",
+  "tool_configuration": {
+    "requested": "public read-only web retrieval; no browser session or account connector",
+    "reported": "unknown"
+  },
+  "inherited_conversation_turns": 0,
+  "prompt": {
+    "path": "research/how-we-know/agent-citation-lineage/frozen-prompt-v2.md",
+    "sha256": "d321a9cec7b5fe419157c0623e18ff0020cb0080fbe6dd9ed4fd20a0b896f670",
+    "bytes": 2379
+  },
+  "answer": {
+    "path": "unknown",
+    "sha256": "unknown",
+    "bytes": "unknown",
+    "json_valid": "unknown"
+  },
+  "citations": [],
+  "declared_retrievals": [],
+  "capture_limitations": [],
+  "disclosure_review": {
+    "hidden_reasoning_included": false,
+    "private_context_included": false,
+    "credentials_or_account_state_included": false,
+    "personal_data_included": false,
+    "review_notes": []
+  },
+  "replacement_for": null
+}

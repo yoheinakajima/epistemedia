@@ -1,0 +1,106 @@
+{
+  "schema": "https://epistemedia.org/research/agent-citation-trace-record-v1.json",
+  "task_id": "EM-0026",
+  "protocol_id": "em-0026-agent-citation-trace-v2",
+  "protocol_commit": "48b7fff8b091325e9683c319980ae1d547121f55",
+  "run_id": "V2-TERRA-01",
+  "status": "completed",
+  "started_at": "unknown",
+  "completed_at": "2026-08-23T04:05:25Z",
+  "requested_model_profile": "gpt-5.6-terra",
+  "reported_model_identity": "unknown",
+  "requested_reasoning_effort": "high",
+  "provider_system_context": "unknown",
+  "provider_sampling_parameters": "unknown",
+  "tool_configuration": {
+    "requested": "public read-only web retrieval; no browser session or account connector",
+    "reported": "unknown"
+  },
+  "inherited_conversation_turns": 0,
+  "prompt": {
+    "path": "research/how-we-know/agent-citation-lineage/frozen-prompt-v2.md",
+    "sha256": "d321a9cec7b5fe419157c0623e18ff0020cb0080fbe6dd9ed4fd20a0b896f670",
+    "bytes": 2379
+  },
+  "answer": {
+    "path": "research/how-we-know/agent-citation-lineage/answers-v2/V2-TERRA-01.json",
+    "sha256": "e90c36b6f172fbe291d75ce1ea9451b1160515a2b7b4e0ead66aa1a76cc8b735",
+    "bytes": 22598,
+    "json_valid": true
+  },
+  "citations": [
+    {
+      "source_id": "s1_deepresearchbench",
+      "url": "https://deepresearch-bench.github.io/static/papers/deepresearch-bench.pdf"
+    },
+    {
+      "source_id": "s2_reportbench",
+      "url": "https://arxiv.org/pdf/2508.15804"
+    },
+    {
+      "source_id": "s3_researcherbench",
+      "url": "https://arxiv.org/pdf/2507.16280"
+    },
+    {
+      "source_id": "s4_cited_not_verified",
+      "url": "https://arxiv.org/pdf/2605.06635"
+    },
+    {
+      "source_id": "s5_urlhealth",
+      "url": "https://arxiv.org/pdf/2604.03173"
+    }
+  ],
+  "declared_retrievals": [
+    {
+      "source_id": "s1_deepresearchbench",
+      "status": "verified_public_pdf",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "s2_reportbench",
+      "status": "verified_public_pdf",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "s3_researcherbench",
+      "status": "verified_public_pdf",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "s4_cited_not_verified",
+      "status": "verified_public_pdf",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "s5_urlhealth",
+      "status": "verified_public_pdf",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    }
+  ],
+  "capture_limitations": [
+    "The orchestration surface did not expose an exact run-start timestamp, provider model build, sampling parameters, system context, or tool implementation, so those fields remain unknown.",
+    "The answer declares public PDF retrieval and supplies source locators, but this capture record does not promote those declarations into independently verified HTTP, byte, edition, span, license, or warrant receipts.",
+    "The five cited URLs and their stated propositions require separate resolution and fresh-source review before receiving any evidentiary or independence credit."
+  ],
+  "disclosure_review": {
+    "hidden_reasoning_included": false,
+    "private_context_included": false,
+    "credentials_or_account_state_included": false,
+    "personal_data_included": false,
+    "review_notes": [
+      "Only the context-isolated run's final JSON answer was retained.",
+      "No hidden reasoning, tool transcript, credential, account state, or inherited conversation was captured."
+    ]
+  },
+  "replacement_for": null
+}

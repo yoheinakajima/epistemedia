@@ -1,0 +1,10 @@
+{
+  "command": "verify_protocol_v2.py --require-traces; build_evidence_ledger.py verify; ruff check build_evidence_ledger.py; PYTHONPATH=src make check; GitHub Validate run 32657544852",
+  "id": "em:run-receipt:sha256:febb82b236ec23c20412e7e0abe234644407be0d0ac36a6ac50e74c9de085226",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-23T18:22:46Z",
+  "run_id": "20260823T182246Z-em0026-exact-head-independent-review-49de314d",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0026"
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "https://epistemedia.org/research/agent-citation-trace-preflight-failure-v1.json",
+  "task_id": "EM-0026",
+  "protocol_id": "em-0026-agent-citation-trace-v1",
+  "recorded_at": "2026-08-23T03:11:51Z",
+  "status": "aborted-before-final-answer-capture",
+  "reason": "One invocation differed from the frozen prompt by one leading plus character. Both active invocations were interrupted immediately and no answer was admitted.",
+  "expected_prompt": {
+    "path": "research/how-we-know/agent-citation-lineage/frozen-prompt.md",
+    "sha256": "8c1098fdf8b5e524c6276779868ff3b330c63260f36756389534004b8a6309c6",
+    "bytes": 2808
+  },
+  "attempts": [
+    {
+      "run_id": "SOL-01",
+      "requested_model_profile": "gpt-5.6-sol",
+      "requested_reasoning_effort": "high",
+      "actual_prompt_sha256": "8c1098fdf8b5e524c6276779868ff3b330c63260f36756389534004b8a6309c6",
+      "actual_prompt_bytes": 2808,
+      "terminal_status": "interrupted-before-final-answer-capture"
+    },
+    {
+      "run_id": "TERRA-01",
+      "requested_model_profile": "gpt-5.6-terra",
+      "requested_reasoning_effort": "high",
+      "actual_prompt_sha256": "93dab49c13c89db98817731bc5f9daee4382abfc6693336ff37672aef9d09369",
+      "actual_prompt_bytes": 2809,
+      "prompt_difference": "A single plus character preceded the continuation line 'identifier when available;' in item 1.",
+      "terminal_status": "interrupted-before-final-answer-capture"
+    }
+  ],
+  "answers_captured": 0,
+  "citations_admitted": 0,
+  "replacement_runs_started": false,
+  "disposition": "The v1 collection is an explicit negative preflight result and is not eligible for completion by replacement. A separately identified v2 protocol must be frozen before any new invocation."
+}

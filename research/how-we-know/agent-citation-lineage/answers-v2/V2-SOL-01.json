@@ -1,0 +1,796 @@
+{
+  "question": "What empirical evidence published or publicly posted by 2026-08-22 measures whether citations produced by deep-research agents resolve and actually support the claims made from them?",
+  "cutoff": "2026-08-22",
+  "answer": {
+    "verified_source_facts": "Yes. At least four primary empirical studies directly measured claim-citation support, and one additional study measured URL resolution/existence only. The strongest human-reviewed domain study found that ChatGPT Deep Research produced mostly identifiable bibliography entries but that 51.3% ± 6.5% of its citation-bearing sentences contained at least one inaccuracy across three dermatology-review runs. Automated, human-calibrated audits found materially different support rates depending on agent, benchmark, retrieval path, evaluator, and edition: the ICLR 2026 DeepResearch Bench FACT scores for named proprietary deep-research agents ranged from 52.86% to 82.63%; DeepTRACE reported citation accuracy of 39.33% to 79.1% across its seven deep-research/search configurations and unsupported-statement rates of 12.5% to 97.5%; Cited but Not Verified reported Fact Check scores from 24.4% to 76.8% across 14 model-agent setups. URL existence was easier than semantic support: the URL-health study found 5.4% to 18.5% non-resolving and 3.0% to 13.3% operationally hallucinated URLs across ten DRBench model outputs, while Cited but Not Verified found high working-link rates could coexist with much lower factual-support rates.",
+    "interpretation": "The evidence does not support a single success-or-failure verdict. A citation can identify a real source yet support only a weaker, narrower, or differently contextualized claim. Results are snapshots of particular public products, prompts, tasks, retrieval paths, and evaluators; they must not be generalized to all deep-research agents. Human expert sentence-level review is the strongest evidence here for subtle overstatement and misinterpretation, while the larger automated studies provide broader but evaluator-dependent coverage."
+  },
+  "results": [
+    {
+      "result_id": "r1_human_dermatology_chatgpt",
+      "proposition": "In three human-reviewed dermatology literature-review runs, ChatGPT Deep Research usually produced identifiable references, but roughly half of citation-bearing sentences contained at least one claim-citation inaccuracy.",
+      "reported_value": {
+        "reference_list_total": {
+          "numerator": 23,
+          "denominator": 23,
+          "rate": "100.0%"
+        },
+        "metadata_identifiable": {
+          "numerator": 22,
+          "denominator": 23,
+          "rate": "95.7%"
+        },
+        "entirely_correct_metadata": {
+          "numerator": 16,
+          "denominator": 23,
+          "rate": "69.6%"
+        },
+        "citation_bearing_sentences_with_at_least_one_inaccuracy": {
+          "numerator": "unknown",
+          "denominator": "unknown",
+          "rate": "51.3% ± 6.5% across three runs"
+        }
+      },
+      "scope": {
+        "model": "o3-mini-high",
+        "agent": "ChatGPT Deep Research",
+        "dataset": "one recently reviewed topic: baseline performance, enhancement strategies, and ethical considerations of ChatGPT in dermatological image analysis",
+        "tool": "web access; human reference-metadata and sentence-level comparison against cited literature",
+        "population": "three independently generated reviews, each constrained to 1,500 words and APA-style references",
+        "time": "generated and evaluated before first public posting on 2025-09-04; exact run dates unknown",
+        "metric": "reference metadata identifiability/correctness and proportion of citation-bearing sentences with any of six inaccuracy types",
+        "failure_classes": [
+          "nonexistent URL",
+          "irrelevant source",
+          "real source supporting a weaker claim"
+        ]
+      },
+      "source_ids": [
+        "s1_keplinger",
+        "s1a_keplinger_data"
+      ],
+      "exact_span_ids": [
+        "sp1a",
+        "sp1b",
+        "sp1c"
+      ],
+      "interpretation": "Verified source fact: bibliographic existence/metadata quality was substantially better than claim-citation concordance. The sentence error taxonomy includes terminology ambiguity, method/result misrepresentation, out-of-context citation, incomplete context, and hallucinated context/result. Numerators and denominators for the sentence-level rate were not stated in the examined article text, so they remain unknown."
+    },
+    {
+      "result_id": "r2_human_dermatology_lechat",
+      "proposition": "The same human-reviewed experiment found a similar gap for Le Chat Think: mostly identifiable references but frequent inaccuracies in citation-bearing sentences.",
+      "reported_value": {
+        "reference_list_total": {
+          "numerator": 14,
+          "denominator": 14,
+          "rate": "100%"
+        },
+        "metadata_identifiable": {
+          "numerator": 13,
+          "denominator": 14,
+          "rate": "92.9%"
+        },
+        "entirely_correct_metadata": {
+          "numerator": 7,
+          "denominator": 14,
+          "rate": "50.0%"
+        },
+        "citation_bearing_sentences_with_at_least_one_inaccuracy": {
+          "numerator": "unknown",
+          "denominator": "unknown",
+          "rate": "57.8% ± 22.7% across three runs"
+        }
+      },
+      "scope": {
+        "model": "Mistral premier model",
+        "agent": "Le Chat Think with online search",
+        "dataset": "the same single dermatology-review topic as r1",
+        "tool": "web access; human reference-metadata and sentence-level comparison against cited literature",
+        "population": "three independently generated reviews",
+        "time": "before 2025-09-04; exact run dates unknown",
+        "metric": "reference metadata identifiability/correctness and citation-bearing-sentence inaccuracy",
+        "failure_classes": [
+          "nonexistent URL",
+          "irrelevant source",
+          "real source supporting a weaker claim"
+        ]
+      },
+      "source_ids": [
+        "s1_keplinger",
+        "s1a_keplinger_data"
+      ],
+      "exact_span_ids": [
+        "sp1a",
+        "sp1b",
+        "sp1c"
+      ],
+      "interpretation": "Verified source fact, not an inference from ChatGPT results. This is a separate agent tested in the same study; it should not be treated as independent replication across tasks because the prompt, topic, authors, and evaluation procedure were shared."
+    },
+    {
+      "result_id": "r3_deepresearch_bench_fact",
+      "proposition": "DeepResearch Bench measured whether retrieved webpage text supported deduplicated statement-URL pairs and reported materially different task-macro citation accuracy across named agents.",
+      "reported_value": {
+        "metric_basis": "For each of 100 tasks, supported unique statement-URL pairs divided by all unique statement-URL pairs; then mean across tasks. Exact aggregate pair numerators and denominators were not reported.",
+        "deep_research_agents": {
+          "Grok Deeper Search": {
+            "citation_accuracy": "73.08%",
+            "effective_supported_pairs_per_task": 8.58
+          },
+          "Perplexity Deep Research": {
+            "citation_accuracy": "82.63%",
+            "effective_supported_pairs_per_task": 31.2
+          },
+          "Doubao Deep Research": {
+            "citation_accuracy": "52.86%",
+            "effective_supported_pairs_per_task": 52.62
+          },
+          "Gemini-2.5-Pro Deep Research": {
+            "citation_accuracy": "78.30%",
+            "effective_supported_pairs_per_task": 165.34
+          },
+          "OpenAI Deep Research": {
+            "citation_accuracy": "75.01%",
+            "effective_supported_pairs_per_task": 39.79
+          },
+          "Claude Research": {
+            "citation_accuracy": "unknown",
+            "effective_supported_pairs_per_task": "unknown"
+          },
+          "Kimi Researcher": {
+            "citation_accuracy": "unknown",
+            "effective_supported_pairs_per_task": "unknown"
+          }
+        }
+      },
+      "scope": {
+        "model": "commercial product versions not transparently identified; names above are report labels",
+        "agent": "seven proprietary deep-research agents in the ICLR 2026 table",
+        "dataset": "DeepResearch Bench, 100 expert-created tasks across 22 domains, 50 Chinese and 50 English",
+        "tool": "Jina Reader API plus Gemini-2.5-Flash for statement-URL extraction, deduplication, and binary support judgment",
+        "population": "complete 100-task benchmark for Table 1 where outputs/citations were parseable",
+        "time": "OpenAI 2025-04-01 to 2025-05-08; Gemini 2025-04-27 to 2025-04-29; Perplexity 2025-04-01 to 2025-04-29; Grok 2025-04-27 to 2025-04-29; Claude 2025-06-23 to 2025-06-25; Doubao, Kimi 2025-06-29 to 2025-07-01",
+        "metric": "task-macro Citation Accuracy and mean supported unique statement-URL pairs per task",
+        "failure_classes": [
+          "inaccessible source",
+          "irrelevant source",
+          "duplicate/shared source",
+          "real source supporting a weaker claim"
+        ]
+      },
+      "source_ids": [
+        "s2_drbench",
+        "s2a_drbench_repo"
+      ],
+      "exact_span_ids": [
+        "sp2a",
+        "sp2b",
+        "sp2c",
+        "sp2d"
+      ],
+      "interpretation": "Verified conference-edition results. FACT is observational rather than the benchmark's overall ranking criterion. The paper reports that inaccessible or differently fetched content affected some systems and that several agents had no score because links could not be parsed. Earlier arXiv/project-paper editions reported different values, so these conference-edition scores must not be silently combined with earlier ones."
+    },
+    {
+      "result_id": "r4_deeptrace_support",
+      "proposition": "DeepTRACE separately measured whether citations pointed to sources that supported the cited statements and whether relevant statements were supported by any listed source.",
+      "reported_value": {
+        "metric_basis": {
+          "citation_accuracy_numerator": "citation-matrix cells overlapping factual-support-matrix cells",
+          "citation_accuracy_denominator": "all statement-source citations",
+          "exact_aggregate_counts": "unknown",
+          "unsupported_statement_numerator": "relevant statements unsupported by every listed source",
+          "unsupported_statement_denominator": "all relevant statements"
+        },
+        "configurations": {
+          "GPT-5 Deep Research": {
+            "citation_accuracy": "79.1%",
+            "unsupported_statements": "12.5%"
+          },
+          "YouChat ARI": {
+            "citation_accuracy": "39.33%",
+            "unsupported_statements": "62.85%"
+          },
+          "YouChat Deep Research": {
+            "citation_accuracy": "72.3%",
+            "unsupported_statements": "74.6%"
+          },
+          "GPT-5 Search": {
+            "citation_accuracy": "31.4%",
+            "unsupported_statements": "58.9%"
+          },
+          "Perplexity Deep Research": {
+            "citation_accuracy": "58.0%",
+            "unsupported_statements": "97.5%"
+          },
+          "Copilot Think Deeper": {
+            "citation_accuracy": "62.1%",
+            "unsupported_statements": "90.2%"
+          },
+          "Gemini Deep Research": {
+            "citation_accuracy": "50.3%",
+            "unsupported_statements": "53.6%"
+          }
+        },
+        "human_calibration": {
+          "factual_support_pearson_correlation": 0.62,
+          "human_reviewed_sample": 100,
+          "scale": "binary"
+        }
+      },
+      "scope": {
+        "model": "public-UI model identities as labeled by the authors; underlying exact provider builds unknown",
+        "agent": "seven deep-research, ARI, search, or think-deeper runtime configurations",
+        "dataset": "DeepTRACE corpus: 303 questions, comprising 168 debate questions and 135 expert-contributed multi-search questions",
+        "tool": "browser extraction, Jina Reader, GPT-5-default LLM judge, citation and factual-support matrices",
+        "population": "up to 2,727 query-by-system samples across nine total systems; exact per-configuration denominators for Table 1 unknown",
+        "time": "public-UI snapshot on 2025-08-27",
+        "metric": "citation accuracy, unsupported-statement rate, citation thoroughness, source necessity",
+        "failure_classes": [
+          "inaccessible source",
+          "irrelevant source",
+          "duplicate/shared source",
+          "real source supporting a weaker claim"
+        ]
+      },
+      "source_ids": [
+        "s3_deeptrace"
+      ],
+      "exact_span_ids": [
+        "sp3a",
+        "sp3b",
+        "sp3c",
+        "sp3d"
+      ],
+      "interpretation": "Citation accuracy and unsupported-statement rate are different quantities: an agent can accurately attach some citations yet leave most relevant statements unsupported. Approximately 15% of source URLs could not be extracted and were excluded from full-text-dependent calculations, which can change the observed rates. The table reports Gemini citation accuracy as 50.3%, while nearby prose says 40.3%; the table value is retained and the contradiction is listed as unresolved."
+    },
+    {
+      "result_id": "r5_cited_but_not_verified_cross_model",
+      "proposition": "Cited but Not Verified found that working and topically relevant links did not imply that the linked content supported the attributed facts.",
+      "reported_value": {
+        "metric_basis": "binary per extracted claim-citation pair; exact per-model pair denominators unknown",
+        "model_results": {
+          "Claude Opus 4.5": {
+            "success": "90.0%",
+            "link_works": "98.7%",
+            "relevant_content": "95.7%",
+            "fact_check": "76.8%"
+          },
+          "GPT-5.4": {
+            "success": "100.0%",
+            "link_works": "100.0%",
+            "relevant_content": "93.7%",
+            "fact_check": "47.7%"
+          },
+          "GPT-5.2": {
+            "success": "100.0%",
+            "link_works": "98.3%",
+            "relevant_content": "92.3%",
+            "fact_check": "58.8%"
+          },
+          "Codex": {
+            "success": "100.0%",
+            "link_works": "96.9%",
+            "relevant_content": "91.9%",
+            "fact_check": "54.1%"
+          },
+          "Claude Haiku 4.5": {
+            "success": "83.3%",
+            "link_works": "98.9%",
+            "relevant_content": "91.1%",
+            "fact_check": "68.9%"
+          },
+          "Claude Sonnet 4.6": {
+            "success": "93.3%",
+            "link_works": "99.2%",
+            "relevant_content": "89.8%",
+            "fact_check": "58.7%"
+          },
+          "Claude Sonnet 4.5": {
+            "success": "96.7%",
+            "link_works": "98.9%",
+            "relevant_content": "88.3%",
+            "fact_check": "51.8%"
+          },
+          "GPT-5 Mini": {
+            "success": "100.0%",
+            "link_works": "99.3%",
+            "relevant_content": "87.4%",
+            "fact_check": "38.9%"
+          },
+          "Claude Opus 4.6": {
+            "success": "93.3%",
+            "link_works": "97.2%",
+            "relevant_content": "83.9%",
+            "fact_check": "54.2%"
+          },
+          "Gemini 3 Flash": {
+            "success": "100.0%",
+            "link_works": "94.7%",
+            "relevant_content": "82.9%",
+            "fact_check": "45.2%"
+          },
+          "Gemini 3.1 Pro": {
+            "success": "90.0%",
+            "link_works": "94.1%",
+            "relevant_content": "80.7%",
+            "fact_check": "48.5%"
+          },
+          "OSS-120B": {
+            "success": "40.0%",
+            "link_works": "83.9%",
+            "relevant_content": "68.7%",
+            "fact_check": "24.4%"
+          },
+          "Pixtral Large": {
+            "success": "16.7%",
+            "link_works": "100.0%",
+            "relevant_content": "64.9%",
+            "fact_check": "51.4%"
+          },
+          "Llama 4 Maverick": {
+            "success": "30.0%",
+            "link_works": "80.8%",
+            "relevant_content": "60.6%",
+            "fact_check": "34.3%"
+          }
+        }
+      },
+      "scope": {
+        "model": "14 named closed- and open-weight models",
+        "agent": "a deep-research agent with web search and a citation-format/minimum-search-depth system prompt",
+        "dataset": "130 research queries drawn from DeepResearch Bench and BrowseComp",
+        "tool": "Markdown AST parser; JavaScript-capable web extractor; rubric-based LLM judges calibrated by manual review of 50-100 judgments",
+        "population": "model-generated cited Markdown reports; exact per-model query and claim-citation denominators unknown",
+        "time": "before arXiv v1 posting on 2026-05-07; exact generation dates unknown",
+        "metric": "Success, Link Works, Relevant Content, and Fact Check",
+        "failure_classes": [
+          "non-resolving URL",
+          "inaccessible source",
+          "irrelevant source",
+          "real source supporting a weaker claim"
+        ]
+      },
+      "source_ids": [
+        "s4_cited_not_verified"
+      ],
+      "exact_span_ids": [
+        "sp4a",
+        "sp4b"
+      ],
+      "interpretation": "The largest closed-model Fact Check score in the table was 76.8%, despite 98.7% Link Works and 95.7% Relevant Content for that setup. These are LLM-judge results with limited human calibration, not full human verification of all citations."
+    },
+    {
+      "result_id": "r6_cited_but_not_verified_depth_ablation",
+      "proposition": "Within the same evaluation pipeline, increasing the permitted tool-call count from 2 to 150 was associated with lower Fact Check accuracy for two frontier-model agent setups while link and topical-relevance rates remained high.",
+      "reported_value": {
+        "GPT-5.4": {
+          "2_tool_calls": {
+            "link_works": "100.0%",
+            "relevant_content": "100.0%",
+            "fact_check": "78.6%"
+          },
+          "150_tool_calls": {
+            "link_works": "99.2%",
+            "relevant_content": "99.2%",
+            "fact_check": "16.7%"
+          },
+          "fact_check_change": "-61.9 percentage points"
+        },
+        "Claude Opus 4.6": {
+          "2_tool_calls": {
+            "link_works": "100.0%",
+            "relevant_content": "100.0%",
+            "fact_check": "80.0%"
+          },
+          "150_tool_calls": {
+            "link_works": "100.0%",
+            "relevant_content": "100.0%",
+            "fact_check": "57.9%"
+          },
+          "fact_check_change": "-22.1 percentage points"
+        },
+        "average_reported_decline": "approximately 42 percentage points"
+      },
+      "scope": {
+        "model": "GPT-5.4 and Claude Opus 4.6",
+        "agent": "same web-search deep-research harness as r5",
+        "dataset": "research-depth ablation within the Cited but Not Verified study; exact query count per interval unknown",
+        "tool": "maximum tool-call cap varied over 2, 10, 30, 50, 70, 100, 150; same AST/retrieval/judge pipeline",
+        "population": "claim-citation pairs generated at each depth; exact denominators unknown",
+        "time": "before 2026-05-07",
+        "metric": "Link Works, Relevant Content, Fact Check",
+        "failure_classes": [
+          "irrelevant source",
+          "duplicate/shared source",
+          "real source supporting a weaker claim"
+        ]
+      },
+      "source_ids": [
+        "s4_cited_not_verified"
+      ],
+      "exact_span_ids": [
+        "sp4b",
+        "sp4c"
+      ],
+      "interpretation": "This is within-study counterevidence to the idea that more retrieval necessarily improves citation support. It does not establish a universal causal law because only two model setups and one harness were tested, and exact per-depth denominators were not reported in the examined edition."
+    },
+    {
+      "result_id": "r7_url_resolution_drbench",
+      "proposition": "A separate URL-health study measured whether citation URLs resolved and whether non-resolving URLs had any Wayback Machine record; it did not test whether resolved pages supported the associated claims.",
+      "reported_value": {
+        "total_unique_urls_across_drbench_inventory": 53090,
+        "per_model": {
+          "Claude-3.5-Sonnet with search": {
+            "urls": 641,
+            "non_resolving": "7.8% [95% CI 5.8, 10.0]",
+            "hallucinated": "3.0% [1.7, 4.4]",
+            "stale": "4.8%"
+          },
+          "Claude-3.7-Sonnet with search": {
+            "urls": 1735,
+            "non_resolving": "8.5% [7.1, 9.7]",
+            "hallucinated": "3.2% [2.4, 4.1]",
+            "stale": "5.2%"
+          },
+          "OpenAI Deep Research": {
+            "urls": 4121,
+            "non_resolving": "10.1% [9.1, 11.0]",
+            "hallucinated": "3.5% [3.0, 4.1]",
+            "stale": "6.6%"
+          },
+          "Gemini-2.5-Flash with search": {
+            "urls": 2433,
+            "non_resolving": "5.4% [4.5, 6.3]",
+            "hallucinated": "4.6% [3.7, 5.4]",
+            "stale": "0.8%"
+          },
+          "Gemini-2.5-Pro with search": {
+            "urls": 1609,
+            "non_resolving": "5.9% [4.8, 7.1]",
+            "hallucinated": "4.8% [3.8, 5.9]",
+            "stale": "1.1%"
+          },
+          "GPT-4.1": {
+            "urls": 336,
+            "non_resolving": "5.4% [3.0, 7.7]",
+            "hallucinated": "5.4% [3.0, 7.7]",
+            "stale": "0.0%"
+          },
+          "GPT-4.1-mini": {
+            "urls": 296,
+            "non_resolving": "7.4% [4.4, 10.5]",
+            "hallucinated": "7.4% [4.7, 10.5]",
+            "stale": "0.0%"
+          },
+          "GPT-4o Search Preview": {
+            "urls": 387,
+            "non_resolving": "8.8% [5.9, 11.6]",
+            "hallucinated": "8.8% [6.2, 11.6]",
+            "stale": "0.0%"
+          },
+          "GPT-4o-mini Search Preview": {
+            "urls": 402,
+            "non_resolving": "8.7% [6.0, 11.4]",
+            "hallucinated": "8.7% [6.0, 11.4]",
+            "stale": "0.0%"
+          },
+          "Gemini-2.5-Pro Deep Research": {
+            "urls": 11309,
+            "non_resolving": "18.5% [17.8, 19.2]",
+            "hallucinated": "13.3% [12.7, 13.9]",
+            "stale": "5.2%"
+          }
+        }
+      },
+      "scope": {
+        "model": "ten Google, OpenAI, and Anthropic model/agent outputs",
+        "agent": "two named deep-research agents plus eight search-augmented LLMs",
+        "dataset": "pre-collected outputs for 100 multilingual DRBench research queries",
+        "tool": "regex URL extraction; HTTP HEAD with GET fallback; Wayback Machine API",
+        "population": "unique citation URLs in model outputs",
+        "time": "DRBench 2025 output snapshots; URL liveness checked before arXiv posting on 2026-04-03; exact check dates unknown",
+        "metric": "non-resolving, operationally hallucinated, and stale URL rates with bootstrap 95% confidence intervals",
+        "failure_classes": [
+          "nonexistent URL",
+          "non-resolving URL",
+          "inaccessible source"
+        ]
+      },
+      "source_ids": [
+        "s5_url_health"
+      ],
+      "exact_span_ids": [
+        "sp5a",
+        "sp5b",
+        "sp5c"
+      ],
+      "interpretation": "This is direct evidence about resolution/existence only. A live URL can still be irrelevant or support a weaker claim. The paper's 'hallucinated' label is operational: a non-resolving URL with no Wayback snapshot. Incomplete archive coverage and exclusion of many HTTP 403 responses limit the classification."
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "s1_keplinger",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109748/",
+      "title": "Assessment of Deep Research for dermatology literature reviews: Deep concern over the hype",
+      "authors_or_org": "Lauren E. Keplinger; Luke K. Frashure; Sabrina A. Duran; Gangqing Hu",
+      "date": "2025-09-04",
+      "identifier": "DOI:10.1111/jdv.70035; PMID:40904191; PMCID:PMC13109748",
+      "edition": "Version of record, Journal of the European Academy of Dermatology and Venereology 40(5), e300-e302; first published online 2025-09-04",
+      "retrieval_status": "resolved; full text retrieved credential-free through Europe PMC public fullTextXML because the PMC HTML endpoint presented a browser check",
+      "media_type": "peer-reviewed journal letter/full-text XML",
+      "license": "CC BY-NC 4.0",
+      "exact_spans": [
+        {
+          "span_id": "sp1a",
+          "locator": "body, paragraph beginning 'Taking ChatGPT as an example'; Table 1",
+          "quote": "23 (100.0%) ... All correct ... 16 (69.6%)",
+          "supports": "ChatGPT Deep Research reference-list denominator and entirely correct metadata numerator/rate"
+        },
+        {
+          "span_id": "sp1b",
+          "locator": "body, paragraph immediately after Table 1",
+          "quote": "high error rates: 51.3 ± 6.5% for ChatGPT and 57.8 ± 22.7% for Le Chat",
+          "supports": "human-reviewed citation-bearing-sentence inaccuracy rates"
+        },
+        {
+          "span_id": "sp1c",
+          "locator": "Figure 1 caption",
+          "quote": "Sentences may bear multiple types of inaccuracy, simultaneously.",
+          "supports": "the reported categories overlap and are not additive"
+        }
+      ]
+    },
+    {
+      "source_id": "s1a_keplinger_data",
+      "url": "https://data.mendeley.com/datasets/3s73z9zf3c/2",
+      "title": "Supplementary materials of the article: Assessment of Deep Research for Dermatology Literature Reviews: Deep Concern Over the Hype",
+      "authors_or_org": "Gangqing Hu; West Virginia University",
+      "date": "2025-07-21",
+      "identifier": "DOI:10.17632/3s73z9zf3c.2",
+      "edition": "Version 2",
+      "retrieval_status": "metadata page resolved credential-free; individual file list was dynamically loaded and not retrievable from the examined page endpoint",
+      "media_type": "official research dataset and supplementary artifact",
+      "license": "CC BY 4.0",
+      "exact_spans": [
+        {
+          "span_id": "sp1d",
+          "locator": "dataset page, Description",
+          "quote": "Prompts for Deep Research-generated reviews and evaluation results",
+          "supports": "the official artifact includes prompts and evaluation details"
+        }
+      ]
+    },
+    {
+      "source_id": "s2_drbench",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/465f22be10e07b301c6ed58f0472f704-Paper-Conference.pdf",
+      "title": "DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents",
+      "authors_or_org": "Mingxuan Du; Benfeng Xu; Chiwei Zhu; Licheng Zhang; Xiaorui Wang; Zhendong Mao",
+      "date": "2026",
+      "identifier": "ICLR 2026 proceedings hash:465f22be10e07b301c6ed58f0472f704; OpenReview:hQ0K2Hhq7H; related arXiv:2506.11763",
+      "edition": "Published ICLR 2026 conference paper, 35 pages; examined instead of earlier project/arXiv table",
+      "retrieval_status": "resolved",
+      "media_type": "peer-reviewed conference paper PDF",
+      "license": "unknown",
+      "exact_spans": [
+        {
+          "span_id": "sp2a",
+          "locator": "page 4, Section 3.2, Support Judgment",
+          "quote": "This yields a binary judgment: 'support' or 'not support'.",
+          "supports": "FACT's semantic support decision"
+        },
+        {
+          "span_id": "sp2b",
+          "locator": "page 6, Table 1, proprietary deep-research-agent rows",
+          "quote": "Grok ... 73.08 ... Perplexity ... 82.63 ... Gemini ... 78.30 ... OpenAI ... 75.01",
+          "supports": "conference-edition citation-accuracy values"
+        },
+        {
+          "span_id": "sp2c",
+          "locator": "page 5, Section 4.1",
+          "quote": "complete set of 100 tasks",
+          "supports": "main-results task denominator"
+        },
+        {
+          "span_id": "sp2d",
+          "locator": "page 16, FACT judge validation",
+          "quote": "aligned with human 'support' determinations in 96% of cases",
+          "supports": "human calibration of the automated support judge"
+        }
+      ]
+    },
+    {
+      "source_id": "s2a_drbench_repo",
+      "url": "https://github.com/Ayanami0730/deep_research_bench",
+      "title": "Ayanami0730/deep_research_bench",
+      "authors_or_org": "DeepResearch Bench authors/project",
+      "date": "2025-06-13",
+      "identifier": "GitHub repository:Ayanami0730/deep_research_bench",
+      "edition": "public main repository as visible by the cutoff; legacy Gemini-2.5 evaluator preserved on a named branch according to the repository",
+      "retrieval_status": "resolved",
+      "media_type": "official code/data artifact",
+      "license": "Apache-2.0",
+      "exact_spans": [
+        {
+          "span_id": "sp2e",
+          "locator": "repository README, Overview",
+          "quote": "100 PhD-level research tasks",
+          "supports": "official project artifact and benchmark scale"
+        }
+      ]
+    },
+    {
+      "source_id": "s3_deeptrace",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf",
+      "title": "DeepTRACE: Auditing Deep Research AI Systems for Tracking Reliability Across Citations and Evidence",
+      "authors_or_org": "Pranav Narayanan Venkit; Philippe Laban; Yilun Zhou; Kung-Hsiang Huang; Yixin Mao; Chien-Sheng Wu",
+      "date": "2026",
+      "identifier": "ICLR 2026 proceedings hash:ad08767706825033b99122332293033d; arXiv:2509.04499; DOI:10.48550/arXiv.2509.04499",
+      "edition": "Published ICLR 2026 conference paper; public-system snapshot dated 2025-08-27",
+      "retrieval_status": "resolved",
+      "media_type": "peer-reviewed conference paper PDF",
+      "license": "unknown",
+      "exact_spans": [
+        {
+          "span_id": "sp3a",
+          "locator": "page 6, Section 3.1.4",
+          "quote": "fraction of statement citations that accurately reflect that a source's content supports the statement",
+          "supports": "definition of citation accuracy"
+        },
+        {
+          "span_id": "sp3b",
+          "locator": "page 8, Table 1",
+          "quote": "GPT-5(DR) ... 79.1 ... PPLX(DR) ... 58.0 ... Gemini(DR) ... 50.3",
+          "supports": "selected exact table citation-accuracy values"
+        },
+        {
+          "span_id": "sp3c",
+          "locator": "page 4, source scraping",
+          "quote": "For roughly 15% of the URLs, the Reader tool returns an error",
+          "supports": "source-access exclusion limitation"
+        },
+        {
+          "span_id": "sp3d",
+          "locator": "page 14, Table 3",
+          "quote": "Factual support (statement-source) 0.62 binary",
+          "supports": "human-LLM factual-support agreement"
+        }
+      ]
+    },
+    {
+      "source_id": "s4_cited_not_verified",
+      "url": "https://arxiv.org/abs/2605.06635",
+      "title": "Cited but Not Verified: Parsing and Evaluating Source Attribution in LLM Deep Research Agents",
+      "authors_or_org": "Hailey Onweller; Elias Lumer; Austin Huber; Pia Ramchandani; Vamse Kumar Subbiah; Corey Feld",
+      "date": "2026-05-07",
+      "identifier": "arXiv:2605.06635v1; DOI:10.48550/arXiv.2605.06635",
+      "edition": "arXiv v1, 2026-05-07",
+      "retrieval_status": "resolved",
+      "media_type": "research preprint PDF/HTML",
+      "license": "CC BY 4.0",
+      "exact_spans": [
+        {
+          "span_id": "sp4a",
+          "locator": "page 6, Table 1",
+          "quote": "Claude Opus 4.5 ... 98.7% ... 95.7% ... 76.8%",
+          "supports": "coexistence of high link/relevance scores and lower factual support"
+        },
+        {
+          "span_id": "sp4b",
+          "locator": "pages 7-8, Tables 2-3",
+          "quote": "GPT-5.4 ... 78.6% ... 16.7% ... Claude Opus 4.6 ... 80.0% ... 57.9%",
+          "supports": "Fact Check endpoints for the 2-to-150-tool-call ablation"
+        },
+        {
+          "span_id": "sp4c",
+          "locator": "page 5, Section 3.3.3",
+          "quote": "contradicted, absent, or uncertain",
+          "supports": "conditions scored as Fact Check failure"
+        }
+      ]
+    },
+    {
+      "source_id": "s5_url_health",
+      "url": "https://arxiv.org/abs/2604.03173",
+      "title": "Detecting and Correcting Reference Hallucinations in Commercial LLMs and Deep Research Agents",
+      "authors_or_org": "Delip Rao; Eric Wong; Chris Callison-Burch",
+      "date": "2026-04-03",
+      "identifier": "arXiv:2604.03173v1; DOI:10.48550/arXiv.2604.03173",
+      "edition": "arXiv v1, 2026-04-03",
+      "retrieval_status": "resolved",
+      "media_type": "research preprint PDF/HTML",
+      "license": "CC0 1.0",
+      "exact_spans": [
+        {
+          "span_id": "sp5a",
+          "locator": "page 3, Section 3.3",
+          "quote": "no archived snapshot exists at any timestamp",
+          "supports": "operational definition of hallucinated URL"
+        },
+        {
+          "span_id": "sp5b",
+          "locator": "page 4, Table 2",
+          "quote": "openai-deepresearch ... 4,121 ... 10.1 ... 3.5 ... 6.6",
+          "supports": "OpenAI Deep Research URL count and non-resolving/hallucinated/stale rates"
+        },
+        {
+          "span_id": "sp5c",
+          "locator": "page 4, Table 2",
+          "quote": "gemini-2.5-pro-deepres. ... 11,309 ... 18.5 ... 13.3 ... 5.2",
+          "supports": "Gemini Deep Research URL count and non-resolving/hallucinated/stale rates"
+        }
+      ]
+    }
+  ],
+  "counterevidence": [
+    {
+      "counterevidence_id": "ce1",
+      "statement": "Bibliographic existence can be high even when claim support is weak.",
+      "basis": "In the human dermatology study, 22/23 ChatGPT Deep Research references were identifiable, while 51.3% ± 6.5% of citation-bearing sentences contained at least one inaccuracy.",
+      "source_ids": [
+        "s1_keplinger"
+      ]
+    },
+    {
+      "counterevidence_id": "ce2",
+      "statement": "Some evaluated agents achieved majority-support rates rather than uniformly failing.",
+      "basis": "Conference-edition DeepResearch Bench FACT scores for named proprietary deep-research agents included 82.63% for Perplexity, 78.30% for Gemini, 75.01% for OpenAI, and 73.08% for Grok on its task-macro metric.",
+      "source_ids": [
+        "s2_drbench"
+      ]
+    },
+    {
+      "counterevidence_id": "ce3",
+      "statement": "High working-link and topical-relevance rates are not evidence of high claim support.",
+      "basis": "Cited but Not Verified reported Claude Opus 4.5 at 98.7% Link Works, 95.7% Relevant Content, but 76.8% Fact Check; GPT-5.4 was 100.0%, 93.7%, and 47.7%, respectively.",
+      "source_ids": [
+        "s4_cited_not_verified"
+      ]
+    },
+    {
+      "counterevidence_id": "ce4",
+      "statement": "More retrieval did not monotonically improve support in the controlled ablation.",
+      "basis": "Fact Check fell from 78.6% to 16.7% for GPT-5.4 and from 80.0% to 57.9% for Claude Opus 4.6 when the tool-call cap rose from 2 to 150.",
+      "source_ids": [
+        "s4_cited_not_verified"
+      ]
+    },
+    {
+      "counterevidence_id": "ce5",
+      "statement": "Not every dead citation URL was fabricated.",
+      "basis": "For OpenAI Deep Research, 10.1% were non-resolving but only 3.5% lacked a Wayback record; the remaining 6.6% were classified stale.",
+      "source_ids": [
+        "s5_url_health"
+      ]
+    }
+  ],
+  "limitations": [
+    "The only fully human expert claim-citation audit found here was small: one dermatology topic, three runs per examined agent, and no reported sentence-count denominator for the headline error rates.",
+    "DeepResearch Bench, DeepTRACE, and Cited but Not Verified rely chiefly on LLM judges. Their limited human calibrations do not make every reported support decision equivalent to expert review.",
+    "DeepResearch Bench uses Jina Reader text and task-macro averaging. Missing, paywalled, blocked, dynamically rendered, or differently fetched pages can alter both the evaluable set and the support decision.",
+    "DeepTRACE excluded roughly 15% of URLs from full-text calculations because Jina Reader returned an error. Its public-UI labels do not disclose exact underlying model builds.",
+    "Cited but Not Verified truncates retrieved source content to 5,000 characters for relevance judgments and does not report exact per-model claim-citation denominators in the examined v1.",
+    "The URL-health study measures existence/resolution, not relevance or claim support. Wayback Machine coverage is incomplete, HTTP 403 responses were excluded, and liveness is time-dependent.",
+    "Agent names, product editions, runtime configurations, retrieval indices, prompts, and source availability can change. All results are dated snapshots.",
+    "Shared datasets and outputs create dependence: the URL-health paper reanalyzes DRBench outputs, so it is not an independent generation experiment from DeepResearch Bench.",
+    "A real source may support a weaker, narrower, earlier, or differently qualified claim. Binary support metrics can conceal the severity and type of overstatement.",
+    "The examined studies do not uniformly report inaccessible-source rates, duplicate-source handling, upstream-source dependence, shared URLs, or whether multiple pages derive from the same underlying evidence."
+  ],
+  "unresolved": [
+    "DeepTRACE Table 1 reports Gemini Deep Research citation accuracy as 50.3%, while the prose on the following page says 40.3%. The table value was used; the discrepancy remains unresolved.",
+    "DeepResearch Bench results changed across editions. The earlier project/arXiv paper reported Grok 83.59%, Perplexity 90.24%, Gemini 81.44%, and OpenAI 77.96%, whereas the published ICLR 2026 edition reports 73.08%, 82.63%, 78.30%, and 75.01%. Differences in outputs, evaluator runs, retrieval state, or edition are not fully derivable from the examined artifacts, so editions were kept separate.",
+    "Exact aggregate supported-pair numerators and denominators for DeepResearch Bench Table 1 are not reported.",
+    "Exact per-configuration citation and relevant-statement denominators for DeepTRACE Table 1 are not reported.",
+    "Exact per-model and per-depth attribution denominators for Cited but Not Verified are not reported in the examined preprint text.",
+    "The dermatology article reports mean ± standard deviation sentence-error rates but not the total citation-bearing sentence counts in the examined article text; the dynamically served supplementary file list could not be retrieved credential-free.",
+    "The URL-health paper's operational 'hallucinated' class cannot prove nonexistence because absence from the Wayback Machine is not conclusive.",
+    "No study found here establishes that differently named reports, URLs, or agent modes represent independent models, evidence sets, or retrieval paths; they were not treated as independent evidence unless the source explicitly described separate runs.",
+    "No primary study found here fully audits upstream source provenance, shared-source derivation, and whether multiple cited pages ultimately depend on the same original evidence."
+  ],
+  "search_notes": [
+    "Used only public, credential-free web pages, papers, proceedings, PubMed/Europe PMC, Mendeley Data metadata, and official project repositories.",
+    "Prioritized primary research and official artifacts over reviews, news, search snippets, Reddit reports, and generated summaries.",
+    "Examined the published ICLR 2026 editions of DeepResearch Bench and DeepTRACE where available, plus arXiv v1 editions for the two 2026 preprints.",
+    "Retrieved the dermatology full text through Europe PMC's public API after the PMC HTML page presented a browser check; no logged-in session or private source was used.",
+    "Kept URL validity separate from semantic claim support and kept conference and preprint editions separate when values differed.",
+    "Searches also surfaced commentary and broader deep-research benchmarks that measured retrieval recall, overall report quality, or answer correctness but not claim-citation resolution/support; those were excluded from empirical results."
+  ]
+}

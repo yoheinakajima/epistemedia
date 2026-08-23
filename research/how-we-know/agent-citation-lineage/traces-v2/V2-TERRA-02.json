@@ -1,0 +1,95 @@
+{
+  "schema": "https://epistemedia.org/research/agent-citation-trace-record-v1.json",
+  "task_id": "EM-0026",
+  "protocol_id": "em-0026-agent-citation-trace-v2",
+  "protocol_commit": "48b7fff8b091325e9683c319980ae1d547121f55",
+  "run_id": "V2-TERRA-02",
+  "status": "completed",
+  "started_at": "unknown",
+  "completed_at": "2026-08-23T04:35:54Z",
+  "requested_model_profile": "gpt-5.6-terra",
+  "reported_model_identity": "unknown",
+  "requested_reasoning_effort": "high",
+  "provider_system_context": "unknown",
+  "provider_sampling_parameters": "unknown",
+  "tool_configuration": {
+    "requested": "public read-only web retrieval; no browser session or account connector",
+    "reported": "unknown"
+  },
+  "inherited_conversation_turns": 0,
+  "prompt": {
+    "path": "research/how-we-know/agent-citation-lineage/frozen-prompt-v2.md",
+    "sha256": "d321a9cec7b5fe419157c0623e18ff0020cb0080fbe6dd9ed4fd20a0b896f670",
+    "bytes": 2379
+  },
+  "answer": {
+    "path": "research/how-we-know/agent-citation-lineage/answers-v2/V2-TERRA-02.json",
+    "sha256": "819d320162a09909a73df00a4e1ebbdd42e67794cb02e3f7c379f601e10a0192",
+    "bytes": 20907,
+    "json_valid": true
+  },
+  "citations": [
+    {
+      "source_id": "s1_deepresearchbench",
+      "url": "https://deepresearch-bench.github.io/static/papers/deepresearch-bench.pdf"
+    },
+    {
+      "source_id": "s2_liveresearchbench",
+      "url": "https://arxiv.org/pdf/2510.14240v5"
+    },
+    {
+      "source_id": "s3_deeptrace",
+      "url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf"
+    },
+    {
+      "source_id": "s4_researcherbench",
+      "url": "https://arxiv.org/html/2507.16280"
+    }
+  ],
+  "declared_retrievals": [
+    {
+      "source_id": "s1_deepresearchbench",
+      "status": "publicly retrieved",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "s2_liveresearchbench",
+      "status": "publicly retrieved",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "s3_deeptrace",
+      "status": "publicly retrieved",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    },
+    {
+      "source_id": "s4_researcherbench",
+      "status": "publicly retrieved",
+      "http_status": "unknown",
+      "captured_sha256": "unknown",
+      "captured_bytes": "unknown"
+    }
+  ],
+  "capture_limitations": [
+    "The orchestration surface did not expose an exact run-start timestamp, provider model build, sampling parameters, system context, or tool implementation, so those fields remain unknown.",
+    "The answer declares public retrieval and source locators, but this capture record does not promote any declaration into independently verified HTTP, byte, edition, span, license, source-resolution, claim-support, or warrant evidence.",
+    "The citation URLs, source IDs, retrieval statuses, and source assertions are copied only from the answer and require separate resolution and fresh-source review before receiving evidentiary or independence credit."
+  ],
+  "disclosure_review": {
+    "hidden_reasoning_included": false,
+    "private_context_included": false,
+    "credentials_or_account_state_included": false,
+    "personal_data_included": false,
+    "review_notes": [
+      "Only the final JSON answer was retained.",
+      "No hidden reasoning, tool transcript, private context, credentials, account state, or personal data was captured."
+    ]
+  },
+  "replacement_for": null
+}

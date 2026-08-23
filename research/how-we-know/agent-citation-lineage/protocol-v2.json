@@ -1,0 +1,147 @@
+{
+  "schema": "https://epistemedia.org/research/agent-citation-trace-protocol-v1.json",
+  "protocol_id": "em-0026-agent-citation-trace-v2",
+  "task_id": "EM-0026",
+  "status": "frozen-before-traces",
+  "frozen_at": "2026-08-23T03:11:51Z",
+  "evidence_cutoff": "2026-08-22",
+  "supersedes_failed_protocol": "em-0026-agent-citation-trace-v1",
+  "supersedes_failed_protocol_path": "research/how-we-know/agent-citation-lineage/protocol.json",
+  "supersedes_failed_protocol_sha256": "66ca8a83805abdee7146475e8f8feecda61ea9d8019d458e529db29d1ac3a23e",
+  "supersedes_failed_protocol_bytes": 4683,
+  "failed_preflight_path": "research/how-we-know/agent-citation-lineage/failed-preflight/20260823T031151Z-v1-transport.json",
+  "failed_preflight_sha256": "a6e52c25781931713a2d749b1bff8d2789462240ebbc4fa3cc666d5eea8061a8",
+  "failed_preflight_bytes": 1752,
+  "target_decision_path": "research/how-we-know/agent-citation-lineage/target-decision.json",
+  "target_decision_sha256": "ce37c73dddfe4182a399f0a73657fd2349ce247bcc300ce6d5353a98b79ce9e5",
+  "target_decision_bytes": 3825,
+  "prompt_path": "research/how-we-know/agent-citation-lineage/frozen-prompt-v2.md",
+  "prompt_sha256": "d321a9cec7b5fe419157c0623e18ff0020cb0080fbe6dd9ed4fd20a0b896f670",
+  "prompt_bytes": 2379,
+  "prompt_transport": "entire UTF-8 file byte-for-byte, including its Markdown heading",
+  "trace_directory": "research/how-we-know/agent-citation-lineage/traces-v2",
+  "capture_matrix": [
+    {
+      "run_id": "V2-SOL-01",
+      "requested_model_profile": "gpt-5.6-sol",
+      "requested_reasoning_effort": "high"
+    },
+    {
+      "run_id": "V2-SOL-02",
+      "requested_model_profile": "gpt-5.6-sol",
+      "requested_reasoning_effort": "high"
+    },
+    {
+      "run_id": "V2-SOL-03",
+      "requested_model_profile": "gpt-5.6-sol",
+      "requested_reasoning_effort": "high"
+    },
+    {
+      "run_id": "V2-SOL-04",
+      "requested_model_profile": "gpt-5.6-sol",
+      "requested_reasoning_effort": "high"
+    },
+    {
+      "run_id": "V2-TERRA-01",
+      "requested_model_profile": "gpt-5.6-terra",
+      "requested_reasoning_effort": "high"
+    },
+    {
+      "run_id": "V2-TERRA-02",
+      "requested_model_profile": "gpt-5.6-terra",
+      "requested_reasoning_effort": "high"
+    },
+    {
+      "run_id": "V2-TERRA-03",
+      "requested_model_profile": "gpt-5.6-terra",
+      "requested_reasoning_effort": "high"
+    },
+    {
+      "run_id": "V2-TERRA-04",
+      "requested_model_profile": "gpt-5.6-terra",
+      "requested_reasoning_effort": "high"
+    }
+  ],
+  "run_controls": {
+    "inherited_conversation_turns": 0,
+    "same_prompt_for_every_run": true,
+    "permitted_retrieval": "credential-free public web retrieval only",
+    "requested_tool_surface": "public read-only web retrieval; no browser session or account connector",
+    "provider_system_context": "unknown",
+    "provider_sampling_parameters": "unknown unless exposed by the runtime receipt",
+    "replacement_runs": "forbidden",
+    "failed_run_treatment": "retain the assigned run record with its exact terminal status and no substitute"
+  },
+  "public_capture_boundary": {
+    "include": [
+      "frozen prompt identity",
+      "requested runtime profile and reasoning effort",
+      "capture time and terminal status",
+      "final answer bytes and digest",
+      "citation URLs and declared public retrieval receipts",
+      "quote-minimal source spans needed for warrant review"
+    ],
+    "exclude": [
+      "hidden reasoning",
+      "provider-restricted system or developer context",
+      "credentials, cookies, account identifiers, or logged-in state",
+      "personal data and inherited private conversation",
+      "full copyrighted source artifacts without redistribution permission"
+    ]
+  },
+  "citation_resolution_fields": [
+    "requested_url",
+    "redirect_chain",
+    "resolved_url",
+    "retrieval_status",
+    "http_status",
+    "media_type",
+    "captured_bytes",
+    "captured_sha256",
+    "source_work_id",
+    "edition_id",
+    "span_id",
+    "supported_proposition_id",
+    "license_treatment"
+  ],
+  "warrant_checks": [
+    "modality",
+    "causality",
+    "scope",
+    "time",
+    "population",
+    "metric_definition",
+    "numerical_strengthening",
+    "comparison_class",
+    "source_versus_agent_wording"
+  ],
+  "dependence_dimensions": [
+    "model_profile",
+    "prompt",
+    "retrieval_infrastructure",
+    "requested_url",
+    "source_work",
+    "edition",
+    "exact_span",
+    "upstream_citation",
+    "data",
+    "method",
+    "derivation"
+  ],
+  "derived_counts": [
+    "captured_reports",
+    "cited_urls",
+    "resolving_url_roots",
+    "source_work_roots",
+    "examined_edition_roots",
+    "exact_span_roots",
+    "warrant_roots",
+    "non_resolving_citations",
+    "inaccessible_citations",
+    "unsupported_or_force_raised_citations",
+    "unresolved_citations"
+  ],
+  "independence_rule": "No run, agent label, runtime profile, URL, or citation receives independent warrant credit merely because its surface identity differs.",
+  "review_rule": "A fresh-clone reviewer must independently bind trace bytes, re-retrieve authoritative source editions, match exact spans, inspect dependence relations, and reproduce every displayed count before a dossier can be proposed.",
+  "stop_conditions_path": "research/how-we-know/agent-citation-lineage/target-decision.json"
+}

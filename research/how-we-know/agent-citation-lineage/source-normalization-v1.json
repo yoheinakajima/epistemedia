@@ -1,0 +1,226 @@
+{
+  "schema": "https://epistemedia.org/research/agent-citation-source-normalization-v1.json",
+  "task_id": "EM-0026",
+  "protocol_id": "em-0026-agent-citation-trace-v2",
+  "review_cutoff": "2026-08-22",
+  "readback_captured_at": "2026-08-23T16:28:41Z",
+  "status": "author-side-source-review-pending-independent-review",
+  "count_grammar": {
+    "report": "one terminal answer artifact bound to one frozen v2 run slot",
+    "cited_url": "one distinct requested URL string in the eight raw answers",
+    "resolving_url_root": "one distinct requested URL whose fresh readback returned usable public source content",
+    "source_work_root": "one intellectual or data work after URL-carrier normalization",
+    "examined_edition_root": "one versioned content state; mirrors and carriers do not create another edition",
+    "exact_span_root": "one edition, locator, and quote identity with an independently captured normalized or ordered-fragment match",
+    "candidate_warrant_root": "one reviewed proposition plus data, method, and derivation lineage with at least one claim whose matched spans semantically support the canonical proposition; it remains candidate until independent exact-head review",
+    "invalid_citation": "a malformed URL, a URL resolving to a different work, or a source identity contradicted by authoritative metadata",
+    "unresolved_citation": "one source occurrence with an inaccessible carrier, no independently matched span, or an unresolved identity or warrant correction"
+  },
+  "works": [
+    {
+      "work_id": "work:keplinger-dermatology-audit",
+      "title": "Assessment of Deep Research for dermatology literature reviews: Deep concern over the hype",
+      "identifiers": ["doi:10.1111/jdv.70035", "pmcid:PMC13109748", "pmid:40904191"],
+      "data_root": "data:keplinger-three-run-five-system-audit",
+      "method_root": "method:human-reference-and-sentence-concordance-audit",
+      "derivation_root": "derivation:keplinger-published-tables-and-figure"
+    },
+    {
+      "work_id": "work:keplinger-supplement",
+      "title": "Supplementary materials of the article: Assessment of Deep Research for Dermatology Literature Reviews: Deep Concern Over the Hype",
+      "identifiers": ["doi:10.17632/3s73z9zf3c"],
+      "data_root": "data:keplinger-three-run-five-system-audit",
+      "method_root": "method:keplinger-supplementary-prompts-and-results",
+      "derivation_root": "derivation:keplinger-supplement-files"
+    },
+    {
+      "work_id": "work:deepresearch-bench-paper",
+      "title": "DeepResearch Bench: A Comprehensive Benchmark for Deep Research Agents",
+      "identifiers": ["arxiv:2506.11763", "openreview:hQ0K2Hhq7H"],
+      "data_root": "data:deepresearch-bench-100-tasks-and-system-outputs",
+      "method_root": "method:fact-statement-url-support-evaluator",
+      "derivation_root": "derivation:deepresearch-bench-edition-specific-tables"
+    },
+    {
+      "work_id": "work:deepresearch-bench-repository",
+      "title": "Ayanami0730/deep_research_bench",
+      "identifiers": ["github:Ayanami0730/deep_research_bench"],
+      "data_root": "data:deepresearch-bench-100-tasks-and-system-outputs",
+      "method_root": "method:fact-reference-implementation",
+      "derivation_root": "derivation:repository-main-469cce54ea7f6a63c163d3d9fec879cf289ec484"
+    },
+    {
+      "work_id": "work:deeptrace",
+      "title": "DeepTRACE: Auditing Deep Research AI Systems for Tracking Reliability Across Citations and Evidence",
+      "identifiers": ["arxiv:2509.04499", "iclr:ad08767706825033b99122332293033d"],
+      "data_root": "data:deeptrace-303-questions-2727-outputs",
+      "method_root": "method:deeptrace-statement-source-matrix",
+      "derivation_root": "derivation:deeptrace-tables-and-prose"
+    },
+    {
+      "work_id": "work:cited-not-verified",
+      "title": "Cited but Not Verified: Parsing and Evaluating Source Attribution in LLM Deep Research Agents",
+      "identifiers": ["arxiv:2605.06635"],
+      "data_root": "data:cnv-130-drbench-and-browsecomp-queries",
+      "method_root": "method:cnv-ast-access-relevance-fact-check",
+      "derivation_root": "derivation:cnv-main-and-depth-ablation"
+    },
+    {
+      "work_id": "work:url-health",
+      "title": "Detecting and Correcting Reference Hallucinations in Commercial LLMs and Deep Research Agents",
+      "identifiers": ["arxiv:2604.03173"],
+      "data_root": "data:url-health-drbench-and-expertqa-urls",
+      "method_root": "method:http-resolution-wayback-classification",
+      "derivation_root": "derivation:url-health-observational-and-correction-results"
+    },
+    {
+      "work_id": "work:reportbench",
+      "title": "ReportBench: Evaluating Deep Research Agents via Academic Survey Tasks",
+      "identifiers": ["arxiv:2508.15804"],
+      "data_root": "data:reportbench-100-survey-tasks",
+      "method_root": "method:reportbench-statement-source-semantic-match",
+      "derivation_root": "derivation:reportbench-table-1"
+    },
+    {
+      "work_id": "work:researcherbench",
+      "title": "ResearcherBench: Evaluating Deep AI Research Systems on the Frontiers of Scientific Inquiry",
+      "identifiers": ["arxiv:2507.16280"],
+      "data_root": "data:researcherbench-65-frontier-ai-questions",
+      "method_root": "method:researcherbench-faithfulness-groundedness",
+      "derivation_root": "derivation:researcherbench-table-2"
+    },
+    {
+      "work_id": "work:liveresearchbench",
+      "title": "LiveResearchBench: A Live Benchmark for User-Centric Deep Research in the Wild",
+      "identifiers": ["arxiv:2510.14240"],
+      "data_root": "data:liveresearchbench-wide-info-and-market-analysis",
+      "method_root": "method:liveresearchbench-e1-e2-e3-rubric-tree",
+      "derivation_root": "derivation:liveresearchbench-v5-table-7"
+    },
+    {
+      "work_id": "work:citation-verifier-benchmark",
+      "title": "Do You Need a Frontier Model as a Citation Verifier? Benchmarking Rubric LLMs for Deep-Research Source Attribution",
+      "identifiers": ["arxiv:2607.08700"],
+      "data_root": "data:citationverbench-1248-human-reviewed-decisions",
+      "method_root": "method:citationverbench-rubric-judge-comparison",
+      "derivation_root": "derivation:citationverbench-reported-calibration"
+    }
+  ],
+  "editions": [
+    {"edition_id":"edition:keplinger-vor-2025","work_id":"work:keplinger-dermatology-audit","canonical_url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC13109748/","source_text_file":"keplinger.txt","license":"CC BY-NC 4.0","license_treatment":"quote-minimal attributed spans; no full-text redistribution"},
+    {"edition_id":"edition:keplinger-supplement-v1","work_id":"work:keplinger-supplement","canonical_url":"https://data.mendeley.com/datasets/3s73z9zf3c/1","source_text_file":"mendeley-v1.txt","license":"CC BY 4.0","license_treatment":"metadata and quote-minimal landing-page spans"},
+    {"edition_id":"edition:keplinger-supplement-v2","work_id":"work:keplinger-supplement","canonical_url":"https://data.mendeley.com/datasets/3s73z9zf3c/2","source_text_file":"mendeley-v2-page.txt","license":"CC BY 4.0","license_treatment":"metadata and quote-minimal landing-page spans; file API required authentication and was not used"},
+    {"edition_id":"edition:drbench-arxiv-v1","work_id":"work:deepresearch-bench-paper","canonical_url":"https://arxiv.org/html/2506.11763v1","source_text_file":"drbench-v1.txt","license":"CC BY 4.0","license_treatment":"quote-minimal attributed spans"},
+    {"edition_id":"edition:drbench-iclr-2026","work_id":"work:deepresearch-bench-paper","canonical_url":"https://proceedings.iclr.cc/paper_files/paper/2026/file/465f22be10e07b301c6ed58f0472f704-Paper-Conference.pdf","source_text_file":"drbench-iclr.txt","license":"unknown","license_treatment":"metadata, digest, and quote-minimal attributed spans only"},
+    {"edition_id":"edition:drbench-repo-main-469cce5","work_id":"work:deepresearch-bench-repository","canonical_url":"https://github.com/Ayanami0730/deep_research_bench/commit/469cce54ea7f6a63c163d3d9fec879cf289ec484","source_text_file":"drbench-repo.txt","license":"Apache-2.0","license_treatment":"metadata and quote-minimal README spans"},
+    {"edition_id":"edition:deeptrace-arxiv-v1","work_id":"work:deeptrace","canonical_url":"https://arxiv.org/html/2509.04499v1","source_text_file":"deeptrace-v1.txt","license":"arXiv non-exclusive distribution license","license_treatment":"metadata, digest, and quote-minimal attributed spans only"},
+    {"edition_id":"edition:deeptrace-iclr-2026","work_id":"work:deeptrace","canonical_url":"https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf","source_text_file":"deeptrace-iclr.txt","license":"unknown","license_treatment":"metadata, digest, and quote-minimal attributed spans only"},
+    {"edition_id":"edition:cnv-arxiv-v1","work_id":"work:cited-not-verified","canonical_url":"https://arxiv.org/html/2605.06635v1","source_text_file":"cited-not-verified.txt","license":"CC BY 4.0","license_treatment":"quote-minimal attributed spans"},
+    {"edition_id":"edition:url-health-arxiv-v1","work_id":"work:url-health","canonical_url":"https://arxiv.org/html/2604.03173v1","source_text_file":"urlhealth.txt","license":"CC0 1.0","license_treatment":"quote-minimal attributed spans"},
+    {"edition_id":"edition:reportbench-arxiv-v1","work_id":"work:reportbench","canonical_url":"https://arxiv.org/html/2508.15804v1","source_text_file":"reportbench.txt","license":"CC BY 4.0","license_treatment":"quote-minimal attributed spans"},
+    {"edition_id":"edition:researcherbench-arxiv-v1","work_id":"work:researcherbench","canonical_url":"https://arxiv.org/html/2507.16280v1","source_text_file":"researcherbench.txt","license":"arXiv non-exclusive distribution license","license_treatment":"metadata, digest, and quote-minimal attributed spans only"},
+    {"edition_id":"edition:liveresearchbench-arxiv-v5","work_id":"work:liveresearchbench","canonical_url":"https://arxiv.org/pdf/2510.14240v5","source_text_file":"liveresearchbench.txt","license":"CC BY-NC-SA 4.0","license_treatment":"quote-minimal attributed spans; raw CC BY claim is corrected in review records"},
+    {"edition_id":"edition:citation-verifier-arxiv-v1","work_id":"work:citation-verifier-benchmark","canonical_url":"https://arxiv.org/html/2607.08700v1","source_text_file":"citation-verifier.txt","license":"CC BY 4.0","license_treatment":"quote-minimal attributed spans"}
+  ],
+  "url_mappings": [
+    {"requested_url":"https://arxiv.org/abs/2604.03173","capture_body":"url-01.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:url-health-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/abs/2605.06635","capture_body":"url-02.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:cnv-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/abs/2607.08700","capture_body":"url-03.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:citation-verifier-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2506.11763","capture_body":"url-04.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:drbench-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2506.11763v1","capture_body":"url-05.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:drbench-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2507.16280","capture_body":"url-06.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:researcherbench-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2508.15804","capture_body":"url-07.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:reportbench-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2508.15804v1","capture_body":"url-08.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:reportbench-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2509.04499","capture_body":"url-09.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:deeptrace-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2509.04499v1","capture_body":"url-10.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:deeptrace-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2604.03173","capture_body":"url-11.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:url-health-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2604.03173v1","capture_body":"url-12.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:url-health-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2605.06635","capture_body":"url-13.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:cnv-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/html/2605.06635v1","capture_body":"url-14.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:cnv-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/pdf/2507.16280","capture_body":"url-15.body","http_status":200,"media_type":"application/pdf","edition_id":"edition:researcherbench-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/pdf/2508.15804","capture_body":"url-16.body","http_status":200,"media_type":"application/pdf","edition_id":"edition:reportbench-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/pdf/2510.14240v5","capture_body":"url-17.body","http_status":200,"media_type":"application/pdf","edition_id":"edition:liveresearchbench-arxiv-v5"},
+    {"requested_url":"https://arxiv.org/pdf/2604.03173","capture_body":"url-18.body","http_status":200,"media_type":"application/pdf","edition_id":"edition:url-health-arxiv-v1"},
+    {"requested_url":"https://arxiv.org/pdf/2605.06635","capture_body":"url-19.body","http_status":200,"media_type":"application/pdf","edition_id":"edition:cnv-arxiv-v1"},
+    {"requested_url":"https://data.mendeley.com/datasets/3s73z9zf3c/1","capture_body":"url-20.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:keplinger-supplement-v1"},
+    {"requested_url":"https://data.mendeley.com/datasets/3s73z9zf3c/2","capture_body":"url-21.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:keplinger-supplement-v2"},
+    {"requested_url":"https://deepresearch-bench.github.io/static/papers/deepresearch-bench.pdf","capture_body":"url-22.body","http_status":200,"media_type":"application/pdf","edition_id":"edition:drbench-arxiv-v1"},
+    {"requested_url":"https://github.com/Ayanami0730/deep_research_bench","capture_body":"url-23.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:drbench-repo-main-469cce5"},
+    {"requested_url":"https://onlinelibrary.wiley.com/doi/10.1111/jdv.70035","capture_body":"url-24.body","http_status":403,"media_type":"text/html; charset=UTF-8","edition_id":"edition:keplinger-vor-2025"},
+    {"requested_url":"https://openreview.net/pdf?id=hQ0K2Hhq7H","capture_body":"url-25.body","http_status":403,"media_type":"text/html","edition_id":"edition:drbench-iclr-2026"},
+    {"requested_url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC13109748/","capture_body":"url-26.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:keplinger-vor-2025"},
+    {"requested_url":"https://proceedings.iclr.cc/paper_files/paper/2026/file/465f22be10e07b301c6ed58f0472f704-Paper-Conference.pdf","capture_body":"url-27.body","http_status":200,"media_type":"application/pdf","edition_id":"edition:drbench-iclr-2026"},
+    {"requested_url":"https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf","capture_body":"url-28.body","http_status":200,"media_type":"application/pdf","edition_id":"edition:deeptrace-iclr-2026"},
+    {"requested_url":"https://proceedings.iclr.cc/paper_files/paper/2026/hash/ad08767706825033b99122332293033d-Abstract-Conference.html","capture_body":"url-29.body","http_status":200,"media_type":"text/html; charset=utf-8","edition_id":"edition:deeptrace-iclr-2026"},
+    {"requested_url":"https://pubmed.ncbi.nlm.nih.gov/40904191/","capture_body":"url-30.body","http_status":203,"media_type":"text/html; charset=utf-8","usable":false,"edition_id":"edition:keplinger-vor-2025"}
+  ],
+  "claim_groups": [
+    {
+      "warrant_id":"warrant:keplinger-metadata-versus-support","canonical_proposition":"In one five-system dermatology-review audit, reference identifiability and metadata correctness did not establish sentence-level claim-citation concordance.","work_ids":["work:keplinger-dermatology-audit","work:keplinger-supplement"],"data_root":"data:keplinger-three-run-five-system-audit","method_root":"method:human-reference-and-sentence-concordance-audit","derivation_root":"derivation:keplinger-published-tables-and-figure","review_status":"candidate-supported-with-scope","result_occurrences":["V2-SOL-01:r1_human_dermatology_chatgpt","V2-SOL-01:r2_human_dermatology_lechat","V2-SOL-02:R2_human_dermatology_claim_support","V2-SOL-03:r1_reference_metadata_human_audit","V2-SOL-03:r2_claim_support_human_audit","V2-SOL-04:R6","V2-SOL-04:R7","V2-TERRA-03:R5"]
+    },
+    {
+      "warrant_id":"warrant:deepresearch-bench-fact","canonical_proposition":"DeepResearch Bench evaluated binary support for deduplicated statement-URL pairs; numeric values are edition-specific.","work_ids":["work:deepresearch-bench-paper","work:deepresearch-bench-repository"],"data_root":"data:deepresearch-bench-100-tasks-and-system-outputs","method_root":"method:fact-statement-url-support-evaluator","derivation_root":"derivation:deepresearch-bench-edition-specific-tables","review_status":"candidate-supported-with-edition-boundary","result_occurrences":["V2-SOL-01:r3_deepresearch_bench_fact","V2-SOL-02:R3_deepresearch_bench_fact","V2-SOL-03:r3_deepresearch_bench_fact","V2-SOL-04:R3","V2-TERRA-01:r1_deepresearchbench_fact","V2-TERRA-02:r1_deepresearchbench_fact","V2-TERRA-03:R3","V2-TERRA-04:R1_deepresearchbench_support"]
+    },
+    {
+      "warrant_id":"warrant:deeptrace-support-variation","canonical_proposition":"DeepTRACE measured statement-source support and found between-system variation; its Gemini value is internally inconsistent between table and prose.","work_ids":["work:deeptrace"],"data_root":"data:deeptrace-303-questions-2727-outputs","method_root":"method:deeptrace-statement-source-matrix","derivation_root":"derivation:deeptrace-tables-and-prose","review_status":"candidate-supported-except-disputed-gemini-number","result_occurrences":["V2-SOL-01:r4_deeptrace_support","V2-SOL-02:R5_deeptrace_audit","V2-SOL-03:r4_deeptrace_support","V2-SOL-04:R5","V2-TERRA-02:r4_deeptrace"]
+    },
+    {
+      "warrant_id":"warrant:cnv-link-relevance-support-gap","canonical_proposition":"Cited but Not Verified operationalized link access, topical relevance, and factual support separately and reported materially different rates.","work_ids":["work:cited-not-verified"],"data_root":"data:cnv-130-drbench-and-browsecomp-queries","method_root":"method:cnv-ast-access-relevance-fact-check","derivation_root":"derivation:cnv-main-table","review_status":"candidate-supported-with-upstream-dependence","result_occurrences":["V2-SOL-01:r5_cited_but_not_verified_cross_model","V2-SOL-02:R6_surface_quality_vs_fact_support","V2-SOL-03:r7_source_attribution_framework","V2-SOL-04:R1","V2-TERRA-01:r4_cited_not_verified_source_attribution","V2-TERRA-03:R1","V2-TERRA-04:R5_cited_not_verified_support_and_resolution"]
+    },
+    {
+      "warrant_id":"warrant:cnv-search-depth-ablation","canonical_proposition":"Within the Cited but Not Verified harness, the 2-to-150-call ablation reduced reported Fact Check scores for two setups without establishing a general causal law about search depth.","work_ids":["work:cited-not-verified"],"data_root":"data:cnv-depth-ablation-two-model-setups","method_root":"method:cnv-ast-access-relevance-fact-check","derivation_root":"derivation:cnv-depth-ablation-tables","review_status":"candidate-supported-as-within-harness-association","result_occurrences":["V2-SOL-01:r6_cited_but_not_verified_depth_ablation","V2-SOL-02:R7_search_depth_ablation","V2-SOL-03:r8_search_depth_ablation","V2-SOL-04:R2","V2-TERRA-03:R2","V2-TERRA-04:R6_search_depth_ablation"]
+    },
+    {
+      "warrant_id":"warrant:url-health-resolution","canonical_proposition":"The URL-health study measured HTTP resolution and Wayback presence, not semantic claim support, on outputs including reused DeepResearch Bench material.","work_ids":["work:url-health"],"data_root":"data:url-health-drbench-and-expertqa-urls","method_root":"method:http-resolution-wayback-classification","derivation_root":"derivation:url-health-observational-results","review_status":"candidate-supported-with-semantic-exclusion","result_occurrences":["V2-SOL-01:r7_url_resolution_drbench","V2-SOL-02:R1_url_resolution","V2-SOL-03:r5_deep_agent_url_resolution","V2-TERRA-01:r5_urlhealth_resolution","V2-TERRA-04:R4_urlhealth_resolution"]
+    },
+    {
+      "warrant_id":"warrant:url-health-correction-loop","canonical_proposition":"The URL-health paper's bounded correction loop reduced non-resolving URLs but did not evaluate surviving claim support.","work_ids":["work:url-health"],"data_root":"data:url-health-correction-experiment","method_root":"method:url-checking-correction-loop","derivation_root":"derivation:url-health-correction-results","review_status":"pending-insufficient-semantic-span-closure","result_occurrences":["V2-SOL-03:r6_url_self_correction"]
+    },
+    {
+      "warrant_id":"warrant:reportbench-match-rate","canonical_proposition":"ReportBench compared cited statements with retrieved cited-page content and reported sub-100-percent semantic match rates in its bounded survey-task setting.","work_ids":["work:reportbench"],"data_root":"data:reportbench-100-survey-tasks","method_root":"method:reportbench-statement-source-semantic-match","derivation_root":"derivation:reportbench-table-1","review_status":"candidate-supported-with-judge-limitation","result_occurrences":["V2-SOL-02:R4_reportbench_match_rate","V2-SOL-04:R4","V2-TERRA-01:r2_reportbench_cited_statement_match","V2-TERRA-03:R4","V2-TERRA-04:R3_reportbench_support"]
+    },
+    {
+      "warrant_id":"warrant:researcherbench-faithfulness-groundedness","canonical_proposition":"ResearcherBench separated support precision among cited claims from citation coverage across factual claims.","work_ids":["work:researcherbench"],"data_root":"data:researcherbench-65-frontier-ai-questions","method_root":"method:researcherbench-faithfulness-groundedness","derivation_root":"derivation:researcherbench-table-2","review_status":"pending-insufficient-semantic-span-closure","result_occurrences":["V2-TERRA-01:r3_researcherbench_faithfulness_and_groundedness","V2-TERRA-02:r5_researcherbench","V2-TERRA-04:R2_researcherbench_support"]
+    },
+    {
+      "warrant_id":"warrant:liveresearchbench-e1-e2-e3","canonical_proposition":"LiveResearchBench v5 separately typed inaccessible/non-resolving, irrelevant, and unsupported-claim citation errors for two task categories; its table reports per-report errors without raw denominators.","work_ids":["work:liveresearchbench"],"data_root":"data:liveresearchbench-wide-info-and-market-analysis","method_root":"method:liveresearchbench-e1-e2-e3-rubric-tree","derivation_root":"derivation:liveresearchbench-v5-table-7","review_status":"pending-insufficient-semantic-span-closure","result_occurrences":["V2-TERRA-02:r2_liveresearchbench_wide_info","V2-TERRA-02:r3_liveresearchbench_market_analysis"]
+    },
+    {
+      "warrant_id":"warrant:citation-verifier-calibration","canonical_proposition":"A human-reviewed verifier benchmark showed that rubric-LLM citation-support judgments retain model-dependent error and directional bias.","work_ids":["work:citation-verifier-benchmark"],"data_root":"data:citationverbench-1248-human-reviewed-decisions","method_root":"method:citationverbench-rubric-judge-comparison","derivation_root":"derivation:citationverbench-reported-calibration","review_status":"pending-insufficient-semantic-span-closure","result_occurrences":["V2-SOL-03:r9_verifier_calibration","V2-SOL-04:R8"]
+    }
+  ],
+  "warrant_dimension_defaults": {
+    "modality":"retain source-reported or observational modality; no universalization",
+    "causality":"no causal interpretation unless the bounded source experiment itself supports it",
+    "scope":"bind to the named benchmark, systems, prompt, and retrieval pipeline",
+    "time":"bind to the named source edition and dated product snapshot",
+    "population":"bind to the published task or report population",
+    "metric_definition":"do not pool URL liveness, relevance, cited-claim support, and claim coverage",
+    "numerical_strengthening":"retain published precision and unknown denominators; edition conflicts receive no numeric credit",
+    "comparison_class":"compare only rows sharing a published table and method",
+    "source_versus_agent_wording":"the canonical proposition is narrower than the raw answer where a correction or unknown applies"
+  },
+  "dependence_edges": [
+    {"dimension":"upstream_citation","from":"work:cited-not-verified","to":"work:deepresearch-bench-paper","status":"known","note":"The paper states that its 130 queries are drawn from DeepResearch Bench and BrowseComp."},
+    {"dimension":"upstream_citation","from":"work:url-health","to":"work:deepresearch-bench-paper","status":"known","note":"The URL-health study reuses DeepResearch Bench outputs for part of its corpus."},
+    {"dimension":"data","from":"work:keplinger-supplement","to":"work:keplinger-dermatology-audit","status":"same-data-root","note":"The supplement contains prompts, outputs, and evaluation material for the article."},
+    {"dimension":"data","from":"work:deepresearch-bench-repository","to":"work:deepresearch-bench-paper","status":"same-data-root","note":"The repository is the paper's official task/evaluator artifact, not independent evidence."},
+    {"dimension":"method","from":"method:fact-statement-url-support-evaluator","to":"method:llm-judge-after-web-extraction","status":"known"},
+    {"dimension":"method","from":"method:deeptrace-statement-source-matrix","to":"method:llm-judge-after-web-extraction","status":"known"},
+    {"dimension":"method","from":"method:cnv-ast-access-relevance-fact-check","to":"method:llm-judge-after-web-extraction","status":"known"},
+    {"dimension":"method","from":"method:reportbench-statement-source-semantic-match","to":"method:llm-judge-after-web-extraction","status":"known"},
+    {"dimension":"method","from":"method:researcherbench-faithfulness-groundedness","to":"method:llm-judge-after-web-extraction","status":"known"},
+    {"dimension":"retrieval_infrastructure","from":"method:fact-statement-url-support-evaluator","to":"retrieval:jina-reader","status":"known"},
+    {"dimension":"retrieval_infrastructure","from":"method:deeptrace-statement-source-matrix","to":"retrieval:jina-reader","status":"known"},
+    {"dimension":"retrieval_infrastructure","from":"method:researcherbench-faithfulness-groundedness","to":"retrieval:jina-reader","status":"known"}
+  ],
+  "corrections": [
+    {"correction_id":"correction:liveresearchbench-license","kind":"license","raw_occurrences":["V2-TERRA-02:s2_liveresearchbench"],"raw_value":"CC BY 4.0 for arXiv paper","review_value":"CC BY-NC-SA 4.0","evidence":"The arXiv v5 abstract page links http://creativecommons.org/licenses/by-nc-sa/4.0/.","effect":"license metadata corrected; scientific warrant unchanged"},
+    {"correction_id":"correction:cnv-query-source-scope","kind":"scope","raw_occurrences":["V2-TERRA-01:r4_cited_not_verified_source_attribution"],"raw_value":"130 research queries drawn from DeepResearch Bench","review_value":"130 research queries drawn from DeepResearch Bench and BrowseComp","evidence":"Cited but Not Verified section 3.4 states both upstream query sources.","effect":"raw scope receives no credit; canonical warrant retains both upstream roots"},
+    {"correction_id":"correction:deeptrace-gemini-number","kind":"internal-source-conflict","raw_occurrences":["V2-SOL-01:r4_deeptrace_support","V2-SOL-03:r4_deeptrace_support","V2-SOL-04:R5","V2-TERRA-02:r4_deeptrace"],"raw_value":"Gemini Deep Research citation accuracy 50.3% from Table 1","review_value":"unresolved: Table 1 reports 50.3%, surrounding prose reports 40.3%","evidence":"DeepTRACE ICLR 2026 PDF p.8 Table 1 and adjacent results prose disagree.","effect":"generic between-system variation remains; exact Gemini numeric warrant is withheld"},
+    {"correction_id":"correction:drbench-edition-drift","kind":"edition","raw_occurrences":["V2-SOL-01:r3_deepresearch_bench_fact","V2-SOL-02:R3_deepresearch_bench_fact","V2-SOL-04:R3","V2-TERRA-01:r1_deepresearchbench_fact","V2-TERRA-02:r1_deepresearchbench_fact","V2-TERRA-03:R3"],"raw_value":"arXiv v1 and ICLR values appear across the run matrix","review_value":"arXiv v1 and ICLR 2026 are separate editions with materially different FACT values","evidence":"v1 reports 90.24/81.44/77.96 for Perplexity/Gemini/OpenAI; ICLR reports 82.63/78.30/75.01.","effect":"method-level warrant remains; numeric roots are edition-specific and never pooled"},
+    {"correction_id":"correction:four-independent-benchmarks","kind":"dependence","raw_occurrences":["V2-TERRA-02:answer"],"raw_value":"Four independent benchmark papers","review_value":"separate papers with known shared task, retrieval, and LLM-judge dependencies","evidence":"The ledger records upstream DRBench reuse plus shared Jina Reader and judge-method roots.","effect":"raw independence claim receives no credit"},
+    {"correction_id":"correction:mendeley-file-readback","kind":"access","raw_occurrences":["V2-SOL-01:s1a_keplinger_data","V2-SOL-02:S3","V2-SOL-04:S6"],"raw_value":"supplementary files publicly retrieved or downloadable","review_value":"landing pages retrieved; credential-free API returned 401 and file bytes were not captured in this review","evidence":"Fresh Mendeley landing-page reads returned 200; api.mendeley.com/datasets/3s73z9zf3c/versions/2 returned 401.","effect":"landing-page metadata can support artifact identity; file-content spans receive no credit"},
+    {"correction_id":"correction:independent-semantic-warrant-gaps","kind":"semantic-warrant","raw_occurrences":["V2-SOL-02:R5_deeptrace_audit","V2-SOL-03:r3_deepresearch_bench_fact","V2-SOL-03:r8_search_depth_ablation","V2-SOL-03:r9_verifier_calibration","V2-SOL-04:R1","V2-SOL-04:R2","V2-SOL-04:R3","V2-SOL-04:R4","V2-SOL-04:R8"],"raw_value":"author-candidate support for the complete raw proposition","review_value":"linked quote fragments establish only a subset of the asserted method, comparison, metric, scope, or directional result","evidence":"Independent exact-edition review completed all 72 credited span roots and found these nine claim occurrences exceed the semantics of their linked spans.","effect":"the complete raw proposition receives no credit; raw capture and narrower matched fragments remain visible"}
+  ]
+}
