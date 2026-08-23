@@ -1,0 +1,62 @@
+{
+  "id": "EM-0029",
+  "title": "Construct and independently review the Case 002 citation-lineage dossier",
+  "status": "ready",
+  "change_class": "research",
+  "objective": "Transform the accepted EM-0026 agent-citation trace packet into one disclosure-safe, reversible Case 002 dossier whose propositions, exact spans, dependence relations, unresolved citations, and policy-relative evaluations are mechanically derived and independently reviewed without admitting or publishing the dossier.",
+  "depends_on": [
+    "EM-0026"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "research/how-we-know/agent-citation-lineage/**",
+      "docs/execution-plans/EM-0029.md",
+      "docs/research/case-002-agent-citation-lineage.md",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "README.md",
+      "docs/editorial/**",
+      "generated/**",
+      "site/**"
+    ]
+  },
+  "required_evaluation": [
+    "byte-for-byte preservation of all accepted EM-0026 answers, traces, source readbacks, span readbacks, normalization records, and evidence ledger",
+    "strict dossier-format validation, referential closure, content-address recomputation, and public disclosure noninterference",
+    "sentence-to-span, edition, work, license, and retrieval-identity closure for every material dossier proposition",
+    "relation-derived reproduction of report, citation, URL, work, edition, span, warrant-candidate, unresolved, and no-credit counts",
+    "model, prompt, retrieval, benchmark-data, source-work, edition, span, method, derivation, and upstream-citation dependence review",
+    "encyclopedia-versus-skeptical policy evaluation with materially different reasons over one unchanged public dossier",
+    "fresh-clone independent review of the exact dossier bytes against newly resolved authoritative public editions and the accepted EM-0026 packet",
+    "full deterministic make check, disclosure audit, exact path-scope comparison, and clean tracked state"
+  ],
+  "acceptance": [
+    "one content-addressed Case 002 candidate dossier asks the frozen EM-0026 question with its 2026-08-22 evidence cutoff and does not generalize to current or universal agent behavior",
+    "the dossier distinguishes captured reports, citation occurrences, requested URLs, resolving URL roots, source works, examined editions, exact span roots, candidate warrant roots, and independently accepted evidence",
+    "all seven EM-0026 candidate warrant roots are represented only at their reviewed scope and none is strengthened into a universal, causal, current-vendor, or cross-metric claim",
+    "all four pending warrant groups, nine independently rejected claim occurrences, twenty unsupported or force-raised claim occurrences, thirty-four unresolved citation occurrences, and three inaccessible carriers remain visible and receive no evidentiary credit",
+    "the eight captured reports share declared prompt and runtime lineage and are never counted as eight independent epistemic observers",
+    "the 8 reports, 48 citation occurrences, 30 cited URLs, 27 resolving URL roots, 11 works, 14 editions, 72 matched span roots, 7 candidate warrant roots, 34 unresolved citations, and 20 unsupported or force-raised claim occurrences are reproduced from relations rather than copied as editorial totals",
+    "every material human-readable sentence closes over the exact source works, examined editions, and quote-minimal spans required to support it",
+    "encyclopedia and skeptical evaluations preserve the same source graph while differing materially in reliance threshold, unresolved-gap treatment, and reader upshot",
+    "an independently rooted reviewer binds the exact candidate dossier path, bytes, digest, reviewed head, source identities, span coverage, dependence relations, displayed counts, limitations, and decision in a machine-readable receipt",
+    "the result remains a reviewed research candidate with no catalog selection, public feature, deployment, or claim of production availability",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task constructs and reviews a candidate dossier; it does not admit, feature, publish, deploy, or describe Case 002 as live.",
+    "Independent review verifies source identity, span containment, semantic scope, lineage, counts, and disclosure. It does not establish that every evaluated agent claim is true or that the bounded sample represents agents generally.",
+    "No new agent run, paid provider call, account, credential, private trace, hidden reasoning, restricted source redistribution, policy change, schema promotion, workflow mutation, DNS action, package release, or spend is authorized.",
+    "If exact sentence-to-source closure or independence review cannot be completed, the dossier fails closed and the EM-0026 negative-result value remains intact."
+  ]
+}
