@@ -272,11 +272,49 @@ def test_public_review_receipt_is_exact_sanitized_and_linked(tmp_path: Path) -> 
     assert expected["data"]["review"]["receipt_sha256"] in html
     assert "29 source receipts" in html
     assert "86 span records" in html
+    assert "A separate Codex review agent worked from a fresh clone" in html
+    assert "independently retrieved the declared evidence" in html
+    assert "did not use the authoring agent's artifacts" in html
+    assert "did not decide whether the scientific conclusion is ultimately true" in html
+    assert "Technical reviewer ID" in html
+    assert "A separate Codex review agent worked from a fresh clone" in markdown
+    assert "Technical reviewer ID" in markdown
+    assert "another model family" not in (html + markdown).lower()
+    assert "human reviewer" not in (html + markdown).lower()
+    assert expected["data"]["review"]["fresh_clone"] is True
+    assert expected["data"]["review"]["independent_retrieval"] is True
+    assert expected["data"]["review"]["authoring_agent_artifacts_used"] is False
     assert "Independence conditions" in markdown
     assert "/private/tmp" not in html + markdown + (review / "index.json").read_text()
     assert "Review receipt" in home
     assert "Review receipt" in case
     assert "Independently reviewed</span>" not in home
+
+
+def test_editorial_pass_preserves_accepted_case_input_bytes() -> None:
+    expected = {
+        ROOT / "catalog" / "dossiers" / f"{SLUG}.json": (
+            "5c96dead036b527793ba5a0de59bf7316efdfeb591470d4a23e5bf979f3b9288"
+        ),
+        ROOT
+        / "research"
+        / "how-we-know"
+        / "corrections-backfire"
+        / "candidate-dossier.json": (
+            "7003413e286e4d310f81441db33f4a467ba2eb3e08f41ddfa3cef5abb34707ca"
+        ),
+        ROOT
+        / "research"
+        / "how-we-know"
+        / "corrections-backfire"
+        / "review-receipts"
+        / "20260822T183134Z-codex-independent-reviewer.json": (
+            "503d16396b25b1c22d7fc10ac6fb7db2e530e6ce348d63fa8b639db5a5288f0a"
+        ),
+    }
+
+    for path, digest in expected.items():
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == digest
 
 
 def test_cold_start_agent_discovers_and_summarizes_case_from_llms(tmp_path: Path) -> None:

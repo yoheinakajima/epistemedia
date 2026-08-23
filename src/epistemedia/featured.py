@@ -1134,6 +1134,38 @@ def feature_home_html(envelope: dict[str, Any], base_url: str) -> str:
     )
 
 
+def feature_purpose_html(envelope: dict[str, Any], base_url: str) -> str:
+    """Explain the product through the featured case without adding a second hero."""
+
+    data = envelope["data"]
+    counts = data["counts"]
+    case_url = (
+        f'{html.escape(base_url)}/how-we-know/{html.escape(data["slug"])}/'
+    )
+    return (
+        '<section class="purpose-note" aria-labelledby="purpose-title">'
+        '<div class="purpose-kicker"><p class="eyebrow">Why this exists</p>'
+        '<strong>From repetition to warrant.</strong>'
+        '<span>Information → evidence → knowledge</span></div>'
+        '<div class="purpose-copy"><h2 id="purpose-title">Information tells you what was '
+        'said. Epistemedia shows what the evidence earns—and where it stops.</h2>'
+        f'<p>Case 001 shows why: a claim can sound supported '
+        f'{counts["apparent_support_assertion_count"]} times while resting on '
+        f'{counts["target_comparable_support_data_root_count"]} target-comparable data roots, '
+        f'with {counts["target_comparable_unresolved_data_root_count"]} 2007 lineage unresolved. '
+        'These counts follow '
+        'evidence lineage, not paper titles. This is an evidence case file, not a conventional '
+        'encyclopedia article.</p>'
+        '<nav class="purpose-paths" aria-label="How to read Case 001">'
+        f'<a href="{case_url}"><span>01</span><strong>Brief</strong>'
+        '<small>Read the finding</small></a>'
+        f'<a href="{case_url}skeptical/"><span>02</span><strong>Skeptical</strong>'
+        '<small>Look for the holes</small></a>'
+        f'<a href="{case_url}#evidence-record-title"><span>03</span><strong>Docket</strong>'
+        '<small>Inspect exact passages</small></a></nav></div></section>'
+    )
+
+
 def feature_page_html(envelope: dict[str, Any], base_url: str) -> str:
     data = envelope["data"]
     review_url = (
@@ -1262,7 +1294,12 @@ def review_receipt_markdown(envelope: dict[str, Any]) -> str:
         "",
         f"**Decision:** `{review['decision']}`",
         "",
-        f"- Reviewer: `{review['reviewer_id']}`",
+        "**Review process:** A separate Codex review agent worked from a fresh clone, "
+        "independently retrieved the declared evidence, and did not use the authoring "
+        "agent's artifacts. It checked the bounded evidence and build scope below; it did "
+        "not decide whether the scientific conclusion is ultimately true.",
+        "",
+        f"- Technical reviewer ID: `{review['reviewer_id']}`",
         f"- Reviewed head: `{review['reviewed_head']}`",
         f"- Reviewed tree: `{review['reviewed_tree']}`",
         f"- Dossier: `{data['dossier_id']}`",
@@ -1312,20 +1349,24 @@ def review_receipt_html(envelope: dict[str, Any], base_url: str) -> str:
         f"<li>{html.escape(item)}</li>" for item in review["limitations"]
     )
     independence = (
+        '<div><dt>Reviewer process</dt><dd>Separate Codex review agent</dd></div>'
         '<div><dt>Fresh clone</dt><dd>Yes</dd></div>'
         '<div><dt>Independent retrieval</dt><dd>Yes</dd></div>'
         '<div><dt>Authoring artifacts used</dt><dd>No</dd></div>'
     )
     return (
         '<article class="review-page"><section class="hero hero-compact review-hero">'
-        '<p class="eyebrow">How We Know · Independent audit</p>'
+        '<p class="eyebrow">How We Know · Separate process audit</p>'
         f'<h1>Review receipt for Case {html.escape(data["number"])}</h1>'
-        '<p class="dek">This is the public, disclosure-safe view of the exact receipt that '
-        'admitted the dossier—not a self-awarded badge.</p>'
+        '<p class="dek">A separate Codex review agent worked from a fresh clone, independently '
+        "retrieved the declared evidence, and did not use the authoring agent's artifacts. It "
+        'checked the bounded evidence and build scope below; it did not decide whether the '
+        'scientific conclusion is ultimately true.</p>'
         f'<p><a href="{case_url}">← Return to the evidence docket</a></p></section>'
         '<section class="review-decision" aria-labelledby="review-decision-title">'
         '<div><p class="eyebrow">Decision</p><h2 id="review-decision-title">Pass</h2>'
-        f'<p>Reviewer <code>{html.escape(review["reviewer_id"])}</code> completed the audit '
+        f'<p>Technical reviewer ID <code>{html.escape(review["reviewer_id"])}</code> completed '
+        'the process audit '
         f'on <time>{html.escape(review["completed_at"])}</time>.</p></div>'
         '<span class="review-stamp">Exact-head pass</span></section>'
         '<section class="review-grid" aria-label="Review identity">'

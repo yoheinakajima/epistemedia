@@ -29,6 +29,11 @@ The shared shell defines tokens once in `SITE_CSS`:
 | Space | six named increments from compact inline gaps to section separation |
 | Rule | one neutral rule color plus stronger ink or forest boundaries |
 
+Display type is deliberately compact: a case title may carry editorial weight, but it must not
+delay the finding, controls, or evidence tally below a manifesto-sized first screen. Narrow
+viewports reduce both display size and section spacing rather than merely wrapping the desktop
+composition.
+
 No external font, image, or tracking dependency is required.
 
 ## Components
@@ -58,6 +63,19 @@ The receipt carries the complete reproducibility identity in a compact definitio
 The featured case separates raw assertions, participant-data roots, target-comparable roots,
 unresolved roots, and counterevidence. Counts are derived from dossier relations and lineage
 records; no displayed total is maintained as independent marketing copy.
+
+### Purpose bridge
+
+The homepage places one short explanatory bridge immediately after the featured dossier. It names
+the product move from repeated information to warranted knowledge, illustrates that move with the
+accepted case counts, and routes readers to the brief, skeptical view, and evidence docket. It is
+not a second hero, marketing manifesto, or generalized philosophical claim.
+
+### Catalog count language
+
+The substrate summary distinguishes unique catalog objects from topic memberships. An object may
+appear in more than one topic, so the compiler derives and labels both totals explicitly; topic
+cards describe membership in that topic rather than implying a disjoint partition.
 
 ### Evidence-policy switch
 
