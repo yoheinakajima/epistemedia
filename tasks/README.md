@@ -41,5 +41,6 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0025` — preserve the conceptual vocabulary and select a bounded Case 002 editorial roadmap without beginning research or admission (ready; depends on `EM-0024`)
 - `EM-0026` — research Case 002 through an eight-run public agent-citation trace pilot with exact source and warrant lineage (ready; depends on `EM-0025`)
 - `EM-0027` — map primary-source readiness for GPT-4 bar percentile, Mehrabian 7–38–55, and fact-check effectiveness in parallel (ready; depends on `EM-0025`)
+- `EM-0028` — make topic projections human-readable and expose deterministic object, source, and topic interlinks (ready; depends on `EM-0024`)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.
