@@ -169,12 +169,12 @@ h1,h2,h3,h4,h5,h6{
   line-height:1.04;
   text-wrap:balance;
 }
-h1{max-width:18ch;font-size:clamp(2.45rem,6vw,5.25rem);letter-spacing:-.045em}
+h1{max-width:18ch;font-size:clamp(2.1rem,3.8vw,3.8rem);letter-spacing:-.04em}
 h2{font-size:clamp(1.55rem,2.3vw,2.15rem);letter-spacing:-.025em}
 h3{font-size:1.28rem}
 h4{font-size:1.08rem}
-.hero{padding:var(--space-5) 0 var(--space-4);border-bottom:1px solid var(--rule)}
-.hero-home{padding-top:clamp(2.25rem,5vw,4rem)}
+.hero{padding:var(--space-4) 0 var(--space-3);border-bottom:1px solid var(--rule)}
+.hero-home{padding-top:clamp(1.5rem,3.5vw,2.75rem)}
 .hero-home h1{max-width:14ch}
 .hero-compact{padding-bottom:var(--space-3)}
 .dek{margin:.35rem 0 var(--space-3);max-width:760px;color:var(--muted);font-size:1.16rem}
@@ -211,9 +211,14 @@ h4{font-size:1.08rem}
   text-transform:uppercase;
 }
 .case-rule a{min-height:0;color:var(--forest-deep);font:inherit;text-decoration:underline}
-.case-grid{display:grid;grid-template-columns:minmax(0,1.28fr) minmax(290px,.72fr);gap:var(--space-5);padding-top:var(--space-4)}
+.case-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.28fr) minmax(290px,.72fr);
+  gap:var(--space-4);
+  padding-top:var(--space-3);
+}
 .case-copy{min-width:0}
-.case-copy h1,.dossier-lead h1{max-width:17ch;font-size:clamp(2.35rem,5vw,4.8rem)}
+.case-copy h1,.dossier-lead h1{max-width:20ch;font-size:clamp(2rem,3.6vw,3.4rem)}
 .finding{
   max-width:66ch;
   margin:var(--space-3) 0;
@@ -241,7 +246,64 @@ a.tally-cell:hover{outline:2px solid var(--amber);outline-offset:-2px}
 .tally-emphasis{border-color:var(--amber);background:var(--amber-wash)}
 .tally-counter{border-color:var(--forest)}
 .tally-arrow{align-self:center;color:var(--amber);font:700 1.4rem/1 var(--serif)}
-.dossier-lead{padding-top:var(--space-4)}
+.dossier-lead{padding-top:var(--space-3)}
+.purpose-note{
+  display:grid;
+  grid-template-columns:minmax(170px,.32fr) minmax(0,1fr);
+  gap:var(--space-5);
+  padding:var(--space-4);
+  border-top:5px solid var(--forest);
+  background:var(--paper-raised);
+  box-shadow:6px 6px 0 var(--paper-deep);
+}
+.purpose-kicker{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:var(--space-3);
+  padding-right:var(--space-3);
+  border-right:1px solid var(--rule);
+}
+.purpose-kicker strong{
+  max-width:9ch;
+  color:var(--forest-deep);
+  font:750 clamp(1.45rem,3vw,2.15rem)/1.02 var(--serif);
+  letter-spacing:-.025em;
+}
+.purpose-kicker span{
+  color:var(--muted);
+  font:700 .66rem/1.4 var(--mono);
+  letter-spacing:.055em;
+  text-transform:uppercase;
+}
+.purpose-copy h2{max-width:34ch;font-size:clamp(1.4rem,2.3vw,2rem);line-height:1.14}
+.purpose-copy>p{max-width:67ch;color:var(--muted)}
+.purpose-paths{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;
+  margin-top:var(--space-3);
+  border:1px solid var(--rule);
+  background:var(--rule);
+}
+.purpose-paths a{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:.2rem .65rem;
+  min-height:78px;
+  padding:.75rem;
+  background:var(--paper);
+  color:var(--ink);
+  font-size:inherit;
+  font-weight:inherit;
+  letter-spacing:normal;
+  text-decoration:none;
+  text-transform:none;
+}
+.purpose-paths a:hover{background:var(--amber-wash)}
+.purpose-paths span{grid-row:1/3;color:var(--amber);font:730 .65rem/1.4 var(--mono)}
+.purpose-paths strong{font:720 1.05rem/1.2 var(--serif)}
+.purpose-paths small{color:var(--muted);font:.72rem/1.35 var(--sans)}
 .practical-reading{display:grid;grid-template-columns:180px minmax(0,1fr);gap:var(--space-5);padding:var(--space-4);border-top:6px solid var(--amber);background:var(--forest-deep);color:var(--paper-raised);box-shadow:8px 8px 0 var(--paper-deep)}
 .practical-kicker{display:flex;flex-direction:column;gap:.35rem;color:var(--amber-wash);font:720 .68rem/1.4 var(--mono);letter-spacing:.07em;text-transform:uppercase}
 .practical-kicker span:first-child{color:var(--paper-raised);font:760 clamp(1.35rem,3vw,2rem)/1 var(--serif);letter-spacing:-.02em;text-transform:none}
@@ -430,13 +492,30 @@ blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(
   .brand-mark{width:1.65rem;height:1.65rem}
   nav{gap:.7rem}
   nav a{font-size:.68rem}
-  .hero{padding:1.8rem 0 1.2rem}
-  .hero-home{padding-top:2.2rem}
+  h1{font-size:clamp(1.9rem,8.2vw,2.5rem)}
+  .hero{padding:1.25rem 0 .9rem}
+  .hero-home{padding-top:1.5rem}
+  .case-hero{padding:var(--space-3) 0}
   .case-rule{flex-wrap:wrap;justify-content:flex-start}
   .case-rule span+span:before{content:"/";margin-right:.55rem;color:var(--amber)}
   .case-grid{grid-template-columns:1fr;gap:var(--space-3);padding-top:var(--space-3)}
-  .case-copy h1,.dossier-lead h1{font-size:clamp(2.25rem,12vw,3.4rem)}
+  .case-copy h1,.dossier-lead h1{font-size:clamp(1.9rem,8.2vw,2.5rem)}
   .case-docket{box-shadow:4px 4px 0 var(--paper-deep)}
+  .purpose-note{
+    grid-template-columns:1fr;
+    gap:var(--space-3);
+    padding:var(--space-3);
+    box-shadow:4px 4px 0 var(--paper-deep);
+  }
+  .purpose-kicker{
+    align-items:end;
+    flex-direction:row;
+    padding:0 0 var(--space-2);
+    border-right:0;
+    border-bottom:1px solid var(--rule);
+  }
+  .purpose-paths{grid-template-columns:1fr}
+  .purpose-paths a{min-height:64px}
   .policy-switch{display:flex;width:100%}
   .policy-switch a{flex:1;justify-content:center}
   .evidence-tally{grid-template-columns:1fr 1fr}
@@ -768,6 +847,11 @@ class PublicCatalog:
             if any(path_match(obj.path, pattern) for pattern in topic.include):
                 selected.append(obj)
         return selected
+
+    def topic_membership_count(self) -> int:
+        """Count object-to-topic memberships without implying object distinctness."""
+
+        return sum(len(self.selected_objects(topic)) for topic in self.topics)
 
     def search(self, query: str, limit: int = 20) -> list[dict[str, Any]]:
         terms = [term for term in re.findall(r"[a-z0-9]+", query.lower()) if len(term) > 1]
@@ -1160,6 +1244,7 @@ def build_public(
         feature_home_html,
         feature_index_html,
         feature_page_html,
+        feature_purpose_html,
         load_featured_dossier,
         review_receipt_html,
         review_receipt_markdown,
@@ -1255,7 +1340,8 @@ def build_public(
         topic_cards.append(
             f'<article class="card docket-card"><p class="docket-number">Topic {topic_index:02d}</p>'
             f'<h2><a href="{base_url}/topics/{topic.slug}/">{html.escape(topic.title)}</a></h2>'
-            f'<p>{html.escape(topic.description)}</p><p class="card-meta"><span>{len(selected)} public objects</span>'
+            f'<p>{html.escape(topic.description)}</p><p class="card-meta"><span>'
+            f'{len(selected)} objects in this topic</span>'
             '<span>Encyclopedia projection</span></p></article>'
         )
         for lens in LENSES:
@@ -1472,10 +1558,12 @@ def build_public(
 
         home_body = (
             feature_home_html(featured_default, base_url)
+            + feature_purpose_html(featured_default, base_url)
             + '<section><div class="section-head"><div><p class="eyebrow">'
             'Operating substrate</p><h2>Explore how the record is built</h2></div>'
-            f'<p class="meta">{len(catalog.topics)} topics · '
-            f'{len(catalog.objects)} public objects</p></div><div class="grid">'
+            f'<p class="meta">{len(catalog.objects)} distinct public objects · '
+            f'{catalog.topic_membership_count()} topic memberships across '
+            f'{len(catalog.topics)} topics</p></div><div class="grid">'
             + "".join(topic_cards)
             + '</div></section>'
             + projection_receipt_html(
@@ -1505,6 +1593,19 @@ def build_public(
             f"**{default_data['counts']['counter_data_root_count']}**\n\n"
             f"Dossier: `{default_data['dossier_id']}`  \n"
             f"Content digest: `{featured_default['content_digest']}`\n\n"
+            "## Why this exists\n\n"
+            "Information tells you what was said. Epistemedia shows what the evidence "
+            "earns—and where it stops.\n\n"
+            "Case 001 shows why: a claim can sound supported ten times while resting on "
+            "four target-comparable data roots, with one 2007 lineage unresolved. The "
+            "counts follow evidence lineage, not paper titles.\n\n"
+            f"[Brief]({base_url}/how-we-know/{featured.slug}/) · "
+            f"[Skeptical]({base_url}/how-we-know/{featured.slug}/skeptical/) · "
+            f"[Evidence docket]({base_url}/how-we-know/{featured.slug}/#evidence-record-title)\n\n"
+            "## Operating substrate\n\n"
+            f"{len(catalog.objects)} distinct public objects · "
+            f"{catalog.topic_membership_count()} topic memberships across "
+            f"{len(catalog.topics)} topics.\n\n"
             f"[Explore the project substrate]({base_url}/explore/)\n"
         )
     else:

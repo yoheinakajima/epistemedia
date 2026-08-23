@@ -25,6 +25,7 @@ from epistemedia.server import Gateway, Request, tool_definitions
 
 
 ROOT = Path(__file__).resolve().parents[1]
+SLUG = "corrections-and-familiarity-backfire"
 
 
 class PageStructureParser(HTMLParser):
@@ -193,12 +194,31 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "Share the scoreboard" in home_html
     assert 'property="og:image"' in home_html
     assert "86 exact spans" in home_html
+    assert home_html.count('class="purpose-note"') == 1
+    assert "Information tells you what was said" in home_html
+    assert "These counts follow evidence lineage, not paper titles" in home_html
+    assert 'aria-label="How to read Case 001"' in home_html
+    assert f'href="https://epistemedia.org/how-we-know/{SLUG}/skeptical/"' in home_html
+    assert (
+        f'href="https://epistemedia.org/how-we-know/{SLUG}/#evidence-record-title"'
+        in home_html
+    )
     assert home_html.index("Does repeating misinformation") < home_html.index(
         "Explore how the record is built"
     )
+    assert home_html.index("Does repeating misinformation") < home_html.index(
+        "Information tells you what was said"
+    ) < home_html.index("Explore how the record is built")
     assert "projection-receipt" in home_html
     assert manifest["catalog_id"] in home_html
     assert ">Substrate</a>" in home_html
+
+    home_markdown = (public / "index.md").read_text()
+    assert "## Why this exists" in home_markdown
+    assert "The counts follow evidence lineage, not paper titles." in home_markdown
+    assert f"[Skeptical](https://epistemedia.org/how-we-know/{SLUG}/skeptical/)" in (
+        home_markdown
+    )
 
     how_we_know_html = (public / "how-we-know" / "index.html").read_text()
     assert "One admitted case" in how_we_know_html
@@ -253,6 +273,34 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert status_html.count("Reserved · unverified") == 3
 
 
+def test_homepage_count_language_reconciles_distinct_objects_and_memberships(
+    tmp_path: Path,
+) -> None:
+    public = tmp_path / "public"
+    build_public(ROOT, public)
+    catalog = PublicCatalog.build(ROOT)
+    home_html = (public / "index.html").read_text()
+    home_markdown = (public / "index.md").read_text()
+    membership_counts = [
+        len(catalog.selected_objects(topic)) for topic in catalog.topics
+    ]
+    membership_total = sum(membership_counts)
+
+    assert catalog.topic_membership_count() == membership_total
+    assert membership_total > len(catalog.objects)
+    summary = (
+        f"{len(catalog.objects)} distinct public objects · {membership_total} "
+        f"topic memberships across {len(catalog.topics)} topics"
+    )
+    assert summary in home_html
+    assert summary + "." in home_markdown
+    for count in membership_counts:
+        assert f"{count} objects in this topic" in home_html
+    assert f"{len(catalog.topics)} topics · {len(catalog.objects)} public objects" not in (
+        home_html
+    )
+
+
 def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path) -> None:
     public = tmp_path / "public"
     build_public(ROOT, public)
@@ -279,6 +327,10 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
     assert "brand-mark" in home_html
     assert "docket-card" in home_html
     assert "Reproducible projection" in home_html
+    assert "h1{max-width:18ch;font-size:clamp(2.1rem,3.8vw,3.8rem)" in home_html
+    assert "font-size:clamp(2rem,3.6vw,3.4rem)" in home_html
+    assert "h1{font-size:clamp(1.9rem,8.2vw,2.5rem)}" in home_html
+    assert "5.25rem" not in home_html
 
     pages = sorted(public.rglob("index.html"))
     assert pages
@@ -294,11 +346,15 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
         assert "content" in parser.ids, relative
         assert parser.nav_labels[0] == "Primary", relative
         assert parser.nav_labels.count("Primary") == 1, relative
-        if "Evidence policy" in parser.nav_labels:
+        if relative == Path("index.html"):
+            assert parser.nav_labels == [
+                "Primary",
+                "Evidence policy",
+                "How to read Case 001",
+            ], relative
+        elif "Evidence policy" in parser.nav_labels:
             assert parser.nav_labels == ["Primary", "Evidence policy"], relative
-            assert relative == Path("index.html") or str(relative).startswith(
-                "how-we-know/"
-            ), relative
+            assert str(relative).startswith("how-we-know/"), relative
         else:
             assert parser.nav_labels == ["Primary"], relative
         assert parser.skip_targets == ["#content"], relative
