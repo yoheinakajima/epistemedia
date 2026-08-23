@@ -1,6 +1,6 @@
 # Case 002 research: agent citation lineage
 
-Status: **v1 preflight retained as failed; v2 frozen; no answer admitted; research only**
+Status: **v1 preflight retained as failed; v2 matrix complete; source review complete; independent review pending; research only**
 
 Task: EM-0026
 
@@ -48,9 +48,11 @@ The protocol records unavailable generation, system, or retrieval settings as `u
 context excludes inherited conversation turns; it does not prove that provider system context,
 pretraining, retrieval infrastructure, or other hidden dependencies are absent.
 
-## Planned accounting
+## Captured matrix and accounting
 
-The pilot will derive, rather than type editorially:
+All eight frozen v2 slots terminated with disclosure-safe answer and trace artifacts. The raw
+artifacts have not been edited. The author-side source review derives, rather than types
+editorially:
 
 1. captured report count;
 2. cited URL count and resolving URL roots;
@@ -61,8 +63,59 @@ The pilot will derive, rather than type editorially:
 7. known and unresolved model, prompt, retrieval, URL, source, span, upstream-citation, and
    derivation dependencies.
 
+The current deterministic ledger reports:
+
+> 8 reports → 30 cited URL strings (27 usable public readbacks) → 11 source works → 14 examined
+> editions → 72 independently matched exact-span roots → 11 author-candidate warrant roots →
+> 0 independently confirmed warrant roots
+
+Those compact numbers are not a clean success funnel. The raw corpus contains 48 citation
+occurrences, 127 span occurrences, and 52 result claims. Thirty-four citation occurrences remain
+unresolved because a carrier was inaccessible, a quote did not match the independently extracted
+edition text, a supplemental file was not captured, or a review correction prevents credit. The
+three inaccessible carriers are the Wiley version-of-record URL and the cited OpenReview PDF,
+which returned HTTP 403, plus a PubMed URL that returned HTTP 203 with a cookie interstitial. PMC
+and ICLR provide readable authoritative editions for the same works, but their availability does
+not silently turn the original carrier readbacks into successes.
+
+The machine records are:
+
+- [`source-normalization-v1.json`](source-normalization-v1.json): work, edition, license,
+  dependence, claim-review, and correction decisions;
+- [`source-readbacks-v1.json`](source-readbacks-v1.json): fresh URL-level status, media type,
+  bytes, and digest without redistributed source bodies;
+- [`span-readbacks-v1.json`](span-readbacks-v1.json): one match result for each raw span
+  occurrence; and
+- [`evidence-ledger-v1.json`](evidence-ledger-v1.json): the deterministic relation ledger and
+  derived counts.
+
+Run:
+
+```bash
+python research/how-we-know/agent-citation-lineage/build_evidence_ledger.py verify
+```
+
 The eight reports are observations about the collection process. They are not eight independent
-confirmations of their answers.
+confirmations of their answers. The eleven author-candidate warrants are proposition-level roots,
+not eleven independent papers: shared task data, Jina Reader retrieval, LLM-judge methods, paper
+editions, official repositories, and supplementary artifacts remain connected in the dependence
+graph.
+
+## Corrections retained outside raw output
+
+The review records, without changing any answer bytes:
+
+- LiveResearchBench v5 is licensed CC BY-NC-SA 4.0, not CC BY 4.0 as one run stated;
+- *Cited but Not Verified* used queries from both DeepResearch Bench and BrowseComp, not only
+  DeepResearch Bench;
+- DeepResearch Bench arXiv v1 and ICLR 2026 report materially different FACT values and cannot be
+  pooled as one edition;
+- DeepTRACE Table 1 gives Gemini Deep Research citation accuracy as 50.3%, while nearby prose says
+  40.3%; the exact Gemini value is unresolved;
+- separate papers are not automatically independent when they reuse benchmark outputs, task
+  populations, extraction services, or LLM-judge methods; and
+- Mendeley landing pages were retrieved, but its credential-free file API returned 401, so
+  uncaptured supplement-file contents receive no span credit.
 
 ## Disclosure and licensing
 
@@ -75,10 +128,10 @@ the minimal attributed span needed for warrant review.
 
 ## Stop conditions
 
-The candidate fails closed if the trace cannot be captured safely, the question changes after
-collection starts, authoritative source editions cannot be re-retrieved, exact spans cannot be
-matched, URL uniqueness cannot be separated from source and warrant identity, counts cannot be
-reproduced, or an independently rooted reviewer cannot repeat the evidence checks.
+The candidate fails closed if an independently rooted reviewer cannot bind the exact branch head,
+re-retrieve the named editions, reproduce the readback and relation counts, inspect all 34
+unresolved citation occurrences, and confirm or reject each of the 11 author-candidate warrants.
+Until that happens, the independently confirmed warrant count remains mechanically fixed at zero.
 
 No file in this directory is accepted knowledge or a public Case 002 dossier merely because the
 protocol or later traces exist.

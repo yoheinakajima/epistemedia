@@ -1,0 +1,343 @@
+{
+  "capture_method": "credential-free curl GET with redirects enabled; response bodies remained outside the repository",
+  "captured_at": "2026-08-23T16:28:41Z",
+  "limitations": [
+    "A successful HTTP read proves only that this carrier returned bytes at capture time.",
+    "Wiley and OpenReview returned HTTP 403; PubMed returned HTTP 203 with a cookie-interstitial body. Alternate authoritative carriers were not substituted for their URL-level status.",
+    "Mendeley landing pages returned HTTP 200, but its credential-free file API returned HTTP 401 and no supplementary file bytes were captured."
+  ],
+  "records": [
+    {
+      "captured_bytes": 42408,
+      "captured_sha256": "3976893e82f91cc9e7826c0d2d08c6caab40778134dbab09ebbfe1f6f63f5397",
+      "edition_id": "edition:url-health-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/abs/2604.03173",
+      "resolved_url": "https://arxiv.org/abs/2604.03173",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 43848,
+      "captured_sha256": "d1b6d476b3e81460dbc8821757775a8fa589e0579b77167ef0f33d35cb819cb5",
+      "edition_id": "edition:cnv-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/abs/2605.06635",
+      "resolved_url": "https://arxiv.org/abs/2605.06635",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 43218,
+      "captured_sha256": "c3efca0e3c20c437e63b3a990c85b2392f0244d3dc8194312a8394923a16cbec",
+      "edition_id": "edition:citation-verifier-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/abs/2607.08700",
+      "resolved_url": "https://arxiv.org/abs/2607.08700",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 352002,
+      "captured_sha256": "9aa2894dbeaac30b23e7ffc8107a7f53b6e3855c8511838551de5bd7a422cc42",
+      "edition_id": "edition:drbench-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2506.11763",
+      "resolved_url": "https://arxiv.org/html/2506.11763",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 352002,
+      "captured_sha256": "9aa2894dbeaac30b23e7ffc8107a7f53b6e3855c8511838551de5bd7a422cc42",
+      "edition_id": "edition:drbench-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2506.11763v1",
+      "resolved_url": "https://arxiv.org/html/2506.11763v1",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 280402,
+      "captured_sha256": "c080d7304274d70a39651f49297cc65910ca833d7ee6a3de3052370733e44ee3",
+      "edition_id": "edition:researcherbench-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2507.16280",
+      "resolved_url": "https://arxiv.org/html/2507.16280",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 157386,
+      "captured_sha256": "055e568189a402dd510c7c84be60f59465d9a001808936bc25cb0026ac25d267",
+      "edition_id": "edition:reportbench-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2508.15804",
+      "resolved_url": "https://arxiv.org/html/2508.15804",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 157386,
+      "captured_sha256": "055e568189a402dd510c7c84be60f59465d9a001808936bc25cb0026ac25d267",
+      "edition_id": "edition:reportbench-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2508.15804v1",
+      "resolved_url": "https://arxiv.org/html/2508.15804v1",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 364455,
+      "captured_sha256": "0c28edecaedd882584e985caac1e14f4a03dd59e939e17ae755a3c5e07ae42b0",
+      "edition_id": "edition:deeptrace-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2509.04499",
+      "resolved_url": "https://arxiv.org/html/2509.04499",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 364455,
+      "captured_sha256": "0c28edecaedd882584e985caac1e14f4a03dd59e939e17ae755a3c5e07ae42b0",
+      "edition_id": "edition:deeptrace-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2509.04499v1",
+      "resolved_url": "https://arxiv.org/html/2509.04499v1",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 302498,
+      "captured_sha256": "332e5b5cb4b0ee7065b1bbc30436dfdfeafca8130fb87e32b0020026d8bbafe1",
+      "edition_id": "edition:url-health-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2604.03173",
+      "resolved_url": "https://arxiv.org/html/2604.03173",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 302498,
+      "captured_sha256": "332e5b5cb4b0ee7065b1bbc30436dfdfeafca8130fb87e32b0020026d8bbafe1",
+      "edition_id": "edition:url-health-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2604.03173v1",
+      "resolved_url": "https://arxiv.org/html/2604.03173v1",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 138385,
+      "captured_sha256": "7c5e3c33f3122b07d176e6679cd6762a95a6babaf4a353686f019f905b5526ca",
+      "edition_id": "edition:cnv-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2605.06635",
+      "resolved_url": "https://arxiv.org/html/2605.06635",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 138385,
+      "captured_sha256": "7c5e3c33f3122b07d176e6679cd6762a95a6babaf4a353686f019f905b5526ca",
+      "edition_id": "edition:cnv-arxiv-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/html/2605.06635v1",
+      "resolved_url": "https://arxiv.org/html/2605.06635v1",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 1566914,
+      "captured_sha256": "1571435270d3e781ab8d5254913af00a7dcf0efcb99ec8e6d3db87a7b5c92f02",
+      "edition_id": "edition:researcherbench-arxiv-v1",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/pdf/2507.16280",
+      "resolved_url": "https://arxiv.org/pdf/2507.16280",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 729607,
+      "captured_sha256": "90730ad75011d460305caf45a5be33b1b5eb4126f7e7efc1506f63beda1f91d3",
+      "edition_id": "edition:reportbench-arxiv-v1",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/pdf/2508.15804",
+      "resolved_url": "https://arxiv.org/pdf/2508.15804",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 13057891,
+      "captured_sha256": "579b9728b76cfd242e9c94d9ff2985e196bbc72b5a741030e4f308ede04a4f69",
+      "edition_id": "edition:liveresearchbench-arxiv-v5",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/pdf/2510.14240v5",
+      "resolved_url": "https://arxiv.org/pdf/2510.14240v5",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 416944,
+      "captured_sha256": "e8145a9f62f2a2bf0c5f3e2607160c56e010d02da965b5f65dbfa8f07ddde06c",
+      "edition_id": "edition:url-health-arxiv-v1",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/pdf/2604.03173",
+      "resolved_url": "https://arxiv.org/pdf/2604.03173",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 1424589,
+      "captured_sha256": "db5b7b7e3d9ce9fc6d6713b60f65f0d81b07090ded2a28be7f541d1c290230b5",
+      "edition_id": "edition:cnv-arxiv-v1",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "redirect_chain": [],
+      "requested_url": "https://arxiv.org/pdf/2605.06635",
+      "resolved_url": "https://arxiv.org/pdf/2605.06635",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 115612,
+      "captured_sha256": "da6308937337b2dfd3f97dc62f817e4a7ec362329ede0fce4c9bcdfd99ad93b1",
+      "edition_id": "edition:keplinger-supplement-v1",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://data.mendeley.com/datasets/3s73z9zf3c/1",
+      "resolved_url": "https://data.mendeley.com/datasets/3s73z9zf3c/1",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 116951,
+      "captured_sha256": "0a2c4c6ed54dd7e2e0ca6cc07aa19b18fa1439e506c2310db778094282d2cebc",
+      "edition_id": "edition:keplinger-supplement-v2",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://data.mendeley.com/datasets/3s73z9zf3c/2",
+      "resolved_url": "https://data.mendeley.com/datasets/3s73z9zf3c/2",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 3678399,
+      "captured_sha256": "8fbf30398f5e62f8839f0c9c8609bbb9e3cd0b57ae27d4bf33cb5db2007d1118",
+      "edition_id": "edition:drbench-arxiv-v1",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "redirect_chain": [],
+      "requested_url": "https://deepresearch-bench.github.io/static/papers/deepresearch-bench.pdf",
+      "resolved_url": "https://deepresearch-bench.github.io/static/papers/deepresearch-bench.pdf",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 373533,
+      "captured_sha256": "ec9a4efdb736c6b5ec198cfbc5534eb67b5d421efa12cf795d7990be6c1e3b54",
+      "edition_id": "edition:drbench-repo-main-469cce5",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://github.com/Ayanami0730/deep_research_bench",
+      "resolved_url": "https://github.com/Ayanami0730/deep_research_bench",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 5498,
+      "captured_sha256": "d74c1891ae09a2b89121f2a60ac837c89761a8086759e45db214ca68c1905cea",
+      "edition_id": "edition:keplinger-vor-2025",
+      "http_status": 403,
+      "media_type": "text/html; charset=UTF-8",
+      "redirect_chain": [],
+      "requested_url": "https://onlinelibrary.wiley.com/doi/10.1111/jdv.70035",
+      "resolved_url": "https://onlinelibrary.wiley.com/doi/10.1111/jdv.70035",
+      "retrieval_status": "inaccessible"
+    },
+    {
+      "captured_bytes": 12692,
+      "captured_sha256": "a2d811e0d24af89d9bd4b19cc9e8fbc474c67ef3827648550a6560eca2a5e332",
+      "edition_id": "edition:drbench-iclr-2026",
+      "http_status": 403,
+      "media_type": "text/html",
+      "redirect_chain": [],
+      "requested_url": "https://openreview.net/pdf?id=hQ0K2Hhq7H",
+      "resolved_url": "https://openreview.net/pdf?id=hQ0K2Hhq7H",
+      "retrieval_status": "inaccessible"
+    },
+    {
+      "captured_bytes": 111993,
+      "captured_sha256": "abbaa9f22035230d13152a68aaeecd8e83e40867c9dae4acd1d547e36c866793",
+      "edition_id": "edition:keplinger-vor-2025",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109748/",
+      "resolved_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109748/",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 2665857,
+      "captured_sha256": "8f80ce247f7cc355bb6773f36037e01cc3ba2e2082c77381eaadf0d2b92b021c",
+      "edition_id": "edition:drbench-iclr-2026",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "redirect_chain": [],
+      "requested_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/465f22be10e07b301c6ed58f0472f704-Paper-Conference.pdf",
+      "resolved_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/465f22be10e07b301c6ed58f0472f704-Paper-Conference.pdf",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 2982839,
+      "captured_sha256": "dea4981c1066d0240a005f603b3b14419c7e32beb5191b3df847ceb26af3d6b6",
+      "edition_id": "edition:deeptrace-iclr-2026",
+      "http_status": 200,
+      "media_type": "application/pdf",
+      "redirect_chain": [],
+      "requested_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf",
+      "resolved_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 10137,
+      "captured_sha256": "5457daae5b00c1c4105a9c80f5eb39a4027d79a70702071cc2892a00eb27e05d",
+      "edition_id": "edition:deeptrace-iclr-2026",
+      "http_status": 200,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ad08767706825033b99122332293033d-Abstract-Conference.html",
+      "resolved_url": "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ad08767706825033b99122332293033d-Abstract-Conference.html",
+      "retrieval_status": "retrieved"
+    },
+    {
+      "captured_bytes": 5565,
+      "captured_sha256": "a46109544fe4ff4504fab5e97abea3cb7172367aba54a308937386394f0ff046",
+      "edition_id": "edition:keplinger-vor-2025",
+      "http_status": 203,
+      "media_type": "text/html; charset=utf-8",
+      "redirect_chain": [],
+      "requested_url": "https://pubmed.ncbi.nlm.nih.gov/40904191/",
+      "resolved_url": "https://pubmed.ncbi.nlm.nih.gov/40904191/",
+      "retrieval_status": "inaccessible"
+    }
+  ],
+  "schema": "https://epistemedia.org/research/source-readbacks-v1.json",
+  "task_id": "EM-0026"
+}
