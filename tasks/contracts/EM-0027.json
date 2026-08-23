@@ -1,0 +1,64 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0027",
+  "title": "Map primary-source readiness for the next How We Know library",
+  "status": "ready",
+  "change_class": "research",
+  "objective": "In parallel with Case 002 setup, independently verify the primary-source identity, availability, licensing, claim boundary, likely dependence structure, counterevidence seeds, and bounded corpus feasibility for the GPT-4 bar-exam percentile, Mehrabian 7-38-55, and fact-check-effectiveness candidate cases without producing or admitting a dossier.",
+  "depends_on": [
+    "EM-0025"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "research/how-we-know/library-preliminary/**",
+      "docs/execution-plans/EM-0027.md",
+      "docs/research/how-we-know-library-preliminary.md",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "README.md",
+      "docs/product-direction.md",
+      "docs/editorial/**"
+    ]
+  },
+  "required_evaluation": [
+    "primary or authoritative work, DOI, edition, and publication-identity verification for each candidate",
+    "credential-free access, open-access or quotation boundary, license, snapshot, and stable-retrieval assessment",
+    "circulated proposition versus tested or reported proposition comparison",
+    "known, shared, and unresolved data, method, author, material, citation, comparison-class, and derivation-lineage mapping",
+    "active counterevidence, qualification, correction, reply, and supersession seed search",
+    "bounded corpus-size and review-cost estimate with explicit uncertainty",
+    "fresh-clone independent review of source identities and every go, hold, or fail recommendation",
+    "full deterministic make check, disclosure audit, exact path-scope comparison, and clean tracked state"
+  ],
+  "acceptance": [
+    "three separate preliminary packets cover GPT-4 bar-exam percentile, Mehrabian 7-38-55, and fact-check effectiveness without combining them into one dossier or one evidentiary count",
+    "each packet distinguishes verified source identity and access facts from unverified retrieval leads, interpretation, expected topology, and editorial recommendation",
+    "the GPT-4 packet checks the original model report, underlying score study, authoritative comparison-population data, the Martinez re-analysis, and the provenance of the top-10-percent derivation",
+    "the Mehrabian packet checks both 1967 primary studies, the cross-study combination step, the author's later public qualification, and a bounded sample of current recirculation while keeping the circulated and tested propositions separate",
+    "the fact-check packet checks the four-country experiment, broad evidence review, 2023 science-misinformation meta-analysis, 2025 reply, durability and behavior boundaries, and source-program overlap with Case 001",
+    "each packet records exact URLs, identifiers, retrieval dates, media types, access status, license or quotation treatment, and unresolved artifacts without inventing missing values",
+    "each packet ends with a provisional go, hold, or fail recommendation tied to source closure, corpus size, risk, and machinery value rather than perceived importance",
+    "reported numbers from prior model-generated notes receive no evidentiary credit until independently read from an authoritative source",
+    "the work retains negative searches, inaccessible sources, conflicting identities, and unresolved derivations",
+    "no candidate is described as researched, accepted, reviewed, settled, published, or ready to feature merely because preliminary mapping succeeded",
+    "the result remains preliminary research and does not alter the public catalog, Case 001, application code, policies, workflows, or generated outputs",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "Only credential-free public reads are authorized; do not create accounts, accept provider terms, use secrets, purchase access, or initiate billable research services.",
+    "This task records source readiness and candidate topology, not complete literature reviews, effect-size estimates, verdicts, or admission receipts.",
+    "Copyrighted works may be represented by metadata, access receipts, digests where available, and quote-minimal fair-use spans; do not commit unauthorized full text.",
+    "The three candidates may be researched in parallel, but their source artifacts, conclusions, lineages, and recommendations must remain independently reviewable.",
+    "No agent trace pilot, dossier construction, feature selection, policy change, compiler change, workflow mutation, deployment, publication, DNS action, package release, or spend is authorized."
+  ]
+}

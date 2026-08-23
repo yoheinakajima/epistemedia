@@ -1,0 +1,68 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0026",
+  "title": "Research Case 002 through a public agent-citation trace pilot",
+  "status": "ready",
+  "change_class": "research",
+  "objective": "Select and freeze one low-risk public research question about citation warrant in deep-research agents, capture a bounded public-by-design matrix of context-isolated agent answers, resolve every cited URL and exact source span, model retrieval and warrant dependence without granting run-level independence, and produce either a reviewable Case 002 research candidate or an explicit negative result.",
+  "depends_on": [
+    "EM-0025"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "research/how-we-know/agent-citation-lineage/**",
+      "docs/execution-plans/EM-0026.md",
+      "docs/research/case-002-agent-citation-lineage.md",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "README.md",
+      "docs/product-direction.md",
+      "docs/editorial/**"
+    ]
+  },
+  "required_evaluation": [
+    "pre-run target decision against stability, public-interest, medical, political, personal, and vendor-volatility exclusions",
+    "exact prompt, system context, model profile, tool configuration, capture time, run status, and public-disclosure review for every trace",
+    "source URL, redirect, retrieval, work, edition, exact span, license, and snapshot verification",
+    "claim-to-span warrant review including modality, causality, scope, time, population, and numerical-strengthening checks",
+    "model, prompt, retrieval, URL, source-work, edition, span, upstream-citation, and derivation dependence review",
+    "reproduction of every proposed report, URL, source, span, warrant, invalid-citation, and unresolved count from captured records",
+    "negative-result and failed-run retention",
+    "fresh-clone independent review using newly retrieved public source editions rather than authoring-agent conclusions",
+    "full deterministic make check, disclosure audit, exact path-scope comparison, and clean tracked state"
+  ],
+  "acceptance": [
+    "a target-decision record freezes one exact question and explains why it is narrow, public, low-risk, reasonably stable, and suitable for testing citation warrant before any agent trace is generated",
+    "the exact public trace prompt asks for concrete rates, definitions, and primary sources concerning whether deep-research-agent citations warrant the claims made from them without presupposing the answer",
+    "the run matrix contains exactly eight public-by-design context-isolated captures: four on each of two available Codex runtime profiles, all using the same frozen prompt and no inherited conversation context",
+    "every run records the requested model profile and any unavailable generation or retrieval setting as unknown rather than inferred",
+    "failed, refused, empty, malformed, or incomplete runs remain in the packet and do not get silently rerun or replaced",
+    "no captured answer is counted as independent evidence merely because it came from another run, agent name, or runtime profile",
+    "each citation is resolved separately into URL, source work, examined edition, exact span, supported proposition, and declared dependence dimensions",
+    "citations that do not resolve, cannot be retrieved, or support a weaker proposition remain visible and receive no independent warrant credit",
+    "raw report count, resolving URL roots, source-work roots, exact-span roots, warrant roots, invalid citations, and unresolved citations are relation-derived rather than editorially typed",
+    "the packet never claims a universal property of all agents from this bounded pilot",
+    "source and agent-output storage is disclosure-safe and license-aware; restricted source works use metadata, digests where available, and quote-minimal attributed spans rather than redistributed full text",
+    "an independently rooted reviewer reproduces trace identities, source readbacks, span matches, dependence relations, and every displayed count or the candidate fails closed",
+    "the result remains research-only and is not admitted, featured, published, or deployed by this task",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "The pilot may use only the existing Codex runtime and credential-free public retrieval; no new account, paid third-party API, secret, browser session, or external provider authorization is permitted.",
+    "The eight-run matrix is a methodological probe, not a representative sample of agents, models, prompts, retrieval systems, or the public web.",
+    "The two Codex runtime profiles must not be described as different model families or independent epistemic observers.",
+    "Public-by-design captures may include the frozen prompt, final answer, citations, and declared tool outputs, but never hidden reasoning, private conversation context, credentials, personal data, or restricted system material.",
+    "No Case 002 dossier admission, feature manifest, application policy change, compiler change, workflow mutation, deployment, publication, DNS action, package release, or spend is authorized.",
+    "If the environment cannot capture exact public traces or re-retrieve authoritative source spans, record the gap and stop rather than substituting summaries or inferred evidence."
+  ]
+}
