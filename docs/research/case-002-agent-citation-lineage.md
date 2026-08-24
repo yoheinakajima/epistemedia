@@ -70,7 +70,7 @@ canonical proposition.
 EM-0029 deterministically projects the accepted packet into
 [`candidate-dossier.json`](../../research/how-we-know/agent-citation-lineage/candidate-dossier.json).
 Its content address is
-`em:dossier:sha256:872970468e9e870912c938899f4ee505a6a71979f73c694ee3af036b47319f10`.
+`em:dossier:sha256:cbd7a14096a956f642f5c76046d3b49ed648fbe6bf24144c992404a01415af82`.
 That ID binds candidate bytes; it is not an acceptance or publication receipt.
 
 The candidate keeps distinct:
@@ -88,6 +88,12 @@ resolution and claim-to-source support, while report agreement adds no independe
 the inspected lineages. The skeptical reading says this pilot cannot estimate present-day agent
 reliability because the sample is not representative and the unresolved/no-credit set is material.
 Both are policy-relative evaluations of the same source graph, not competing source packets.
+
+The first exact-head review found two true but incompletely exposed qualifications. The forward
+candidate therefore adds three quote-minimal review-supplement spans: DeepTRACE's `50.3%` table
+cell, its conflicting `40.3%` prose, and the URL-health paper's statement that DRBench supplied
+pre-collected model outputs. These spans close the affected sentences but remain separately typed;
+they do not turn the accepted 72 EM-0026 exact-span roots into 75 evidence roots.
 
 ## Material corrections and negative results
 

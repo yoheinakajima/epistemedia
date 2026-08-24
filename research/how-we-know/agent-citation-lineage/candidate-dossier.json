@@ -190,7 +190,7 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-23T18:33:06Z",
-      "id": "em:dossier-assertion:sha256:18d1bf3fa900d5915dbafe2a40a506df649d421d4cc5a355706c90cccb83b4a9",
+      "id": "em:dossier-assertion:sha256:b041cab9ed6954b90c0160b9679e6b36a6048e41734b20e431c3875574dbaee9",
       "key": "assertion-deeptrace-support-variation-de1dfdaff3",
       "lineage_key": "lineage-deeptrace-support-variation-de1dfdaff3",
       "proposition_key": "prop-deeptrace-support-variation-de1dfdaff3",
@@ -202,7 +202,9 @@
         "span-a08468cb62f2feb21d9cbb95175ce00f54592bd83573cc91-03f65cfa45",
         "span-a15ab02e9fcb23df02fb03d28967d4220ddf65ad380d2230-ddf85fa359",
         "span-aa1534ce2e177153ab85e512deb8d064d14ec1eae16d8032-2299096a09",
-        "span-e2c9f6220843a04665f5d1cd142ac15f04211ace5c579fa6-c5e0476df0"
+        "span-e2c9f6220843a04665f5d1cd142ac15f04211ace5c579fa6-c5e0476df0",
+        "span-supplement-deeptrace-gemini-prose-40-3-ed29752a6f",
+        "span-supplement-deeptrace-gemini-table-50-3-7eb7bd254b"
       ],
       "stance": "asserts",
       "visibility": "public"
@@ -253,14 +255,15 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-23T18:33:06Z",
-      "id": "em:dossier-assertion:sha256:a6ba92de61644702cd7774baa683648b148e17908df069928ee4b93f7ea6f63d",
+      "id": "em:dossier-assertion:sha256:c1b99004fca0476c7c180f7ea829071b94278f2a2b5754678d316d098fe19c6b",
       "key": "assertion-url-health-resolution-9fcccc534a",
       "lineage_key": "lineage-url-health-resolution-9fcccc534a",
       "proposition_key": "prop-url-health-resolution-9fcccc534a",
       "span_keys": [
         "span-55de6a6ca9414a252592e9f77544a9259533dd713ce1f12f-0826216ffc",
         "span-a18e778fac3d49e81167f05e09fbc361e91af8c0c01b0fec-ca1b18e206",
-        "span-bb62928b5e0cb4e373b2f6bfeb579d8564d05da5588f8b15-771310f4ef"
+        "span-bb62928b5e0cb4e373b2f6bfeb579d8564d05da5588f8b15-771310f4ef",
+        "span-supplement-url-health-drbench-precollected-outputs-44923dff13"
       ],
       "stance": "asserts",
       "visibility": "public"
@@ -521,7 +524,7 @@
       "visibility": "public"
     }
   ],
-  "dossier_id": "em:dossier:sha256:872970468e9e870912c938899f4ee505a6a71979f73c694ee3af036b47319f10",
+  "dossier_id": "em:dossier:sha256:cbd7a14096a956f642f5c76046d3b49ed648fbe6bf24144c992404a01415af82",
   "editions": [
     {
       "content": {
@@ -577,12 +580,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "citation-verifier.txt"
       },
-      "content_digest": "sha256:896e928d4fd0271c8e6a04af5bfcb65adbfce6b31658b70242cbf99a5765325f",
-      "content_length": 1879,
+      "content_digest": "sha256:837372b8c39f6d1cf4459dd4969695c2c8bba340dfa1cfd9e1bd5e0015a1eec7",
+      "content_length": 1903,
       "edition_label": "Quote-minimal projection of edition:citation-verifier-arxiv-v1",
-      "id": "em:dossier-edition:sha256:e176863199410afc1d000912b423d04b97f5620dd55b408cc26c53724a3d7953",
+      "id": "em:dossier-edition:sha256:11f00fc6576322cec62671d5ff7dec3c0c9bed06c139e6f704054259b06241c4",
       "key": "edition-citation-verifier-arxiv-v1-acfd4abab7",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -775,12 +779,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "cited-not-verified.txt"
       },
-      "content_digest": "sha256:c19e2ed72eb82d373939c3964c30443dfdccdc416cd3b900cfe49db10d5c336e",
-      "content_length": 7121,
+      "content_digest": "sha256:90da1e5adccef8448150bd162daa5cdc08d01bfab5142d92de6aee947a79e58b",
+      "content_length": 7145,
       "edition_label": "Quote-minimal projection of edition:cnv-arxiv-v1",
-      "id": "em:dossier-edition:sha256:1e878e4edf2fd09551c13961e3a0570250c8ff75c2f980801e0293f57764769d",
+      "id": "em:dossier-edition:sha256:601f0e4510819607265b94c8261884c072d559e63de9f71dbfc6bca5d33c5e29",
       "key": "edition-cnv-arxiv-v1-f24001c50a",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -841,12 +846,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "deeptrace-v1.txt"
       },
-      "content_digest": "sha256:1870b119d41edf084d07c5480e0ce4eddf46ea914d94c3ce7cff25b334e64091",
-      "content_length": 1911,
+      "content_digest": "sha256:07a6f7e0282d888bc9157436b17fbde6286fb934b0efafd23399eebb7a22fa5d",
+      "content_length": 1935,
       "edition_label": "Quote-minimal projection of edition:deeptrace-arxiv-v1",
-      "id": "em:dossier-edition:sha256:7c923be19ea0b984d06e7f834916c69d2bf5fa47f422d56e7b82a49884467382",
+      "id": "em:dossier-edition:sha256:c7779c770aa24aa5925b5fe6e66f968c733e8522d30bcdc4290bc9409bbe8b5b",
       "key": "edition-deeptrace-arxiv-v1-70a6e720c1",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -951,12 +957,50 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [
+          {
+            "canonical_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf",
+            "carrier": {
+              "bytes": 2982839,
+              "media_type": "application/pdf",
+              "sha256": "dea4981c1066d0240a005f603b3b14419c7e32beb5191b3df847ceb26af3d6b6"
+            },
+            "edition_id": "edition:deeptrace-iclr-2026",
+            "extent": "Gemini(DR) demonstrates weak citation performance: only 40.3% citation accuracy",
+            "license_treatment": "metadata, digest, and quote-minimal attributed spans only",
+            "locator": "printed page 10; PDF page index 10/22; Section 4 Results; Deep Research Agents paragraph",
+            "role": "qualification-only",
+            "supplement_id": "supplement:deeptrace-gemini-prose-40-3",
+            "warrant_id": "warrant:deeptrace-support-variation",
+            "work_id": "work:deeptrace"
+          },
+          {
+            "canonical_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf",
+            "carrier": {
+              "bytes": 2982839,
+              "media_type": "application/pdf",
+              "sha256": "dea4981c1066d0240a005f603b3b14419c7e32beb5191b3df847ceb26af3d6b6"
+            },
+            "edition_id": "edition:deeptrace-iclr-2026",
+            "extent": {
+              "cell": "50.3",
+              "column": "Gemini (DR)",
+              "row": "%Citation Accuracy"
+            },
+            "license_treatment": "metadata, digest, and quote-minimal attributed spans only",
+            "locator": "printed page 9; PDF page index 9/22; Table 1; Gemini (DR) column; %Citation Accuracy row",
+            "role": "qualification-only",
+            "supplement_id": "supplement:deeptrace-gemini-table-50-3",
+            "warrant_id": "warrant:deeptrace-support-variation",
+            "work_id": "work:deeptrace"
+          }
+        ],
         "source_text_file": "deeptrace-iclr.txt"
       },
-      "content_digest": "sha256:519143ff8a1a282202e91f69bf7125c5065da52eaf88321d23bb1102e480cad7",
-      "content_length": 4152,
+      "content_digest": "sha256:0e0c4dd57c80c2ab32707ec1b17eda3ea21fc75ec4ce5191875446912649b545",
+      "content_length": 5645,
       "edition_label": "Quote-minimal projection of edition:deeptrace-iclr-2026",
-      "id": "em:dossier-edition:sha256:bc48a0084fa992fb0adcf3cf03a2f872ea45935ad318813a16ba3bd01339dba9",
+      "id": "em:dossier-edition:sha256:1a587168a59e161ea083b7b289339c5f41444a26f2f82a2eb8acb43b27367f70",
       "key": "edition-deeptrace-iclr-2026-b2b153eaa6",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1149,12 +1193,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "drbench-v1.txt"
       },
-      "content_digest": "sha256:dba645d7cf57990ea3144ec560cab7cdda6d1d5aa7e17c4cf2822efaa5df3f95",
-      "content_length": 7357,
+      "content_digest": "sha256:023aac7d22e7ca1230e2ffa237a4ea24c9f69f8b27653ddb6a494d4a30e4331c",
+      "content_length": 7381,
       "edition_label": "Quote-minimal projection of edition:drbench-arxiv-v1",
-      "id": "em:dossier-edition:sha256:841a63dc4f7b0f88f67b894f8d544a9572f3e01196b5eed1705531c22578c073",
+      "id": "em:dossier-edition:sha256:c0f1d83abed0c9adcc86259b5bfe38e3f18b290f25227b5b9e77c99322fe0b2c",
       "key": "edition-drbench-arxiv-v1-7afa5ade36",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1226,12 +1271,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "drbench-iclr.txt"
       },
-      "content_digest": "sha256:faf2c4ca07ec84f1f0cc9c326bad98f41fafcb33671d563a52bbcc776cd876b8",
-      "content_length": 2586,
+      "content_digest": "sha256:02f53bf5ae17ab2bffc25ba8dd5ca912d35b85ae6ae78a202cd79fe7f7efe25f",
+      "content_length": 2610,
       "edition_label": "Quote-minimal projection of edition:drbench-iclr-2026",
-      "id": "em:dossier-edition:sha256:61b4a5b484c2d777eb4529d6ddd8a86e8b462f877bf9085e8db07f11df9d7a1c",
+      "id": "em:dossier-edition:sha256:47d8d33326a498097021dc5754365cbb8f5abfd3e628e90908d2342f0b6c7cf1",
       "key": "edition-drbench-iclr-2026-d00a3dcdb6",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1303,12 +1349,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "drbench-repo.txt"
       },
-      "content_digest": "sha256:56463b3b180ade6b28f81dc6ff189ffb9a3cffd8581d37aea75d3c5534437114",
-      "content_length": 2675,
+      "content_digest": "sha256:35350075b3514f668c0deddb5bd4850ec31c7bfda2cf1e363995d68c580fe81b",
+      "content_length": 2699,
       "edition_label": "Quote-minimal projection of edition:drbench-repo-main-469cce5",
-      "id": "em:dossier-edition:sha256:6dd5b653b26de6ac855c3b4eff39c696245fcffd4f5382ff4805aba0a8cd531b",
+      "id": "em:dossier-edition:sha256:bf5c65b640b321fb75bf8b7f96854f151f834a7d31a2fc9d2bfb783852e7262b",
       "key": "edition-drbench-repo-main-469cce5-4f8964f3e3",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1347,12 +1394,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "mendeley-v1.txt"
       },
-      "content_digest": "sha256:81d861a5c10ed3a3d582dd7a9ddf0d00b5cfd4e4dbc96a3891bb9b13e40c9193",
-      "content_length": 1088,
+      "content_digest": "sha256:0a485e13dcc56e5f883213fde7e24bdcc4ffb810bda8ac95186f83f6325fafd1",
+      "content_length": 1112,
       "edition_label": "Quote-minimal projection of edition:keplinger-supplement-v1",
-      "id": "em:dossier-edition:sha256:9406c94cf4801f1304111021e6afffcd78116284cef623907a2b15634e225fd7",
+      "id": "em:dossier-edition:sha256:8c80a50cd40cbb31bdaedb6730e8e173e3edc0f3440538dbcc4878eb0997ffd9",
       "key": "edition-keplinger-supplement-v1-f6ddb4c04a",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1391,12 +1439,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "mendeley-v2-page.txt"
       },
-      "content_digest": "sha256:5f0eab79cfebb916782edf98553b8630a2ec01a43793e2fd3a9ed688a4a0b5c8",
-      "content_length": 1256,
+      "content_digest": "sha256:945e14af08757c25cdbcfe2d9724c092f2cbc668a2a9ff0d991dbedf4d12277b",
+      "content_length": 1280,
       "edition_label": "Quote-minimal projection of edition:keplinger-supplement-v2",
-      "id": "em:dossier-edition:sha256:47c952ba4dac3084f91fe82639461ae1280911f8f4e9f33af178db58073fffdc",
+      "id": "em:dossier-edition:sha256:dca82f9514bbd76d7afb655b2fe3d11d98dc6950b90c3065d81afa335bd86418",
       "key": "edition-keplinger-supplement-v2-01e44c09d8",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1534,12 +1583,13 @@
             "retrieval_status": "inaccessible"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "keplinger.txt"
       },
-      "content_digest": "sha256:e381373a02d78bf9d33c084c8aa6f3dc3ff0ac4bc9cc48a92f0bb74deb71b923",
-      "content_length": 5438,
+      "content_digest": "sha256:98431c96e776a0502a6387574529817629ca50e164d8cd4e7f6997215ec7e097",
+      "content_length": 5462,
       "edition_label": "Quote-minimal projection of edition:keplinger-vor-2025",
-      "id": "em:dossier-edition:sha256:0a9fc3add58555e7c02a04dae8f0b1bc180247c1fdeac0a4bd79ef166325b489",
+      "id": "em:dossier-edition:sha256:ecbbc5366e2c53ebf6358f0f4c06b7076e158210edd3a081f16af7ab0b029761",
       "key": "edition-keplinger-vor-2025-10ba10f860",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1589,12 +1639,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "liveresearchbench.txt"
       },
-      "content_digest": "sha256:08738b8df64e91c2489afeda880590071c398aad61c6bbdbfd995d75591553cf",
-      "content_length": 1777,
+      "content_digest": "sha256:57db6f35bb09eae11b6993da86a1eb3a898d604a15466d02e40d2e7efeb803dd",
+      "content_length": 1801,
       "edition_label": "Quote-minimal projection of edition:liveresearchbench-arxiv-v5",
-      "id": "em:dossier-edition:sha256:eeeeea454517486cf5ecfc77d3f218dca016166627766aae4d170c1f2ba51c15",
+      "id": "em:dossier-edition:sha256:73c767cab5707e7c87ea4cb96cc6a3434512ae75363371f6d0aad2a365c4e11c",
       "key": "edition-liveresearchbench-arxiv-v5-f5644763e5",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1743,12 +1794,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "reportbench.txt"
       },
-      "content_digest": "sha256:2065e25d52c56b6b841d4781a1bed37b48d915e93c7192014c2ea41d5e91e191",
-      "content_length": 5402,
+      "content_digest": "sha256:e13193419b2e087faabf99c51b27acf1a58919072019e4197c41c279354eb2f8",
+      "content_length": 5426,
       "edition_label": "Quote-minimal projection of edition:reportbench-arxiv-v1",
-      "id": "em:dossier-edition:sha256:d2e49b7e5f6c8feadad6f007cccf5671fc6ae2d0056e59f21c08fcd1062d40e9",
+      "id": "em:dossier-edition:sha256:c674e09fbcbadea10ca1f9c3bb17f5573f020fbc209410c85f3c8f56d53255b6",
       "key": "edition-reportbench-arxiv-v1-25888dc44b",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1820,12 +1872,13 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [],
         "source_text_file": "researcherbench.txt"
       },
-      "content_digest": "sha256:4cb542cb425501084ce1ce052ed33854e9141ca0928c5b1cf3038cb1fd49c290",
-      "content_length": 2621,
+      "content_digest": "sha256:dcf32e9c1c1a5f7a8517fc73c90e5d577ad4580919c45167ab12cba18d3db5dd",
+      "content_length": 2645,
       "edition_label": "Quote-minimal projection of edition:researcherbench-arxiv-v1",
-      "id": "em:dossier-edition:sha256:58a2df3fb8c9d4bb50120f050989279181bb41622395cc349a134b8659729c89",
+      "id": "em:dossier-edition:sha256:e1cb847e48cc813a003705644839d51e54af0b84d06e0f8419d14a03764b93cd",
       "key": "edition-researcherbench-arxiv-v1-39a8b256d7",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1941,12 +1994,30 @@
             "retrieval_status": "retrieved"
           }
         ],
+        "review_supplements": [
+          {
+            "canonical_url": "https://arxiv.org/html/2604.03173v1",
+            "carrier": {
+              "bytes": 302498,
+              "media_type": "text/html; charset=utf-8",
+              "sha256": "332e5b5cb4b0ee7065b1bbc30436dfdfeafca8130fb87e32b0020026d8bbafe1"
+            },
+            "edition_id": "edition:url-health-arxiv-v1",
+            "extent": "DRBench (17) comprises 100 multilingual research queries (Chinese and English) covering finance, science, and technology, with pre-collected outputs from 23 models.",
+            "license_treatment": "quote-minimal attributed spans",
+            "locator": "Section 3 Experimental setup; Section 3.1 Datasets; section#S3.SS1; paragraph p#S3.SS1.p1.1",
+            "role": "dependence-qualification-only",
+            "supplement_id": "supplement:url-health-drbench-precollected-outputs",
+            "warrant_id": "warrant:url-health-resolution",
+            "work_id": "work:url-health"
+          }
+        ],
         "source_text_file": "urlhealth.txt"
       },
-      "content_digest": "sha256:4fb8281c1e056b54d6765d31a389b90df789d1da4af1dc8e18e0413dbccc0479",
-      "content_length": 4049,
+      "content_digest": "sha256:37bffd052d581c627c32d65958b6037bebdc9a9c4cf1bef8376499fb0caa5bb7",
+      "content_length": 4828,
       "edition_label": "Quote-minimal projection of edition:url-health-arxiv-v1",
-      "id": "em:dossier-edition:sha256:475c2a23c2f824458f83793b794c143ccccdb67ada0335b5bfa30def84af683b",
+      "id": "em:dossier-edition:sha256:89224c483a2c88c51351393bd2ae482b8f2642a27b621c5a7a1401b05fe86b2f",
       "key": "edition-url-health-arxiv-v1-85fb934b53",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -1959,6 +2030,8 @@
         "accepted_ledger_sha256": "29034edff99ae40f03d244998ee1d238917ac387422dea221b80897c94d556b3",
         "accepted_review_path": "research/how-we-know/agent-citation-lineage/independent-review-receipt.json",
         "accepted_review_sha256": "aadc83de7c4a57b60593124917bbb5fedd5e64c7aa50db3d71b4817626532ae4",
+        "accepted_source_readbacks_path": "research/how-we-know/agent-citation-lineage/source-readbacks-v1.json",
+        "accepted_source_readbacks_sha256": "58dd334d395fda27e04f2f692d2ad7278d12224fe5e03947b963671871609146",
         "candidate_warrants": [
           {
             "canonical_proposition": "In one five-system dermatology-review audit, reference identifiability and metadata correctness did not establish sentence-level claim-citation concordance.",
@@ -4674,6 +4747,7 @@
           "unsupported_or_force_raised_claims": 20
         },
         "disposition_counts": {
+          "em0029_review_supplement_spans": 3,
           "independently_rejected_claim_occurrences": 9,
           "pending_warrant_roots": 4
         },
@@ -5186,6 +5260,8 @@
           "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf",
           "https://proceedings.iclr.cc/paper_files/paper/2026/hash/ad08767706825033b99122332293033d-Abstract-Conference.html"
         ],
+        "review_supplement_path": "research/how-we-know/agent-citation-lineage/review-supplement-spans-v1.json",
+        "review_supplement_sha256": "7daa7d56cf42f764448235074cf4e87abb81d4f3a99d16dae063b844dc6aa6c0",
         "shared_capture_lineage": {
           "automatic_independence_credit": 0,
           "prompt_sha256": "d321a9cec7b5fe419157c0623e18ff0020cb0080fbe6dd9ed4fd20a0b896f670",
@@ -6240,10 +6316,10 @@
           "V2-TERRA-03:R3"
         ]
       },
-      "content_digest": "sha256:514b720910b271142ea24de29e5b7d005c10ba60190674c5808b1d8b60865cd4",
-      "content_length": 132326,
+      "content_digest": "sha256:8400ea3bfe6c1e2516ab92710486eff3e62f5fee783a38859b383a561181533b",
+      "content_length": 132764,
       "edition_label": "Deterministic projection of accepted EM-0026 relations",
-      "id": "em:dossier-edition:sha256:0782411a54c43f4465cc0da244b9e636a320efc16ac9bb861c64476b77eb13e3",
+      "id": "em:dossier-edition:sha256:f0111e28ede7d9e17c435927cba483d0d9a7acf3dc23b38322ee4677d8cb70c0",
       "key": "edition-em0026-audit-projection",
       "media_type": "application/json",
       "retrieved_at": "2026-08-23T18:33:06Z",
@@ -6469,10 +6545,12 @@
         "span-a08468cb62f2feb21d9cbb95175ce00f54592bd83573cc91-03f65cfa45",
         "span-a15ab02e9fcb23df02fb03d28967d4220ddf65ad380d2230-ddf85fa359",
         "span-aa1534ce2e177153ab85e512deb8d064d14ec1eae16d8032-2299096a09",
-        "span-e2c9f6220843a04665f5d1cd142ac15f04211ace5c579fa6-c5e0476df0"
+        "span-e2c9f6220843a04665f5d1cd142ac15f04211ace5c579fa6-c5e0476df0",
+        "span-supplement-deeptrace-gemini-prose-40-3-ed29752a6f",
+        "span-supplement-deeptrace-gemini-table-50-3-7eb7bd254b"
       ],
       "from_ref": "assertion-deeptrace-support-variation-de1dfdaff3",
-      "id": "em:dossier-evidence-relation:sha256:bc5227fc5e427e5e5480de65d3c50bb4f60703afd77dae1cd0baeb8095e4b67b",
+      "id": "em:dossier-evidence-relation:sha256:6d44f25458001a3d2b303c223d05f31ec5d47f2a5870083593594141290a3a69",
       "key": "relation-deeptrace-support-variation-1a84ef7c6f",
       "note": "DeepTRACE measured statement-source support and found between-system variation; its Gemini value is internally inconsistent between table and prose.",
       "relation_type": "support",
@@ -6551,10 +6629,11 @@
       "basis_span_keys": [
         "span-55de6a6ca9414a252592e9f77544a9259533dd713ce1f12f-0826216ffc",
         "span-a18e778fac3d49e81167f05e09fbc361e91af8c0c01b0fec-ca1b18e206",
-        "span-bb62928b5e0cb4e373b2f6bfeb579d8564d05da5588f8b15-771310f4ef"
+        "span-bb62928b5e0cb4e373b2f6bfeb579d8564d05da5588f8b15-771310f4ef",
+        "span-supplement-url-health-drbench-precollected-outputs-44923dff13"
       ],
       "from_ref": "assertion-url-health-resolution-9fcccc534a",
-      "id": "em:dossier-evidence-relation:sha256:c48cb97b1e07f45072f1f819d1a83005b4978885de091ac6afd7737c6eed99ea",
+      "id": "em:dossier-evidence-relation:sha256:fd5741fb1196a75091a20a03b6e903c1fdc7e338c94d9f366d8cec6caf3613fe",
       "key": "relation-url-health-resolution-0b26fb45c7",
       "note": "The URL-health study measured HTTP resolution and Wayback presence, not semantic claim support, on outputs including reused DeepResearch Bench material.",
       "relation_type": "support",
@@ -7013,6 +7092,8 @@
         "span-a15ab02e9fcb23df02fb03d28967d4220ddf65ad380d2230-ddf85fa359",
         "span-aa1534ce2e177153ab85e512deb8d064d14ec1eae16d8032-2299096a09",
         "span-e2c9f6220843a04665f5d1cd142ac15f04211ace5c579fa6-c5e0476df0",
+        "span-supplement-deeptrace-gemini-prose-40-3-ed29752a6f",
+        "span-supplement-deeptrace-gemini-table-50-3-7eb7bd254b",
         "span-audit-source-boundary"
       ],
       "depends_on": [
@@ -7025,7 +7106,7 @@
         "retrieval",
         "other"
       ],
-      "id": "em:dossier-lineage:sha256:32553573da9fff5723dc2266a5747a116b35579b0a05b9df0865bbb90f940413",
+      "id": "em:dossier-lineage:sha256:76899e048e8624bdbc295f77eba9d647f354f8bc235d5052ed62e4356ae20a90",
       "key": "lineage-deeptrace-support-variation-de1dfdaff3",
       "note": "Candidate only: data:deeptrace-303-questions-2727-outputs; method:deeptrace-statement-source-matrix; derivation:deeptrace-tables-and-prose. Residual independence is unknown.",
       "status": "known",
@@ -7095,6 +7176,7 @@
         "span-55de6a6ca9414a252592e9f77544a9259533dd713ce1f12f-0826216ffc",
         "span-a18e778fac3d49e81167f05e09fbc361e91af8c0c01b0fec-ca1b18e206",
         "span-bb62928b5e0cb4e373b2f6bfeb579d8564d05da5588f8b15-771310f4ef",
+        "span-supplement-url-health-drbench-precollected-outputs-44923dff13",
         "span-audit-source-boundary"
       ],
       "depends_on": [
@@ -7107,7 +7189,7 @@
         "retrieval",
         "other"
       ],
-      "id": "em:dossier-lineage:sha256:08ca7481ecb4298c102c693e4d56337b235275c64957a950422cc6d478dd3d96",
+      "id": "em:dossier-lineage:sha256:92d2ecbee8e25a15eeb7a6c7fa6a54f79536633180a2740eda32d3b43027e580",
       "key": "lineage-url-health-resolution-9fcccc534a",
       "note": "Candidate only: data:url-health-drbench-and-expertqa-urls; method:http-resolution-wayback-classification; derivation:url-health-observational-results. Residual independence is unknown.",
       "status": "known",
@@ -7933,6 +8015,42 @@
       "visibility": "public"
     },
     {
+      "digest": "sha256:cf32a686cec566152749e3a4c643fa29aa115099f9eba77c0ca113c48264f769",
+      "edition_key": "edition-deeptrace-iclr-2026-b2b153eaa6",
+      "extent": {
+        "type": "json-value",
+        "value": "Gemini(DR) demonstrates weak citation performance: only 40.3% citation accuracy"
+      },
+      "id": "em:dossier-span:sha256:533550e262b8691ce9ed33aa0e89a7bf13d89c04c6002e1855ed1e767f556e3a",
+      "key": "span-supplement-deeptrace-gemini-prose-40-3-ed29752a6f",
+      "locator": {
+        "label": "printed page 10; PDF page index 10/22; Section 4 Results; Deep Research Agents paragraph",
+        "pointer": "/review_supplements/0/extent",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e020a09063eee7aa1eb70663cf3e8bd7a8162952f5ae65d959d57ef74ab855f6",
+      "edition_key": "edition-deeptrace-iclr-2026-b2b153eaa6",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cell": "50.3",
+          "column": "Gemini (DR)",
+          "row": "%Citation Accuracy"
+        }
+      },
+      "id": "em:dossier-span:sha256:cf4e063e6f297fe901b342752b67850d84cc3e8e21ace2ef8d5ea4f3fd93091c",
+      "key": "span-supplement-deeptrace-gemini-table-50-3-7eb7bd254b",
+      "locator": {
+        "label": "printed page 9; PDF page index 9/22; Table 1; Gemini (DR) column; %Citation Accuracy row",
+        "pointer": "/review_supplements/1/extent",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
       "digest": "sha256:1bde849b0f5df91e847e907dd763f27be01ffdc7eb0c7e61898c8a9731472c35",
       "edition_key": "edition-drbench-arxiv-v1-7afa5ade36",
       "extent": {
@@ -8717,6 +8835,22 @@
       "visibility": "public"
     },
     {
+      "digest": "sha256:9741316a5669b3b6e1e3022dfe4bfc23f53569a2839c46889423478a0b3c058f",
+      "edition_key": "edition-url-health-arxiv-v1-85fb934b53",
+      "extent": {
+        "type": "json-value",
+        "value": "DRBench (17) comprises 100 multilingual research queries (Chinese and English) covering finance, science, and technology, with pre-collected outputs from 23 models."
+      },
+      "id": "em:dossier-span:sha256:1adfd92244c349596074ef5bf78e7edf7297e8966c13f429410a0f5871d89e45",
+      "key": "span-supplement-url-health-drbench-precollected-outputs-44923dff13",
+      "locator": {
+        "label": "Section 3 Experimental setup; Section 3.1 Datasets; section#S3.SS1; paragraph p#S3.SS1.p1.1",
+        "pointer": "/review_supplements/0/extent",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
       "digest": "sha256:ab05cfa54280c980dabd52b0d336f1dc65a5761925a54dad2d5c7b1cbfb094cb",
       "edition_key": "edition-em0026-audit-projection",
       "extent": {
@@ -9221,16 +9355,17 @@
       "visibility": "public"
     },
     {
-      "digest": "sha256:4152c510aa6d3ed8e12a4b2a694dc86569a970a9c692c047e5e213c7174c271c",
+      "digest": "sha256:eb01a327b7f8f02a1744b36f49832915a24d1f4380f98c814d26f73db8db5840",
       "edition_key": "edition-em0026-audit-projection",
       "extent": {
         "type": "json-value",
         "value": {
+          "em0029_review_supplement_spans": 3,
           "independently_rejected_claim_occurrences": 9,
           "pending_warrant_roots": 4
         }
       },
-      "id": "em:dossier-span:sha256:e7e2de360076000c3bad8ce1e97a886daa88d77b75295809b20f78048a61d3dc",
+      "id": "em:dossier-span:sha256:f874fe9ff6f98c908f25b734b51da4df2ea473bb06e774970b860e7255ccde13",
       "key": "span-audit-dispositions",
       "locator": {
         "label": "Relation-derived review disposition counts",

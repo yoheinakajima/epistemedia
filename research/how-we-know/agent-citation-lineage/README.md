@@ -94,12 +94,16 @@ The machine records are:
 - [`evidence-ledger-v1.json`](evidence-ledger-v1.json): the deterministic relation ledger and
   derived counts.
 
-EM-0029 adds two research-only files without changing those accepted records:
+EM-0029 adds three research-only files without changing those accepted records:
 
 - [`build_candidate.py`](build_candidate.py): the deterministic adapter from the accepted ledger
   and review receipt into the repository dossier format; and
 - [`candidate-dossier.json`](candidate-dossier.json): a content-addressed, quote-minimal candidate
-  that remains outside the public catalog until independent review and a later admission task.
+  that remains outside the public catalog until independent review and a later admission task; and
+- [`review-supplement-spans-v1.json`](review-supplement-spans-v1.json), which binds three
+  quote-minimal qualification passages omitted from the accepted 72-span set: the two sides of the
+  DeepTRACE Gemini table/prose discrepancy and the URL-health paper's DRBench corpus description.
+  They close dossier sentences without changing EM-0026 counts or adding warrant credit.
 
 The candidate models all eight reports as dependent observations of one capture program. It keeps
 the seven scoped warrant candidates connected to an unknown source/method/derivation boundary,

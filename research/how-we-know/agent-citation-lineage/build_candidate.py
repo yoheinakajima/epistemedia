@@ -27,7 +27,9 @@ from epistemedia.dossier import (
 HERE = Path(__file__).resolve().parent
 LEDGER_PATH = HERE / "evidence-ledger-v1.json"
 NORMALIZATION_PATH = HERE / "source-normalization-v1.json"
+SOURCE_READBACKS_PATH = HERE / "source-readbacks-v1.json"
 REVIEW_PATH = HERE / "independent-review-receipt.json"
+SUPPLEMENT_PATH = HERE / "review-supplement-spans-v1.json"
 CANDIDATE_PATH = HERE / "candidate-dossier.json"
 RETRIEVED_AT = "2026-08-23T18:33:06Z"
 MATCHED = {"exact-normalized-match", "ordered-fragment-match"}
@@ -54,6 +56,11 @@ PENDING_WARRANTS = {
     "warrant:researcherbench-faithfulness-groundedness",
     "warrant:liveresearchbench-e1-e2-e3",
     "warrant:url-health-correction-loop",
+}
+EXPECTED_SUPPLEMENTS = {
+    "supplement:deeptrace-gemini-table-50-3": "warrant:deeptrace-support-variation",
+    "supplement:deeptrace-gemini-prose-40-3": "warrant:deeptrace-support-variation",
+    "supplement:url-health-drbench-precollected-outputs": "warrant:url-health-resolution",
 }
 CREATORS = {
     "work:citation-verifier-benchmark": [
@@ -125,6 +132,71 @@ def load(path: Path) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise SystemExit(f"{path} must contain an object")
     return value
+
+
+def load_review_supplements(
+    ledger: dict[str, Any], source_readbacks: dict[str, Any]
+) -> dict[str, Any]:
+    packet = load(SUPPLEMENT_PATH)
+    if packet.get("format") != "epistemedia-em0029-review-supplement-spans-v1":
+        raise SystemExit("unsupported EM-0029 review-supplement format")
+    records = packet.get("records")
+    if not isinstance(records, list) or len(records) != 3:
+        raise SystemExit("EM-0029 review supplement must contain exactly three spans")
+    if packet.get("supplement_span_count") != len(records):
+        raise SystemExit("EM-0029 review-supplement count drift")
+    if packet.get("accepted_em0026_exact_span_roots") != EXPECTED_COUNTS[
+        "exact_span_roots"
+    ]:
+        raise SystemExit("EM-0029 supplement changed the accepted EM-0026 span-root count")
+
+    editions = {item["edition_id"]: item for item in ledger["editions"]}
+    works = {item["work_id"]: item for item in ledger["works"]}
+    readbacks = source_readbacks.get("records")
+    if not isinstance(readbacks, list):
+        raise SystemExit("accepted source-readback packet lacks records")
+    identities = {}
+    for record in records:
+        supplement_id = record.get("supplement_id")
+        warrant_id = record.get("warrant_id")
+        if EXPECTED_SUPPLEMENTS.get(supplement_id) != warrant_id:
+            raise SystemExit(f"unexpected EM-0029 supplement identity: {supplement_id}")
+        if supplement_id in identities:
+            raise SystemExit(f"duplicate EM-0029 supplement identity: {supplement_id}")
+        identities[supplement_id] = warrant_id
+        edition_record = editions.get(record.get("edition_id"))
+        if edition_record is None:
+            raise SystemExit(f"supplement edition is unknown: {supplement_id}")
+        if edition_record["work_id"] != record.get("work_id"):
+            raise SystemExit(f"supplement work/edition binding drift: {supplement_id}")
+        if record["work_id"] not in works:
+            raise SystemExit(f"supplement work is unknown: {supplement_id}")
+        if edition_record["canonical_url"] != record.get("canonical_url"):
+            raise SystemExit(f"supplement canonical URL drift: {supplement_id}")
+        if edition_record["license_treatment"] != record.get("license_treatment"):
+            raise SystemExit(f"supplement license treatment drift: {supplement_id}")
+        carrier = record.get("carrier")
+        if not isinstance(carrier, dict):
+            raise SystemExit(f"supplement carrier is missing: {supplement_id}")
+        matches = [
+            item
+            for item in readbacks
+            if item.get("edition_id") == record["edition_id"]
+            and item.get("requested_url") == record["canonical_url"]
+            and item.get("captured_bytes") == carrier.get("bytes")
+            and item.get("captured_sha256") == carrier.get("sha256")
+            and item.get("media_type") == carrier.get("media_type")
+            and item.get("retrieval_status") == "retrieved"
+        ]
+        if len(matches) != 1:
+            raise SystemExit(f"supplement carrier differs from accepted readback: {supplement_id}")
+        if not isinstance(record.get("locator"), str) or not record["locator"]:
+            raise SystemExit(f"supplement locator is missing: {supplement_id}")
+        if not isinstance(record.get("extent"), (str, dict)):
+            raise SystemExit(f"supplement extent is invalid: {supplement_id}")
+    if identities != EXPECTED_SUPPLEMENTS:
+        raise SystemExit("EM-0029 review-supplement identity set drift")
+    return packet
 
 
 def digest_bytes(value: bytes) -> str:
@@ -203,6 +275,7 @@ def audit_content(
     ledger: dict[str, Any],
     normalization: dict[str, Any],
     review: dict[str, Any],
+    supplements: dict[str, Any],
 ) -> dict[str, Any]:
     matched_roots = sorted(
         {
@@ -227,6 +300,16 @@ def audit_content(
         "accepted_ledger_sha256": hashlib.sha256(LEDGER_PATH.read_bytes()).hexdigest(),
         "accepted_review_path": REVIEW_PATH.relative_to(HERE.parent.parent.parent).as_posix(),
         "accepted_review_sha256": hashlib.sha256(REVIEW_PATH.read_bytes()).hexdigest(),
+        "accepted_source_readbacks_path": SOURCE_READBACKS_PATH.relative_to(
+            HERE.parent.parent.parent
+        ).as_posix(),
+        "accepted_source_readbacks_sha256": hashlib.sha256(
+            SOURCE_READBACKS_PATH.read_bytes()
+        ).hexdigest(),
+        "review_supplement_path": SUPPLEMENT_PATH.relative_to(
+            HERE.parent.parent.parent
+        ).as_posix(),
+        "review_supplement_sha256": hashlib.sha256(SUPPLEMENT_PATH.read_bytes()).hexdigest(),
         "count_grammar": ledger["count_grammar"],
         "reports": ledger["reports"],
         "citation_occurrence_ids": sorted(
@@ -322,6 +405,7 @@ def audit_content(
         "independently_rejected_claim_occurrences": len(
             content["rejected_claim_occurrence_ids"]
         ),
+        "em0029_review_supplement_spans": len(supplements["records"]),
     }
     return content
 
@@ -329,7 +413,9 @@ def audit_content(
 def build() -> dict[str, Any]:
     ledger = load(LEDGER_PATH)
     normalization = load(NORMALIZATION_PATH)
+    source_readbacks = load(SOURCE_READBACKS_PATH)
     review = load(REVIEW_PATH)
+    supplements = load_review_supplements(ledger, source_readbacks)
     if review["decision"] != "pass":
         raise SystemExit("accepted EM-0026 independent review is not a pass")
     if review["reproduced_counts"] != EXPECTED_COUNTS:
@@ -407,8 +493,13 @@ def build() -> dict[str, Any]:
     editions = []
     spans = []
     span_keys_by_occurrence: dict[str, str] = {}
+    supplement_span_keys_by_warrant: dict[str, list[str]] = {}
     for identity, item in sorted(editions_by_id.items()):
         excerpts = sorted(spans_by_edition[identity], key=lambda value: value["span_root_id"])
+        review_supplements = sorted(
+            [record for record in supplements["records"] if record["edition_id"] == identity],
+            key=lambda value: value["supplement_id"],
+        )
         receipts = []
         seen_receipts = set()
         for citation in ledger["citations"]:
@@ -427,6 +518,7 @@ def build() -> dict[str, Any]:
             "license_treatment": item["license_treatment"],
             "readback_receipts": sorted(receipts, key=canonical_json),
             "excerpts": excerpts,
+            "review_supplements": review_supplements,
         }
         editions.append(
             edition(
@@ -449,8 +541,22 @@ def build() -> dict[str, Any]:
             )
             for occurrence in excerpt["occurrence_ids"]:
                 span_keys_by_occurrence[occurrence] = span_key
+        for index, supplement in enumerate(review_supplements):
+            span_key = key("span-supplement", supplement["supplement_id"])
+            spans.append(
+                structured_span(
+                    span_key,
+                    edition_keys[identity],
+                    f"/review_supplements/{index}/extent",
+                    supplement["locator"],
+                    supplement["extent"],
+                )
+            )
+            supplement_span_keys_by_warrant.setdefault(
+                supplement["warrant_id"], []
+            ).append(span_key)
 
-    audit = audit_content(ledger, normalization, review)
+    audit = audit_content(ledger, normalization, review, supplements)
     audit_edition_key = "edition-em0026-audit-projection"
     editions.append(
         edition(
@@ -716,6 +822,7 @@ def build() -> dict[str, Any]:
                 for span_id in claims_by_id[occurrence]["span_occurrence_ids"]
                 if span_id in span_keys_by_occurrence
             }
+            | set(supplement_span_keys_by_warrant.get(warrant_id, []))
         )
         if not source_span_keys:
             raise SystemExit(f"candidate warrant has no matched exact span: {warrant_id}")
@@ -1074,6 +1181,7 @@ def main() -> int:
                 "candidate_warrant_roots": EXPECTED_COUNTS["candidate_warrant_roots"],
                 "independently_confirmed_warrant_roots": 0,
                 "unresolved_citations": EXPECTED_COUNTS["unresolved_citations"],
+                "em0029_review_supplement_spans": 3,
             }
         )
     )
@@ -1084,7 +1192,7 @@ def root_span_keys(dossier: dict[str, Any]) -> list[str]:
     return [
         record["key"]
         for record in dossier["spans"]
-        if not record["key"].startswith("span-audit")
+        if not record["key"].startswith(("span-audit", "span-supplement"))
     ]
 
 
