@@ -1,0 +1,311 @@
+{
+  "schema": "https://epistemedia.org/research/independent-review-receipt-v1.json",
+  "task_id": "EM-0029",
+  "run_id": "em0029-exact-author-head-independent-review-20260824T071850Z",
+  "status": "passed-independent-review-exact-author-head",
+  "decision": "pass",
+  "reviewer": "codex-independent-em0029-reviewer",
+  "independence_statement": "Reviewed in a fresh bounded clone without accepting author conclusions as evidence. The review rebound the exact base, author head, tree, dossier, supplement, accepted EM-0026 packet, public-edition identities, exact spans, count grammar, dependence semantics, disclosures, and deterministic gates. The three review supplements were checked against retained credential-free bytes of the same accepted public editions. No exploratory research, agent run, provider call, credential use, or spend occurred.",
+  "completed_at": "2026-08-24T07:18:50Z",
+  "repository": {
+    "url": "https://github.com/yoheinakajima/epistemedia",
+    "pull_request": 52,
+    "branch": "codex/em-0029-case002-dossier",
+    "reviewed_base": "75f01214750e9eccc4235cbe2a56eada1c014168",
+    "reviewed_failed_predecessor_head": "89ca2aefbaad6501545c00ac9aa9ba0c3454cd25",
+    "reviewed_author_head": "16b8e8ebc26948f8d9fa86120c3d495bca3f74e9",
+    "reviewed_author_tree": "15fbd7c854ab5cbaed49ab6b47a70d0bd3cdf82f",
+    "successor_relation": "exactly-one-forward-child"
+  },
+  "github_author_head_ci": {
+    "workflow": "validate",
+    "run_id": 32700574755,
+    "job_id": 97351078241,
+    "head": "16b8e8ebc26948f8d9fa86120c3d495bca3f74e9",
+    "conclusion": "success"
+  },
+  "candidate_dossier": {
+    "path": "research/how-we-know/agent-citation-lineage/candidate-dossier.json",
+    "id": "em:dossier:sha256:cbd7a14096a956f642f5c76046d3b49ed648fbe6bf24144c992404a01415af82",
+    "sha256": "1ae06b54fe6c6ce1803836bbf2ecaf3e652bed2c6878b7e095c01a1c689ab87b",
+    "bytes": 483595,
+    "stage": "draft"
+  },
+  "review_supplement": {
+    "path": "research/how-we-know/agent-citation-lineage/review-supplement-spans-v1.json",
+    "sha256": "7daa7d56cf42f764448235074cf4e87abb81d4f3a99d16dae063b844dc6aa6c0",
+    "bytes": 3021,
+    "span_count": 3,
+    "accepted_em0026_exact_span_roots": 72,
+    "credit_treatment": "qualification-only; excluded from the accepted EM-0026 exact-span-root count and from evidentiary warrant credit",
+    "records": [
+      {
+        "supplement_id": "supplement:deeptrace-gemini-table-50-3",
+        "warrant_id": "warrant:deeptrace-support-variation",
+        "edition_id": "edition:deeptrace-iclr-2026",
+        "carrier_sha256": "dea4981c1066d0240a005f603b3b14419c7e32beb5191b3df847ceb26af3d6b6",
+        "carrier_bytes": 2982839,
+        "locator": "printed page 9; physical PDF page 9 of 22; Table 1; Gemini (DR) column; %Citation Accuracy row",
+        "extent": {
+          "row": "%Citation Accuracy",
+          "column": "Gemini (DR)",
+          "cell": "50.3"
+        },
+        "containment": "pass"
+      },
+      {
+        "supplement_id": "supplement:deeptrace-gemini-prose-40-3",
+        "warrant_id": "warrant:deeptrace-support-variation",
+        "edition_id": "edition:deeptrace-iclr-2026",
+        "carrier_sha256": "dea4981c1066d0240a005f603b3b14419c7e32beb5191b3df847ceb26af3d6b6",
+        "carrier_bytes": 2982839,
+        "locator": "printed page 10; physical PDF page 10 of 22; Section 4 Results; Deep Research Agents paragraph",
+        "extent": "Gemini(DR) demonstrates weak citation performance: only 40.3% citation accuracy",
+        "containment": "pass"
+      },
+      {
+        "supplement_id": "supplement:url-health-drbench-precollected-outputs",
+        "warrant_id": "warrant:url-health-resolution",
+        "edition_id": "edition:url-health-arxiv-v1",
+        "carrier_sha256": "332e5b5cb4b0ee7065b1bbc30436dfdfeafca8130fb87e32b0020026d8bbafe1",
+        "carrier_bytes": 302498,
+        "locator": "Section 3.1 Datasets; section#S3.SS1; paragraph p#S3.SS1.p1.1",
+        "extent": "DRBench (17) comprises 100 multilingual research queries (Chinese and English) covering finance, science, and technology, with pre-collected outputs from 23 models.",
+        "containment": "pass"
+      }
+    ]
+  },
+  "accepted_em0026_packet": {
+    "comparison_base": "75f01214750e9eccc4235cbe2a56eada1c014168",
+    "result": "byte-identical",
+    "objects": {
+      "answers-v2": "git-tree:0abc7b83a7a3dbef638ee210419af024f2fbf4e8",
+      "traces-v2": "git-tree:0f91e638884c44ee9e6e8bfab43603df3518535d",
+      "source-readbacks-v1.json": "git-blob:ecfd887285a7bf79bc106465ee4344cdec5e6d5c",
+      "span-readbacks-v1.json": "git-blob:49706a0973ecc0f0877bda58227362095fa0c10b",
+      "source-normalization-v1.json": "git-blob:c292c8c68d746428447fbcf73a8219602f4ddcec",
+      "evidence-ledger-v1.json": "git-blob:20e5c555fcf49f9cd892b3b97155fb3f1a12797e",
+      "author-review-receipt.json": "git-blob:f1eb414fef97ee3bb4f72c5b377cb4fc9f8fad74",
+      "independent-review-receipt.json": "git-blob:80ff483a4f54a8719caab358d05b2023c790a270"
+    }
+  },
+  "source_identity_review": {
+    "result": "pass",
+    "credential_free": true,
+    "examined_source_work_count": 11,
+    "examined_edition_count": 14,
+    "edition_identities": [
+      {
+        "key": "edition-citation-verifier-arxiv-v1-acfd4abab7",
+        "id": "em:dossier-edition:sha256:11f00fc6576322cec62671d5ff7dec3c0c9bed06c139e6f704054259b06241c4",
+        "canonical_url": "https://arxiv.org/html/2607.08700v1",
+        "license": "CC BY 4.0"
+      },
+      {
+        "key": "edition-cnv-arxiv-v1-f24001c50a",
+        "id": "em:dossier-edition:sha256:601f0e4510819607265b94c8261884c072d559e63de9f71dbfc6bca5d33c5e29",
+        "canonical_url": "https://arxiv.org/html/2605.06635v1",
+        "license": "CC BY 4.0"
+      },
+      {
+        "key": "edition-deeptrace-arxiv-v1-70a6e720c1",
+        "id": "em:dossier-edition:sha256:c7779c770aa24aa5925b5fe6e66f968c733e8522d30bcdc4290bc9409bbe8b5b",
+        "canonical_url": "https://arxiv.org/html/2509.04499v1",
+        "license": "arXiv non-exclusive distribution license"
+      },
+      {
+        "key": "edition-deeptrace-iclr-2026-b2b153eaa6",
+        "id": "em:dossier-edition:sha256:1a587168a59e161ea083b7b289339c5f41444a26f2f82a2eb8acb43b27367f70",
+        "canonical_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf",
+        "license": "unknown"
+      },
+      {
+        "key": "edition-drbench-arxiv-v1-7afa5ade36",
+        "id": "em:dossier-edition:sha256:c0f1d83abed0c9adcc86259b5bfe38e3f18b290f25227b5b9e77c99322fe0b2c",
+        "canonical_url": "https://arxiv.org/html/2506.11763v1",
+        "license": "CC BY 4.0"
+      },
+      {
+        "key": "edition-drbench-iclr-2026-d00a3dcdb6",
+        "id": "em:dossier-edition:sha256:47d8d33326a498097021dc5754365cbb8f5abfd3e628e90908d2342f0b6c7cf1",
+        "canonical_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/465f22be10e07b301c6ed58f0472f704-Paper-Conference.pdf",
+        "license": "unknown"
+      },
+      {
+        "key": "edition-drbench-repo-main-469cce5-4f8964f3e3",
+        "id": "em:dossier-edition:sha256:bf5c65b640b321fb75bf8b7f96854f151f834a7d31a2fc9d2bfb783852e7262b",
+        "canonical_url": "https://github.com/Ayanami0730/deep_research_bench/commit/469cce54ea7f6a63c163d3d9fec879cf289ec484",
+        "license": "Apache-2.0"
+      },
+      {
+        "key": "edition-keplinger-supplement-v1-f6ddb4c04a",
+        "id": "em:dossier-edition:sha256:8c80a50cd40cbb31bdaedb6730e8e173e3edc0f3440538dbcc4878eb0997ffd9",
+        "canonical_url": "https://data.mendeley.com/datasets/3s73z9zf3c/1",
+        "license": "CC BY 4.0"
+      },
+      {
+        "key": "edition-keplinger-supplement-v2-01e44c09d8",
+        "id": "em:dossier-edition:sha256:dca82f9514bbd76d7afb655b2fe3d11d98dc6950b90c3065d81afa335bd86418",
+        "canonical_url": "https://data.mendeley.com/datasets/3s73z9zf3c/2",
+        "license": "CC BY 4.0"
+      },
+      {
+        "key": "edition-keplinger-vor-2025-10ba10f860",
+        "id": "em:dossier-edition:sha256:ecbbc5366e2c53ebf6358f0f4c06b7076e158210edd3a081f16af7ab0b029761",
+        "canonical_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13109748/",
+        "license": "CC BY-NC 4.0"
+      },
+      {
+        "key": "edition-liveresearchbench-arxiv-v5-f5644763e5",
+        "id": "em:dossier-edition:sha256:73c767cab5707e7c87ea4cb96cc6a3434512ae75363371f6d0aad2a365c4e11c",
+        "canonical_url": "https://arxiv.org/pdf/2510.14240v5",
+        "license": "CC BY-NC-SA 4.0"
+      },
+      {
+        "key": "edition-reportbench-arxiv-v1-25888dc44b",
+        "id": "em:dossier-edition:sha256:c674e09fbcbadea10ca1f9c3bb17f5573f020fbc209410c85f3c8f56d53255b6",
+        "canonical_url": "https://arxiv.org/html/2508.15804v1",
+        "license": "CC BY 4.0"
+      },
+      {
+        "key": "edition-researcherbench-arxiv-v1-39a8b256d7",
+        "id": "em:dossier-edition:sha256:e1cb847e48cc813a003705644839d51e54af0b84d06e0f8419d14a03764b93cd",
+        "canonical_url": "https://arxiv.org/html/2507.16280v1",
+        "license": "arXiv non-exclusive distribution license"
+      },
+      {
+        "key": "edition-url-health-arxiv-v1-85fb934b53",
+        "id": "em:dossier-edition:sha256:89224c483a2c88c51351393bd2ae482b8f2642a27b621c5a7a1401b05fe86b2f",
+        "canonical_url": "https://arxiv.org/html/2604.03173v1",
+        "license": "CC0 1.0"
+      }
+    ]
+  },
+  "reproduced_counts": {
+    "captured_reports": 8,
+    "citation_occurrences": 48,
+    "cited_urls": 30,
+    "resolving_url_roots": 27,
+    "source_work_roots": 11,
+    "examined_edition_roots": 14,
+    "raw_span_occurrences": 127,
+    "accepted_exact_span_roots": 72,
+    "em0029_review_supplement_spans": 3,
+    "raw_claim_occurrences": 52,
+    "candidate_warrant_roots": 7,
+    "independently_confirmed_warrant_roots": 0,
+    "pending_warrant_groups": 4,
+    "independently_rejected_claim_occurrences": 9,
+    "inaccessible_citations": 3,
+    "unresolved_citations": 34,
+    "unsupported_or_force_raised_claims": 20
+  },
+  "disposition_sets": {
+    "pending_warrant_ids": [
+      "warrant:citation-verifier-calibration",
+      "warrant:liveresearchbench-e1-e2-e3",
+      "warrant:researcherbench-faithfulness-groundedness",
+      "warrant:url-health-correction-loop"
+    ],
+    "independently_rejected_claim_occurrence_ids": [
+      "V2-SOL-02:R5_deeptrace_audit",
+      "V2-SOL-03:r3_deepresearch_bench_fact",
+      "V2-SOL-03:r8_search_depth_ablation",
+      "V2-SOL-03:r9_verifier_calibration",
+      "V2-SOL-04:R1",
+      "V2-SOL-04:R2",
+      "V2-SOL-04:R3",
+      "V2-SOL-04:R4",
+      "V2-SOL-04:R8"
+    ],
+    "inaccessible_citation_occurrence_ids": [
+      "V2-SOL-02:S4",
+      "V2-SOL-03:s1",
+      "V2-TERRA-03:S6"
+    ],
+    "treatment": "preserved-visible-no-credit"
+  },
+  "semantic_review": {
+    "sentence_to_span_work_edition_license_retrieval_closure": "pass",
+    "material_propositions_reviewed": 18,
+    "material_span_containment_mismatches": 0,
+    "supplement_sentence_gaps_remaining": 0,
+    "dependence_dimensions": [
+      "model",
+      "prompt",
+      "retrieval",
+      "benchmark-data",
+      "source-work",
+      "edition",
+      "exact-span",
+      "method",
+      "derivation",
+      "upstream-citation"
+    ],
+    "report_multiplicity_independent_lineage_count": 0,
+    "report_multiplicity_unknown_lineage_count": 1,
+    "candidate_warrant_independently_confirmed_count": 0,
+    "encyclopedia_skeptical_same_dossier_bytes": true,
+    "encyclopedia_skeptical_materially_distinct_reasons_and_upshot": true,
+    "public_disclosure_noninterference": "pass"
+  },
+  "github_review_state": {
+    "author_head": "16b8e8ebc26948f8d9fa86120c3d495bca3f74e9",
+    "state": "open",
+    "draft": true,
+    "mergeable": true,
+    "merge_state": "clean",
+    "review_thread_count": 0,
+    "unresolved_review_thread_count": 0,
+    "effective_main_rules": [
+      "deletion-prohibited",
+      "non-fast-forward-prohibited",
+      "linear-history-required",
+      "pull-request-required",
+      "review-thread-resolution-required",
+      "strict-check-required:check",
+      "squash-only"
+    ]
+  },
+  "commands": [
+    {
+      "command": "git diff --exit-code 75f01214750e9eccc4235cbe2a56eada1c014168 16b8e8ebc26948f8d9fa86120c3d495bca3f74e9 -- accepted EM-0026 packet paths",
+      "exit_status": 0,
+      "observed": "all accepted answers, traces, readbacks, normalization, ledger, and review receipts are byte-identical"
+    },
+    {
+      "command": "PYTHONPATH=src .venv/bin/python research/how-we-know/agent-citation-lineage/verify_protocol_v2.py --require-traces",
+      "exit_status": 0,
+      "observed": "protocol valid; exactly eight terminal trace records"
+    },
+    {
+      "command": "PYTHONPATH=src .venv/bin/python research/how-we-know/agent-citation-lineage/build_evidence_ledger.py verify",
+      "exit_status": 0,
+      "observed": "ledger deterministic and accepted count grammar reproduced"
+    },
+    {
+      "command": "PYTHONPATH=src .venv/bin/python research/how-we-know/agent-citation-lineage/build_candidate.py --check",
+      "exit_status": 0,
+      "observed": "candidate deterministic; dossier id, 72 accepted roots, three supplements, and zero confirmed warrants reproduced"
+    },
+    {
+      "command": ".venv/bin/ruff check research/how-we-know/agent-citation-lineage/build_candidate.py research/how-we-know/agent-citation-lineage/build_evidence_ledger.py research/how-we-know/agent-citation-lineage/verify_protocol_v2.py",
+      "exit_status": 0,
+      "observed": "all checks passed"
+    },
+    {
+      "command": "PYTHONPATH=src PATH=$PWD/.venv/bin:$PATH make check PYTHON=.venv/bin/python",
+      "exit_status": 0,
+      "observed": "accepted-input validation, tests, disclosure audit, independent comparison, deterministic public projection, and unchanged source-tree checks passed"
+    }
+  ],
+  "limitations": [
+    "This receipt passes only the bounded EM-0029 research candidate; it does not admit, feature, publish, deploy, or establish Case 002 as accepted knowledge.",
+    "The three review-supplement spans close qualification sentences only; they do not change the accepted EM-0026 count of 72 exact span roots and receive no evidentiary warrant credit.",
+    "Thirty-four citation occurrences remain unresolved and three carriers remain inaccessible; all remain visible and receive no credit.",
+    "Four warrant groups remain pending, nine claim occurrences remain independently rejected, and zero warrant roots are independently confirmed.",
+    "The eight reports share declared prompt and runtime lineage; report multiplicity is not independent epistemic corroboration.",
+    "The dossier remains draft research over a 2026-08-22 cutoff and does not authorize current, universal, causal, or vendor-wide claims.",
+    "No ready-state change, merge, admission, publication, deployment, DNS mutation, package release, credential use, provider call, or spend occurred."
+  ]
+}

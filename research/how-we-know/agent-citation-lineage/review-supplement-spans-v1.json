@@ -1,0 +1,61 @@
+{
+  "accepted_em0026_exact_span_roots": 72,
+  "counting_rule": "These quote-minimal spans close EM-0029 qualification and dependence sentences. They do not change the accepted EM-0026 exact-span-root count or add evidentiary warrant roots.",
+  "format": "epistemedia-em0029-review-supplement-spans-v1",
+  "records": [
+    {
+      "canonical_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf",
+      "carrier": {
+        "bytes": 2982839,
+        "media_type": "application/pdf",
+        "sha256": "dea4981c1066d0240a005f603b3b14419c7e32beb5191b3df847ceb26af3d6b6"
+      },
+      "edition_id": "edition:deeptrace-iclr-2026",
+      "extent": {
+        "cell": "50.3",
+        "column": "Gemini (DR)",
+        "row": "%Citation Accuracy"
+      },
+      "license_treatment": "metadata, digest, and quote-minimal attributed spans only",
+      "locator": "printed page 9; PDF page index 9/22; Table 1; Gemini (DR) column; %Citation Accuracy row",
+      "role": "qualification-only",
+      "supplement_id": "supplement:deeptrace-gemini-table-50-3",
+      "warrant_id": "warrant:deeptrace-support-variation",
+      "work_id": "work:deeptrace"
+    },
+    {
+      "canonical_url": "https://proceedings.iclr.cc/paper_files/paper/2026/file/ad08767706825033b99122332293033d-Paper-Conference.pdf",
+      "carrier": {
+        "bytes": 2982839,
+        "media_type": "application/pdf",
+        "sha256": "dea4981c1066d0240a005f603b3b14419c7e32beb5191b3df847ceb26af3d6b6"
+      },
+      "edition_id": "edition:deeptrace-iclr-2026",
+      "extent": "Gemini(DR) demonstrates weak citation performance: only 40.3% citation accuracy",
+      "license_treatment": "metadata, digest, and quote-minimal attributed spans only",
+      "locator": "printed page 10; PDF page index 10/22; Section 4 Results; Deep Research Agents paragraph",
+      "role": "qualification-only",
+      "supplement_id": "supplement:deeptrace-gemini-prose-40-3",
+      "warrant_id": "warrant:deeptrace-support-variation",
+      "work_id": "work:deeptrace"
+    },
+    {
+      "canonical_url": "https://arxiv.org/html/2604.03173v1",
+      "carrier": {
+        "bytes": 302498,
+        "media_type": "text/html; charset=utf-8",
+        "sha256": "332e5b5cb4b0ee7065b1bbc30436dfdfeafca8130fb87e32b0020026d8bbafe1"
+      },
+      "edition_id": "edition:url-health-arxiv-v1",
+      "extent": "DRBench (17) comprises 100 multilingual research queries (Chinese and English) covering finance, science, and technology, with pre-collected outputs from 23 models.",
+      "license_treatment": "quote-minimal attributed spans",
+      "locator": "Section 3 Experimental setup; Section 3.1 Datasets; section#S3.SS1; paragraph p#S3.SS1.p1.1",
+      "role": "dependence-qualification-only",
+      "supplement_id": "supplement:url-health-drbench-precollected-outputs",
+      "warrant_id": "warrant:url-health-resolution",
+      "work_id": "work:url-health"
+    }
+  ],
+  "supplement_span_count": 3,
+  "task_id": "EM-0029"
+}

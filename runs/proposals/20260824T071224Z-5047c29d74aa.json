@@ -1,0 +1,10 @@
+{
+  "command": "verify_protocol_v2.py --require-traces; build_evidence_ledger.py verify; build_candidate.py --check; ruff check build_candidate.py; git diff --check; PYTHONPATH=src make check PYTHON=.venv/bin/python",
+  "id": "em:run-receipt:sha256:5047c29d74aa52c103ef87912b2e80dcbd30e12d704fa9a10f0ebbe45d4e8780",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-24T07:12:24Z",
+  "run_id": "20260824T071140Z-em0029-review-correction",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0029"
+}

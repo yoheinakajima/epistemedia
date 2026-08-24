@@ -1,8 +1,8 @@
 # Case 002 research: agent citation lineage
 
-Status: **v1 preflight retained as failed; v2 matrix complete; source review complete; independent review pending; research only**
+Status: **v1 preflight retained as failed; v2 matrix and EM-0026 source review accepted; EM-0029 candidate dossier awaiting exact-head independent review; research only**
 
-Task: EM-0026
+Tasks: EM-0026 (accepted source packet) and EM-0029 (reversible candidate dossier)
 
 Working title:
 
@@ -94,6 +94,24 @@ The machine records are:
 - [`evidence-ledger-v1.json`](evidence-ledger-v1.json): the deterministic relation ledger and
   derived counts.
 
+EM-0029 adds three research-only files without changing those accepted records:
+
+- [`build_candidate.py`](build_candidate.py): the deterministic adapter from the accepted ledger
+  and review receipt into the repository dossier format; and
+- [`candidate-dossier.json`](candidate-dossier.json): a content-addressed, quote-minimal candidate
+  that remains outside the public catalog until independent review and a later admission task; and
+- [`review-supplement-spans-v1.json`](review-supplement-spans-v1.json), which binds three
+  quote-minimal qualification passages omitted from the accepted 72-span set: the two sides of the
+  DeepTRACE Gemini table/prose discrepancy and the URL-health paper's DRBench corpus description.
+  They close dossier sentences without changing EM-0026 counts or adding warrant credit.
+
+The candidate models all eight reports as dependent observations of one capture program. It keeps
+the seven scoped warrant candidates connected to an unknown source/method/derivation boundary,
+so neither report count nor candidate-warrant count is presented as an independent evidence count.
+Four pending warrant groups, nine independently rejected claim occurrences, twenty unsupported or
+force-raised occurrences, thirty-four unresolved citations, and three inaccessible carriers are
+typed no-credit records rather than hidden cleanup.
+
 Run:
 
 ```bash
@@ -137,11 +155,12 @@ the minimal attributed span needed for warrant review.
 
 ## Stop conditions
 
-The candidate fails closed if an independently rooted reviewer cannot bind the exact branch head,
-re-retrieve the named editions, reproduce the readback and relation counts, inspect all 34
-unresolved citation occurrences, and confirm or reject each of the seven author-candidate warrants
-and four pending warrant groups.
-Until that happens, the independently confirmed warrant count remains mechanically fixed at zero.
+The accepted EM-0026 review reproduced the captured sources, spans, corrections, and count grammar.
+The EM-0029 candidate still fails closed unless a newly rooted reviewer can bind its exact bytes,
+re-resolve the named editions, reproduce its sentence-to-span and relation closure, inspect all 34
+unresolved citation occurrences, and confirm that the two policy evaluations do not strengthen the
+accepted packet. Independently confirmed warrant count remains mechanically fixed at zero.
 
 No file in this directory is accepted knowledge or a public Case 002 dossier merely because the
-protocol or later traces exist.
+protocol, traces, ledger, or candidate exists. Admission and publication require the separately
+sequenced EM-0030 task after EM-0029 independent review.

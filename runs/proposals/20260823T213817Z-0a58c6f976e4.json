@@ -1,0 +1,9 @@
+{
+  "agent_id": "codex-case002-dossier-builder",
+  "id": "em:task-claim:sha256:0a58c6f976e401292c577348330047d227dd374f2a5dd10dc85f11378d02e012",
+  "kind": "task-claim",
+  "recorded_at": "2026-08-23T21:38:17Z",
+  "schema": "https://epistemedia.com/schemas/task-claim-v1.json",
+  "status": "proposed",
+  "task_id": "EM-0029"
+}
