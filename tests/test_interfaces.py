@@ -142,6 +142,17 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
         "how-we-know/corrections-and-familiarity-backfire/share-card.svg",
         "how-we-know/corrections-and-familiarity-backfire/encyclopedia/share-card.svg",
         "how-we-know/corrections-and-familiarity-backfire/skeptical/share-card.svg",
+        "how-we-know/agent-citation-lineage/index.html",
+        "how-we-know/agent-citation-lineage/index.md",
+        "how-we-know/agent-citation-lineage/index.json",
+        "how-we-know/agent-citation-lineage/encyclopedia/index.html",
+        "how-we-know/agent-citation-lineage/skeptical/index.html",
+        "how-we-know/agent-citation-lineage/review/index.html",
+        "how-we-know/agent-citation-lineage/review/index.md",
+        "how-we-know/agent-citation-lineage/review/index.json",
+        "how-we-know/agent-citation-lineage/share-card.svg",
+        "how-we-know/agent-citation-lineage/encyclopedia/share-card.svg",
+        "how-we-know/agent-citation-lineage/skeptical/share-card.svg",
     ]
     assert all((public / path).exists() for path in expected)
     assert manifest["file_count"] > 10
@@ -156,6 +167,7 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
         "https://epistemedia.org/how-we-know/"
         "corrections-and-familiarity-backfire/"
     )
+    assert [item["number"] for item in discovery["dossiers"]] == ["001", "002"]
 
     llms = (public / "llms.txt").read_text()
     assert "Static OpenAPI contract — hosted API not live" in llms
@@ -163,6 +175,7 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "Static MCP descriptor — remote MCP not live" in llms
     assert "https://epistemedia.org/mcp/server.json" in llms
     assert "https://api.epistemedia.org/openapi.json" not in llms
+    assert "Case 002 evidence dossier" in llms
 
     obj = next(obj for obj in PublicCatalog.build(ROOT).objects if obj.kind == "documentation")
     file_key = quote(obj.id, safe="")
@@ -215,6 +228,8 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "projection-receipt" in home_html
     assert manifest["catalog_id"] in home_html
     assert ">Substrate</a>" in home_html
+    assert "Also in How We Know · Case 002" in home_html
+    assert "Open Case 002" in home_html
 
     home_markdown = (public / "index.md").read_text()
     assert "## Why this exists" in home_markdown
@@ -224,10 +239,12 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     )
 
     how_we_know_html = (public / "how-we-know" / "index.html").read_text()
-    assert "One admitted case" in how_we_know_html
-    assert "No second case yet" in how_we_know_html
+    assert "Case 001" in how_we_know_html
+    assert "Case 002" in how_we_know_html
+    assert "2 accepted cases" in how_we_know_html
+    assert "No future case is advertised as available" in how_we_know_html
     assert "home-case" not in how_we_know_html
-    assert how_we_know_html.count("<h1>How We Know</h1>") == 1
+    assert how_we_know_html.count("<h1>") == 1
 
     explore_html = (public / "explore" / "index.html").read_text()
     explore_markdown = (public / "explore" / "index.md").read_text()
@@ -271,7 +288,7 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     status_html = (public / "status" / "index.html").read_text()
     assert "Canonical human site" in status_markdown
     assert status_markdown.count("not verified live") == 3
-    assert "independently reviewed How We Know dossier" in status_markdown
+    assert "2 independently reviewed How We Know dossiers" in status_markdown
     assert "Verified live · HTTPS" in status_html
     assert status_html.count("Reserved · unverified") == 3
 
@@ -574,15 +591,15 @@ def test_public_status_copy_distinguishes_live_and_target_surfaces() -> None:
     api_docs = (ROOT / "docs" / "api-mcp-cli.md").read_text()
     assert "canonical static site live at <https://epistemedia.org/>" in readme
     assert "sharing redirect and hosted API/MCP runtime" in readme
-    assert "one bounded, application-level dossier graph" in readme
+    assert "two bounded, independently reviewed, application-level dossier graphs" in readme
     assert "does not yet replay the normative event model" in readme
-    assert "first outward-facing evidence experience" in readme
+    assert "Case 001 remains the homepage lead" in readme
     assert "does **not** yet instantiate that claim/evidence graph" not in readme
     assert "The first public realm dogfoods Epistemedia itself" not in readme
     assert "Target architecture" in readme
     assert "Public hosting at `epistemedia.org`" not in readme
-    assert "bootstrap topic projections from featured dossier policy views" in launch_docs
-    assert "homepage now features the first **How We Know** case" in launch_docs
+    assert "bootstrap topic projections from accepted dossier policy views" in launch_docs
+    assert "Case 001 remains the homepage lead" in launch_docs
     assert "it remains in development" not in launch_docs
     assert api_docs.count("No hosted runtime at that hostname has passed") == 2
 

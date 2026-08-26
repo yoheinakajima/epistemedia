@@ -10,7 +10,7 @@ Start at the human site and choose a topic. A topic page is a reproducible proje
 2. Select Markdown, JSON, API, MCP, CLI, or bundle access based on the task.
 3. Preserve catalog, frontier, policy, compiler, object, and source identities.
 4. Do not report a projection label as universal truth.
-5. Distinguish the bootstrap topic projections from featured dossier policy views: repository artifacts do not encode challenge, qualification, or source-independence relations, while an accepted dossier can expose those relations explicitly.
+5. Distinguish the bootstrap topic projections from accepted dossier policy views: repository artifacts do not encode challenge, qualification, or source-independence relations, while a reviewed dossier can expose those relations explicitly.
 6. Cache immutable objects by digest; revalidate mutable aliases through status or release manifests.
 
 ## For a person contributing through an agent
@@ -33,4 +33,4 @@ Use the static OpenAPI document with the local gateway, local stdio MCP for agen
 
 ## Current public corpus
 
-Epistemedia still dogfoods itself through **Explore**, where the self-describing corpus compiles the project’s constitution, architecture, policies, task contracts, implementation, tests, security model, governance, and release records. The homepage now features the first **How We Know** case, compiled from independently reviewed evidence objects into exact-source and two policy-relative projections. This is a bounded application-level dossier, not the normative replay graph or broad knowledge coverage. Hosted API and MCP remain unverified until external read-back proves them.
+Epistemedia still dogfoods itself through **Explore**, where the self-describing corpus compiles the project’s constitution, architecture, policies, task contracts, implementation, tests, security model, governance, and release records. Case 001 remains the homepage lead; the **How We Know** index lists two independently reviewed evidence files, each compiled into exact-source and two policy-relative projections. This is a bounded application-level library, not the normative replay graph or broad knowledge coverage. Hosted API and MCP remain unverified until external read-back proves them.

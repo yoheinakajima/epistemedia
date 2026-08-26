@@ -13,6 +13,11 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, unquote, urlsplit
 
+from .case_library import (
+    AcceptedDossier,
+    FeaturedDossierLibrary,
+    load_featured_library,
+)
 from .core import (
     DEFAULT_BASE_URL,
     DEFAULT_MCP_URL,
@@ -26,7 +31,7 @@ from .core import (
     openapi_document,
     topic_projection,
 )
-from .featured import FEATURE_VIEWS, FeaturedDossier, load_featured_dossier
+from .featured import FEATURE_VIEWS
 
 DEFAULT_MAX_BODY_BYTES = 1_048_576
 DEFAULT_MAX_QUERY_BYTES = 8_192
@@ -122,8 +127,21 @@ class Gateway:
             self._fingerprint = fingerprint
         return self._catalog
 
-    def featured(self) -> FeaturedDossier | None:
-        return load_featured_dossier(self.root)
+    def library(self) -> FeaturedDossierLibrary | None:
+        return load_featured_library(self.root)
+
+    def featured(self) -> AcceptedDossier | None:
+        library = self.library()
+        return library.lead if library is not None else None
+
+    def dossier(self, slug: str) -> AcceptedDossier | None:
+        library = self.library()
+        if library is None:
+            return None
+        try:
+            return library.get(slug)
+        except KeyError:
+            return None
 
     async def __call__(self, scope: dict[str, Any], receive: Any, send: Any) -> None:
         if scope["type"] != "http":
@@ -367,13 +385,14 @@ class Gateway:
                 "mcp": "/mcp",
             })
         if path == "/v1/status":
-            featured = self.featured()
+            library = self.library()
+            featured = library.lead if library is not None else None
             return 200, {}, envelope(catalog, {
                 "version": VERSION,
                 "protocol_version": PROTOCOL_VERSION,
                 "object_count": len(catalog.objects),
                 "topic_count": len(catalog.topics),
-                "dossier_count": 1 if featured is not None else 0,
+                "dossier_count": len(library.dossiers) if library is not None else 0,
                 "featured_dossier": featured.slug if featured is not None else None,
                 "generated_at": catalog.generated_at,
             })
@@ -382,22 +401,22 @@ class Gateway:
             limit = clamp_int(first(request.query, "limit", "20"), 1, 100, 20)
             return 200, {}, envelope(catalog, {"query": query, "results": catalog.search(query, limit)})
         if path == "/v1/dossiers":
-            featured = self.featured()
-            summaries = [featured.summary(catalog)] if featured is not None else []
+            library = self.library()
+            summaries = library.summaries(catalog) if library is not None else []
             return 200, {}, envelope(catalog, summaries)
         if path.startswith("/v1/dossiers/"):
             slug = unquote(path[len("/v1/dossiers/"):])
-            featured = self.featured()
-            if featured is None or slug != featured.slug:
+            dossier = self.dossier(slug)
+            if dossier is None:
                 return 404, {}, api_error(catalog, "not_found", f"Unknown dossier: {slug}")
-            policy = first(request.query, "policy", featured.default_view)
+            policy = first(request.query, "policy", dossier.default_view)
             if policy not in FEATURE_VIEWS:
                 return 400, {}, api_error(
                     catalog,
                     "invalid_policy",
                     allowed=list(FEATURE_VIEWS),
                 )
-            return 200, {}, featured.envelope(catalog, policy)
+            return 200, {}, dossier.envelope(catalog, policy)
         if path == "/v1/topics":
             return 200, {}, envelope(catalog, [topic.as_dict() for topic in catalog.topics])
         if path.startswith("/v1/topics/"):
@@ -655,18 +674,19 @@ class Gateway:
                 }
                 for obj in catalog.objects
             ]
-            featured = self.featured()
-            if featured is not None:
-                resources += [
-                    {
-                        "uri": f"epistemedia://dossier/{featured.slug}/{view}",
-                        "name": f"{featured.slug}-{view}",
-                        "title": f"{featured.dossier['title']} — {view}",
-                        "description": featured.dossier["scope"],
-                        "mimeType": "application/json",
-                    }
-                    for view in FEATURE_VIEWS
-                ]
+            library = self.library()
+            if library is not None:
+                for dossier in library.dossiers:
+                    resources += [
+                        {
+                            "uri": f"epistemedia://dossier/{dossier.slug}/{view}",
+                            "name": f"{dossier.slug}-{view}",
+                            "title": f"{dossier.dossier['title']} — {view}",
+                            "description": dossier.dossier["scope"],
+                            "mimeType": "application/json",
+                        }
+                        for view in FEATURE_VIEWS
+                    ]
             return {"resultType": "complete", "ttlMs": 60000, "cacheScope": "public", "resources": resources}
         if method == "resources/read":
             uri = params.get("uri", "")
@@ -720,10 +740,10 @@ class Gateway:
                 slug, view = remainder.rsplit("/", 1)
             except ValueError as exc:
                 raise KeyError(uri) from exc
-            featured = self.featured()
-            if featured is None or slug != featured.slug or view not in FEATURE_VIEWS:
+            dossier = self.dossier(slug)
+            if dossier is None or view not in FEATURE_VIEWS:
                 raise KeyError(uri)
-            return featured.projection(view)
+            return dossier.projection(view)
         if uri == "epistemedia://status":
             return catalog.public_dict()
         raise KeyError(uri)
@@ -750,22 +770,22 @@ class Gateway:
         if name == "get_dossier":
             slug = str(arguments.get("slug", ""))
             policy = str(arguments.get("policy", "encyclopedia"))
-            featured = self.featured()
-            if featured is None or slug != featured.slug:
+            dossier = self.dossier(slug)
+            if dossier is None:
                 raise KeyError(slug)
             if policy not in FEATURE_VIEWS:
                 raise ValueError(f"Unknown dossier policy: {policy}")
-            return featured.projection(policy)
+            return dossier.projection(policy)
         if name == "compare_dossier_policies":
             slug = str(arguments.get("slug", ""))
-            featured = self.featured()
-            if featured is None or slug != featured.slug:
+            dossier = self.dossier(slug)
+            if dossier is None:
                 raise KeyError(slug)
             return {
-                "slug": featured.slug,
-                "dossier_id": featured.dossier["dossier_id"],
+                "slug": dossier.slug,
+                "dossier_id": dossier.dossier["dossier_id"],
                 "views": {
-                    view: featured.projection(view)
+                    view: dossier.projection(view)
                     for view in FEATURE_VIEWS
                 },
             }
