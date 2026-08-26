@@ -1,0 +1,10 @@
+{
+  "command": "exact base af081caa99fc08d3fabb914ff68f2e672a83bd5b; author head ab5871eac1447210586a1f316f05eeba908e00c6; tree 7a4eb7eb1e3a8cd8e03387722e58dabe5b9fc8d6; author CI run 33023949071 job 98360750081 SUCCESS; protected PR 53 and publish-pages run 33022684967 canonical read-back; accepted build and 18 live artifacts byte-identical; PYTHONPATH=src make check PYTHON=/private/tmp/em0028-topic-01a02db2/.venv/bin/python 93 tests audit determinism unchanged source; live Chrome CDP report sha256 d0039124b2a8ef769de4927be50ce637167d4913ed04d3ac5bfbe1240abf9435 at 1440x900 and 390x844 with native Tab Enter focus overflow policy and MIME checks",
+  "id": "em:run-receipt:sha256:bb3f4e51242fe381a6d6f40b681edf5252bb67daa307050414125f793f3b3ae7",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-26T23:47:04Z",
+  "run_id": "20260826T234654Z-em0030-activation-record-independent-review-ab5871ea",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0030"
+}
