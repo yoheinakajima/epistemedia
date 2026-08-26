@@ -1,0 +1,10 @@
+{
+  "command": "exact base 9c6a55c4f823b90f3aa4bb052f2f27ad844599e0; author head 47a27a20995ab918475001551007af878d47378b; tree 2f5bf431931eaa1909f206a6bbde7371d959b04a; author CI run 33001991949 job 98285935381 SUCCESS; PYTHONPATH=src make check PYTHON=/private/tmp/em0028-topic-01a02db2/.venv/bin/python (93 tests, disclosure audit, determinism, unchanged source); node /private/tmp/em0030_browser_audit.mjs (Chrome CDP 1440x900 and 390x844, report sha256 f9e61198ce93f22ab1ad167c2bc7e633ea1450d5597b6408da652fbe1ddec38b; localhost .md MIME is a SimpleHTTP limitation; provider content-type readback remains post-deploy)",
+  "id": "em:run-receipt:sha256:f2c6750c9235e25512ebf6d7a0e7e504c1579d9d0b471adf8f411f7e3c003ef4",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-26T22:40:03Z",
+  "run_id": "20260826T223948Z-em0030-exact-head-independent-review-47a27a20",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0030"
+}
