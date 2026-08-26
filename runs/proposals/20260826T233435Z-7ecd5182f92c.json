@@ -1,0 +1,10 @@
+{
+  "command": "make check; protected PR #53; publish-pages run 33022684967 custom-domain; provider and route read-back",
+  "id": "em:run-receipt:sha256:7ecd5182f92c1fc3d75d456f689cd27edad94c5695c40be9934e16a56c54205d",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-26T23:34:35Z",
+  "run_id": "20260826T231755Z-em0030-case002-live-activation-af081caa",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0030"
+}

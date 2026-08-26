@@ -288,3 +288,69 @@ focusability, click behavior, and regression tests passed.
 Accepted Case 001 dossier, feature manifest, independent review receipt, source spans, and policy
 meanings remained byte-identical. Hosted API/MCP, `episte.media`, DNS, release/package/container
 publication, credentials, spend, and Case 002 admission were not changed or represented as live.
+
+## Case 002 multi-case library — 2026-08-26T23:17Z
+
+EM-0030 admitted the exact independently reviewed Case 002 dossier into a deterministic two-case
+How We Know library while preserving Case 001's accepted manifest, dossier, receipt, routes, and
+meaning.
+
+PR [#53](https://github.com/yoheinakajima/epistemedia/pull/53) passed independent exact-head review
+and was squash-merged through the active protected path:
+
+- accepted base: `9c6a55c4f823b90f3aa4bb052f2f27ad844599e0`;
+- reviewed author head: `47a27a20995ab918475001551007af878d47378b`;
+- reviewed author tree: `2f5bf431931eaa1909f206a6bbde7371d959b04a`;
+- independent review receipt head: `4e392c8068b787dda3398b03252018ea45e563eb`;
+- receipt tree: `7f12a103e5d700534ea39bb39a5c668ce29f7069`;
+- PR Validate run/job: `33021045222` / `98351203041`, conclusion `success`;
+- squash commit: `af081caa99fc08d3fabb914ff68f2e672a83bd5b`;
+- resulting-main Validate run/job: `33022534484` / `98356145870`, conclusion `success`;
+- source branch deleted; no ruleset bypass used.
+
+The one authorized custom-domain deployment ran on the exact accepted merge commit:
+
+- workflow run: `33022684967`, conclusion `success`;
+- build job: `98356603238`, conclusion `success`;
+- deploy job: `98356990321`, conclusion `success`;
+- GitHub deployment: `6113614670`;
+- successful deployment status: `17384772347`;
+- completed: `2026-08-26T23:17:55Z`;
+- provider URL: <https://epistemedia.org/>.
+
+Published artifact identity:
+
+- release manifest:
+  `em:release-manifest:sha256:783ca4cb1d0701240659181a963cdf0f6db5eab4b45d07c07241415fb20f5929`;
+- catalog:
+  `em:catalog:sha256:092898e1fe3d355761ab4cec653576926a8f5d31621ec7ce23dd60e9d19563ef`;
+- frontier:
+  `em:frontier:sha256:7e4a173112ef26422acf3ed9434c8b6849c4e011797e20fed6c0a9ca58a1e4c3`;
+- compiler: `epistemedia/0.2.0`;
+- generated time: `2026-08-26T23:14:34Z`;
+- files: `861`;
+- Case 002 dossier:
+  `em:dossier:sha256:cbd7a14096a956f642f5c76046d3b49ed648fbe6bf24144c992404a01415af82`;
+- encyclopedia content digest:
+  `048c12622d9daca7cd009a7483c58697aa0674f77b12c6eca3721954ec1f3743`;
+- skeptical content digest:
+  `3e25148910d8bf697cec3ed8bc17eefdbb6638d68d4b3f4b75700c8b95c1cbd7`.
+
+External HTTPS read-back returned `200` with the intended content type for the Case 002 default,
+encyclopedia, skeptical, review, Markdown, JSON, and SVG routes; discovery, `llms.txt`, and the
+sitemap all expose the two-case library. The homepage retains Case 001 as lead and exposes only a
+compact truthful Case 002 cue. Canonical URLs use the production origin, and every checked
+projection carries the exact deployed commit, catalog, frontier, compiler, dossier identity, and
+view-specific content digest.
+
+Live Chrome/CDP read-back at `1440 x 900` and `390 x 844` observed one H1, zero scripts, materially
+different first-screen policy findings, native Tab and Enter disclosure activation, a 3 px solid
+focus ring, and no horizontal overflow before or after expanding a source disclosure. Provider MIME
+read-back returned `text/html`, `text/markdown`, `application/json`, and `image/svg+xml` for the
+corresponding Case 002 representations.
+
+This activation does not make the seven candidate warrants independent or estimate current agent
+reliability. The live page retains 34 unresolved citation occurrences, 20 no-credit claims, four
+pending warrant groups, three inaccessible carriers, and zero independently confirmed warrant
+roots. Hosted API/MCP, `episte.media`, DNS, package/container/release publication, credentials,
+accounts, spend, and Case 003 remain out of scope and unrepresented as live.
