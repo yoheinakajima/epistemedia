@@ -1,0 +1,9 @@
+{
+  "agent_id": "codex-em0030-library-builder",
+  "id": "em:task-claim:sha256:da178b77d0542df8fe617e9bb691d679e7fbeb14b91a0c17414f03e37525e1dd",
+  "kind": "task-claim",
+  "recorded_at": "2026-08-24T07:26:35Z",
+  "schema": "https://epistemedia.com/schemas/task-claim-v1.json",
+  "status": "proposed",
+  "task_id": "EM-0030"
+}

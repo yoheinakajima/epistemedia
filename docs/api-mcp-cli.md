@@ -88,6 +88,7 @@ epistemedia audit
 epistemedia search "disclosure noninterference"
 epistemedia project governance --lens skeptical
 epistemedia dossier corrections-and-familiarity-backfire --policy skeptical
+epistemedia dossier agent-citation-lineage --policy skeptical
 epistemedia repo next
 epistemedia mcp serve
 ```
@@ -99,11 +100,14 @@ epistemedia search "federated knowledge" --remote
 epistemedia get <OBJECT_ID> --remote
 epistemedia project epistemic-mesh --lens evidence-first --remote
 epistemedia dossier corrections-and-familiarity-backfire --policy skeptical --remote
+epistemedia dossier agent-citation-lineage --policy skeptical --remote
 ```
 
-The featured dossier's HTML, Markdown, static JSON, local REST response, MCP resource/tool output,
-and CLI output are compiled from the same disclosure-safe dossier. The machine envelopes preserve
-the exact dossier, catalog, frontier, accepted commit, policy IDs, compiler, and content digest.
+Every accepted dossier's HTML, Markdown, static JSON, local REST response, MCP resource/tool output,
+and CLI output are compiled from that dossier's same disclosure-safe object. The deterministic
+registry currently exposes Cases 001 and 002; the machine envelopes preserve each exact dossier,
+catalog, frontier, accepted commit, policy IDs, compiler, and content digest. The hosted API and MCP
+destinations remain unverified until provider read-back proves them.
 
 ## Self-hosting
 

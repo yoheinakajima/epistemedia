@@ -1,10 +1,10 @@
 # Forensic-editorial design system
 
-Status: implemented public-shell and first reviewed dossier interaction.
+Status: implemented public shell and two reviewed dossier interactions.
 
 This system gives Epistemedia the feel of a readable publication joined to an inspectable evidence
-docket. The public shell remains useful for the repository corpus; the accepted How We Know case
-adds real source-span, lineage-count, and policy interactions compiled from reviewed dossier data.
+docket. The public shell remains useful for the repository corpus; accepted How We Know cases add
+source-span, lineage-count, and policy interactions compiled from reviewed dossier data.
 
 ## Design principles
 
@@ -88,16 +88,20 @@ The receipt carries the complete reproducibility identity in a compact definitio
 
 ### Evidence tally
 
-The featured case separates raw assertions, participant-data roots, target-comparable roots,
-unresolved roots, and counterevidence. Counts are derived from dossier relations and lineage
-records; no displayed total is maintained as independent marketing copy.
+Each dossier profile names its own count units. Case 001 separates raw assertions,
+participant-data roots, target-comparable roots, unresolved roots, and counterevidence. Case 002
+separates captured reports, URL strings, source works, candidate warrants, and unresolved citation
+occurrences. Counts are derived from dossier relations and typed ledgers; no displayed total is
+maintained as independent marketing copy, and visual similarity never implies interchangeable
+units.
 
 ### Purpose bridge
 
 The homepage places one short explanatory bridge immediately after the featured dossier. It names
 the product move from repeated information to warranted knowledge, illustrates that move with the
 accepted case counts, and routes readers to the brief, skeptical view, and evidence docket. It is
-not a second hero, marketing manifesto, or generalized philosophical claim.
+not a second hero, marketing manifesto, or generalized philosophical claim. A compact library cue
+then routes to Case 002 without displacing Case 001 or advertising unreviewed future work.
 
 ### Catalog count language
 
@@ -131,7 +135,9 @@ Automated tests cover structure, identities, tokens, focus and responsive rules,
 
 ## Implemented dossier interaction
 
-EM-0018 defines the reversible application model, EM-0019 supplies independently reviewed evidence,
-and EM-0020 compiles the first real interaction. It deliberately stops short of client-side text
-selection, animated dependence graphs, or a universal scoring system. The distinctive behavior is
-the reviewable path from a policy-relative sentence to an exact span and its lineage.
+EM-0018 defines the reversible application model, EM-0019 supplies the first independently reviewed
+evidence file, and EM-0020 compiles the first real interaction. EM-0029 and EM-0030 add a second,
+separately reviewed profile and a deterministic multi-case registry. The implementation deliberately
+stops short of client-side text selection, animated dependence graphs, or a universal scoring
+system. The distinctive behavior remains the reviewable path from a policy-relative sentence to an
+exact span and its lineage.

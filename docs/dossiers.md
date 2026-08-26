@@ -1,6 +1,6 @@
 # Reversible claim dossiers
 
-Status: alpha application contract for the first vertical slice.
+Status: reversible alpha application contracts exercised by two reviewed vertical slices.
 
 The dossier module represents enough structure to test a real **How We Know** case without promoting an early model into the Epistemic Mesh protocol. It lives in `epistemedia.dossier`, not `schemas/`, and may change incompatibly while the pilot is measured.
 
@@ -77,12 +77,14 @@ The source dossier ID may change when private records change. The public dossier
 - an MCP resource;
 - CLI JSON text.
 
-Every form carries the same public `dossier_id`. After independent review, an explicit feature
-manifest may bind one exact dossier and review receipt into the public compiler. The first such
-manifest binds the exact dossier and independent-review receipt bytes, format, reviewer identity,
-and independence attestations before producing HTML, Markdown, static JSON, local API, MCP, and CLI
-representations from the same disclosure-safe object. This makes the dossier publicly discoverable
-on the static site; it does not activate the reserved hosted API/MCP runtime.
+Every form carries the same public `dossier_id`. After independent review, an explicit application
+manifest may bind one exact dossier and review receipt into the public compiler. The compiler scans
+accepted manifests in deterministic order and rejects duplicate case numbers, slugs, dossier
+identities, source paths, generated routes, and MCP resource URIs. Each profile binds exact dossier
+and review-receipt bytes, format, reviewer identity, reviewed head, and independence checks before
+producing HTML, Markdown, static JSON, local API, MCP, and CLI representations from the same
+disclosure-safe object. This makes the dossier publicly discoverable on the static site; it does
+not activate the reserved hosted API/MCP runtime.
 
 ## Construction and validation
 
@@ -96,9 +98,10 @@ print(public_projection.id)
 ```
 
 The synthetic fixture builder and adversarial mutations are in `tests/test_dossiers.py`. The first
-real application is selected in `catalog/dossiers/corrections-and-familiarity-backfire.json` and
-remains byte-bound to its independent review receipt. Synthetic fixtures demonstrate mechanics
-only and make no empirical or philosophical claims.
+two real applications are selected in `catalog/dossiers/`: Case 001 preserves its legacy feature
+profile, while Case 002 uses a separate agent-citation-lineage profile with different count units
+and display grammar. Both remain byte-bound to their independent review receipts. Synthetic
+fixtures demonstrate mechanics only and make no empirical or philosophical claims.
 
 ## Promotion boundary
 

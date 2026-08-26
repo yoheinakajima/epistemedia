@@ -234,7 +234,7 @@ h4{font-size:1.08rem}
 .policy-switch{display:inline-flex;gap:0;margin:.2rem 0 var(--space-3);border:1px solid var(--forest);background:var(--paper-raised)}
 .policy-switch a{min-height:40px;padding:.55rem .85rem;color:var(--forest-deep);font:720 .72rem/1.3 var(--mono);letter-spacing:.055em;text-decoration:none;text-transform:uppercase}
 .policy-switch a+a{border-left:1px solid var(--forest)}
-.policy-switch a.current{background:var(--forest);color:var(--paper-raised)}
+.policy-switch a.current,.policy-switch a[aria-current="page"]{background:var(--forest);color:var(--paper-raised)}
 .case-actions,.representation-links{display:flex;align-items:center;flex-wrap:wrap;gap:.7rem 1rem;margin:.25rem 0 0;font-size:.88rem}
 .primary-action{display:inline-flex;align-items:center;min-height:44px;padding:.65rem .85rem;background:var(--forest);color:var(--paper-raised);font-weight:750;text-decoration:none}
 .primary-action:hover{background:var(--forest-deep)}
@@ -244,6 +244,7 @@ a.tally-cell{color:inherit;text-decoration:none}
 a.tally-cell:hover{outline:2px solid var(--amber);outline-offset:-2px}
 .tally-cell strong{color:var(--ink);font:750 clamp(1.65rem,3vw,2.4rem)/1 var(--serif)}
 .tally-cell span{margin-top:.3rem;color:var(--muted);font:650 .65rem/1.35 var(--mono);letter-spacing:.035em;text-transform:uppercase}
+.tally-cell small{margin-top:.42rem;color:var(--muted);font:.72rem/1.35 var(--sans)}
 .tally-emphasis{border-color:var(--amber);background:var(--amber-wash)}
 .tally-counter{border-color:var(--forest)}
 .tally-arrow{align-self:center;color:var(--amber);font:700 1.4rem/1 var(--serif)}
@@ -385,6 +386,45 @@ a.tally-cell:hover{outline:2px solid var(--amber);outline-offset:-2px}
 .review-scope>div+div{border-color:var(--amber)}
 .review-scope ul{padding-left:1.1rem}
 .raw-receipt-link{margin-top:var(--space-4);font-weight:720}
+.library-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)}
+.library-case{min-width:0;padding:var(--space-4);border:1px solid var(--ink);border-top:6px solid var(--forest);background:var(--paper-raised);box-shadow:6px 6px 0 var(--paper-deep)}
+.library-case h2{font-size:clamp(1.45rem,2.6vw,2.15rem);line-height:1.1}
+.library-case .qualification{min-height:5.5em}
+.meta-line{color:var(--muted);font:690 .7rem/1.55 var(--mono);letter-spacing:.025em;text-transform:uppercase}
+.qualification{padding:.7rem 0 .7rem var(--space-3);border-left:4px solid var(--amber);color:var(--muted)}
+.library-cue{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.42fr);gap:.25rem var(--space-5);padding:var(--space-4);border:1px solid var(--ink);border-top:6px solid var(--amber);background:linear-gradient(110deg,var(--paper-raised),var(--amber-wash));box-shadow:7px 7px 0 var(--paper-deep)}
+.library-cue>.eyebrow,.library-cue>h2{grid-column:1}
+.library-cue>h2{font-size:clamp(1.5rem,2.8vw,2.35rem);line-height:1.12}
+.library-cue>p:not(.eyebrow):not(.meta-line){grid-column:1;max-width:66ch}
+.library-cue>.meta-line{grid-column:2;grid-row:1/5;align-self:stretch;margin:0;padding:var(--space-3);border-left:1px solid var(--rule);color:var(--forest-deep)}
+.agent-lineage-case>.dossier-lead{padding-bottom:var(--space-3);border-bottom:1px solid var(--ink)}
+.verdict-panel{padding:var(--space-4);border-left:6px solid var(--forest);background:var(--paper-raised);box-shadow:6px 6px 0 var(--paper-deep)}
+.verdict-copy{max-width:65ch;color:var(--forest-deep);font:650 clamp(1.1rem,1.8vw,1.42rem)/1.48 var(--serif)}
+.muted{color:var(--muted)}
+.agent-tally{grid-template-columns:repeat(5,minmax(0,1fr));margin-top:var(--space-3)}
+.agent-tally .tally-cell{border:1px solid var(--rule);border-top:4px solid var(--forest);background:var(--paper-raised)}
+.agent-tally .tally-cell:nth-child(4),.agent-tally .tally-cell:nth-child(5){border-top-color:var(--amber)}
+.agent-lineage-case .source-xray{scroll-margin-top:var(--space-3)}
+.agent-lineage-case .source-xray>summary{font-size:.78rem;text-transform:none}
+.agent-lineage-case .source-xray>summary>span{display:inline-grid;place-items:center;min-width:2rem;height:2rem;margin-right:.45rem;background:var(--forest);color:var(--paper-raised);font:720 .65rem/1 var(--mono)}
+.source-card{min-width:0;padding:var(--space-3);border-top:1px solid var(--rule);background:linear-gradient(90deg,var(--paper-deep),var(--paper-raised) 45%)}
+.source-card:first-of-type{border-top:0}
+.source-card h4{margin-bottom:.25rem;font-size:1.05rem}
+.source-card>p{margin:.2rem 0;color:var(--muted);font:.68rem/1.45 var(--mono)}
+.source-card blockquote{max-width:78ch;color:var(--ink);font-family:var(--serif);overflow-wrap:anywhere;word-break:break-word}
+.receipt-grid.compact>div{grid-template-columns:minmax(105px,.18fr) minmax(0,1fr);padding:.45rem 0}
+details.ledger-group{padding:0;border-top-width:4px}
+details.ledger-group>summary{padding:.85rem 1rem;text-transform:none}
+.ledger-list{max-height:34rem;margin:0;padding:0 1rem 1rem;overflow:auto;list-style:none;counter-reset:none}
+.ledger-list .ledger-entry{display:grid;grid-template-columns:minmax(175px,.35fr) minmax(0,1fr);gap:var(--space-3);padding:.7rem 0;border-top:1px solid var(--rule)}
+.ledger-list .ledger-entry:before{content:none}
+.ledger-entry code{min-width:0;background:transparent;color:var(--forest-deep);font:.65rem/1.45 var(--mono);overflow-wrap:anywhere;word-break:break-word}
+.ledger-entry span{min-width:0;color:var(--muted);font-size:.78rem;overflow-wrap:anywhere;word-break:break-word}
+.lexicon-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));margin:0;border:1px solid var(--ink)}
+.lexicon-list>div{padding:var(--space-3);border-left:1px solid var(--rule)}
+.lexicon-list>div:first-child{border-left:0}
+.lexicon-list dt{color:var(--forest-deep);font:720 .7rem/1.35 var(--mono);letter-spacing:.035em;text-transform:uppercase}
+.lexicon-list dd{margin:.5rem 0 0;color:var(--muted);font-size:.8rem;line-height:1.48}
 section+section{margin-top:var(--space-5)}
 .section-head{
   display:flex;
@@ -526,7 +566,7 @@ section+section{margin-top:var(--space-5)}
 }
 .receipt-grid>div:first-child{border-top:0}
 .receipt-grid dt{color:var(--muted);font:700 .7rem/1.5 var(--mono);letter-spacing:.06em;text-transform:uppercase}
-.receipt-grid dd{min-width:0;margin:0}
+.receipt-grid dd{min-width:0;margin:0;overflow-wrap:anywhere;word-break:break-word}
 .object-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem 1rem;margin:var(--space-3) 0 0}
 .object-facts>div{min-width:0;padding:.55rem 0;border-top:1px solid var(--rule)}
 .object-facts dt{color:var(--muted);font:700 .68rem/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase}
@@ -598,6 +638,19 @@ blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(
   .case-index-row .primary-action{justify-self:start}
   .review-decision{align-items:flex-start;flex-direction:column}
   .review-grid,.review-scope{grid-template-columns:1fr}
+  .library-grid{grid-template-columns:1fr}
+  .library-case{padding:var(--space-3);box-shadow:4px 4px 0 var(--paper-deep)}
+  .library-case .qualification{min-height:0}
+  .library-cue{grid-template-columns:1fr;padding:var(--space-3);box-shadow:4px 4px 0 var(--paper-deep)}
+  .library-cue>.eyebrow,.library-cue>h2,.library-cue>p:not(.eyebrow):not(.meta-line),.library-cue>.meta-line{grid-column:1;grid-row:auto}
+  .library-cue>.meta-line{padding:var(--space-2) 0 0;border-top:1px solid var(--rule);border-left:0}
+  .agent-tally{grid-template-columns:1fr 1fr}
+  .agent-tally .tally-cell:last-child{grid-column:1/-1}
+  .receipt-grid.compact>div{grid-template-columns:1fr;gap:.15rem}
+  .ledger-list .ledger-entry{grid-template-columns:1fr;gap:.2rem}
+  .lexicon-list{grid-template-columns:1fr}
+  .lexicon-list>div{border-top:1px solid var(--rule);border-left:0}
+  .lexicon-list>div:first-child{border-top:0}
   .scope-note{grid-template-columns:1fr;gap:.15rem}
   .section-head{align-items:start;flex-direction:column;gap:0}
   .card{min-height:0}
@@ -1608,13 +1661,23 @@ def build_public(
     api_url: str = DEFAULT_API_URL,
     mcp_url: str = DEFAULT_MCP_URL,
 ) -> dict[str, Any]:
+    from .case_library import (
+        AgentLineageDossier,
+        agent_page_html,
+        agent_projection_markdown,
+        agent_review_html,
+        agent_review_markdown,
+        agent_share_card_svg,
+        case002_home_cue,
+        library_index_html,
+        library_index_markdown,
+        load_featured_library,
+    )
     from .featured import (
         FEATURE_VIEWS,
         feature_home_html,
-        feature_index_html,
         feature_page_html,
         feature_purpose_html,
-        load_featured_dossier,
         review_receipt_html,
         review_receipt_markdown,
         share_card_svg,
@@ -1622,7 +1685,9 @@ def build_public(
     from .featured import projection_markdown as dossier_markdown
 
     catalog = PublicCatalog.build(root)
-    featured = load_featured_dossier(root)
+    library = load_featured_library(root)
+    featured = library.lead if library is not None else None
+    dossier_summaries = library.summaries(catalog) if library is not None else []
     featured_default = (
         featured.envelope(catalog, featured.default_view) if featured is not None else None
     )
@@ -1642,7 +1707,7 @@ def build_public(
         "generated_at": catalog.generated_at,
         "object_count": len(catalog.objects),
         "topic_count": len(catalog.topics),
-        "dossier_count": 1 if featured is not None else 0,
+        "dossier_count": len(library.dossiers) if library is not None else 0,
         "featured_dossier": featured.slug if featured is not None else None,
         "protocol_version": PROTOCOL_VERSION,
     })
@@ -1798,99 +1863,128 @@ def build_public(
         )
         write_text(tmp / "topics" / topic.slug / "index.md", md)
 
-    if featured is not None and featured_default is not None:
-        case_root = tmp / "how-we-know" / featured.slug
-        for view in FEATURE_VIEWS:
-            projection_count += 1
-            case_envelope = featured.envelope(catalog, view)
-            case_data = case_envelope["data"]
-            view_root = case_root / view
-            write_json(view_root / "index.json", case_envelope)
-            write_text(view_root / "index.md", dossier_markdown(case_envelope))
-            write_text(
-                view_root / "share-card.svg",
-                share_card_svg(case_envelope, base_url),
+    if library is not None and featured is not None and featured_default is not None:
+        for accepted in library.dossiers:
+            is_agent_case = isinstance(accepted, AgentLineageDossier)
+            markdown_renderer = (
+                agent_projection_markdown if is_agent_case else dossier_markdown
             )
-            case_body = feature_page_html(case_envelope, base_url) + projection_receipt_html(
-                dossier_id=case_data["dossier_id"],
-                view_policy=case_data["view"]["policy_id"],
-                catalog_id=case_envelope["catalog_id"],
-                frontier=case_envelope["frontier"],
-                commit=case_envelope["commit"],
-                epistemic_policy=case_envelope["policies"]["epistemic"],
-                disclosure_policy=case_envelope["policies"]["disclosure"],
-                compiler=case_envelope["compiler"],
-                content_digest=case_envelope["content_digest"],
+            page_renderer = agent_page_html if is_agent_case else feature_page_html
+            card_renderer = agent_share_card_svg if is_agent_case else share_card_svg
+            review_markdown_renderer = (
+                agent_review_markdown if is_agent_case else review_receipt_markdown
             )
-            write_text(
-                view_root / "index.html",
-                html_shell(
-                    f"{case_data['title']} — {view}",
-                    case_body,
-                    base_url=base_url,
-                    canonical_url=f"{base_url}/how-we-know/{featured.slug}/{view}/",
-                    markdown_url=(
-                        f"{base_url}/how-we-know/{featured.slug}/{view}/index.md"
+            review_html_renderer = (
+                agent_review_html if is_agent_case else review_receipt_html
+            )
+            case_root = tmp / "how-we-know" / accepted.slug
+            for view in FEATURE_VIEWS:
+                projection_count += 1
+                case_envelope = accepted.envelope(catalog, view)
+                case_data = case_envelope["data"]
+                view_root = case_root / view
+                write_json(view_root / "index.json", case_envelope)
+                write_text(view_root / "index.md", markdown_renderer(case_envelope))
+                write_text(
+                    view_root / "share-card.svg",
+                    card_renderer(case_envelope, base_url),
+                )
+                case_body = page_renderer(
+                    case_envelope, base_url
+                ) + projection_receipt_html(
+                    dossier_id=case_data["dossier_id"],
+                    view_policy=case_data["view"]["policy_id"],
+                    catalog_id=case_envelope["catalog_id"],
+                    frontier=case_envelope["frontier"],
+                    commit=case_envelope["commit"],
+                    epistemic_policy=case_envelope["policies"]["epistemic"],
+                    disclosure_policy=case_envelope["policies"]["disclosure"],
+                    compiler=case_envelope["compiler"],
+                    content_digest=case_envelope["content_digest"],
+                )
+                write_text(
+                    view_root / "index.html",
+                    html_shell(
+                        f"{case_data['title']} — {view}",
+                        case_body,
+                        base_url=base_url,
+                        canonical_url=(
+                            f"{base_url}/how-we-know/{accepted.slug}/{view}/"
+                        ),
+                        markdown_url=(
+                            f"{base_url}/how-we-know/{accepted.slug}/{view}/index.md"
+                        ),
+                        social_image_url=(
+                            f"{base_url}/how-we-know/{accepted.slug}/{view}/share-card.svg"
+                        ),
                     ),
+                )
+
+            accepted_default = accepted.envelope(catalog, accepted.default_view)
+            accepted_data = accepted_default["data"]
+            write_json(case_root / "index.json", accepted_default)
+            write_text(case_root / "index.md", markdown_renderer(accepted_default))
+            write_text(
+                case_root / "share-card.svg",
+                card_renderer(accepted_default, base_url),
+            )
+            write_text(
+                case_root / "index.html",
+                html_shell(
+                    accepted_data["title"],
+                    page_renderer(accepted_default, base_url)
+                    + projection_receipt_html(
+                        dossier_id=accepted_data["dossier_id"],
+                        view_policy=accepted_data["view"]["policy_id"],
+                        catalog_id=accepted_default["catalog_id"],
+                        frontier=accepted_default["frontier"],
+                        commit=accepted_default["commit"],
+                        epistemic_policy=accepted_default["policies"]["epistemic"],
+                        disclosure_policy=accepted_default["policies"]["disclosure"],
+                        compiler=accepted_default["compiler"],
+                        content_digest=accepted_default["content_digest"],
+                    ),
+                    base_url=base_url,
+                    canonical_url=f"{base_url}/how-we-know/{accepted.slug}/",
+                    markdown_url=f"{base_url}/how-we-know/{accepted.slug}/index.md",
                     social_image_url=(
-                        f"{base_url}/how-we-know/{featured.slug}/{view}/share-card.svg"
+                        f"{base_url}/how-we-know/{accepted.slug}/share-card.svg"
+                    ),
+                ),
+            )
+            review_envelope = accepted.review_envelope(catalog)
+            review_root = case_root / "review"
+            write_json(review_root / "index.json", review_envelope)
+            write_text(
+                review_root / "index.md",
+                review_markdown_renderer(review_envelope),
+            )
+            write_text(
+                review_root / "index.html",
+                html_shell(
+                    f"Review receipt — {accepted_data['title']}",
+                    review_html_renderer(review_envelope, base_url)
+                    + projection_receipt_html(
+                        dossier_id=accepted_data["dossier_id"],
+                        catalog_id=review_envelope["catalog_id"],
+                        frontier=review_envelope["frontier"],
+                        commit=review_envelope["commit"],
+                        epistemic_policy=review_envelope["policies"]["epistemic"],
+                        disclosure_policy=review_envelope["policies"]["disclosure"],
+                        compiler=review_envelope["compiler"],
+                        content_digest=review_envelope["content_digest"],
+                    ),
+                    base_url=base_url,
+                    canonical_url=(
+                        f"{base_url}/how-we-know/{accepted.slug}/review/"
+                    ),
+                    markdown_url=(
+                        f"{base_url}/how-we-know/{accepted.slug}/review/index.md"
                     ),
                 ),
             )
 
         default_data = featured_default["data"]
-        write_json(case_root / "index.json", featured_default)
-        write_text(case_root / "index.md", dossier_markdown(featured_default))
-        write_text(
-            case_root / "share-card.svg",
-            share_card_svg(featured_default, base_url),
-        )
-        write_text(
-            case_root / "index.html",
-            html_shell(
-                default_data["title"],
-                feature_page_html(featured_default, base_url)
-                + projection_receipt_html(
-                    dossier_id=default_data["dossier_id"],
-                    view_policy=default_data["view"]["policy_id"],
-                    catalog_id=featured_default["catalog_id"],
-                    frontier=featured_default["frontier"],
-                    commit=featured_default["commit"],
-                    epistemic_policy=featured_default["policies"]["epistemic"],
-                    disclosure_policy=featured_default["policies"]["disclosure"],
-                    compiler=featured_default["compiler"],
-                    content_digest=featured_default["content_digest"],
-                ),
-                base_url=base_url,
-                canonical_url=f"{base_url}/how-we-know/{featured.slug}/",
-                markdown_url=f"{base_url}/how-we-know/{featured.slug}/index.md",
-                social_image_url=f"{base_url}/how-we-know/{featured.slug}/share-card.svg",
-            ),
-        )
-        review_envelope = featured.review_envelope(catalog)
-        review_root = case_root / "review"
-        write_json(review_root / "index.json", review_envelope)
-        write_text(review_root / "index.md", review_receipt_markdown(review_envelope))
-        write_text(
-            review_root / "index.html",
-            html_shell(
-                f"Review receipt — {default_data['title']}",
-                review_receipt_html(review_envelope, base_url)
-                + projection_receipt_html(
-                    dossier_id=default_data["dossier_id"],
-                    catalog_id=review_envelope["catalog_id"],
-                    frontier=review_envelope["frontier"],
-                    commit=review_envelope["commit"],
-                    epistemic_policy=review_envelope["policies"]["epistemic"],
-                    disclosure_policy=review_envelope["policies"]["disclosure"],
-                    compiler=review_envelope["compiler"],
-                    content_digest=review_envelope["content_digest"],
-                ),
-                base_url=base_url,
-                canonical_url=f"{base_url}/how-we-know/{featured.slug}/review/",
-                markdown_url=f"{base_url}/how-we-know/{featured.slug}/review/index.md",
-            ),
-        )
         how_we_know_data = {
             "realm": "How We Know",
             "scope": (
@@ -1898,33 +1992,24 @@ def build_public(
                 "differ, and how we can tell."
             ),
             "featured": featured.summary(catalog),
+            "dossiers": dossier_summaries,
         }
         how_we_know_envelope = envelope(catalog, how_we_know_data)
         write_json(tmp / "how-we-know" / "index.json", how_we_know_envelope)
         write_text(
             tmp / "how-we-know" / "index.md",
-            "# How We Know\n\n"
-            "Truth, evidence, knowledge, and information—where they agree, where they differ, "
-            "and how we can tell.\n\n"
-            f"## Case {default_data['number']}\n\n"
-            f"[{default_data['title']}]({base_url}/how-we-know/{featured.slug}/)\n\n"
-            f"> {default_data['view']['label']}\n\n"
-            f"- Dossier: `{default_data['dossier_id']}`\n"
-            f"- Content digest: `{featured_default['content_digest']}`\n",
+            library_index_markdown(how_we_know_envelope, base_url),
         )
-        how_we_know_body = (
-            feature_index_html(how_we_know_envelope, base_url)
-            + projection_receipt_html(
-                dossier_id=default_data["dossier_id"],
-                view_policy=default_data["view"]["policy_id"],
-                catalog_id=how_we_know_envelope["catalog_id"],
-                frontier=how_we_know_envelope["frontier"],
-                commit=how_we_know_envelope["commit"],
-                epistemic_policy=how_we_know_envelope["policies"]["epistemic"],
-                disclosure_policy=how_we_know_envelope["policies"]["disclosure"],
-                compiler=how_we_know_envelope["compiler"],
-                content_digest=how_we_know_envelope["content_digest"],
-            )
+        how_we_know_body = library_index_html(
+            how_we_know_envelope, base_url
+        ) + projection_receipt_html(
+            catalog_id=how_we_know_envelope["catalog_id"],
+            frontier=how_we_know_envelope["frontier"],
+            commit=how_we_know_envelope["commit"],
+            epistemic_policy=how_we_know_envelope["policies"]["epistemic"],
+            disclosure_policy=how_we_know_envelope["policies"]["disclosure"],
+            compiler=how_we_know_envelope["compiler"],
+            content_digest=how_we_know_envelope["content_digest"],
         )
         write_text(
             tmp / "how-we-know" / "index.html",
@@ -1934,13 +2019,21 @@ def build_public(
                 base_url=base_url,
                 canonical_url=f"{base_url}/how-we-know/",
                 markdown_url=f"{base_url}/how-we-know/index.md",
-                social_image_url=f"{base_url}/how-we-know/{featured.slug}/share-card.svg",
+                social_image_url=(
+                    f"{base_url}/how-we-know/{featured.slug}/share-card.svg"
+                ),
             ),
         )
 
+        second = next(
+            (item for item in dossier_summaries if item["number"] == "002"),
+            None,
+        )
+        second_cue = case002_home_cue(second, base_url) if second is not None else ""
         home_body = (
             feature_home_html(featured_default, base_url)
             + feature_purpose_html(featured_default, base_url)
+            + second_cue
             + '<section><div class="section-head"><div><p class="eyebrow">'
             'Operating substrate</p><h2>Explore how the record is built</h2></div>'
             f'<p class="meta">{len(catalog.objects)} distinct public objects · '
@@ -1959,6 +2052,18 @@ def build_public(
                 compiler=featured_default["compiler"],
                 content_digest=featured_default["content_digest"],
             )
+        )
+        case002_markdown = (
+            "\n## How We Know · Case 002\n\n"
+            f"[{second['title']}]({base_url}/how-we-know/{second['slug']}/)\n\n"
+            f"> {second['evaluation']}\n\n"
+            f"- Captured reports: **{second['counts']['captured_reports']}**\n"
+            f"- Distinct URL strings: **{second['counts']['cited_url_strings']}**\n"
+            f"- Source works: **{second['counts']['source_work_roots']}**\n"
+            f"- Candidate warrants: **{second['counts']['candidate_warrant_roots']}**\n"
+            f"- Unresolved citations: **{second['counts']['unresolved_citations']}**\n"
+            if second is not None
+            else ""
         )
         home_markdown = (
             "# Epistemedia\n\nKnowledge that can show its work.\n\n"
@@ -1983,8 +2088,9 @@ def build_public(
             "counts follow evidence lineage, not paper titles.\n\n"
             f"[Brief]({base_url}/how-we-know/{featured.slug}/) · "
             f"[Skeptical]({base_url}/how-we-know/{featured.slug}/skeptical/) · "
-            f"[Evidence docket]({base_url}/how-we-know/{featured.slug}/#evidence-record-title)\n\n"
-            "## Operating substrate\n\n"
+            f"[Evidence docket]({base_url}/how-we-know/{featured.slug}/#evidence-record-title)\n"
+            + case002_markdown
+            + "\n## Operating substrate\n\n"
             f"{len(catalog.objects)} distinct public objects · "
             f"{catalog.topic_membership_count()} topic memberships across "
             f"{len(catalog.topics)} topics.\n\n"
@@ -2088,9 +2194,12 @@ def build_public(
     )
     write_text(tmp / "docs" / "index.md", "# Documentation\n\n" + "\n".join(f"- [{o.title}]({base_url}/objects/{static_object_route_key(o.id)}/) — `{o.path}`" for o in docs) + "\n")
 
+    dossier_count = len(dossier_summaries)
     corpus_scope = (
-        "one independently reviewed How We Know dossier plus the self-describing repository corpus"
-        if featured is not None
+        f"{dossier_count} independently reviewed How We Know "
+        f"{'dossier' if dossier_count == 1 else 'dossiers'} plus the "
+        "self-describing repository corpus"
+        if dossier_count
         else "self-describing repository bootstrap"
     )
     status_md = (
@@ -2106,7 +2215,7 @@ def build_public(
         f"- Commit: `{catalog.commit}`\n"
         f"- Public objects: `{len(catalog.objects)}`\n"
         f"- Topics: `{len(catalog.topics)}`\n"
-        f"- Featured dossiers: `{1 if featured is not None else 0}`\n"
+        f"- Accepted dossiers: `{dossier_count}`\n"
         f"- Projections: `{projection_count}`\n"
     )
     write_text(tmp / "status" / "index.md", status_md)
@@ -2138,7 +2247,7 @@ def build_public(
         f'<div><dt>Version</dt><dd><code>{VERSION}</code></dd></div>'
         f'<div><dt>Public objects</dt><dd>{len(catalog.objects)}</dd></div>'
         f'<div><dt>Topics</dt><dd>{len(catalog.topics)}</dd></div>'
-        f'<div><dt>Featured dossiers</dt><dd>{1 if featured is not None else 0}</dd></div>'
+        f'<div><dt>Accepted dossiers</dt><dd>{dossier_count}</dd></div>'
         f'<div><dt>Projections</dt><dd>{projection_count}</dd></div>'
         f'</dl><p class="scope-note"><strong>Current coverage:</strong><span>{html.escape(corpus_scope)}.</span></p></section>'
         + projection_receipt_html(
@@ -2161,6 +2270,29 @@ def build_public(
         ),
     )
 
+    dossier_llms: list[str] = []
+    if featured is not None:
+        dossier_llms.extend(
+            [
+                f"- [Featured evidence dossier]({base_url}/how-we-know/{featured.slug}/index.md)",
+                f"- [Featured dossier JSON]({base_url}/how-we-know/{featured.slug}/index.json)",
+                f"- [Featured scoreboard card]({base_url}/how-we-know/{featured.slug}/share-card.svg)",
+                f"- [Independent review receipt]({base_url}/how-we-know/{featured.slug}/review/index.md)",
+            ]
+        )
+    if library is not None:
+        for accepted in library.dossiers:
+            if accepted.slug == featured.slug:
+                continue
+            number = accepted.manifest["number"]
+            dossier_llms.extend(
+                [
+                    f"- [Case {number} evidence dossier]({base_url}/how-we-know/{accepted.slug}/index.md)",
+                    f"- [Case {number} dossier JSON]({base_url}/how-we-know/{accepted.slug}/index.json)",
+                    f"- [Case {number} share card]({base_url}/how-we-know/{accepted.slug}/share-card.svg)",
+                    f"- [Case {number} review receipt]({base_url}/how-we-know/{accepted.slug}/review/index.md)",
+                ]
+            )
     llms = [
         "# Epistemedia",
         "> Knowledge that can show its work. An open, federated knowledge network for humans and agents.",
@@ -2168,16 +2300,7 @@ def build_public(
         "## Start here",
         f"- [Project overview]({base_url}/index.md)",
         f"- [How We Know]({base_url}/how-we-know/index.md)",
-        *(
-            [
-                f"- [Featured evidence dossier]({base_url}/how-we-know/{featured.slug}/index.md)",
-                f"- [Featured dossier JSON]({base_url}/how-we-know/{featured.slug}/index.json)",
-                f"- [Featured scoreboard card]({base_url}/how-we-know/{featured.slug}/share-card.svg)",
-                f"- [Independent review receipt]({base_url}/how-we-know/{featured.slug}/review/index.md)",
-            ]
-            if featured is not None
-            else []
-        ),
+        *dossier_llms,
         f"- [Documentation]({base_url}/docs/index.md)",
         f"- [Substrate topics]({base_url}/explore/index.md)",
         f"- [Current status]({base_url}/status/index.md)",
@@ -2223,6 +2346,27 @@ def build_public(
             "share_card": f"{base_url}/how-we-know/{featured.slug}/share-card.svg",
             "content_digest": featured_default["content_digest"],
         }
+    if library is not None:
+        discovery["dossiers"] = []
+        for accepted in library.dossiers:
+            accepted_default = accepted.envelope(catalog, accepted.default_view)
+            discovery["dossiers"].append(
+                {
+                    "number": accepted.manifest["number"],
+                    "slug": accepted.slug,
+                    "dossier_id": accepted_default["data"]["dossier_id"],
+                    "default_view": accepted.default_view,
+                    "views": list(FEATURE_VIEWS),
+                    "human": f"{base_url}/how-we-know/{accepted.slug}/",
+                    "markdown": f"{base_url}/how-we-know/{accepted.slug}/index.md",
+                    "json": f"{base_url}/how-we-know/{accepted.slug}/index.json",
+                    "review": f"{base_url}/how-we-know/{accepted.slug}/review/",
+                    "share_card": (
+                        f"{base_url}/how-we-know/{accepted.slug}/share-card.svg"
+                    ),
+                    "content_digest": accepted_default["content_digest"],
+                }
+            )
     write_json(tmp / ".well-known" / "epistemedia.json", discovery)
     write_json(tmp / "mcp" / "server.json", mcp_descriptor(mcp_url))
     write_text(tmp / "robots.txt", "User-agent: *\nAllow: /\nSitemap: " + base_url + "/sitemap.xml\n")
@@ -2233,15 +2377,16 @@ def build_public(
         base_url + "/explore/",
         base_url + "/status/",
     ] + [f"{base_url}/topics/{topic.slug}/" for topic in catalog.topics]
-    if featured is not None:
-        urls += [
-            f"{base_url}/how-we-know/{featured.slug}/",
-            f"{base_url}/how-we-know/{featured.slug}/review/",
-            *[
-                f"{base_url}/how-we-know/{featured.slug}/{view}/"
-                for view in FEATURE_VIEWS
-            ],
-        ]
+    if library is not None:
+        for accepted in library.dossiers:
+            urls += [
+                f"{base_url}/how-we-know/{accepted.slug}/",
+                f"{base_url}/how-we-know/{accepted.slug}/review/",
+                *[
+                    f"{base_url}/how-we-know/{accepted.slug}/{view}/"
+                    for view in FEATURE_VIEWS
+                ],
+            ]
     write_text(tmp / "sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(f"  <url><loc>{html.escape(url)}</loc></url>" for url in urls) + "\n</urlset>\n")
     write_text(tmp / ".well-known" / "security.txt", "Contact: https://github.com/yoheinakajima/epistemedia/security\nCanonical: " + base_url + "/.well-known/security.txt\n")
 
@@ -2393,9 +2538,9 @@ def validate_repository(root: Path) -> list[str]:
                 errors.append(f"non-public object entered PublicCatalog: {obj.path}")
             if not obj.content_digest:
                 errors.append(f"object lacks content digest: {obj.path}")
-        from .featured import load_featured_dossier
+        from .case_library import load_featured_library
 
-        load_featured_dossier(root)
+        load_featured_library(root)
     except Exception as exc:
         errors.append(str(exc))
     # Common secret patterns are hard failures in accepted text files.
@@ -2437,19 +2582,29 @@ def audit_public(root: Path, public: Path) -> list[str]:
         public / ".well-known" / "epistemedia.json",
         public / "mcp" / "server.json",
     ]
-    from .featured import load_featured_dossier
+    from .case_library import load_featured_library
 
-    featured = load_featured_dossier(root)
-    if featured is not None:
-        required += [
-            public / "how-we-know" / "index.html",
-            public / "how-we-know" / featured.slug / "index.html",
-            public / "how-we-know" / featured.slug / "index.md",
-            public / "how-we-know" / featured.slug / "index.json",
-            public / "how-we-know" / featured.slug / "review" / "index.html",
-            public / "how-we-know" / featured.slug / "review" / "index.md",
-            public / "how-we-know" / featured.slug / "review" / "index.json",
-        ]
+    library = load_featured_library(root)
+    if library is not None:
+        required.append(public / "how-we-know" / "index.html")
+        for accepted in library.dossiers:
+            case_root = public / "how-we-know" / accepted.slug
+            required += [
+                case_root / "index.html",
+                case_root / "index.md",
+                case_root / "index.json",
+                case_root / "share-card.svg",
+                case_root / "review" / "index.html",
+                case_root / "review" / "index.md",
+                case_root / "review" / "index.json",
+            ]
+            for view in ("encyclopedia", "skeptical"):
+                required += [
+                    case_root / view / "index.html",
+                    case_root / view / "index.md",
+                    case_root / view / "index.json",
+                    case_root / view / "share-card.svg",
+                ]
     for path in required:
         if not path.exists():
             findings.append(f"missing public interface: {path.relative_to(public)}")

@@ -12,6 +12,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+from .case_library import load_featured_library
 from .core import (
     DEFAULT_API_URL,
     DEFAULT_BASE_URL,
@@ -24,7 +25,7 @@ from .core import (
     envelope,
     validate_repository,
 )
-from .featured import FEATURE_VIEWS, load_featured_dossier
+from .featured import FEATURE_VIEWS
 from .server import Gateway, MCPRequestError
 
 
@@ -330,10 +331,14 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     if command == "dossier":
         catalog = PublicCatalog.build(root)
-        featured = load_featured_dossier(root)
-        if featured is None or args.slug != featured.slug:
+        library = load_featured_library(root)
+        try:
+            dossier = library.get(args.slug) if library is not None else None
+        except KeyError:
+            dossier = None
+        if dossier is None:
             raise SystemExit(f"unknown dossier: {args.slug}")
-        print_json(envelope(catalog, featured.projection(args.policy)))
+        print_json(envelope(catalog, dossier.projection(args.policy)))
         return 0
     if command == "repo":
         if args.repo_command == "next":

@@ -1,0 +1,46 @@
+{
+  "claim_family_key": "family-agent-citation-lineage",
+  "default_view": "encyclopedia",
+  "dossier_bytes": 483595,
+  "dossier_id": "em:dossier:sha256:cbd7a14096a956f642f5c76046d3b49ed648fbe6bf24144c992404a01415af82",
+  "dossier_path": "research/how-we-know/agent-citation-lineage/candidate-dossier.json",
+  "dossier_sha256": "1ae06b54fe6c6ce1803836bbf2ecaf3e652bed2c6878b7e095c01a1c689ab87b",
+  "format": "epistemedia-agent-lineage-feature-v0.1",
+  "number": "002",
+  "profile": "agent-citation-lineage-v0.1",
+  "review_receipt_bytes": 14968,
+  "review_receipt_format": "https://epistemedia.org/research/independent-review-receipt-v1.json",
+  "review_receipt_path": "research/how-we-know/agent-citation-lineage/independent-em0029-review-receipt.json",
+  "review_receipt_sha256": "dd7f8ad5f760137d91346c3bf38b2bbfffbc7e5c2e74a8a987b76d857e4f244e",
+  "reviewed_head": "16b8e8ebc26948f8d9fa86120c3d495bca3f74e9",
+  "reviewer_id": "codex-independent-em0029-reviewer",
+  "selection_note": "A bounded lineage audit of eight context-isolated research-agent reports, their cited URLs, inspected source editions, exact spans, unresolved citations, and candidate warrants. Report multiplicity receives no automatic independence credit.",
+  "slug": "agent-citation-lineage",
+  "status": "accepted",
+  "target_proposition_key": "prop-agreement-not-independent-warrant",
+  "views": {
+    "encyclopedia": {
+      "evaluation_key": "evaluation-encyclopedia",
+      "featured_relation_keys": [
+        "relation-v2-sol-01-e7797662c8",
+        "relation-keplinger-metadata-versus-support-c23e105c8b",
+        "relation-deepresearch-bench-fact-a3f61d7a3a",
+        "relation-deeptrace-support-variation-1a84ef7c6f",
+        "relation-cnv-link-relevance-support-gap-165443d270",
+        "relation-url-health-resolution-0b26fb45c7",
+        "relation-reportbench-match-rate-6964e41a69"
+      ]
+    },
+    "skeptical": {
+      "evaluation_key": "evaluation-skeptical",
+      "featured_relation_keys": [
+        "relation-v2-terra-04-b8e0fb7c26",
+        "relation-citation-verifier-calibration-5b40082faa",
+        "relation-assertion-unresolved-citations-35a17beebf",
+        "relation-assertion-inaccessible-carriers-a9d4494367",
+        "relation-assertion-unsupported-claims-30720e36be",
+        "relation-assertion-independently-rejected-claims-4af09a9196"
+      ]
+    }
+  }
+}
