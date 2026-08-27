@@ -1,0 +1,1518 @@
+{
+  "content": {
+    "binary_body_count": 6,
+    "blob_count": 78,
+    "commit_sha": "90997f740c7197f3f300b013e4345e2ad5621f96",
+    "limitations": "This is a bounded literal-pattern search of one pinned public snapshot. It is not proof that a private, deleted, binary-embedded, or differently worded source never existed.",
+    "repository_url": "https://github.com/mjbommar/gpt4-passes-the-bar.git",
+    "result": "No UTF-8 body contains a chart identity, interpolation rule, percentile value, Illinois reference, or comparison-population phrase for the launch claim. README.md contains one generic 'test-taker' occurrence.",
+    "rows": [
+      {
+        "body_sha256": "cae005f4559f785d779a2365ce790f7fac40faaff2b788cbc6da0589182cba03",
+        "bytes": 3835,
+        "git_blob_sha1": "48b00c36dd7217db7dcfb28186daf8521dd9f039",
+        "path": "README.md",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 1,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "3ed94b9e447e22c8e4979bf8cc7f75f9fcf154922c0f2eb1495295fdf8575f0e",
+        "bytes": 2522,
+        "git_blob_sha1": "13e2689d55c264840d0cad7f6011fd1ebc224039",
+        "path": "data/MBE.md",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "5fec10d51b5da2ea8487afa0a4033cca33672e89f38ed7435c4ff400237955de",
+        "bytes": 2495,
+        "git_blob_sha1": "5bf7065e39753af8430256df778031d7aac2ea5b",
+        "path": "data/MEE.md",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "9858ef1496f4bdb4a625197e80db1d1cbfcdba863d767ae6b900aaf513d116db",
+        "bytes": 2407,
+        "git_blob_sha1": "f46241e9f59fda0faced5479403f5caa7ae2cae3",
+        "path": "data/MPT.md",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "ebf6800383aef166954fd0ba469e288e4ee00c7ea1b8fb84c30e3afb91ae7fd8",
+        "bytes": 360142,
+        "git_blob_sha1": "6957a299072a7719b92b0e8ed04d224cd045afc1",
+        "path": "publication/figures/figure1.png",
+        "pattern_counts": null,
+        "readback": "binary-body-digested-no-text-search"
+      },
+      {
+        "body_sha256": "44413fe8540a966d3b83ef22e673e8c602e2550fb22d0d3a6b5bddd62dd38419",
+        "bytes": 240801,
+        "git_blob_sha1": "c02e401dc4cc65ea364cc0d5e773001f6d5d1f82",
+        "path": "publication/figures/figure2.png",
+        "pattern_counts": null,
+        "readback": "binary-body-digested-no-text-search"
+      },
+      {
+        "body_sha256": "ab4bd5845523c2b6783af455f63198c9e47247ff00779bd1dc5e53f1e05f96dc",
+        "bytes": 2411,
+        "git_blob_sha1": "bb24fe988afa1e07de8e73fe21104527805b6c6c",
+        "path": "publication/generate_table_1.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "776f85406711a8623c58ee198d16b0a8341dea12b68de19ffe201dd22d8e1721",
+        "bytes": 2635,
+        "git_blob_sha1": "cb7587aeaa6df409482c1bb073841ebb6ea0bcbb",
+        "path": "publication/generate_table_2.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "12905980dbd0b05a43e8781bb69f3c8027d022297a0353b56eaf489bf252898e",
+        "bytes": 8310,
+        "git_blob_sha1": "b4698ca7a376767f34e284dd7ed36c759517c41f",
+        "path": "publication/plot_figure_1.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "ccab39682f687928c7e4e8910e6a5034ca9ae6da4985da8c2004ec8529e09cf3",
+        "bytes": 8956,
+        "git_blob_sha1": "bc69477c6c95cea5cd4bf0453437ba1924fd16de",
+        "path": "publication/plot_figure_2.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "060441a3fc70592311f22f8d9377a269f1dcd6d369ac249fc46025646f7073f0",
+        "bytes": 54078,
+        "git_blob_sha1": "9d1a825eef6e086a14e523ee4f850ca213404cb5",
+        "path": "results/MEE_MPT Scoring.xlsx",
+        "pattern_counts": null,
+        "readback": "binary-body-digested-no-text-search"
+      },
+      {
+        "body_sha256": "b996c3349f83adb30497de8ad51c93c585f1bfc733417b2092c7adc90146f625",
+        "bytes": 11230386,
+        "git_blob_sha1": "4367cc5aca98df97e28683e9ccc94c106cabc071",
+        "path": "results/mbe/ncbe-pdf-002/experiment-001/all_results.csv",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "be02e9d70ea93a2c6c8a2e637623b341ab6fdace6d59283779f0351844ef332c",
+        "bytes": 2921,
+        "git_blob_sha1": "2da14366b9eb24e431afde3cae97c0932b00480b",
+        "path": "results/mee/chat/MEE-July2022_P1_Q1_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "4c082cfbffbc807bceb83ec63f29ab4d56b5b10b0a2e2dbf9cdddd65e6ca9a4c",
+        "bytes": 3009,
+        "git_blob_sha1": "ed7cfed7766b410cb1fa7ee3baa62900508ab19d",
+        "path": "results/mee/chat/MEE-July2022_P1_Q2_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "616828805c70403a274cf18530969d06ea2b3b39b09e7f1cb6d158afcb8c1a3a",
+        "bytes": 2050,
+        "git_blob_sha1": "baff61bcacb90bacb2de3b3af62557ff752ab1ea",
+        "path": "results/mee/chat/MEE-July2022_P1_Q3_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "d70c1e359ad44647af69f826dca700d4a972ae23307c07d2bc0f086a522c09ee",
+        "bytes": 2223,
+        "git_blob_sha1": "0768de080514a1e41ea406c50aeaf54636455740",
+        "path": "results/mee/chat/MEE-July2022_P2_Q1_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "e7cf3d1230b1398a4fd4ae7c2bf40397c5563b6fccf21ebcb489b8ce680209ab",
+        "bytes": 2697,
+        "git_blob_sha1": "0fa7816f2e12796dd0431d866442ee2e931457d5",
+        "path": "results/mee/chat/MEE-July2022_P2_Q2_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "9e8dd9f19b5e2f85521ced673cd46ed082d7f30c7cd8002b32a0cd49bb58d845",
+        "bytes": 1709,
+        "git_blob_sha1": "f7aa84e509ded993924199b190828920e2a56189",
+        "path": "results/mee/chat/MEE-July2022_P2_Q3_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "b9d71e6476288a91b9b750d36dffcef5bb0f4c9f5b0f2d716411e5fa83fcd6e3",
+        "bytes": 2773,
+        "git_blob_sha1": "d16c86f64b8ec26ae19b63511e0fcb97b863f3b4",
+        "path": "results/mee/chat/MEE-July2022_P3_Q1_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "b22485c23d4ffe0fb31d3d8b021a52a3f4066d0294e60bbae4def7623b9379c0",
+        "bytes": 2584,
+        "git_blob_sha1": "ae477e5021b75047b53fe0441cc44a05458ea2a3",
+        "path": "results/mee/chat/MEE-July2022_P3_Q2_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "4cb62ef0b19e5162dee1509001dce881ffa14b22ac6a2986dddc4d48eb8200cd",
+        "bytes": 2816,
+        "git_blob_sha1": "451fd917ba3370b7bd23d03d25b312283746522d",
+        "path": "results/mee/chat/MEE-July2022_P3_Q3_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "3cd641a3e6240764ceb91b1ab3ae80911de65dd59743a7d80e57286715ded1c3",
+        "bytes": 1857,
+        "git_blob_sha1": "bf3df783beadec1056805bfb72a83aeb7808beeb",
+        "path": "results/mee/chat/MEE-July2022_P4_Q1_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "6051f6f440f334e8ee630bcc6ede1d3f10bbe920fdcb2b92249be72679bcefb3",
+        "bytes": 3383,
+        "git_blob_sha1": "2d1aed7a2961e9ff2f78962613b4136cf447efb3",
+        "path": "results/mee/chat/MEE-July2022_P4_Q2_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "49619029ac152af9378c57b51c32ab0be6230e2f06ea3892983934c47f117226",
+        "bytes": 1597,
+        "git_blob_sha1": "844c5cd6a73e364cf3882b3a6bb8193581c29807",
+        "path": "results/mee/chat/MEE-July2022_P4_Q3_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "393f719dba1e036150a3466d1aa7a4aa54f8389bce2112a843847bed06a13ecf",
+        "bytes": 2791,
+        "git_blob_sha1": "8f5a538ce03a560531181db0f8051ce368a2879f",
+        "path": "results/mee/chat/MEE-July2022_P4_Q4_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "1f539e8638a383f795250ae6e727306989ea4e31802f8a6d8a0eb262d9f31a34",
+        "bytes": 2620,
+        "git_blob_sha1": "34dd516f06bb0d5ae8a5888ff885124a480477de",
+        "path": "results/mee/chat/MEE-July2022_P5_Q1_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "8cb91f77b6737bcc10882904a473fe5bb63a5111606b813538a23bfbe8083e8a",
+        "bytes": 2688,
+        "git_blob_sha1": "15cec100c69a6dd80dcc8d8d05355b4b4f84680a",
+        "path": "results/mee/chat/MEE-July2022_P5_Q2_chatgpt.txt",
+        "pattern_counts": null,
+        "readback": "binary-body-digested-no-text-search"
+      },
+      {
+        "body_sha256": "5eabdca65d8591818ee483ad2eeae796fc6b1f9cb998765cbb05823ec88b50eb",
+        "bytes": 3042,
+        "git_blob_sha1": "bf52f8675bb9208d1afecef4d08cfc7308836430",
+        "path": "results/mee/chat/MEE-July2022_P5_Q3_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "e721f38db2cd2662608e6ec5ed2459b84fba1080ef1ca1fed745e1da6b65297c",
+        "bytes": 3378,
+        "git_blob_sha1": "bf820d7133f038c7fbbd29a226faf9ca321f358a",
+        "path": "results/mee/chat/MEE-July2022_P6_Q1_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "763686b71b56f0e67c23fe71b98bf18bd7b751a7ec0e960df15066bcc9f551d2",
+        "bytes": 2333,
+        "git_blob_sha1": "b57031a89ef53887969578aa2a6f4fc1bbded131",
+        "path": "results/mee/chat/MEE-July2022_P6_Q2_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "38773007aba4e4b129521ea028644f04a8c0dd3735a687ad12304deffa318993",
+        "bytes": 3285,
+        "git_blob_sha1": "bf4e516fae11248ec9c1a130e8695cc113980dd9",
+        "path": "results/mee/chat/MEE-July2022_P6_Q3_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "a1b1762b19937f0b88a13f79b4c1054e354ca7dc16305ef4a45a33e28d3916e1",
+        "bytes": 2674,
+        "git_blob_sha1": "05b5b64247f93b3d21773f4173d605ac4fd2d352",
+        "path": "results/mee/chat/MEE-July2022_P6_Q4_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "c1629ce8f8966cbb5359074fbc9723351d53ca535a43b1eccb1ecbe0dc342b4d",
+        "bytes": 2577,
+        "git_blob_sha1": "a62af289aadec21f8ab26c69f2c068be263daa6b",
+        "path": "results/mee/gpt4/MEE-July2022_P1_Q1_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "4d4295666315552c9aa352e7ea27943c23122f418d16706fe23c6baf7b2b4017",
+        "bytes": 2349,
+        "git_blob_sha1": "68e610964b4c6defb88b5fca46d3f47f29894a74",
+        "path": "results/mee/gpt4/MEE-July2022_P1_Q2_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "8344cb7737a2a2ca3620d93ff797a26741cffd156bd3af425f15675bb9bf3c5c",
+        "bytes": 2223,
+        "git_blob_sha1": "59ed7f370f5c74f748f1de1cb544b08eea8068f3",
+        "path": "results/mee/gpt4/MEE-July2022_P1_Q3_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "118094b1bfec86c5e599361bce17d7db4e4f8f767d4222d3eab7f86994e5c0ca",
+        "bytes": 2741,
+        "git_blob_sha1": "f807c61b0fd1919fdbe2dd4e7c96d378b98bce5e",
+        "path": "results/mee/gpt4/MEE-July2022_P2_Q1_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "12e554c64ab934bdd54b2be414faa54b1b256fa341f236478fff2dd666f82dfc",
+        "bytes": 1973,
+        "git_blob_sha1": "5f6a801121d89abba533bfa9ecfdca14fd38e038",
+        "path": "results/mee/gpt4/MEE-July2022_P2_Q2_GPT-4.txt",
+        "pattern_counts": null,
+        "readback": "binary-body-digested-no-text-search"
+      },
+      {
+        "body_sha256": "914fcfdf846b41bdb42f36389845cb8685587a824d7e7abd58572c3f2b89012f",
+        "bytes": 1820,
+        "git_blob_sha1": "3eb0d61be673785b9b47c4f90e765cecec6d1b31",
+        "path": "results/mee/gpt4/MEE-July2022_P2_Q3_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "ee379422ef6c7daa340cdb4e5956d464bfe63b8e9ecdc4a6305282d86cc8c80c",
+        "bytes": 2512,
+        "git_blob_sha1": "91d3de4c6e844ff8ecacdab8271dfa89203b625e",
+        "path": "results/mee/gpt4/MEE-July2022_P3_Q1_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "00223e943bf37bfcab07e0e392d670ebb342948c151327705271148637bacee1",
+        "bytes": 1878,
+        "git_blob_sha1": "5fd5e9eec3c85b7239360d3e2b48778b727215cc",
+        "path": "results/mee/gpt4/MEE-July2022_P3_Q2_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "524dae9a1e063d0d698a42583d037e14d6823c208c67329f1a8ce3099996f91c",
+        "bytes": 2211,
+        "git_blob_sha1": "f16984e8e0feccf7c2ba9ad85fb675704233d9c2",
+        "path": "results/mee/gpt4/MEE-July2022_P3_Q3_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "6462f9dd10fdbcbfedcc0756d50d460567b2ac0d1d21937959db181dde795b5c",
+        "bytes": 1376,
+        "git_blob_sha1": "6f6c38a8f4ed2f37fb193507f87fa8f4c961262b",
+        "path": "results/mee/gpt4/MEE-July2022_P4_Q1_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "daac8e9d48d0b09cc2372d386e1014911960c86d9130e53b1b89e56cd1b12211",
+        "bytes": 2138,
+        "git_blob_sha1": "973e5761b3f487133e1fec7348d00d5a7671d039",
+        "path": "results/mee/gpt4/MEE-July2022_P4_Q2_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "4bc9baa130dacd795b429464c6bcb53de834d79fa09e909c665c6bbcc2bd4d40",
+        "bytes": 1924,
+        "git_blob_sha1": "e4c76e45547cae8104064bb3f0c63282f4aa54ef",
+        "path": "results/mee/gpt4/MEE-July2022_P4_Q3_GPT-4.txt",
+        "pattern_counts": null,
+        "readback": "binary-body-digested-no-text-search"
+      },
+      {
+        "body_sha256": "30fec585fed804fc4ae090ed627907fde51d4feddc1c9470b85398752091fef3",
+        "bytes": 1694,
+        "git_blob_sha1": "25a06ca9434dc39d8a3077f736c32f49ccc56300",
+        "path": "results/mee/gpt4/MEE-July2022_P4_Q4_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "287716b72992bfcb882e6246bdf751e1242896f502163a840e0f26c03427d60f",
+        "bytes": 3387,
+        "git_blob_sha1": "7eafd269f212341c2d89863448ef777d24b1ab66",
+        "path": "results/mee/gpt4/MEE-July2022_P5_Q1_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "83b45b70bd7bb683a57c61b773179adf82293ffc6740e587efaa64f69ccea4a7",
+        "bytes": 1797,
+        "git_blob_sha1": "1f458f01869887654bc3e5fc40033f1dd72c1ec6",
+        "path": "results/mee/gpt4/MEE-July2022_P5_Q2_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "fcb6dc8aff2d2d00a0f2f6f3e95c6544a1397dbb6e75fe15a148ba6132a57205",
+        "bytes": 3594,
+        "git_blob_sha1": "e652518d1ea959298445f9d7a81ecdd3d68785bd",
+        "path": "results/mee/gpt4/MEE-July2022_P5_Q3_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "be08cbb0792c2461249c08df569f67191669f60b0eb46e734df0618effbe43e1",
+        "bytes": 1958,
+        "git_blob_sha1": "1e116b1f0a0b47d5302ea9e1bb2e216aa2444daa",
+        "path": "results/mee/gpt4/MEE-July2022_P6_Q1_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "170af73f6922e7944c9bf673924a3a102be64d874a7557da0305a741ed9533dc",
+        "bytes": 2038,
+        "git_blob_sha1": "8aac8ebdf11134b3acdfa5068d527a5e5643713b",
+        "path": "results/mee/gpt4/MEE-July2022_P6_Q2_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "f1a6a77d3f6e1e73546cda63e748729f323e3e515bc2d02270699fb383f388d8",
+        "bytes": 2070,
+        "git_blob_sha1": "c48dbe8038a1435c3d1be8151d0c017b19c55ed7",
+        "path": "results/mee/gpt4/MEE-July2022_P6_Q3_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "db174863fca52290126a7c338651dc4ff663f6d37e3745d17763ffbc60ac1bd8",
+        "bytes": 1651,
+        "git_blob_sha1": "ebbefb1a87a38210494f387a3a6c25df94bb6a07",
+        "path": "results/mee/gpt4/MEE-July2022_P6_Q4_GPT-4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "348471fb42dd693e04b019c8e49a0ae7338d69862529ff3b977129d7055c2bf0",
+        "bytes": 3867,
+        "git_blob_sha1": "7fb2f9fbcdf4f9f6ba0e5b7bdf24d30938bfc5ff",
+        "path": "results/mpt/chat/MPT1-July2022_Q1_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "ae1e617430e3b3ad68210502b5014f02b368cf81813526b90a6e129669393541",
+        "bytes": 2793,
+        "git_blob_sha1": "84996a5dcaea378728ce0d4a60475b13ec4259c3",
+        "path": "results/mpt/chat/MPT1-July2022_Q2_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "bafb371041f3a77b9ddf4a40e63d851007d3e8d2e3e5f2cc75f0268607cf38d3",
+        "bytes": 3639,
+        "git_blob_sha1": "fe4794d84e0de8d6303c6cd31ac7070ed08d9b34",
+        "path": "results/mpt/chat/MPT1-July2022_Q3_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "d22a63fb18c1c98bcea2251f50fcbb36a5e51e026bbfc32d7e50cb31ff3b1b28",
+        "bytes": 2426,
+        "git_blob_sha1": "4a2c073558b96009845d0f1a82f16bb69d2de118",
+        "path": "results/mpt/chat/MPT1-July2022_Q4_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "837b7fe09f617b62c9d2f167562d2d172c0a509814c94f2ecb92229f602423e3",
+        "bytes": 3502,
+        "git_blob_sha1": "c465bcf97119f674c98b60d38c02e1d56137ffc7",
+        "path": "results/mpt/chat/MPT2-July2022_Q1_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "f4228202b6f369c6b9cab19a5fdfc8a561845ac39e44c772ada3f41d82e465ed",
+        "bytes": 3717,
+        "git_blob_sha1": "b2cebfd407d1c390118f5d026e03bcaf2e362a03",
+        "path": "results/mpt/chat/MPT2-July2022_Q2_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "7c7bc6cf2eeb0af1962afff406beb6b48a67b4a8d05a0a00b4309638163a3ac1",
+        "bytes": 3557,
+        "git_blob_sha1": "b5fee0b22bd99cc25f6289d35f661a423a711506",
+        "path": "results/mpt/chat/MPT2-July2022_Q3_chatgpt.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "29578705db74871473f612032e24173ba6c653d2096a9035beed3321101f9eed",
+        "bytes": 4080,
+        "git_blob_sha1": "8c49aa2ae4756b93495f43878727e4669e9c12b6",
+        "path": "results/mpt/gpt4/MPT1-July2022_Q1_GPT4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "72e5714a6b30da698d2ec2cbe6ed81807326c5b9887c53b2548449e2f0c019d7",
+        "bytes": 3699,
+        "git_blob_sha1": "b32af70fd08c33cef5b9463ca1ad660f04437625",
+        "path": "results/mpt/gpt4/MPT1-July2022_Q2_GPT4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "05861221c5abbb6606c82d6177fc0bb4ed5a2f5b708d20c0f90194d852a44fd2",
+        "bytes": 3559,
+        "git_blob_sha1": "726a0ad9f564344b66421810b1cb2c94d4cae261",
+        "path": "results/mpt/gpt4/MPT1-July2022_Q3_GPT4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "9d836bb3ee809678af2996ceb06c9247e6d60caa5e7efa7e0c780c23745a271c",
+        "bytes": 3156,
+        "git_blob_sha1": "1ef1110bf538fc5378eda24aa10e389283f1f470",
+        "path": "results/mpt/gpt4/MPT1-July2022_Q4_GPT4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "74456586dc9f93f9dada334c578d10f8b980d7d2d7ac1dc879e2050fc5bf2f02",
+        "bytes": 4663,
+        "git_blob_sha1": "d3fb73ac25e71890c43f8aad021a56dc05802f5c",
+        "path": "results/mpt/gpt4/MPT2-July2022_Q1_GPT4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "4d51f1ba5351abe1e5d1f1ade798b5e2fee7b9016debd73f4b6be1266ad7bf41",
+        "bytes": 5757,
+        "git_blob_sha1": "7ef9888733752c62db5f9efe83226ec0b1f82016",
+        "path": "results/mpt/gpt4/MPT2-July2022_Q2_GPT4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "aabf9a6e6f256ea05f21de2365a2add272e8279cf89d65ef4a6c1d9c056b04cd",
+        "bytes": 4926,
+        "git_blob_sha1": "b89000c407ec11a8b97c0339c645f8410b3b1f57",
+        "path": "results/mpt/gpt4/MPT2-July2022_Q3_GPT4.txt",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "path": "src/engines/__init__.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "ad37d5e257a0ae80fe8b1993e5639fd5c23a7165a804cf9173ca3ae09b6eaf23",
+        "bytes": 2140,
+        "git_blob_sha1": "0e786abeee54cf6ed86c66c1a13f465fdfb55f77",
+        "path": "src/engines/base_engine.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "ba49bd7029dcb5091c09b26ae3b6054833d9239843df81a9884ad9fc03d5be9c",
+        "bytes": 8610,
+        "git_blob_sha1": "fbca5e6874f3cacb1149a19badd17b840a12e873",
+        "path": "src/engines/engine_openai.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0,
+        "git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "path": "src/exams/__init__.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "449319530862d6d4ca475ba918aabab81d0ffde824cf1aa68ec65306bcfb11b9",
+        "bytes": 7759,
+        "git_blob_sha1": "91a0fc40b57333dbce8ad0c437782df6df518423",
+        "path": "src/exams/choice_exam.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "83917d38f5affc91a44925033c2c8a6bb6ce72d3158b58bfa5667cda999fb376",
+        "bytes": 9358,
+        "git_blob_sha1": "cbe975e9baefcabc2fb601d89267ffcb441a3d9d",
+        "path": "src/exams/choice_prompts.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "ff4dfca45f28ead5991068298278e09f8ac4e66cb5e61d5ecd294e324a767f6b",
+        "bytes": 7609,
+        "git_blob_sha1": "cd2f02abeb6a668455d5050727d12e9f2054cb6b",
+        "path": "src/exams/essay_exam.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "ecbdf47d4d20b1ed2906961f2ae9a7eb82ea17c42ff9b012f3750359d0c5a371",
+        "bytes": 2773,
+        "git_blob_sha1": "bfad1280d56acbf15a7a59499b5feba8c290f250",
+        "path": "src/exams/essay_prompts.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "6b4e9cebe5b3f3041bc2529d6d0f521fbf43425c050bd2aa0cafba385786b39e",
+        "bytes": 2716,
+        "git_blob_sha1": "7467c8174112a2ad24a357d2f588782813aa778e",
+        "path": "src/exams/experiment_data.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "e2e6a22b7436c726d9d2334f8b6133ca3d0ea3da594021a581e2bf919510b0b7",
+        "bytes": 3279,
+        "git_blob_sha1": "a33b83d9ce56e82d870d3cd81d33fa06c493b1eb",
+        "path": "src/run_experiment.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "9ccbdaf7a696263437b95384a0f915e8f8130a1b76c5176817c72b5468bd5da2",
+        "bytes": 6537,
+        "git_blob_sha1": "028afe9c72eebc81815b9e4ffb8cccc9845fc71a",
+        "path": "src/score_experiment.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      },
+      {
+        "body_sha256": "44922d6b5fc7a1f6c2c6ed9f38ec31897432cb2f56313842da690f7e26fcdbd6",
+        "bytes": 6576,
+        "git_blob_sha1": "9adf15a32358324e75bdd50fd2da6efefbcccfd6",
+        "path": "src/summarize_essay_experiment.py",
+        "pattern_counts": {
+          "90th": 0,
+          "February 2018": 0,
+          "Illinois": 0,
+          "UBE distribution": 0,
+          "Uniform Bar Exam distribution": 0,
+          "comparison population": 0,
+          "interpolat": 0,
+          "percentile": 0,
+          "test taker": 0,
+          "test-taker": 0,
+          "top 10": 0
+        },
+        "readback": "utf8-body-digested-and-searched"
+      }
+    ],
+    "schema": "https://epistemedia.org/research/git-blob-search-manifest-v1.json",
+    "search_patterns": [
+      "90th",
+      "top 10",
+      "percentile",
+      "interpolat",
+      "Illinois",
+      "February 2018",
+      "test-taker",
+      "test taker",
+      "comparison population",
+      "UBE distribution",
+      "Uniform Bar Exam distribution"
+    ],
+    "task_id": "EM-0032",
+    "text_body_count": 72,
+    "tree_sha": "810bd4a9a8ffb51e457715d2312d28d3e9657240"
+  },
+  "manifest_id": "em:git-blob-search:sha256:545908f30ba849c42c860185f92612f4d52a53b4f13b3c3ca5672213e23ba996"
+}

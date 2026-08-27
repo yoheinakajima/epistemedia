@@ -1,0 +1,10 @@
+{
+  "command": "predecessor=49720ed66c0d25c8046cc15199de5ab3b9701f45; content=bc3150228f562dff7639eed170b97e2fb8322b02; tree=9f71d64a793ca05962dd4e594821300f997a5ac3; packet=535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b; sources=385bbc193be495597ef0fe2a675220ca443297e673b32947c8d8ffcd1a6366da; candidate=07dec44bc2cf893b19ba6307e34aef60b6127b5e881e319ff4132c8e69972d1a; correction=span-martinez-score-validation locator introduction journal p584; build,git-body-search,html-normalization,self-test,ruff,diff,make=0; independent_reuse_review=pending",
+  "id": "em:run-receipt:sha256:2080bbbc9450939ad045b77da6f921c3e35befb4b3922def8659bd51cc2a514e",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-27T21:36:45Z",
+  "run_id": "em0032-author-locator-correction-20260827",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0032"
+}
