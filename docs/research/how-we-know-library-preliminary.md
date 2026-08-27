@@ -1,6 +1,8 @@
 # Preliminary readiness for the next How We Know cases
 
-Status: source-readiness synthesis under EM-0027; no case admitted.
+Status: accepted source-readiness synthesis. Exact-head reviewed and admitted through protected
+PR `#50` at `cbb029bd336404e5bc654e939308247317eaa153`; none of these three candidates was admitted as
+a dossier or public case by EM-0027.
 
 Three candidate directions were checked independently against primary or authoritative source
 identity, access, licensing, proposition scope, likely lineage, active dispute, and review cost.
@@ -34,3 +36,5 @@ No candidate has been selected, admitted, featured, or published by this mapping
 
 Detailed source ledgers live under
 [research/how-we-know/library-preliminary/](../../research/how-we-know/library-preliminary/README.md).
+The accepted packet bytes and all three **HOLD** dispositions remain unchanged. EM-0032 and
+EM-0033 now authorize separate closure research for the GPT-4 and Mehrabian candidates.
