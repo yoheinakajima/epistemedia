@@ -1,0 +1,10 @@
+{
+  "command": "predecessor=d471a26abece1a00900bcab216ed9de670a6b0b6; corrected_commit=f49a07f53022a9366a5be81f3cf535242038aba9; corrected_tree=2ced50ea3f8c7bd49550bcf6195249ffc8b12cb3; packet_id=em:research-packet:sha256:e0d5967853bcf98aff0abd4030dfeef441dce828b234062b1c82d71a846919df; source_records_sha256=ccfada7aa2fdfd9d59fe9f77349bf72ee0304abf9cea6d234fdca74028c9f25f; artifact_inventory_id=em:artifact-inventory:sha256:02175ab09bf6edac892bb42fd1df919959c2b537004da539612698e33ee07ac3; artifact_inventory_sha256=93592cabb27c89138e90e36729338b07116ec23bd7c7c6f30a9a71829aae1080; candidate_packet_sha256=2f51b684249f2045a917da3ef7e374ef480f17faaf457e7408b25877be6f9e95; build_packet.py --check=0; verify_packet.py --self-test=0; verify_packet.py --require-review=1 independent review receipt missing; ruff check=0; git diff --check=0; make check=0; limitations=independent review, dossier admission, public verdict, and deployment remain pending",
+  "id": "em:run-receipt:sha256:20e2fc3af0dda6d45f9cfdeade67f9618b7c24eb51c24db9f7592e060ee516f6",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-27T19:36:33Z",
+  "run_id": "em0032-author-correction-20260827",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0032"
+}
