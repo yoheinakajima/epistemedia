@@ -1,7 +1,8 @@
 # GPT-4 bar-exam percentile research packet
 
-Status: author packet complete; fresh-clone independent review pending. This is research input, not
-an admitted How We Know dossier, public verdict, current-model benchmark, or deployment.
+Status: corrected author packet complete; fresh-clone independent re-review pending. This is
+research input, not an admitted How We Know dossier, public verdict, current-model benchmark, or
+deployment.
 
 Task: `EM-0032`
 
@@ -37,18 +38,24 @@ OpenAI.
 ## Packet identities
 
 - candidate packet:
-  `em:research-packet:sha256:3302c2c7282699e52ab53d670a83ded21f2a43de7685604075a1eed8a2f63ae1`;
+  `em:research-packet:sha256:e0d5967853bcf98aff0abd4030dfeef441dce828b234062b1c82d71a846919df`;
 - artifact inventory:
-  `em:artifact-inventory:sha256:715844dcdcc9464e0f2b86e7d47f18145865bffb9fc7d02351836b53488621b9`;
+  `em:artifact-inventory:sha256:02175ab09bf6edac892bb42fd1df919959c2b537004da539612698e33ee07ac3`;
 - 15 preliminary core source objects plus 4 derivation supplements;
-- 32 quote-minimal source spans;
+- 35 quote-minimal parent spans decomposed into 76 typed cells, clauses, code lines, or contiguous
+  text units;
 - 89 mechanical artifacts: 78 pinned Git blobs, 1 Figshare PDF, and 10 OSF files;
-- 10 deterministic calculations; and
-- 5 lineage groups.
+- 10 deterministic calculations;
+- 5 lineage roots; and
+- 10 typed, evidence-bound dependence edges covering data, model, author-social, method, material,
+  benchmark, score, comparison-class, citation, and derivation dependence.
 
 All 89 artifacts receive zero automatic independent-evidence credit. OpenAI report editions,
 Katz's preprint/VOR/repository/supplement, and the study outputs collapse to one historical model
-performance root. Martínez's VOR and OSF deposit collapse to one re-analysis root.
+performance root. Martínez's VOR and OSF deposit collapse to one re-analysis root. The repaired
+packet also distinguishes the Katz repository commit from its Git tree, uses the canonical Spring
+2022 NCBE testing-column work, binds every July MBE bin used by the passers calculation, and keeps
+the Martínez `45th`/`48th` edition-internal discrepancy visible.
 
 ## Files
 
@@ -57,7 +64,8 @@ performance root. Martínez's VOR and OSF deposit collapse to one re-analysis ro
 - `artifact-inventory.json` — content-addressed 89-file metadata inventory;
 - `candidate-packet.json` — deterministic content-addressed packet;
 - `build_packet.py` — capture helper and offline deterministic builder;
-- `verify_packet.py` — source/count/math/lineage verifier and fail-closed review gate; and
+- `verify_packet.py` — source/count/math/lineage verifier, adversarial receipt self-test, and
+  fail-closed exact-head review gate; and
 - `independent-review-receipt.json` — absent until a separate reviewer completes exact-head
   review.
 
@@ -75,8 +83,10 @@ make check
 ```
 
 Before independent review, the third command must fail with `independent review receipt missing`.
-After review, it must bind the exact author head, packet bytes, all source/span/artifact coverage,
-recomputed calculations, lineage edges, limitations, and recommendation.
+After review, it must bind the exact base, author head and tree, packet bytes, every source,
+parent span, typed span unit, calculation, lineage root and edge, command record, clean-state
+observation, limitation, and recommendation. A receipt-only child must also bind its Git parent and
+tree rather than trusting self-asserted hashes.
 
 ## Hard boundary
 

@@ -1,7 +1,7 @@
 # Case 003 research candidate: GPT-4's bar-exam percentile
 
-Status: content-addressed author research packet complete; independent review pending. This note
-does not admit or publish Case 003.
+Status: corrected content-addressed author research packet complete; independent re-review pending.
+This note does not admit or publish Case 003.
 
 The candidate asks a narrower question than “Did GPT-4 pass the bar?” A historical simulated UBE
 score was real enough to inspect, but a percentile is not a property of the score alone. It also
@@ -28,6 +28,13 @@ missing claim lineage—not a gotcha about a fake score.
 The packet also bars three common overextensions: “test takers” does not mean practicing lawyers;
 a simulated historical exam does not establish general legal competence; and none of the captured
 results measures a current model.
+
+Its audit structure is deliberately stricter than a bibliography. Thirty-five source spans are
+decomposed into 76 typed exact units, including all 21 July MBE score bins used by the modeled
+passers calculation. Five underlying roots are connected by ten evidence-bound dependence types,
+so a report, repository, supplement, chart, and re-analysis cannot become five independent results
+merely by appearing at five URLs. The source record also distinguishes the Katz Git commit from its
+tree and identifies the comparison-population testing column as Jim Leach's Spring 2022 NCBE work.
 
 Full machine-readable records, source identities, limitations, artifact inventory, deterministic
 calculations, and the pending independent-review gate are in

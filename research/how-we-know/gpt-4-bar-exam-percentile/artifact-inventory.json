@@ -5,7 +5,9 @@
         "artifact_root_id": "artifact-root-katz-git",
         "expected_files": 78,
         "independence": "same Katz/OpenAI experiment root",
-        "source_id": "source-katz-git-tree"
+        "commit_sha": "90997f740c7197f3f300b013e4345e2ad5621f96",
+        "source_id": "source-katz-git-snapshot",
+        "tree_sha": "810bd4a9a8ffb51e457715d2312d28d3e9657240"
       },
       {
         "artifact_root_id": "artifact-root-katz-figshare",
@@ -1138,5 +1140,5 @@
     "schema": "https://epistemedia.org/research/artifact-inventory-v1.json",
     "task_id": "EM-0032"
   },
-  "inventory_id": "em:artifact-inventory:sha256:715844dcdcc9464e0f2b86e7d47f18145865bffb9fc7d02351836b53488621b9"
+  "inventory_id": "em:artifact-inventory:sha256:02175ab09bf6edac892bb42fd1df919959c2b537004da539612698e33ee07ac3"
 }

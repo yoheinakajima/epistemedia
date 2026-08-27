@@ -27,6 +27,43 @@ EXPECTED_ARTIFACT_ROOT_COUNTS = {
     "artifact-root-martinez-osf": 10,
 }
 EXPECTED_OSF_TOTAL_BYTES = 34_906_996
+EXPECTED_PARENT_SPAN_COUNT = 35
+REQUIRED_LINEAGE_EDGE_TYPES = {
+    "data",
+    "model",
+    "author-social",
+    "method",
+    "material",
+    "benchmark",
+    "score",
+    "comparison-class",
+    "citation",
+    "derivation",
+}
+JULY_MBE_BINS = [
+    (85, 2),
+    (90, 2),
+    (95, 5),
+    (100, 6),
+    (105, 13),
+    (110, 22),
+    (115, 33),
+    (120, 56),
+    (125, 73),
+    (130, 78),
+    (135, 104),
+    (140, 96),
+    (145, 101),
+    (150, 99),
+    (155, 99),
+    (160, 79),
+    (165, 64),
+    (170, 38),
+    (175, 22),
+    (180, 8),
+    (185, 2),
+]
+JULY_MBE_CELL_IDS = [f"cell-martinez-july-mbe-{score}" for score, _ in JULY_MBE_BINS]
 
 
 def load(path: Path) -> dict[str, Any]:
@@ -59,6 +96,24 @@ def require(condition: bool, message: str) -> None:
         raise SystemExit(message)
 
 
+def span_unit_ids(span: dict[str, Any]) -> list[str]:
+    return [
+        *[item["segment_id"] for item in span.get("segments", [])],
+        *[item["cell_id"] for item in span.get("cells", [])],
+        *[item["line_id"] for item in span.get("code_lines", [])],
+    ]
+
+
+def span_extent(span: dict[str, Any]) -> Any:
+    if "quote" in span:
+        return {"quote": span["quote"]}
+    return {
+        key: span[key]
+        for key in ("segments", "cells", "code_lines")
+        if key in span
+    }
+
+
 def inventory_id(content: dict[str, Any]) -> str:
     return f"em:artifact-inventory:sha256:{digest_bytes(canonical_bytes(content))}"
 
@@ -77,7 +132,7 @@ def capture_inventory(args: argparse.Namespace) -> dict[str, Any]:
     osf_data = load(args.osf_data)
 
     require(
-        katz_tree.get("sha") == "90997f740c7197f3f300b013e4345e2ad5621f96",
+        katz_tree.get("sha") == "810bd4a9a8ffb51e457715d2312d28d3e9657240",
         "Katz Git tree identity drift",
     )
     require(katz_tree.get("truncated") is False, "Katz Git tree is truncated")
@@ -170,7 +225,9 @@ def capture_inventory(args: argparse.Namespace) -> dict[str, Any]:
         "artifact_roots": [
             {
                 "artifact_root_id": "artifact-root-katz-git",
-                "source_id": "source-katz-git-tree",
+                "source_id": "source-katz-git-snapshot",
+                "commit_sha": "90997f740c7197f3f300b013e4345e2ad5621f96",
+                "tree_sha": "810bd4a9a8ffb51e457715d2312d28d3e9657240",
                 "expected_files": 78,
                 "independence": "same Katz/OpenAI experiment root",
             },
@@ -220,30 +277,7 @@ def capture_inventory(args: argparse.Namespace) -> dict[str, Any]:
 
 
 def july_mbe_distribution() -> list[int]:
-    bins = [
-        (85, 2),
-        (90, 2),
-        (95, 5),
-        (100, 6),
-        (105, 13),
-        (110, 22),
-        (115, 33),
-        (120, 56),
-        (125, 73),
-        (130, 78),
-        (135, 104),
-        (140, 96),
-        (145, 101),
-        (150, 99),
-        (155, 99),
-        (160, 79),
-        (165, 64),
-        (170, 38),
-        (175, 22),
-        (180, 8),
-        (185, 2),
-    ]
-    return [score for score, count in bins for _ in range(count)]
+    return [score for score, count in JULY_MBE_BINS for _ in range(count)]
 
 
 def conditional_percentile(
@@ -258,12 +292,30 @@ def conditional_percentile(
 
 def build_derivations() -> list[dict[str, Any]]:
     interpolation_specs = [
-        ("derive-illinois-feb-2018-298", 85.0, 90.0),
-        ("derive-illinois-jul-2018-298", 59.0, 70.0),
-        ("derive-illinois-feb-2019-298", 83.0, 90.0),
+        (
+            "derive-illinois-feb-2018-298",
+            85.0,
+            90.0,
+            "span-illinois-feb-2018-anchors",
+            ["cell-illinois-feb-2018-290", "cell-illinois-feb-2018-300"],
+        ),
+        (
+            "derive-illinois-jul-2018-298",
+            59.0,
+            70.0,
+            "span-illinois-jul-2018-anchors",
+            ["cell-illinois-jul-2018-290", "cell-illinois-jul-2018-300"],
+        ),
+        (
+            "derive-illinois-feb-2019-298",
+            83.0,
+            90.0,
+            "span-illinois-feb-2019-anchors",
+            ["cell-illinois-feb-2019-290", "cell-illinois-feb-2019-300"],
+        ),
     ]
     derivations = []
-    for derivation_id, at_290, at_300 in interpolation_specs:
+    for derivation_id, at_290, at_300, span_id, cell_ids in interpolation_specs:
         result = at_290 + ((298 - 290) / (300 - 290)) * (at_300 - at_290)
         derivations.append(
             {
@@ -271,6 +323,8 @@ def build_derivations() -> list[dict[str, Any]]:
                 "method": "reviewer sensitivity only: linear interpolation",
                 "equation": "p298 = p290 + ((298 - 290) / 10) * (p300 - p290)",
                 "inputs": {"score": 298, "p290": at_290, "p300": at_300},
+                "input_span_ids": [span_id],
+                "input_cell_ids": cell_ids,
                 "result_percentile": result,
                 "uncertainty": (
                     "Neither Illinois nor OpenAI disclosed this interpolation; it cannot "
@@ -298,6 +352,19 @@ def build_derivations() -> list[dict[str, Any]]:
                     "new_york_nonpass_proportion": 0.27,
                     "july_mbe_binned_observations": len(mbe_values),
                 },
+                "input_span_ids": [
+                    "span-leach-first-time-mean",
+                    "span-martinez-mean-assumption",
+                    "span-martinez-script-july-mbe-distribution",
+                    "span-martinez-script-ube-sd",
+                    "span-ncbe-ny-cutoff-2022",
+                    "span-ny-first-timers-2022",
+                ],
+                "input_cell_ids": [
+                    *JULY_MBE_CELL_IDS,
+                    "cell-ncbe-ube-score-266",
+                    "cell-ny-first-timers-rate",
+                ],
                 "results": {
                     "z_at_0_27": z_27,
                     "derived_ube_sd": ube_sd,
@@ -397,9 +464,35 @@ def validate_inputs(
             f"invalid capture digest: {source['source_id']}",
         )
 
-    span_ids = [span["span_id"] for source in sources for span in source["spans"]]
+    spans = [span for source in sources for span in source["spans"]]
+    span_ids = [span["span_id"] for span in spans]
+    require(len(spans) == EXPECTED_PARENT_SPAN_COUNT, "parent span count drift")
     require(len(span_ids) == len(set(span_ids)), "duplicate span ID")
-    derivation_ids = {item["derivation_id"] for item in build_derivations()}
+    unit_ids = [unit_id for span in spans for unit_id in span_unit_ids(span)]
+    require(len(unit_ids) == len(set(unit_ids)), "duplicate span unit ID")
+    require(not set(span_ids).intersection(unit_ids), "parent and unit span IDs overlap")
+    allowed_formats = {
+        "exact-contiguous-text",
+        "exact-segments",
+        "table-cell-transcription",
+        "code-segment-transcription",
+        "code-table-transcription",
+    }
+    for span in spans:
+        span_format = span.get("format", "exact-contiguous-text")
+        require(span_format in allowed_formats, f"unknown span format: {span['span_id']}")
+        require(bool(span_extent(span)), f"span lacks exact extent: {span['span_id']}")
+        if span_format == "exact-contiguous-text":
+            require(
+                isinstance(span.get("quote"), str) and span["quote"].strip(),
+                f"exact span lacks quote: {span['span_id']}",
+            )
+        else:
+            require("quote" not in span, f"transcribed span has fake quote: {span['span_id']}")
+            require(span_unit_ids(span), f"transcribed span lacks typed units: {span['span_id']}")
+
+    derivations = build_derivations()
+    derivation_ids = {item["derivation_id"] for item in derivations}
     for claim in source_records["claims"]:
         require(claim["span_ids"], f"claim lacks spans: {claim['claim_id']}")
         require(
@@ -410,6 +503,22 @@ def validate_inputs(
             set(claim.get("derivation_ids", [])).issubset(derivation_ids),
             f"claim has unknown derivation: {claim['claim_id']}",
         )
+    for derivation in derivations:
+        require(
+            set(derivation.get("input_span_ids", [])).issubset(span_ids),
+            f"derivation has unknown parent span: {derivation['derivation_id']}",
+        )
+        require(
+            set(derivation.get("input_cell_ids", [])).issubset(unit_ids),
+            f"derivation has unknown cell: {derivation['derivation_id']}",
+        )
+    parameters = next(
+        item for item in derivations if item["derivation_id"] == "derive-martinez-parameters"
+    )
+    require(
+        parameters["input_cell_ids"][: len(JULY_MBE_CELL_IDS)] == JULY_MBE_CELL_IDS,
+        "July MBE cell provenance drift",
+    )
 
     inventory_content = artifact_inventory["content"]
     require(
@@ -436,10 +545,49 @@ def validate_inputs(
     )
     require(osf_bytes == EXPECTED_OSF_TOTAL_BYTES, "OSF artifact bytes drift")
 
+    lineages = source_records["lineages"]
+    lineage_ids = {lineage["lineage_id"] for lineage in lineages}
+    require(len(lineage_ids) == 5, "lineage root count drift")
+    require(
+        {lineage["root_type"] for lineage in lineages}
+        == {"performance", "analysis", "comparison-data"},
+        "lineage root-type drift",
+    )
     lineage_source_ids = {
-        source_id for lineage in source_records["lineages"] for source_id in lineage["source_ids"]
+        source_id for lineage in lineages for source_id in lineage["source_ids"]
     }
     require(lineage_source_ids == set(source_ids), "source-to-lineage closure drift")
+    source_span_ids = {
+        source["source_id"]: {span["span_id"] for span in source["spans"]}
+        for source in sources
+    }
+    endpoints = set(source_ids) | lineage_ids
+    edges = source_records["lineage_edges"]
+    edge_ids = [edge["edge_id"] for edge in edges]
+    require(len(edges) == 10, "lineage edge count drift")
+    require(len(edge_ids) == len(set(edge_ids)), "duplicate lineage edge ID")
+    require(
+        {edge["edge_type"] for edge in edges} == REQUIRED_LINEAGE_EDGE_TYPES,
+        "lineage edge-type drift",
+    )
+    for edge in edges:
+        require(
+            set(edge["from_ids"] + edge["to_ids"]).issubset(endpoints),
+            f"lineage edge endpoint drift: {edge['edge_id']}",
+        )
+        require(edge["evidence"], f"lineage edge lacks evidence: {edge['edge_id']}")
+        for evidence in edge["evidence"]:
+            source_id = evidence["source_id"]
+            require(source_id in source_span_ids, f"unknown edge source: {edge['edge_id']}")
+            require(
+                set(evidence["span_ids"]).issubset(source_span_ids[source_id]),
+                f"edge span ownership drift: {edge['edge_id']}",
+            )
+            require(evidence["finding"].strip(), f"edge finding blank: {edge['edge_id']}")
+            require(
+                evidence["independence_effect"].strip(),
+                f"edge independence effect blank: {edge['edge_id']}",
+            )
     recommendation = source_records["recommendation"]
     require(recommendation["author"] in {"GO", "HOLD", "FAIL"}, "invalid recommendation")
     require(
@@ -464,6 +612,24 @@ def build_packet() -> dict[str, Any]:
         "source_records": source_records,
         "artifact_inventory": artifact_inventory,
         "derivations": build_derivations(),
+        "counts": {
+            "sources": len(source_records["sources"]),
+            "core_sources": len(source_records["core_source_ids"]),
+            "parent_spans": len(
+                [span for source in source_records["sources"] for span in source["spans"]]
+            ),
+            "typed_span_units": len(
+                [
+                    unit_id
+                    for source in source_records["sources"]
+                    for span in source["spans"]
+                    for unit_id in span_unit_ids(span)
+                ]
+            ),
+            "calculations": len(build_derivations()),
+            "lineage_roots": len(source_records["lineages"]),
+            "lineage_edges": len(source_records["lineage_edges"]),
+        },
         "decision": {
             "author_recommendation": source_records["recommendation"]["author"],
             "independent_review_status": "pending",
