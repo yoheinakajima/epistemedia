@@ -23,15 +23,15 @@ REPOSITORY_URL = "https://github.com/yoheinakajima/epistemedia"
 REVIEW_FORMAT = "epistemedia-independent-research-review-v1"
 
 EXPECTED_PACKET_ID = (
-    "em:research-packet:sha256:8fc01c0581ede49eddcdf122c993506d5bc4eb33289628970bf7303d8aa71504"
+    "em:research-packet:sha256:6ffcd7fc3e375e835a0b87e147715fed16dd7e79cd418dbe1f912c726a82fb3e"
 )
 EXPECTED_SOURCE_RECORDS = {
-    "bytes": 52631,
-    "sha256": "7a8158c560006da8d471d4bcaae689829e39790900d55da572fdbf610ebecf66",
+    "bytes": 52643,
+    "sha256": "b31406001096f76ad6d2a332abaf9435b069f2d67ecf149abeb5f8b88f306d03",
 }
 EXPECTED_CANDIDATE_PACKET = {
-    "bytes": 63817,
-    "sha256": "ab3d2ca49c107b54b2d2eb7f4ac08db84ab2aa6d971a8b933d9980b56cef396e",
+    "bytes": 63829,
+    "sha256": "d42c2ac55c614a11f6c2d4bb3e5fc573eeca1766424578f72bc246fda77aae30",
 }
 EXPECTED_SOURCE_IDS = {
     "source-argyle-1970",

@@ -374,18 +374,18 @@
           "span_id": "span-silent-1971-liking",
           "locator": "PDF p.51, Inconsistent messages chapter",
           "span_kind": "structured_transcription",
-          "quote": "Total liking = 7% verbal liking + 38% vocal + 55% facial liking",
-          "fields": {"dependent": "Total liking", "verbal": "7% verbal liking", "vocal": "38% vocal", "facial": "55% facial liking"},
+          "quote": "Total liking = 7% verbal liking + 38% vocal liking + 55% facial liking",
+          "fields": {"dependent": "Total liking", "verbal": "7% verbal liking", "vocal": "38% vocal liking", "facial": "55% facial liking"},
           "supports": "The 1971 edition repeats the three-part liking equation."
         },
         {
           "span_id": "span-silent-1971-boundary",
           "locator": "PDF p.52, paragraph following Total feeling equation",
           "span_kind": "verbatim_segments",
-          "quote": "Numerical values in this equation are only approximate ... restrict ourselves to consideration of only one dimension of feeling at a time",
+          "quote": "Numerical values in this equation are only approximate ... restrict ourselves to the analysis of only one dimension of feeling at a time",
           "segments": [
             "Numerical values in this equation are only approximate",
-            "restrict ourselves to consideration of only one dimension of feeling at a time"
+            "restrict ourselves to the analysis of only one dimension of feeling at a time"
           ],
           "supports": "The book calls the values approximate and limits use to one feeling dimension."
         }

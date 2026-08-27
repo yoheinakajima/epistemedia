@@ -969,22 +969,22 @@
               "dependent": "Total liking",
               "facial": "55% facial liking",
               "verbal": "7% verbal liking",
-              "vocal": "38% vocal"
+              "vocal": "38% vocal liking"
             },
             "locator": "PDF p.51, Inconsistent messages chapter",
-            "quote": "Total liking = 7% verbal liking + 38% vocal + 55% facial liking",
-            "quote_sha256": "d191537bc74db6a136998a44bdede8d24cdbc49578d1006dcc029705fc6e1a35",
+            "quote": "Total liking = 7% verbal liking + 38% vocal liking + 55% facial liking",
+            "quote_sha256": "b64646d71e22e4e9508d73d3b4896301ebf38472816e0002115a9ceea44e8f22",
             "span_id": "span-silent-1971-liking",
             "span_kind": "structured_transcription",
             "supports": "The 1971 edition repeats the three-part liking equation."
           },
           {
             "locator": "PDF p.52, paragraph following Total feeling equation",
-            "quote": "Numerical values in this equation are only approximate ... restrict ourselves to consideration of only one dimension of feeling at a time",
-            "quote_sha256": "45941fcec5ca19f80e686cc333de12895ca3d8f74a49b2140f813338793b429a",
+            "quote": "Numerical values in this equation are only approximate ... restrict ourselves to the analysis of only one dimension of feeling at a time",
+            "quote_sha256": "f42ea8e4be606d422d7b6ab9495c3b03ad812d953dff3034ef07b5fa66613201",
             "segments": [
               "Numerical values in this equation are only approximate",
-              "restrict ourselves to consideration of only one dimension of feeling at a time"
+              "restrict ourselves to the analysis of only one dimension of feeling at a time"
             ],
             "span_id": "span-silent-1971-boundary",
             "span_kind": "verbatim_segments",
@@ -1356,8 +1356,8 @@
       }
     ],
     "source_records_identity": {
-      "bytes": 52631,
-      "sha256": "7a8158c560006da8d471d4bcaae689829e39790900d55da572fdbf610ebecf66"
+      "bytes": 52643,
+      "sha256": "b31406001096f76ad6d2a332abaf9435b069f2d67ecf149abeb5f8b88f306d03"
     },
     "span_conventions": {
       "allowed_normalization": [
@@ -1371,5 +1371,5 @@
     },
     "task_id": "EM-0033"
   },
-  "packet_id": "em:research-packet:sha256:8fc01c0581ede49eddcdf122c993506d5bc4eb33289628970bf7303d8aa71504"
+  "packet_id": "em:research-packet:sha256:6ffcd7fc3e375e835a0b87e147715fed16dd7e79cd418dbe1f912c726a82fb3e"
 }
