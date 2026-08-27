@@ -1,0 +1,720 @@
+{
+  "schema": "https://epistemedia.org/research/source-records-v1.json",
+  "task_id": "EM-0032",
+  "evidence_cutoff": "2026-08-27",
+  "target_question": "How did a historical simulated UBE score reported for GPT-4 become a roughly 90th-percentile claim, and how does the rank change when the comparison population changes?",
+  "capture_method": "Credential-free GETs of public primary or authoritative carriers. Restricted works are represented by metadata and quote-minimal attributed spans; downloaded source bodies remain outside Git.",
+  "core_source_ids": [
+    "source-openai-v1",
+    "source-openai-v6",
+    "source-katz-vor",
+    "source-katz-ssrn",
+    "source-katz-git-tree",
+    "source-katz-figshare",
+    "source-illinois-feb-2018",
+    "source-illinois-jul-2018",
+    "source-illinois-feb-2019",
+    "source-ncbe-ube-mechanics",
+    "source-ncbe-mbe-2022",
+    "source-ncbe-snapshot-2022",
+    "source-ncbe-first-repeat-2022",
+    "source-martinez-vor",
+    "source-martinez-osf"
+  ],
+  "sources": [
+    {
+      "source_id": "source-openai-v1",
+      "work_id": "work-openai-gpt4-report",
+      "edition_id": "edition-openai-2303.08774v1",
+      "core": true,
+      "title": "GPT-4 Technical Report",
+      "authors_or_org": "OpenAI",
+      "identifier": "arXiv:2303.08774v1; DOI 10.48550/arXiv.2303.08774",
+      "url": "https://arxiv.org/pdf/2303.08774v1",
+      "published": "2023-03-15",
+      "retrieved_at": "2026-08-27T04:45:06Z",
+      "media_type": "application/pdf",
+      "captured_bytes": 5229731,
+      "captured_sha256": "053056a10114d22e4c47b6b5be25e54c320b5f1beeae7466e8638dac0f5f5f66",
+      "license": "arXiv non-exclusive distribution license; no Creative Commons license confirmed",
+      "treatment": "link and quote minimally; do not redistribute the PDF",
+      "role": "launch-edition claim carrier",
+      "spans": [
+        {
+          "span_id": "span-openai-v1-abstract-top-ten",
+          "locator": "abstract, PDF p. 1",
+          "quote": "passing a simulated bar exam with a score around the top 10% of test takers",
+          "supports": "The launch report used the top-10-percent wording and said test takers, not lawyers."
+        },
+        {
+          "span_id": "span-openai-v1-table-score",
+          "locator": "Table 1, PDF p. 5",
+          "quote": "Uniform Bar Exam (MBE+MEE+MPT) 298 / 400 (~90th)",
+          "supports": "The report displayed 298/400 and approximately 90th percentile together."
+        },
+        {
+          "span_id": "span-openai-v1-scoring",
+          "locator": "Appendix A.5, PDF p. 25",
+          "quote": "Percentiles are based on the most recently available score distributions for test-takers of each exam type.",
+          "supports": "The report described a generic percentile method but did not name a UBE distribution in this passage."
+        },
+        {
+          "span_id": "span-openai-v1-snapshots",
+          "locator": "Appendix A.6, PDF p. 25",
+          "quote": "We ran GPT-4 multiple-choice questions using a model snapshot from March 1, 2023, whereas the free-response questions were run and scored using a non-final model snapshot from February 23, 2023.",
+          "supports": "The reported composite used two historical model snapshots rather than a stable current product identity."
+        },
+        {
+          "span_id": "span-openai-v1-free-response-run",
+          "locator": "Appendix A.3, PDF p. 24",
+          "quote": "we simply ran these free response questions each only a single time at our best-guess temperature (0.6) and prompt",
+          "supports": "The free-response component was a single best-guess run, not a repeated performance estimate."
+        }
+      ]
+    },
+    {
+      "source_id": "source-openai-v6",
+      "work_id": "work-openai-gpt4-report",
+      "edition_id": "edition-openai-2303.08774v6",
+      "core": true,
+      "title": "GPT-4 Technical Report",
+      "authors_or_org": "OpenAI",
+      "identifier": "arXiv:2303.08774v6; DOI 10.48550/arXiv.2303.08774",
+      "url": "https://arxiv.org/pdf/2303.08774v6",
+      "published": "2024-03-04",
+      "retrieved_at": "2026-08-27T04:45:07Z",
+      "media_type": "application/pdf",
+      "captured_bytes": 5245564,
+      "captured_sha256": "c33a66dadca2388d7b172d6293b00dc32b71110c6f38fafe0d41112e61be7774",
+      "license": "arXiv non-exclusive distribution license; no Creative Commons license confirmed",
+      "treatment": "link and quote minimally; do not redistribute the PDF",
+      "role": "later edition drift check",
+      "spans": [
+        {
+          "span_id": "span-openai-v6-table-score",
+          "locator": "Table 1, PDF p. 5",
+          "quote": "Uniform Bar Exam (MBE+MEE+MPT) 298 / 400 (~90th)",
+          "supports": "The later arXiv edition retained the same displayed score and percentile label."
+        }
+      ]
+    },
+    {
+      "source_id": "source-katz-vor",
+      "work_id": "work-katz-gpt4-bar",
+      "edition_id": "edition-katz-rsta-2024",
+      "core": true,
+      "title": "GPT-4 passes the bar exam",
+      "authors_or_org": "Daniel Martin Katz, Michael James Bommarito, Shang Gao, and Pablo Arredondo",
+      "identifier": "DOI 10.1098/rsta.2023.0254; PMCID PMC10894685; PMID 38403056",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10894685/fullTextXML",
+      "published": "2024-02-26",
+      "retrieved_at": "2026-08-27T04:45:08Z",
+      "media_type": "application/xml",
+      "captured_bytes": 117084,
+      "captured_sha256": "d5a7b3d5cba67eb070f13e5e72700a11b2f081af664aad197acb37427aa47264",
+      "license": "CC BY 4.0",
+      "treatment": "attributed quotation permitted; keep excerpts minimal",
+      "role": "underlying study version of record",
+      "spans": [
+        {
+          "span_id": "span-katz-vor-abstract-score",
+          "locator": "abstract",
+          "quote": "Graded across the UBE components, in the manner in which a human test-taker would be, GPT-4 scores approximately 297 points",
+          "supports": "The study version of record reports approximately 297, not 298."
+        },
+        {
+          "span_id": "span-katz-vor-components",
+          "locator": "§4(d), Table 7",
+          "quote": "multistate bar exam (MBE) 157 points; multistate essay exam (MEE) 84 points; multistate performance test (MPT) 56 points; overall score 297 points",
+          "supports": "The version-of-record component scores sum to 297."
+        },
+        {
+          "span_id": "span-katz-vor-score-discrepancy",
+          "locator": "footnote 4",
+          "quote": "Best prompt and/or hyperparameter combination on the MBE would push this score to 298 or higher. Here, we report the MBE average of 75.7% which composites to a 297.",
+          "supports": "The source itself explains the 298-versus-approximately-297 discrepancy as a scoring-choice difference."
+        },
+        {
+          "span_id": "span-katz-vor-percentile-boundary",
+          "locator": "footnote 5",
+          "quote": "there is no publicly available July 2022 national bar exam percentiles against which to compare these results",
+          "supports": "The study states that the matching national July 2022 comparison distribution was unavailable."
+        },
+        {
+          "span_id": "span-katz-vor-range",
+          "locator": "footnote 5",
+          "quote": "the raw 297 UBE as falling within a range between 68th and 90th percentile (depending on the precise state and timing of the exam administration)",
+          "supports": "The version of record treats the percentile as comparison-population-dependent."
+        }
+      ]
+    },
+    {
+      "source_id": "source-katz-ssrn",
+      "work_id": "work-katz-gpt4-bar",
+      "edition_id": "edition-katz-ssrn-4389233",
+      "core": true,
+      "title": "GPT-4 Passes the Bar Exam",
+      "authors_or_org": "Daniel Martin Katz, Michael James Bommarito, Shang Gao, and Pablo Arredondo",
+      "identifier": "DOI 10.2139/ssrn.4389233; SSRN 4389233",
+      "url": "https://api.crossref.org/works/10.2139/ssrn.4389233",
+      "published": "2023-03-15",
+      "retrieved_at": "2026-08-27T14:52:21Z",
+      "media_type": "application/json",
+      "captured_bytes": 16942,
+      "captured_sha256": "146a68d349dae70ece09fefe79cd04808a40afb8f1e19a4c63941678330cb90b",
+      "license": "no open license confirmed",
+      "treatment": "metadata only; do not redistribute the manuscript",
+      "role": "preprint identity; same study root",
+      "spans": []
+    },
+    {
+      "source_id": "source-katz-git-tree",
+      "work_id": "work-katz-gpt4-bar",
+      "edition_id": "edition-katz-git-90997f7",
+      "core": true,
+      "title": "gpt4-passes-the-bar repository tree",
+      "authors_or_org": "Michael James Bommarito and study authors",
+      "identifier": "Git tree 90997f740c7197f3f300b013e4345e2ad5621f96",
+      "url": "https://api.github.com/repos/mjbommar/gpt4-passes-the-bar/git/trees/90997f740c7197f3f300b013e4345e2ad5621f96?recursive=1",
+      "published": "2023",
+      "retrieved_at": "2026-08-27T04:45:08Z",
+      "media_type": "application/json",
+      "captured_bytes": 29311,
+      "captured_sha256": "9541fd9b9677738aae5fac3048eaa5efc2a23ff5a97ecedec74492eb451e86fb",
+      "license": "no repository license at the pinned tree",
+      "treatment": "metadata inventory and quote-minimal readback only",
+      "role": "mechanical artifact manifestation; same study root",
+      "spans": []
+    },
+    {
+      "source_id": "source-katz-figshare",
+      "work_id": "work-katz-gpt4-bar",
+      "edition_id": "edition-katz-figshare-25018513-v1",
+      "core": true,
+      "title": "Appendix for GPT-4 passes the Bar Exam",
+      "authors_or_org": "Katz et al. / The Royal Society",
+      "identifier": "DOI 10.6084/m9.figshare.25018513.v1; file 44102266",
+      "url": "https://api.figshare.com/v2/articles/25018513",
+      "published": "2024",
+      "retrieved_at": "2026-08-27T04:45:09Z",
+      "media_type": "application/json",
+      "captured_bytes": 4917,
+      "captured_sha256": "ce59483bb4dae6871cadf3afa9d650e00d4c524b75083f0c43706436d1220ba6",
+      "license": "CC BY 4.0 at the article/file level; collection-level license null",
+      "treatment": "retain file-level scope; do not generalize the license to the collection",
+      "role": "supplement manifestation; same study root",
+      "spans": []
+    },
+    {
+      "source_id": "source-illinois-feb-2018",
+      "work_id": "work-illinois-percentile-charts",
+      "edition_id": "edition-illinois-feb-2018",
+      "core": true,
+      "title": "Illinois February 2018 Bar Examination Percentile Equivalents",
+      "authors_or_org": "Illinois Board of Admissions to the Bar",
+      "identifier": "February 2018 official chart",
+      "url": "https://www.ilbaradmissions.org/percentile-equivalent-charts-feb-2018",
+      "published": "2018-02",
+      "retrieved_at": "2026-08-27T05:45:28Z",
+      "media_type": "application/pdf",
+      "captured_bytes": 41491,
+      "captured_sha256": "500d734d54cfaae23b94a988469a8a626fc71abefd5793424bfbe83aabe9e1b7",
+      "license": "no open license confirmed",
+      "treatment": "quote only necessary numerical anchors",
+      "role": "February comparison-population root",
+      "spans": [
+        {
+          "span_id": "span-illinois-feb-2018-anchors",
+          "locator": "total-scale table, rows 300 and 290",
+          "quote": "Total Scale Score 300 Percentile 90; Total Scale Score 290 Percentile 85",
+          "supports": "The chart brackets 298 but contains no printed 298 row or interpolation rule."
+        }
+      ]
+    },
+    {
+      "source_id": "source-illinois-jul-2018",
+      "work_id": "work-illinois-percentile-charts",
+      "edition_id": "edition-illinois-jul-2018",
+      "core": true,
+      "title": "Illinois July 2018 Bar Examination Percentile Equivalents",
+      "authors_or_org": "Illinois Board of Admissions to the Bar",
+      "identifier": "July 2018 official chart",
+      "url": "https://www.ilbaradmissions.org/percentile-equivalent-charts-july-2018",
+      "published": "2018-07",
+      "retrieved_at": "2026-08-27T05:45:28Z",
+      "media_type": "application/pdf",
+      "captured_bytes": 41047,
+      "captured_sha256": "9b4251dc1147789eceb9e4e4b3cbdb4e98ab4634f286e8f4d8917d4e0970a299",
+      "license": "no open license confirmed",
+      "treatment": "quote only necessary numerical anchors",
+      "role": "July comparison-population root",
+      "spans": [
+        {
+          "span_id": "span-illinois-jul-2018-anchors",
+          "locator": "total-scale table, rows 300 and 290",
+          "quote": "Total Scale Score 300 Percentile 70; Total Scale Score 290 Percentile 59",
+          "supports": "The July chart places the same score region far below the February chart."
+        }
+      ]
+    },
+    {
+      "source_id": "source-illinois-feb-2019",
+      "work_id": "work-illinois-percentile-charts",
+      "edition_id": "edition-illinois-feb-2019",
+      "core": true,
+      "title": "Illinois February 2019 Bar Examination Percentile Equivalents",
+      "authors_or_org": "Illinois Board of Admissions to the Bar",
+      "identifier": "February 2019 official chart",
+      "url": "https://www.ilbaradmissions.org/percentile-equivalent-charts-february-2019",
+      "published": "2019-02",
+      "retrieved_at": "2026-08-27T05:45:29Z",
+      "media_type": "application/pdf",
+      "captured_bytes": 40394,
+      "captured_sha256": "b313a414728db06d9170f79f0177927a3343e3744fc39ba3cadaff1fddc27faa",
+      "license": "no open license confirmed",
+      "treatment": "quote only necessary numerical anchors",
+      "role": "alternate February comparison-population root",
+      "spans": [
+        {
+          "span_id": "span-illinois-feb-2019-anchors",
+          "locator": "total-scale table, rows 300 and 290",
+          "quote": "Total Scale Score 300 Percentile 90; Total Scale Score 290 Percentile 83",
+          "supports": "This later February chart also brackets 298 but supplies no interpolation rule."
+        }
+      ]
+    },
+    {
+      "source_id": "source-ncbe-ube-mechanics",
+      "work_id": "work-ncbe-ube",
+      "edition_id": "edition-ncbe-ube-scores-2026-08-27",
+      "core": true,
+      "title": "UBE Scores",
+      "authors_or_org": "National Conference of Bar Examiners",
+      "identifier": "official NCBE legacy UBE scoring page",
+      "url": "https://www.ncbex.org/exams/ube/ube-scores",
+      "published": "current page captured 2026-08-27",
+      "retrieved_at": "2026-08-27T05:45:29Z",
+      "media_type": "text/html",
+      "captured_bytes": 63952,
+      "captured_sha256": "359f8d4e94e128480fe474f07e87a0b019ff20f4cd6041d0b7bfe904b8a84628",
+      "license": "no open license confirmed",
+      "treatment": "quote only necessary scoring mechanics",
+      "role": "authoritative score-construction root",
+      "spans": [
+        {
+          "span_id": "span-ncbe-ube-weights",
+          "locator": "legacy UBE scoring overview",
+          "quote": "The MBE is weighted 50%, the MEE 30%, and the MPT 20%. Legacy UBE total scores are reported on a 400-point scale.",
+          "supports": "The score is a 400-point weighted composite, not a direct percentile."
+        }
+      ]
+    },
+    {
+      "source_id": "source-ncbe-mbe-2022",
+      "work_id": "work-ncbe-2022-statistics",
+      "edition_id": "edition-ncbe-mbe-2022",
+      "core": true,
+      "title": "The Multistate Bar Examination (MBE): 2022 statistics",
+      "authors_or_org": "National Conference of Bar Examiners",
+      "identifier": "official 2022 MBE statistics",
+      "url": "https://thebarexaminer.ncbex.org/2022-statistics/the-multistate-bar-examination-mbe/",
+      "published": "2023",
+      "retrieved_at": "2026-08-27T05:45:33Z",
+      "media_type": "text/html",
+      "captured_bytes": 278417,
+      "captured_sha256": "f21c45a6e9d1c1b3a5a538ff4bc5b28751928fac53cb5d174e6ec64488c6b784",
+      "license": "no open license confirmed",
+      "treatment": "quote only necessary aggregate statistics",
+      "role": "authoritative 2022 MBE distribution root",
+      "spans": [
+        {
+          "span_id": "span-ncbe-mbe-2022-counts",
+          "locator": "2022 MBE National Summary Statistics",
+          "quote": "Number of Examinees 16,504 44,705 61,209; Mean Scaled Score 132.6 140.3 138.3; Standard Deviation 15.4 17.0 17.0",
+          "supports": "February, July, and overall MBE populations differ in size and distribution."
+        }
+      ]
+    },
+    {
+      "source_id": "source-ncbe-snapshot-2022",
+      "work_id": "work-ncbe-2022-statistics",
+      "edition_id": "edition-ncbe-snapshot-2022",
+      "core": true,
+      "title": "2022 Statistics Snapshot",
+      "authors_or_org": "National Conference of Bar Examiners",
+      "identifier": "official 2022 statistics snapshot",
+      "url": "https://thebarexaminer.ncbex.org/2022-statistics/2022-statistics-snapshot/",
+      "published": "2023",
+      "retrieved_at": "2026-08-27T05:45:33Z",
+      "media_type": "text/html",
+      "captured_bytes": 188472,
+      "captured_sha256": "391deeac882bfe4dfb69a58e852c465ffbcc9e1d2e0a8557208f82cf795309a0",
+      "license": "no open license confirmed",
+      "treatment": "quote only necessary population aggregates",
+      "role": "first-time/repeater composition root",
+      "spans": [
+        {
+          "span_id": "span-ncbe-snapshot-composition",
+          "locator": "NCBE MBE-based data, February and July 2022 totals",
+          "quote": "February likely repeaters taking: 11,289 - 68%; February likely first-timers taking: 5,215 - 32%; July likely repeaters taking: 10,200 - 23%; July likely first-timers taking: 34,505 - 77%",
+          "supports": "February and July have materially different inferred first-time/repeater composition."
+        },
+        {
+          "span_id": "span-ncbe-snapshot-typo",
+          "locator": "NCBE MBE-based data, July 2022 section",
+          "quote": "77% of July 2021 examinees were likely first-time takers",
+          "supports": "The page's July 2022 section contains an apparent 2021 year-label typo that must not be silently corrected in quotation."
+        }
+      ]
+    },
+    {
+      "source_id": "source-ncbe-first-repeat-2022",
+      "work_id": "work-ncbe-2022-statistics",
+      "edition_id": "edition-ncbe-first-repeat-2022",
+      "core": true,
+      "title": "First-Time Exam Takers and Repeaters in 2022",
+      "authors_or_org": "National Conference of Bar Examiners",
+      "identifier": "official 2022 jurisdiction-reported table",
+      "url": "https://thebarexaminer.ncbex.org/2022-statistics/first-time-exam-takers-and-repeaters-in-2022/",
+      "published": "2023",
+      "retrieved_at": "2026-08-27T05:45:35Z",
+      "media_type": "text/html",
+      "captured_bytes": 372700,
+      "captured_sha256": "d5edc89f2c781ab7a795602cdc4a6b42b3da457f13972c8660db9a2b976df448",
+      "license": "no open license confirmed",
+      "treatment": "quote only necessary methodological boundary",
+      "role": "jurisdiction-reported status boundary",
+      "spans": [
+        {
+          "span_id": "span-ncbe-jurisdiction-status",
+          "locator": "table note",
+          "quote": "First-time and repeat test taker status based on an examinee's testing experience in the reporting jurisdiction only.",
+          "supports": "Jurisdiction-reported status is not the same denominator as NCBE's cross-jurisdiction MBE-based classification."
+        }
+      ]
+    },
+    {
+      "source_id": "source-martinez-vor",
+      "work_id": "work-martinez-reanalysis",
+      "edition_id": "edition-martinez-2024-vor",
+      "core": true,
+      "title": "Re-evaluating GPT-4's bar exam performance",
+      "authors_or_org": "Eric Martínez",
+      "identifier": "DOI 10.1007/s10506-024-09396-9",
+      "url": "https://link.springer.com/content/pdf/10.1007/s10506-024-09396-9.pdf",
+      "published": "2024-03-30",
+      "retrieved_at": "2026-08-27T05:46:01Z",
+      "media_type": "application/pdf",
+      "captured_bytes": 869291,
+      "captured_sha256": "79cc616af2bf287b782c91eaa439ec662a2e8c1db82352c246a74f3ac22cc801",
+      "license": "CC BY 4.0",
+      "treatment": "attributed quotation permitted; retain assumptions and internal conflicts",
+      "role": "distinct analytical root reusing the reported score",
+      "spans": [
+        {
+          "span_id": "span-martinez-abstract-ranks",
+          "locator": "abstract, journal p. 581",
+          "quote": "performance against first-time test takers is estimated to be ~62nd percentile; when examining only those who passed the exam, GPT-4's performance is estimated to drop to ~48th percentile overall",
+          "supports": "The abstract reports modeled 62nd and 48th ranks for distinct comparison populations."
+        },
+        {
+          "span_id": "span-martinez-table-45",
+          "locator": "Table 1, journal p. 586",
+          "quote": "July test-takers 68th; All first-timers 62nd; Qualified attorneys 45th",
+          "supports": "The table reports 45th, not 48th, for the passers/qualified-attorneys comparison."
+        },
+        {
+          "span_id": "span-martinez-model-assumptions",
+          "locator": "§3.1, journal pp. 588-589",
+          "quote": "Assuming that UBE scores (as well as MBE and essay subscores) are normally distributed, percentiles of GPT's score can be directly computed after computing the parameters of these distributions",
+          "supports": "The re-analysis is model-based and depends on a normality assumption."
+        },
+        {
+          "span_id": "span-martinez-mean-assumption",
+          "locator": "§3.1, journal p. 588",
+          "quote": "the methodology here assumed that the mean first-time essay score is 143.8; mean first-time UBE score is 287.6 (143.8 + 143.8)",
+          "supports": "The UBE mean is derived from an assumed essay mean, not directly observed as a national UBE mean."
+        },
+        {
+          "span_id": "span-martinez-results-45",
+          "locator": "§3.2.2, journal p. 591",
+          "quote": "With regard to the aggregate UBE score, GPT-4 scored in the ~45th percentile.",
+          "supports": "The results section reports 45th among those who passed."
+        },
+        {
+          "span_id": "span-martinez-discussion-48",
+          "locator": "discussion, journal p. 599",
+          "quote": "when examining only those who passed the exam, GPT-4's performance is estimated to drop to ~48th percentile overall",
+          "supports": "The discussion reports 48th, creating an internal 45th-versus-48th conflict."
+        },
+        {
+          "span_id": "span-martinez-score-validation",
+          "locator": "discussion, journal p. 599",
+          "quote": "the paper successfully replicated the MBE score of 158; methodological issues in the grading of the MPT + MEE components of the exam call into question the validity of the essay score (140)",
+          "supports": "The MBE and author-graded essay components have different validation status."
+        }
+      ]
+    },
+    {
+      "source_id": "source-martinez-osf",
+      "work_id": "work-martinez-reanalysis",
+      "edition_id": "edition-martinez-osf-c8ygu",
+      "core": true,
+      "title": "Re-evaluating GPT-4's bar exam performance analysis deposit",
+      "authors_or_org": "Eric Martínez",
+      "identifier": "OSF node c8ygu; anonymous view token dcc617accc464491922b77414867a066",
+      "url": "https://api.osf.io/v2/nodes/c8ygu/?view_only=dcc617accc464491922b77414867a066",
+      "published": "2024",
+      "retrieved_at": "2026-08-27T04:45:11Z",
+      "media_type": "application/json",
+      "captured_bytes": 3696,
+      "captured_sha256": "06c756ef9d72bce0e92e821917bd5ca02fa1d5089b965689a2dd4f4d28f15bf5",
+      "license": "no node or file license confirmed",
+      "treatment": "metadata and quote-minimal script spans only; no redistribution",
+      "role": "analysis-code manifestation; same re-analysis root",
+      "spans": []
+    },
+    {
+      "source_id": "source-ncbe-ube-2022",
+      "work_id": "work-ncbe-2022-statistics",
+      "edition_id": "edition-ncbe-ube-2022",
+      "core": false,
+      "title": "The Uniform Bar Examination (UBE): 2022 statistics",
+      "authors_or_org": "National Conference of Bar Examiners",
+      "identifier": "official 2022 UBE statistics",
+      "url": "https://thebarexaminer.ncbex.org/2022-statistics/the-uniform-bar-examination-ube/",
+      "published": "2023",
+      "retrieved_at": "2026-08-27T14:57:28Z",
+      "media_type": "text/html",
+      "captured_bytes": 260280,
+      "captured_sha256": "eb3e0b45cd4496cfc15669c267f25107c27e31489ece46dd43def1356a966e52",
+      "license": "no open license confirmed",
+      "treatment": "quote only the historical jurisdiction cutoff",
+      "role": "supplemental cutoff source",
+      "spans": [
+        {
+          "span_id": "span-ncbe-ny-cutoff-2022",
+          "locator": "Minimum Passing UBE Score by Jurisdiction in 2022, row 266",
+          "quote": "266: Connecticut, District of Columbia, Illinois, Iowa, Kansas, Kentucky, Maryland, Montana, New Jersey, New York, South Carolina, Virgin Islands",
+          "supports": "New York's 2022 minimum passing UBE score was 266."
+        }
+      ]
+    },
+    {
+      "source_id": "source-ny-passrates-2022",
+      "work_id": "work-ny-2022-passrates",
+      "edition_id": "edition-ny-passrates-2022",
+      "core": false,
+      "title": "New York Bar Exam 2022 Statistics",
+      "authors_or_org": "New York State Board of Law Examiners",
+      "identifier": "2022_NY_Bar_Exam_PassRates.pdf",
+      "url": "https://www.nybarexam.org/ExamStats/2022_NY_Bar_Exam_PassRates.pdf",
+      "published": "2022",
+      "retrieved_at": "2026-08-27T14:40:54Z",
+      "media_type": "application/pdf",
+      "captured_bytes": 65751,
+      "captured_sha256": "9cddfa2dbe71b11e01a5ee24a328952cdb8c6a81ee140e83a8a1713aa4c17088",
+      "license": "no open license confirmed",
+      "treatment": "quote only necessary aggregate counts",
+      "role": "supplemental pass-rate input",
+      "spans": [
+        {
+          "span_id": "span-ny-first-timers-2022",
+          "locator": "FIRST TIMERS, ALL Candidates, Combined 2022",
+          "quote": "ALL Candidates 9,457 6,867 73%",
+          "supports": "The combined first-time pass rate was 73%, so the complementary non-pass proportion used by the re-analysis is 27%."
+        }
+      ]
+    },
+    {
+      "source_id": "source-reshetar-2022",
+      "work_id": "work-reshetar-performance-trends",
+      "edition_id": "edition-reshetar-2022",
+      "core": false,
+      "title": "Understanding Performance on the Uniform Bar Examination",
+      "authors_or_org": "Rosemary Reshetar / National Conference of Bar Examiners",
+      "identifier": "The Bar Examiner, Summer 2022",
+      "url": "https://thebarexaminer.ncbex.org/article/summer-2022/understanding-performance-on-the-uniform-bar-examination/",
+      "published": "2022",
+      "retrieved_at": "2026-08-27T14:40:54Z",
+      "media_type": "text/html",
+      "captured_bytes": 218131,
+      "captured_sha256": "174a5adc50f0235f70ebea3b6c4ed85fbe91df8c18d8144286876fe6b95e70bd",
+      "license": "no open license confirmed",
+      "treatment": "quote only necessary group means",
+      "role": "supplemental first-time MBE mean input",
+      "spans": [
+        {
+          "span_id": "span-reshetar-first-time-mean",
+          "locator": "section discussing 2019 first-time and repeater populations",
+          "quote": "all likely first-time test takers earned an average MBE score of 143.8. Likely repeaters, however, earned an average MBE score of 132.4.",
+          "supports": "The re-analysis uses 143.8 as the first-time MBE mean."
+        }
+      ]
+    },
+    {
+      "source_id": "source-martinez-analysis-new",
+      "work_id": "work-martinez-reanalysis",
+      "edition_id": "edition-martinez-osf-analysis-new",
+      "core": false,
+      "title": "percentile_analysis_new.Rmd",
+      "authors_or_org": "Eric Martínez",
+      "identifier": "OSF file gujmp; SHA-256 e73b60d3bcba8075b8e513f53d079541ca11b32fa68a8a1201a6442644add588",
+      "url": "https://osf.io/download/gujmp/?view_only=dcc617accc464491922b77414867a066",
+      "published": "2024",
+      "retrieved_at": "2026-08-27T05:48:35Z",
+      "media_type": "text/plain",
+      "captured_bytes": 12730,
+      "captured_sha256": "e73b60d3bcba8075b8e513f53d079541ca11b32fa68a8a1201a6442644add588",
+      "license": "no file license confirmed",
+      "treatment": "quote-minimal code readback only; do not redistribute the full file",
+      "role": "supplemental derivation implementation",
+      "spans": [
+        {
+          "span_id": "span-martinez-script-ube-sd",
+          "locator": "lines 103-113",
+          "quote": "mean <- 287.6; quantile_value <- 266; percentile <- 0.27; z_score <- qnorm(percentile); sd_UBE <- (quantile_value - mean) / z_score",
+          "supports": "The script derives UBE standard deviation from mean 287.6, cutoff 266, and non-pass proportion 0.27."
+        },
+        {
+          "span_id": "span-martinez-script-comment-conflict",
+          "locator": "lines 103-109",
+          "quote": "percentile <- 0.27  # 24%; Calculate the z-score for the 24th percentile",
+          "supports": "The executable value is 0.27 while adjacent comments say 24%, an internal code-comment discrepancy."
+        },
+        {
+          "span_id": "span-martinez-script-thresholds",
+          "locator": "lines 162-173",
+          "quote": "filtered_data_ube <- data_ube[data_ube >= 270]; filtered_data_mbe <- data_mbe[data_mbe >= 135]; filtered_data_essay <- data_essay[data_essay >= 135]",
+          "supports": "The passers analysis filters UBE at 270 even though the SD input uses New York's 266 cutoff."
+        }
+      ]
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "claim-launch-score-label",
+      "proposition": "OpenAI's launch-edition report displayed 298/400 and approximately 90th percentile for a simulated UBE.",
+      "kind": "reported-assertion",
+      "span_ids": ["span-openai-v1-table-score"]
+    },
+    {
+      "claim_id": "claim-launch-comparison-unspecified",
+      "proposition": "The launch report says test takers but does not disclose a UBE administration, jurisdiction, population composition, chart, or interpolation for the displayed percentile.",
+      "kind": "bounded-negative-result",
+      "span_ids": ["span-openai-v1-scoring", "span-katz-vor-percentile-boundary"],
+      "negative_search_id": "search-launch-percentile-provenance"
+    },
+    {
+      "claim_id": "claim-score-discrepancy",
+      "proposition": "The report's 298 and study's approximately 297 are distinct scoring choices within one underlying experiment, not independent performance roots.",
+      "kind": "lineage-qualified-synthesis",
+      "span_ids": ["span-openai-v1-table-score", "span-katz-vor-abstract-score", "span-katz-vor-score-discrepancy"]
+    },
+    {
+      "claim_id": "claim-february-sensitive",
+      "proposition": "A linear interpolation not supplied by the sources places 298 near 89th in the February 2018 chart and 88.6th in the February 2019 chart.",
+      "kind": "reviewer-derived-sensitivity",
+      "span_ids": ["span-illinois-feb-2018-anchors", "span-illinois-feb-2019-anchors"],
+      "derivation_ids": ["derive-illinois-feb-2018-298", "derive-illinois-feb-2019-298"]
+    },
+    {
+      "claim_id": "claim-july-sensitive",
+      "proposition": "The same disclosed linear interpolation places 298 near 67.8th in the July 2018 Illinois chart.",
+      "kind": "reviewer-derived-sensitivity",
+      "span_ids": ["span-illinois-jul-2018-anchors"],
+      "derivation_ids": ["derive-illinois-jul-2018-298"]
+    },
+    {
+      "claim_id": "claim-martinez-first-time",
+      "proposition": "Under Martínez's modeled assumptions, 298 is approximately 62nd percentile among first-time takers.",
+      "kind": "assumption-bound-derived-result",
+      "span_ids": ["span-martinez-model-assumptions", "span-martinez-mean-assumption", "span-ny-first-timers-2022", "span-ncbe-ny-cutoff-2022", "span-martinez-script-ube-sd"],
+      "derivation_ids": ["derive-martinez-first-time-ube"]
+    },
+    {
+      "claim_id": "claim-martinez-passers-conflict",
+      "proposition": "The Martínez version of record and code support roughly 45th under the encoded passers model, while its abstract and discussion say roughly 48th; the packet preserves 45/48 as an internal discrepancy.",
+      "kind": "within-edition-conflict",
+      "span_ids": ["span-martinez-table-45", "span-martinez-results-45", "span-martinez-discussion-48", "span-martinez-script-thresholds"],
+      "derivation_ids": ["derive-martinez-passers-ube"]
+    },
+    {
+      "claim_id": "claim-no-lawyer-rank",
+      "proposition": "None of the captured sources measures performance against practicing lawyers or establishes general legal competence.",
+      "kind": "scope-boundary",
+      "span_ids": ["span-openai-v1-abstract-top-ten", "span-martinez-model-assumptions"]
+    }
+  ],
+  "lineages": [
+    {
+      "lineage_id": "lineage-model-performance-root",
+      "unit": "one historical simulated-UBE experiment assembled from multiple-choice and author-graded free-response components",
+      "source_ids": ["source-openai-v1", "source-openai-v6", "source-katz-vor", "source-katz-ssrn", "source-katz-git-tree", "source-katz-figshare"],
+      "independent_roots": 1,
+      "dependence": ["shared model snapshots", "shared prompts and purchased/public exam material", "shared score outputs", "OpenAI collaboration with study authors", "report/preprint/VOR/repository/supplement manifestations"]
+    },
+    {
+      "lineage_id": "lineage-martinez-analysis-root",
+      "unit": "one re-analysis of the reported historical score against alternate aggregate comparison populations",
+      "source_ids": ["source-martinez-vor", "source-martinez-osf", "source-martinez-analysis-new"],
+      "independent_roots": 1,
+      "dependence": ["reuses the reported OpenAI/Katz score", "reuses Illinois and NCBE aggregates", "VOR and OSF are manifestations of the same analysis"]
+    },
+    {
+      "lineage_id": "lineage-illinois-comparison-root",
+      "unit": "official administration-specific Illinois aggregate charts",
+      "source_ids": ["source-illinois-feb-2018", "source-illinois-jul-2018", "source-illinois-feb-2019"],
+      "independent_roots": 3,
+      "dependence": ["same state scoring system", "different administrations and population composition", "no disclosed 297/298 row or interpolation"]
+    },
+    {
+      "lineage_id": "lineage-ncbe-comparison-root",
+      "unit": "official NCBE scoring and population aggregates",
+      "source_ids": ["source-ncbe-ube-mechanics", "source-ncbe-mbe-2022", "source-ncbe-snapshot-2022", "source-ncbe-first-repeat-2022", "source-ncbe-ube-2022", "source-reshetar-2022"],
+      "independent_roots": 1,
+      "dependence": ["multiple tables and explanatory pages from one statistical authority", "jurisdiction-reported and NCBE MBE-based first-time classifications differ"]
+    },
+    {
+      "lineage_id": "lineage-new-york-pass-rate-root",
+      "unit": "New York 2022 first-time pass counts",
+      "source_ids": ["source-ny-passrates-2022"],
+      "independent_roots": 1,
+      "dependence": ["same jurisdiction and year used to parameterize the Martínez model"]
+    }
+  ],
+  "negative_searches": [
+    {
+      "negative_search_id": "search-launch-percentile-provenance",
+      "target": "the exact chart, administration, denominator, and interpolation used for OpenAI's launch-edition approximately-90th UBE label",
+      "bounded_scope": [
+        "OpenAI arXiv v1 report, references, and exam-method appendices",
+        "OpenAI arXiv v6 drift check",
+        "Katz SSRN/VOR and footnotes",
+        "all 78 blobs in the pinned Katz Git tree, with text/code readback where lawful",
+        "the one Figshare supplement",
+        "Martínez VOR and ten-file OSF inventory",
+        "official Illinois February 2018, July 2018, and February 2019 charts",
+        "official NCBE 2022 comparison pages"
+      ],
+      "result": "No captured launch-edition source identifies the UBE chart or interpolation. Katz's later VOR names February 2018 as a proxy and says no July 2022 national percentile distribution was public.",
+      "status": "unresolved-no-credit",
+      "limitations": "This is a bounded corpus result, not proof that no private or now-lost source existed."
+    }
+  ],
+  "recommendation": {
+    "author": "GO",
+    "scope": "Proceed to a later candidate dossier about a real historical score whose percentile is comparison-class-dependent and whose launch derivation remains unresolved.",
+    "not_authorized": "No dossier admission, public verdict, current-model ranking, lawyer-quality claim, feature, deployment, provider call, or rerun.",
+    "independent_review": "pending"
+  },
+  "limitations": [
+    "The exact launch chart, UBE comparison population, and interpolation remain unknown and receive no inferred value.",
+    "No official national July 2022 total-UBE score distribution was captured.",
+    "Purchased exam questions, proprietary model snapshots, official essay grading, and a complete rerun remain unavailable or unauthorized.",
+    "The OSF node is private with an anonymous view-only capability and has no confirmed license.",
+    "The pinned Katz repository has no confirmed license and does not redistribute the purchased MBE exam.",
+    "Martínez's ranks are modeled from aggregate inputs and assumptions; they are not observed national percentile tables.",
+    "Historical simulated-exam performance does not establish current model behavior, general legal competence, or practicing-lawyer quality."
+  ]
+}
