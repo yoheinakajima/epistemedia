@@ -43,11 +43,11 @@ HTML_SEMANTIC_SOURCE_IDS = {
 }
 
 EXPECTED_PACKET_ID = (
-    "em:research-packet:sha256:9a305d480fa08b90a1fc605963a6ec90974e848c96a74668fa7f1844e579be6e"
+    "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b"
 )
 EXPECTED_SOURCE_RECORDS = {
-    "bytes": 64_380,
-    "sha256": "899bbdcc0a5cfcf1e569427aaa89a5fcae8d8ebcca44b99de5923337790836d8",
+    "bytes": 64_382,
+    "sha256": "385bbc193be495597ef0fe2a675220ca443297e673b32947c8d8ffcd1a6366da",
 }
 EXPECTED_ARTIFACT_INVENTORY = {
     "bytes": 62_565,
@@ -61,8 +61,8 @@ EXPECTED_GIT_BLOB_SEARCH_ID = (
     "em:git-blob-search:sha256:545908f30ba849c42c860185f92612f4d52a53b4f13b3c3ca5672213e23ba996"
 )
 EXPECTED_CANDIDATE_PACKET = {
-    "bytes": 210_541,
-    "sha256": "b107c7b61226af46142df6b104bb620d7dee2e44ada7c8072fad4def16782f5d",
+    "bytes": 210_543,
+    "sha256": "07dec44bc2cf893b19ba6307e34aef60b6127b5e881e319ff4132c8e69972d1a",
 }
 EXPECTED_ARTIFACT_INVENTORY_ID = (
     "em:artifact-inventory:sha256:17f52a5509fded7e75b08201f61122d09c7626443857c94f8727c85c0824e61c"

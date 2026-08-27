@@ -625,7 +625,7 @@
           "span_id": "span-martinez-score-validation",
           "format": "exact-contiguous-text",
           "normalization": "collapse-whitespace",
-          "locator": "discussion, journal p. 598",
+          "locator": "introduction, journal p. 584",
           "quote": "The paper successfully replicates the MBE score of 158, but highlights several methodological issues in the grading of the MPT + MEE components of the exam, which call into question the validity of the essay score (140).",
           "supports": "The MBE and author-graded essay components have different validation status."
         }

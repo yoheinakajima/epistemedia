@@ -2857,8 +2857,8 @@
         "sha256": "708657f61bc759f3a5b439affde1a677177859b50a8bc960012b81dcebcdb122"
       },
       "source_records": {
-        "bytes": 64380,
-        "sha256": "899bbdcc0a5cfcf1e569427aaa89a5fcae8d8ebcca44b99de5923337790836d8"
+        "bytes": 64382,
+        "sha256": "385bbc193be495597ef0fe2a675220ca443297e673b32947c8d8ffcd1a6366da"
       }
     },
     "schema": "https://epistemedia.org/research/gpt4-bar-percentile-packet-v1.json",
@@ -4155,7 +4155,7 @@
             },
             {
               "format": "exact-contiguous-text",
-              "locator": "discussion, journal p. 598",
+              "locator": "introduction, journal p. 584",
               "normalization": "collapse-whitespace",
               "quote": "The paper successfully replicates the MBE score of 158, but highlights several methodological issues in the grading of the MPT + MEE components of the exam, which call into question the validity of the essay score (140).",
               "span_id": "span-martinez-score-validation",
@@ -4591,5 +4591,5 @@
     "target_question": "How did a historical simulated UBE score reported for GPT-4 become a roughly 90th-percentile claim, and how does the rank change when the comparison population changes?",
     "task_id": "EM-0032"
   },
-  "packet_id": "em:research-packet:sha256:9a305d480fa08b90a1fc605963a6ec90974e848c96a74668fa7f1844e579be6e"
+  "packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b"
 }

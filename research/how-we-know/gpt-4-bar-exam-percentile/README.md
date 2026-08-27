@@ -38,7 +38,7 @@ OpenAI.
 ## Packet identities
 
 - candidate packet:
-  `em:research-packet:sha256:9a305d480fa08b90a1fc605963a6ec90974e848c96a74668fa7f1844e579be6e`;
+  `em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b`;
 - artifact inventory:
   `em:artifact-inventory:sha256:17f52a5509fded7e75b08201f61122d09c7626443857c94f8727c85c0824e61c`;
 - pinned Git body-search manifest:
