@@ -47,5 +47,8 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0031` — close EM-0027 accurately and record the four-live-case gate before broad launch and promotion (ready; depends on `EM-0027` and `EM-0030`)
 - `EM-0032` — research the Case 003 GPT-4 bar-exam percentile and comparison-class lineage (ready; depends on `EM-0027` and `EM-0031`)
 - `EM-0033` — research the Case 004 Mehrabian 7-38-55 proposition and derivation lineage (ready; depends on `EM-0027` and `EM-0031`)
+- `EM-0034` — construct and independently review the reversible Case 003 GPT-4 bar-exam dossier (ready; depends on `EM-0032`)
+- `EM-0035` — construct and independently review the reversible Case 004 Mehrabian 7-38-55 dossier (ready; depends on `EM-0033`)
+- `EM-0036` — admit Cases 003 and 004 into a deterministic four-case How We Know library (ready; depends on `EM-0030`, `EM-0034`, and `EM-0035`)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.

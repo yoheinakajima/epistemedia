@@ -1,0 +1,65 @@
+{
+  "id": "EM-0035",
+  "title": "Construct and independently review the Case 004 Mehrabian 7-38-55 dossier",
+  "status": "ready",
+  "change_class": "research",
+  "objective": "Transform the exact independently reviewed EM-0033 packet into one disclosure-safe, reversible Case 004 dossier that separates the two 1967 experiments, the later cross-study weighting proposal, the unresolved seven-percent derivation, author qualification, direct rebuttal, and broad recirculation without admitting or publishing the dossier.",
+  "depends_on": [
+    "EM-0033"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "research/how-we-know/mehrabian-7-38-55/**",
+      "docs/execution-plans/EM-0035.md",
+      "docs/research/case-004-mehrabian-7-38-55.md",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "README.md",
+      "docs/editorial/**",
+      "generated/**",
+      "site/**"
+    ]
+  },
+  "required_evaluation": [
+    "byte-for-byte preservation of the accepted EM-0033 source records, packet, calculations, lineage graph, author receipts, and independent-review receipt",
+    "strict dossier-format validation, referential closure, content-address recomputation, and public disclosure noninterference",
+    "sentence-to-work, edition, source, parent-span, segment, retrieval identity, and license-treatment closure for every material proposition",
+    "mechanical reproduction of each 7, 38, and 55 coefficient and every transformation while retaining the missing origin of the seven-percent coefficient as unresolved",
+    "participant, speaker, author-social, grant, stimulus, material, method, scale, citation, book-edition, and derivation dependence review",
+    "separate treatment of the two 1967 participant-data roots, later cross-study proposal, author qualification, direct all-channel rebuttal, propagation objects, and follow-up literature",
+    "encyclopedia-versus-skeptical policy evaluation with materially different reasons over one unchanged public dossier",
+    "fresh-clone independent review of the exact dossier bytes against the accepted EM-0033 packet and its reviewed source, span, calculation, propagation, follow-up, and lineage identities",
+    "full deterministic make check, disclosure audit, exact path-scope comparison, and clean tracked state"
+  ],
+  "acceptance": [
+    "one content-addressed Case 004 candidate dossier asks the bounded historical question fixed by EM-0033 and retains its evidence cutoff",
+    "the words-and-tone experiment, face-and-tone experiment, later cross-study integration, broad 93-percent proposition, author qualification, and direct rebuttal remain distinct objects and are never collapsed into one three-channel experiment",
+    "every numerical statement is reproduced from an exact reviewed span, derived mechanically from pinned inputs, or represented as unresolved, including the origin of the seven-percent coefficient",
+    "the dossier preserves edition differences across the 1967 papers, examined Silent Messages edition, later author qualification, unavailable or uncollated edition, and bounded recirculation examples",
+    "readable but unlicensed sources receive only lawful metadata, digest, access, and quote-minimal treatment; no restricted full text is redistributed",
+    "propagation objects receive zero empirical credit, and follow-up studies retain their exact reviewed scope, dependencies, exclusions, and unresolved gaps",
+    "all displayed counts and conclusions are relation-derived from the accepted packet rather than copied as editorial totals",
+    "every material human-readable sentence closes over the exact source works, editions, quote-minimal spans, calculations, and typed dependence relations required to support it",
+    "encyclopedia and skeptical evaluations preserve the same source graph while differing materially in reliance threshold, missing-derivation treatment, and reader upshot",
+    "the dossier does not generalize the narrow inconsistent-feelings-and-attitudes results to all communication, ordinary conversation, persuasion, or universal channel importance",
+    "an independently rooted reviewer binds the exact candidate dossier path, bytes, digest, reviewed head and tree, accepted packet and receipt identities, source and span coverage, calculations, lineage, displayed counts, limitations, and decision in a machine-readable receipt",
+    "the result remains a reviewed research candidate with no catalog selection, public feature, deployment, or claim of production availability",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task constructs and reviews a candidate dossier; it does not admit, feature, publish, deploy, or describe Case 004 as live.",
+    "Independent review verifies identity, containment, derivation, semantic scope, lineage, counts, and disclosure. It does not establish a general law of communication.",
+    "No new participant study, provider call, paid access, credential, account, private source, restricted source redistribution, policy change, schema promotion, workflow mutation, DNS action, package release, or spend is authorized.",
+    "If exact sentence-to-source or coefficient closure cannot be completed, the dossier fails closed and the accepted EM-0033 gaps remain visible."
+  ]
+}

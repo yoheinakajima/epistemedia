@@ -1,0 +1,64 @@
+{
+  "id": "EM-0034",
+  "title": "Construct and independently review the Case 003 GPT-4 bar-exam dossier",
+  "status": "ready",
+  "change_class": "research",
+  "objective": "Transform the exact independently reviewed EM-0032 packet into one disclosure-safe, reversible Case 003 dossier that explains how a historical simulated bar-exam score became a 90th-percentile claim while preserving every comparison-class, derivation, score, edition, and provenance limitation without admitting or publishing the dossier.",
+  "depends_on": [
+    "EM-0032"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "research/how-we-know/gpt-4-bar-exam-percentile/**",
+      "docs/execution-plans/EM-0034.md",
+      "docs/research/case-003-gpt-4-bar-exam-percentile.md",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "README.md",
+      "docs/editorial/**",
+      "generated/**",
+      "site/**"
+    ]
+  },
+  "required_evaluation": [
+    "byte-for-byte preservation of the accepted EM-0032 source records, packet, artifact inventory, calculations, lineage graph, author receipts, and independent-review receipt",
+    "strict dossier-format validation, referential closure, content-address recomputation, and public disclosure noninterference",
+    "sentence-to-work, edition, source, parent-span, segment or cell, retrieval identity, and license-treatment closure for every material proposition",
+    "mechanical reproduction of the historical score, every displayed percentile or range, and all assumptions from exact pinned inputs without smoothing the 298-versus-297 or 45th-versus-48th discrepancies",
+    "typed data, model, author-social, method, material, benchmark, score, comparison-class, citation, and derivation dependence review",
+    "separate treatment of model-performance, analysis, and comparison-data roots without counting reports, repository carriers, mirrors, or modeled populations as independent experiments",
+    "encyclopedia-versus-skeptical policy evaluation with materially different reasons over one unchanged public dossier",
+    "fresh-clone independent review of the exact dossier bytes against the accepted EM-0032 packet and its reviewed source, span, calculation, and lineage identities",
+    "full deterministic make check, disclosure audit, exact path-scope comparison, and clean tracked state"
+  ],
+  "acceptance": [
+    "one content-addressed Case 003 candidate dossier asks the bounded historical question fixed by EM-0032 and retains its evidence cutoff",
+    "the dossier distinguishes the one historical model-performance experiment from the OpenAI report, Katz preprint and version of record, repository and artifact carriers, Martinez re-analysis, comparison datasets, derivations, and media recirculation",
+    "every numerical statement is reproduced from an exact reviewed span or typed table or code cell, derived mechanically from pinned inputs, or represented as unresolved",
+    "the original at-launch top-ten-percent chart, national UBE total-score distribution, proprietary inputs, and other unresolved provenance remain visible and receive no invented value or evidentiary credit",
+    "the comparison-class ledger visibly separates all examinees, July takers, first-time takers, repeat takers, passers or qualified attorneys, jurisdictions, administrations, thresholds, and modeled distributions",
+    "all displayed counts and conclusions are relation-derived from the accepted packet rather than copied as editorial totals",
+    "every material human-readable sentence closes over the exact source works, editions, quote-minimal spans, calculations, and typed dependence relations required to support it",
+    "encyclopedia and skeptical evaluations preserve the same source graph while differing materially in trust threshold, unresolved-provenance treatment, and reader upshot",
+    "the dossier does not infer general legal competence, practicing-lawyer quality, present model behavior, or a current product ranking from the historical simulation",
+    "an independently rooted reviewer binds the exact candidate dossier path, bytes, digest, reviewed head and tree, accepted packet and receipt identities, source and span coverage, calculations, lineage, displayed counts, limitations, and decision in a machine-readable receipt",
+    "the result remains a reviewed research candidate with no catalog selection, public feature, deployment, or claim of production availability",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task constructs and reviews a candidate dossier; it does not admit, feature, publish, deploy, or describe Case 003 as live.",
+    "Independent review verifies identity, containment, derivation, semantic scope, lineage, counts, and disclosure. It does not establish general legal competence or current model performance.",
+    "No new model run, paid provider call, purchased exam material, credential, account, private trace, hidden reasoning, restricted source redistribution, policy change, schema promotion, workflow mutation, DNS action, package release, or spend is authorized.",
+    "If exact sentence-to-source or calculation closure cannot be completed, the dossier fails closed and the accepted EM-0032 gaps remain visible."
+  ]
+}
