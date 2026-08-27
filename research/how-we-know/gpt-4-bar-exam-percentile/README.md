@@ -38,9 +38,11 @@ OpenAI.
 ## Packet identities
 
 - candidate packet:
-  `em:research-packet:sha256:e0d5967853bcf98aff0abd4030dfeef441dce828b234062b1c82d71a846919df`;
+  `em:research-packet:sha256:9a305d480fa08b90a1fc605963a6ec90974e848c96a74668fa7f1844e579be6e`;
 - artifact inventory:
-  `em:artifact-inventory:sha256:02175ab09bf6edac892bb42fd1df919959c2b537004da539612698e33ee07ac3`;
+  `em:artifact-inventory:sha256:17f52a5509fded7e75b08201f61122d09c7626443857c94f8727c85c0824e61c`;
+- pinned Git body-search manifest:
+  `em:git-blob-search:sha256:545908f30ba849c42c860185f92612f4d52a53b4f13b3c3ca5672213e23ba996`;
 - 15 preliminary core source objects plus 4 derivation supplements;
 - 35 quote-minimal parent spans decomposed into 76 typed cells, clauses, code lines, or contiguous
   text units;
@@ -54,16 +56,23 @@ All 89 artifacts receive zero automatic independent-evidence credit. OpenAI repo
 Katz's preprint/VOR/repository/supplement, and the study outputs collapse to one historical model
 performance root. Martínez's VOR and OSF deposit collapse to one re-analysis root. The repaired
 packet also distinguishes the Katz repository commit from its Git tree, uses the canonical Spring
-2022 NCBE testing-column work, binds every July MBE bin used by the passers calculation, and keeps
-the Martínez `45th`/`48th` edition-internal discrepancy visible.
+2022 NCBE testing-column work and visible Rosemary Reshetar byline while retaining conflicting
+JSON-LD attribution to Jim Leach, binds every July MBE bin used by the passers calculation, and
+keeps the Martínez `45th`/`48th` edition-internal discrepancy visible. Its seven Martínez spans
+are bound to an exact Texas A&M institutional PDF capture; current automated refreshes can return
+HTTP 403, which remains an explicit carrier limitation rather than being silently substituted.
 
 ## Files
 
 - `source-records.json` — source, edition, capture, license, span, claim, lineage, negative-search,
   and limitation records;
 - `artifact-inventory.json` — content-addressed 89-file metadata inventory;
+- `git-blob-search-manifest.json` — all 78 pinned Git bodies with SHA-256, UTF-8 search results,
+  and explicit binary no-text-search records;
 - `candidate-packet.json` — deterministic content-addressed packet;
 - `build_packet.py` — capture helper and offline deterministic builder;
+- `normalize_html_visible_text.py` — exact-root visible-text normalizer for mutable HTML carriers;
+- `verify_git_blob_search.py` — pinned commit/tree body-readback and negative-search verifier;
 - `verify_packet.py` — source/count/math/lineage verifier, adversarial receipt self-test, and
   fail-closed exact-head review gate; and
 - `independent-review-receipt.json` — absent until a separate reviewer completes exact-head
@@ -76,9 +85,11 @@ artifacts are link/metadata/quote-minimal only.
 
 ```bash
 python research/how-we-know/gpt-4-bar-exam-percentile/build_packet.py --check
+python research/how-we-know/gpt-4-bar-exam-percentile/verify_git_blob_search.py \
+  --repository /path/to/pinned-katz-checkout --check --self-test
 python research/how-we-know/gpt-4-bar-exam-percentile/verify_packet.py
 python research/how-we-know/gpt-4-bar-exam-percentile/verify_packet.py \
-  --require-review
+  --captures-dir /path/to/exact-html-captures --require-captures --require-review
 make check
 ```
 
@@ -86,7 +97,9 @@ Before independent review, the third command must fail with `independent review 
 After review, it must bind the exact base, author head and tree, packet bytes, every source,
 parent span, typed span unit, calculation, lineage root and edge, command record, clean-state
 observation, limitation, and recommendation. A receipt-only child must also bind its Git parent and
-tree rather than trusting self-asserted hashes.
+tree rather than trusting self-asserted hashes. The review gate also requires fresh raw-to-semantic
+recomputation for all five mutable HTML carriers; ordinary offline packet validation does not claim
+that an external capture was repeated.
 
 ## Hard boundary
 

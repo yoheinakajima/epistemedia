@@ -20,35 +20,52 @@ from build_packet import (
     build_packet,
     canonical_bytes,
 )
+from normalize_html_visible_text import normalize_html_visible_text
+from verify_git_blob_search import validate_manifest as validate_git_blob_manifest
 
 PACKET_ROOT = Path(__file__).resolve().parent
 REPO_ROOT = PACKET_ROOT.parents[2]
 SOURCE_RECORDS = PACKET_ROOT / "source-records.json"
 ARTIFACT_INVENTORY = PACKET_ROOT / "artifact-inventory.json"
+GIT_BLOB_SEARCH_MANIFEST = PACKET_ROOT / "git-blob-search-manifest.json"
 CANDIDATE_PACKET = PACKET_ROOT / "candidate-packet.json"
 DEFAULT_REVIEW_RECEIPT = PACKET_ROOT / "independent-review-receipt.json"
 REPOSITORY_URL = "https://github.com/yoheinakajima/epistemedia"
 REVIEW_FORMAT = "epistemedia-independent-research-review-v1"
 AUTHOR_IDS = {"codex-builder"}
 EMPTY_SHA256 = hashlib.sha256(b"").hexdigest()
+HTML_SEMANTIC_SOURCE_IDS = {
+    "source-ncbe-first-repeat-2022",
+    "source-ncbe-mbe-2022",
+    "source-ncbe-snapshot-2022",
+    "source-ncbe-ube-mechanics",
+    "source-reshetar-testing-column-2022",
+}
 
 EXPECTED_PACKET_ID = (
-    "em:research-packet:sha256:e0d5967853bcf98aff0abd4030dfeef441dce828b234062b1c82d71a846919df"
+    "em:research-packet:sha256:9a305d480fa08b90a1fc605963a6ec90974e848c96a74668fa7f1844e579be6e"
 )
 EXPECTED_SOURCE_RECORDS = {
-    "bytes": 60_294,
-    "sha256": "ccfada7aa2fdfd9d59fe9f77349bf72ee0304abf9cea6d234fdca74028c9f25f",
+    "bytes": 64_380,
+    "sha256": "899bbdcc0a5cfcf1e569427aaa89a5fcae8d8ebcca44b99de5923337790836d8",
 }
 EXPECTED_ARTIFACT_INVENTORY = {
-    "bytes": 62_473,
-    "sha256": "93592cabb27c89138e90e36729338b07116ec23bd7c7c6f30a9a71829aae1080",
+    "bytes": 62_565,
+    "sha256": "f9e45045831a15fcb40c7f542c73651e5dc63ba081b145d00260bee91192c25b",
 }
+EXPECTED_GIT_BLOB_SEARCH = {
+    "bytes": 51_950,
+    "sha256": "708657f61bc759f3a5b439affde1a677177859b50a8bc960012b81dcebcdb122",
+}
+EXPECTED_GIT_BLOB_SEARCH_ID = (
+    "em:git-blob-search:sha256:545908f30ba849c42c860185f92612f4d52a53b4f13b3c3ca5672213e23ba996"
+)
 EXPECTED_CANDIDATE_PACKET = {
-    "bytes": 147_177,
-    "sha256": "2f51b684249f2045a917da3ef7e374ef480f17faaf457e7408b25877be6f9e95",
+    "bytes": 210_541,
+    "sha256": "b107c7b61226af46142df6b104bb620d7dee2e44ada7c8072fad4def16782f5d",
 }
 EXPECTED_ARTIFACT_INVENTORY_ID = (
-    "em:artifact-inventory:sha256:02175ab09bf6edac892bb42fd1df919959c2b537004da539612698e33ee07ac3"
+    "em:artifact-inventory:sha256:17f52a5509fded7e75b08201f61122d09c7626443857c94f8727c85c0824e61c"
 )
 EXPECTED_SOURCE_IDS = {
     "source-illinois-feb-2018",
@@ -58,7 +75,7 @@ EXPECTED_SOURCE_IDS = {
     "source-katz-git-snapshot",
     "source-katz-ssrn",
     "source-katz-vor",
-    "source-leach-testing-column-2022",
+    "source-reshetar-testing-column-2022",
     "source-martinez-analysis-new",
     "source-martinez-osf",
     "source-martinez-vor",
@@ -137,8 +154,8 @@ EXPECTED_SOURCE_CAPTURE_IDENTITIES = {
         "d5edc89f2c781ab7a795602cdc4a6b42b3da457f13972c8660db9a2b976df448",
     ),
     "source-martinez-vor": (
-        869_291,
-        "79cc616af2bf287b782c91eaa439ec662a2e8c1db82352c246a74f3ac22cc801",
+        888_663,
+        "bbab759cb88e93a5216936af1edb2726eb8eb0edde3148d18c1093bed9226e76",
     ),
     "source-martinez-osf": (
         3_696,
@@ -152,7 +169,7 @@ EXPECTED_SOURCE_CAPTURE_IDENTITIES = {
         65_751,
         "9cddfa2dbe71b11e01a5ee24a328952cdb8c6a81ee140e83a8a1713aa4c17088",
     ),
-    "source-leach-testing-column-2022": (
+    "source-reshetar-testing-column-2022": (
         218_131,
         "174a5adc50f0235f70ebea3b6c4ed85fbe91df8c18d8144286876fe6b95e70bd",
     ),
@@ -166,29 +183,29 @@ EXPECTED_SEMANTIC_CAPTURES = {
         23_967,
         "77eed8a0e0bacf7ded2368209120bd7d2e1390419ece9421373bc9c696f83105",
     ),
-    "source-leach-testing-column-2022": (
-        15_755,
-        "b093ad29e1144d984b8eb520d133ed6a052baf1707b1cfbb8aa324f8c870c725",
+    "source-reshetar-testing-column-2022": (
+        12_498,
+        "2222ea3b0110bcc02c189bb5d79ee9264ada557b2edae09077d985d472da92f6",
     ),
     "source-martinez-osf": (
         3_697,
         "b18212bf119cd65f826d137a1306a266b446de193618822fcdcea3eae0903a6f",
     ),
     "source-ncbe-first-repeat-2022": (
-        23_454,
-        "747ab58234c9030274815418623bad4ab4ecb2be39da2d82ec2e9e66f5016ee5",
+        18_887,
+        "28a6ddf863f104d59b23674ed11a46951b87e088f4774c277f642e6d077e582d",
     ),
     "source-ncbe-mbe-2022": (
-        7_808,
-        "86e886399e02ee1d87bbb7acb61a1b30ff41837be3e61a2133ad4c7f26430392",
+        4_767,
+        "d738481ea3a38e6da39748d47aacc1291112766ec4720917ad0529a02a1f491e",
     ),
     "source-ncbe-snapshot-2022": (
-        7_687,
-        "ea30ec8ffffb1e8b564f6a40d5af1769909580508251b3579e8e9e54a9dd3199",
+        5_449,
+        "d1373f31770be2bbecb821047ef0ea95cb0c50e6088e0c26322de921cf797917",
     ),
     "source-ncbe-ube-mechanics": (
-        1_415,
-        "c4cb80babbb85d08631671e8d60d2f3f5d255da576c607e5d6f984776e78ba11",
+        1_123,
+        "c7484bfc7a063ddde35b93e488f95c0e33894106e5f90df2b66cab9cb18837b7",
     ),
 }
 
@@ -222,6 +239,68 @@ def digest_value(value: Any) -> str:
 def identity(path: Path) -> dict[str, Any]:
     payload = path.read_bytes()
     return {"bytes": len(payload), "sha256": sha256(payload)}
+
+
+def collapsed_text(value: str) -> str:
+    return re.sub(r"\s+", " ", value).strip()
+
+
+def span_text_values(span: dict[str, Any]) -> list[tuple[str, str]]:
+    values: list[tuple[str, str]] = []
+    if isinstance(span.get("quote"), str):
+        values.append((span["span_id"], span["quote"]))
+    for field, id_field in (
+        ("segments", "segment_id"),
+        ("cells", "cell_id"),
+        ("code_lines", "line_id"),
+    ):
+        for row in span.get(field, []):
+            if isinstance(row.get("text"), str):
+                values.append((row[id_field], row["text"]))
+    return values
+
+
+def verify_html_captures(
+    source_records: dict[str, Any],
+    captures_dir: Path | None,
+    *,
+    require_captures: bool,
+) -> bool:
+    if captures_dir is None:
+        require(not require_captures, "--captures-dir is required with --require-captures")
+        return False
+    require(captures_dir.is_dir(), "HTML captures directory missing")
+    sources = {source["source_id"]: source for source in source_records["sources"]}
+    actual_names = {path.name for path in captures_dir.glob("*.body")}
+    expected_names = {f"{source_id}.body" for source_id in HTML_SEMANTIC_SOURCE_IDS}
+    require(actual_names == expected_names, "HTML capture file set drift")
+    for source_id in sorted(HTML_SEMANTIC_SOURCE_IDS):
+        source = sources[source_id]
+        path = captures_dir / f"{source_id}.body"
+        payload = path.read_bytes()
+        allowed_identities = {
+            (source["captured_bytes"], source["captured_sha256"]),
+            *{
+                (row["bytes"], row["sha256"])
+                for row in source.get("capture_observations", [])
+            },
+        }
+        require(
+            (len(payload), sha256(payload)) in allowed_identities,
+            f"unrecorded HTML capture identity: {source_id}",
+        )
+        semantic = source["semantic_capture"]
+        normalized = normalize_html_visible_text(payload, root_id=semantic["root_id"])
+        require(len(normalized) == semantic["bytes"], f"semantic bytes drift: {source_id}")
+        require(sha256(normalized) == semantic["sha256"], f"semantic hash drift: {source_id}")
+        visible_text = normalized.decode("utf-8")
+        for span in source["spans"]:
+            for unit_id, value in span_text_values(span):
+                require(
+                    collapsed_text(value) in visible_text,
+                    f"semantic extent missing: {source_id}/{unit_id}",
+                )
+    return True
 
 
 def git_bytes(*args: str, check: bool = True) -> bytes:
@@ -417,9 +496,14 @@ def independently_recompute_derivations(packet: dict[str, Any]) -> None:
         )
 
 
-def verify_packet() -> tuple[dict[str, Any], dict[str, Any]]:
+def verify_packet(
+    captures_dir: Path | None = None,
+    *,
+    require_captures: bool = False,
+) -> tuple[dict[str, Any], dict[str, Any]]:
     source_records = load(SOURCE_RECORDS)
     artifact_inventory = load(ARTIFACT_INVENTORY)
+    git_blob_search = load(GIT_BLOB_SEARCH_MANIFEST)
     packet = load(CANDIDATE_PACKET)
     require(packet == build_packet(), "candidate packet deterministic rebuild drift")
     require(packet["packet_id"] == EXPECTED_PACKET_ID, "candidate packet ID drift")
@@ -427,6 +511,15 @@ def verify_packet() -> tuple[dict[str, Any], dict[str, Any]]:
     require(
         identity(ARTIFACT_INVENTORY) == EXPECTED_ARTIFACT_INVENTORY,
         "artifact-inventory drift",
+    )
+    require(
+        identity(GIT_BLOB_SEARCH_MANIFEST) == EXPECTED_GIT_BLOB_SEARCH,
+        "Git blob-search manifest drift",
+    )
+    validate_git_blob_manifest(git_blob_search)
+    require(
+        git_blob_search["manifest_id"] == EXPECTED_GIT_BLOB_SEARCH_ID,
+        "Git blob-search manifest ID drift",
     )
     require(identity(CANDIDATE_PACKET) == EXPECTED_CANDIDATE_PACKET, "packet bytes drift")
     require(
@@ -436,6 +529,36 @@ def verify_packet() -> tuple[dict[str, Any], dict[str, Any]]:
 
     sources = {item["source_id"]: item for item in source_records["sources"]}
     require(set(sources) == EXPECTED_SOURCE_IDS, "source set drift")
+    reshetar = sources["source-reshetar-testing-column-2022"]
+    require(
+        reshetar["authors_or_org"]
+        == "Rosemary Reshetar, EdD / National Conference of Bar Examiners",
+        "testing-column visible byline drift",
+    )
+    require(
+        reshetar["attribution_conflict"]
+        == {
+            "visible_print_byline": "Rosemary Reshetar, EdD",
+            "html_json_ld_author": "Jim Leach",
+            "treatment": (
+                "Use the visible print byline for work attribution; retain the "
+                "conflicting JSON-LD site metadata without silently treating it "
+                "as authorship."
+            ),
+        },
+        "testing-column attribution conflict drift",
+    )
+    martinez = sources["source-martinez-vor"]
+    require(
+        martinez["url"]
+        == "https://scholarship.law.tamu.edu/cgi/viewcontent.cgi?article=3387&context=facscholar",
+        "Martinez institutional carrier URL drift",
+    )
+    require(
+        martinez["carrier"]["span_readback_ids"]
+        == [span["span_id"] for span in martinez["spans"]],
+        "Martinez carrier span coverage drift",
+    )
     for source_id, expected in EXPECTED_SOURCE_CAPTURE_IDENTITIES.items():
         source = sources[source_id]
         require(source["captured_bytes"] == expected[0], f"bytes drift: {source_id}")
@@ -458,6 +581,9 @@ def verify_packet() -> tuple[dict[str, Any], dict[str, Any]]:
             "calculations": 10,
             "lineage_roots": 5,
             "lineage_edges": 10,
+            "git_blob_bodies": 78,
+            "git_blob_text_bodies": 72,
+            "git_blob_binary_bodies": 6,
         },
         "packet count drift",
     )
@@ -492,6 +618,11 @@ def verify_packet() -> tuple[dict[str, Any], dict[str, Any]]:
     require(not list(PACKET_ROOT.glob("*.pdf")), "restricted PDF committed")
     require(not list(PACKET_ROOT.glob("*.html")), "raw HTML committed")
     require(not list(PACKET_ROOT.glob("*.xml")), "raw XML committed")
+    captures_recomputed = verify_html_captures(
+        source_records,
+        captures_dir,
+        require_captures=require_captures,
+    )
     independently_recompute_derivations(packet)
     records = collect_review_records(packet)
     return packet, {
@@ -499,10 +630,13 @@ def verify_packet() -> tuple[dict[str, Any], dict[str, Any]]:
         "source_records": identity(SOURCE_RECORDS),
         "artifact_inventory": identity(ARTIFACT_INVENTORY),
         "artifact_inventory_id": artifact_inventory["inventory_id"],
+        "git_blob_search_manifest": identity(GIT_BLOB_SEARCH_MANIFEST),
+        "git_blob_search_manifest_id": git_blob_search["manifest_id"],
         "candidate_packet": identity(CANDIDATE_PACKET),
         "records": records,
         "counts": counts,
         "author_recommendation": source_records["recommendation"]["author"],
+        "html_semantic_captures_recomputed": captures_recomputed,
     }
 
 
@@ -815,6 +949,8 @@ def validate_receipt_document(
             "source_records",
             "artifact_inventory",
             "artifact_inventory_id",
+            "git_blob_search_manifest",
+            "git_blob_search_manifest_id",
             "candidate_packet",
         },
         "receipt.bindings",
@@ -824,6 +960,8 @@ def validate_receipt_document(
         "source_records",
         "artifact_inventory",
         "artifact_inventory_id",
+        "git_blob_search_manifest",
+        "git_blob_search_manifest_id",
         "candidate_packet",
     ):
         require(bindings[key] == summary[key], f"receipt binding drift: {key}")
@@ -990,6 +1128,8 @@ def valid_shape_fixture(
             "source_records": summary["source_records"],
             "artifact_inventory": summary["artifact_inventory"],
             "artifact_inventory_id": summary["artifact_inventory_id"],
+            "git_blob_search_manifest": summary["git_blob_search_manifest"],
+            "git_blob_search_manifest_id": summary["git_blob_search_manifest_id"],
             "candidate_packet": summary["candidate_packet"],
         },
         "coverage": {
@@ -1070,6 +1210,24 @@ def valid_shape_fixture(
 
 
 def run_adversarial_self_test(packet: dict[str, Any], summary: dict[str, Any]) -> None:
+    html_fixture = (
+        b'<div id="target">kept<script>hidden</script><span>text</span></div>'
+        b'<div>outside</div>'
+    )
+    require(
+        normalize_html_visible_text(html_fixture, root_id="target") == b"kept text",
+        "HTML normalizer selected excluded or out-of-root text",
+    )
+    try:
+        normalize_html_visible_text(
+            b'<div id="target">one</div><div id="target">two</div>',
+            root_id="target",
+        )
+    except ValueError:
+        pass
+    else:
+        fail("HTML normalizer accepted duplicate root IDs")
+
     head = git_text("rev-parse", "HEAD")
     tree = git_text("rev-parse", "HEAD^{tree}")
     base = git_text("rev-parse", "HEAD^")
@@ -1272,16 +1430,26 @@ def main() -> None:
     parser.add_argument("--review-receipt", type=Path, default=DEFAULT_REVIEW_RECEIPT)
     parser.add_argument("--require-review", action="store_true")
     parser.add_argument("--self-test", action="store_true")
+    parser.add_argument("--captures-dir", type=Path)
+    parser.add_argument("--require-captures", action="store_true")
     parser.add_argument("--expected-base")
     parser.add_argument("--expected-author-head")
     parser.add_argument("--expected-author-tree")
     parser.add_argument("--expected-reviewer-id")
     args = parser.parse_args()
-    packet, summary = verify_packet()
+    packet, summary = verify_packet(
+        args.captures_dir,
+        require_captures=args.require_captures,
+    )
     if args.self_test:
         run_adversarial_self_test(packet, summary)
         summary["adversarial_receipt_tests"] = "passed"
     review = None
+    if args.require_review:
+        require(
+            summary["html_semantic_captures_recomputed"] is True,
+            "independent review requires recomputed HTML semantic captures",
+        )
     if args.review_receipt.is_file() or args.require_review:
         require(args.review_receipt.is_file(), "independent review receipt missing")
         for field in (

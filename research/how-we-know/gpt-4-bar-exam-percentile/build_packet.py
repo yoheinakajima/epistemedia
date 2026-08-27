@@ -17,6 +17,7 @@ from typing import Any
 PACKET_ROOT = Path(__file__).resolve().parent
 SOURCE_RECORDS = PACKET_ROOT / "source-records.json"
 ARTIFACT_INVENTORY = PACKET_ROOT / "artifact-inventory.json"
+GIT_BLOB_SEARCH_MANIFEST = PACKET_ROOT / "git-blob-search-manifest.json"
 CANDIDATE_PACKET = PACKET_ROOT / "candidate-packet.json"
 
 EXPECTED_CORE_SOURCE_COUNT = 15
@@ -256,8 +257,10 @@ def capture_inventory(args: argparse.Namespace) -> dict[str, Any]:
         "artifacts": artifacts,
         "limitations": [
             (
-                "Git object IDs bind blobs using Git's SHA-1 object identity; most blobs "
-                "were not independently downloaded for a second SHA-256."
+                "Git object IDs bind blobs using Git's SHA-1 object identity; the "
+                "separate pinned blob-search manifest also binds all 78 bodies by "
+                "SHA-256, searches 72 UTF-8 bodies, and retains 6 binary bodies as "
+                "no-text-search records."
             ),
             (
                 "Figshare supplies MD5; the sole PDF was also independently retrieved "
@@ -353,7 +356,7 @@ def build_derivations() -> list[dict[str, Any]]:
                     "july_mbe_binned_observations": len(mbe_values),
                 },
                 "input_span_ids": [
-                    "span-leach-first-time-mean",
+                    "span-reshetar-first-time-mean",
                     "span-martinez-mean-assumption",
                     "span-martinez-script-july-mbe-distribution",
                     "span-martinez-script-ube-sd",
@@ -443,6 +446,7 @@ def build_derivations() -> list[dict[str, Any]]:
 def validate_inputs(
     source_records: dict[str, Any],
     artifact_inventory: dict[str, Any],
+    git_blob_search: dict[str, Any],
 ) -> None:
     sources = source_records["sources"]
     require(len(sources) == EXPECTED_SOURCE_COUNT, "source object count drift")
@@ -545,6 +549,44 @@ def validate_inputs(
     )
     require(osf_bytes == EXPECTED_OSF_TOTAL_BYTES, "OSF artifact bytes drift")
 
+    search_content = git_blob_search["content"]
+    require(
+        search_content["commit_sha"]
+        == "90997f740c7197f3f300b013e4345e2ad5621f96",
+        "Git body-search commit drift",
+    )
+    require(
+        search_content["tree_sha"]
+        == "810bd4a9a8ffb51e457715d2312d28d3e9657240",
+        "Git body-search tree drift",
+    )
+    require(search_content["blob_count"] == 78, "Git body-search blob count drift")
+    require(search_content["text_body_count"] == 72, "Git body-search text count drift")
+    require(search_content["binary_body_count"] == 6, "Git body-search binary count drift")
+    require(
+        git_blob_search["manifest_id"]
+        == f"em:git-blob-search:sha256:{digest_bytes(canonical_bytes(search_content))}",
+        "Git body-search manifest ID drift",
+    )
+    require(
+        source_records["negative_searches"][0]["git_blob_search_manifest_id"]
+        == git_blob_search["manifest_id"],
+        "negative-search manifest binding drift",
+    )
+    git_artifacts = {
+        item["path"]: item
+        for item in artifacts
+        if item["artifact_root_id"] == "artifact-root-katz-git"
+    }
+    require(
+        {row["path"] for row in search_content["rows"]} == set(git_artifacts),
+        "Git body-search artifact coverage drift",
+    )
+    for row in search_content["rows"]:
+        artifact = git_artifacts[row["path"]]
+        require(row["bytes"] == artifact["bytes"], "Git body-search byte drift")
+        require(row["git_blob_sha1"] == artifact["digest"], "Git body-search SHA-1 drift")
+
     lineages = source_records["lineages"]
     lineage_ids = {lineage["lineage_id"] for lineage in lineages}
     require(len(lineage_ids) == 5, "lineage root count drift")
@@ -599,7 +641,8 @@ def validate_inputs(
 def build_packet() -> dict[str, Any]:
     source_records = load(SOURCE_RECORDS)
     artifact_inventory = load(ARTIFACT_INVENTORY)
-    validate_inputs(source_records, artifact_inventory)
+    git_blob_search = load(GIT_BLOB_SEARCH_MANIFEST)
+    validate_inputs(source_records, artifact_inventory, git_blob_search)
     content = {
         "schema": "https://epistemedia.org/research/gpt4-bar-percentile-packet-v1.json",
         "task_id": "EM-0032",
@@ -608,9 +651,11 @@ def build_packet() -> dict[str, Any]:
         "input_receipts": {
             "source_records": identity(SOURCE_RECORDS),
             "artifact_inventory": identity(ARTIFACT_INVENTORY),
+            "git_blob_search_manifest": identity(GIT_BLOB_SEARCH_MANIFEST),
         },
         "source_records": source_records,
         "artifact_inventory": artifact_inventory,
+        "git_blob_search_manifest": git_blob_search,
         "derivations": build_derivations(),
         "counts": {
             "sources": len(source_records["sources"]),
@@ -629,6 +674,9 @@ def build_packet() -> dict[str, Any]:
             "calculations": len(build_derivations()),
             "lineage_roots": len(source_records["lineages"]),
             "lineage_edges": len(source_records["lineage_edges"]),
+            "git_blob_bodies": git_blob_search["content"]["blob_count"],
+            "git_blob_text_bodies": git_blob_search["content"]["text_body_count"],
+            "git_blob_binary_bodies": git_blob_search["content"]["binary_body_count"],
         },
         "decision": {
             "author_recommendation": source_records["recommendation"]["author"],

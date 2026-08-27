@@ -1132,7 +1132,7 @@
     ],
     "captured_at": "2026-08-27T05:48:35Z",
     "limitations": [
-      "Git object IDs bind blobs using Git's SHA-1 object identity; most blobs were not independently downloaded for a second SHA-256.",
+      "Git object IDs bind blobs using Git's SHA-1 object identity; the separate pinned blob-search manifest also binds all 78 bodies by SHA-256, searches 72 UTF-8 bodies, and retains 6 binary bodies as no-text-search records.",
       "Figshare supplies MD5; the sole PDF was also independently retrieved and SHA-256-bound.",
       "OSF supplies SHA-256 metadata, but only three quote-minimal files were independently downloaded; no unlicensed full artifacts are committed.",
       "The inventory verifies file identity and completeness, not the scientific validity of every artifact."
@@ -1140,5 +1140,5 @@
     "schema": "https://epistemedia.org/research/artifact-inventory-v1.json",
     "task_id": "EM-0032"
   },
-  "inventory_id": "em:artifact-inventory:sha256:02175ab09bf6edac892bb42fd1df919959c2b537004da539612698e33ee07ac3"
+  "inventory_id": "em:artifact-inventory:sha256:17f52a5509fded7e75b08201f61122d09c7626443857c94f8727c85c0824e61c"
 }

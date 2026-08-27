@@ -34,7 +34,10 @@ decomposed into 76 typed exact units, including all 21 July MBE score bins used 
 passers calculation. Five underlying roots are connected by ten evidence-bound dependence types,
 so a report, repository, supplement, chart, and re-analysis cannot become five independent results
 merely by appearing at five URLs. The source record also distinguishes the Katz Git commit from its
-tree and identifies the comparison-population testing column as Jim Leach's Spring 2022 NCBE work.
+tree and identifies Rosemary Reshetar, EdD as the visible author of the Spring 2022 NCBE testing
+column while preserving the page's conflicting Jim Leach JSON-LD as metadata, not silent
+authorship. A deterministic manifest reads every pinned Git blob body, and mutable NCBE pages are
+checked through exact-root semantic normalization rather than raw-byte stability alone.
 
 Full machine-readable records, source identities, limitations, artifact inventory, deterministic
 calculations, and the pending independent-review gate are in

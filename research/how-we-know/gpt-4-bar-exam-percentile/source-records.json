@@ -353,10 +353,11 @@
       "captured_bytes": 63952,
       "captured_sha256": "359f8d4e94e128480fe474f07e87a0b019ff20f4cd6041d0b7bfe904b8a84628",
       "semantic_capture": {
-        "normalizer_id": "html-visible-text-collapse-whitespace-v1",
-        "command": ["python", "normalize_html_visible_text.py", "--collapse-whitespace"],
-        "bytes": 1415,
-        "sha256": "c4cb80babbb85d08631671e8d60d2f3f5d255da576c607e5d6f984776e78ba11"
+        "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+        "command": ["python3", "normalize_html_visible_text.py", "--collapse-whitespace", "--root-id", "block-ncbe-content"],
+        "root_id": "block-ncbe-content",
+        "bytes": 1123,
+        "sha256": "c7484bfc7a063ddde35b93e488f95c0e33894106e5f90df2b66cab9cb18837b7"
       },
       "license": "no open license confirmed",
       "treatment": "quote only necessary scoring mechanics",
@@ -384,11 +385,17 @@
       "media_type": "text/html",
       "captured_bytes": 278417,
       "captured_sha256": "f21c45a6e9d1c1b3a5a538ff4bc5b28751928fac53cb5d174e6ec64488c6b784",
+      "capture_observations": [
+        {"role": "author-snapshot", "bytes": 278417, "sha256": "f21c45a6e9d1c1b3a5a538ff4bc5b28751928fac53cb5d174e6ec64488c6b784"},
+        {"role": "independent-review-snapshot", "bytes": 299423, "sha256": "5cccb74667eb9aed6afc6e958c9ebe82cc5b6f896e15f0463f1758da346e24e6"},
+        {"role": "author-recapture-2026-08-27", "bytes": 299419, "sha256": "fac79782ff4ca575e75cc1d0cc2bc1f3346f00afaa95570a073f3cad70614541"}
+      ],
       "semantic_capture": {
-        "normalizer_id": "html-visible-text-collapse-whitespace-v1",
-        "command": ["python", "normalize_html_visible_text.py", "--collapse-whitespace"],
-        "bytes": 7808,
-        "sha256": "86e886399e02ee1d87bbb7acb61a1b30ff41837be3e61a2133ad4c7f26430392"
+        "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+        "command": ["python3", "normalize_html_visible_text.py", "--collapse-whitespace", "--root-id", "post-24258"],
+        "root_id": "post-24258",
+        "bytes": 4767,
+        "sha256": "d738481ea3a38e6da39748d47aacc1291112766ec4720917ad0529a02a1f491e"
       },
       "license": "no open license confirmed",
       "treatment": "quote only necessary aggregate statistics",
@@ -428,11 +435,17 @@
       "media_type": "text/html",
       "captured_bytes": 188472,
       "captured_sha256": "391deeac882bfe4dfb69a58e852c465ffbcc9e1d2e0a8557208f82cf795309a0",
+      "capture_observations": [
+        {"role": "author-snapshot", "bytes": 188472, "sha256": "391deeac882bfe4dfb69a58e852c465ffbcc9e1d2e0a8557208f82cf795309a0"},
+        {"role": "independent-review-snapshot", "bytes": 188472, "sha256": "6417676e0a1efb43fdf7a0014e45f253b14e63fd14097d1bc9b2e77699c8c728"},
+        {"role": "author-recapture-2026-08-27", "bytes": 188472, "sha256": "1343b00bd6f500d7309b137b8dbbe98765a824e32b280a21dc3201f7f7110c2d"}
+      ],
       "semantic_capture": {
-        "normalizer_id": "html-visible-text-collapse-whitespace-v1",
-        "command": ["python", "normalize_html_visible_text.py", "--collapse-whitespace"],
-        "bytes": 7687,
-        "sha256": "ea30ec8ffffb1e8b564f6a40d5af1769909580508251b3579e8e9e54a9dd3199"
+        "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+        "command": ["python3", "normalize_html_visible_text.py", "--collapse-whitespace", "--root-id", "post-24228"],
+        "root_id": "post-24228",
+        "bytes": 5449,
+        "sha256": "d1373f31770be2bbecb821047ef0ea95cb0c50e6088e0c26322de921cf797917"
       },
       "license": "no open license confirmed",
       "treatment": "quote only necessary population aggregates",
@@ -445,13 +458,13 @@
           "locator": "NCBE MBE-based data, February and July 2022 totals",
           "segments": [
             {"segment_id": "segment-ncbe-february-repeaters-count", "text": "February likely repeaters taking: 11,289"},
-            {"segment_id": "segment-ncbe-february-repeaters-percent", "text": "- 68% of February 2022 examinees were likely repeaters"},
+            {"segment_id": "segment-ncbe-february-repeaters-percent", "text": "68% of February 2022 examinees were likely repeaters"},
             {"segment_id": "segment-ncbe-february-first-timers-count", "text": "February likely first-timers taking: 5,215"},
-            {"segment_id": "segment-ncbe-february-first-timers-percent", "text": "- 32% of February 2022 examinees were likely first-time takers"},
+            {"segment_id": "segment-ncbe-february-first-timers-percent", "text": "32% of February 2022 examinees were likely first-time takers"},
             {"segment_id": "segment-ncbe-july-repeaters-count", "text": "July likely repeaters taking: 10,200"},
-            {"segment_id": "segment-ncbe-july-repeaters-percent", "text": "- 23% of July 2022 examinees were likely repeaters"},
+            {"segment_id": "segment-ncbe-july-repeaters-percent", "text": "23% of July 2022 examinees were likely repeaters"},
             {"segment_id": "segment-ncbe-july-first-timers-count", "text": "July likely first-timers taking: 34,505"},
-            {"segment_id": "segment-ncbe-july-first-timers-percent", "text": "- 77% of July 2021 examinees were likely first-time takers"}
+            {"segment_id": "segment-ncbe-july-first-timers-percent", "text": "77% of July 2021 examinees were likely first-time takers"}
           ],
           "supports": "February and July have materially different inferred first-time/repeater composition."
         },
@@ -477,11 +490,17 @@
       "media_type": "text/html",
       "captured_bytes": 372700,
       "captured_sha256": "d5edc89f2c781ab7a795602cdc4a6b42b3da457f13972c8660db9a2b976df448",
+      "capture_observations": [
+        {"role": "author-snapshot", "bytes": 372700, "sha256": "d5edc89f2c781ab7a795602cdc4a6b42b3da457f13972c8660db9a2b976df448"},
+        {"role": "independent-review-snapshot", "bytes": 372700, "sha256": "6a2701bcd45855deaefcb1c7e4437125765adc756c4f193280c1f338691ad69c"},
+        {"role": "author-recapture-2026-08-27", "bytes": 372700, "sha256": "0c6f9b9ac682e46ccd6961425dbb613d05833268733d76fbea2b189d4750bd20"}
+      ],
       "semantic_capture": {
-        "normalizer_id": "html-visible-text-collapse-whitespace-v1",
-        "command": ["python", "normalize_html_visible_text.py", "--collapse-whitespace"],
-        "bytes": 23454,
-        "sha256": "747ab58234c9030274815418623bad4ab4ecb2be39da2d82ec2e9e66f5016ee5"
+        "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+        "command": ["python3", "normalize_html_visible_text.py", "--collapse-whitespace", "--root-id", "post-24476"],
+        "root_id": "post-24476",
+        "bytes": 18887,
+        "sha256": "28a6ddf863f104d59b23674ed11a46951b87e088f4774c277f642e6d077e582d"
       },
       "license": "no open license confirmed",
       "treatment": "quote only necessary methodological boundary",
@@ -505,12 +524,35 @@
       "title": "Re-evaluating GPT-4's bar exam performance",
       "authors_or_org": "Eric Martínez",
       "identifier": "DOI 10.1007/s10506-024-09396-9",
-      "url": "https://link.springer.com/content/pdf/10.1007/s10506-024-09396-9.pdf",
+      "url": "https://scholarship.law.tamu.edu/cgi/viewcontent.cgi?article=3387&context=facscholar",
+      "landing_url": "https://scholarship.law.tamu.edu/facscholar/2405/",
+      "publisher_url": "https://link.springer.com/content/pdf/10.1007/s10506-024-09396-9.pdf",
       "published": "2024-03-30",
-      "retrieved_at": "2026-08-27T05:46:01Z",
+      "retrieved_at": "2026-08-23T17:24:01Z",
       "media_type": "application/pdf",
-      "captured_bytes": 869291,
-      "captured_sha256": "79cc616af2bf287b782c91eaa439ec662a2e8c1db82352c246a74f3ac22cc801",
+      "captured_bytes": 888663,
+      "captured_sha256": "bbab759cb88e93a5216936af1edb2726eb8eb0edde3148d18c1093bed9226e76",
+      "carrier": {
+        "carrier_id": "carrier-tamu-facscholar-3387",
+        "institution": "Texas A&M University School of Law",
+        "page_count": 25,
+        "journal_page_range": "581-604",
+        "landing_capture": {
+          "retrieved_at": "2026-08-23T17:23:50Z",
+          "bytes": 40754,
+          "sha256": "d28416c1a0681b281062d47c811e14013b822399eb0fb2abdf323d0c9841517f"
+        },
+        "span_readback_ids": [
+          "span-martinez-abstract-ranks",
+          "span-martinez-table-45",
+          "span-martinez-model-assumptions",
+          "span-martinez-mean-assumption",
+          "span-martinez-results-45",
+          "span-martinez-discussion-48",
+          "span-martinez-score-validation"
+        ],
+        "retrieval_limitation": "The institutional landing page remains public and identifies the PDF, DOI, pages, and CC BY 4.0 rights; automated direct-PDF refreshes can return HTTP 403, so the exact credential-free 2026-08-23 capture is retained by digest."
+      },
       "license": "CC BY 4.0",
       "treatment": "attributed quotation permitted; retain assumptions and internal conflicts",
       "role": "distinct analytical root reusing the reported score",
@@ -575,7 +617,7 @@
           "span_id": "span-martinez-discussion-48",
           "format": "exact-contiguous-text",
           "normalization": "collapse-whitespace",
-          "locator": "discussion, journal p. 599",
+          "locator": "discussion, journal p. 598",
           "quote": "when examining only those who passed the exam, GPT-4’s performance is estimated to drop to ∼48th percentile overall, and ∼15th percentile on essays.",
           "supports": "The discussion reports 48th, creating an internal 45th-versus-48th conflict."
         },
@@ -583,7 +625,7 @@
           "span_id": "span-martinez-score-validation",
           "format": "exact-contiguous-text",
           "normalization": "collapse-whitespace",
-          "locator": "discussion, journal p. 599",
+          "locator": "discussion, journal p. 598",
           "quote": "The paper successfully replicates the MBE score of 158, but highlights several methodological issues in the grading of the MPT + MEE components of the exam, which call into question the validity of the essay score (140).",
           "supports": "The MBE and author-graded essay components have different validation status."
         }
@@ -690,12 +732,17 @@
       ]
     },
     {
-      "source_id": "source-leach-testing-column-2022",
-      "work_id": "work-leach-testing-column-february-july",
-      "edition_id": "edition-leach-testing-column-spring-2022",
+      "source_id": "source-reshetar-testing-column-2022",
+      "work_id": "work-reshetar-testing-column-february-july",
+      "edition_id": "edition-reshetar-testing-column-spring-2022",
       "core": false,
       "title": "The Testing Column: Why Are February Bar Exam Pass Rates Lower than July Pass Rates?",
-      "authors_or_org": "Jim Leach / National Conference of Bar Examiners",
+      "authors_or_org": "Rosemary Reshetar, EdD / National Conference of Bar Examiners",
+      "attribution_conflict": {
+        "visible_print_byline": "Rosemary Reshetar, EdD",
+        "html_json_ld_author": "Jim Leach",
+        "treatment": "Use the visible print byline for work attribution; retain the conflicting JSON-LD site metadata without silently treating it as authorship."
+      },
       "identifier": "The Bar Examiner, Spring 2022 (Vol. 91, No. 1), pp. 51-53",
       "url": "https://thebarexaminer.ncbex.org/article/spring-2022/the-testing-column-5/",
       "published": "2022-03",
@@ -713,20 +760,31 @@
           "role": "independent-snapshot",
           "bytes": 218131,
           "sha256": "ca8dd034a3a41f43fd177ce493cf1489f894c3ae65610033d4e3c26a472a83f3"
+        },
+        {
+          "role": "changes-required-reviewer",
+          "bytes": 218131,
+          "sha256": "3e0af4b53f984113fd347ba426d665ad5b3cfbedb3505013fae55d219877423a"
+        },
+        {
+          "role": "correction-author",
+          "bytes": 218131,
+          "sha256": "0707ff4563ca7969d8ee11c136da9c15e195ee7d827199b58ed95d6a10f4d7ab"
         }
       ],
       "semantic_capture": {
-        "normalizer_id": "html-visible-text-collapse-whitespace-v1",
-        "command": ["python", "normalize_html_visible_text.py", "--collapse-whitespace"],
-        "bytes": 15755,
-        "sha256": "b093ad29e1144d984b8eb520d133ed6a052baf1707b1cfbb8aa324f8c870c725"
+        "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+        "command": ["python3", "normalize_html_visible_text.py", "--collapse-whitespace", "--root-id", "post-22614"],
+        "root_id": "post-22614",
+        "bytes": 12498,
+        "sha256": "2222ea3b0110bcc02c189bb5d79ee9264ada557b2edae09077d985d472da92f6"
       },
       "license": "no open license confirmed",
       "treatment": "quote only necessary group means",
       "role": "supplemental first-time MBE mean input",
       "spans": [
         {
-          "span_id": "span-leach-first-time-mean",
+          "span_id": "span-reshetar-first-time-mean",
           "format": "exact-contiguous-text",
           "normalization": "collapse-whitespace",
           "locator": "paragraph beginning 'The numbers from 2019'",
@@ -913,7 +971,7 @@
       "lineage_id": "lineage-ncbe-comparison-root",
       "root_type": "comparison-data",
       "unit": "official NCBE scoring and population aggregates",
-      "source_ids": ["source-ncbe-ube-mechanics", "source-ncbe-mbe-2022", "source-ncbe-snapshot-2022", "source-ncbe-first-repeat-2022", "source-ncbe-ube-2022", "source-leach-testing-column-2022"],
+      "source_ids": ["source-ncbe-ube-mechanics", "source-ncbe-mbe-2022", "source-ncbe-snapshot-2022", "source-ncbe-first-repeat-2022", "source-ncbe-ube-2022", "source-reshetar-testing-column-2022"],
       "independent_roots": 1,
       "dependence": ["multiple tables and explanatory pages from one statistical authority", "jurisdiction-reported and NCBE MBE-based first-time classifications differ"]
     },
@@ -1096,9 +1154,9 @@
       "to_ids": ["lineage-martinez-analysis-root"],
       "evidence": [
         {
-          "source_id": "source-leach-testing-column-2022",
-          "span_ids": ["span-leach-first-time-mean"],
-          "finding": "The Leach column supplies the 143.8 first-time MBE mean.",
+          "source_id": "source-reshetar-testing-column-2022",
+          "span_ids": ["span-reshetar-first-time-mean"],
+          "finding": "The Reshetar column supplies the 143.8 first-time MBE mean; conflicting JSON-LD names Jim Leach only as site metadata.",
           "independence_effect": "The value is a modeled input, not a GPT-4 observation."
         },
         {
@@ -1113,18 +1171,19 @@
   "negative_searches": [
     {
       "negative_search_id": "search-launch-percentile-provenance",
+      "git_blob_search_manifest_id": "em:git-blob-search:sha256:545908f30ba849c42c860185f92612f4d52a53b4f13b3c3ca5672213e23ba996",
       "target": "the exact chart, administration, denominator, and interpolation used for OpenAI's launch-edition approximately-90th UBE label",
       "bounded_scope": [
         "OpenAI arXiv v1 report, references, and exam-method appendices",
         "OpenAI arXiv v6 drift check",
         "Katz SSRN/VOR and footnotes",
-        "all 78 blobs in the pinned Katz Git tree, with text/code readback where lawful",
+        "all 78 blobs in the pinned Katz Git tree: every body SHA-256-bound, all 72 UTF-8 bodies searched, and 6 binary bodies retained as digested no-text-search records",
         "the one Figshare supplement",
         "Martínez VOR and ten-file OSF inventory",
         "official Illinois February 2018, July 2018, and February 2019 charts",
         "official NCBE 2022 comparison pages"
       ],
-      "result": "No captured launch-edition source identifies the UBE chart or interpolation. Katz's later VOR names February 2018 as a proxy and says no July 2022 national percentile distribution was public.",
+      "result": "No captured launch-edition source identifies the UBE chart or interpolation. The pinned Git-body search found no chart identity, interpolation, percentile value, Illinois reference, or comparison-population phrase; README.md contains one generic test-taker occurrence. Katz's later VOR names February 2018 as a proxy and says no July 2022 national percentile distribution was public.",
       "status": "unresolved-no-credit",
       "limitations": "This is a bounded corpus result, not proof that no private or now-lost source existed."
     }
