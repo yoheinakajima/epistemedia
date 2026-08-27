@@ -12,7 +12,12 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from build_packet import REQUIRED_LINEAGE_DIMENSIONS, build_derivations, build_packet
+from build_packet import (
+    REQUIRED_LINEAGE_DIMENSIONS,
+    build_derivations,
+    build_packet,
+    canonical_bytes,
+)
 
 PACKET_ROOT = Path(__file__).resolve().parent
 REPO_ROOT = PACKET_ROOT.parents[2]
@@ -318,7 +323,11 @@ def validate_commands(commands: Any) -> None:
         require(any(predicate(value) for value in rendered), f"receipt.commands: missing {label}")
 
 
-def validate_review_results(results: Any, summary: dict[str, Any]) -> None:
+def validate_review_results(
+    results: Any,
+    summary: dict[str, Any],
+    packet: dict[str, Any],
+) -> None:
     require_exact_fields(
         results,
         {"sources", "spans", "derivations", "lineage_edges"},
@@ -326,6 +335,14 @@ def validate_review_results(results: Any, summary: dict[str, Any]) -> None:
     )
     source_records = results["sources"]
     require(isinstance(source_records, list), "review_results.sources: must be an array")
+    require(
+        len(source_records) == len(summary["ids"]["source_ids"]),
+        "source result cardinality drift",
+    )
+    expected_capture_map = {
+        source["source_id"]: {capture["capture_id"] for capture in source["captures"]}
+        for source in packet["content"]["source_records"]
+    }
     source_ids = set()
     reviewed_capture_ids = set()
     for index, record in enumerate(source_records):
@@ -343,9 +360,13 @@ def validate_review_results(results: Any, summary: dict[str, Any]) -> None:
             context,
         )
         source_ids.add(require_string(record["source_id"], f"{context}.source_id"))
+        require(
+            record["source_id"] in expected_capture_map,
+            f"{context}.source_id: unknown",
+        )
         require_exact_coverage(
             record["capture_ids"],
-            set(record["capture_ids"]),
+            expected_capture_map[record["source_id"]],
             f"{context}.capture_ids",
         )
         reviewed_capture_ids.update(record["capture_ids"])
@@ -364,40 +385,113 @@ def validate_review_results(results: Any, summary: dict[str, Any]) -> None:
     span_records = results["spans"]
     require(isinstance(span_records, list), "review_results.spans: must be an array")
     require(
+        len(span_records) == len(summary["ids"]["span_ids"]),
+        "span result cardinality drift",
+    )
+    require(
         {item.get("span_id") for item in span_records} == summary["ids"]["span_ids"],
         "span result coverage drift",
     )
+    expected_span_digests = {
+        span["span_id"]: span["quote_sha256"]
+        for source in packet["content"]["source_records"]
+        for span in source["spans"]
+    }
     for index, record in enumerate(span_records):
         context = f"review_results.spans[{index}]"
-        require_exact_fields(record, {"span_id", "verification", "match"}, context)
+        require_exact_fields(
+            record,
+            {
+                "span_id",
+                "verification",
+                "expected_sha256",
+                "observed_sha256",
+                "match",
+            },
+            context,
+        )
         require_string(record["verification"], f"{context}.verification")
+        expected_digest = expected_span_digests[record["span_id"]]
+        require(
+            record["expected_sha256"] == expected_digest,
+            f"{context}.expected_sha256: stale",
+        )
+        require(
+            record["observed_sha256"] == expected_digest,
+            f"{context}.observed_sha256: mismatch",
+        )
         require(record["match"] is True, f"{context}.match: must be true")
 
     derivation_records = results["derivations"]
     require(isinstance(derivation_records, list), "review_results.derivations: must be an array")
     require(
+        len(derivation_records) == len(summary["ids"]["derivation_ids"]),
+        "derivation result cardinality drift",
+    )
+    require(
         {item.get("derivation_id") for item in derivation_records}
         == summary["ids"]["derivation_ids"],
         "derivation result coverage drift",
     )
+    expected_derivation_digests = {
+        item["derivation_id"]: sha256(canonical_bytes(item["result"]))
+        for item in packet["content"]["derivations"]
+    }
     for index, record in enumerate(derivation_records):
         context = f"review_results.derivations[{index}]"
-        require_exact_fields(record, {"derivation_id", "reproduced"}, context)
+        require_exact_fields(
+            record,
+            {
+                "derivation_id",
+                "expected_result_sha256",
+                "observed_result_sha256",
+                "reproduced",
+            },
+            context,
+        )
+        expected_digest = expected_derivation_digests[record["derivation_id"]]
+        require(
+            record["expected_result_sha256"] == expected_digest,
+            f"{context}.expected_result_sha256: stale",
+        )
+        require(
+            record["observed_result_sha256"] == expected_digest,
+            f"{context}.observed_result_sha256: mismatch",
+        )
         require(record["reproduced"] is True, f"{context}.reproduced: must be true")
 
     edge_records = results["lineage_edges"]
     require(isinstance(edge_records, list), "review_results.lineage_edges: must be an array")
     require(
+        len(edge_records) == len(summary["ids"]["lineage_edge_ids"]),
+        "lineage result cardinality drift",
+    )
+    require(
         {item.get("edge_id") for item in edge_records}
         == summary["ids"]["lineage_edge_ids"],
         "lineage result coverage drift",
     )
+    expected_edge_spans = {
+        item["edge_id"]: set(item["evidence_span_ids"])
+        for item in packet["content"]["lineage_edges"]
+    }
     for index, record in enumerate(edge_records):
         context = f"review_results.lineage_edges[{index}]"
         require_exact_fields(
             record,
-            {"edge_id", "evidence_checked", "independence_effect_checked", "status"},
+            {
+                "edge_id",
+                "evidence_span_ids",
+                "evidence_checked",
+                "independence_effect_checked",
+                "status",
+            },
             context,
+        )
+        require_exact_coverage(
+            record["evidence_span_ids"],
+            expected_edge_spans[record["edge_id"]],
+            f"{context}.evidence_span_ids",
         )
         require(record["evidence_checked"] is True, f"{context}.evidence_checked: must be true")
         require(
@@ -499,7 +593,7 @@ def validate_receipt_document(
     )
     for key, expected in summary["ids"].items():
         require_exact_coverage(coverage[key], expected, f"receipt.coverage.{key}")
-    validate_review_results(receipt["review_results"], summary)
+    validate_review_results(receipt["review_results"], summary, packet)
 
     require(receipt["recommendation"] == summary["author_recommendation"], "review differs")
     require(receipt["decision"] == "pass", "receipt.decision: must be pass")
@@ -647,21 +741,34 @@ def valid_shape_fixture(packet: dict[str, Any], summary: dict[str, Any]) -> dict
                 for source in packet["content"]["source_records"]
             ],
             "spans": [
-                {"span_id": span_id, "verification": "fixture", "match": True}
-                for span_id in sorted(summary["ids"]["span_ids"])
+                {
+                    "span_id": span["span_id"],
+                    "verification": "fixture",
+                    "expected_sha256": span["quote_sha256"],
+                    "observed_sha256": span["quote_sha256"],
+                    "match": True,
+                }
+                for source in packet["content"]["source_records"]
+                for span in source["spans"]
             ],
             "derivations": [
-                {"derivation_id": derivation_id, "reproduced": True}
-                for derivation_id in sorted(summary["ids"]["derivation_ids"])
+                {
+                    "derivation_id": item["derivation_id"],
+                    "expected_result_sha256": sha256(canonical_bytes(item["result"])),
+                    "observed_result_sha256": sha256(canonical_bytes(item["result"])),
+                    "reproduced": True,
+                }
+                for item in packet["content"]["derivations"]
             ],
             "lineage_edges": [
                 {
-                    "edge_id": edge_id,
+                    "edge_id": edge["edge_id"],
+                    "evidence_span_ids": sorted(edge["evidence_span_ids"]),
                     "evidence_checked": True,
                     "independence_effect_checked": True,
                     "status": "pass",
                 }
-                for edge_id in sorted(summary["ids"]["lineage_edge_ids"])
+                for edge in packet["content"]["lineage_edges"]
             ],
         },
         "commands": [
@@ -704,15 +811,33 @@ def valid_shape_fixture(packet: dict[str, Any], summary: dict[str, Any]) -> dict
 def run_adversarial_self_test(packet: dict[str, Any], summary: dict[str, Any]) -> None:
     fixture = valid_shape_fixture(packet, summary)
     validate_receipt_document(fixture, packet, summary, check_git=False)
+
+    def swap_source_captures(value: dict[str, Any]) -> None:
+        first = value["review_results"]["sources"][0]
+        second = value["review_results"]["sources"][1]
+        first_captures = list(first["capture_ids"])
+        first["capture_ids"] = list(second["capture_ids"])
+        second["capture_ids"] = first_captures
+
     mutations = [
         lambda value: value["reviewer"].update({"reviewer_was_author": True}),
         lambda value: value["reviewer"].update({"authoring_notes_used_as_evidence": True}),
         lambda value: value["bindings"].update({"packet_id": "stale"}),
         lambda value: value["coverage"]["span_ids"].pop(),
         lambda value: value["review_results"]["spans"].pop(),
+        lambda value: value["review_results"]["spans"].append(
+            copy.deepcopy(value["review_results"]["spans"][0])
+        ),
+        lambda value: value["review_results"]["spans"][0].update(
+            {"observed_sha256": "0" * 64}
+        ),
+        swap_source_captures,
         lambda value: value["review_results"]["lineage_edges"][0].update(
             {"evidence_checked": False}
         ),
+        lambda value: value["review_results"]["lineage_edges"][0][
+            "evidence_span_ids"
+        ].pop(),
         lambda value: value.update({"limitations": []}),
         lambda value: value.update({"complete": False}),
         lambda value: value["commands"].pop(),
