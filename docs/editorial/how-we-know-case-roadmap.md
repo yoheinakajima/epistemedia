@@ -1,6 +1,7 @@
 # How We Know case-selection record
 
-Status: editorial decision and future-research queue, accepted under EM-0025.
+Status: active editorial queue. Originally accepted under EM-0025 and updated under EM-0031 after
+Cases 001 and 002 became independently reviewed live dossiers.
 
 This record synthesizes owner direction and three supplied model-generated strategy and
 pre-research packets from 2026-08-22. Those packets are not source artifacts, accepted evidence,
@@ -9,7 +10,7 @@ as public claims or numerical findings.
 
 ## Decision
 
-**Case 002 will ask: “When several research agents agree, is that independent evidence?”**
+**Case 002 asks: “When several research agents agree, is that independent evidence?”**
 
 Its working title is:
 
@@ -24,10 +25,10 @@ lineage, speaks directly to the founding product mission, recruits builders and 
 and can produce one narrow inspectable card without entering politics, health advice, or a mutable
 vendor leaderboard.
 
-The decision is conditional. Case 002 does not exist until a later research contract captures a
-reproducible, disclosure-safe public trace packet. If the packet cannot support exact URL, source,
-span, derivation, and dependence identities, the candidate fails closed and remains a negative
-research result.
+Case 002 is now live from a reproducible, disclosure-safe trace packet. Its accepted graph retains
+unresolved citations, no-credit claims, inaccessible carriers, shared prompt and runtime lineage,
+and zero independently confirmed warrant roots rather than converting eight reports into eight
+independent observers.
 
 ## Why the recommendations differed
 
@@ -63,9 +64,9 @@ Importance alone is not a selection criterion.
 
 | Candidate | New product lesson | Disposition |
 | --- | --- | --- |
-| Agent citation lineage | Agent reports, URLs, and citations are not independent observers without retrieval and warrant lineage | **Selected for Case 002**, conditional on real trace capture |
-| GPT-4 “90th-percentile bar exam” | A reproduced score can become misleading through an undocumented or wrong comparison class | Priority later case and benchmark-claim pilot |
-| Mehrabian 7–38–55 | The proposition as circulated can be much broader than the proposition tested | Priority general-audience crossover |
+| Agent citation lineage | Agent reports, URLs, and citations are not independent observers without retrieval and warrant lineage | **Shipped as Case 002** |
+| GPT-4 “90th-percentile bar exam” | A reproduced score can become misleading through an undocumented or wrong comparison class | **Selected for Case 003 research**; no dossier or verdict yet |
+| Mehrabian 7–38–55 | The proposition as circulated can be much broader than the proposition tested | **Selected for Case 004 research**; no dossier or verdict yet |
 | Do fact-checks work? | Policy views can diverge over outcome, durability, and action while sharing one evidence file | Priority lens-divergence and partial-survivor case |
 | Shared dataset, many papers | One dataset may wear many publication identities | Strong reserve; too close to Case 001 as the second proof |
 | Growth mindset interventions | Heterogeneity, methods, and incentives can produce dueling meta-analytic readings | Hold until policy and conflict-of-interest handling mature |
@@ -158,9 +159,9 @@ The goal is a small library before broad publicity, not a single permanent homep
 | Slot | Working case | Genre job | Gate |
 | --- | --- | --- | --- |
 | 001 | Correction repetition and familiarity backfire | Deflates apparent support through participant-data lineage and retains an unresolved root | Shipped |
-| 002 | Agent agreement and citation lineage | Makes agent/output dependence visible in the medium Epistemedia serves | Real public trace packet |
-| 003 | GPT-4 bar-exam percentile | Technically grounded score, misleading or unresolved comparison-class derivation | Primary score and population reconstruction |
-| 004 | Mehrabian 7–38–55 | General-audience scope-mismatch and proposition-canonicalization case | Both primary studies and derivation reconstruction |
+| 002 | Agent agreement and citation lineage | Makes agent/output dependence visible in the medium Epistemedia serves | Shipped |
+| 003 | GPT-4 bar-exam percentile | Technically grounded score, misleading or unresolved comparison-class derivation | EM-0032 research and independent go/hold/fail review |
+| 004 | Mehrabian 7–38–55 | General-audience scope-mismatch and proposition-canonicalization case | EM-0033 research and independent go/hold/fail review |
 | 005 | Fact-check effectiveness | Partial survivor and genuine policy-divergence case | Resolve meta-analytic frame, outcomes, and shared lineages |
 | 006 | Growth mindset interventions | Dueling-meta, heterogeneity, method, and incentive-dependence case | Mature conflict-of-interest and policy handling |
 
@@ -168,13 +169,21 @@ Cases 002–005 form the first target library. They should be researched and adm
 with one task, branch, source packet, independent review, and PR per case. They need not be featured
 in numerical order, and no case should wait for a weaker candidate merely to preserve cadence.
 
-Broad publicity begins only after the library demonstrates more than one verdict shape and new
-readers can understand the card, review boundary, and exact evidence path without private guidance.
+## Broad-launch gate
 
-## Next authority required
+Epistemedia's repository and site are already public and live. “Broad launch” means deliberate
+promotion, outreach, and presenting the library as a public series; it does not mean first
+deployment or first public access.
 
-The next task should be a research-only contract for Case 002 that fixes the target question,
-capture method, permitted providers and models, run count, budgets, disclosure boundary, artifact
-format, dependence dimensions, source-retrieval requirements, reviewer separation, and stop
-conditions before any agent trace is generated. Billable runs, new accounts, credentials, or
-provider terms remain separate owner gates.
+Broad launch waits until the library contains at least four independently reviewed dossiers,
+including admitted and provider-verified Cases 003 and 004. Each case must expose its complete
+scoreboard ledger, source path, review boundary, and materially different policy view without
+private guidance. Meeting that technical and editorial gate does not automatically authorize
+promotion; launch remains a separate owner decision.
+
+## Next authority
+
+EM-0032 and EM-0033 separately authorize source-closure research for Cases 003 and 004. Each must
+end in an independently reviewed go, hold, or fail result before any dossier or admission task is
+registered. Billable runs, paid sources, new accounts, credentials, provider terms, dossier
+admission, deployment, and broad promotion remain separate gates.

@@ -1,0 +1,10 @@
+{
+  "command": "make check PYTHON=.venv/bin/python",
+  "id": "em:run-receipt:sha256:cf296ec35e23bdbad61358a88b3d233d27e1cf112b16bbfae26312ba60d70fe9",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-27T01:45:03Z",
+  "run_id": "20260827T012100Z-em0031-four-case-launch-gate-cc24a24",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0031"
+}
