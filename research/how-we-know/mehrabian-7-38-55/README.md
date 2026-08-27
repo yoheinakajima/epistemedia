@@ -36,7 +36,7 @@ Institutional and web-sample recirculation objects receive zero scientific evide
 ## Packet identity
 
 - candidate packet:
-  `em:research-packet:sha256:6ffcd7fc3e375e835a0b87e147715fed16dd7e79cd418dbe1f912c726a82fb3e`;
+  `em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40`;
 - 12 source records and 40 quote-minimal or explicitly structured spans;
 - 11 scoped claims and 6 deterministic derivations;
 - 6 lineage groups, 5 participant-data roots, and 11 typed evidence-linked dependence edges;

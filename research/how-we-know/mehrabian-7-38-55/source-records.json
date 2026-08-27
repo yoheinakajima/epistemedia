@@ -94,9 +94,14 @@
         },
         {
           "span_id": "span-wiener-single-words",
-          "locator": "journal p.109; PDF p.1, abstract",
-          "quote": "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice",
-          "supports": "The verbal stimuli were isolated words crossed with vocal tone."
+          "locator": "journal pp.109-110; PDF pp.1-2, abstract and Materials",
+          "span_kind": "verbatim_segments",
+          "quote": "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice ... the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents",
+          "segments": [
+            "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice",
+            "the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents"
+          ],
+          "supports": "The verbal stimuli were isolated words crossed with vocal tone, and maybe was one of P1's three selected neutral words."
         },
         {
           "span_id": "span-wiener-sample",
@@ -257,14 +262,15 @@
         },
         {
           "span_id": "span-ferris-design",
-          "locator": "journal p.250; PDF p.3, Design",
+          "locator": "journal p.250; PDF p.3, Materials and Design",
           "span_kind": "verbatim_segments",
-          "quote": "there were 36 experimental conditions ... 3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions",
+          "quote": "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person ... there were 36 experimental conditions ... 3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions",
           "segments": [
+            "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person",
             "there were 36 experimental conditions",
             "3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions"
           ],
-          "supports": "The combined experiment varied face and tone, not three channels."
+          "supports": "P2 used facial photographs and varied face and tone, not three channels."
         },
         {
           "span_id": "span-ferris-scale",
@@ -295,8 +301,9 @@
           "span_id": "span-ferris-proposal",
           "locator": "journal p.252; PDF p.5, final Discussion paragraph",
           "span_kind": "verbatim_segments",
-          "quote": "It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects ... with the coefficients of .07, .38, and .55, respectively",
+          "quote": "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967) ... It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects ... with the coefficients of .07, .38, and .55, respectively",
           "segments": [
+            "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967)",
             "It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects",
             "with the coefficients of .07, .38, and .55, respectively"
           ],
@@ -587,10 +594,10 @@
           "span_id": "span-argyle-1970-abstract",
           "locator": "publisher abstract readback",
           "span_kind": "verbatim_segments",
-          "quote": "Ratings were made by 120 subjects of 18 video-tapes ... non-verbal cues now had 4.3 times the effect of verbal cues",
+          "quote": "Ratings were made by 120 subjects of 18 video‐tapes ... non‐verbal cues now had 4.3 times the effect of verbal cues",
           "segments": [
-            "Ratings were made by 120 subjects of 18 video-tapes",
-            "non-verbal cues now had 4.3 times the effect of verbal cues"
+            "Ratings were made by 120 subjects of 18 video‐tapes",
+            "non‐verbal cues now had 4.3 times the effect of verbal cues"
           ],
           "supports": "A related superiority/inferiority task found nonverbal dominance, but with different materials and estimand."
         }
@@ -619,13 +626,13 @@
         {
           "span_id": "span-argyle-1971-experiment-one",
           "locator": "publisher abstract readback",
-          "quote": "non-verbal cues accounted for 12.5 times as much variance as verbal cues",
+          "quote": "non‐verbal cues accounted for 12.5 times as much variance as verbal cues",
           "supports": "The first related experiment produced strong nonverbal dominance."
         },
         {
           "span_id": "span-argyle-1971-experiment-two",
           "locator": "publisher abstract readback",
-          "quote": "the ratio of non-verbal : verbal variance was now 1.67:1",
+          "quote": "the ratio of non‐verbal : verbal variance was now 1.67:1",
           "supports": "Changing cue strength materially changed the ratio, undercutting a universal fixed weighting."
         }
       ]
@@ -856,7 +863,7 @@
       "from_ids": ["work-mehrabian-wiener-1967"],
       "to_ids": ["work-mehrabian-ferris-1967"],
       "status": "related-recorded-attitude-materials-not-identical",
-      "evidence_span_ids": ["span-wiener-stimulus-recording", "span-ferris-models-speakers", "span-ferris-maybe"],
+      "evidence_span_ids": ["span-wiener-stimulus-recording", "span-ferris-models-speakers", "span-ferris-maybe", "span-ferris-design"],
       "effect_on_independence": "Both use prepared female-voice attitude recordings; P2 adds facial photographs and does not establish reuse of P1's recordings."
     },
     {
@@ -865,7 +872,7 @@
       "from_ids": ["work-mehrabian-wiener-1967"],
       "to_ids": ["work-mehrabian-ferris-1967"],
       "status": "known-related-crossed-channel-design",
-      "evidence_span_ids": ["span-wiener-instructions", "span-ferris-design"],
+      "evidence_span_ids": ["span-wiener-single-words", "span-wiener-instructions", "span-ferris-design"],
       "effect_on_independence": "Both infer attitude from experimentally crossed channel cues; P1 crosses words and tone, while P2 crosses face and tone."
     },
     {

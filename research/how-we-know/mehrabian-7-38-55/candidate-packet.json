@@ -340,7 +340,8 @@
         "evidence_span_ids": [
           "span-wiener-stimulus-recording",
           "span-ferris-models-speakers",
-          "span-ferris-maybe"
+          "span-ferris-maybe",
+          "span-ferris-design"
         ],
         "from_ids": [
           "work-mehrabian-wiener-1967"
@@ -355,6 +356,7 @@
         "edge_id": "edge-p1-p2-method",
         "effect_on_independence": "Both infer attitude from experimentally crossed channel cues; P1 crosses words and tone, while P2 crosses face and tone.",
         "evidence_span_ids": [
+          "span-wiener-single-words",
           "span-wiener-instructions",
           "span-ferris-design"
         ],
@@ -638,11 +640,16 @@
             "supports": "The experiment concerns a two-component attitude message, not communication in general."
           },
           {
-            "locator": "journal p.109; PDF p.1, abstract",
-            "quote": "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice",
-            "quote_sha256": "41e0a82763579aaed97ca0728c1cf76ef3badebedecf74b8beed643d9575551b",
+            "locator": "journal pp.109-110; PDF pp.1-2, abstract and Materials",
+            "quote": "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice ... the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents",
+            "quote_sha256": "488d310c64fb4445de8193a17dce78b0fe41533b54446429038687fa082b1e97",
+            "segments": [
+              "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice",
+              "the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents"
+            ],
             "span_id": "span-wiener-single-words",
-            "supports": "The verbal stimuli were isolated words crossed with vocal tone."
+            "span_kind": "verbatim_segments",
+            "supports": "The verbal stimuli were isolated words crossed with vocal tone, and maybe was one of P1's three selected neutral words."
           },
           {
             "locator": "journal p.110; PDF p.2, Method/Subjects",
@@ -826,16 +833,17 @@
             "supports": "The only word in the combined face-tone task was the neutral carrier maybe."
           },
           {
-            "locator": "journal p.250; PDF p.3, Design",
-            "quote": "there were 36 experimental conditions ... 3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions",
-            "quote_sha256": "573e6cc4b7b12d07e6520b5fa7f4b99e5491ebc6b78b97fe40061e4c4fa41c94",
+            "locator": "journal p.250; PDF p.3, Materials and Design",
+            "quote": "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person ... there were 36 experimental conditions ... 3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions",
+            "quote_sha256": "4907fba561fdbd65d1135094c20e780a5813d5d27bc111a8d02440833a7acb30",
             "segments": [
+              "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person",
               "there were 36 experimental conditions",
               "3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions"
             ],
             "span_id": "span-ferris-design",
             "span_kind": "verbatim_segments",
-            "supports": "The combined experiment varied face and tone, not three channels."
+            "supports": "P2 used facial photographs and varied face and tone, not three channels."
           },
           {
             "locator": "journal p.251; PDF p.4, Procedure",
@@ -873,9 +881,10 @@
           },
           {
             "locator": "journal p.252; PDF p.5, final Discussion paragraph",
-            "quote": "It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects ... with the coefficients of .07, .38, and .55, respectively",
-            "quote_sha256": "ea2b9ac1675d5ef541c0bb9de9b40b15c5f24d9b18e2de603fa73b63f5a75728",
+            "quote": "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967) ... It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects ... with the coefficients of .07, .38, and .55, respectively",
+            "quote_sha256": "25b2e2dcf6675d0e73fd204bb0e6303caa18f2fe5d9d6df5c7dea105cf49a50f",
             "segments": [
+              "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967)",
               "It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects",
               "with the coefficients of .07, .38, and .55, respectively"
             ],
@@ -1231,11 +1240,11 @@
         "spans": [
           {
             "locator": "publisher abstract readback",
-            "quote": "Ratings were made by 120 subjects of 18 video-tapes ... non-verbal cues now had 4.3 times the effect of verbal cues",
-            "quote_sha256": "bf34cf894d30cdbcc5be4830731304fb74defb7ae71c5450cd1347ebd9624e36",
+            "quote": "Ratings were made by 120 subjects of 18 video‐tapes ... non‐verbal cues now had 4.3 times the effect of verbal cues",
+            "quote_sha256": "1c646e683fa1fae891328ff0aa173a6819a4bffdaa3d85b14ab35d321fc51fce",
             "segments": [
-              "Ratings were made by 120 subjects of 18 video-tapes",
-              "non-verbal cues now had 4.3 times the effect of verbal cues"
+              "Ratings were made by 120 subjects of 18 video‐tapes",
+              "non‐verbal cues now had 4.3 times the effect of verbal cues"
             ],
             "span_id": "span-argyle-1970-abstract",
             "span_kind": "verbatim_segments",
@@ -1273,15 +1282,15 @@
         "spans": [
           {
             "locator": "publisher abstract readback",
-            "quote": "non-verbal cues accounted for 12.5 times as much variance as verbal cues",
-            "quote_sha256": "b902657510ce28ba688929adc1bdd14d4aa1e53b4e5c90863128acd1eb8fec53",
+            "quote": "non‐verbal cues accounted for 12.5 times as much variance as verbal cues",
+            "quote_sha256": "0cf68d8b04488ee2dae7795e58ef3204eda6ea25a69ab0e8aa9799cf324d821b",
             "span_id": "span-argyle-1971-experiment-one",
             "supports": "The first related experiment produced strong nonverbal dominance."
           },
           {
             "locator": "publisher abstract readback",
-            "quote": "the ratio of non-verbal : verbal variance was now 1.67:1",
-            "quote_sha256": "17cf96c4c9043c131b5bcb335ddee417743ff995aca5ca9ddf6dbc3f00a03633",
+            "quote": "the ratio of non‐verbal : verbal variance was now 1.67:1",
+            "quote_sha256": "02f4d3fdaf74b293076b3521515a54d6968638aaa4882fc9a3f25c4a7442333f",
             "span_id": "span-argyle-1971-experiment-two",
             "supports": "Changing cue strength materially changed the ratio, undercutting a universal fixed weighting."
           }
@@ -1356,8 +1365,8 @@
       }
     ],
     "source_records_identity": {
-      "bytes": 52643,
-      "sha256": "b31406001096f76ad6d2a332abaf9435b069f2d67ecf149abeb5f8b88f306d03"
+      "bytes": 53857,
+      "sha256": "0ac4f87236882d32aa6018e50600a79642b87acdf05e27c291514e770fda081c"
     },
     "span_conventions": {
       "allowed_normalization": [
@@ -1371,5 +1380,5 @@
     },
     "task_id": "EM-0033"
   },
-  "packet_id": "em:research-packet:sha256:6ffcd7fc3e375e835a0b87e147715fed16dd7e79cd418dbe1f912c726a82fb3e"
+  "packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40"
 }
