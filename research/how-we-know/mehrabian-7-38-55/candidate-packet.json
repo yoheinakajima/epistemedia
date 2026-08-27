@@ -1,0 +1,1384 @@
+{
+  "content": {
+    "accepted_base": "7dca84b0c8477efc09b31215f734348d626957d4",
+    "bounded_search": {
+      "limitations": "This is a declared high-relevance search, not proof that no other study exists. Closed full text, terminology drift, and unindexed older literature may hide additional material work.",
+      "queries": [
+        "Mehrabian 7 38 55 direct replication",
+        "7-38-55 replication Mehrabian",
+        "Decoding of inconsistent communications replication",
+        "Inference of attitudes from nonverbal communication in two channels replication",
+        "Message Impact What Percentage is Nonverbal Hegstrom",
+        "Argyle verbal nonverbal attitudes 1970 1971"
+      ],
+      "result": "One direct all-channel rebuttal, two related context-dependent empirical programs, and two methodological/propagation critiques were retained. No exact replication of the P1-plus-P2 derivation or validation of a universal fixed rule was identified.",
+      "sources_searched": [
+        "Crossref",
+        "ERIC",
+        "PubMed",
+        "OpenAlex",
+        "publisher landing pages",
+        "credential-free web search"
+      ],
+      "status": "bounded-negative-result-not-exhaustive"
+    },
+    "captured_at": "2026-08-27T16:03:55Z",
+    "claims": [
+      {
+        "claim_id": "claim-popular-rule",
+        "proposition": "The circulated claim that 93 percent of communication is nonverbal is not a result established by the two 1967 experiments.",
+        "span_ids": [
+          "span-wiener-target",
+          "span-ferris-target",
+          "span-author-qualification",
+          "span-hegstrom-result"
+        ],
+        "status": "rebutted-as-general-rule"
+      },
+      {
+        "claim_id": "claim-p1-tone-dominance",
+        "proposition": "P1 found tone dominance when listeners inferred attitude from inconsistent isolated-word content and intonation without additional relationship information.",
+        "span_ids": [
+          "span-wiener-single-words",
+          "span-wiener-result-boundary",
+          "span-wiener-safe-extension"
+        ],
+        "status": "supported-narrowly"
+      },
+      {
+        "claim_id": "claim-p2-face-tone",
+        "proposition": "P2 found a stronger facial than vocal contribution in a two-channel task using the neutral word maybe and facial photographs.",
+        "span_ids": [
+          "span-ferris-maybe",
+          "span-ferris-design",
+          "span-ferris-sums-of-squares",
+          "span-ferris-regression"
+        ],
+        "status": "supported-narrowly"
+      },
+      {
+        "claim_id": "claim-three-coefficient-proposal",
+        "proposition": "The .07/.38/.55 values were proposed in P2's discussion as a cross-study weighted-sum extrapolation; neither 1967 experiment tested all three channels together.",
+        "span_ids": [
+          "span-ferris-target",
+          "span-ferris-design",
+          "span-ferris-proposal"
+        ],
+        "status": "supported-as-historical-proposal"
+      },
+      {
+        "claim_id": "claim-seven-origin",
+        "proposition": "The exact derivation of the .07 verbal coefficient is not disclosed in the two inspected 1967 papers or the inspected 1971 book pages.",
+        "span_ids": [
+          "span-ferris-regression",
+          "span-ferris-proposal",
+          "span-silent-1971-liking"
+        ],
+        "status": "unresolved-no-credit"
+      },
+      {
+        "claim_id": "claim-book-boundary",
+        "proposition": "The 1971 book repeats the equation, calls the numbers approximate, and limits use to one feeling dimension at a time.",
+        "span_ids": [
+          "span-silent-1971-liking",
+          "span-silent-1971-boundary"
+        ],
+        "status": "supported"
+      },
+      {
+        "claim_id": "claim-1981-edition",
+        "proposition": "The 1981 second edition is bibliographically identified, but its formula pages were not textually collated against 1971.",
+        "span_ids": [
+          "span-silent-1981-metadata",
+          "span-author-qualification"
+        ],
+        "status": "identity-closed-content-unresolved"
+      },
+      {
+        "claim_id": "claim-hegstrom-rebuttal",
+        "proposition": "Hegstrom's direct all-channel reconsideration reported message-specific equations unlike both the fixed formula and one another.",
+        "span_ids": [
+          "span-hegstrom-design",
+          "span-hegstrom-result"
+        ],
+        "status": "material-counterevidence"
+      },
+      {
+        "claim_id": "claim-related-context",
+        "proposition": "Related Argyle experiments found nonverbal dominance but materially different ratios when cue strengths and attitude dimensions changed.",
+        "span_ids": [
+          "span-argyle-1970-abstract",
+          "span-argyle-1971-experiment-one",
+          "span-argyle-1971-experiment-two"
+        ],
+        "status": "material-qualification-not-direct-replication"
+      },
+      {
+        "claim_id": "claim-propagation",
+        "proposition": "The broad rule propagated through public institutional material and a bounded web sample, but propagation supplies zero evidence that the scientific proposition is true.",
+        "span_ids": [
+          "span-lapakko-2007-63-of-79",
+          "span-lapakko-2007-limitations",
+          "span-hampshire-generalization",
+          "span-birmingham-generalization"
+        ],
+        "status": "supported-as-propagation-only"
+      },
+      {
+        "claim_id": "claim-replication-search",
+        "proposition": "The bounded search found one direct all-channel rebuttal and related follow-ups, but no exact replication of the two-study derivation or validation of a universal fixed rule.",
+        "span_ids": [
+          "span-hegstrom-result",
+          "span-argyle-1971-experiment-two",
+          "span-lapakko-1997-abstract"
+        ],
+        "status": "bounded-negative-result-not-exhaustive"
+      }
+    ],
+    "counts": {
+      "claims": 11,
+      "derivations": 6,
+      "follow_up_objects": 5,
+      "lineage_edges": 11,
+      "lineage_groups": 6,
+      "participant_data_roots": 5,
+      "propagation_objects": 3,
+      "quote_minimal_spans": 40,
+      "source_records": 12
+    },
+    "derivation_inputs": {
+      "origin_of_verbal_coefficient": "unresolved-no-credit",
+      "p2_facial_coefficient": 1.5,
+      "p2_vocal_coefficient": 1.03,
+      "proposed_facial": 0.55,
+      "proposed_verbal": 0.07,
+      "proposed_vocal": 0.38
+    },
+    "derivations": [
+      {
+        "derivation_id": "derive-proposed-sum",
+        "equation": "0.07 + 0.38 + 0.55",
+        "inputs": [
+          0.07,
+          0.38,
+          0.55
+        ],
+        "interpretation": "The printed proposal is normalized to one.",
+        "result": 1.0
+      },
+      {
+        "derivation_id": "derive-proposed-facial-vocal-ratio",
+        "equation": "0.55 / 0.38",
+        "inputs": [
+          0.55,
+          0.38
+        ],
+        "interpretation": "Facial-to-vocal ratio implied by the printed proposal.",
+        "result": 1.4473684210526316
+      },
+      {
+        "derivation_id": "derive-p2-facial-vocal-ratio",
+        "equation": "1.50 / 1.03",
+        "inputs": [
+          1.5,
+          1.03
+        ],
+        "interpretation": "Facial-to-vocal ratio from P2's reported regression.",
+        "result": 1.4563106796116505
+      },
+      {
+        "derivation_id": "derive-ratio-difference",
+        "equation": "abs((1.50 / 1.03) - (0.55 / 0.38))",
+        "inputs": [
+          1.4563106796116505,
+          1.4473684210526316
+        ],
+        "interpretation": "The reported regression and printed proposal are close, not identical.",
+        "result": 0.008942258559018867
+      },
+      {
+        "derivation_id": "derive-implied-vocal-verbal-ratio",
+        "equation": "0.38 / 0.07",
+        "inputs": [
+          0.38,
+          0.07
+        ],
+        "interpretation": "Reverse-engineered ratio implied by the proposal; it does not recover the missing source derivation of 0.07.",
+        "result": 5.428571428571428
+      },
+      {
+        "derivation_id": "derive-p2-allocation-with-seven-reserved",
+        "equation": "allocate 0.93 in the ratio 1.50:1.03",
+        "inputs": {
+          "p2_facial": 1.5,
+          "p2_vocal": 1.03,
+          "remaining": 0.9299999999999999,
+          "reserved_verbal": 0.07
+        },
+        "interpretation": "Sensitivity reconstruction only. Reserving 0.07 is an assumption, not a derivation supplied by P1 or P2.",
+        "result": {
+          "facial": 0.5513833992094861,
+          "verbal": 0.07,
+          "vocal": 0.3786166007905138
+        }
+      }
+    ],
+    "evidence_cutoff": "2026-08-27",
+    "follow_up_ledger": [
+      {
+        "disposition": "include as material direct all-channel rebuttal",
+        "full_text_status": "closed; abstract-level result only",
+        "source_id": "source-hegstrom-1979"
+      },
+      {
+        "direct_replication": false,
+        "disposition": "include as related superiority-inferiority boundary evidence",
+        "source_id": "source-argyle-1970"
+      },
+      {
+        "direct_replication": false,
+        "disposition": "include as related friendly-hostile context-dependence evidence",
+        "source_id": "source-argyle-1971"
+      },
+      {
+        "disposition": "include as methodological critique",
+        "participant_data": false,
+        "source_id": "source-lapakko-1997"
+      },
+      {
+        "disposition": "include as propagation study and critique",
+        "scientific_rule_evidence_credit": 0,
+        "source_id": "source-lapakko-2007"
+      }
+    ],
+    "lineage_edges": [
+      {
+        "dimension": "participant",
+        "edge_id": "edge-p1-p2-participant",
+        "effect_on_independence": "Count two participant-data roots because the papers report separate samples, while withholding any stronger person-level independence claim because participant identities are unavailable.",
+        "evidence_span_ids": [
+          "span-wiener-sample",
+          "span-ferris-sample"
+        ],
+        "from_ids": [
+          "work-mehrabian-wiener-1967"
+        ],
+        "status": "distinct-reported-groups-overlap-not-disclosed",
+        "to_ids": [
+          "work-mehrabian-ferris-1967"
+        ]
+      },
+      {
+        "dimension": "speaker",
+        "edge_id": "edge-p1-p2-speaker",
+        "effect_on_independence": "The named speakers do not overlap, but P2 leaves one author-speaker unnamed; speaker independence is therefore not fully closed.",
+        "evidence_span_ids": [
+          "span-wiener-speakers",
+          "span-ferris-models-speakers"
+        ],
+        "from_ids": [
+          "work-mehrabian-wiener-1967"
+        ],
+        "status": "named-speakers-differ-author-speaker-unresolved",
+        "to_ids": [
+          "work-mehrabian-ferris-1967"
+        ]
+      },
+      {
+        "dimension": "author",
+        "edge_id": "edge-p1-p2-author-social",
+        "effect_on_independence": "Albert Mehrabian is common to both papers and P1 acknowledges Susan Ferris; the papers are not independent author programs.",
+        "evidence_span_ids": [
+          "span-wiener-authors",
+          "span-wiener-ferris-acknowledgment",
+          "span-ferris-authors"
+        ],
+        "from_ids": [
+          "work-mehrabian-wiener-1967"
+        ],
+        "status": "known-shared-program",
+        "to_ids": [
+          "work-mehrabian-ferris-1967"
+        ]
+      },
+      {
+        "dimension": "grant",
+        "edge_id": "edge-p1-p2-grant",
+        "effect_on_independence": "Both report University of California Grant 2189; their Public Health Service grant identifiers differ. This is shared-program evidence, not shared-participant proof.",
+        "evidence_span_ids": [
+          "span-wiener-grants",
+          "span-ferris-grants"
+        ],
+        "from_ids": [
+          "work-mehrabian-wiener-1967"
+        ],
+        "status": "known-shared-grant-plus-distinct-grants",
+        "to_ids": [
+          "work-mehrabian-ferris-1967"
+        ]
+      },
+      {
+        "dimension": "stimulus",
+        "edge_id": "edge-p1-p2-stimulus",
+        "effect_on_independence": "P2 reuses the neutral word maybe, which was one of P1's selected words; the material lineage is partially shared.",
+        "evidence_span_ids": [
+          "span-wiener-single-words",
+          "span-ferris-maybe"
+        ],
+        "from_ids": [
+          "work-mehrabian-wiener-1967"
+        ],
+        "status": "known-overlap-neutral-word",
+        "to_ids": [
+          "work-mehrabian-ferris-1967"
+        ]
+      },
+      {
+        "dimension": "material",
+        "edge_id": "edge-p1-p2-material",
+        "effect_on_independence": "Both use prepared female-voice attitude recordings; P2 adds facial photographs and does not establish reuse of P1's recordings.",
+        "evidence_span_ids": [
+          "span-wiener-stimulus-recording",
+          "span-ferris-models-speakers",
+          "span-ferris-maybe",
+          "span-ferris-design"
+        ],
+        "from_ids": [
+          "work-mehrabian-wiener-1967"
+        ],
+        "status": "related-recorded-attitude-materials-not-identical",
+        "to_ids": [
+          "work-mehrabian-ferris-1967"
+        ]
+      },
+      {
+        "dimension": "method",
+        "edge_id": "edge-p1-p2-method",
+        "effect_on_independence": "Both infer attitude from experimentally crossed channel cues; P1 crosses words and tone, while P2 crosses face and tone.",
+        "evidence_span_ids": [
+          "span-wiener-single-words",
+          "span-wiener-instructions",
+          "span-ferris-design"
+        ],
+        "from_ids": [
+          "work-mehrabian-wiener-1967"
+        ],
+        "status": "known-related-crossed-channel-design",
+        "to_ids": [
+          "work-mehrabian-ferris-1967"
+        ]
+      },
+      {
+        "dimension": "scale",
+        "edge_id": "edge-p1-p2-scale",
+        "effect_on_independence": "Both operationalize attitude as liking versus disliking, while their displayed scale procedures are not treated as identical instruments.",
+        "evidence_span_ids": [
+          "span-wiener-scale",
+          "span-ferris-scale"
+        ],
+        "from_ids": [
+          "work-mehrabian-wiener-1967"
+        ],
+        "status": "known-shared-liking-construct-different-range",
+        "to_ids": [
+          "work-mehrabian-ferris-1967"
+        ]
+      },
+      {
+        "dimension": "citation",
+        "edge_id": "edge-p2-cites-p1",
+        "effect_on_independence": "P2 is a declared continuation that cites P1 and later integrates its result; it is not an independent replication of the three-number rule.",
+        "evidence_span_ids": [
+          "span-ferris-citation-p1",
+          "span-ferris-proposal"
+        ],
+        "from_ids": [
+          "work-mehrabian-ferris-1967"
+        ],
+        "status": "known-explicit-citation",
+        "to_ids": [
+          "work-mehrabian-wiener-1967"
+        ]
+      },
+      {
+        "dimension": "book-edition",
+        "edge_id": "edge-silent-messages-editions",
+        "effect_on_independence": "The editions are one authorial work lineage and supply no new participant evidence; formula continuity into 1981 remains unresolved.",
+        "evidence_span_ids": [
+          "span-silent-1971-liking",
+          "span-silent-1981-metadata"
+        ],
+        "from_ids": [
+          "edition-silent-messages-1971"
+        ],
+        "status": "same-work-edition-lineage-content-not-collated",
+        "to_ids": [
+          "edition-silent-messages-1981-second"
+        ]
+      },
+      {
+        "dimension": "derivation",
+        "edge_id": "edge-p1-p2-proposal-derivation",
+        "effect_on_independence": "The .07/.38/.55 statement combines linked studies in P2's discussion. It is not a third participant-data root, and the exact .07 derivation remains no-credit.",
+        "evidence_span_ids": [
+          "span-ferris-citation-p1",
+          "span-ferris-regression",
+          "span-ferris-proposal"
+        ],
+        "from_ids": [
+          "work-mehrabian-wiener-1967",
+          "work-mehrabian-ferris-1967"
+        ],
+        "status": "known-cross-study-proposal-missing-verbal-step",
+        "to_ids": [
+          "claim-three-coefficient-proposal"
+        ]
+      }
+    ],
+    "lineages": [
+      {
+        "dependence_dimensions": [
+          "shared author",
+          "related grants",
+          "UCLA pools",
+          "like-dislike scale",
+          "artificial crossed-channel method",
+          "female-recorded stimuli",
+          "shared neutral word maybe"
+        ],
+        "independence": "Distinct papers and participant groups inside one linked UCLA research program; P2 cites and integrates P1. Participant and speaker overlap across papers is not reported.",
+        "lineage_id": "lineage-mehrabian-original-program",
+        "participant_data_roots": 2,
+        "source_ids": [
+          "source-mehrabian-wiener-1967",
+          "source-mehrabian-ferris-1967"
+        ],
+        "work_count": 2
+      },
+      {
+        "independence": "Author interpretation and book-edition lineage; no new participant evidence.",
+        "lineage_id": "lineage-mehrabian-interpretation",
+        "participant_data_roots": 0,
+        "source_ids": [
+          "source-silent-messages-1971",
+          "source-silent-messages-1981",
+          "source-mehrabian-author-qualification"
+        ],
+        "work_count": 2
+      },
+      {
+        "independence": "Separate author and all-channel research program; exact full-text participant and material details remain inaccessible.",
+        "lineage_id": "lineage-hegstrom-rebuttal",
+        "participant_data_roots": 1,
+        "source_ids": [
+          "source-hegstrom-1979"
+        ],
+        "work_count": 1
+      },
+      {
+        "independence": "Two related Oxford studies with shared author/program and different attitude dimensions; related evidence, not exact replication.",
+        "lineage_id": "lineage-argyle-related-program",
+        "participant_data_roots": 2,
+        "source_ids": [
+          "source-argyle-1970",
+          "source-argyle-1971"
+        ],
+        "work_count": 2
+      },
+      {
+        "independence": "Same-author critique program; the 2007 website sample measures circulation, not scientific effect.",
+        "lineage_id": "lineage-lapakko-critique-propagation",
+        "participant_data_roots": 0,
+        "source_ids": [
+          "source-lapakko-1997",
+          "source-lapakko-2007"
+        ],
+        "work_count": 2
+      },
+      {
+        "independence": "Separate institutional publications, each assigned zero empirical evidence credit.",
+        "lineage_id": "lineage-institutional-recirculation",
+        "participant_data_roots": 0,
+        "source_ids": [
+          "source-hampshire-pcc-2022",
+          "source-birmingham-events-2020"
+        ],
+        "work_count": 2
+      }
+    ],
+    "propagation_ledger": [
+      {
+        "disposition": "bounded empirical propagation study",
+        "limitation": "Purposive convenience sample using one search engine; not a prevalence estimate.",
+        "object_id": "propagation-lapakko-web-sample",
+        "scientific_rule_evidence_credit": 0,
+        "source_id": "source-lapakko-2007"
+      },
+      {
+        "disposition": "institutional broad recirculation",
+        "object_id": "propagation-hampshire-pcc",
+        "scientific_rule_evidence_credit": 0,
+        "source_id": "source-hampshire-pcc-2022"
+      },
+      {
+        "disposition": "institutional broad recirculation",
+        "object_id": "propagation-birmingham-events",
+        "scientific_rule_evidence_credit": 0,
+        "source_id": "source-birmingham-events-2020"
+      }
+    ],
+    "question": "What did the 7-38-55 weighting represent in the examined primary editions, how was it derived, and what supports or undercuts its circulation as a general rule of communication?",
+    "recommendation": {
+      "author": "GO",
+      "independent_review": "pending",
+      "prohibited_interpretations": [
+        "93 percent of all communication is nonverbal",
+        "the two 1967 papers jointly tested three channels in one experiment",
+        "the coefficients are universally stable across messages, populations, cultures, or tasks",
+        "the missing .07 derivation has been recovered",
+        "recirculation counts are independent scientific support"
+      ],
+      "rationale": "Proceed to a later Case 004 dossier if independent review closes the exact spans and calculations. The defensible case is that a narrow cross-study weighting was genuinely proposed, then generalized far beyond its scope, while a direct all-channel rebuttal found message-specific equations and the .07 derivation remains unresolved."
+    },
+    "retrieval_gaps": [
+      "The exact P1 scan URL returned HTTP 403 during fresh revalidation; only the prior exact capture is bound.",
+      "The P2 university carrier is session-dependent and timed out during fresh revalidation; an alternate indexed readback confirms the decisive final paragraph.",
+      "The exact origin and reported calculation for the .07 verbal coefficient remain unresolved.",
+      "The 1981 second-edition formula pages were not lawfully inspected or collated against 1971.",
+      "Hegstrom 1979 full text was closed; the direct rebuttal result is represented at abstract level.",
+      "Original recordings, facial photographs, participant-level data, coding sheets, and analysis code were not located.",
+      "The Highland Council propagation URL recorded in EM-0027 now returns HTTP 404 and receives no current capture credit.",
+      "The University of Liverpool page no longer exposes the previously observed correction text and is excluded from the packet."
+    ],
+    "schema": "https://epistemedia.org/research/source-records-v1.json",
+    "source_records": [
+      {
+        "authors": [
+          "Albert Mehrabian",
+          "Morton Wiener"
+        ],
+        "captures": [
+          {
+            "bytes": 563059,
+            "capture_id": "capture-wiener-scan-20260823",
+            "captured_at": "2026-08-23T09:31:00Z",
+            "media_type": "application/pdf",
+            "revalidation": "Exact URL returned HTTP 403 on 2026-08-27; previously captured bytes remain the inspected carrier, not a durable public artifact.",
+            "sha256": "d2c6cac3f178ca32a85ec29a177c2c004890333221e708fb27d6379c9b8e4ee8",
+            "url_role": "readable third-party scan"
+          },
+          {
+            "bytes": 1953,
+            "capture_id": "capture-wiener-crossref-20260827",
+            "media_type": "application/json",
+            "sha256": "d33e7cec04395ba788ac637b9c64a9d8e9c1a898ebe4bf1d8b94a7008432b8ed",
+            "url": "https://api.crossref.org/works/10.1037%2Fh0024532"
+          },
+          {
+            "bytes": 10328,
+            "capture_id": "capture-wiener-openalex-20260827",
+            "media_type": "application/json",
+            "sha256": "5d119a09b6db6b212eb5b1305af88f3a5e3b568085ebb9d5c42c9f460e23e743",
+            "url": "https://api.openalex.org/works/https:%2F%2Fdoi.org%2F10.1037%2Fh0024532"
+          },
+          {
+            "bytes": 2822,
+            "capture_id": "capture-wiener-pubmed-20260827",
+            "media_type": "application/xml",
+            "sha256": "587a02810fc8a4f29c34b7486c336cf954aadf3f460f6bb45dbad1307758e884",
+            "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=6032751&retmode=xml"
+          }
+        ],
+        "container": "Journal of Personality and Social Psychology 6(1), 109-114",
+        "edition_id": "edition-mehrabian-wiener-jpsp-6-1",
+        "identifiers": {
+          "doi": "10.1037/h0024532",
+          "pmid": "6032751"
+        },
+        "license_treatment": "No open article license was confirmed. The readable scan is not redistributed; only identity, digest, access history, and quote-minimal spans are retained.",
+        "publication_date": "1967-05",
+        "source_id": "source-mehrabian-wiener-1967",
+        "spans": [
+          {
+            "fields": {
+              "author_1": "Albert Mehrabian",
+              "author_2": "Morton Wiener"
+            },
+            "locator": "journal p.109; PDF p.1, title block",
+            "quote": "authors=Albert Mehrabian; Morton Wiener",
+            "quote_sha256": "9f86c9e0e9a0912dc98e89492e403b3604c93a4c4b291594c31b9dff098be20d",
+            "span_id": "span-wiener-authors",
+            "span_kind": "structured_transcription",
+            "supports": "The title block identifies the P1 authors for author-lineage comparison."
+          },
+          {
+            "locator": "journal p.109; PDF p.1, footnote 1",
+            "quote": "This study was supported in part by University of California Grant 2189 and in part by United States Public Health Service Grant M-3860.",
+            "quote_sha256": "f36d310eb93d14dc5a0d0761bcfd5196da637264c310574f76c7c212cb7efadb",
+            "span_id": "span-wiener-grants",
+            "supports": "P1 reports the two funding identifiers used in the grant-lineage comparison."
+          },
+          {
+            "locator": "journal p.109; PDF p.1, footnote 1",
+            "quote": "Sylvia Norman and Dena Sugar, who acted as speakers in the recording of the experimental conditions",
+            "quote_sha256": "5fe2933c7f2a1e18b24f4421d9dd0180582f30887cd123618fe848945db1a85a",
+            "span_id": "span-wiener-speakers",
+            "supports": "P1 names its two recorded speakers."
+          },
+          {
+            "locator": "journal p.109; PDF p.1, footnote 1",
+            "quote": "Susan Ferris, for her comments on the manuscript",
+            "quote_sha256": "400ac8d3f7b66282787262afc078cb26a6b8090d7d1b3d9cc1cbafd2ba590e21",
+            "span_id": "span-wiener-ferris-acknowledgment",
+            "supports": "P1 acknowledges the future P2 coauthor, establishing a social/program link beyond the shared Mehrabian authorship."
+          },
+          {
+            "locator": "journal p.109; PDF p.1, abstract",
+            "quote": "inconsistent communication of attitude in 2 components of a message",
+            "quote_sha256": "32365cd2cac9626ee55ebdea19048ae1a2b9b70801559c91a3b26916b5d0c108",
+            "span_id": "span-wiener-target",
+            "supports": "The experiment concerns a two-component attitude message, not communication in general."
+          },
+          {
+            "locator": "journal pp.109-110; PDF pp.1-2, abstract and Materials",
+            "quote": "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice ... the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents",
+            "quote_sha256": "488d310c64fb4445de8193a17dce78b0fe41533b54446429038687fa082b1e97",
+            "segments": [
+              "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice",
+              "the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents"
+            ],
+            "span_id": "span-wiener-single-words",
+            "span_kind": "verbatim_segments",
+            "supports": "The verbal stimuli were isolated words crossed with vocal tone, and maybe was one of P1's three selected neutral words."
+          },
+          {
+            "locator": "journal p.110; PDF p.2, Method/Subjects",
+            "quote": "Forty-five subjects were used in the initial selection ... A second group of 30 subjects was used in the remaining portion of the study.",
+            "quote_sha256": "4b7b80fe130fafffae5829f4d71f7bb0dd795103ea0d0601c019d77b648efd80",
+            "segments": [
+              "Forty-five subjects were used in the initial selection",
+              "A second group of 30 subjects was used in the remaining portion of the study."
+            ],
+            "span_id": "span-wiener-sample",
+            "span_kind": "verbatim_segments",
+            "supports": "P1 used 45 undergraduates for word selection and 30 for the remaining experiment."
+          },
+          {
+            "locator": "journal p.111; PDF p.3, Procedure",
+            "quote": "using all the information available ... using only the information contained in the meanings of the words ... using only the information contained in the tone",
+            "quote_sha256": "4cb1102a04af97ed38d0a2e7c205dfad7deb5844a79d106d05259cf7ac9f30c3",
+            "segments": [
+              "using all the information available",
+              "using only the information contained in the meanings of the words",
+              "using only the information contained in the tone"
+            ],
+            "span_id": "span-wiener-instructions",
+            "span_kind": "verbatim_segments",
+            "supports": "Separate instruction groups estimated combined, content-only, and tone-only contributions."
+          },
+          {
+            "locator": "journal p.110; PDF p.2, Materials",
+            "quote": "Two female speakers were employed to read each of the nine selected words with each of the three positive, neutral, and negative tones.",
+            "quote_sha256": "d0fd2ff6d09434d59506dd8baa65db231331bca622f7a360cb8d26bf10ac0f59",
+            "span_id": "span-wiener-stimulus-recording",
+            "supports": "P1 used recorded female voices and nine selected words crossed with three tones."
+          },
+          {
+            "locator": "journal p.111; PDF p.3, Procedure",
+            "quote": "\"Positive\" refers to liking, preferring or having high evaluations and \"negative\" refers to disliking, not preferring or having low evaluations of the addressee.",
+            "quote_sha256": "79a892503102e31330c91f06aff865e9c50794cef6a8708a11145d8e616630a9",
+            "span_id": "span-wiener-scale",
+            "supports": "P1 operationalized its attitude scale as liking versus disliking."
+          },
+          {
+            "locator": "journal p.113; PDF p.5, Discussion",
+            "quote": "messages involving single words spoken with intonation are primarily based on the attitude carried in the tonal component",
+            "quote_sha256": "24b4829f5b2eea31c281bba86db573262bea45e6250c8beedd675b8f9a45db40",
+            "span_id": "span-wiener-result-boundary",
+            "supports": "Tone dominated this narrow inconsistent single-word attitude task."
+          },
+          {
+            "locator": "journal p.113; PDF p.5, Discussion",
+            "quote": "can be safely extended only to communication situations in which no additional information about the communicator-addressee relationship is available",
+            "quote_sha256": "9c4d9597c61175b0e6ced4918ddea51d3aeb53df8e555780d626172e992cc68b",
+            "span_id": "span-wiener-safe-extension",
+            "supports": "The paper explicitly limits extension of its result."
+          }
+        ],
+        "title": "Decoding of inconsistent communications",
+        "urls": {
+          "doi": "https://doi.org/10.1037/h0024532",
+          "inspected_scan": "https://sergiosenna.com.br/wp-content/uploads/2026/01/mehrabian1967-decoding-of-inconsistent-communications.pdf",
+          "pubmed": "https://pubmed.ncbi.nlm.nih.gov/6032751/"
+        },
+        "work_id": "work-mehrabian-wiener-1967"
+      },
+      {
+        "authors": [
+          "Albert Mehrabian",
+          "Susan R. Ferris"
+        ],
+        "captures": [
+          {
+            "bytes": 459340,
+            "capture_id": "capture-ferris-scan-20260823",
+            "captured_at": "2026-08-23T09:34:00Z",
+            "media_type": "application/pdf",
+            "revalidation": "Fresh anonymous retrieval timed out without response bytes on 2026-08-27; the carrier remains unstable.",
+            "sha256": "f9d91dfd98725e902ef24a1b478c4bb8aac5be66c2be2b5486cc0c4253711f84",
+            "url_role": "credential-free but session-dependent university course scan"
+          },
+          {
+            "bytes": 1897,
+            "capture_id": "capture-ferris-crossref-20260823",
+            "media_type": "application/json",
+            "revalidation": "Fresh Crossref request returned HTTP 429 on 2026-08-27; the accepted earlier capture is retained.",
+            "sha256": "c2bbd8fb3b5ad2f0246271335db1045e4bf78fb8901ed67b7473a1812a5c5923",
+            "url": "https://api.crossref.org/works/10.1037%2Fh0024648"
+          },
+          {
+            "bytes": 11048,
+            "capture_id": "capture-ferris-openalex-20260827",
+            "media_type": "application/json",
+            "sha256": "895e620e801aa4cd4c305e3249a4931eaaeb127f4b92239ce5e3a66331a68665",
+            "url": "https://api.openalex.org/works/https:%2F%2Fdoi.org%2F10.1037%2Fh0024648"
+          },
+          {
+            "bytes": 2845,
+            "capture_id": "capture-ferris-pubmed-20260827",
+            "media_type": "application/xml",
+            "sha256": "ad01d7dcbb9415786dab354afbc041b08cdc809c74e09cb9258cbfbd750250e4",
+            "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=6046577&retmode=xml"
+          }
+        ],
+        "container": "Journal of Consulting Psychology 31(3), 248-252",
+        "edition_id": "edition-mehrabian-ferris-jcp-31-3",
+        "identifiers": {
+          "doi": "10.1037/h0024648",
+          "pmid": "6046577"
+        },
+        "license_treatment": "No open article license was confirmed. Public course hosting does not establish reuse rights; the source is represented with identity, digest, access history, and quote-minimal spans only.",
+        "publication_date": "1967-06",
+        "source_id": "source-mehrabian-ferris-1967",
+        "spans": [
+          {
+            "fields": {
+              "author_1": "Albert Mehrabian",
+              "author_2": "Susan R. Ferris"
+            },
+            "locator": "journal p.248; PDF p.1, title block",
+            "quote": "authors=Albert Mehrabian; Susan R. Ferris",
+            "quote_sha256": "ccbbe41f1e4ec76d7d14620f62caa2af412b1b8228fccdbf0ae43062408d35f7",
+            "span_id": "span-ferris-authors",
+            "span_kind": "structured_transcription",
+            "supports": "The title block identifies the P2 authors for author-lineage comparison."
+          },
+          {
+            "fields": {
+              "public_health_service_grant": "1 R03-MH-12629-01",
+              "university_of_california_grant": "2189"
+            },
+            "locator": "journal p.248; PDF p.1, footnote 1",
+            "quote": "grants=United States Public Health Service 1 R03-MH-12629-01; University of California 2189",
+            "quote_sha256": "cda7dfc2f1ed1632a34e92b220fca7788184c09ddb0016ce23fbfba056e2cfe2",
+            "span_id": "span-ferris-grants",
+            "span_kind": "structured_transcription",
+            "supports": "P2 shares the reported University of California grant identifier with P1 and reports a different Public Health Service grant."
+          },
+          {
+            "locator": "journal p.248; PDF p.1, footnote 1",
+            "quote": "Dee Nieto, Nina Spitzer, and Barbara Ullman, who acted as models, and Elaine Blackman and Katherine Nelson, who, along with one of the authors, acted as speakers in preparing the experimental materials.",
+            "quote_sha256": "f2c2c6a9095ce271eb0842c7b7268bfc09c732405f448a928ee4876b2eeed48b",
+            "span_id": "span-ferris-models-speakers",
+            "supports": "P2 names its models and two of its speakers while leaving the author-speaker unnamed."
+          },
+          {
+            "locator": "journal p.248; PDF p.1, abstract",
+            "quote": "3 degrees of attitude (i.e., positive, neutral, and negative) in facial expression ... were each combined with 3 degrees of attitude communicated vocally",
+            "quote_sha256": "0a55d590acd009bec93e34c67f9c4b528154411b32575493cb9f9fde2b41924c",
+            "segments": [
+              "3 degrees of attitude (i.e., positive, neutral, and negative) in facial expression",
+              "were each combined with 3 degrees of attitude communicated vocally"
+            ],
+            "span_id": "span-ferris-target",
+            "span_kind": "verbatim_segments",
+            "supports": "P2 crossed facial and vocal attitude cues; verbal wording was not varied."
+          },
+          {
+            "locator": "journal p.249; PDF p.2, Method/Subjects",
+            "quote": "A group of 25 subjects (Ss) was used ... A second group of 17 Ss was used ... A third group of 20 Ss was used ... All 62 Ss were female University of California undergraduates",
+            "quote_sha256": "3a4983215b94a8f7a35dfc1867bd6c435a3cd2b380bc8e9986a711c731452528",
+            "segments": [
+              "A group of 25 subjects (Ss) was used",
+              "A second group of 17 Ss was used",
+              "A third group of 20 Ss was used",
+              "All 62 Ss were female University of California undergraduates"
+            ],
+            "span_id": "span-ferris-sample",
+            "span_kind": "verbatim_segments",
+            "supports": "P2 used three groups totaling 62 female undergraduates for stimulus selection and the combined task."
+          },
+          {
+            "locator": "journal p.249; PDF p.2, Introduction",
+            "quote": "Mehrabian and Wiener's (1967) study indicated that the dominant component in a two-channel communication determines the meaning of inconsistent communications",
+            "quote_sha256": "c25471b821ce495d1763c8f398825a939f67fb6856a2cef7f162fe6416d87912",
+            "span_id": "span-ferris-citation-p1",
+            "supports": "P2 explicitly cites P1 as a premise for its hypothesis."
+          },
+          {
+            "locator": "journal p.250; PDF p.3, Materials",
+            "quote": "The word \"maybe\" was selected as an appropriate neutral verbal carrier of vocal communications",
+            "quote_sha256": "56c335cc10ba6cd0b1e00bbb4571a1fea45c4b9abde580f86093310dcc9f121e",
+            "span_id": "span-ferris-maybe",
+            "supports": "The only word in the combined face-tone task was the neutral carrier maybe."
+          },
+          {
+            "locator": "journal p.250; PDF p.3, Materials and Design",
+            "quote": "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person ... there were 36 experimental conditions ... 3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions",
+            "quote_sha256": "4907fba561fdbd65d1135094c20e780a5813d5d27bc111a8d02440833a7acb30",
+            "segments": [
+              "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person",
+              "there were 36 experimental conditions",
+              "3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions"
+            ],
+            "span_id": "span-ferris-design",
+            "span_kind": "verbatim_segments",
+            "supports": "P2 used facial photographs and varied face and tone, not three channels."
+          },
+          {
+            "locator": "journal p.251; PDF p.4, Procedure",
+            "quote": "an attitude scale designated \"like,\" +3 and \"dislike,\" —3 at its poles",
+            "quote_sha256": "f75aae955db7d8f43645cdf9892aed90b48c9b02e6316dfc342219ae3dc82b47",
+            "span_id": "span-ferris-scale",
+            "supports": "P2 used a liking-versus-disliking attitude scale like the construct operationalized in P1."
+          },
+          {
+            "locator": "journal p.251; PDF p.4, Results",
+            "quote": "The Facial Attitude factor accounted for 41.4% of the total sum of squares ... the Vocal Attitude factor accounted for 19.3% of the total sum of squares",
+            "quote_sha256": "bd118404b90041fbbb3c264018163e4b4c03db1d33c6a4b007360d6387845b4d",
+            "segments": [
+              "The Facial Attitude factor accounted for 41.4% of the total sum of squares",
+              "the Vocal Attitude factor accounted for 19.3% of the total sum of squares"
+            ],
+            "span_id": "span-ferris-sums-of-squares",
+            "span_kind": "verbatim_segments",
+            "supports": "The reported task-level sums of squares favored the facial factor."
+          },
+          {
+            "fields": {
+              "dependent": "A_T",
+              "facial_coefficient": "1.50",
+              "facial_term": "A_F",
+              "vocal_coefficient": "1.03",
+              "vocal_term": "A_V"
+            },
+            "locator": "journal p.251; PDF p.4, Results",
+            "quote": "A_T = 1.50 A_F + 1.03 A_V",
+            "quote_sha256": "7cf8e54d2b0fddc90a956178f67bb65ec005d41bb9b1c17e676e92458fbbf692",
+            "span_id": "span-ferris-regression",
+            "span_kind": "structured_transcription",
+            "supports": "P2 reports the two-channel facial-vocal regression coefficients."
+          },
+          {
+            "locator": "journal p.252; PDF p.5, final Discussion paragraph",
+            "quote": "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967) ... It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects ... with the coefficients of .07, .38, and .55, respectively",
+            "quote_sha256": "25b2e2dcf6675d0e73fd204bb0e6303caa18f2fe5d9d6df5c7dea105cf49a50f",
+            "segments": [
+              "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967)",
+              "It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects",
+              "with the coefficients of .07, .38, and .55, respectively"
+            ],
+            "span_id": "span-ferris-proposal",
+            "span_kind": "verbatim_segments",
+            "supports": "The three coefficients appear as a proposed cross-study integration, not as the result of P2's experiment."
+          }
+        ],
+        "title": "Inference of attitudes from nonverbal communication in two channels",
+        "urls": {
+          "alternate_readback": "https://sergiosenna.com.br/wp-content/uploads/2026/01/mehrabian-1967-inference-of-attitudes-from-nonverbal-communication.pdf",
+          "doi": "https://doi.org/10.1037/h0024648",
+          "inspected_scan": "https://is.muni.cz/el/phil/jaro2018/PSA_034/um/Mehrabian.pdf?lang=en",
+          "pubmed": "https://pubmed.ncbi.nlm.nih.gov/6046577/"
+        },
+        "work_id": "work-mehrabian-ferris-1967"
+      },
+      {
+        "authors": [
+          "Albert Mehrabian"
+        ],
+        "captures": [
+          {
+            "bytes": 3499,
+            "capture_id": "capture-author-page-20260827",
+            "matches_capture_20260823": true,
+            "media_type": "text/html",
+            "sha256": "d2e9ce6de5935b1eefcf7ada00ed2f9da11332527660fd6b98be4c909e0a5a72",
+            "url": "https://kaaj.com/psych/smorder.html"
+          }
+        ],
+        "edition_id": "edition-kaaj-silent-messages-page-2016",
+        "license_treatment": "Copyrighted author page with no open license observed; quote minimally and attribute.",
+        "publication_date": "unknown; page copyright 1995-2016",
+        "source_id": "source-mehrabian-author-qualification",
+        "spans": [
+          {
+            "locator": "HTML body, equation following the inconsistent-messages paragraph",
+            "quote": "Total Liking = 7% Verbal Liking + 38% Vocal Liking + 55% Facial Liking",
+            "quote_sha256": "f74af100fbb21524c77c32d9d52a14dc6ff661fbb6685402365363ca1f532738",
+            "span_id": "span-author-equation",
+            "supports": "The author page repeats the equation as Total Liking."
+          },
+          {
+            "locator": "HTML body, strong element following the equation",
+            "quote": "Unless a communicator is talking about their feelings or attitudes, these equations are not applicable",
+            "quote_sha256": "b177c97d10c09f52d123b7b2eb3577bd07cfc84d3f5954140f1d64045e463611",
+            "span_id": "span-author-qualification",
+            "supports": "The author's public qualification rejects general application to other communication."
+          }
+        ],
+        "title": "Silent Messages -- Description and Ordering Information",
+        "urls": {
+          "landing": "https://kaaj.com/psych/smorder.html"
+        },
+        "work_id": "work-mehrabian-author-page"
+      },
+      {
+        "authors": [
+          "Albert Mehrabian"
+        ],
+        "captures": [
+          {
+            "bytes": 19515952,
+            "capture_id": "capture-silent-1971-scan-20260827",
+            "matches_two_prior_retrievals": true,
+            "media_type": "application/pdf",
+            "sha256": "3223d08c89749142d9774a49e6843ee4512ef9daa70928ed8667051ef8a123c1",
+            "url_role": "publicly readable university-hosted scan"
+          },
+          {
+            "bytes": 1289,
+            "capture_id": "capture-silent-1971-openlibrary-20260823",
+            "media_type": "application/json",
+            "sha256": "d597ca4e4747cd8fa5d85fdafd7bddc49588d609a8b2890bca2f8207d5f21e46",
+            "url": "https://openlibrary.org/api/books?bibkeys=ISBN:0534000592&format=json&jscmd=data"
+          }
+        ],
+        "container": "Wadsworth Publishing Company, ISBN 0-534-00059-2",
+        "edition_id": "edition-silent-messages-1971",
+        "identifiers": {
+          "isbn_10": "0534000592",
+          "openlibrary": "OL24765699M"
+        },
+        "license_treatment": "All rights reserved; the scan is not committed or redistributed. Retain metadata, digest, PDF-page locators, and quote-minimal spans only.",
+        "publication_date": "1971",
+        "source_id": "source-silent-messages-1971",
+        "spans": [
+          {
+            "fields": {
+              "dependent": "Total liking",
+              "facial": "55% facial liking",
+              "verbal": "7% verbal liking",
+              "vocal": "38% vocal liking"
+            },
+            "locator": "PDF p.51, Inconsistent messages chapter",
+            "quote": "Total liking = 7% verbal liking + 38% vocal liking + 55% facial liking",
+            "quote_sha256": "b64646d71e22e4e9508d73d3b4896301ebf38472816e0002115a9ceea44e8f22",
+            "span_id": "span-silent-1971-liking",
+            "span_kind": "structured_transcription",
+            "supports": "The 1971 edition repeats the three-part liking equation."
+          },
+          {
+            "locator": "PDF p.52, paragraph following Total feeling equation",
+            "quote": "Numerical values in this equation are only approximate ... restrict ourselves to the analysis of only one dimension of feeling at a time",
+            "quote_sha256": "f42ea8e4be606d422d7b6ab9495c3b03ad812d953dff3034ef07b5fa66613201",
+            "segments": [
+              "Numerical values in this equation are only approximate",
+              "restrict ourselves to the analysis of only one dimension of feeling at a time"
+            ],
+            "span_id": "span-silent-1971-boundary",
+            "span_kind": "verbatim_segments",
+            "supports": "The book calls the values approximate and limits use to one feeling dimension."
+          }
+        ],
+        "title": "Silent Messages",
+        "urls": {
+          "catalog": "https://openlibrary.org/books/OL24765699M/Silent_messages",
+          "inspected_scan": "https://e-edu.nbu.bg/pluginfile.php/855150/mod_resource/content/1/Albert-Mehrabian%20-%20Silent%20Messages%201971%20-%20red.size.pdf"
+        },
+        "work_id": "work-silent-messages"
+      },
+      {
+        "authors": [
+          "Albert Mehrabian"
+        ],
+        "captures": [
+          {
+            "bytes": 1364,
+            "capture_id": "capture-silent-1981-openlibrary-20260827",
+            "media_type": "application/json",
+            "sha256": "0a8332cdd2d1bf26e62c271a63d41e8e89232137a35db39e51ab30e06796fa20",
+            "url": "https://openlibrary.org/books/OL4105010M.json"
+          }
+        ],
+        "container": "Wadsworth Publishing Company, second edition, ix + 196 pages",
+        "edition_id": "edition-silent-messages-1981-second",
+        "identifiers": {
+          "isbn_10": "0534009107",
+          "lccn": "80019662",
+          "openlibrary": "OL4105010M"
+        },
+        "license_treatment": "Catalog metadata only; no full-text license or readable edition was confirmed.",
+        "publication_date": "1981",
+        "source_id": "source-silent-messages-1981",
+        "spans": [
+          {
+            "fields": {
+              "edition_name": "2d ed.",
+              "isbn_10": "0534009107",
+              "number_of_pages": 196,
+              "publish_date": "1981"
+            },
+            "locator": "Open Library JSON: /edition_name, /publish_date, /isbn_10, /number_of_pages",
+            "quote": "edition_name=2d ed.; publish_date=1981; isbn_10=0534009107; number_of_pages=196",
+            "quote_sha256": "3520c0ef2afb95d687d9a61df564ccc1105381c6fab8a6ff5954779f3466dd2b",
+            "span_id": "span-silent-1981-metadata",
+            "span_kind": "structured_transcription",
+            "supports": "The 1981 second-edition identity is bibliographically closed, but its formula pages were not collated."
+          }
+        ],
+        "title": "Silent messages: implicit communication of emotions and attitudes",
+        "urls": {
+          "catalog": "https://openlibrary.org/books/OL4105010M"
+        },
+        "work_id": "work-silent-messages"
+      },
+      {
+        "authors": [
+          "David Lapakko"
+        ],
+        "captures": [
+          {
+            "bytes": 4332,
+            "capture_id": "capture-lapakko-1997-crossref-20260827",
+            "media_type": "application/json",
+            "sha256": "043781416ca002a6d549f0a5bb8313dc15507451d1a03638adf8921e773c2710"
+          },
+          {
+            "bytes": 9093,
+            "capture_id": "capture-lapakko-1997-eric-20260827",
+            "media_type": "text/html",
+            "sha256": "31dd3cc0b48f3e3829845c96b6687f712efd4b3757bf994a06fbe7c9cc073518"
+          }
+        ],
+        "container": "Communication Education 46(1), 63-67",
+        "edition_id": "edition-lapakko-communication-education-46-1",
+        "identifiers": {
+          "doi": "10.1080/03634529709379073",
+          "eric": "EJ537313"
+        },
+        "license_treatment": "No open license confirmed; only metadata and the ERIC abstract are retained.",
+        "publication_date": "1997-01",
+        "source_id": "source-lapakko-1997",
+        "spans": [
+          {
+            "locator": "ERIC abstract",
+            "quote": "limitations which do not warrant formulation of a precise numerical formula",
+            "quote_sha256": "e62ce29580268d0767bdfd1fd1e87898381c16c05cc97f789ea19e464b025fc6",
+            "span_id": "span-lapakko-1997-abstract",
+            "supports": "The evaluative paper identifies the formula's methodological overreach."
+          }
+        ],
+        "title": "Three cheers for language: A closer examination of a widely cited study of nonverbal communication",
+        "urls": {
+          "doi": "https://doi.org/10.1080/03634529709379073",
+          "eric": "https://eric.ed.gov/?id=EJ537313"
+        },
+        "work_id": "work-lapakko-1997"
+      },
+      {
+        "authors": [
+          "David Lapakko"
+        ],
+        "captures": [
+          {
+            "bytes": 36978,
+            "capture_id": "capture-lapakko-2007-landing-20260827",
+            "media_type": "text/html",
+            "sha256": "ac0fb51d9f7e675f394d763bf3939b2d501db947587fea620f99bc5a46850f66"
+          },
+          {
+            "bytes": 2960,
+            "capture_id": "capture-lapakko-2007-crossref-20260827",
+            "media_type": "application/json",
+            "sha256": "f9f6e6f56c8b50fa1b9cbaaa6b1c705e0be294a0f2e5c0ed2b41b853a15e5a6c"
+          },
+          {
+            "bytes": null,
+            "capture_id": "readback-lapakko-2007-pdf-20260827",
+            "media_type": "application/pdf indexed readback",
+            "retrieval_status": "Authoritative landing is live; direct PDF returned HTTP 403. Exact PDF passages were read through an indexed public readback and require independent reproduction.",
+            "sha256": null
+          }
+        ],
+        "container": "Communication and Theater Association of Minnesota Journal 34(1), article 2",
+        "edition_id": "edition-ctamj-volume-34-article-2",
+        "identifiers": {
+          "doi": "10.56816/2471-0032.1000"
+        },
+        "license_treatment": "The authoritative landing declares CC BY-NC 4.0 for the work. The inaccessible PDF is not redistributed; passages remain quote-minimal.",
+        "publication_date": "2007; repository online date and Crossref publication date 2015-11-20",
+        "source_id": "source-lapakko-2007",
+        "spans": [
+          {
+            "locator": "authoritative landing, Abstract",
+            "quote": "widely disseminated across the Internet, and in ways that show little or no understanding of the research",
+            "quote_sha256": "a712f31a787c456e3d1693cba28b62ec4d4a6f14db9d196176671f15fa66efd3",
+            "span_id": "span-lapakko-2007-abstract",
+            "supports": "The author reports broad online propagation and misunderstanding."
+          },
+          {
+            "locator": "journal p.12; indexed PDF readback",
+            "quote": "63 of the 79 sites (80%) used the 7-38-55 numbers as a general statement about the overall nature of communication",
+            "quote_sha256": "d40f9be8d74579dc4b55180886d0eb17374f260e487bba97bc5a676a1a197c42",
+            "span_id": "span-lapakko-2007-63-of-79",
+            "supports": "The bounded website sample quantified broad generalization."
+          },
+          {
+            "locator": "journal p.13; indexed PDF readback, Limitations",
+            "quote": "sampling procedure in this study involved a type of convenience sample ... only made use of one electronic search engine, Google",
+            "quote_sha256": "fc3c646bac3611993037d02aa42b56b0c374b8c2ea99260859d36aa057bc4231",
+            "segments": [
+              "sampling procedure in this study involved a type of convenience sample",
+              "only made use of one electronic search engine, Google"
+            ],
+            "span_id": "span-lapakko-2007-limitations",
+            "span_kind": "verbatim_segments",
+            "supports": "The study itself limits any prevalence inference from its purposive web sample."
+          }
+        ],
+        "title": "Communication is 93% Nonverbal: An Urban Legend Proliferates",
+        "urls": {
+          "landing": "https://cornerstone.lib.mnsu.edu/ctamj/vol34/iss1/2/",
+          "pdf": "https://cornerstone.lib.mnsu.edu/cgi/viewcontent.cgi?article=1000&context=ctamj"
+        },
+        "work_id": "work-lapakko-2007"
+      },
+      {
+        "authors": [
+          "Timothy G. Hegstrom"
+        ],
+        "captures": [
+          {
+            "bytes": 3642,
+            "capture_id": "capture-hegstrom-crossref-20260827",
+            "media_type": "application/json",
+            "sha256": "17cd8545c44263665b14f19a8764aa19bb87cf7250ae34a505cd6ae31b3f084a"
+          },
+          {
+            "bytes": 10495,
+            "capture_id": "capture-hegstrom-eric-20260827",
+            "media_type": "text/html",
+            "sha256": "9095dde4a5fe3395afe6489942c58895d49cce2b825ccb439667a51e59229e4f"
+          }
+        ],
+        "container": "Western Journal of Speech Communication 43(2), 134-142",
+        "edition_id": "edition-hegstrom-wjsc-43-2",
+        "identifiers": {
+          "doi": "10.1080/10570317909373961",
+          "eric": "EJ210721"
+        },
+        "license_treatment": "Publisher full text is closed and returned HTTP 403. The public ERIC and publisher abstracts are used quote-minimally; no full text is redistributed.",
+        "publication_date": "1979",
+        "source_id": "source-hegstrom-1979",
+        "spans": [
+          {
+            "locator": "ERIC abstract",
+            "quote": "all-channel condition as the criterion variable and the verbal, vocal, and facial channels as predictor variables",
+            "quote_sha256": "6a5cf9079b86b76fe5c7cbc41c1cf69ee015b2537e6bccc0fbccfef3ec4b992e",
+            "span_id": "span-hegstrom-design",
+            "supports": "Hegstrom directly reconsidered the formula using all three channel predictors."
+          },
+          {
+            "locator": "ERIC abstract",
+            "quote": "Regression equations for each of four messages were quite different from Mehrabian's formula and from each other",
+            "quote_sha256": "a05c496c590dbd519f345528c97b7badf4b1888fbdeb59952a7c24ad0d69af96",
+            "span_id": "span-hegstrom-result",
+            "supports": "The direct rebuttal favored a message-contextual rather than fixed additive model."
+          }
+        ],
+        "title": "Message impact: What percentage is nonverbal?",
+        "urls": {
+          "doi": "https://doi.org/10.1080/10570317909373961",
+          "eric": "https://eric.ed.gov/?id=EJ210721"
+        },
+        "work_id": "work-hegstrom-1979"
+      },
+      {
+        "authors": [
+          "Michael Argyle",
+          "Veronica Salter",
+          "Hilary Nicholson",
+          "Marylin Williams",
+          "Philip Burgess"
+        ],
+        "captures": [
+          {
+            "bytes": 3993,
+            "capture_id": "capture-argyle-1970-crossref-20260827",
+            "media_type": "application/json",
+            "sha256": "999419e8888838431c7991e85022fd88f1d0bd9fe5b71d32842341ca80824172"
+          }
+        ],
+        "container": "British Journal of Social and Clinical Psychology 9(3), 222-231",
+        "edition_id": "edition-argyle-bjscp-9-3",
+        "identifiers": {
+          "doi": "10.1111/j.2044-8260.1970.tb00668.x"
+        },
+        "license_treatment": "Closed publisher version; metadata and publisher abstract readback only.",
+        "publication_date": "1970-09",
+        "source_id": "source-argyle-1970",
+        "spans": [
+          {
+            "locator": "publisher abstract readback",
+            "quote": "Ratings were made by 120 subjects of 18 video‐tapes ... non‐verbal cues now had 4.3 times the effect of verbal cues",
+            "quote_sha256": "1c646e683fa1fae891328ff0aa173a6819a4bffdaa3d85b14ab35d321fc51fce",
+            "segments": [
+              "Ratings were made by 120 subjects of 18 video‐tapes",
+              "non‐verbal cues now had 4.3 times the effect of verbal cues"
+            ],
+            "span_id": "span-argyle-1970-abstract",
+            "span_kind": "verbatim_segments",
+            "supports": "A related superiority/inferiority task found nonverbal dominance, but with different materials and estimand."
+          }
+        ],
+        "title": "The Communication of Inferior and Superior Attitudes by Verbal and Non-verbal Signals",
+        "urls": {
+          "doi": "https://doi.org/10.1111/j.2044-8260.1970.tb00668.x"
+        },
+        "work_id": "work-argyle-1970"
+      },
+      {
+        "authors": [
+          "Michael Argyle",
+          "Florisse Alkema",
+          "Robin Gilmour"
+        ],
+        "captures": [
+          {
+            "bytes": 5510,
+            "capture_id": "capture-argyle-1971-crossref-20260827",
+            "media_type": "application/json",
+            "sha256": "f4e1b557998636cde68ef84eb54ad75aed1ac2bf0e495e14b087b2d729ce310a"
+          }
+        ],
+        "container": "European Journal of Social Psychology 1(3), 385-402",
+        "edition_id": "edition-argyle-ejsp-1-3",
+        "identifiers": {
+          "doi": "10.1002/ejsp.2420010307"
+        },
+        "license_treatment": "Closed publisher version; metadata and publisher abstract readback only.",
+        "publication_date": "1971-07",
+        "source_id": "source-argyle-1971",
+        "spans": [
+          {
+            "locator": "publisher abstract readback",
+            "quote": "non‐verbal cues accounted for 12.5 times as much variance as verbal cues",
+            "quote_sha256": "0cf68d8b04488ee2dae7795e58ef3204eda6ea25a69ab0e8aa9799cf324d821b",
+            "span_id": "span-argyle-1971-experiment-one",
+            "supports": "The first related experiment produced strong nonverbal dominance."
+          },
+          {
+            "locator": "publisher abstract readback",
+            "quote": "the ratio of non‐verbal : verbal variance was now 1.67:1",
+            "quote_sha256": "02f4d3fdaf74b293076b3521515a54d6968638aaa4882fc9a3f25c4a7442333f",
+            "span_id": "span-argyle-1971-experiment-two",
+            "supports": "Changing cue strength materially changed the ratio, undercutting a universal fixed weighting."
+          }
+        ],
+        "title": "The communication of friendly and hostile attitudes by verbal and non-verbal signals",
+        "urls": {
+          "doi": "https://doi.org/10.1002/ejsp.2420010307"
+        },
+        "work_id": "work-argyle-1971"
+      },
+      {
+        "authors": [
+          "Hampshire Police and Crime Commissioner"
+        ],
+        "captures": [
+          {
+            "bytes": 7000460,
+            "capture_id": "capture-hampshire-20260827",
+            "media_type": "application/pdf",
+            "sha256": "5677956dbd94000ab9cf78546d6ea41789c5552a2362e5ff172bb232ffb27168"
+          }
+        ],
+        "edition_id": "edition-hampshire-pcc-master-010322",
+        "license_treatment": "No artifact-specific open license observed; quote minimally. This is a propagation object and receives zero scientific evidence credit.",
+        "publication_date": "2022-03",
+        "source_id": "source-hampshire-pcc-2022",
+        "spans": [
+          {
+            "locator": "PDF slide titled Interesting facts",
+            "quote": "70 to 93 percent of all communication is nonverbal",
+            "quote_sha256": "88c8a056a68b7c5e737a5bdee82c65e6bf1e68002df30fc04961d7acf5b7a2ec",
+            "span_id": "span-hampshire-generalization",
+            "supports": "An official training deck generalized the range to all communication."
+          }
+        ],
+        "title": "Police and Crime Plan - Developing the Implementation Plan",
+        "urls": {
+          "pdf": "https://www.hampshire-pcc.gov.uk/wp-content/uploads/2022/03/MASTER-010322.pdf"
+        },
+        "work_id": "work-hampshire-pcc-deck-2022"
+      },
+      {
+        "authors": [
+          "University of Birmingham Conferences & Events"
+        ],
+        "captures": [
+          {
+            "bytes": 149346,
+            "capture_id": "capture-birmingham-20260827",
+            "media_type": "text/html",
+            "sha256": "d3141e29edec0ed114ffeeb4e2a58ff555e610803cb765339623a09f90b4513d"
+          }
+        ],
+        "edition_id": "edition-birmingham-events-20260827",
+        "license_treatment": "No page-specific open license observed; quote minimally. This is a propagation object and receives zero scientific evidence credit.",
+        "publication_date": "2020-01-20",
+        "source_id": "source-birmingham-events-2020",
+        "spans": [
+          {
+            "locator": "HTML article body, second paragraph",
+            "quote": "studies show 93% of communication is non-verbal",
+            "quote_sha256": "efbc0d7cb80da147fd0c043ea73dd348b337b0d44281ff3144588a0788f71ff9",
+            "span_id": "span-birmingham-generalization",
+            "supports": "A university events page circulated the broad proposition."
+          }
+        ],
+        "title": "Audio visual for events explained",
+        "urls": {
+          "landing": "https://conferences.bham.ac.uk/2020/01/20/audio-visual-for-events-explained/"
+        },
+        "work_id": "work-birmingham-events-page-2020"
+      }
+    ],
+    "source_records_identity": {
+      "bytes": 53857,
+      "sha256": "0ac4f87236882d32aa6018e50600a79642b87acdf05e27c291514e770fda081c"
+    },
+    "span_conventions": {
+      "allowed_normalization": [
+        "Unicode NFKC",
+        "line-wrap whitespace",
+        "printed line-end hyphenation"
+      ],
+      "default_kind": "contiguous_quote",
+      "omission_rule": "A quote containing the literal marker ' ... ' must declare span_kind=verbatim_segments and list every contiguous segment in order; no omitted text is represented as contiguous.",
+      "structured_rule": "Equations, tables, and catalog fields must declare span_kind=structured_transcription and identify their printed cells or fields; they are not represented as prose quotations."
+    },
+    "task_id": "EM-0033"
+  },
+  "packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40"
+}

@@ -1,0 +1,10 @@
+{
+  "command": "python research/how-we-know/mehrabian-7-38-55/build_packet.py --check; python research/how-we-know/mehrabian-7-38-55/verify_packet.py --self-test; ruff check research/how-we-know/mehrabian-7-38-55/*.py; make check",
+  "id": "em:run-receipt:sha256:2974d169d36ff6d01ee2254c2e5f6e07e4d5ec00cca632fdee9b757acbb0417b",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-27T17:08:54Z",
+  "run_id": "em0033-author-packet-20260827",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0033"
+}
