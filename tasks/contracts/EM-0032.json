@@ -1,0 +1,60 @@
+{
+  "id": "EM-0032",
+  "title": "Research Case 003 GPT-4 bar-exam percentile lineage",
+  "status": "ready",
+  "change_class": "research",
+  "objective": "Turn the accepted EM-0027 GPT-4 bar-exam readiness map into a bounded, reproducible candidate evidence packet that distinguishes the historical model score from every percentile comparison class, reconstructs disclosed derivations, preserves missing launch provenance as unknown, and ends in an independently reviewed go, hold, or fail decision without building or admitting a public dossier.",
+  "depends_on": [
+    "EM-0027",
+    "EM-0031"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "research/how-we-know/gpt-4-bar-exam-percentile/**",
+      "docs/execution-plans/EM-0032.md",
+      "docs/research/case-003-gpt-4-bar-exam-percentile.md",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "README.md",
+      "docs/editorial/**",
+      "generated/**",
+      "site/**"
+    ]
+  },
+  "required_evaluation": [
+    "exact work, edition, identifier, retrieval, license, bytes, digest, and quote-minimal span closure for the OpenAI model report, Katz study and artifacts, Martinez re-analysis, and authoritative Illinois and NCBE comparison sources",
+    "explicit separation of observed or reported scaled scores, passing thresholds, component scores, first-time takers, repeat takers, passers, all examinees, February and July administrations, and modeled percentile ranks",
+    "mechanical reconstruction of every disclosed percentile derivation with assumptions, equations, denominators, source editions, uncertainty, and sensitivity to comparison population",
+    "preservation and adjudication of the 298-versus-approximately-297 score discrepancy and the Martinez 45th-versus-48th within-edition discrepancy",
+    "bounded negative search for the original top-10-percent chart, interpolation, and comparison population, with unresolved provenance receiving no invented value",
+    "data, model, author, method, material, benchmark, score, comparison-class, citation, and derivation-lineage mapping without counting repository mirrors as independent evidence",
+    "scope review that bars inference from historical simulated exam performance to general legal competence, current model performance, or practicing-lawyer quality",
+    "fresh-clone independently rooted review of all sources, spans, calculations, dependence edges, unresolved artifacts, and the go, hold, or fail decision",
+    "full deterministic make check, disclosure audit, exact path-scope comparison, and clean tracked state"
+  ],
+  "acceptance": [
+    "one content-addressed research packet freezes a narrow historical question about how the reported GPT-4 bar-exam score became a 90th-percentile claim and fixes a source cutoff",
+    "every numerical statement is either reproduced from an exact authoritative span, derived mechanically from pinned inputs, or represented as unresolved rather than inferred",
+    "the packet distinguishes one underlying model-performance experiment from its report, preprint, version of record, Git repository, Figshare, OSF, and media recirculations",
+    "all fifteen preliminary core source objects and the recorded 89-file mechanical artifact inventory are verified, superseded, explicitly excluded, or retained as unresolved without being counted as independent evidence",
+    "the missing national UBE total-score distribution, at-launch chart, interpolation, purchased inputs, proprietary snapshot, and official essay grading remain visible limitations and do not block a useful negative or comparison-class result by default",
+    "the packet ends in an independently reviewed go, hold, or fail recommendation for later dossier construction and does not itself admit, feature, or deploy Case 003",
+    "no restricted full text, purchased exam content, secret, credential, account, provider call, proprietary model rerun, or spend is used",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task researches a historical claim and its comparison lineage; it does not evaluate current OpenAI products or rank current models.",
+    "A complete proprietary rerun is neither required nor authorized. Missing inputs must remain explicit unknowns.",
+    "No dossier construction, catalog admission, public feature, Pages deployment, workflow mutation, DNS action, package release, credential use, provider call, or spend is authorized."
+  ]
+}

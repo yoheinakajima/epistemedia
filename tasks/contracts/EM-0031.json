@@ -1,0 +1,57 @@
+{
+  "id": "EM-0031",
+  "title": "Close EM-0027 and establish the four-case launch gate",
+  "status": "ready",
+  "change_class": "maintenance",
+  "objective": "Correct the stale EM-0027 execution status using accepted GitHub evidence, update the historical How We Know roadmap to reflect that Cases 001 and 002 are live, and record the owner's decision that broad launch and promotion wait until independently reviewed Cases 003 and 004 are also admitted and verified live.",
+  "depends_on": [
+    "EM-0027",
+    "EM-0030"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "docs/execution-plans/EM-0027.md",
+      "docs/execution-plans/EM-0031.md",
+      "docs/editorial/how-we-know-case-roadmap.md",
+      "docs/research/how-we-know-library-preliminary.md",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "research/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "README.md",
+      "generated/**",
+      "site/**"
+    ]
+  },
+  "required_evaluation": [
+    "canonical GitHub read-back of PR 50, its exact merge commit, required check, protected-path admission, and accepted-main ancestry",
+    "canonical provider and repository read-back that Cases 001 and 002 are live while Cases 003 and 004 are not",
+    "wording review that distinguishes an already public live site from the later broad launch and promotion decision",
+    "byte-for-byte comparison proving that all three accepted EM-0027 preliminary research packets remain unchanged",
+    "fresh-clone independent exact-head review of every status, commit, CI, live-case, and launch-gate statement",
+    "full deterministic make check, disclosure audit, exact path-scope comparison, and clean tracked state"
+  ],
+  "acceptance": [
+    "the EM-0027 execution plan no longer says exact-head review is pending and instead records PR 50, merge commit cbb029bd336404e5bc654e939308247317eaa153, and its successful required check without overstating the preliminary packets",
+    "the roadmap records Cases 001 and 002 as shipped and preserves GPT-4 bar-exam percentile and Mehrabian 7-38-55 as the intended Cases 003 and 004",
+    "broad launch and promotion are explicitly gated on four independently reviewed live cases, while epistemedia.org remains truthfully described as already public and live",
+    "the gate does not imply that Cases 003 or 004 are researched, accepted, admitted, deployed, or scientifically settled",
+    "the three EM-0027 packet files and their substantive dispositions remain byte-identical",
+    "no workflow, policy, schema, implementation, catalog, research packet, deployment, DNS, package, credential, or provider state changes",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task corrects current-state documentation and records an editorial launch gate; it does not perform Case 003 or Case 004 research.",
+    "The live site remains available during the pre-launch library build. Do not describe it as private, withdrawn, or undeployed.",
+    "No merge of this maintenance task authorizes publicity, outreach, deployment, provider calls, credentials, accounts, spend, or dossier admission."
+  ]
+}
