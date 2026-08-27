@@ -1,0 +1,61 @@
+{
+  "id": "EM-0033",
+  "title": "Research Case 004 Mehrabian 7-38-55 proposition lineage",
+  "status": "ready",
+  "change_class": "research",
+  "objective": "Turn the accepted EM-0027 Mehrabian readiness map into a bounded, license-aware candidate evidence packet that separates the two 1967 experiments, the later cross-study weighting proposal, the missing origin of the seven-percent coefficient, the author's qualification, and broad popular recirculation, ending in an independently reviewed go, hold, or fail decision without building or admitting a public dossier.",
+  "depends_on": [
+    "EM-0027",
+    "EM-0031"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "research/how-we-know/mehrabian-7-38-55/**",
+      "docs/execution-plans/EM-0033.md",
+      "docs/research/case-004-mehrabian-7-38-55.md",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "README.md",
+      "docs/editorial/**",
+      "generated/**",
+      "site/**"
+    ]
+  },
+  "required_evaluation": [
+    "exact identity, edition, identifier, retrieval, license, bytes, digest, and quote-minimal span closure for both 1967 studies, the relevant Silent Messages editions, the author's qualification, and bounded authoritative recirculation examples",
+    "explicit separation of the words-and-tone experiment, face-and-tone experiment, later cross-study integration, and the broad proposition that 93 percent of communication is nonverbal",
+    "mechanical derivation audit for 7, 38, and 55 with every coefficient, transformation, assumption, input study, and missing step represented explicitly",
+    "lawful-access and quotation review for publisher versions and public scans without treating readable third-party carriers as reusable licensed artifacts",
+    "participant, speaker, author, grant, stimulus, material, method, scale, citation, book-edition, and derivation-lineage mapping across the linked research program",
+    "bounded search for original materials and material direct replications or rebuttals, retaining negative searches and inaccessible carriers",
+    "scope review that bars generalization from inconsistent feelings-and-attitudes stimuli to all communication, ordinary conversation, persuasion, or channel importance",
+    "fresh-clone independently rooted review of all sources, spans, calculations, dependence edges, propagation examples, unresolved artifacts, and the go, hold, or fail decision",
+    "full deterministic make check, disclosure audit, exact path-scope comparison, and clean tracked state"
+  ],
+  "acceptance": [
+    "one content-addressed research packet freezes a narrow historical question about what the 7-38-55 weighting represented in the examined editions and how a broader communication rule propagated",
+    "both 1967 studies remain distinct work identities within one declared research program and are never described as three-channel tests or independent replications of the circulated rule",
+    "every numerical statement is reproduced from an exact authoritative span, derived mechanically from pinned inputs, or represented as unresolved, including the origin of the seven-percent coefficient",
+    "the packet reconciles or explicitly preserves differences among the 1967 papers, 1971 and 1981 book editions, the author's later qualification, and bounded institutional recirculation",
+    "readable but unlicensed scans receive only lawful metadata, digest, access, and quote-minimal treatment; no restricted full text is committed",
+    "propagation examples receive zero empirical credit and seeded follow-up literature is either reviewed at the declared boundary or retained as an explicit gap",
+    "the packet ends in an independently reviewed go, hold, or fail recommendation for later dossier construction and does not itself admit, feature, or deploy Case 004",
+    "no account, credential, paid access, provider call, secret, restricted redistribution, or spend is used",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task audits a narrow historical proposition and its circulation; it is not a general review of nonverbal communication.",
+    "A missing derivation is a valid result and must not be reconstructed from repetition or plausibility.",
+    "No dossier construction, catalog admission, public feature, Pages deployment, workflow mutation, DNS action, package release, credential use, provider call, or spend is authorized."
+  ]
+}

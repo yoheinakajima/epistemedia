@@ -44,5 +44,8 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0028` — make topic projections human-readable and expose deterministic object, source, and topic interlinks (ready; depends on `EM-0024`)
 - `EM-0029` — construct and independently review the reversible Case 002 agent-citation-lineage dossier (ready; depends on `EM-0026`)
 - `EM-0030` — admit Case 002 into a deterministic multi-case How We Know library (ready; depends on `EM-0028` and `EM-0029`)
+- `EM-0031` — close EM-0027 accurately and record the four-live-case gate before broad launch and promotion (ready; depends on `EM-0027` and `EM-0030`)
+- `EM-0032` — research the Case 003 GPT-4 bar-exam percentile and comparison-class lineage (ready; depends on `EM-0027` and `EM-0031`)
+- `EM-0033` — research the Case 004 Mehrabian 7-38-55 proposition and derivation lineage (ready; depends on `EM-0027` and `EM-0031`)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.
