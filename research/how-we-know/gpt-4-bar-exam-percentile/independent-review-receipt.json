@@ -1,0 +1,1813 @@
+{
+  "bindings": {
+    "artifact_inventory": {
+      "bytes": 62565,
+      "sha256": "f9e45045831a15fcb40c7f542c73651e5dc63ba081b145d00260bee91192c25b"
+    },
+    "artifact_inventory_id": "em:artifact-inventory:sha256:17f52a5509fded7e75b08201f61122d09c7626443857c94f8727c85c0824e61c",
+    "candidate_packet": {
+      "bytes": 210543,
+      "sha256": "07dec44bc2cf893b19ba6307e34aef60b6127b5e881e319ff4132c8e69972d1a"
+    },
+    "git_blob_search_manifest": {
+      "bytes": 51950,
+      "sha256": "708657f61bc759f3a5b439affde1a677177859b50a8bc960012b81dcebcdb122"
+    },
+    "git_blob_search_manifest_id": "em:git-blob-search:sha256:545908f30ba849c42c860185f92612f4d52a53b4f13b3c3ca5672213e23ba996",
+    "packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+    "source_records": {
+      "bytes": 64382,
+      "sha256": "385bbc193be495597ef0fe2a675220ca443297e673b32947c8d8ffcd1a6366da"
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "research/how-we-know/gpt-4-bar-exam-percentile/build_packet.py",
+        "--check"
+      ],
+      "command_id": "packet-build",
+      "completed_at": "2026-08-27T21:42:13Z",
+      "cwd": ".",
+      "exit_code": 0,
+      "record_sha256": "ba016e853636369a59a26c55ea92f71f52f320ea6865d6f1226c359301e40e64",
+      "started_at": "2026-08-27T21:42:13Z",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "10222b0ca0e31aea89cabffdbb50f41f1f66fabe207671bbb95f6f48ddf80033"
+    },
+    {
+      "argv": [
+        "python",
+        "research/how-we-know/gpt-4-bar-exam-percentile/verify_packet.py",
+        "--captures-dir",
+        "/private/tmp/em0032-successor-review.RK4vBR/captures",
+        "--require-captures",
+        "--self-test"
+      ],
+      "command_id": "packet-verify",
+      "completed_at": "2026-08-27T21:42:22Z",
+      "cwd": ".",
+      "exit_code": 0,
+      "record_sha256": "b1f5e29b9dc00fdfaae22c3ce87dce9965e3b3ca40f5f1c58b4524c9a839a305",
+      "started_at": "2026-08-27T21:42:22Z",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "b44118e061b77a78182256106172a03b5fefd86afb210e5f1377fd3b352e0893"
+    },
+    {
+      "argv": [
+        "python",
+        "research/how-we-know/gpt-4-bar-exam-percentile/verify_git_blob_search.py",
+        "--repository",
+        "/private/tmp/em0032-successor-review.RK4vBR/katz-pinned",
+        "--check",
+        "--self-test"
+      ],
+      "command_id": "git-blob-search",
+      "completed_at": "2026-08-27T21:42:44Z",
+      "cwd": ".",
+      "exit_code": 0,
+      "record_sha256": "fa9478f786ac36b54b102745628a80bb3025c558475b69ee607355eb630a7180",
+      "started_at": "2026-08-27T21:42:43Z",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "653abb5604e5c5a2c907224e2ce3f359c4bf74d5931495591dda2a11ee01b5e1"
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "research/how-we-know/gpt-4-bar-exam-percentile/build_packet.py",
+        "research/how-we-know/gpt-4-bar-exam-percentile/normalize_html_visible_text.py",
+        "research/how-we-know/gpt-4-bar-exam-percentile/verify_git_blob_search.py",
+        "research/how-we-know/gpt-4-bar-exam-percentile/verify_packet.py"
+      ],
+      "command_id": "ruff",
+      "completed_at": "2026-08-27T21:42:53Z",
+      "cwd": ".",
+      "exit_code": 0,
+      "record_sha256": "e5bba36bb7d2aae50186cf4fffd590fc98e28e21c997b05718b5f7b16e553132",
+      "started_at": "2026-08-27T21:42:53Z",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "argv": [
+        "make",
+        "check"
+      ],
+      "command_id": "repository-check",
+      "completed_at": "2026-08-27T21:43:51Z",
+      "cwd": ".",
+      "exit_code": 0,
+      "record_sha256": "b7505bd484b6e587d9aca6b58ef861919b2a34e30e70afea237f7d62242f55c6",
+      "started_at": "2026-08-27T21:43:02Z",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "50f29218e7c2ef5709102a1bbca0b708fafd968300c982dc1a656b2bc4b67986"
+    }
+  ],
+  "complete": true,
+  "completed_at": "2026-08-27T21:46:34Z",
+  "coverage": {
+    "calculation_ids": [
+      "derive-illinois-feb-2018-298",
+      "derive-illinois-feb-2019-298",
+      "derive-illinois-jul-2018-298",
+      "derive-martinez-first-time-essay",
+      "derive-martinez-first-time-mbe",
+      "derive-martinez-first-time-ube",
+      "derive-martinez-parameters",
+      "derive-martinez-passers-essay",
+      "derive-martinez-passers-mbe",
+      "derive-martinez-passers-ube"
+    ],
+    "lineage_edge_ids": [
+      "edge-author-social-collaboration",
+      "edge-benchmark-illinois-charts",
+      "edge-citation-katz-to-martinez",
+      "edge-comparison-class-first-time-passers",
+      "edge-data-reported-score-reuse",
+      "edge-derivation-comparison-inputs",
+      "edge-material-shared-exam-items",
+      "edge-method-single-free-response-run",
+      "edge-model-historical-snapshots",
+      "edge-score-component-composite"
+    ],
+    "lineage_root_ids": [
+      "lineage-illinois-comparison-root",
+      "lineage-martinez-analysis-root",
+      "lineage-model-performance-root",
+      "lineage-ncbe-comparison-root",
+      "lineage-new-york-pass-rate-root"
+    ],
+    "source_ids": [
+      "source-illinois-feb-2018",
+      "source-illinois-feb-2019",
+      "source-illinois-jul-2018",
+      "source-katz-figshare",
+      "source-katz-git-snapshot",
+      "source-katz-ssrn",
+      "source-katz-vor",
+      "source-martinez-analysis-new",
+      "source-martinez-osf",
+      "source-martinez-vor",
+      "source-ncbe-first-repeat-2022",
+      "source-ncbe-mbe-2022",
+      "source-ncbe-snapshot-2022",
+      "source-ncbe-ube-2022",
+      "source-ncbe-ube-mechanics",
+      "source-ny-passrates-2022",
+      "source-openai-v1",
+      "source-openai-v6",
+      "source-reshetar-testing-column-2022"
+    ],
+    "span_ids": [
+      "cell-illinois-feb-2018-290",
+      "cell-illinois-feb-2018-300",
+      "cell-illinois-feb-2019-290",
+      "cell-illinois-feb-2019-300",
+      "cell-illinois-jul-2018-290",
+      "cell-illinois-jul-2018-300",
+      "cell-katz-gpt4-mbe",
+      "cell-katz-gpt4-mee",
+      "cell-katz-gpt4-mpt",
+      "cell-katz-gpt4-overall",
+      "cell-martinez-first-timers-ube",
+      "cell-martinez-july-mbe-100",
+      "cell-martinez-july-mbe-105",
+      "cell-martinez-july-mbe-110",
+      "cell-martinez-july-mbe-115",
+      "cell-martinez-july-mbe-120",
+      "cell-martinez-july-mbe-125",
+      "cell-martinez-july-mbe-130",
+      "cell-martinez-july-mbe-135",
+      "cell-martinez-july-mbe-140",
+      "cell-martinez-july-mbe-145",
+      "cell-martinez-july-mbe-150",
+      "cell-martinez-july-mbe-155",
+      "cell-martinez-july-mbe-160",
+      "cell-martinez-july-mbe-165",
+      "cell-martinez-july-mbe-170",
+      "cell-martinez-july-mbe-175",
+      "cell-martinez-july-mbe-180",
+      "cell-martinez-july-mbe-185",
+      "cell-martinez-july-mbe-85",
+      "cell-martinez-july-mbe-90",
+      "cell-martinez-july-mbe-95",
+      "cell-martinez-july-ube",
+      "cell-martinez-qualified-attorneys-ube",
+      "cell-ncbe-mbe-count-february",
+      "cell-ncbe-mbe-count-july",
+      "cell-ncbe-mbe-count-overall",
+      "cell-ncbe-mbe-mean-february",
+      "cell-ncbe-mbe-mean-july",
+      "cell-ncbe-mbe-mean-overall",
+      "cell-ncbe-mbe-sd-february",
+      "cell-ncbe-mbe-sd-july",
+      "cell-ncbe-mbe-sd-overall",
+      "cell-ncbe-ube-jurisdictions-266",
+      "cell-ncbe-ube-score-266",
+      "cell-ny-first-timers-passed",
+      "cell-ny-first-timers-rate",
+      "cell-ny-first-timers-took",
+      "line-martinez-july-distribution-55",
+      "line-martinez-july-distribution-56",
+      "line-martinez-july-distribution-57",
+      "line-martinez-july-distribution-58",
+      "segment-katz-mbe-materials",
+      "segment-katz-mee-mpt-materials",
+      "segment-martinez-abstract-first-time",
+      "segment-martinez-abstract-passers",
+      "segment-martinez-code-comment-prose",
+      "segment-martinez-code-comment-value",
+      "segment-martinez-code-filter-essay",
+      "segment-martinez-code-filter-mbe",
+      "segment-martinez-code-filter-ube",
+      "segment-martinez-code-mean",
+      "segment-martinez-code-percentile",
+      "segment-martinez-code-quantile",
+      "segment-martinez-code-ube-sd",
+      "segment-martinez-code-z-score",
+      "segment-martinez-essay-mean",
+      "segment-martinez-ube-mean",
+      "segment-ncbe-february-first-timers-count",
+      "segment-ncbe-february-first-timers-percent",
+      "segment-ncbe-february-repeaters-count",
+      "segment-ncbe-february-repeaters-percent",
+      "segment-ncbe-july-first-timers-count",
+      "segment-ncbe-july-first-timers-percent",
+      "segment-ncbe-july-repeaters-count",
+      "segment-ncbe-july-repeaters-percent",
+      "span-illinois-feb-2018-anchors",
+      "span-illinois-feb-2019-anchors",
+      "span-illinois-jul-2018-anchors",
+      "span-katz-vor-abstract-score",
+      "span-katz-vor-components",
+      "span-katz-vor-materials",
+      "span-katz-vor-percentile-boundary",
+      "span-katz-vor-range",
+      "span-katz-vor-score-discrepancy",
+      "span-martinez-abstract-ranks",
+      "span-martinez-discussion-48",
+      "span-martinez-mean-assumption",
+      "span-martinez-model-assumptions",
+      "span-martinez-results-45",
+      "span-martinez-score-validation",
+      "span-martinez-script-comment-conflict",
+      "span-martinez-script-july-mbe-distribution",
+      "span-martinez-script-thresholds",
+      "span-martinez-script-ube-sd",
+      "span-martinez-table-45",
+      "span-ncbe-jurisdiction-status",
+      "span-ncbe-mbe-2022-counts",
+      "span-ncbe-ny-cutoff-2022",
+      "span-ncbe-snapshot-composition",
+      "span-ncbe-snapshot-typo",
+      "span-ncbe-ube-weights",
+      "span-ny-first-timers-2022",
+      "span-openai-v1-abstract-top-ten",
+      "span-openai-v1-collaborators",
+      "span-openai-v1-free-response-run",
+      "span-openai-v1-scoring",
+      "span-openai-v1-snapshots",
+      "span-openai-v1-table-score",
+      "span-openai-v6-table-score",
+      "span-reshetar-first-time-mean"
+    ]
+  },
+  "decision": "pass",
+  "findings": [
+    {
+      "severity": "material",
+      "status": "resolved",
+      "text": "Prior Mart\u00ednez locator defect is corrected: the score-validation sentence is introduction/journal p. 584; the distinct approximately 48th-percentile passers sentence remains discussion/journal p. 598."
+    },
+    {
+      "severity": "informational",
+      "status": "informational",
+      "text": "All five dynamic HTML captures reproduced exact raw-to-semantic identities and extents."
+    },
+    {
+      "severity": "informational",
+      "status": "informational",
+      "text": "Pinned Katz tree reproduced the 78-body manifest: 72 UTF-8 searched bodies and six binary no-text records."
+    },
+    {
+      "severity": "informational",
+      "status": "informational",
+      "text": "All 35 parent spans, 76 typed units, ten calculations, five roots, and ten typed lineage edges matched."
+    }
+  ],
+  "format": "epistemedia-independent-research-review-v1",
+  "git_state": {
+    "fresh_clone": true,
+    "post_review_clean": true,
+    "post_review_head": "f82ba30f2ae920a74eb1b27934800a2e151a0298",
+    "post_review_tree": "82f4b954b3a1d3126a873007fe4cffd7365e61d1",
+    "post_status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pre_review_clean": true,
+    "pre_review_head": "f82ba30f2ae920a74eb1b27934800a2e151a0298",
+    "pre_review_tree": "82f4b954b3a1d3126a873007fe4cffd7365e61d1",
+    "pre_status_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "unchanged_during_review": true
+  },
+  "limitations": [
+    "Fresh automated retrieval of the Texas A&M PDF may return HTTP 403; exact independently retained institutional VOR bytes, title, DOI, edition, digest, seven spans, and printed pages were revalidated.",
+    "Bounded Git and web searches do not prove that no inaccessible launch-time analysis existed.",
+    "Mirrors, derivatives, and shared method, material, author, citation, or derivation lineage receive no extra independence credit.",
+    "Historical GPT-4 exam results do not establish current-model performance or practicing-lawyer quality."
+  ],
+  "recommendation": "GO",
+  "repository": {
+    "branch": "codex/em-0032-gpt4-bar-lineage",
+    "diff_sha256": "e97f4e4075b848ff1f581d19f1ab69da2bf9de18a992dc0eb44c32581c00e3ce",
+    "pull_request": 57,
+    "reviewed_author_head": "f82ba30f2ae920a74eb1b27934800a2e151a0298",
+    "reviewed_author_tree": "82f4b954b3a1d3126a873007fe4cffd7365e61d1",
+    "reviewed_base": "a620f658e89ed527bc3a3a3b6d125d19c8d1c468",
+    "url": "https://github.com/yoheinakajima/epistemedia"
+  },
+  "review_results": {
+    "calculations": [
+      {
+        "calculation_id": "derive-illinois-feb-2018-298",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "4813027c99c24299532db6e5ea6b12cb701860b2221b1215eb0c5824e846194c",
+        "output_sha256": "b35c70042fb78628e2d0e90b95b9179cb1294ca5c5dbc6ac6dd5e028673fbc90",
+        "reproduced": true
+      },
+      {
+        "calculation_id": "derive-illinois-feb-2019-298",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "57d217f00fe7c68f240ba0508524a84cdc39c4d7c17e61f745e1ce22580cd22d",
+        "output_sha256": "f00bc3ba221504468a0f59aa081ff5efed4b13759de524a251e79c63cc578983",
+        "reproduced": true
+      },
+      {
+        "calculation_id": "derive-illinois-jul-2018-298",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "cb2b48cb5de9b7518e680b53d6ce6f935fe9fb13d805290487c33e52c5aa09fa",
+        "output_sha256": "5d7402cc71bf0e1ffd9431d60df278b830e91e73aa78e3d05e580eaccc688eda",
+        "reproduced": true
+      },
+      {
+        "calculation_id": "derive-martinez-first-time-essay",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "d8b2a9219e6cd071b8629c09597d9d86c2644b2ccc187e949e9cd1ae1f25a274",
+        "output_sha256": "954be6c786812f63309f1e3597a521aa057be13e41ac3f04ef48755ac3551046",
+        "reproduced": true
+      },
+      {
+        "calculation_id": "derive-martinez-first-time-mbe",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "795546e550a56e187ca2a8f4b6bc54738eafd833350da3ae4b4d15c0ee5ea9bc",
+        "output_sha256": "e21fe048bee771b74d947ecaaab41fadca251f3e9fe0feaf9fb1656ff7d7cd9f",
+        "reproduced": true
+      },
+      {
+        "calculation_id": "derive-martinez-first-time-ube",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "bf1cf2eb89f6ef68bfde1190647f8041c5ca17a269ae8354e52bea683b9f75bc",
+        "output_sha256": "3499ca3e6ef0b3ab53bd18982452f44d0aa5e6b1be6ced4491950a78c0e6090d",
+        "reproduced": true
+      },
+      {
+        "calculation_id": "derive-martinez-parameters",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "b04003f20b45fea1b3c570689a28d45c42143afab623ec8609f3cb54ee51a74f",
+        "output_sha256": "ff0a09ceee53d9dd976db2838b26979905a88ca985db4f7f14e0c50ea9cc280a",
+        "reproduced": true
+      },
+      {
+        "calculation_id": "derive-martinez-passers-essay",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "12ad1a705abe4c0944d88e0ca67f50b588dc1618558c3943758c5d72f4120c03",
+        "output_sha256": "e7849154cdc99d0e0fab922727cd384bf101b4daaa15f6449a2470cc9c195327",
+        "reproduced": true
+      },
+      {
+        "calculation_id": "derive-martinez-passers-mbe",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "19584b917472aa4a689f90cc79a26079211ef87be7e899e48310ddf0a2d98888",
+        "output_sha256": "7918990706f15ef52bbf633c850c75559a2dfd1548022d69a962e94d247de018",
+        "reproduced": true
+      },
+      {
+        "calculation_id": "derive-martinez-passers-ube",
+        "finding": "PASS: bound inputs independently recomputed and recorded output matched.",
+        "input_sha256": "f321c9f546efb087dfae3f4a38978f472f8f66d86d6e21911a21639bb1207d0f",
+        "output_sha256": "de35f690fee0b2c130158f270548f845db404ee7eb8ca41aee1731b8bbe81781",
+        "reproduced": true
+      }
+    ],
+    "lineage_edges": [
+      {
+        "edge_id": "edge-author-social-collaboration",
+        "edge_type": "author-social",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "15837b90407ff06087589160154f834bf43e5b6380c91eb20fc23aa4470f9ee8",
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-benchmark-illinois-charts",
+        "edge_type": "benchmark",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "c44a753caf9c114e5247307c7951ef8399522d95556aef5cced9f168b2e6d5ce",
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-citation-katz-to-martinez",
+        "edge_type": "citation",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "85bf5ee56fa1e2ad056d67b604e9099f2bbef26935d9ef3dd5c881966895ccf2",
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-comparison-class-first-time-passers",
+        "edge_type": "comparison-class",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "ca4b4f96e1023aecc96041cb449e7bdef38686c6374b0a9b3822dfbff7cf1061",
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-data-reported-score-reuse",
+        "edge_type": "data",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "104e391ac0a45b71ec4fe7eee0ca09f084858760f4e7c61e159a4c53c04411d1",
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-derivation-comparison-inputs",
+        "edge_type": "derivation",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "e73e32d3d371ad82fc8dea589c55f11ae58560a926c889b8290ef46722a940bc",
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-material-shared-exam-items",
+        "edge_type": "material",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "8a92f09ff8a8a99058e19953cccfc310831c43b71ed19c11e02f3b71cf3a6d9f",
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-method-single-free-response-run",
+        "edge_type": "method",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "9a683fc7f24c773f446393b68a2400bfc3a1dc1050de32bc6e795ffe8cf86f4c",
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-model-historical-snapshots",
+        "edge_type": "model",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "e71b774b594990fdd93847b6ba209fad29fc01036b3f44356ead4a84ab451217",
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-score-component-composite",
+        "edge_type": "score",
+        "finding": "PASS: typed dependence and evidence binding checked; shared evidence was not double-counted.",
+        "record_sha256": "fa0ec0b0c88cd7112c9926e90c4d46177062a295e0b3d97cfc2dcee1e60e9491",
+        "status": "pass"
+      }
+    ],
+    "lineage_roots": [
+      {
+        "finding": "PASS: evidence-bound root and type checked without extra independence credit.",
+        "lineage_id": "lineage-illinois-comparison-root",
+        "record_sha256": "97c49abf91ecc4b34a2888ac7d9743b0138626456c2edab116d1d471ab4ea6d1",
+        "root_type": "comparison-data",
+        "status": "pass"
+      },
+      {
+        "finding": "PASS: evidence-bound root and type checked without extra independence credit.",
+        "lineage_id": "lineage-martinez-analysis-root",
+        "record_sha256": "e5e34a8e1906dbe498f15be0fb9fca1fff5a2cbd9f8337fdc06bec49956839da",
+        "root_type": "analysis",
+        "status": "pass"
+      },
+      {
+        "finding": "PASS: evidence-bound root and type checked without extra independence credit.",
+        "lineage_id": "lineage-model-performance-root",
+        "record_sha256": "d9597a5bd49cf4a6cedab4d00dfac684f47c7a824ede496e7be7eb1eeb347aee",
+        "root_type": "performance",
+        "status": "pass"
+      },
+      {
+        "finding": "PASS: evidence-bound root and type checked without extra independence credit.",
+        "lineage_id": "lineage-ncbe-comparison-root",
+        "record_sha256": "19047d6ba52a3b2e4786e0e80811476a1bb1deba9ab93bdf613e5a052902327c",
+        "root_type": "comparison-data",
+        "status": "pass"
+      },
+      {
+        "finding": "PASS: evidence-bound root and type checked without extra independence credit.",
+        "lineage_id": "lineage-new-york-pass-rate-root",
+        "record_sha256": "c4f35511bbbb44765c8e51002c1be3b10a0482af0837ca7512bb9f9a73b34590",
+        "root_type": "comparison-data",
+        "status": "pass"
+      }
+    ],
+    "sources": [
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://www.ilbaradmissions.org/percentile-equivalent-charts-feb-2018",
+        "semantic_capture_sha256": null,
+        "source_id": "source-illinois-feb-2018",
+        "source_record_sha256": "ffd42acd91eaf194047e9d867f25f551d46ca8750927321b258a14d783ab6041"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://www.ilbaradmissions.org/percentile-equivalent-charts-february-2019",
+        "semantic_capture_sha256": null,
+        "source_id": "source-illinois-feb-2019",
+        "source_record_sha256": "aca770307a57ecdf654cb096a105fe94dee2f629e5ffc5ba28ca0d3de60236d6"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://www.ilbaradmissions.org/percentile-equivalent-charts-july-2018",
+        "semantic_capture_sha256": null,
+        "source_id": "source-illinois-jul-2018",
+        "source_record_sha256": "8818288bfc73dac1f59ac9a2affb20ac34617908c5a102435913d5b8e1aec0dc"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://api.figshare.com/v2/articles/25018513",
+        "semantic_capture_sha256": null,
+        "source_id": "source-katz-figshare",
+        "source_record_sha256": "58c7ae56f396f079568e4acd2f01d8837d6759daa23c6dbec72bb74d9ae5e26d"
+      },
+      {
+        "capture_assessment": "Pinned commit 90997f740c7197f3f300b013e4345e2ad5621f96/tree 810bd4a9a8ffb51e457715d2312d28d3e9657240 reproduced 78 blobs: 72 UTF-8 searched and six binary no-text.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://api.github.com/repos/mjbommar/gpt4-passes-the-bar/git/trees/90997f740c7197f3f300b013e4345e2ad5621f96?recursive=1",
+        "semantic_capture_sha256": "77eed8a0e0bacf7ded2368209120bd7d2e1390419ece9421373bc9c696f83105",
+        "source_id": "source-katz-git-snapshot",
+        "source_record_sha256": "500e5d0838500e89cc71290820cac7176cc88275363114332427a0c3b1659d40"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://api.crossref.org/works/10.2139/ssrn.4389233",
+        "semantic_capture_sha256": null,
+        "source_id": "source-katz-ssrn",
+        "source_record_sha256": "a7c47c04606c95d2f56d1f56b59afc67423d8ef7e6d97949f2224f35ab7a52d8"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10894685/fullTextXML",
+        "semantic_capture_sha256": null,
+        "source_id": "source-katz-vor",
+        "source_record_sha256": "31de23e0b6d2fd6b514b4f0a1386db56e9ab21f1fdc732868a3a7bf33825031e"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://osf.io/download/gujmp/?view_only=dcc617accc464491922b77414867a066",
+        "semantic_capture_sha256": null,
+        "source_id": "source-martinez-analysis-new",
+        "source_record_sha256": "36c2ce2b0912ec086d1442b7bdaa37e1591324e240452cf05575ec0cc1c8e018"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://api.osf.io/v2/nodes/c8ygu/?view_only=dcc617accc464491922b77414867a066",
+        "semantic_capture_sha256": "b18212bf119cd65f826d137a1306a266b446de193618822fcdcea3eae0903a6f",
+        "source_id": "source-martinez-osf",
+        "source_record_sha256": "4ab01c963117c1ac824aa54a39401724b1a3772cf8f99c791bc4e8bfe2f14b58"
+      },
+      {
+        "capture_assessment": "Texas A&M VOR PDF revalidated: 888663 bytes; SHA-256 bbab759cb88e93a5216936af1edb2726eb8eb0edde3148d18c1093bed9226e76; all seven readbacks matched.",
+        "finding": "PASS: score-validation sentence is at introduction, journal p. 584; distinct approximately 48th-percentile passers sentence is at discussion, journal p. 598.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://scholarship.law.tamu.edu/cgi/viewcontent.cgi?article=3387&context=facscholar",
+        "semantic_capture_sha256": null,
+        "source_id": "source-martinez-vor",
+        "source_record_sha256": "0f160f0a918abe104f056ff29f67370270a8240791b0c40df460e4e6948a4cac"
+      },
+      {
+        "capture_assessment": "Recorded raw HTML bytes independently reproduced root-scoped semantic bytes, digest, and every extent.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://thebarexaminer.ncbex.org/2022-statistics/first-time-exam-takers-and-repeaters-in-2022/",
+        "semantic_capture_sha256": "28a6ddf863f104d59b23674ed11a46951b87e088f4774c277f642e6d077e582d",
+        "source_id": "source-ncbe-first-repeat-2022",
+        "source_record_sha256": "06d4d245a34e9acd24294a777ec5c28d6b92155e0f38a28627e2bf33c7095018"
+      },
+      {
+        "capture_assessment": "Recorded raw HTML bytes independently reproduced root-scoped semantic bytes, digest, and every extent.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://thebarexaminer.ncbex.org/2022-statistics/the-multistate-bar-examination-mbe/",
+        "semantic_capture_sha256": "d738481ea3a38e6da39748d47aacc1291112766ec4720917ad0529a02a1f491e",
+        "source_id": "source-ncbe-mbe-2022",
+        "source_record_sha256": "0624276ad2469c1af32fa7bd3106929bdee94655b5f6ff47b1416c84362e5d08"
+      },
+      {
+        "capture_assessment": "Recorded raw HTML bytes independently reproduced root-scoped semantic bytes, digest, and every extent.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://thebarexaminer.ncbex.org/2022-statistics/2022-statistics-snapshot/",
+        "semantic_capture_sha256": "d1373f31770be2bbecb821047ef0ea95cb0c50e6088e0c26322de921cf797917",
+        "source_id": "source-ncbe-snapshot-2022",
+        "source_record_sha256": "7753ce52ced19576a8bb9d0a59eb26429f07b9a343aea3c68e97ed23fe2ac7c2"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://thebarexaminer.ncbex.org/2022-statistics/the-uniform-bar-examination-ube/",
+        "semantic_capture_sha256": null,
+        "source_id": "source-ncbe-ube-2022",
+        "source_record_sha256": "d8de1012c1fd13a80707cecf365e4b8168aac4f3317c501c58ec72570744ca73"
+      },
+      {
+        "capture_assessment": "Recorded raw HTML bytes independently reproduced root-scoped semantic bytes, digest, and every extent.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://www.ncbex.org/exams/ube/ube-scores",
+        "semantic_capture_sha256": "c7484bfc7a063ddde35b93e488f95c0e33894106e5f90df2b66cab9cb18837b7",
+        "source_id": "source-ncbe-ube-mechanics",
+        "source_record_sha256": "b89e16eb86b405c71cfe5caed6134626f22c08064ac63b3b9377ace1b3921a97"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://www.nybarexam.org/ExamStats/2022_NY_Bar_Exam_PassRates.pdf",
+        "semantic_capture_sha256": null,
+        "source_id": "source-ny-passrates-2022",
+        "source_record_sha256": "4368a58d8832aed78eec0c4d8a67af869f2ff79a6db8d6ded7d2678a0ea01f05"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://arxiv.org/pdf/2303.08774v1",
+        "semantic_capture_sha256": null,
+        "source_id": "source-openai-v1",
+        "source_record_sha256": "9a732478020ec7b2abfbaf5b2fcdfcc5e569a81f8a2a2c2129c00586bb9590f1"
+      },
+      {
+        "capture_assessment": "Exact captured bytes and quote-minimal readback matched the bound source record.",
+        "finding": "PASS: source identity and all used evidence spans closed.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://arxiv.org/pdf/2303.08774v6",
+        "semantic_capture_sha256": null,
+        "source_id": "source-openai-v6",
+        "source_record_sha256": "96d574203a34a7880c77dbcc409957fb3bf78ca782c61df1b1c044bdae957910"
+      },
+      {
+        "capture_assessment": "Recorded raw HTML bytes independently reproduced root-scoped semantic bytes, digest, and every extent.",
+        "finding": "PASS: visible Rosemary Reshetar byline governs; conflicting Jim Leach JSON-LD is disclosed and receives no authorship inference.",
+        "limitation": "Access and reuse remain limited exactly as recorded; this review grants no additional republication rights.",
+        "retrieval_assessment": "Authoritative carrier, work, edition, URL, byte identity, digest, and license treatment independently checked: https://thebarexaminer.ncbex.org/article/spring-2022/the-testing-column-5/",
+        "semantic_capture_sha256": "2222ea3b0110bcc02c189bb5d79ee9264ada557b2edae09077d985d472da92f6",
+        "source_id": "source-reshetar-testing-column-2022",
+        "source_record_sha256": "549d58d7747e8a3096e9ff77651037cab5d34e1ed0a8d5524e34e4f683fb1b8d"
+      }
+    ],
+    "spans": [
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-illinois-feb-2018-anchors",
+        "record_sha256": "2f4b1deeb4f2c6014bbe4103b9e178b7cf83f387a95a8be484e6db842882487c",
+        "source_id": "source-illinois-feb-2018",
+        "span_id": "cell-illinois-feb-2018-290",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-illinois-feb-2018-anchors",
+        "record_sha256": "8ba97f1be33e0cc27e8866794caa115798629ee95585f7fa01a691ec232dd5e2",
+        "source_id": "source-illinois-feb-2018",
+        "span_id": "cell-illinois-feb-2018-300",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-illinois-feb-2019-anchors",
+        "record_sha256": "d86f6cb3631d7dbaed1b796d4afcc2acf072915db2cbd95f90132cbaf667a256",
+        "source_id": "source-illinois-feb-2019",
+        "span_id": "cell-illinois-feb-2019-290",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-illinois-feb-2019-anchors",
+        "record_sha256": "3f977098cbf72b649a79f437f6c4b308e6a52515fbd80be548ab51d00081985c",
+        "source_id": "source-illinois-feb-2019",
+        "span_id": "cell-illinois-feb-2019-300",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-illinois-jul-2018-anchors",
+        "record_sha256": "781710acb2d83bd025bd4e857dfe7649b1f4dd07575509cecaa96d14f0f3e4ba",
+        "source_id": "source-illinois-jul-2018",
+        "span_id": "cell-illinois-jul-2018-290",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-illinois-jul-2018-anchors",
+        "record_sha256": "6e3963e81ddb7647caff7f046b679259533ec7132e081f88e8a60e37bad509f6",
+        "source_id": "source-illinois-jul-2018",
+        "span_id": "cell-illinois-jul-2018-300",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-components",
+        "record_sha256": "bef25d1578bc7ceda5f3ebb4a93e6e5e9772d1cf2bc03c0c55925544d3ecd9ad",
+        "source_id": "source-katz-vor",
+        "span_id": "cell-katz-gpt4-mbe",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-components",
+        "record_sha256": "08b1638f2a203001585a32049a87629b7bd414a7e056bbe7c56e8e97ed5fd9a8",
+        "source_id": "source-katz-vor",
+        "span_id": "cell-katz-gpt4-mee",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-components",
+        "record_sha256": "0e33a2b46fab5ea5b61755f8d6da86c334ad89965c97cd90973e5e99a4f80141",
+        "source_id": "source-katz-vor",
+        "span_id": "cell-katz-gpt4-mpt",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-components",
+        "record_sha256": "159792a814bbaa5f3e67a2f050adab7a8b83059bfed51b75bc454e4db0fcab0e",
+        "source_id": "source-katz-vor",
+        "span_id": "cell-katz-gpt4-overall",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-table-45",
+        "record_sha256": "a0e7d7b4dfaa7b6f14477b4ac62c6d221a579a1879a1b662be76d6a248850f06",
+        "source_id": "source-martinez-vor",
+        "span_id": "cell-martinez-first-timers-ube",
+        "unit_type": "cell",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "fde13fc3ad05b58cec8e4151c5bc7f2e4266015bece1f80805a0e14bee79c535",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-100",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "4b77ece094e68a6eb3a1f342234d854ad9c1555d0178e1c725c523bf5bb78e9f",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-105",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "4bc1fbee207471a1b936af87ce820ee600521f44a719873a606b09606e2125f8",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-110",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "0fb074a3c67f360500fbb6d3930c1f530bb2d9436ff12a2c7652f6120d13085a",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-115",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "4d4ee23bf045d7c84982358ef9e30c6b7552d26806426142d0286630fad34c86",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-120",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "a352b1c87c7334a8107ee1fcbdb2b70fb9732c4cd0ace4d7fa07351a36722669",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-125",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "41237e7a8a8c4504ae7bc4b3b566f16a1b03d6f9c6000b1a44cefc5c8b3125d8",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-130",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "120b7292f8c9791844081c9f597ea697b25803fe520b476b57e7bbc17f3703a5",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-135",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "49b4340b6287e0d55f0180be421c8606c7ec2f0bdb1fedcedd02012adad35ff3",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-140",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "d2600a80bc4da7edd725e621e1ada91758c0c7f6db93d88a27e5d2cbb200fab0",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-145",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "d34740356035415aa68bf612aeaee05d01dd8a5d80113977faed2cfa0536ecf3",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-150",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "4383c0e7afceb6fd4c177e96004345628bb5ed3f24d3a7af3d3cf7a306904625",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-155",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "04448879803b729ae8f3a3a6b79e54159f27ed31511d929bfaeae8f352a673eb",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-160",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "f00f1a10cdf3d1beb1bae5d5e6f65a3109eec9eae91bbeb0b8a72ddee27846a2",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-165",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "ece37e60b67a71697d15b6bf234eb46fa2e763b2c658b780c98064793c494507",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-170",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "14cc19e179670c62b9a03aad056b61b88c50d25d21ebd400e7331e87551d5951",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-175",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "0cbb473facf08a37b7147e03d28698e85688189a7acf3c58fbcf60936127a6ee",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-180",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "580a9a31dcac041c36ec30679e8a9926fad0f7540b97c53dbabef1f830e3038b",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-185",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "d39eb0c5de3a66974a797eff56ae0ccc5eb7dd8a0a9c99fef520c35dcc5a7d90",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-85",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "cd0cd75a7422046daed0cbb92ece428b958c1d4bc7368ce7f80fb0e5768a809d",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-90",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "5b4822a65b036771368ee06636e09d2c585d1a28618ee3f821e10462f766fcde",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "cell-martinez-july-mbe-95",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-table-45",
+        "record_sha256": "4a836704fb2175c50e585ca786679e05870fc7045418e8912b233de6b74daac7",
+        "source_id": "source-martinez-vor",
+        "span_id": "cell-martinez-july-ube",
+        "unit_type": "cell",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-table-45",
+        "record_sha256": "ee69b76469097aa70e53e29d364da96f14ad79bc2daa14444bb13860a2b61e0c",
+        "source_id": "source-martinez-vor",
+        "span_id": "cell-martinez-qualified-attorneys-ube",
+        "unit_type": "cell",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "9712111192f4fd99e107045ae277508501f9bfe1fd9f010a24c2b6a25f563b2a",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "cell-ncbe-mbe-count-february",
+        "unit_type": "cell",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "1858c250a150c44c76e7f496048f1c2ca1449270df791542c0e63f9d7279fd44",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "cell-ncbe-mbe-count-july",
+        "unit_type": "cell",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "f12b135dfa9ef2c4b183797a94c0eee8e180fef693ef0fd8d66dede21263b5e7",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "cell-ncbe-mbe-count-overall",
+        "unit_type": "cell",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "b749ee5159d3126716a8a07a06e29bf6fb20c79c5803c9335a8e9a679f0b8bde",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "cell-ncbe-mbe-mean-february",
+        "unit_type": "cell",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "b8d57124df127cb4fd923a7187f391be402c3dc2f6735ed8c033b6c2fca89153",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "cell-ncbe-mbe-mean-july",
+        "unit_type": "cell",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "138f18b78f2d5b1b9ad101761dbfd54b8203a37e6c91065c3f0e40a4f8936b62",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "cell-ncbe-mbe-mean-overall",
+        "unit_type": "cell",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "88a11a841a11c478d9ac8e753d58be200e9f889f29a7fcdea2eed40c36f31fc8",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "cell-ncbe-mbe-sd-february",
+        "unit_type": "cell",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "bf5f19247cce1c20589b0325ad7443f8de7ebd6f316bc6ab1eacc0bdb0a112a4",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "cell-ncbe-mbe-sd-july",
+        "unit_type": "cell",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "c38f36ee4bba270e0ba29ac06fed85f2347a9856f3c3999c88b6ced4ae50bc8d",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "cell-ncbe-mbe-sd-overall",
+        "unit_type": "cell",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-ny-cutoff-2022",
+        "record_sha256": "035cdae95fa1839c46bc82406f237d283493fb114aa1b64fe32e5ee98f751cdf",
+        "source_id": "source-ncbe-ube-2022",
+        "span_id": "cell-ncbe-ube-jurisdictions-266",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-ny-cutoff-2022",
+        "record_sha256": "c3a15732514a49669b46f8a31b075b5515ca2786301b59fa0150a2cb00303428",
+        "source_id": "source-ncbe-ube-2022",
+        "span_id": "cell-ncbe-ube-score-266",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ny-first-timers-2022",
+        "record_sha256": "d64907961becc874bcf27827826011021a3e670dcfa8b3b2f50c014e994aa7b5",
+        "source_id": "source-ny-passrates-2022",
+        "span_id": "cell-ny-first-timers-passed",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ny-first-timers-2022",
+        "record_sha256": "ab0a6966c4f1358e8e92d8eb1ebb95e2b2041578c436b61ac56dc205cfd25171",
+        "source_id": "source-ny-passrates-2022",
+        "span_id": "cell-ny-first-timers-rate",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ny-first-timers-2022",
+        "record_sha256": "361e009ab48625df0b810265793c24da28dd2a84e19715ca2f318a0226216b8a",
+        "source_id": "source-ny-passrates-2022",
+        "span_id": "cell-ny-first-timers-took",
+        "unit_type": "cell",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "55e77cc449712b043c9d3f6dd318d3118fe1815a544d36a37e04648d0fbedbdd",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "line-martinez-july-distribution-55",
+        "unit_type": "code-line",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "ac6721a402036b0fa5e0778060fa628735cd27d023ca449244106df6a20efa9e",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "line-martinez-july-distribution-56",
+        "unit_type": "code-line",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "d3916ffc3cacaf426cb6d61ca5f9b115aac12dab1afb4f587cc26ededdf80033",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "line-martinez-july-distribution-57",
+        "unit_type": "code-line",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "527170f56e045f0aec11f84294eee003acbcaead6f27e71dd9a977f7edfb30d2",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "line-martinez-july-distribution-58",
+        "unit_type": "code-line",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-materials",
+        "record_sha256": "5cfd04b95f224dda457a064abcb4bccbd7fe954881af45557b4f3691ed45a5e8",
+        "source_id": "source-katz-vor",
+        "span_id": "segment-katz-mbe-materials",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-materials",
+        "record_sha256": "a4bff017d50b39b0c33f6f46189b4478cf314de2b34b36b78f7d5f0af03c886f",
+        "source_id": "source-katz-vor",
+        "span_id": "segment-katz-mee-mpt-materials",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-abstract-ranks",
+        "record_sha256": "84120a687cbd7d7ee61590039a8c1f0075636b8b03fffa5a9e641eea891329b3",
+        "source_id": "source-martinez-vor",
+        "span_id": "segment-martinez-abstract-first-time",
+        "unit_type": "segment",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-abstract-ranks",
+        "record_sha256": "4484d16d1f8933b8ac963bcf4141ed7fcb0109f7afddfca4ab4baee249753305",
+        "source_id": "source-martinez-vor",
+        "span_id": "segment-martinez-abstract-passers",
+        "unit_type": "segment",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-comment-conflict",
+        "record_sha256": "25e2068036764cbac8d801133c7254a522354b73477ad659d7ac18b6ae554335",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-comment-prose",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-comment-conflict",
+        "record_sha256": "e23f075be35fa2b0106a26fffb3f1bb9152f0f7abf8b8dd35f82d2596ba4c378",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-comment-value",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-thresholds",
+        "record_sha256": "fd49b548bff58ca5be76e007554d3159ab4c6a9e150b6075c9b0cab1b573cdc8",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-filter-essay",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-thresholds",
+        "record_sha256": "1775f08f9290a7d72e3e168c7b8f367719db191732acecc147895703140c90ae",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-filter-mbe",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-thresholds",
+        "record_sha256": "00cee7a43fcfc5a63fc220059d2c5e9c9b92d1ea9cb37638e866dcff0d679b13",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-filter-ube",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-ube-sd",
+        "record_sha256": "22b96934e054fe5bd5a4b27593ae9c5ae0166f2ec04fe64cb9d8b69379864566",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-mean",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-ube-sd",
+        "record_sha256": "1c1b5aeafaa56367245fd2f9281d23c4c2eada1466048f4f7ac666d9a9ed6719",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-percentile",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-ube-sd",
+        "record_sha256": "05d803a2cf7b644f4e4c615b0bdab8eddbb30d804f40c50458a16f4b763f3eb5",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-quantile",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-ube-sd",
+        "record_sha256": "88324080dbece64281dd6d7ef6a92fa90457a6a3ac1ff28a1ef3271cebbe6392",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-ube-sd",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-ube-sd",
+        "record_sha256": "ba9b0c3590ff7c675eca9d783716034d531d91d4b900a7987b14ac162be0fb30",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "segment-martinez-code-z-score",
+        "unit_type": "segment",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-mean-assumption",
+        "record_sha256": "b0aac571c652f2c95a16f540441bdc92be3f94653ffee891869d2a38ce664c59",
+        "source_id": "source-martinez-vor",
+        "span_id": "segment-martinez-essay-mean",
+        "unit_type": "segment",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-mean-assumption",
+        "record_sha256": "68c7e72d256d686f518808e83d04c3a9317edbb784030fe76b00a59273200961",
+        "source_id": "source-martinez-vor",
+        "span_id": "segment-martinez-ube-mean",
+        "unit_type": "segment",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-composition",
+        "record_sha256": "d0278c0f9969aaf41205f3ae208cf73ecb12a765b8715009d619a21589ee6281",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "segment-ncbe-february-first-timers-count",
+        "unit_type": "segment",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-composition",
+        "record_sha256": "46258c5db1f0ea37eeca37c3fbe9169d6d33f2fdffeafc20d81aaaa6ae2bd257",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "segment-ncbe-february-first-timers-percent",
+        "unit_type": "segment",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-composition",
+        "record_sha256": "ab21af78431f850f437ad1522a357e936b56de1f05b7617586f22548a60b4660",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "segment-ncbe-february-repeaters-count",
+        "unit_type": "segment",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-composition",
+        "record_sha256": "130c17ad94d688522c9feb7e41239d2baf98b56242ad03476cae512af3de1fd8",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "segment-ncbe-february-repeaters-percent",
+        "unit_type": "segment",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-composition",
+        "record_sha256": "796e521bbeaba9f095184dc46265100ead049a41be1d627e848d2c8aeababa88",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "segment-ncbe-july-first-timers-count",
+        "unit_type": "segment",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-composition",
+        "record_sha256": "5e3b9e1a0c6a3e089d97c883dedcee6aaa971fd5d097a9c959ada1c99f147477",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "segment-ncbe-july-first-timers-percent",
+        "unit_type": "segment",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-composition",
+        "record_sha256": "98d5fc1d2de9b71cd62c49a37235a547ced0c750f4797847362f4c0ea23afab9",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "segment-ncbe-july-repeaters-count",
+        "unit_type": "segment",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-composition",
+        "record_sha256": "a733c6bdd3d08b2dd43a5c6ffaa630fc6c7bd7e00e228201e295a8e3af05fca1",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "segment-ncbe-july-repeaters-percent",
+        "unit_type": "segment",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-illinois-feb-2018-anchors",
+        "record_sha256": "b3b8f789db7571a4fd8ed73e5380f2847aae920172722b9f6f51eec96c62e9ce",
+        "source_id": "source-illinois-feb-2018",
+        "span_id": "span-illinois-feb-2018-anchors",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-illinois-feb-2019-anchors",
+        "record_sha256": "29f7ab38f7ff54e4576aa5b3c6fd310debd0520513f68fc3e21744af073923f8",
+        "source_id": "source-illinois-feb-2019",
+        "span_id": "span-illinois-feb-2019-anchors",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-illinois-jul-2018-anchors",
+        "record_sha256": "fe399dcc350821ac8ab546593931f1e34b24d811cad9062126e487a53783a783",
+        "source_id": "source-illinois-jul-2018",
+        "span_id": "span-illinois-jul-2018-anchors",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-abstract-score",
+        "record_sha256": "57920d8649f509df54908d08dfaefb9860e1afc005095c6cd4cb051344dff044",
+        "source_id": "source-katz-vor",
+        "span_id": "span-katz-vor-abstract-score",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-components",
+        "record_sha256": "e6c808d4b4dcd243210518497a0c8788d06ee91d8571c474c13514c2c8afe04b",
+        "source_id": "source-katz-vor",
+        "span_id": "span-katz-vor-components",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-materials",
+        "record_sha256": "9107c310f1bb38d087940d7432c989d2ab81d8e79356bc6a42a6c64bbf2db37e",
+        "source_id": "source-katz-vor",
+        "span_id": "span-katz-vor-materials",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-percentile-boundary",
+        "record_sha256": "53c5c3cd65f0c06ae12ec339f9a8f503b977ebaf9c1cd8723d9caecfa42bcdcb",
+        "source_id": "source-katz-vor",
+        "span_id": "span-katz-vor-percentile-boundary",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-range",
+        "record_sha256": "7e376175b36f8e2809bc74e378c7354858289a689370b70f82df2965d32b9026",
+        "source_id": "source-katz-vor",
+        "span_id": "span-katz-vor-range",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-katz-vor-score-discrepancy",
+        "record_sha256": "0ce9516e5b95f3b35121d471b8ab8d39b67199ffb40941deb28e07e2a07926ab",
+        "source_id": "source-katz-vor",
+        "span_id": "span-katz-vor-score-discrepancy",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-abstract-ranks",
+        "record_sha256": "29b4a769a3ca1d4de9c23bb7a8ffa40dca88f0071635f08c501122c0fb998dd7",
+        "source_id": "source-martinez-vor",
+        "span_id": "span-martinez-abstract-ranks",
+        "unit_type": "parent",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-discussion-48",
+        "record_sha256": "d999f5238c2ce339081283354841c9949e5a6a71a5370ea28eb635484832a707",
+        "source_id": "source-martinez-vor",
+        "span_id": "span-martinez-discussion-48",
+        "unit_type": "parent",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-mean-assumption",
+        "record_sha256": "d292fbd6a0a2c16559d69c651b273374cef4c7383b7c2605b97f85381bf8c62d",
+        "source_id": "source-martinez-vor",
+        "span_id": "span-martinez-mean-assumption",
+        "unit_type": "parent",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-model-assumptions",
+        "record_sha256": "3a80dd544d7516c8d33d8b55a4cdf44a2975a279ad377d53b09927cfcc26a733",
+        "source_id": "source-martinez-vor",
+        "span_id": "span-martinez-model-assumptions",
+        "unit_type": "parent",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-results-45",
+        "record_sha256": "94dbb34cb0b30aefe6ad46a54298be28df4bf1014c3a0d389f63e4615b3dc9bf",
+        "source_id": "source-martinez-vor",
+        "span_id": "span-martinez-results-45",
+        "unit_type": "parent",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-score-validation",
+        "record_sha256": "11db34f6066f861f338266e98c11852743b727734f62c1a773ae257bf219e609",
+        "source_id": "source-martinez-vor",
+        "span_id": "span-martinez-score-validation",
+        "unit_type": "parent",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-comment-conflict",
+        "record_sha256": "2b759e8e3e101214c3c2218fc2d6d3bd9bb25f03a25adecc9ce37c5217d8a8c3",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "span-martinez-script-comment-conflict",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-july-mbe-distribution",
+        "record_sha256": "9912e2d4f1e369b4f9529d27b6d1fef5936814f0c6151a9fe9f675af8c375e0c",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "span-martinez-script-july-mbe-distribution",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-thresholds",
+        "record_sha256": "e4f31613c4c910062cc0c84109333b81d866660c9565c354ac91f5fc1f76716f",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "span-martinez-script-thresholds",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-script-ube-sd",
+        "record_sha256": "29d389334aa2b12045b1d9febb630b66d80d832615d0764534e4e0a2ac49b55b",
+        "source_id": "source-martinez-analysis-new",
+        "span_id": "span-martinez-script-ube-sd",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-martinez-table-45",
+        "record_sha256": "200178847adc47281f699728e39c7ce7bb3f84704ed70de68b2e0c012f955be5",
+        "source_id": "source-martinez-vor",
+        "span_id": "span-martinez-table-45",
+        "unit_type": "parent",
+        "verification": "Exact text and visual readback matched the retained Texas A&M VOR PDF and printed journal page."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-jurisdiction-status",
+        "record_sha256": "1feddb6e088dae626d7d1cc8f6a0207c19ac7e9f736830bf3a3ae4085e374a42",
+        "source_id": "source-ncbe-first-repeat-2022",
+        "span_id": "span-ncbe-jurisdiction-status",
+        "unit_type": "parent",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-mbe-2022-counts",
+        "record_sha256": "0f6d015b519414ebec9cd4f12bbf7dea62dc9f77fb21378d73690b451d5f0f1e",
+        "source_id": "source-ncbe-mbe-2022",
+        "span_id": "span-ncbe-mbe-2022-counts",
+        "unit_type": "parent",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-ny-cutoff-2022",
+        "record_sha256": "8e029f660745d0cb0de2acd77e8d6e8c8f9c544d1ba560c3250bc30861ad653b",
+        "source_id": "source-ncbe-ube-2022",
+        "span_id": "span-ncbe-ny-cutoff-2022",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-composition",
+        "record_sha256": "c389829939a67dd8c1d353a75cb1bdbc6823160e0582ba17bf83ba6d1e939dbc",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "span-ncbe-snapshot-composition",
+        "unit_type": "parent",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-snapshot-typo",
+        "record_sha256": "6a3cc9c780c5f1bab27881609822639c99cf920c1064c85ef0789321b8161c9b",
+        "source_id": "source-ncbe-snapshot-2022",
+        "span_id": "span-ncbe-snapshot-typo",
+        "unit_type": "parent",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ncbe-ube-weights",
+        "record_sha256": "36c870be616697365e98e9eff8c3cdc750fb5d6e58f9e53503b18a5c39184356",
+        "source_id": "source-ncbe-ube-mechanics",
+        "span_id": "span-ncbe-ube-weights",
+        "unit_type": "parent",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-ny-first-timers-2022",
+        "record_sha256": "e55680bc3d09d5c2968a8449c122db232a89c5f89b29dc9944b69c2b1eeeee11",
+        "source_id": "source-ny-passrates-2022",
+        "span_id": "span-ny-first-timers-2022",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-openai-v1-abstract-top-ten",
+        "record_sha256": "61393f3895d80b5bb5e4e4240ff6c4b8bb9246f22b58ac1a766643c63887e95a",
+        "source_id": "source-openai-v1",
+        "span_id": "span-openai-v1-abstract-top-ten",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-openai-v1-collaborators",
+        "record_sha256": "e0b72dc61e4614a425e991b3fd9641db637b3516311659728f615bed0ea4100c",
+        "source_id": "source-openai-v1",
+        "span_id": "span-openai-v1-collaborators",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-openai-v1-free-response-run",
+        "record_sha256": "eebbf2c0c2999d72a017e9af6b4799d65577fb0715ac5d85e6ee757e05aae78e",
+        "source_id": "source-openai-v1",
+        "span_id": "span-openai-v1-free-response-run",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-openai-v1-scoring",
+        "record_sha256": "5abbca6a7e803506a3ed9db112873db65bfb4ba80dde648b0ba7b9ae96161a9f",
+        "source_id": "source-openai-v1",
+        "span_id": "span-openai-v1-scoring",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-openai-v1-snapshots",
+        "record_sha256": "9dc5f4260c333122ddb37e7ca7e2f3eecd1d1976475145759b772a7701c58f1e",
+        "source_id": "source-openai-v1",
+        "span_id": "span-openai-v1-snapshots",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-openai-v1-table-score",
+        "record_sha256": "9b8313637a2bd3881a98d675793538fbeb77ac8ac64f945ca8ae2d962d3fd79a",
+        "source_id": "source-openai-v1",
+        "span_id": "span-openai-v1-table-score",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-openai-v6-table-score",
+        "record_sha256": "62e0aa067c561b82430a89c5dc4f78c7c56a813ffcc28f0b4a03e13bf435815e",
+        "source_id": "source-openai-v6",
+        "span_id": "span-openai-v6-table-score",
+        "unit_type": "parent",
+        "verification": "Exact authoritative-carrier wording, boundary, locator, parent binding, and typed unit matched."
+      },
+      {
+        "finding": "PASS: quote-minimal exact match.",
+        "match": true,
+        "parent_span_id": "span-reshetar-first-time-mean",
+        "record_sha256": "1452bea6f3158b2b58d90800d02a6cf2348935e6a194e07ab22efc88c5f26302",
+        "source_id": "source-reshetar-testing-column-2022",
+        "span_id": "span-reshetar-first-time-mean",
+        "unit_type": "parent",
+        "verification": "Exact extent matched in independently recomputed root-scoped semantic HTML."
+      }
+    ]
+  },
+  "reviewer": {
+    "author_ids": [
+      "codex-builder"
+    ],
+    "authoring_notes_used_as_evidence": false,
+    "fresh_clone": true,
+    "id": "codex-independent-em0032-reviewer",
+    "independent_public_retrieval": true,
+    "notes": "Fresh bounded independent checkout; authoritative carriers and retained bytes were independently identity-checked; author notes were not evidence.",
+    "reviewer_is_author": false,
+    "role": "independent-reviewer"
+  },
+  "started_at": "2026-08-27T21:38:30Z",
+  "task_id": "EM-0032"
+}
