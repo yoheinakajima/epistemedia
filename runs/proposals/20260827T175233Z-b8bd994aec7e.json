@@ -1,0 +1,10 @@
+{
+  "command": "correct Argyle punctuation and P1/P2 span closure; rebuild packet; verify_packet.py --self-test; make check",
+  "id": "em:run-receipt:sha256:b8bd994aec7ed60bd696f3945056871ac71dc209698968ae1b76e4be6ba02b18",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-27T17:52:33Z",
+  "run_id": "em0033-exact-span-closure-20260827",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0033"
+}

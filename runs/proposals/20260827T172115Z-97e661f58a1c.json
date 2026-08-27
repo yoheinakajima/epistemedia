@@ -1,0 +1,10 @@
+{
+  "command": "correct exact Silent Messages 1971 formula and boundary transcriptions; rebuild packet; verify adversarial receipt gate; ruff check; make check",
+  "id": "em:run-receipt:sha256:97e661f58a1c69cb06d1d3dd67a255b6adb07b3c579b97e3885b9ad1cae67943",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-27T17:21:15Z",
+  "run_id": "em0033-1971-transcription-correction-20260827",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0033"
+}

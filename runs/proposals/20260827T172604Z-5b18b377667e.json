@@ -1,0 +1,10 @@
+{
+  "command": "bind capture reviews per source; reject duplicate result records; bind observed span and derivation digests; verify lineage evidence coverage; run adversarial self-test; ruff check; make check",
+  "id": "em:run-receipt:sha256:5b18b377667ed276b7b0853fc313eb938a57eccfa53b35e175e648815fb69a48",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-27T17:26:04Z",
+  "run_id": "em0033-review-gate-hardening-20260827",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0033"
+}

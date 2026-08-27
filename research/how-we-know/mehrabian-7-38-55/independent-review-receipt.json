@@ -1,0 +1,845 @@
+{
+  "bindings": {
+    "candidate_packet": {
+      "bytes": 65077,
+      "sha256": "6253a8ece3bb3b5bfb393ec04ad4e0f14b88f567ddea2923300538eadb7c8cde"
+    },
+    "packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+    "source_records": {
+      "bytes": 53857,
+      "sha256": "0ac4f87236882d32aa6018e50600a79642b87acdf05e27c291514e770fda081c"
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "976cd59029e296d38055b1971b9c169cada09a23..b94e1d67b8b59413973a4a2494393a65cca3a2be"
+      ],
+      "cwd": "/private/tmp/em0033-final-review.eE257a/repo",
+      "started_at": "2026-08-27T19:58:48Z",
+      "completed_at": "2026-08-27T19:58:48Z",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "python",
+        "research/how-we-know/mehrabian-7-38-55/build_packet.py",
+        "--check"
+      ],
+      "cwd": "/private/tmp/em0033-final-review.eE257a/repo",
+      "started_at": "2026-08-27T19:58:48Z",
+      "completed_at": "2026-08-27T19:58:48Z",
+      "exit_code": 0,
+      "stdout_sha256": "72efd992775a2f1d82633e45ef6846d05de20cc25754b27f07f3f808a5e39e8b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "python",
+        "research/how-we-know/mehrabian-7-38-55/verify_packet.py",
+        "--self-test"
+      ],
+      "cwd": "/private/tmp/em0033-final-review.eE257a/repo",
+      "started_at": "2026-08-27T19:58:48Z",
+      "completed_at": "2026-08-27T19:58:48Z",
+      "exit_code": 0,
+      "stdout_sha256": "6b727175a9982c996583db8eca4df939062b8fe9a89931852549504e3410edc6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "ruff",
+        "check",
+        "research/how-we-know/mehrabian-7-38-55/build_packet.py",
+        "research/how-we-know/mehrabian-7-38-55/verify_packet.py"
+      ],
+      "cwd": "/private/tmp/em0033-final-review.eE257a/repo",
+      "started_at": "2026-08-27T19:58:48Z",
+      "completed_at": "2026-08-27T19:58:48Z",
+      "exit_code": 0,
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "make",
+        "check"
+      ],
+      "cwd": "/private/tmp/em0033-final-review.eE257a/repo",
+      "started_at": "2026-08-27T19:58:48Z",
+      "completed_at": "2026-08-27T19:59:35Z",
+      "exit_code": 0,
+      "stdout_sha256": "5f099da0dde375658cbdcaa100f4506638836cb4346168aefb515a2b8c945dce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "complete": true,
+  "completed_at": "2026-08-27T19:59:35Z",
+  "coverage": {
+    "capture_ids": [
+      "capture-argyle-1970-crossref-20260827",
+      "capture-argyle-1971-crossref-20260827",
+      "capture-author-page-20260827",
+      "capture-birmingham-20260827",
+      "capture-ferris-crossref-20260823",
+      "capture-ferris-openalex-20260827",
+      "capture-ferris-pubmed-20260827",
+      "capture-ferris-scan-20260823",
+      "capture-hampshire-20260827",
+      "capture-hegstrom-crossref-20260827",
+      "capture-hegstrom-eric-20260827",
+      "capture-lapakko-1997-crossref-20260827",
+      "capture-lapakko-1997-eric-20260827",
+      "capture-lapakko-2007-crossref-20260827",
+      "capture-lapakko-2007-landing-20260827",
+      "capture-silent-1971-openlibrary-20260823",
+      "capture-silent-1971-scan-20260827",
+      "capture-silent-1981-openlibrary-20260827",
+      "capture-wiener-crossref-20260827",
+      "capture-wiener-openalex-20260827",
+      "capture-wiener-pubmed-20260827",
+      "capture-wiener-scan-20260823",
+      "readback-lapakko-2007-pdf-20260827"
+    ],
+    "claim_ids": [
+      "claim-1981-edition",
+      "claim-book-boundary",
+      "claim-hegstrom-rebuttal",
+      "claim-p1-tone-dominance",
+      "claim-p2-face-tone",
+      "claim-popular-rule",
+      "claim-propagation",
+      "claim-related-context",
+      "claim-replication-search",
+      "claim-seven-origin",
+      "claim-three-coefficient-proposal"
+    ],
+    "derivation_ids": [
+      "derive-implied-vocal-verbal-ratio",
+      "derive-p2-allocation-with-seven-reserved",
+      "derive-p2-facial-vocal-ratio",
+      "derive-proposed-facial-vocal-ratio",
+      "derive-proposed-sum",
+      "derive-ratio-difference"
+    ],
+    "follow_up_source_ids": [
+      "source-argyle-1970",
+      "source-argyle-1971",
+      "source-hegstrom-1979",
+      "source-lapakko-1997",
+      "source-lapakko-2007"
+    ],
+    "lineage_edge_ids": [
+      "edge-p1-p2-author-social",
+      "edge-p1-p2-grant",
+      "edge-p1-p2-material",
+      "edge-p1-p2-method",
+      "edge-p1-p2-participant",
+      "edge-p1-p2-proposal-derivation",
+      "edge-p1-p2-scale",
+      "edge-p1-p2-speaker",
+      "edge-p1-p2-stimulus",
+      "edge-p2-cites-p1",
+      "edge-silent-messages-editions"
+    ],
+    "propagation_ids": [
+      "propagation-birmingham-events",
+      "propagation-hampshire-pcc",
+      "propagation-lapakko-web-sample"
+    ],
+    "source_ids": [
+      "source-argyle-1970",
+      "source-argyle-1971",
+      "source-birmingham-events-2020",
+      "source-hampshire-pcc-2022",
+      "source-hegstrom-1979",
+      "source-lapakko-1997",
+      "source-lapakko-2007",
+      "source-mehrabian-author-qualification",
+      "source-mehrabian-ferris-1967",
+      "source-mehrabian-wiener-1967",
+      "source-silent-messages-1971",
+      "source-silent-messages-1981"
+    ],
+    "span_ids": [
+      "span-argyle-1970-abstract",
+      "span-argyle-1971-experiment-one",
+      "span-argyle-1971-experiment-two",
+      "span-author-equation",
+      "span-author-qualification",
+      "span-birmingham-generalization",
+      "span-ferris-authors",
+      "span-ferris-citation-p1",
+      "span-ferris-design",
+      "span-ferris-grants",
+      "span-ferris-maybe",
+      "span-ferris-models-speakers",
+      "span-ferris-proposal",
+      "span-ferris-regression",
+      "span-ferris-sample",
+      "span-ferris-scale",
+      "span-ferris-sums-of-squares",
+      "span-ferris-target",
+      "span-hampshire-generalization",
+      "span-hegstrom-design",
+      "span-hegstrom-result",
+      "span-lapakko-1997-abstract",
+      "span-lapakko-2007-63-of-79",
+      "span-lapakko-2007-abstract",
+      "span-lapakko-2007-limitations",
+      "span-silent-1971-boundary",
+      "span-silent-1971-liking",
+      "span-silent-1981-metadata",
+      "span-wiener-authors",
+      "span-wiener-ferris-acknowledgment",
+      "span-wiener-grants",
+      "span-wiener-instructions",
+      "span-wiener-result-boundary",
+      "span-wiener-safe-extension",
+      "span-wiener-sample",
+      "span-wiener-scale",
+      "span-wiener-single-words",
+      "span-wiener-speakers",
+      "span-wiener-stimulus-recording",
+      "span-wiener-target"
+    ]
+  },
+  "decision": "pass",
+  "findings": [
+    {
+      "severity": "material",
+      "status": "resolved",
+      "text": "The successor preserves source U+2010 punctuation exactly in all three Argyle abstract spans."
+    },
+    {
+      "severity": "material",
+      "status": "resolved",
+      "text": "The successor closes P1 and P2 stimulus, material, method, citation, and derivation assertions with exact selected-word, photograph, and cross-study integration spans."
+    },
+    {
+      "severity": "informational",
+      "status": "informational",
+      "text": "Current main 976cd59029e296d38055b1971b9c169cada09a23 was merged normally; the packet bytes remained unchanged."
+    },
+    {
+      "severity": "informational",
+      "status": "informational",
+      "text": "Exact author-head Validate run 33110905505 job 98653151092 succeeded; PR 58 remained open, draft, clean, mergeable, and had zero review threads."
+    }
+  ],
+  "format": "epistemedia-independent-research-review-v1",
+  "git_state": {
+    "fresh_clone": true,
+    "pre_review_clean": true,
+    "post_review_clean": true,
+    "unchanged_during_review": true,
+    "pre_review_head": "b94e1d67b8b59413973a4a2494393a65cca3a2be",
+    "post_review_head": "b94e1d67b8b59413973a4a2494393a65cca3a2be"
+  },
+  "limitations": [
+    "The 1981 edition identity is authoritative metadata only; its formula pages were not collated, so formula continuity from 1971 is not inferred.",
+    "The Lapakko 2007 direct PDF remained unavailable; the authoritative landing page and independent indexed semantic readback were checked, and inaccessible bytes receive no additional credit.",
+    "Closed Hegstrom and Argyle full texts were not inferred beyond the authoritative abstract readbacks and recorded access boundaries.",
+    "Some dynamic metadata response bytes changed during revalidation; semantic identity and exact readback were independently checked while the packet retains immutable capture receipts.",
+    "The exact source step for the .07 verbal coefficient and original experimental materials remain unresolved and receive no credit.",
+    "This pass covers the bounded research packet and GO recommendation only; it does not admit a public case, establish a universal communication rule, merge the PR, publish, or deploy."
+  ],
+  "recommendation": "GO",
+  "repository": {
+    "url": "https://github.com/yoheinakajima/epistemedia",
+    "pull_request": 58,
+    "branch": "codex/em-0033-mehrabian-lineage",
+    "reviewed_base": "976cd59029e296d38055b1971b9c169cada09a23",
+    "reviewed_author_head": "b94e1d67b8b59413973a4a2494393a65cca3a2be",
+    "reviewed_author_tree": "afaba3c85f4c0794cad3a31f167350ba92bdbee4",
+    "diff_sha256": "16ce66c807ec2a429c40a8ffadb8241c80bcfc8db2885e6b6c772f388997ae63"
+  },
+  "review_results": {
+    "derivations": [
+      {
+        "derivation_id": "derive-proposed-sum",
+        "expected_result_sha256": "d0ff5974b6aa52cf562bea5921840c032a860a91a3512f7fe8f768f6bbe005f6",
+        "observed_result_sha256": "d0ff5974b6aa52cf562bea5921840c032a860a91a3512f7fe8f768f6bbe005f6",
+        "reproduced": true
+      },
+      {
+        "derivation_id": "derive-proposed-facial-vocal-ratio",
+        "expected_result_sha256": "09e6e74dfde3024a8f7e9628f72ce899b3ab078ecaa189cf625ff5ed9677a2a9",
+        "observed_result_sha256": "09e6e74dfde3024a8f7e9628f72ce899b3ab078ecaa189cf625ff5ed9677a2a9",
+        "reproduced": true
+      },
+      {
+        "derivation_id": "derive-p2-facial-vocal-ratio",
+        "expected_result_sha256": "2285e5757b118b506875c31f7871b0258ebff677bb29382409ed98167675ae07",
+        "observed_result_sha256": "2285e5757b118b506875c31f7871b0258ebff677bb29382409ed98167675ae07",
+        "reproduced": true
+      },
+      {
+        "derivation_id": "derive-ratio-difference",
+        "expected_result_sha256": "d02890db613586d87ab2b53e56460f83ba6a5fe24950437cfbc106b03d3f4663",
+        "observed_result_sha256": "d02890db613586d87ab2b53e56460f83ba6a5fe24950437cfbc106b03d3f4663",
+        "reproduced": true
+      },
+      {
+        "derivation_id": "derive-implied-vocal-verbal-ratio",
+        "expected_result_sha256": "a384aadcd9e3dec5e0b09c41f18a5ec6d365b006296c044bd7e1f8592c15cd51",
+        "observed_result_sha256": "a384aadcd9e3dec5e0b09c41f18a5ec6d365b006296c044bd7e1f8592c15cd51",
+        "reproduced": true
+      },
+      {
+        "derivation_id": "derive-p2-allocation-with-seven-reserved",
+        "expected_result_sha256": "83755fa489879266e59d8beccc1d27eea878aa47da658948a4a1d244f2fe87cc",
+        "observed_result_sha256": "83755fa489879266e59d8beccc1d27eea878aa47da658948a4a1d244f2fe87cc",
+        "reproduced": true
+      }
+    ],
+    "lineage_edges": [
+      {
+        "edge_id": "edge-p1-p2-participant",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-sample",
+          "span-wiener-sample"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-p1-p2-speaker",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-models-speakers",
+          "span-wiener-speakers"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-p1-p2-author-social",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-authors",
+          "span-wiener-authors",
+          "span-wiener-ferris-acknowledgment"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-p1-p2-grant",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-grants",
+          "span-wiener-grants"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-p1-p2-stimulus",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-maybe",
+          "span-wiener-single-words"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-p1-p2-material",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-design",
+          "span-ferris-maybe",
+          "span-ferris-models-speakers",
+          "span-wiener-stimulus-recording"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-p1-p2-method",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-design",
+          "span-wiener-instructions",
+          "span-wiener-single-words"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-p1-p2-scale",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-scale",
+          "span-wiener-scale"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-p2-cites-p1",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-citation-p1",
+          "span-ferris-proposal"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-silent-messages-editions",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-silent-1971-liking",
+          "span-silent-1981-metadata"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      },
+      {
+        "edge_id": "edge-p1-p2-proposal-derivation",
+        "evidence_checked": true,
+        "evidence_span_ids": [
+          "span-ferris-citation-p1",
+          "span-ferris-proposal",
+          "span-ferris-regression"
+        ],
+        "independence_effect_checked": true,
+        "status": "pass"
+      }
+    ],
+    "sources": [
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-wiener-crossref-20260827",
+          "capture-wiener-openalex-20260827",
+          "capture-wiener-pubmed-20260827",
+          "capture-wiener-scan-20260823"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "status": "pass"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-ferris-crossref-20260823",
+          "capture-ferris-openalex-20260827",
+          "capture-ferris-pubmed-20260827",
+          "capture-ferris-scan-20260823"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "status": "pass"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-author-page-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-mehrabian-author-qualification",
+        "status": "pass"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-silent-1971-openlibrary-20260823",
+          "capture-silent-1971-scan-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-silent-messages-1971",
+        "status": "pass"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-silent-1981-openlibrary-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-silent-messages-1981",
+        "status": "pass-with-declared-gap"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-lapakko-1997-crossref-20260827",
+          "capture-lapakko-1997-eric-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-lapakko-1997",
+        "status": "pass"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-lapakko-2007-crossref-20260827",
+          "capture-lapakko-2007-landing-20260827",
+          "readback-lapakko-2007-pdf-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-lapakko-2007",
+        "status": "pass-with-declared-gap"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-hegstrom-crossref-20260827",
+          "capture-hegstrom-eric-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-hegstrom-1979",
+        "status": "pass-with-declared-gap"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-argyle-1970-crossref-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-argyle-1970",
+        "status": "pass-with-declared-gap"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-argyle-1971-crossref-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-argyle-1971",
+        "status": "pass-with-declared-gap"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-hampshire-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-hampshire-pcc-2022",
+        "status": "pass"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-birmingham-20260827"
+        ],
+        "identity_checked": true,
+        "license_checked": true,
+        "source_id": "source-birmingham-events-2020",
+        "status": "pass"
+      }
+    ],
+    "spans": [
+      {
+        "expected_sha256": "9f86c9e0e9a0912dc98e89492e403b3604c93a4c4b291594c31b9dff098be20d",
+        "match": true,
+        "observed_sha256": "9f86c9e0e9a0912dc98e89492e403b3604c93a4c4b291594c31b9dff098be20d",
+        "span_id": "span-wiener-authors",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "f36d310eb93d14dc5a0d0761bcfd5196da637264c310574f76c7c212cb7efadb",
+        "match": true,
+        "observed_sha256": "f36d310eb93d14dc5a0d0761bcfd5196da637264c310574f76c7c212cb7efadb",
+        "span_id": "span-wiener-grants",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "5fe2933c7f2a1e18b24f4421d9dd0180582f30887cd123618fe848945db1a85a",
+        "match": true,
+        "observed_sha256": "5fe2933c7f2a1e18b24f4421d9dd0180582f30887cd123618fe848945db1a85a",
+        "span_id": "span-wiener-speakers",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "400ac8d3f7b66282787262afc078cb26a6b8090d7d1b3d9cc1cbafd2ba590e21",
+        "match": true,
+        "observed_sha256": "400ac8d3f7b66282787262afc078cb26a6b8090d7d1b3d9cc1cbafd2ba590e21",
+        "span_id": "span-wiener-ferris-acknowledgment",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "32365cd2cac9626ee55ebdea19048ae1a2b9b70801559c91a3b26916b5d0c108",
+        "match": true,
+        "observed_sha256": "32365cd2cac9626ee55ebdea19048ae1a2b9b70801559c91a3b26916b5d0c108",
+        "span_id": "span-wiener-target",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "488d310c64fb4445de8193a17dce78b0fe41533b54446429038687fa082b1e97",
+        "match": true,
+        "observed_sha256": "488d310c64fb4445de8193a17dce78b0fe41533b54446429038687fa082b1e97",
+        "span_id": "span-wiener-single-words",
+        "verification": "Matched both exact segments to the independently retrieved P1 PDF at journal pages 109-110, including MAYBE, REALLY, and OH."
+      },
+      {
+        "expected_sha256": "4b7b80fe130fafffae5829f4d71f7bb0dd795103ea0d0601c019d77b648efd80",
+        "match": true,
+        "observed_sha256": "4b7b80fe130fafffae5829f4d71f7bb0dd795103ea0d0601c019d77b648efd80",
+        "span_id": "span-wiener-sample",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "4cb1102a04af97ed38d0a2e7c205dfad7deb5844a79d106d05259cf7ac9f30c3",
+        "match": true,
+        "observed_sha256": "4cb1102a04af97ed38d0a2e7c205dfad7deb5844a79d106d05259cf7ac9f30c3",
+        "span_id": "span-wiener-instructions",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "d0fd2ff6d09434d59506dd8baa65db231331bca622f7a360cb8d26bf10ac0f59",
+        "match": true,
+        "observed_sha256": "d0fd2ff6d09434d59506dd8baa65db231331bca622f7a360cb8d26bf10ac0f59",
+        "span_id": "span-wiener-stimulus-recording",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "79a892503102e31330c91f06aff865e9c50794cef6a8708a11145d8e616630a9",
+        "match": true,
+        "observed_sha256": "79a892503102e31330c91f06aff865e9c50794cef6a8708a11145d8e616630a9",
+        "span_id": "span-wiener-scale",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "24b4829f5b2eea31c281bba86db573262bea45e6250c8beedd675b8f9a45db40",
+        "match": true,
+        "observed_sha256": "24b4829f5b2eea31c281bba86db573262bea45e6250c8beedd675b8f9a45db40",
+        "span_id": "span-wiener-result-boundary",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "9c4d9597c61175b0e6ced4918ddea51d3aeb53df8e555780d626172e992cc68b",
+        "match": true,
+        "observed_sha256": "9c4d9597c61175b0e6ced4918ddea51d3aeb53df8e555780d626172e992cc68b",
+        "span_id": "span-wiener-safe-extension",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "ccbbe41f1e4ec76d7d14620f62caa2af412b1b8228fccdbf0ae43062408d35f7",
+        "match": true,
+        "observed_sha256": "ccbbe41f1e4ec76d7d14620f62caa2af412b1b8228fccdbf0ae43062408d35f7",
+        "span_id": "span-ferris-authors",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "cda7dfc2f1ed1632a34e92b220fca7788184c09ddb0016ce23fbfba056e2cfe2",
+        "match": true,
+        "observed_sha256": "cda7dfc2f1ed1632a34e92b220fca7788184c09ddb0016ce23fbfba056e2cfe2",
+        "span_id": "span-ferris-grants",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "f2c2c6a9095ce271eb0842c7b7268bfc09c732405f448a928ee4876b2eeed48b",
+        "match": true,
+        "observed_sha256": "f2c2c6a9095ce271eb0842c7b7268bfc09c732405f448a928ee4876b2eeed48b",
+        "span_id": "span-ferris-models-speakers",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "0a55d590acd009bec93e34c67f9c4b528154411b32575493cb9f9fde2b41924c",
+        "match": true,
+        "observed_sha256": "0a55d590acd009bec93e34c67f9c4b528154411b32575493cb9f9fde2b41924c",
+        "span_id": "span-ferris-target",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "3a4983215b94a8f7a35dfc1867bd6c435a3cd2b380bc8e9986a711c731452528",
+        "match": true,
+        "observed_sha256": "3a4983215b94a8f7a35dfc1867bd6c435a3cd2b380bc8e9986a711c731452528",
+        "span_id": "span-ferris-sample",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "c25471b821ce495d1763c8f398825a939f67fb6856a2cef7f162fe6416d87912",
+        "match": true,
+        "observed_sha256": "c25471b821ce495d1763c8f398825a939f67fb6856a2cef7f162fe6416d87912",
+        "span_id": "span-ferris-citation-p1",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "56c335cc10ba6cd0b1e00bbb4571a1fea45c4b9abde580f86093310dcc9f121e",
+        "match": true,
+        "observed_sha256": "56c335cc10ba6cd0b1e00bbb4571a1fea45c4b9abde580f86093310dcc9f121e",
+        "span_id": "span-ferris-maybe",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "4907fba561fdbd65d1135094c20e780a5813d5d27bc111a8d02440833a7acb30",
+        "match": true,
+        "observed_sha256": "4907fba561fdbd65d1135094c20e780a5813d5d27bc111a8d02440833a7acb30",
+        "span_id": "span-ferris-design",
+        "verification": "Matched the photograph materials sentence and both design segments to the independently retrieved P2 PDF at journal page 250."
+      },
+      {
+        "expected_sha256": "f75aae955db7d8f43645cdf9892aed90b48c9b02e6316dfc342219ae3dc82b47",
+        "match": true,
+        "observed_sha256": "f75aae955db7d8f43645cdf9892aed90b48c9b02e6316dfc342219ae3dc82b47",
+        "span_id": "span-ferris-scale",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "bd118404b90041fbbb3c264018163e4b4c03db1d33c6a4b007360d6387845b4d",
+        "match": true,
+        "observed_sha256": "bd118404b90041fbbb3c264018163e4b4c03db1d33c6a4b007360d6387845b4d",
+        "span_id": "span-ferris-sums-of-squares",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "7cf8e54d2b0fddc90a956178f67bb65ec005d41bb9b1c17e676e92458fbbf692",
+        "match": true,
+        "observed_sha256": "7cf8e54d2b0fddc90a956178f67bb65ec005d41bb9b1c17e676e92458fbbf692",
+        "span_id": "span-ferris-regression",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "25b2e2dcf6675d0e73fd204bb0e6303caa18f2fe5d9d6df5c7dea105cf49a50f",
+        "match": true,
+        "observed_sha256": "25b2e2dcf6675d0e73fd204bb0e6303caa18f2fe5d9d6df5c7dea105cf49a50f",
+        "span_id": "span-ferris-proposal",
+        "verification": "Matched the integration sentence and weighted-sum proposal segments to the independently retrieved P2 PDF at journal page 252."
+      },
+      {
+        "expected_sha256": "f74af100fbb21524c77c32d9d52a14dc6ff661fbb6685402365363ca1f532738",
+        "match": true,
+        "observed_sha256": "f74af100fbb21524c77c32d9d52a14dc6ff661fbb6685402365363ca1f532738",
+        "span_id": "span-author-equation",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "b177c97d10c09f52d123b7b2eb3577bd07cfc84d3f5954140f1d64045e463611",
+        "match": true,
+        "observed_sha256": "b177c97d10c09f52d123b7b2eb3577bd07cfc84d3f5954140f1d64045e463611",
+        "span_id": "span-author-qualification",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "b64646d71e22e4e9508d73d3b4896301ebf38472816e0002115a9ceea44e8f22",
+        "match": true,
+        "observed_sha256": "b64646d71e22e4e9508d73d3b4896301ebf38472816e0002115a9ceea44e8f22",
+        "span_id": "span-silent-1971-liking",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "f42ea8e4be606d422d7b6ab9495c3b03ad812d953dff3034ef07b5fa66613201",
+        "match": true,
+        "observed_sha256": "f42ea8e4be606d422d7b6ab9495c3b03ad812d953dff3034ef07b5fa66613201",
+        "span_id": "span-silent-1971-boundary",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "3520c0ef2afb95d687d9a61df564ccc1105381c6fab8a6ff5954779f3466dd2b",
+        "match": true,
+        "observed_sha256": "3520c0ef2afb95d687d9a61df564ccc1105381c6fab8a6ff5954779f3466dd2b",
+        "span_id": "span-silent-1981-metadata",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "e62ce29580268d0767bdfd1fd1e87898381c16c05cc97f789ea19e464b025fc6",
+        "match": true,
+        "observed_sha256": "e62ce29580268d0767bdfd1fd1e87898381c16c05cc97f789ea19e464b025fc6",
+        "span_id": "span-lapakko-1997-abstract",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "a712f31a787c456e3d1693cba28b62ec4d4a6f14db9d196176671f15fa66efd3",
+        "match": true,
+        "observed_sha256": "a712f31a787c456e3d1693cba28b62ec4d4a6f14db9d196176671f15fa66efd3",
+        "span_id": "span-lapakko-2007-abstract",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "d40f9be8d74579dc4b55180886d0eb17374f260e487bba97bc5a676a1a197c42",
+        "match": true,
+        "observed_sha256": "d40f9be8d74579dc4b55180886d0eb17374f260e487bba97bc5a676a1a197c42",
+        "span_id": "span-lapakko-2007-63-of-79",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "fc3c646bac3611993037d02aa42b56b0c374b8c2ea99260859d36aa057bc4231",
+        "match": true,
+        "observed_sha256": "fc3c646bac3611993037d02aa42b56b0c374b8c2ea99260859d36aa057bc4231",
+        "span_id": "span-lapakko-2007-limitations",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "6a5cf9079b86b76fe5c7cbc41c1cf69ee015b2537e6bccc0fbccfef3ec4b992e",
+        "match": true,
+        "observed_sha256": "6a5cf9079b86b76fe5c7cbc41c1cf69ee015b2537e6bccc0fbccfef3ec4b992e",
+        "span_id": "span-hegstrom-design",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "a05c496c590dbd519f345528c97b7badf4b1888fbdeb59952a7c24ad0d69af96",
+        "match": true,
+        "observed_sha256": "a05c496c590dbd519f345528c97b7badf4b1888fbdeb59952a7c24ad0d69af96",
+        "span_id": "span-hegstrom-result",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "1c646e683fa1fae891328ff0aa173a6819a4bffdaa3d85b14ab35d321fc51fce",
+        "match": true,
+        "observed_sha256": "1c646e683fa1fae891328ff0aa173a6819a4bffdaa3d85b14ab35d321fc51fce",
+        "span_id": "span-argyle-1970-abstract",
+        "verification": "Matched decoded Crossref abstract readback, preserving U+2010 punctuation exactly."
+      },
+      {
+        "expected_sha256": "0cf68d8b04488ee2dae7795e58ef3204eda6ea25a69ab0e8aa9799cf324d821b",
+        "match": true,
+        "observed_sha256": "0cf68d8b04488ee2dae7795e58ef3204eda6ea25a69ab0e8aa9799cf324d821b",
+        "span_id": "span-argyle-1971-experiment-one",
+        "verification": "Matched decoded Crossref abstract readback, preserving U+2010 punctuation exactly."
+      },
+      {
+        "expected_sha256": "02f4d3fdaf74b293076b3521515a54d6968638aaa4882fc9a3f25c4a7442333f",
+        "match": true,
+        "observed_sha256": "02f4d3fdaf74b293076b3521515a54d6968638aaa4882fc9a3f25c4a7442333f",
+        "span_id": "span-argyle-1971-experiment-two",
+        "verification": "Matched decoded Crossref abstract readback, preserving U+2010 punctuation exactly."
+      },
+      {
+        "expected_sha256": "88c8a056a68b7c5e737a5bdee82c65e6bf1e68002df30fc04961d7acf5b7a2ec",
+        "match": true,
+        "observed_sha256": "88c8a056a68b7c5e737a5bdee82c65e6bf1e68002df30fc04961d7acf5b7a2ec",
+        "span_id": "span-hampshire-generalization",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      },
+      {
+        "expected_sha256": "efbc0d7cb80da147fd0c043ea73dd348b337b0d44281ff3144588a0788f71ff9",
+        "match": true,
+        "observed_sha256": "efbc0d7cb80da147fd0c043ea73dd348b337b0d44281ff3144588a0788f71ff9",
+        "span_id": "span-birmingham-generalization",
+        "verification": "Matched the quote-minimal or structured span to the independently retrieved authoritative edition or declared authoritative readback at the recorded locator."
+      }
+    ]
+  },
+  "reviewer": {
+    "authoring_notes_used_as_evidence": false,
+    "fresh_clone": true,
+    "id": "codex-independent-em0033-reviewer",
+    "independent_public_retrieval": true,
+    "notes": "Fresh bounded clone review. Sources were independently retrieved into /private/tmp/em0033-final-review.eE257a/sources without author artifacts; successor span corrections were checked against preserved independent readbacks and primary-page images. Current main was merged normally before final binding.",
+    "reviewer_was_author": false,
+    "role": "independent-reviewer"
+  },
+  "started_at": "2026-08-27T19:55:30Z",
+  "task_id": "EM-0033"
+}
