@@ -1,0 +1,9 @@
+{
+  "agent_id": "codex-em0035-author",
+  "id": "em:task-claim:sha256:e88be1238d2751c47a95226a162b0c573eacbac1e1091ce8b85d1cd0e2d1125c",
+  "kind": "task-claim",
+  "recorded_at": "2026-08-27T20:14:03Z",
+  "schema": "https://epistemedia.com/schemas/task-claim-v1.json",
+  "status": "proposed",
+  "task_id": "EM-0035"
+}

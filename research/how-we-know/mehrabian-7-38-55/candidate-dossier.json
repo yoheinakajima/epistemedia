@@ -1,0 +1,3919 @@
+{
+  "assertions": [
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:803cb6783de07cf7cdf07f9f6b4fa0ba6f90260e2c632b3bc22cbf18e34a714a",
+      "key": "assertion-popular-rule",
+      "lineage_key": "lineage-general-rule-synthesis",
+      "proposition_key": "claim-popular-rule",
+      "span_keys": [
+        "span-wiener-target",
+        "span-ferris-target",
+        "span-author-qualification",
+        "span-hegstrom-result"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:ebdd4f1e65eefabd606619a37ddcd27ae5b3dffc51baca7e448fc7462229a108",
+      "key": "assertion-p1-tone-dominance",
+      "lineage_key": "lineage-participant-p1",
+      "proposition_key": "claim-p1-tone-dominance",
+      "span_keys": [
+        "span-wiener-single-words",
+        "span-wiener-result-boundary",
+        "span-wiener-safe-extension"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:44d449377d8acd03afde1370fb003c7fc04e5d030c3c2ddfd106cb9f2f28e06a",
+      "key": "assertion-p2-face-tone",
+      "lineage_key": "lineage-participant-p2",
+      "proposition_key": "claim-p2-face-tone",
+      "span_keys": [
+        "span-ferris-maybe",
+        "span-ferris-design",
+        "span-ferris-sums-of-squares",
+        "span-ferris-regression"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:3ea0b7437f3ae5c3a1c60bbb940ad581563333b7f578815a88b56ef0ed24f76d",
+      "key": "assertion-three-coefficient-proposal",
+      "lineage_key": "lineage-cross-study-proposal",
+      "proposition_key": "claim-three-coefficient-proposal",
+      "span_keys": [
+        "span-ferris-target",
+        "span-ferris-design",
+        "span-ferris-proposal"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:283b0b776cc00fa2677dd288220e1e1a944151ce28b79a7b96fb6e9902037357",
+      "key": "assertion-seven-origin",
+      "lineage_key": "lineage-seven-origin-unknown",
+      "proposition_key": "claim-seven-origin",
+      "span_keys": [
+        "span-ferris-regression",
+        "span-ferris-proposal",
+        "span-silent-1971-liking"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:dd01fd19de156eb2f84068f3960fdae385edb3d34ab40b1dae9540cb15058005",
+      "key": "assertion-book-boundary",
+      "lineage_key": "lineage-silent-1971",
+      "proposition_key": "claim-book-boundary",
+      "span_keys": [
+        "span-silent-1971-liking",
+        "span-silent-1971-boundary"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:17b3e5b2cfc84a9913242559430993f9cd7e2de0cd12b1e2e68431615d828e73",
+      "key": "assertion-1981-edition",
+      "lineage_key": "lineage-silent-1981-unknown",
+      "proposition_key": "claim-1981-edition",
+      "span_keys": [
+        "span-silent-1981-metadata",
+        "span-author-qualification"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:6f6a33cd77e7fa6d085187b91ba1e9a589acad04986f352b12cf05c7513cc590",
+      "key": "assertion-hegstrom-rebuttal",
+      "lineage_key": "lineage-hegstrom-rebuttal",
+      "proposition_key": "claim-hegstrom-rebuttal",
+      "span_keys": [
+        "span-hegstrom-design",
+        "span-hegstrom-result"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:00a1bf1927f6fddf44af42bfa0593a1662dd61dbb43b3b16ae5735847fdfa9e7",
+      "key": "assertion-related-context",
+      "lineage_key": "lineage-argyle-related-program",
+      "proposition_key": "claim-related-context",
+      "span_keys": [
+        "span-argyle-1970-abstract",
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:625df6dc815a85db806104d737cb1608203cafac09ede8fd3f112fa41919cf5c",
+      "key": "assertion-propagation",
+      "lineage_key": "lineage-propagation-synthesis",
+      "proposition_key": "claim-propagation",
+      "span_keys": [
+        "span-lapakko-2007-63-of-79",
+        "span-lapakko-2007-limitations",
+        "span-hampshire-generalization",
+        "span-birmingham-generalization"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0033-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:d3d7599ddaa7014e382283824f578cb199199174f3425c9e1a20485bc27dfcab",
+      "key": "assertion-replication-search",
+      "lineage_key": "lineage-follow-up-synthesis",
+      "proposition_key": "claim-replication-search",
+      "span_keys": [
+        "span-hegstrom-result",
+        "span-argyle-1971-experiment-two",
+        "span-lapakko-1997-abstract"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0033-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:dbbc0dc321e4993a04ba9453138a8948205e504794eea5343eff9c6f97159467",
+      "key": "assertion-derive-proposed-sum",
+      "lineage_key": "lineage-cross-study-proposal",
+      "proposition_key": "derive-proposed-sum",
+      "span_keys": [
+        "span-ferris-proposal"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0033-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:ce6d8d76fa89cd8527162f06c5b0f6e9caf15aed10add3715cf128cd4efadd31",
+      "key": "assertion-derive-proposed-facial-vocal-ratio",
+      "lineage_key": "lineage-cross-study-proposal",
+      "proposition_key": "derive-proposed-facial-vocal-ratio",
+      "span_keys": [
+        "span-ferris-proposal"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0033-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:2207227cbaeab78c16aa47a2cdc3524c33d04f4afa42a9010efbab89423a36d3",
+      "key": "assertion-derive-p2-facial-vocal-ratio",
+      "lineage_key": "lineage-cross-study-proposal",
+      "proposition_key": "derive-p2-facial-vocal-ratio",
+      "span_keys": [
+        "span-ferris-regression"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0033-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:a25802bf6855b74cb5d9ebc39962378f23f2e2f344939cab68fa04beea5f1609",
+      "key": "assertion-derive-ratio-difference",
+      "lineage_key": "lineage-cross-study-proposal",
+      "proposition_key": "derive-ratio-difference",
+      "span_keys": [
+        "span-ferris-regression",
+        "span-ferris-proposal"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0033-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:6e08aafaee76e583d19b243abec24edca63ef445638e190176ef63f16e65ce94",
+      "key": "assertion-derive-implied-vocal-verbal-ratio",
+      "lineage_key": "lineage-seven-origin-unknown",
+      "proposition_key": "derive-implied-vocal-verbal-ratio",
+      "span_keys": [
+        "span-ferris-proposal"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0033-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:031fb34ae4c15728800787541044784290bc5c9f9ab79ebf103908165a485e02",
+      "key": "assertion-derive-p2-allocation-with-seven-reserved",
+      "lineage_key": "lineage-seven-origin-unknown",
+      "proposition_key": "derive-p2-allocation-with-seven-reserved",
+      "span_keys": [
+        "span-ferris-regression",
+        "span-ferris-proposal"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0035-relation-counter",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:ccb3bb6ff58b375412cad11547926ff97cd4e1fb3556076bb383cad145a3b767",
+      "key": "assertion-reviewed-source-register",
+      "lineage_key": "lineage-reviewed-source-register",
+      "proposition_key": "prop-reviewed-source-register",
+      "span_keys": [
+        "span-argyle-1970-abstract",
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two",
+        "span-author-equation",
+        "span-author-qualification",
+        "span-birmingham-generalization",
+        "span-ferris-authors",
+        "span-ferris-citation-p1",
+        "span-ferris-design",
+        "span-ferris-grants",
+        "span-ferris-maybe",
+        "span-ferris-models-speakers",
+        "span-ferris-proposal",
+        "span-ferris-regression",
+        "span-ferris-sample",
+        "span-ferris-scale",
+        "span-ferris-sums-of-squares",
+        "span-ferris-target",
+        "span-hampshire-generalization",
+        "span-hegstrom-design",
+        "span-hegstrom-result",
+        "span-lapakko-1997-abstract",
+        "span-lapakko-2007-63-of-79",
+        "span-lapakko-2007-abstract",
+        "span-lapakko-2007-limitations",
+        "span-silent-1971-boundary",
+        "span-silent-1971-liking",
+        "span-silent-1981-metadata",
+        "span-wiener-authors",
+        "span-wiener-ferris-acknowledgment",
+        "span-wiener-grants",
+        "span-wiener-instructions",
+        "span-wiener-result-boundary",
+        "span-wiener-safe-extension",
+        "span-wiener-sample",
+        "span-wiener-scale",
+        "span-wiener-single-words",
+        "span-wiener-speakers",
+        "span-wiener-stimulus-recording",
+        "span-wiener-target"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0035-encyclopedia-policy",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:e0cfac40d023958fa35dfec9c2b08027c9c5e70b77a62ddb01141ac6432d570d",
+      "key": "assertion-encyclopedia-evaluation",
+      "lineage_key": "lineage-general-rule-synthesis",
+      "proposition_key": "prop-encyclopedia-evaluation",
+      "span_keys": [
+        "span-wiener-target",
+        "span-ferris-target",
+        "span-ferris-design",
+        "span-ferris-proposal",
+        "span-silent-1971-boundary",
+        "span-author-qualification"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0035-skeptical-policy",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-27T16:03:55Z",
+      "id": "em:dossier-assertion:sha256:4456fcc5c9d5d42f7bf7a3abe3a3f6a05c192c62d93f7faa370b57e4f6afdd05",
+      "key": "assertion-skeptical-evaluation",
+      "lineage_key": "lineage-general-rule-synthesis",
+      "proposition_key": "prop-skeptical-evaluation",
+      "span_keys": [
+        "span-wiener-target",
+        "span-ferris-target",
+        "span-ferris-design",
+        "span-ferris-proposal",
+        "span-hegstrom-result",
+        "span-lapakko-1997-abstract"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    }
+  ],
+  "claim_families": [
+    {
+      "assertion_keys": [
+        "assertion-popular-rule",
+        "assertion-p1-tone-dominance",
+        "assertion-p2-face-tone",
+        "assertion-three-coefficient-proposal",
+        "assertion-seven-origin",
+        "assertion-book-boundary",
+        "assertion-1981-edition",
+        "assertion-hegstrom-rebuttal",
+        "assertion-related-context",
+        "assertion-propagation",
+        "assertion-replication-search",
+        "assertion-derive-proposed-sum",
+        "assertion-derive-proposed-facial-vocal-ratio",
+        "assertion-derive-p2-facial-vocal-ratio",
+        "assertion-derive-ratio-difference",
+        "assertion-derive-implied-vocal-verbal-ratio",
+        "assertion-derive-p2-allocation-with-seven-reserved",
+        "assertion-reviewed-source-register",
+        "assertion-encyclopedia-evaluation",
+        "assertion-skeptical-evaluation"
+      ],
+      "id": "em:dossier-claim-family:sha256:5fe8217efe4c2a8b4ce6705a3a2b2c64a5f681e7b5c4aa28118a92459d12d4e4",
+      "key": "family-mehrabian-7-38-55",
+      "proposition_keys": [
+        "claim-popular-rule",
+        "claim-p1-tone-dominance",
+        "claim-p2-face-tone",
+        "claim-three-coefficient-proposal",
+        "claim-seven-origin",
+        "claim-book-boundary",
+        "claim-1981-edition",
+        "claim-hegstrom-rebuttal",
+        "claim-related-context",
+        "claim-propagation",
+        "claim-replication-search",
+        "derive-proposed-sum",
+        "derive-proposed-facial-vocal-ratio",
+        "derive-p2-facial-vocal-ratio",
+        "derive-ratio-difference",
+        "derive-implied-vocal-verbal-ratio",
+        "derive-p2-allocation-with-seven-reserved",
+        "prop-reviewed-source-register",
+        "prop-encyclopedia-evaluation",
+        "prop-skeptical-evaluation"
+      ],
+      "question": "What did the 7-38-55 weighting represent in the examined primary editions, how was it derived, and what supports or undercuts its circulation as a general rule of communication?",
+      "relation_keys": [
+        "relation-assertion-popular-rule",
+        "relation-assertion-p1-tone-dominance",
+        "relation-assertion-p2-face-tone",
+        "relation-assertion-three-coefficient-proposal",
+        "relation-assertion-seven-origin",
+        "relation-assertion-book-boundary",
+        "relation-assertion-1981-edition",
+        "relation-assertion-hegstrom-rebuttal",
+        "relation-assertion-related-context",
+        "relation-assertion-propagation",
+        "relation-assertion-replication-search",
+        "relation-assertion-derive-proposed-sum",
+        "relation-assertion-derive-proposed-facial-vocal-ratio",
+        "relation-assertion-derive-p2-facial-vocal-ratio",
+        "relation-assertion-derive-ratio-difference",
+        "relation-assertion-derive-implied-vocal-verbal-ratio",
+        "relation-assertion-derive-p2-allocation-with-seven-reserved",
+        "relation-assertion-reviewed-source-register",
+        "relation-assertion-encyclopedia-evaluation",
+        "relation-assertion-skeptical-evaluation",
+        "relation-author-qualification",
+        "relation-hegstrom-direct-rebuttal",
+        "relation-lapakko-method-undercutting",
+        "relation-argyle-context-qualification",
+        "edge-p1-p2-author-social",
+        "edge-p1-p2-grant",
+        "edge-p1-p2-material",
+        "edge-p1-p2-method",
+        "edge-p1-p2-participant",
+        "edge-p1-p2-proposal-derivation",
+        "edge-p1-p2-scale",
+        "edge-p1-p2-speaker",
+        "edge-p1-p2-stimulus",
+        "edge-p2-cites-p1",
+        "edge-silent-messages-editions"
+      ],
+      "title": "Mehrabian 7-38-55: narrow findings, later integration, and overgeneralization",
+      "visibility": "public"
+    }
+  ],
+  "dossier_id": "em:dossier:sha256:57e80c9a44c478c1c81ba7adedc1bafdef43ff57b4f2984015dcbef84ba66e87",
+  "editions": [
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "Michael Argyle",
+            "Veronica Salter",
+            "Hilary Nicholson",
+            "Marylin Williams",
+            "Philip Burgess"
+          ],
+          "captures": [
+            {
+              "bytes": 3993,
+              "capture_id": "capture-argyle-1970-crossref-20260827",
+              "media_type": "application/json",
+              "sha256": "999419e8888838431c7991e85022fd88f1d0bd9fe5b71d32842341ca80824172"
+            }
+          ],
+          "container": "British Journal of Social and Clinical Psychology 9(3), 222-231",
+          "edition_id": "edition-argyle-bjscp-9-3",
+          "identifiers": {
+            "doi": "10.1111/j.2044-8260.1970.tb00668.x"
+          },
+          "license_treatment": "Closed publisher version; metadata and publisher abstract readback only.",
+          "publication_date": "1970-09",
+          "source_id": "source-argyle-1970",
+          "spans": [
+            {
+              "locator": "publisher abstract readback",
+              "quote": "Ratings were made by 120 subjects of 18 video‐tapes ... non‐verbal cues now had 4.3 times the effect of verbal cues",
+              "quote_sha256": "1c646e683fa1fae891328ff0aa173a6819a4bffdaa3d85b14ab35d321fc51fce",
+              "segments": [
+                "Ratings were made by 120 subjects of 18 video‐tapes",
+                "non‐verbal cues now had 4.3 times the effect of verbal cues"
+              ],
+              "span_id": "span-argyle-1970-abstract",
+              "span_kind": "verbatim_segments",
+              "supports": "A related superiority/inferiority task found nonverbal dominance, but with different materials and estimand."
+            }
+          ],
+          "title": "The Communication of Inferior and Superior Attitudes by Verbal and Non-verbal Signals",
+          "urls": {
+            "doi": "https://doi.org/10.1111/j.2044-8260.1970.tb00668.x"
+          },
+          "work_id": "work-argyle-1970"
+        }
+      },
+      "content_digest": "sha256:4cf3916c4f1bdf828d902cfec6f569a8222d7eebbfb6af13cb128fec43ab5f35",
+      "content_length": 1598,
+      "edition_label": "Reviewed source-record projection of edition-argyle-bjscp-9-3",
+      "id": "em:dossier-edition:sha256:dbe5cc1f6c6a55aef31517c44c8e1a862c8723676f2ada75003edf0d02efe4d5",
+      "key": "edition-argyle-bjscp-9-3",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-argyle-1970"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "Michael Argyle",
+            "Florisse Alkema",
+            "Robin Gilmour"
+          ],
+          "captures": [
+            {
+              "bytes": 5510,
+              "capture_id": "capture-argyle-1971-crossref-20260827",
+              "media_type": "application/json",
+              "sha256": "f4e1b557998636cde68ef84eb54ad75aed1ac2bf0e495e14b087b2d729ce310a"
+            }
+          ],
+          "container": "European Journal of Social Psychology 1(3), 385-402",
+          "edition_id": "edition-argyle-ejsp-1-3",
+          "identifiers": {
+            "doi": "10.1002/ejsp.2420010307"
+          },
+          "license_treatment": "Closed publisher version; metadata and publisher abstract readback only.",
+          "publication_date": "1971-07",
+          "source_id": "source-argyle-1971",
+          "spans": [
+            {
+              "locator": "publisher abstract readback",
+              "quote": "non‐verbal cues accounted for 12.5 times as much variance as verbal cues",
+              "quote_sha256": "0cf68d8b04488ee2dae7795e58ef3204eda6ea25a69ab0e8aa9799cf324d821b",
+              "span_id": "span-argyle-1971-experiment-one",
+              "supports": "The first related experiment produced strong nonverbal dominance."
+            },
+            {
+              "locator": "publisher abstract readback",
+              "quote": "the ratio of non‐verbal : verbal variance was now 1.67:1",
+              "quote_sha256": "02f4d3fdaf74b293076b3521515a54d6968638aaa4882fc9a3f25c4a7442333f",
+              "span_id": "span-argyle-1971-experiment-two",
+              "supports": "Changing cue strength materially changed the ratio, undercutting a universal fixed weighting."
+            }
+          ],
+          "title": "The communication of friendly and hostile attitudes by verbal and non-verbal signals",
+          "urls": {
+            "doi": "https://doi.org/10.1002/ejsp.2420010307"
+          },
+          "work_id": "work-argyle-1971"
+        }
+      },
+      "content_digest": "sha256:7b3be73b5cb9427f9bc7640bb873af96e4e40d31bc9a209d16304c7198123ac8",
+      "content_length": 1620,
+      "edition_label": "Reviewed source-record projection of edition-argyle-ejsp-1-3",
+      "id": "em:dossier-edition:sha256:c8542f0e68ad35acf1023c9078ea5f8353202dc3843cb9e36a52400fc7a49962",
+      "key": "edition-argyle-ejsp-1-3",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-argyle-1971"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "University of Birmingham Conferences & Events"
+          ],
+          "captures": [
+            {
+              "bytes": 149346,
+              "capture_id": "capture-birmingham-20260827",
+              "media_type": "text/html",
+              "sha256": "d3141e29edec0ed114ffeeb4e2a58ff555e610803cb765339623a09f90b4513d"
+            }
+          ],
+          "edition_id": "edition-birmingham-events-20260827",
+          "license_treatment": "No page-specific open license observed; quote minimally. This is a propagation object and receives zero scientific evidence credit.",
+          "publication_date": "2020-01-20",
+          "source_id": "source-birmingham-events-2020",
+          "spans": [
+            {
+              "locator": "HTML article body, second paragraph",
+              "quote": "studies show 93% of communication is non-verbal",
+              "quote_sha256": "efbc0d7cb80da147fd0c043ea73dd348b337b0d44281ff3144588a0788f71ff9",
+              "span_id": "span-birmingham-generalization",
+              "supports": "A university events page circulated the broad proposition."
+            }
+          ],
+          "title": "Audio visual for events explained",
+          "urls": {
+            "landing": "https://conferences.bham.ac.uk/2020/01/20/audio-visual-for-events-explained/"
+          },
+          "work_id": "work-birmingham-events-page-2020"
+        }
+      },
+      "content_digest": "sha256:f481aca73220ac9d3584b654f859a585e40caae83197a2883e29b8c2f8463f33",
+      "content_length": 1207,
+      "edition_label": "Reviewed source-record projection of edition-birmingham-events-20260827",
+      "id": "em:dossier-edition:sha256:728001ca02a47d4d85fb36bfa257790c5014b162d656e0a70c44725eff39b249",
+      "key": "edition-birmingham-events-20260827",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-birmingham-events-page-2020"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "Hampshire Police and Crime Commissioner"
+          ],
+          "captures": [
+            {
+              "bytes": 7000460,
+              "capture_id": "capture-hampshire-20260827",
+              "media_type": "application/pdf",
+              "sha256": "5677956dbd94000ab9cf78546d6ea41789c5552a2362e5ff172bb232ffb27168"
+            }
+          ],
+          "edition_id": "edition-hampshire-pcc-master-010322",
+          "license_treatment": "No artifact-specific open license observed; quote minimally. This is a propagation object and receives zero scientific evidence credit.",
+          "publication_date": "2022-03",
+          "source_id": "source-hampshire-pcc-2022",
+          "spans": [
+            {
+              "locator": "PDF slide titled Interesting facts",
+              "quote": "70 to 93 percent of all communication is nonverbal",
+              "quote_sha256": "88c8a056a68b7c5e737a5bdee82c65e6bf1e68002df30fc04961d7acf5b7a2ec",
+              "span_id": "span-hampshire-generalization",
+              "supports": "An official training deck generalized the range to all communication."
+            }
+          ],
+          "title": "Police and Crime Plan - Developing the Implementation Plan",
+          "urls": {
+            "pdf": "https://www.hampshire-pcc.gov.uk/wp-content/uploads/2022/03/MASTER-010322.pdf"
+          },
+          "work_id": "work-hampshire-pcc-deck-2022"
+        }
+      },
+      "content_digest": "sha256:1c40fc037fa42d8eb7d3f7221c6f4b46f593cdce1d0ed47339fa87cf146ca846",
+      "content_length": 1235,
+      "edition_label": "Reviewed source-record projection of edition-hampshire-pcc-master-010322",
+      "id": "em:dossier-edition:sha256:fe5cee1c9a3e2485b56a45168ee8e5bf71bc98c95750ae539f41e78bba7954b4",
+      "key": "edition-hampshire-pcc-master-010322",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-hampshire-pcc-deck-2022"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "Timothy G. Hegstrom"
+          ],
+          "captures": [
+            {
+              "bytes": 3642,
+              "capture_id": "capture-hegstrom-crossref-20260827",
+              "media_type": "application/json",
+              "sha256": "17cd8545c44263665b14f19a8764aa19bb87cf7250ae34a505cd6ae31b3f084a"
+            },
+            {
+              "bytes": 10495,
+              "capture_id": "capture-hegstrom-eric-20260827",
+              "media_type": "text/html",
+              "sha256": "9095dde4a5fe3395afe6489942c58895d49cce2b825ccb439667a51e59229e4f"
+            }
+          ],
+          "container": "Western Journal of Speech Communication 43(2), 134-142",
+          "edition_id": "edition-hegstrom-wjsc-43-2",
+          "identifiers": {
+            "doi": "10.1080/10570317909373961",
+            "eric": "EJ210721"
+          },
+          "license_treatment": "Publisher full text is closed and returned HTTP 403. The public ERIC and publisher abstracts are used quote-minimally; no full text is redistributed.",
+          "publication_date": "1979",
+          "source_id": "source-hegstrom-1979",
+          "spans": [
+            {
+              "locator": "ERIC abstract",
+              "quote": "all-channel condition as the criterion variable and the verbal, vocal, and facial channels as predictor variables",
+              "quote_sha256": "6a5cf9079b86b76fe5c7cbc41c1cf69ee015b2537e6bccc0fbccfef3ec4b992e",
+              "span_id": "span-hegstrom-design",
+              "supports": "Hegstrom directly reconsidered the formula using all three channel predictors."
+            },
+            {
+              "locator": "ERIC abstract",
+              "quote": "Regression equations for each of four messages were quite different from Mehrabian's formula and from each other",
+              "quote_sha256": "a05c496c590dbd519f345528c97b7badf4b1888fbdeb59952a7c24ad0d69af96",
+              "span_id": "span-hegstrom-result",
+              "supports": "The direct rebuttal favored a message-contextual rather than fixed additive model."
+            }
+          ],
+          "title": "Message impact: What percentage is nonverbal?",
+          "urls": {
+            "doi": "https://doi.org/10.1080/10570317909373961",
+            "eric": "https://eric.ed.gov/?id=EJ210721"
+          },
+          "work_id": "work-hegstrom-1979"
+        }
+      },
+      "content_digest": "sha256:a8f0ffa29df479841a3725edc8a8c4e05bc1dc2326b5fce71989f9635c9426b3",
+      "content_length": 1905,
+      "edition_label": "Reviewed source-record projection of edition-hegstrom-wjsc-43-2",
+      "id": "em:dossier-edition:sha256:aab90cb44b2944deef68a4fb245bf3c6681ae4814e3befaf254e24ac6aefc392",
+      "key": "edition-hegstrom-wjsc-43-2",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-hegstrom-1979"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "David Lapakko"
+          ],
+          "captures": [
+            {
+              "bytes": 4332,
+              "capture_id": "capture-lapakko-1997-crossref-20260827",
+              "media_type": "application/json",
+              "sha256": "043781416ca002a6d549f0a5bb8313dc15507451d1a03638adf8921e773c2710"
+            },
+            {
+              "bytes": 9093,
+              "capture_id": "capture-lapakko-1997-eric-20260827",
+              "media_type": "text/html",
+              "sha256": "31dd3cc0b48f3e3829845c96b6687f712efd4b3757bf994a06fbe7c9cc073518"
+            }
+          ],
+          "container": "Communication Education 46(1), 63-67",
+          "edition_id": "edition-lapakko-communication-education-46-1",
+          "identifiers": {
+            "doi": "10.1080/03634529709379073",
+            "eric": "EJ537313"
+          },
+          "license_treatment": "No open license confirmed; only metadata and the ERIC abstract are retained.",
+          "publication_date": "1997-01",
+          "source_id": "source-lapakko-1997",
+          "spans": [
+            {
+              "locator": "ERIC abstract",
+              "quote": "limitations which do not warrant formulation of a precise numerical formula",
+              "quote_sha256": "e62ce29580268d0767bdfd1fd1e87898381c16c05cc97f789ea19e464b025fc6",
+              "span_id": "span-lapakko-1997-abstract",
+              "supports": "The evaluative paper identifies the formula's methodological overreach."
+            }
+          ],
+          "title": "Three cheers for language: A closer examination of a widely cited study of nonverbal communication",
+          "urls": {
+            "doi": "https://doi.org/10.1080/03634529709379073",
+            "eric": "https://eric.ed.gov/?id=EJ537313"
+          },
+          "work_id": "work-lapakko-1997"
+        }
+      },
+      "content_digest": "sha256:1fba197225b186680d8e51ff4035044e54c650575015285980c179ea5d0c20b5",
+      "content_length": 1486,
+      "edition_label": "Reviewed source-record projection of edition-lapakko-communication-education-46-1",
+      "id": "em:dossier-edition:sha256:8851370c5bd45e23b2fc2fd5bc10bd1b2dcb1f88bbd34f5ee0462965b1d37d4e",
+      "key": "edition-lapakko-communication-education-46-1",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-lapakko-1997"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "David Lapakko"
+          ],
+          "captures": [
+            {
+              "bytes": 36978,
+              "capture_id": "capture-lapakko-2007-landing-20260827",
+              "media_type": "text/html",
+              "sha256": "ac0fb51d9f7e675f394d763bf3939b2d501db947587fea620f99bc5a46850f66"
+            },
+            {
+              "bytes": 2960,
+              "capture_id": "capture-lapakko-2007-crossref-20260827",
+              "media_type": "application/json",
+              "sha256": "f9f6e6f56c8b50fa1b9cbaaa6b1c705e0be294a0f2e5c0ed2b41b853a15e5a6c"
+            },
+            {
+              "bytes": null,
+              "capture_id": "readback-lapakko-2007-pdf-20260827",
+              "media_type": "application/pdf indexed readback",
+              "retrieval_status": "Authoritative landing is live; direct PDF returned HTTP 403. Exact PDF passages were read through an indexed public readback and require independent reproduction.",
+              "sha256": null
+            }
+          ],
+          "container": "Communication and Theater Association of Minnesota Journal 34(1), article 2",
+          "edition_id": "edition-ctamj-volume-34-article-2",
+          "identifiers": {
+            "doi": "10.56816/2471-0032.1000"
+          },
+          "license_treatment": "The authoritative landing declares CC BY-NC 4.0 for the work. The inaccessible PDF is not redistributed; passages remain quote-minimal.",
+          "publication_date": "2007; repository online date and Crossref publication date 2015-11-20",
+          "source_id": "source-lapakko-2007",
+          "spans": [
+            {
+              "locator": "authoritative landing, Abstract",
+              "quote": "widely disseminated across the Internet, and in ways that show little or no understanding of the research",
+              "quote_sha256": "a712f31a787c456e3d1693cba28b62ec4d4a6f14db9d196176671f15fa66efd3",
+              "span_id": "span-lapakko-2007-abstract",
+              "supports": "The author reports broad online propagation and misunderstanding."
+            },
+            {
+              "locator": "journal p.12; indexed PDF readback",
+              "quote": "63 of the 79 sites (80%) used the 7-38-55 numbers as a general statement about the overall nature of communication",
+              "quote_sha256": "d40f9be8d74579dc4b55180886d0eb17374f260e487bba97bc5a676a1a197c42",
+              "span_id": "span-lapakko-2007-63-of-79",
+              "supports": "The bounded website sample quantified broad generalization."
+            },
+            {
+              "locator": "journal p.13; indexed PDF readback, Limitations",
+              "quote": "sampling procedure in this study involved a type of convenience sample ... only made use of one electronic search engine, Google",
+              "quote_sha256": "fc3c646bac3611993037d02aa42b56b0c374b8c2ea99260859d36aa057bc4231",
+              "segments": [
+                "sampling procedure in this study involved a type of convenience sample",
+                "only made use of one electronic search engine, Google"
+              ],
+              "span_id": "span-lapakko-2007-limitations",
+              "span_kind": "verbatim_segments",
+              "supports": "The study itself limits any prevalence inference from its purposive web sample."
+            }
+          ],
+          "title": "Communication is 93% Nonverbal: An Urban Legend Proliferates",
+          "urls": {
+            "landing": "https://cornerstone.lib.mnsu.edu/ctamj/vol34/iss1/2/",
+            "pdf": "https://cornerstone.lib.mnsu.edu/cgi/viewcontent.cgi?article=1000&context=ctamj"
+          },
+          "work_id": "work-lapakko-2007"
+        }
+      },
+      "content_digest": "sha256:d3fc3b5073fc79ece2582f7f95905edca1e681b7036f32924cfb409d8d3597d3",
+      "content_length": 2955,
+      "edition_label": "Reviewed source-record projection of edition-ctamj-volume-34-article-2",
+      "id": "em:dossier-edition:sha256:ee2ae6cec64aa6c6e73cfc7038dbbcf23124844598cc0e87fe2e37c6b030edbd",
+      "key": "edition-ctamj-volume-34-article-2",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-lapakko-2007"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "Albert Mehrabian"
+          ],
+          "captures": [
+            {
+              "bytes": 3499,
+              "capture_id": "capture-author-page-20260827",
+              "matches_capture_20260823": true,
+              "media_type": "text/html",
+              "sha256": "d2e9ce6de5935b1eefcf7ada00ed2f9da11332527660fd6b98be4c909e0a5a72",
+              "url": "https://kaaj.com/psych/smorder.html"
+            }
+          ],
+          "edition_id": "edition-kaaj-silent-messages-page-2016",
+          "license_treatment": "Copyrighted author page with no open license observed; quote minimally and attribute.",
+          "publication_date": "unknown; page copyright 1995-2016",
+          "source_id": "source-mehrabian-author-qualification",
+          "spans": [
+            {
+              "locator": "HTML body, equation following the inconsistent-messages paragraph",
+              "quote": "Total Liking = 7% Verbal Liking + 38% Vocal Liking + 55% Facial Liking",
+              "quote_sha256": "f74af100fbb21524c77c32d9d52a14dc6ff661fbb6685402365363ca1f532738",
+              "span_id": "span-author-equation",
+              "supports": "The author page repeats the equation as Total Liking."
+            },
+            {
+              "locator": "HTML body, strong element following the equation",
+              "quote": "Unless a communicator is talking about their feelings or attitudes, these equations are not applicable",
+              "quote_sha256": "b177c97d10c09f52d123b7b2eb3577bd07cfc84d3f5954140f1d64045e463611",
+              "span_id": "span-author-qualification",
+              "supports": "The author's public qualification rejects general application to other communication."
+            }
+          ],
+          "title": "Silent Messages -- Description and Ordering Information",
+          "urls": {
+            "landing": "https://kaaj.com/psych/smorder.html"
+          },
+          "work_id": "work-mehrabian-author-page"
+        }
+      },
+      "content_digest": "sha256:a1c7bcc1b2c7e59f8111c255d6d55fde7da6811b7a79b905d9af7de0b2c269b4",
+      "content_length": 1650,
+      "edition_label": "Reviewed source-record projection of edition-kaaj-silent-messages-page-2016",
+      "id": "em:dossier-edition:sha256:57d23a52e1ec5e9f0d4fbd012397156b9a5713527634e7c1a3ffce9699ea25d1",
+      "key": "edition-kaaj-silent-messages-page-2016",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-mehrabian-author-page"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "Albert Mehrabian",
+            "Susan R. Ferris"
+          ],
+          "captures": [
+            {
+              "bytes": 459340,
+              "capture_id": "capture-ferris-scan-20260823",
+              "captured_at": "2026-08-23T09:34:00Z",
+              "media_type": "application/pdf",
+              "revalidation": "Fresh anonymous retrieval timed out without response bytes on 2026-08-27; the carrier remains unstable.",
+              "sha256": "f9d91dfd98725e902ef24a1b478c4bb8aac5be66c2be2b5486cc0c4253711f84",
+              "url_role": "credential-free but session-dependent university course scan"
+            },
+            {
+              "bytes": 1897,
+              "capture_id": "capture-ferris-crossref-20260823",
+              "media_type": "application/json",
+              "revalidation": "Fresh Crossref request returned HTTP 429 on 2026-08-27; the accepted earlier capture is retained.",
+              "sha256": "c2bbd8fb3b5ad2f0246271335db1045e4bf78fb8901ed67b7473a1812a5c5923",
+              "url": "https://api.crossref.org/works/10.1037%2Fh0024648"
+            },
+            {
+              "bytes": 11048,
+              "capture_id": "capture-ferris-openalex-20260827",
+              "media_type": "application/json",
+              "sha256": "895e620e801aa4cd4c305e3249a4931eaaeb127f4b92239ce5e3a66331a68665",
+              "url": "https://api.openalex.org/works/https:%2F%2Fdoi.org%2F10.1037%2Fh0024648"
+            },
+            {
+              "bytes": 2845,
+              "capture_id": "capture-ferris-pubmed-20260827",
+              "media_type": "application/xml",
+              "sha256": "ad01d7dcbb9415786dab354afbc041b08cdc809c74e09cb9258cbfbd750250e4",
+              "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=6046577&retmode=xml"
+            }
+          ],
+          "container": "Journal of Consulting Psychology 31(3), 248-252",
+          "edition_id": "edition-mehrabian-ferris-jcp-31-3",
+          "identifiers": {
+            "doi": "10.1037/h0024648",
+            "pmid": "6046577"
+          },
+          "license_treatment": "No open article license was confirmed. Public course hosting does not establish reuse rights; the source is represented with identity, digest, access history, and quote-minimal spans only.",
+          "publication_date": "1967-06",
+          "source_id": "source-mehrabian-ferris-1967",
+          "spans": [
+            {
+              "fields": {
+                "author_1": "Albert Mehrabian",
+                "author_2": "Susan R. Ferris"
+              },
+              "locator": "journal p.248; PDF p.1, title block",
+              "quote": "authors=Albert Mehrabian; Susan R. Ferris",
+              "quote_sha256": "ccbbe41f1e4ec76d7d14620f62caa2af412b1b8228fccdbf0ae43062408d35f7",
+              "span_id": "span-ferris-authors",
+              "span_kind": "structured_transcription",
+              "supports": "The title block identifies the P2 authors for author-lineage comparison."
+            },
+            {
+              "fields": {
+                "public_health_service_grant": "1 R03-MH-12629-01",
+                "university_of_california_grant": "2189"
+              },
+              "locator": "journal p.248; PDF p.1, footnote 1",
+              "quote": "grants=United States Public Health Service 1 R03-MH-12629-01; University of California 2189",
+              "quote_sha256": "cda7dfc2f1ed1632a34e92b220fca7788184c09ddb0016ce23fbfba056e2cfe2",
+              "span_id": "span-ferris-grants",
+              "span_kind": "structured_transcription",
+              "supports": "P2 shares the reported University of California grant identifier with P1 and reports a different Public Health Service grant."
+            },
+            {
+              "locator": "journal p.248; PDF p.1, footnote 1",
+              "quote": "Dee Nieto, Nina Spitzer, and Barbara Ullman, who acted as models, and Elaine Blackman and Katherine Nelson, who, along with one of the authors, acted as speakers in preparing the experimental materials.",
+              "quote_sha256": "f2c2c6a9095ce271eb0842c7b7268bfc09c732405f448a928ee4876b2eeed48b",
+              "span_id": "span-ferris-models-speakers",
+              "supports": "P2 names its models and two of its speakers while leaving the author-speaker unnamed."
+            },
+            {
+              "locator": "journal p.248; PDF p.1, abstract",
+              "quote": "3 degrees of attitude (i.e., positive, neutral, and negative) in facial expression ... were each combined with 3 degrees of attitude communicated vocally",
+              "quote_sha256": "0a55d590acd009bec93e34c67f9c4b528154411b32575493cb9f9fde2b41924c",
+              "segments": [
+                "3 degrees of attitude (i.e., positive, neutral, and negative) in facial expression",
+                "were each combined with 3 degrees of attitude communicated vocally"
+              ],
+              "span_id": "span-ferris-target",
+              "span_kind": "verbatim_segments",
+              "supports": "P2 crossed facial and vocal attitude cues; verbal wording was not varied."
+            },
+            {
+              "locator": "journal p.249; PDF p.2, Method/Subjects",
+              "quote": "A group of 25 subjects (Ss) was used ... A second group of 17 Ss was used ... A third group of 20 Ss was used ... All 62 Ss were female University of California undergraduates",
+              "quote_sha256": "3a4983215b94a8f7a35dfc1867bd6c435a3cd2b380bc8e9986a711c731452528",
+              "segments": [
+                "A group of 25 subjects (Ss) was used",
+                "A second group of 17 Ss was used",
+                "A third group of 20 Ss was used",
+                "All 62 Ss were female University of California undergraduates"
+              ],
+              "span_id": "span-ferris-sample",
+              "span_kind": "verbatim_segments",
+              "supports": "P2 used three groups totaling 62 female undergraduates for stimulus selection and the combined task."
+            },
+            {
+              "locator": "journal p.249; PDF p.2, Introduction",
+              "quote": "Mehrabian and Wiener's (1967) study indicated that the dominant component in a two-channel communication determines the meaning of inconsistent communications",
+              "quote_sha256": "c25471b821ce495d1763c8f398825a939f67fb6856a2cef7f162fe6416d87912",
+              "span_id": "span-ferris-citation-p1",
+              "supports": "P2 explicitly cites P1 as a premise for its hypothesis."
+            },
+            {
+              "locator": "journal p.250; PDF p.3, Materials",
+              "quote": "The word \"maybe\" was selected as an appropriate neutral verbal carrier of vocal communications",
+              "quote_sha256": "56c335cc10ba6cd0b1e00bbb4571a1fea45c4b9abde580f86093310dcc9f121e",
+              "span_id": "span-ferris-maybe",
+              "supports": "The only word in the combined face-tone task was the neutral carrier maybe."
+            },
+            {
+              "locator": "journal p.250; PDF p.3, Materials and Design",
+              "quote": "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person ... there were 36 experimental conditions ... 3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions",
+              "quote_sha256": "4907fba561fdbd65d1135094c20e780a5813d5d27bc111a8d02440833a7acb30",
+              "segments": [
+                "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person",
+                "there were 36 experimental conditions",
+                "3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions"
+              ],
+              "span_id": "span-ferris-design",
+              "span_kind": "verbatim_segments",
+              "supports": "P2 used facial photographs and varied face and tone, not three channels."
+            },
+            {
+              "locator": "journal p.251; PDF p.4, Procedure",
+              "quote": "an attitude scale designated \"like,\" +3 and \"dislike,\" —3 at its poles",
+              "quote_sha256": "f75aae955db7d8f43645cdf9892aed90b48c9b02e6316dfc342219ae3dc82b47",
+              "span_id": "span-ferris-scale",
+              "supports": "P2 used a liking-versus-disliking attitude scale like the construct operationalized in P1."
+            },
+            {
+              "locator": "journal p.251; PDF p.4, Results",
+              "quote": "The Facial Attitude factor accounted for 41.4% of the total sum of squares ... the Vocal Attitude factor accounted for 19.3% of the total sum of squares",
+              "quote_sha256": "bd118404b90041fbbb3c264018163e4b4c03db1d33c6a4b007360d6387845b4d",
+              "segments": [
+                "The Facial Attitude factor accounted for 41.4% of the total sum of squares",
+                "the Vocal Attitude factor accounted for 19.3% of the total sum of squares"
+              ],
+              "span_id": "span-ferris-sums-of-squares",
+              "span_kind": "verbatim_segments",
+              "supports": "The reported task-level sums of squares favored the facial factor."
+            },
+            {
+              "fields": {
+                "dependent": "A_T",
+                "facial_coefficient": "1.50",
+                "facial_term": "A_F",
+                "vocal_coefficient": "1.03",
+                "vocal_term": "A_V"
+              },
+              "locator": "journal p.251; PDF p.4, Results",
+              "quote": "A_T = 1.50 A_F + 1.03 A_V",
+              "quote_sha256": "7cf8e54d2b0fddc90a956178f67bb65ec005d41bb9b1c17e676e92458fbbf692",
+              "span_id": "span-ferris-regression",
+              "span_kind": "structured_transcription",
+              "supports": "P2 reports the two-channel facial-vocal regression coefficients."
+            },
+            {
+              "locator": "journal p.252; PDF p.5, final Discussion paragraph",
+              "quote": "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967) ... It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects ... with the coefficients of .07, .38, and .55, respectively",
+              "quote_sha256": "25b2e2dcf6675d0e73fd204bb0e6303caa18f2fe5d9d6df5c7dea105cf49a50f",
+              "segments": [
+                "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967)",
+                "It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects",
+                "with the coefficients of .07, .38, and .55, respectively"
+              ],
+              "span_id": "span-ferris-proposal",
+              "span_kind": "verbatim_segments",
+              "supports": "The three coefficients appear as a proposed cross-study integration, not as the result of P2's experiment."
+            }
+          ],
+          "title": "Inference of attitudes from nonverbal communication in two channels",
+          "urls": {
+            "alternate_readback": "https://sergiosenna.com.br/wp-content/uploads/2026/01/mehrabian-1967-inference-of-attitudes-from-nonverbal-communication.pdf",
+            "doi": "https://doi.org/10.1037/h0024648",
+            "inspected_scan": "https://is.muni.cz/el/phil/jaro2018/PSA_034/um/Mehrabian.pdf?lang=en",
+            "pubmed": "https://pubmed.ncbi.nlm.nih.gov/6046577/"
+          },
+          "work_id": "work-mehrabian-ferris-1967"
+        }
+      },
+      "content_digest": "sha256:f132b225949e47049c27c628f0580c80b5b4955fd4682524ef2e50b20ed81623",
+      "content_length": 9288,
+      "edition_label": "Reviewed source-record projection of edition-mehrabian-ferris-jcp-31-3",
+      "id": "em:dossier-edition:sha256:7669d19a5b08701c9a5c5102d54cd2bce8cba854d8bbde75023f1049d2d9294e",
+      "key": "edition-mehrabian-ferris-jcp-31-3",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-mehrabian-ferris-1967"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "Albert Mehrabian",
+            "Morton Wiener"
+          ],
+          "captures": [
+            {
+              "bytes": 563059,
+              "capture_id": "capture-wiener-scan-20260823",
+              "captured_at": "2026-08-23T09:31:00Z",
+              "media_type": "application/pdf",
+              "revalidation": "Exact URL returned HTTP 403 on 2026-08-27; previously captured bytes remain the inspected carrier, not a durable public artifact.",
+              "sha256": "d2c6cac3f178ca32a85ec29a177c2c004890333221e708fb27d6379c9b8e4ee8",
+              "url_role": "readable third-party scan"
+            },
+            {
+              "bytes": 1953,
+              "capture_id": "capture-wiener-crossref-20260827",
+              "media_type": "application/json",
+              "sha256": "d33e7cec04395ba788ac637b9c64a9d8e9c1a898ebe4bf1d8b94a7008432b8ed",
+              "url": "https://api.crossref.org/works/10.1037%2Fh0024532"
+            },
+            {
+              "bytes": 10328,
+              "capture_id": "capture-wiener-openalex-20260827",
+              "media_type": "application/json",
+              "sha256": "5d119a09b6db6b212eb5b1305af88f3a5e3b568085ebb9d5c42c9f460e23e743",
+              "url": "https://api.openalex.org/works/https:%2F%2Fdoi.org%2F10.1037%2Fh0024532"
+            },
+            {
+              "bytes": 2822,
+              "capture_id": "capture-wiener-pubmed-20260827",
+              "media_type": "application/xml",
+              "sha256": "587a02810fc8a4f29c34b7486c336cf954aadf3f460f6bb45dbad1307758e884",
+              "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=6032751&retmode=xml"
+            }
+          ],
+          "container": "Journal of Personality and Social Psychology 6(1), 109-114",
+          "edition_id": "edition-mehrabian-wiener-jpsp-6-1",
+          "identifiers": {
+            "doi": "10.1037/h0024532",
+            "pmid": "6032751"
+          },
+          "license_treatment": "No open article license was confirmed. The readable scan is not redistributed; only identity, digest, access history, and quote-minimal spans are retained.",
+          "publication_date": "1967-05",
+          "source_id": "source-mehrabian-wiener-1967",
+          "spans": [
+            {
+              "fields": {
+                "author_1": "Albert Mehrabian",
+                "author_2": "Morton Wiener"
+              },
+              "locator": "journal p.109; PDF p.1, title block",
+              "quote": "authors=Albert Mehrabian; Morton Wiener",
+              "quote_sha256": "9f86c9e0e9a0912dc98e89492e403b3604c93a4c4b291594c31b9dff098be20d",
+              "span_id": "span-wiener-authors",
+              "span_kind": "structured_transcription",
+              "supports": "The title block identifies the P1 authors for author-lineage comparison."
+            },
+            {
+              "locator": "journal p.109; PDF p.1, footnote 1",
+              "quote": "This study was supported in part by University of California Grant 2189 and in part by United States Public Health Service Grant M-3860.",
+              "quote_sha256": "f36d310eb93d14dc5a0d0761bcfd5196da637264c310574f76c7c212cb7efadb",
+              "span_id": "span-wiener-grants",
+              "supports": "P1 reports the two funding identifiers used in the grant-lineage comparison."
+            },
+            {
+              "locator": "journal p.109; PDF p.1, footnote 1",
+              "quote": "Sylvia Norman and Dena Sugar, who acted as speakers in the recording of the experimental conditions",
+              "quote_sha256": "5fe2933c7f2a1e18b24f4421d9dd0180582f30887cd123618fe848945db1a85a",
+              "span_id": "span-wiener-speakers",
+              "supports": "P1 names its two recorded speakers."
+            },
+            {
+              "locator": "journal p.109; PDF p.1, footnote 1",
+              "quote": "Susan Ferris, for her comments on the manuscript",
+              "quote_sha256": "400ac8d3f7b66282787262afc078cb26a6b8090d7d1b3d9cc1cbafd2ba590e21",
+              "span_id": "span-wiener-ferris-acknowledgment",
+              "supports": "P1 acknowledges the future P2 coauthor, establishing a social/program link beyond the shared Mehrabian authorship."
+            },
+            {
+              "locator": "journal p.109; PDF p.1, abstract",
+              "quote": "inconsistent communication of attitude in 2 components of a message",
+              "quote_sha256": "32365cd2cac9626ee55ebdea19048ae1a2b9b70801559c91a3b26916b5d0c108",
+              "span_id": "span-wiener-target",
+              "supports": "The experiment concerns a two-component attitude message, not communication in general."
+            },
+            {
+              "locator": "journal pp.109-110; PDF pp.1-2, abstract and Materials",
+              "quote": "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice ... the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents",
+              "quote_sha256": "488d310c64fb4445de8193a17dce78b0fe41533b54446429038687fa082b1e97",
+              "segments": [
+                "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice",
+                "the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents"
+              ],
+              "span_id": "span-wiener-single-words",
+              "span_kind": "verbatim_segments",
+              "supports": "The verbal stimuli were isolated words crossed with vocal tone, and maybe was one of P1's three selected neutral words."
+            },
+            {
+              "locator": "journal p.110; PDF p.2, Method/Subjects",
+              "quote": "Forty-five subjects were used in the initial selection ... A second group of 30 subjects was used in the remaining portion of the study.",
+              "quote_sha256": "4b7b80fe130fafffae5829f4d71f7bb0dd795103ea0d0601c019d77b648efd80",
+              "segments": [
+                "Forty-five subjects were used in the initial selection",
+                "A second group of 30 subjects was used in the remaining portion of the study."
+              ],
+              "span_id": "span-wiener-sample",
+              "span_kind": "verbatim_segments",
+              "supports": "P1 used 45 undergraduates for word selection and 30 for the remaining experiment."
+            },
+            {
+              "locator": "journal p.111; PDF p.3, Procedure",
+              "quote": "using all the information available ... using only the information contained in the meanings of the words ... using only the information contained in the tone",
+              "quote_sha256": "4cb1102a04af97ed38d0a2e7c205dfad7deb5844a79d106d05259cf7ac9f30c3",
+              "segments": [
+                "using all the information available",
+                "using only the information contained in the meanings of the words",
+                "using only the information contained in the tone"
+              ],
+              "span_id": "span-wiener-instructions",
+              "span_kind": "verbatim_segments",
+              "supports": "Separate instruction groups estimated combined, content-only, and tone-only contributions."
+            },
+            {
+              "locator": "journal p.110; PDF p.2, Materials",
+              "quote": "Two female speakers were employed to read each of the nine selected words with each of the three positive, neutral, and negative tones.",
+              "quote_sha256": "d0fd2ff6d09434d59506dd8baa65db231331bca622f7a360cb8d26bf10ac0f59",
+              "span_id": "span-wiener-stimulus-recording",
+              "supports": "P1 used recorded female voices and nine selected words crossed with three tones."
+            },
+            {
+              "locator": "journal p.111; PDF p.3, Procedure",
+              "quote": "\"Positive\" refers to liking, preferring or having high evaluations and \"negative\" refers to disliking, not preferring or having low evaluations of the addressee.",
+              "quote_sha256": "79a892503102e31330c91f06aff865e9c50794cef6a8708a11145d8e616630a9",
+              "span_id": "span-wiener-scale",
+              "supports": "P1 operationalized its attitude scale as liking versus disliking."
+            },
+            {
+              "locator": "journal p.113; PDF p.5, Discussion",
+              "quote": "messages involving single words spoken with intonation are primarily based on the attitude carried in the tonal component",
+              "quote_sha256": "24b4829f5b2eea31c281bba86db573262bea45e6250c8beedd675b8f9a45db40",
+              "span_id": "span-wiener-result-boundary",
+              "supports": "Tone dominated this narrow inconsistent single-word attitude task."
+            },
+            {
+              "locator": "journal p.113; PDF p.5, Discussion",
+              "quote": "can be safely extended only to communication situations in which no additional information about the communicator-addressee relationship is available",
+              "quote_sha256": "9c4d9597c61175b0e6ced4918ddea51d3aeb53df8e555780d626172e992cc68b",
+              "span_id": "span-wiener-safe-extension",
+              "supports": "The paper explicitly limits extension of its result."
+            }
+          ],
+          "title": "Decoding of inconsistent communications",
+          "urls": {
+            "doi": "https://doi.org/10.1037/h0024532",
+            "inspected_scan": "https://sergiosenna.com.br/wp-content/uploads/2026/01/mehrabian1967-decoding-of-inconsistent-communications.pdf",
+            "pubmed": "https://pubmed.ncbi.nlm.nih.gov/6032751/"
+          },
+          "work_id": "work-mehrabian-wiener-1967"
+        }
+      },
+      "content_digest": "sha256:427ca62349bc67d917928b2badff4f0e2e719a767f39c37249be9f41d2691691",
+      "content_length": 7582,
+      "edition_label": "Reviewed source-record projection of edition-mehrabian-wiener-jpsp-6-1",
+      "id": "em:dossier-edition:sha256:9cef493f1c06d772e12bca8b2334c646e2ec97242a5cf6847f4d25fdd31350cb",
+      "key": "edition-mehrabian-wiener-jpsp-6-1",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-mehrabian-wiener-1967"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "Albert Mehrabian"
+          ],
+          "captures": [
+            {
+              "bytes": 19515952,
+              "capture_id": "capture-silent-1971-scan-20260827",
+              "matches_two_prior_retrievals": true,
+              "media_type": "application/pdf",
+              "sha256": "3223d08c89749142d9774a49e6843ee4512ef9daa70928ed8667051ef8a123c1",
+              "url_role": "publicly readable university-hosted scan"
+            },
+            {
+              "bytes": 1289,
+              "capture_id": "capture-silent-1971-openlibrary-20260823",
+              "media_type": "application/json",
+              "sha256": "d597ca4e4747cd8fa5d85fdafd7bddc49588d609a8b2890bca2f8207d5f21e46",
+              "url": "https://openlibrary.org/api/books?bibkeys=ISBN:0534000592&format=json&jscmd=data"
+            }
+          ],
+          "container": "Wadsworth Publishing Company, ISBN 0-534-00059-2",
+          "edition_id": "edition-silent-messages-1971",
+          "identifiers": {
+            "isbn_10": "0534000592",
+            "openlibrary": "OL24765699M"
+          },
+          "license_treatment": "All rights reserved; the scan is not committed or redistributed. Retain metadata, digest, PDF-page locators, and quote-minimal spans only.",
+          "publication_date": "1971",
+          "source_id": "source-silent-messages-1971",
+          "spans": [
+            {
+              "fields": {
+                "dependent": "Total liking",
+                "facial": "55% facial liking",
+                "verbal": "7% verbal liking",
+                "vocal": "38% vocal liking"
+              },
+              "locator": "PDF p.51, Inconsistent messages chapter",
+              "quote": "Total liking = 7% verbal liking + 38% vocal liking + 55% facial liking",
+              "quote_sha256": "b64646d71e22e4e9508d73d3b4896301ebf38472816e0002115a9ceea44e8f22",
+              "span_id": "span-silent-1971-liking",
+              "span_kind": "structured_transcription",
+              "supports": "The 1971 edition repeats the three-part liking equation."
+            },
+            {
+              "locator": "PDF p.52, paragraph following Total feeling equation",
+              "quote": "Numerical values in this equation are only approximate ... restrict ourselves to the analysis of only one dimension of feeling at a time",
+              "quote_sha256": "f42ea8e4be606d422d7b6ab9495c3b03ad812d953dff3034ef07b5fa66613201",
+              "segments": [
+                "Numerical values in this equation are only approximate",
+                "restrict ourselves to the analysis of only one dimension of feeling at a time"
+              ],
+              "span_id": "span-silent-1971-boundary",
+              "span_kind": "verbatim_segments",
+              "supports": "The book calls the values approximate and limits use to one feeling dimension."
+            }
+          ],
+          "title": "Silent Messages",
+          "urls": {
+            "catalog": "https://openlibrary.org/books/OL24765699M/Silent_messages",
+            "inspected_scan": "https://e-edu.nbu.bg/pluginfile.php/855150/mod_resource/content/1/Albert-Mehrabian%20-%20Silent%20Messages%201971%20-%20red.size.pdf"
+          },
+          "work_id": "work-silent-messages"
+        }
+      },
+      "content_digest": "sha256:aa647949f4256a622046b63357b878ea0e5901e01c26637de8eee82767e8c544",
+      "content_length": 2563,
+      "edition_label": "Reviewed source-record projection of edition-silent-messages-1971",
+      "id": "em:dossier-edition:sha256:f5699461bb72eb85dc612f72a4a9d8449a9880d5abf46a24c12e51f19cdc02bb",
+      "key": "edition-silent-messages-1971",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-silent-messages"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+        "format": "epistemedia-em0033-source-record-projection-v1",
+        "source_record": {
+          "authors": [
+            "Albert Mehrabian"
+          ],
+          "captures": [
+            {
+              "bytes": 1364,
+              "capture_id": "capture-silent-1981-openlibrary-20260827",
+              "media_type": "application/json",
+              "sha256": "0a8332cdd2d1bf26e62c271a63d41e8e89232137a35db39e51ab30e06796fa20",
+              "url": "https://openlibrary.org/books/OL4105010M.json"
+            }
+          ],
+          "container": "Wadsworth Publishing Company, second edition, ix + 196 pages",
+          "edition_id": "edition-silent-messages-1981-second",
+          "identifiers": {
+            "isbn_10": "0534009107",
+            "lccn": "80019662",
+            "openlibrary": "OL4105010M"
+          },
+          "license_treatment": "Catalog metadata only; no full-text license or readable edition was confirmed.",
+          "publication_date": "1981",
+          "source_id": "source-silent-messages-1981",
+          "spans": [
+            {
+              "fields": {
+                "edition_name": "2d ed.",
+                "isbn_10": "0534009107",
+                "number_of_pages": 196,
+                "publish_date": "1981"
+              },
+              "locator": "Open Library JSON: /edition_name, /publish_date, /isbn_10, /number_of_pages",
+              "quote": "edition_name=2d ed.; publish_date=1981; isbn_10=0534009107; number_of_pages=196",
+              "quote_sha256": "3520c0ef2afb95d687d9a61df564ccc1105381c6fab8a6ff5954779f3466dd2b",
+              "span_id": "span-silent-1981-metadata",
+              "span_kind": "structured_transcription",
+              "supports": "The 1981 second-edition identity is bibliographically closed, but its formula pages were not collated."
+            }
+          ],
+          "title": "Silent messages: implicit communication of emotions and attitudes",
+          "urls": {
+            "catalog": "https://openlibrary.org/books/OL4105010M"
+          },
+          "work_id": "work-silent-messages"
+        }
+      },
+      "content_digest": "sha256:b7b535445cf40448ab684100aaca8be213ef6d28bddc1287466fffae560ab719",
+      "content_length": 1585,
+      "edition_label": "Reviewed source-record projection of edition-silent-messages-1981-second",
+      "id": "em:dossier-edition:sha256:b38affa8ed01cddbd0107db964b35010f69f24b189068caae78981cbb9450114",
+      "key": "edition-silent-messages-1981-second",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T16:03:55Z",
+      "visibility": "public",
+      "work_key": "work-silent-messages"
+    }
+  ],
+  "evaluations": [
+    {
+      "claim_family_key": "family-mehrabian-7-38-55",
+      "frontier": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+      "id": "em:dossier-evaluation:sha256:fda0e87e9a1e046f5f656951f2ff0fe4a7259b3c6910b1306d223af755b54ca1",
+      "key": "evaluation-encyclopedia",
+      "label": "documented narrow historical proposal with explicit experiment and edition boundaries",
+      "policy_id": "epistemedia-encyclopedia-v1",
+      "reason_codes": [
+        "historical-proposal-documented",
+        "two-participant-roots-kept-distinct",
+        "cross-study-integration-not-one-experiment",
+        "scope-qualification-retained"
+      ],
+      "visibility": "public"
+    },
+    {
+      "claim_family_key": "family-mehrabian-7-38-55",
+      "frontier": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+      "id": "em:dossier-evaluation:sha256:7ac9830500e689a6b3c752a5e06db94b82b9e37f3d912c1d15f5104d4ded4b56",
+      "key": "evaluation-skeptical",
+      "label": "withhold universal rule and withhold recovered-origin claim for the seven-percent coefficient",
+      "policy_id": "epistemedia-skeptical-v1",
+      "reason_codes": [
+        "no-reviewed-three-channel-test",
+        "seven-percent-origin-unresolved",
+        "direct-rebuttal-message-specific",
+        "propagation-zero-truth-credit",
+        "second-edition-formula-pages-uncollated"
+      ],
+      "visibility": "public"
+    }
+  ],
+  "evidence_relations": [
+    {
+      "basis_span_keys": [
+        "span-wiener-target",
+        "span-ferris-target",
+        "span-author-qualification",
+        "span-hegstrom-result"
+      ],
+      "from_ref": "span-wiener-target",
+      "id": "em:dossier-evidence-relation:sha256:4c38a2c323b338f8574623ca37504b6e77ded7a9303ecdf337fde6a33c0260dd",
+      "key": "relation-assertion-popular-rule",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-popular-rule",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-single-words",
+        "span-wiener-result-boundary",
+        "span-wiener-safe-extension"
+      ],
+      "from_ref": "span-wiener-single-words",
+      "id": "em:dossier-evidence-relation:sha256:6d6472d90f6f91e51d8b1b93e68ba3faac8d19809acb3f84f45ab652e9fdc91c",
+      "key": "relation-assertion-p1-tone-dominance",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-p1-tone-dominance",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-maybe",
+        "span-ferris-design",
+        "span-ferris-sums-of-squares",
+        "span-ferris-regression"
+      ],
+      "from_ref": "span-ferris-maybe",
+      "id": "em:dossier-evidence-relation:sha256:03f67e22bfc7ae16e42e6e385dff61990df59e4c8551e5dde94e90c0e545bff2",
+      "key": "relation-assertion-p2-face-tone",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-p2-face-tone",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-target",
+        "span-ferris-design",
+        "span-ferris-proposal"
+      ],
+      "from_ref": "span-ferris-target",
+      "id": "em:dossier-evidence-relation:sha256:b96dff398cbed1de6bd61eea64f1310a236d8dc6bf867be13b17101679aed5de",
+      "key": "relation-assertion-three-coefficient-proposal",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-three-coefficient-proposal",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-regression",
+        "span-ferris-proposal",
+        "span-silent-1971-liking"
+      ],
+      "from_ref": "span-ferris-regression",
+      "id": "em:dossier-evidence-relation:sha256:e8dc06ddc15a45c258e0d36c1ed0355202c04a28da3c573200cb681633487dfa",
+      "key": "relation-assertion-seven-origin",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-seven-origin",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-silent-1971-liking",
+        "span-silent-1971-boundary"
+      ],
+      "from_ref": "span-silent-1971-liking",
+      "id": "em:dossier-evidence-relation:sha256:5b8acb5ba743cf60dbbb907edbdc66e21e2e5bb2d1738d01bbc1803137066662",
+      "key": "relation-assertion-book-boundary",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-book-boundary",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-silent-1981-metadata",
+        "span-author-qualification"
+      ],
+      "from_ref": "span-silent-1981-metadata",
+      "id": "em:dossier-evidence-relation:sha256:67d5ee2ecd1c052cd1e63b294e2ee8925f6d9e6d22d5cca3dcffeb543a994bba",
+      "key": "relation-assertion-1981-edition",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-1981-edition",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-hegstrom-design",
+        "span-hegstrom-result"
+      ],
+      "from_ref": "span-hegstrom-design",
+      "id": "em:dossier-evidence-relation:sha256:ccd23e50983dbce6337ace68719671de2948033768c150ca5f7d1808d803bead",
+      "key": "relation-assertion-hegstrom-rebuttal",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-hegstrom-rebuttal",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-argyle-1970-abstract",
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two"
+      ],
+      "from_ref": "span-argyle-1970-abstract",
+      "id": "em:dossier-evidence-relation:sha256:ec10d22970e28caf5d1dd378d5e866a31a3dc6e28ca57a81f3c2a36f0ccc9d51",
+      "key": "relation-assertion-related-context",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-related-context",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-lapakko-2007-63-of-79",
+        "span-lapakko-2007-limitations",
+        "span-hampshire-generalization",
+        "span-birmingham-generalization"
+      ],
+      "from_ref": "span-lapakko-2007-63-of-79",
+      "id": "em:dossier-evidence-relation:sha256:8d40cbf75ed5691413058eb8897a00f29bf19e988612e7baaf891481a7ea58cc",
+      "key": "relation-assertion-propagation",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-propagation",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-hegstrom-result",
+        "span-argyle-1971-experiment-two",
+        "span-lapakko-1997-abstract"
+      ],
+      "from_ref": "span-hegstrom-result",
+      "id": "em:dossier-evidence-relation:sha256:e1819a23743bec2906fb2a3df92482d588bc420346bc920b949c930380ec09da",
+      "key": "relation-assertion-replication-search",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "claim-replication-search",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-proposal"
+      ],
+      "from_ref": "span-ferris-proposal",
+      "id": "em:dossier-evidence-relation:sha256:cbd86d4b9a4513e5edd6c3427e1e030ac2a3d1e8bd8b8453e187423e0c84c091",
+      "key": "relation-assertion-derive-proposed-sum",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "derive-proposed-sum",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-proposal"
+      ],
+      "from_ref": "span-ferris-proposal",
+      "id": "em:dossier-evidence-relation:sha256:1dc7494096c9b3290400faf4d848b4ac16ca9811aa2133972d5a77cda888bff6",
+      "key": "relation-assertion-derive-proposed-facial-vocal-ratio",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "derive-proposed-facial-vocal-ratio",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-regression"
+      ],
+      "from_ref": "span-ferris-regression",
+      "id": "em:dossier-evidence-relation:sha256:73ce219cb19b54e72d3335eb15c0b455c74b2abf0ace1303daacb4aef0ec09ea",
+      "key": "relation-assertion-derive-p2-facial-vocal-ratio",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "derive-p2-facial-vocal-ratio",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-regression",
+        "span-ferris-proposal"
+      ],
+      "from_ref": "span-ferris-regression",
+      "id": "em:dossier-evidence-relation:sha256:9191549dae61bb7a844586213b899dbf91266e2af74f8fcde17d4a75dd045a9c",
+      "key": "relation-assertion-derive-ratio-difference",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "derive-ratio-difference",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-proposal"
+      ],
+      "from_ref": "span-ferris-proposal",
+      "id": "em:dossier-evidence-relation:sha256:60936a97bf4f64ef32ecc75993e2569b6849e2525a9711559d09a3496a2f466e",
+      "key": "relation-assertion-derive-implied-vocal-verbal-ratio",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "derive-implied-vocal-verbal-ratio",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-regression",
+        "span-ferris-proposal"
+      ],
+      "from_ref": "span-ferris-regression",
+      "id": "em:dossier-evidence-relation:sha256:dd0788a0a4a715510833c325684d827cab6de412417bd8b87f739c7849487546",
+      "key": "relation-assertion-derive-p2-allocation-with-seven-reserved",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "derive-p2-allocation-with-seven-reserved",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-argyle-1970-abstract",
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two",
+        "span-author-equation",
+        "span-author-qualification",
+        "span-birmingham-generalization",
+        "span-ferris-authors",
+        "span-ferris-citation-p1",
+        "span-ferris-design",
+        "span-ferris-grants",
+        "span-ferris-maybe",
+        "span-ferris-models-speakers",
+        "span-ferris-proposal",
+        "span-ferris-regression",
+        "span-ferris-sample",
+        "span-ferris-scale",
+        "span-ferris-sums-of-squares",
+        "span-ferris-target",
+        "span-hampshire-generalization",
+        "span-hegstrom-design",
+        "span-hegstrom-result",
+        "span-lapakko-1997-abstract",
+        "span-lapakko-2007-63-of-79",
+        "span-lapakko-2007-abstract",
+        "span-lapakko-2007-limitations",
+        "span-silent-1971-boundary",
+        "span-silent-1971-liking",
+        "span-silent-1981-metadata",
+        "span-wiener-authors",
+        "span-wiener-ferris-acknowledgment",
+        "span-wiener-grants",
+        "span-wiener-instructions",
+        "span-wiener-result-boundary",
+        "span-wiener-safe-extension",
+        "span-wiener-sample",
+        "span-wiener-scale",
+        "span-wiener-single-words",
+        "span-wiener-speakers",
+        "span-wiener-stimulus-recording",
+        "span-wiener-target"
+      ],
+      "from_ref": "span-argyle-1970-abstract",
+      "id": "em:dossier-evidence-relation:sha256:b434f80ddfdb651a08d2ea7283513b84173a1c114816bef430dc9696b47cf18d",
+      "key": "relation-assertion-reviewed-source-register",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "prop-reviewed-source-register",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-target",
+        "span-ferris-target",
+        "span-ferris-design",
+        "span-ferris-proposal",
+        "span-silent-1971-boundary",
+        "span-author-qualification"
+      ],
+      "from_ref": "span-wiener-target",
+      "id": "em:dossier-evidence-relation:sha256:f7aadc3a0ae526ecdf68e6c1a457c9dbd709d74e75b6bddaa53294fc9439ba0a",
+      "key": "relation-assertion-encyclopedia-evaluation",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "prop-encyclopedia-evaluation",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-target",
+        "span-ferris-target",
+        "span-ferris-design",
+        "span-ferris-proposal",
+        "span-hegstrom-result",
+        "span-lapakko-1997-abstract"
+      ],
+      "from_ref": "span-wiener-target",
+      "id": "em:dossier-evidence-relation:sha256:67dc165194aa7b9061f741af8de9c1caf2cbb99aadf3c4250f22f8168c93ac4a",
+      "key": "relation-assertion-skeptical-evaluation",
+      "note": "Material proposition closes over the listed exact reviewed parent spans.",
+      "relation_type": "support",
+      "to_ref": "prop-skeptical-evaluation",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-author-qualification"
+      ],
+      "from_ref": "span-author-qualification",
+      "id": "em:dossier-evidence-relation:sha256:d3e5909e1c432b7d846c5b538ddeabb333015675f944033b8ae8c28e01fc8e02",
+      "key": "relation-author-qualification",
+      "note": "The author's later statement limits the formula to inconsistent feelings and attitudes.",
+      "relation_type": "qualification",
+      "to_ref": "claim-popular-rule",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-hegstrom-design",
+        "span-hegstrom-result"
+      ],
+      "from_ref": "span-hegstrom-result",
+      "id": "em:dossier-evidence-relation:sha256:b4a0669074531dc15e61a4ac334d9f4a6144f8839dd7efb1d42165c07d49e940",
+      "key": "relation-hegstrom-direct-rebuttal",
+      "note": "The direct all-channel reconsideration reports message-specific equations unlike a fixed universal rule.",
+      "relation_type": "rebuttal",
+      "to_ref": "claim-popular-rule",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-lapakko-1997-abstract"
+      ],
+      "from_ref": "span-lapakko-1997-abstract",
+      "id": "em:dossier-evidence-relation:sha256:7debbf6b511c55e682a093053e1f76cb0c8ad5939d0e58e023ad759f9ad8a45a",
+      "key": "relation-lapakko-method-undercutting",
+      "note": "The methodological critique says the limitations do not warrant a precise general formula.",
+      "relation_type": "undercutting",
+      "to_ref": "claim-popular-rule",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-argyle-1970-abstract",
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two"
+      ],
+      "from_ref": "span-argyle-1970-abstract",
+      "id": "em:dossier-evidence-relation:sha256:54286e826012a197f8089605b60edd38ecef13cd004d2125a79252a31793666f",
+      "key": "relation-argyle-context-qualification",
+      "note": "Related tasks produce materially different ratios and therefore qualify any fixed cross-context weighting.",
+      "relation_type": "qualification",
+      "to_ref": "claim-related-context",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-authors",
+        "span-wiener-ferris-acknowledgment",
+        "span-ferris-authors"
+      ],
+      "from_ref": "lineage-participant-p1",
+      "id": "em:dossier-evidence-relation:sha256:6834de099bbddb1971a4152021f23eb09f993ef29ebdb0a5a4245e07264354c3",
+      "key": "edge-p1-p2-author-social",
+      "note": "accepted_dimension=author; accepted_status=known-shared-program; effect=Albert Mehrabian is common to both papers and P1 acknowledges Susan Ferris; the papers are not independent author programs.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-participant-p2",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-grants",
+        "span-ferris-grants"
+      ],
+      "from_ref": "lineage-participant-p1",
+      "id": "em:dossier-evidence-relation:sha256:359f4e4aea90676246decef3ca6cf9d4ae292b78746bcbfc4893ef76c6555c56",
+      "key": "edge-p1-p2-grant",
+      "note": "accepted_dimension=grant; accepted_status=known-shared-grant-plus-distinct-grants; effect=Both report University of California Grant 2189; their Public Health Service grant identifiers differ. This is shared-program evidence, not shared-participant proof.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-participant-p2",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-stimulus-recording",
+        "span-ferris-models-speakers",
+        "span-ferris-maybe",
+        "span-ferris-design"
+      ],
+      "from_ref": "lineage-participant-p1",
+      "id": "em:dossier-evidence-relation:sha256:c382279b1c1ef9891eda2023e795876e008701bd67403dbc8359d22dcbe6f642",
+      "key": "edge-p1-p2-material",
+      "note": "accepted_dimension=material; accepted_status=related-recorded-attitude-materials-not-identical; effect=Both use prepared female-voice attitude recordings; P2 adds facial photographs and does not establish reuse of P1's recordings.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-participant-p2",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-single-words",
+        "span-wiener-instructions",
+        "span-ferris-design"
+      ],
+      "from_ref": "lineage-participant-p1",
+      "id": "em:dossier-evidence-relation:sha256:b6e757783497f7b5845ab4acd4fe3753a40add0f466c4923fc0bc3f3ac6ea36b",
+      "key": "edge-p1-p2-method",
+      "note": "accepted_dimension=method; accepted_status=known-related-crossed-channel-design; effect=Both infer attitude from experimentally crossed channel cues; P1 crosses words and tone, while P2 crosses face and tone.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-participant-p2",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-sample",
+        "span-ferris-sample"
+      ],
+      "from_ref": "lineage-participant-p1",
+      "id": "em:dossier-evidence-relation:sha256:19649b1337d67098f9c7f32979f519aba10c576ab68ba13d1d9bc5da12acc57b",
+      "key": "edge-p1-p2-participant",
+      "note": "accepted_dimension=participant; accepted_status=distinct-reported-groups-overlap-not-disclosed; effect=Count two participant-data roots because the papers report separate samples, while withholding any stronger person-level independence claim because participant identities are unavailable.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-participant-p2",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-citation-p1",
+        "span-ferris-regression",
+        "span-ferris-proposal"
+      ],
+      "from_ref": "lineage-mehrabian-original-program",
+      "id": "em:dossier-evidence-relation:sha256:21eaf6790f95563abba094777e750923b1ffc99ac39644563ac6efce9a7ef4d5",
+      "key": "edge-p1-p2-proposal-derivation",
+      "note": "accepted_dimension=derivation; accepted_status=known-cross-study-proposal-missing-verbal-step; effect=The .07/.38/.55 statement combines linked studies in P2's discussion. It is not a third participant-data root, and the exact .07 derivation remains no-credit.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-cross-study-proposal",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-scale",
+        "span-ferris-scale"
+      ],
+      "from_ref": "lineage-participant-p1",
+      "id": "em:dossier-evidence-relation:sha256:43451c7b43853f9464e619c2d1954712ae9904a982a3b453d90164c51a6bf42d",
+      "key": "edge-p1-p2-scale",
+      "note": "accepted_dimension=scale; accepted_status=known-shared-liking-construct-different-range; effect=Both operationalize attitude as liking versus disliking, while their displayed scale procedures are not treated as identical instruments.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-participant-p2",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-speakers",
+        "span-ferris-models-speakers"
+      ],
+      "from_ref": "lineage-participant-p1",
+      "id": "em:dossier-evidence-relation:sha256:cc1192ff02caf74fa4729528e86056adbb558c4364a178fc5ae8f148803c9074",
+      "key": "edge-p1-p2-speaker",
+      "note": "accepted_dimension=speaker; accepted_status=named-speakers-differ-author-speaker-unresolved; effect=The named speakers do not overlap, but P2 leaves one author-speaker unnamed; speaker independence is therefore not fully closed.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-participant-p2",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-wiener-single-words",
+        "span-ferris-maybe"
+      ],
+      "from_ref": "lineage-participant-p1",
+      "id": "em:dossier-evidence-relation:sha256:125be946961666ecbcc9ff8e3edcc9cab8aa0e5a9da80ad4dd5bab5ef9bbc65d",
+      "key": "edge-p1-p2-stimulus",
+      "note": "accepted_dimension=stimulus; accepted_status=known-overlap-neutral-word; effect=P2 reuses the neutral word maybe, which was one of P1's selected words; the material lineage is partially shared.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-participant-p2",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ferris-citation-p1",
+        "span-ferris-proposal"
+      ],
+      "from_ref": "lineage-participant-p2",
+      "id": "em:dossier-evidence-relation:sha256:b82ead3331e2c501f148e5ffcc3b276ff18905299111c296f9cdf828eb89feda",
+      "key": "edge-p2-cites-p1",
+      "note": "accepted_dimension=citation; accepted_status=known-explicit-citation; effect=P2 is a declared continuation that cites P1 and later integrates its result; it is not an independent replication of the three-number rule.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-participant-p1",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-silent-1971-liking",
+        "span-silent-1981-metadata"
+      ],
+      "from_ref": "lineage-silent-1971",
+      "id": "em:dossier-evidence-relation:sha256:862b58b456afea712f0e4b237952a166508f23bae7ac3ce5e2b7b731126065d4",
+      "key": "edge-silent-messages-editions",
+      "note": "accepted_dimension=book-edition; accepted_status=same-work-edition-lineage-content-not-collated; effect=The editions are one authorial work lineage and supply no new participant evidence; formula continuity into 1981 remains unresolved.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-silent-1981-unknown",
+      "visibility": "public"
+    }
+  ],
+  "format": "epistemedia-dossier-v0.1",
+  "lineages": [
+    {
+      "assertion_keys": [
+        "assertion-p1-tone-dominance"
+      ],
+      "basis_span_keys": [
+        "span-wiener-authors",
+        "span-wiener-ferris-acknowledgment",
+        "span-wiener-grants",
+        "span-wiener-instructions",
+        "span-wiener-result-boundary",
+        "span-wiener-safe-extension",
+        "span-wiener-sample",
+        "span-wiener-scale",
+        "span-wiener-single-words",
+        "span-wiener-speakers",
+        "span-wiener-stimulus-recording",
+        "span-wiener-target"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "apparatus",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:e57ceb2324b3adcdf705e9edfcc2c6f35ac41c1a1970042ff60c11e518fc4a89",
+      "key": "lineage-participant-p1",
+      "note": "First 1967 paper: one reported participant-data root for the words-and-tone task.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-p2-face-tone"
+      ],
+      "basis_span_keys": [
+        "span-ferris-authors",
+        "span-ferris-citation-p1",
+        "span-ferris-design",
+        "span-ferris-grants",
+        "span-ferris-maybe",
+        "span-ferris-models-speakers",
+        "span-ferris-proposal",
+        "span-ferris-regression",
+        "span-ferris-sample",
+        "span-ferris-scale",
+        "span-ferris-sums-of-squares",
+        "span-ferris-target"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "apparatus",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:c584e06d798d9968c9aad64e38cd1c63ceec9ba7621f6bc04a7fdb26a4746367",
+      "key": "lineage-participant-p2",
+      "note": "Second 1967 paper: a distinct reported participant-data root for the face-and-tone task; person-level overlap is not disclosed.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-author-equation",
+        "span-author-qualification"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:4720ec5077955b04257791c781e486a02f460acdddaf9e9b8f79779f21b299b2",
+      "key": "lineage-author-qualification",
+      "note": "Later author interpretation and qualification; it supplies no new participant evidence.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-book-boundary"
+      ],
+      "basis_span_keys": [
+        "span-silent-1971-boundary",
+        "span-silent-1971-liking"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "source",
+        "model"
+      ],
+      "id": "em:dossier-lineage:sha256:8d5b7ecbeb68f7c37a9633763954765cbbdd7adb320f5960dd23e83c17cbac35",
+      "key": "lineage-silent-1971",
+      "note": "Inspected 1971 book edition, represented only by reviewed quote-minimal spans and capture identity.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-1981-edition"
+      ],
+      "basis_span_keys": [
+        "span-silent-1981-metadata"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "source",
+        "retrieval"
+      ],
+      "id": "em:dossier-lineage:sha256:112f5a16d85bf91d11f77faff2e42ab466bc0c1decf008ef402b2891540e9a3f",
+      "key": "lineage-silent-1981-unknown",
+      "note": "The 1981 second-edition identity is known, but formula-page continuity is unknown because the edition was not textually collated.",
+      "status": "unknown",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-hegstrom-rebuttal"
+      ],
+      "basis_span_keys": [
+        "span-hegstrom-design",
+        "span-hegstrom-result"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "source"
+      ],
+      "id": "em:dossier-lineage:sha256:257e0b1fcd5d5a376dd9e87d35c1d575edb8b258a4400035a7911db154287a2d",
+      "key": "lineage-hegstrom-rebuttal",
+      "note": "Separate reported participant-data root and direct all-channel rebuttal; full-text participant and material details remain unavailable.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-argyle-1970-abstract"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "source"
+      ],
+      "id": "em:dossier-lineage:sha256:8098086255adfe1742167fee535f0a451a49bb0c2745a06b9386b2f1dc71e240",
+      "key": "lineage-participant-argyle-1970",
+      "note": "Reported participant-data root for the 1970 superiority/inferiority experiment.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "source"
+      ],
+      "id": "em:dossier-lineage:sha256:cf87e65c60f2b677d1ef84afd1e4a290f624b6d66d962d89bcd7a62af96e6ccc",
+      "key": "lineage-participant-argyle-1971",
+      "note": "Reported participant-data root for the 1971 friendly/hostile experiments.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-lapakko-1997-abstract"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "source",
+        "method",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:804d9fac99ff2dd1c4a1d4bb1eb34dc5785ef5817a911a80291cb89bc213e73a",
+      "key": "lineage-lapakko-1997",
+      "note": "Methodological critique source; no new participant evidence is credited.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-lapakko-2007-63-of-79",
+        "span-lapakko-2007-abstract",
+        "span-lapakko-2007-limitations"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "source",
+        "method",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:8a1a7e917c8242d263092ad2c071248d85959dd2db5693994ac3bb2fe85c8def",
+      "key": "lineage-lapakko-2007",
+      "note": "Bounded propagation study and critique; circulation receives zero scientific-rule credit.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-hampshire-generalization"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:e1b3c36f88cbc0d90f561f12310837f356271be06d0dfcd88709e4a45cc29f5b",
+      "key": "lineage-hampshire-propagation",
+      "note": "Institutional recirculation object with zero scientific-rule evidence credit.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-birmingham-generalization"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:7a32587e1c7bf4a96d78fb681465481685d1e451157ce3b0b2293ab293a00bba",
+      "key": "lineage-birmingham-propagation",
+      "note": "Institutional recirculation object with zero scientific-rule evidence credit.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-ferris-authors",
+        "span-ferris-citation-p1",
+        "span-ferris-design",
+        "span-ferris-grants",
+        "span-ferris-maybe",
+        "span-ferris-models-speakers",
+        "span-ferris-proposal",
+        "span-ferris-regression",
+        "span-ferris-sample",
+        "span-ferris-scale",
+        "span-ferris-sums-of-squares",
+        "span-ferris-target",
+        "span-wiener-authors",
+        "span-wiener-ferris-acknowledgment",
+        "span-wiener-grants",
+        "span-wiener-instructions",
+        "span-wiener-result-boundary",
+        "span-wiener-safe-extension",
+        "span-wiener-sample",
+        "span-wiener-scale",
+        "span-wiener-single-words",
+        "span-wiener-speakers",
+        "span-wiener-stimulus-recording",
+        "span-wiener-target"
+      ],
+      "depends_on": [
+        "lineage-participant-p1",
+        "lineage-participant-p2"
+      ],
+      "dimensions": [
+        "data",
+        "method",
+        "apparatus",
+        "model",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:4a326e49b7a386a52fc48beea7acda74d52e642f413eb2fd7ed412facb9ae646",
+      "key": "lineage-mehrabian-original-program",
+      "note": "Two distinct reported participant groups within one linked UCLA author, grant, material, method, scale, citation, and derivation program.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-author-equation",
+        "span-author-qualification",
+        "span-silent-1971-boundary",
+        "span-silent-1971-liking",
+        "span-silent-1981-metadata"
+      ],
+      "depends_on": [
+        "lineage-silent-1971",
+        "lineage-silent-1981-unknown",
+        "lineage-author-qualification"
+      ],
+      "dimensions": [
+        "source",
+        "model",
+        "retrieval",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:3737ee68df7eed70887e9488fb4a5c1feaacc4d7cadbf473186a6362a10a5c04",
+      "key": "lineage-mehrabian-interpretation",
+      "note": "One authorial interpretation and book-edition lineage; it supplies no new participant evidence and preserves the unknown 1981 formula-page comparison.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-related-context"
+      ],
+      "basis_span_keys": [
+        "span-argyle-1970-abstract",
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two"
+      ],
+      "depends_on": [
+        "lineage-participant-argyle-1970",
+        "lineage-participant-argyle-1971"
+      ],
+      "dimensions": [
+        "data",
+        "method",
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:e1c87dbf7985032d2ed73a444a729e3e0a52474289f696bbcc878b48a0ddf30b",
+      "key": "lineage-argyle-related-program",
+      "note": "Two related Oxford studies with shared author/program and different attitude dimensions; related boundary evidence, not exact replication.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-lapakko-1997-abstract",
+        "span-lapakko-2007-63-of-79",
+        "span-lapakko-2007-abstract",
+        "span-lapakko-2007-limitations"
+      ],
+      "depends_on": [
+        "lineage-lapakko-1997",
+        "lineage-lapakko-2007"
+      ],
+      "dimensions": [
+        "source",
+        "method",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:17a20cff451ac0fb76128306ac7656181d13eaa77dda09e1857def9d7876a946",
+      "key": "lineage-lapakko-critique-propagation",
+      "note": "Same-author critique program; the 2007 bounded website sample measures circulation, not scientific effect.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-birmingham-generalization",
+        "span-hampshire-generalization"
+      ],
+      "depends_on": [
+        "lineage-hampshire-propagation",
+        "lineage-birmingham-propagation"
+      ],
+      "dimensions": [
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:6f4544d1348671943fb14a4fc17142a207b56d72b48dbc25119386ab6d6e52a2",
+      "key": "lineage-institutional-recirculation",
+      "note": "Separate institutional recirculation objects, each assigned zero empirical evidence credit.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-derive-p2-facial-vocal-ratio",
+        "assertion-derive-proposed-facial-vocal-ratio",
+        "assertion-derive-proposed-sum",
+        "assertion-derive-ratio-difference",
+        "assertion-three-coefficient-proposal"
+      ],
+      "basis_span_keys": [
+        "span-ferris-citation-p1",
+        "span-ferris-design",
+        "span-ferris-proposal",
+        "span-ferris-regression"
+      ],
+      "depends_on": [
+        "lineage-mehrabian-original-program"
+      ],
+      "dimensions": [
+        "data",
+        "method",
+        "model",
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:dbc978e3950abc1a5b1619813a601090df761d98c7016b8b10f8532137f00923",
+      "key": "lineage-cross-study-proposal",
+      "note": "The later .07/.38/.55 proposal combines the two linked 1967 studies; it is not a third participant-data root or one three-channel experiment.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-derive-implied-vocal-verbal-ratio",
+        "assertion-derive-p2-allocation-with-seven-reserved",
+        "assertion-seven-origin"
+      ],
+      "basis_span_keys": [
+        "span-ferris-proposal",
+        "span-ferris-regression",
+        "span-silent-1971-liking"
+      ],
+      "depends_on": [
+        "lineage-cross-study-proposal"
+      ],
+      "dimensions": [
+        "model",
+        "source"
+      ],
+      "id": "em:dossier-lineage:sha256:a163786004de685549681466c4d321824f7eef66077caf48e87d67e1176f327d",
+      "key": "lineage-seven-origin-unknown",
+      "note": "The exact source derivation of the .07 verbal coefficient remains unknown and receives no credit; reverse engineering is sensitivity analysis only.",
+      "status": "unknown",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-propagation"
+      ],
+      "basis_span_keys": [
+        "span-birmingham-generalization",
+        "span-hampshire-generalization",
+        "span-lapakko-2007-63-of-79",
+        "span-lapakko-2007-abstract",
+        "span-lapakko-2007-limitations"
+      ],
+      "depends_on": [
+        "lineage-lapakko-critique-propagation",
+        "lineage-institutional-recirculation"
+      ],
+      "dimensions": [
+        "source",
+        "method",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:12bcc058b0a4d7e00c11c791d5d668da0311ebb1925285ddd7452669b0e3e635",
+      "key": "lineage-propagation-synthesis",
+      "note": "Circulation synthesis only; every propagation object remains at zero scientific-rule evidence credit.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-replication-search"
+      ],
+      "basis_span_keys": [
+        "span-argyle-1970-abstract",
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two",
+        "span-hegstrom-design",
+        "span-hegstrom-result",
+        "span-lapakko-1997-abstract"
+      ],
+      "depends_on": [
+        "lineage-hegstrom-rebuttal",
+        "lineage-argyle-related-program",
+        "lineage-lapakko-1997"
+      ],
+      "dimensions": [
+        "data",
+        "method",
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:b3376ccd71df11b760ec6d310527b3e591f9b0a07c53e661505043bcf5271d82",
+      "key": "lineage-follow-up-synthesis",
+      "note": "A direct all-channel rebuttal, related context-dependent studies, and critique remain separate; no exhaustive replication claim is made.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-encyclopedia-evaluation",
+        "assertion-popular-rule",
+        "assertion-skeptical-evaluation"
+      ],
+      "basis_span_keys": [
+        "span-argyle-1970-abstract",
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two",
+        "span-author-equation",
+        "span-author-qualification",
+        "span-birmingham-generalization",
+        "span-ferris-authors",
+        "span-ferris-citation-p1",
+        "span-ferris-design",
+        "span-ferris-grants",
+        "span-ferris-maybe",
+        "span-ferris-models-speakers",
+        "span-ferris-proposal",
+        "span-ferris-regression",
+        "span-ferris-sample",
+        "span-ferris-scale",
+        "span-ferris-sums-of-squares",
+        "span-ferris-target",
+        "span-hampshire-generalization",
+        "span-hegstrom-design",
+        "span-hegstrom-result",
+        "span-lapakko-1997-abstract",
+        "span-lapakko-2007-63-of-79",
+        "span-lapakko-2007-abstract",
+        "span-lapakko-2007-limitations",
+        "span-silent-1971-boundary",
+        "span-silent-1971-liking",
+        "span-silent-1981-metadata",
+        "span-wiener-authors",
+        "span-wiener-ferris-acknowledgment",
+        "span-wiener-grants",
+        "span-wiener-instructions",
+        "span-wiener-result-boundary",
+        "span-wiener-safe-extension",
+        "span-wiener-sample",
+        "span-wiener-scale",
+        "span-wiener-single-words",
+        "span-wiener-speakers",
+        "span-wiener-stimulus-recording",
+        "span-wiener-target"
+      ],
+      "depends_on": [
+        "lineage-cross-study-proposal",
+        "lineage-mehrabian-interpretation",
+        "lineage-hegstrom-rebuttal",
+        "lineage-argyle-related-program",
+        "lineage-propagation-synthesis"
+      ],
+      "dimensions": [
+        "data",
+        "method",
+        "model",
+        "source",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:6b47ad10be166f9688f87f5c847b321c50f06d9b30709eb079803e51a14a964c",
+      "key": "lineage-general-rule-synthesis",
+      "note": "Synthesis retains narrow experimental results, later qualification, direct rebuttal, and zero-credit recirculation without promoting a universal communication rule.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-reviewed-source-register"
+      ],
+      "basis_span_keys": [
+        "span-argyle-1970-abstract",
+        "span-argyle-1971-experiment-one",
+        "span-argyle-1971-experiment-two",
+        "span-author-equation",
+        "span-author-qualification",
+        "span-birmingham-generalization",
+        "span-ferris-authors",
+        "span-ferris-citation-p1",
+        "span-ferris-design",
+        "span-ferris-grants",
+        "span-ferris-maybe",
+        "span-ferris-models-speakers",
+        "span-ferris-proposal",
+        "span-ferris-regression",
+        "span-ferris-sample",
+        "span-ferris-scale",
+        "span-ferris-sums-of-squares",
+        "span-ferris-target",
+        "span-hampshire-generalization",
+        "span-hegstrom-design",
+        "span-hegstrom-result",
+        "span-lapakko-1997-abstract",
+        "span-lapakko-2007-63-of-79",
+        "span-lapakko-2007-abstract",
+        "span-lapakko-2007-limitations",
+        "span-silent-1971-boundary",
+        "span-silent-1971-liking",
+        "span-silent-1981-metadata",
+        "span-wiener-authors",
+        "span-wiener-ferris-acknowledgment",
+        "span-wiener-grants",
+        "span-wiener-instructions",
+        "span-wiener-result-boundary",
+        "span-wiener-safe-extension",
+        "span-wiener-sample",
+        "span-wiener-scale",
+        "span-wiener-single-words",
+        "span-wiener-speakers",
+        "span-wiener-stimulus-recording",
+        "span-wiener-target"
+      ],
+      "depends_on": [
+        "lineage-mehrabian-original-program",
+        "lineage-mehrabian-interpretation",
+        "lineage-hegstrom-rebuttal",
+        "lineage-argyle-related-program",
+        "lineage-lapakko-critique-propagation",
+        "lineage-institutional-recirculation"
+      ],
+      "dimensions": [
+        "source",
+        "retrieval",
+        "other"
+      ],
+      "id": "em:dossier-lineage:sha256:b505878d1efa489ab3b113379ad62d55fdeeb409081699f1ab430fa5c6b3a23c",
+      "key": "lineage-reviewed-source-register",
+      "note": "Relation-derived register of the accepted packet's source, edition, span, claim, calculation, lineage, propagation, and follow-up objects.",
+      "status": "known",
+      "visibility": "public"
+    }
+  ],
+  "propositions": [
+    {
+      "id": "em:dossier-proposition:sha256:a8ccfbad6bdf99d4be2938ac6fc23fae7e785dcd57735e3b93e502a2b8aba8ef",
+      "key": "claim-popular-rule",
+      "scope": "Accepted EM-0033 status: rebutted-as-general-rule; evidence cutoff 2026-08-27.",
+      "text": "The circulated claim that 93 percent of communication is nonverbal is not a result established by the two 1967 experiments.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:f7006f6c8feef7482d4410618159d18d4c7bbea58741bb9b83ce496b999949d5",
+      "key": "claim-p1-tone-dominance",
+      "scope": "Accepted EM-0033 status: supported-narrowly; evidence cutoff 2026-08-27.",
+      "text": "P1 found tone dominance when listeners inferred attitude from inconsistent isolated-word content and intonation without additional relationship information.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:9d1cdaf30eab0748993f1f21265e953d4f86323e246236e5ced76edcff96ed4e",
+      "key": "claim-p2-face-tone",
+      "scope": "Accepted EM-0033 status: supported-narrowly; evidence cutoff 2026-08-27.",
+      "text": "P2 found a stronger facial than vocal contribution in a two-channel task using the neutral word maybe and facial photographs.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:d5f8c244c917ded288c04ead85148508187beaf34687a13d5bc10fb0b0d3b717",
+      "key": "claim-three-coefficient-proposal",
+      "scope": "Accepted EM-0033 status: supported-as-historical-proposal; evidence cutoff 2026-08-27.",
+      "text": "The .07/.38/.55 values were proposed in P2's discussion as a cross-study weighted-sum extrapolation; neither 1967 experiment tested all three channels together.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:dfcc303b1396eafdb5d289a1110db1a4c6cad96364022344e1403cc70cf041f7",
+      "key": "claim-seven-origin",
+      "scope": "Accepted EM-0033 status: unresolved-no-credit; evidence cutoff 2026-08-27.",
+      "text": "The exact derivation of the .07 verbal coefficient is not disclosed in the two inspected 1967 papers or the inspected 1971 book pages.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:a0b156104e1ad7eb9d5515ac999063660a1a40547ff81b54ab5dd5d53399e570",
+      "key": "claim-book-boundary",
+      "scope": "Accepted EM-0033 status: supported; evidence cutoff 2026-08-27.",
+      "text": "The 1971 book repeats the equation, calls the numbers approximate, and limits use to one feeling dimension at a time.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:ad919a43870501678e467e6a164716d1a0e2c8109a9ef16f56bff4efda2983a3",
+      "key": "claim-1981-edition",
+      "scope": "Accepted EM-0033 status: identity-closed-content-unresolved; evidence cutoff 2026-08-27.",
+      "text": "The 1981 second edition is bibliographically identified, but its formula pages were not textually collated against 1971.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:9d8a148808fcf325602a13caf8849c49e43d68ceacd75807481da757dd67974e",
+      "key": "claim-hegstrom-rebuttal",
+      "scope": "Accepted EM-0033 status: material-counterevidence; evidence cutoff 2026-08-27.",
+      "text": "Hegstrom's direct all-channel reconsideration reported message-specific equations unlike both the fixed formula and one another.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:542a8f58b94dada95c78967ede1de2e55bb2ee17ac95332989a6b273138006c3",
+      "key": "claim-related-context",
+      "scope": "Accepted EM-0033 status: material-qualification-not-direct-replication; evidence cutoff 2026-08-27.",
+      "text": "Related Argyle experiments found nonverbal dominance but materially different ratios when cue strengths and attitude dimensions changed.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:efdd14d5f568683325ed44d9987f3ed9878fa0e994b107ce5974c212fa616d20",
+      "key": "claim-propagation",
+      "scope": "Accepted EM-0033 status: supported-as-propagation-only; evidence cutoff 2026-08-27.",
+      "text": "The broad rule propagated through public institutional material and a bounded web sample, but propagation supplies zero evidence that the scientific proposition is true.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:56c6c615576b89f1ad5f13e8ee8f1c368a88836774eb154d8afa2730cc42566d",
+      "key": "claim-replication-search",
+      "scope": "Accepted EM-0033 status: bounded-negative-result-not-exhaustive; evidence cutoff 2026-08-27.",
+      "text": "The bounded search found one direct all-channel rebuttal and related follow-ups, but no exact replication of the two-study derivation or validation of a universal fixed rule.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:3200154b9f5d023ab676106b62f7e6e3bd539c5e69f66026b608e4e8b8e887e2",
+      "key": "derive-proposed-sum",
+      "scope": "Mechanical reproduction from accepted EM-0033 inputs; not a new empirical estimate.",
+      "text": "The printed proposal is normalized to one. Calculation: 0.07 + 0.38 + 0.55 = 1.0.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:9fc8d764c1b57eac8a71922a18379e3a2d4605bf8b49c023363529138e57aa26",
+      "key": "derive-proposed-facial-vocal-ratio",
+      "scope": "Mechanical reproduction from accepted EM-0033 inputs; not a new empirical estimate.",
+      "text": "Facial-to-vocal ratio implied by the printed proposal. Calculation: 0.55 / 0.38 = 1.4473684210526316.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:2560cd963ac71fe56353a7f4bd65e4813610d046233d456231a6eb02db108e5d",
+      "key": "derive-p2-facial-vocal-ratio",
+      "scope": "Mechanical reproduction from accepted EM-0033 inputs; not a new empirical estimate.",
+      "text": "Facial-to-vocal ratio from P2's reported regression. Calculation: 1.50 / 1.03 = 1.4563106796116505.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:6016e62b8613745cd8cec401cfb4afbb75c130fe9e3eb8b65d3f24ca4a757c9a",
+      "key": "derive-ratio-difference",
+      "scope": "Mechanical reproduction from accepted EM-0033 inputs; not a new empirical estimate.",
+      "text": "The reported regression and printed proposal are close, not identical. Calculation: abs((1.50 / 1.03) - (0.55 / 0.38)) = 0.008942258559018867.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:a0129e09d72c6236c54ccf6c1c70d9de774f4277a06a4f33b49ca102cbf294a0",
+      "key": "derive-implied-vocal-verbal-ratio",
+      "scope": "Mechanical reproduction from accepted EM-0033 inputs; not a new empirical estimate.",
+      "text": "Reverse-engineered ratio implied by the proposal; it does not recover the missing source derivation of 0.07. Calculation: 0.38 / 0.07 = 5.428571428571428.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:5d14bcda8dcd81df4ae4710cb45cd52acde81708296f102c6bd308cc5037dda2",
+      "key": "derive-p2-allocation-with-seven-reserved",
+      "scope": "Mechanical reproduction from accepted EM-0033 inputs; not a new empirical estimate.",
+      "text": "Sensitivity reconstruction only. Reserving 0.07 is an assumption, not a derivation supplied by P1 or P2. Calculation: allocate 0.93 in the ratio 1.50:1.03 = {\"facial\":0.5513833992094861,\"verbal\":0.07,\"vocal\":0.3786166007905138}.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:b8c8f2e2d58266192f9c64c7285bcdd8fa6418b54feee33f815d3340b63b8c6e",
+      "key": "prop-reviewed-source-register",
+      "scope": "Counts derived from accepted packet relations, never editorial totals.",
+      "text": "The accepted packet contains 12 source records, 11 source works, 12 editions, 40 parent spans, 11 claims, 6 calculations, 6 lineage groups, 5 participant-data roots, 11 typed lineage edges, 3 propagation objects, and 5 follow-up dispositions.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:5319493c09cb94ff5ba18e76578d25aef5b3e17272104ae3aad2c44bef0a7566",
+      "key": "prop-encyclopedia-evaluation",
+      "scope": "Encyclopedia policy: document the bounded historical proposal and its limits.",
+      "text": "The historically defensible account is a narrow cross-study weighting proposal over inconsistent feelings-and-attitudes tasks, with the two 1967 participant roots and later interpretation kept distinct.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:c466517437769a8b1e2b4832ab6193edaa060c290af3bcce6272fa908ecdb047",
+      "key": "prop-skeptical-evaluation",
+      "scope": "Skeptical policy: withhold broad causal or universal interpretation.",
+      "text": "A universal 93-percent rule should be withheld because no reviewed three-channel experiment established it, the .07 origin is unresolved, and direct all-channel evidence reported message-specific equations.",
+      "visibility": "public"
+    }
+  ],
+  "question": "What did the 7-38-55 weighting represent in the examined primary editions, how was it derived, and what supports or undercuts its circulation as a general rule of communication?",
+  "scope": "Evidence through 2026-08-27; a disclosure-safe research candidate derived only from the accepted EM-0033 packet. It is not admitted, not featured, not live, not published, and not evidence for a universal communication rule.",
+  "source_works": [
+    {
+      "canonical_uri": "https://doi.org/10.1111/j.2044-8260.1970.tb00668.x",
+      "creators": [
+        "Michael Argyle",
+        "Veronica Salter",
+        "Hilary Nicholson",
+        "Marylin Williams",
+        "Philip Burgess"
+      ],
+      "id": "em:dossier-source-work:sha256:00cdbabe6986f0214deb80e249845a0a0148dd230ac5b54db86701cfa94d91d7",
+      "key": "work-argyle-1970",
+      "kind": "paper",
+      "license": "Closed publisher version; metadata and publisher abstract readback only.",
+      "title": "The Communication of Inferior and Superior Attitudes by Verbal and Non-verbal Signals",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1002/ejsp.2420010307",
+      "creators": [
+        "Michael Argyle",
+        "Florisse Alkema",
+        "Robin Gilmour"
+      ],
+      "id": "em:dossier-source-work:sha256:506b1bbd461c4a7e94a1cd7aba0aa1ccfa061fb1cfa603cbb0e97a05d09aa51b",
+      "key": "work-argyle-1971",
+      "kind": "paper",
+      "license": "Closed publisher version; metadata and publisher abstract readback only.",
+      "title": "The communication of friendly and hostile attitudes by verbal and non-verbal signals",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://conferences.bham.ac.uk/2020/01/20/audio-visual-for-events-explained/",
+      "creators": [
+        "University of Birmingham Conferences & Events"
+      ],
+      "id": "em:dossier-source-work:sha256:6ac486c44719663b4dff0226037280abb731bdd61908798804bb748c5a05b676",
+      "key": "work-birmingham-events-page-2020",
+      "kind": "webpage",
+      "license": "No page-specific open license observed; quote minimally. This is a propagation object and receives zero scientific evidence credit.",
+      "title": "Audio visual for events explained",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://www.hampshire-pcc.gov.uk/wp-content/uploads/2022/03/MASTER-010322.pdf",
+      "creators": [
+        "Hampshire Police and Crime Commissioner"
+      ],
+      "id": "em:dossier-source-work:sha256:c5ee7b3cdeb01cb74f300043c9616f4c0b34889f2d835003b347277520d8e7c9",
+      "key": "work-hampshire-pcc-deck-2022",
+      "kind": "report",
+      "license": "No artifact-specific open license observed; quote minimally. This is a propagation object and receives zero scientific evidence credit.",
+      "title": "Police and Crime Plan - Developing the Implementation Plan",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1080/10570317909373961",
+      "creators": [
+        "Timothy G. Hegstrom"
+      ],
+      "id": "em:dossier-source-work:sha256:2b97d13955e5a28ddd4dbcf662e28befd8c666b09f0308c98fc96c4d51d71810",
+      "key": "work-hegstrom-1979",
+      "kind": "paper",
+      "license": "Publisher full text is closed and returned HTTP 403. The public ERIC and publisher abstracts are used quote-minimally; no full text is redistributed.",
+      "title": "Message impact: What percentage is nonverbal?",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1080/03634529709379073",
+      "creators": [
+        "David Lapakko"
+      ],
+      "id": "em:dossier-source-work:sha256:efe622a31c5db84acb388eac92aa6973734c50e678dbc1c401cc068b6f8e5e44",
+      "key": "work-lapakko-1997",
+      "kind": "paper",
+      "license": "No open license confirmed; only metadata and the ERIC abstract are retained.",
+      "title": "Three cheers for language: A closer examination of a widely cited study of nonverbal communication",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://cornerstone.lib.mnsu.edu/ctamj/vol34/iss1/2/",
+      "creators": [
+        "David Lapakko"
+      ],
+      "id": "em:dossier-source-work:sha256:cbf02b7bade0583bdecf1af896a79e36a0e809d482781c9f32bf738f7426a09b",
+      "key": "work-lapakko-2007",
+      "kind": "paper",
+      "license": "The authoritative landing declares CC BY-NC 4.0 for the work. The inaccessible PDF is not redistributed; passages remain quote-minimal.",
+      "title": "Communication is 93% Nonverbal: An Urban Legend Proliferates",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://kaaj.com/psych/smorder.html",
+      "creators": [
+        "Albert Mehrabian"
+      ],
+      "id": "em:dossier-source-work:sha256:ad9b03e93fd0b2763a24dffe1f97f2cdb35dd791dc824ff5be5b94c10ff3d5c9",
+      "key": "work-mehrabian-author-page",
+      "kind": "webpage",
+      "license": "Copyrighted author page with no open license observed; quote minimally and attribute.",
+      "title": "Silent Messages -- Description and Ordering Information",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1037/h0024648",
+      "creators": [
+        "Albert Mehrabian",
+        "Susan R. Ferris"
+      ],
+      "id": "em:dossier-source-work:sha256:79df036174b569d91ec1713b45c3c96ed7150328dc3d48575ffe5c838efb005a",
+      "key": "work-mehrabian-ferris-1967",
+      "kind": "paper",
+      "license": "No open article license was confirmed. Public course hosting does not establish reuse rights; the source is represented with identity, digest, access history, and quote-minimal spans only.",
+      "title": "Inference of attitudes from nonverbal communication in two channels",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://doi.org/10.1037/h0024532",
+      "creators": [
+        "Albert Mehrabian",
+        "Morton Wiener"
+      ],
+      "id": "em:dossier-source-work:sha256:7df450681d00146144e9be0cf4d0a0a2260055aafe4886194ee62f53bb1e8a2e",
+      "key": "work-mehrabian-wiener-1967",
+      "kind": "paper",
+      "license": "No open article license was confirmed. The readable scan is not redistributed; only identity, digest, access history, and quote-minimal spans are retained.",
+      "title": "Decoding of inconsistent communications",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://openlibrary.org/books/OL24765699M/Silent_messages",
+      "creators": [
+        "Albert Mehrabian"
+      ],
+      "id": "em:dossier-source-work:sha256:46ecbe5e5e14d842e9355a0f375e19a71ca708fe19b8707768948daaf93134b0",
+      "key": "work-silent-messages",
+      "kind": "book",
+      "license": "All rights reserved; the scan is not committed or redistributed. Retain metadata, digest, PDF-page locators, and quote-minimal spans only.; Catalog metadata only; no full-text license or readable edition was confirmed.",
+      "title": "Silent Messages",
+      "visibility": "public"
+    }
+  ],
+  "spans": [
+    {
+      "digest": "sha256:75bb9f2b9bf5c6dbfd26a2628aabf677e631ba9851ef607aa6006b9c499b2feb",
+      "edition_key": "edition-argyle-bjscp-9-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "publisher abstract readback",
+          "quote": "Ratings were made by 120 subjects of 18 video‐tapes ... non‐verbal cues now had 4.3 times the effect of verbal cues",
+          "quote_sha256": "1c646e683fa1fae891328ff0aa173a6819a4bffdaa3d85b14ab35d321fc51fce",
+          "segments": [
+            "Ratings were made by 120 subjects of 18 video‐tapes",
+            "non‐verbal cues now had 4.3 times the effect of verbal cues"
+          ],
+          "span_id": "span-argyle-1970-abstract",
+          "span_kind": "verbatim_segments",
+          "supports": "A related superiority/inferiority task found nonverbal dominance, but with different materials and estimand."
+        }
+      },
+      "id": "em:dossier-span:sha256:e8a01a006d330bd4a9d45ffe93618728e38a4e49fe05b4bc1d41f7765e9b058d",
+      "key": "span-argyle-1970-abstract",
+      "locator": {
+        "label": "publisher abstract readback",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:ae9e89c0355eac4c1f6c10e9e29b25e97a98e5566ad0b931ce3a56ce205c6b3e",
+      "edition_key": "edition-argyle-ejsp-1-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "publisher abstract readback",
+          "quote": "non‐verbal cues accounted for 12.5 times as much variance as verbal cues",
+          "quote_sha256": "0cf68d8b04488ee2dae7795e58ef3204eda6ea25a69ab0e8aa9799cf324d821b",
+          "span_id": "span-argyle-1971-experiment-one",
+          "supports": "The first related experiment produced strong nonverbal dominance."
+        }
+      },
+      "id": "em:dossier-span:sha256:f70c8f42aeb96d249a34c9bf28e2f9ce51531a990fb2d068d70bd4beab683675",
+      "key": "span-argyle-1971-experiment-one",
+      "locator": {
+        "label": "publisher abstract readback",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:802725074f3cf29bb7df2595a197a41006f302dbd070f4c1d5fd69377199e637",
+      "edition_key": "edition-argyle-ejsp-1-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "publisher abstract readback",
+          "quote": "the ratio of non‐verbal : verbal variance was now 1.67:1",
+          "quote_sha256": "02f4d3fdaf74b293076b3521515a54d6968638aaa4882fc9a3f25c4a7442333f",
+          "span_id": "span-argyle-1971-experiment-two",
+          "supports": "Changing cue strength materially changed the ratio, undercutting a universal fixed weighting."
+        }
+      },
+      "id": "em:dossier-span:sha256:aab0edde1407c289207fa33c9e5457eaaa9e2e026d222fa4f408ff4393997c01",
+      "key": "span-argyle-1971-experiment-two",
+      "locator": {
+        "label": "publisher abstract readback",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:7fadc1793ce8dc246fc58b2adb489786eb264a422fc20c06b27264600e4121f9",
+      "edition_key": "edition-birmingham-events-20260827",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "HTML article body, second paragraph",
+          "quote": "studies show 93% of communication is non-verbal",
+          "quote_sha256": "efbc0d7cb80da147fd0c043ea73dd348b337b0d44281ff3144588a0788f71ff9",
+          "span_id": "span-birmingham-generalization",
+          "supports": "A university events page circulated the broad proposition."
+        }
+      },
+      "id": "em:dossier-span:sha256:ccc46bf74eac7c8ef464c6b3775dc362df9e4446e8c281fd93c05746d36b1c34",
+      "key": "span-birmingham-generalization",
+      "locator": {
+        "label": "HTML article body, second paragraph",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:a93da9a7d23a8c4493fc2fd09a983c5aa6a75dff91861bf528a6408478782e1b",
+      "edition_key": "edition-hampshire-pcc-master-010322",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "PDF slide titled Interesting facts",
+          "quote": "70 to 93 percent of all communication is nonverbal",
+          "quote_sha256": "88c8a056a68b7c5e737a5bdee82c65e6bf1e68002df30fc04961d7acf5b7a2ec",
+          "span_id": "span-hampshire-generalization",
+          "supports": "An official training deck generalized the range to all communication."
+        }
+      },
+      "id": "em:dossier-span:sha256:ca601568d638a362e0a1bcc8b34639e5d9ab35277c143ebce53e8aba36be26fc",
+      "key": "span-hampshire-generalization",
+      "locator": {
+        "label": "PDF slide titled Interesting facts",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:9940e90fe3daa217ffb54ae30f060049767ba1dd0b3cee7af122a5e2afa7850f",
+      "edition_key": "edition-hegstrom-wjsc-43-2",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "ERIC abstract",
+          "quote": "all-channel condition as the criterion variable and the verbal, vocal, and facial channels as predictor variables",
+          "quote_sha256": "6a5cf9079b86b76fe5c7cbc41c1cf69ee015b2537e6bccc0fbccfef3ec4b992e",
+          "span_id": "span-hegstrom-design",
+          "supports": "Hegstrom directly reconsidered the formula using all three channel predictors."
+        }
+      },
+      "id": "em:dossier-span:sha256:24cac9c50a124a4988ffea4f86d09f69e95249f8c227b1a79616e588eb1990d2",
+      "key": "span-hegstrom-design",
+      "locator": {
+        "label": "ERIC abstract",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:8984ae9eb204a78ae87c6bf2e367d74699e49a53e0892ada7d3d93c25bdb8873",
+      "edition_key": "edition-hegstrom-wjsc-43-2",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "ERIC abstract",
+          "quote": "Regression equations for each of four messages were quite different from Mehrabian's formula and from each other",
+          "quote_sha256": "a05c496c590dbd519f345528c97b7badf4b1888fbdeb59952a7c24ad0d69af96",
+          "span_id": "span-hegstrom-result",
+          "supports": "The direct rebuttal favored a message-contextual rather than fixed additive model."
+        }
+      },
+      "id": "em:dossier-span:sha256:84e714521f572d4045fa074f3796dbda663b9c5606d927defd4caa459cc75aed",
+      "key": "span-hegstrom-result",
+      "locator": {
+        "label": "ERIC abstract",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:66eee82a6f2ee78c7193b781786c02a3bc883bf69a9f8d3fcc58d0fb3e295d12",
+      "edition_key": "edition-lapakko-communication-education-46-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "ERIC abstract",
+          "quote": "limitations which do not warrant formulation of a precise numerical formula",
+          "quote_sha256": "e62ce29580268d0767bdfd1fd1e87898381c16c05cc97f789ea19e464b025fc6",
+          "span_id": "span-lapakko-1997-abstract",
+          "supports": "The evaluative paper identifies the formula's methodological overreach."
+        }
+      },
+      "id": "em:dossier-span:sha256:dc3b298495a9f9240daefb8b02a992b74c50aba569968d02b3f9e26b4916995e",
+      "key": "span-lapakko-1997-abstract",
+      "locator": {
+        "label": "ERIC abstract",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:fc269da48a2344a2ef5ca68062d89d49ed6bd6391ad965d2e757b5b405d6c169",
+      "edition_key": "edition-ctamj-volume-34-article-2",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "authoritative landing, Abstract",
+          "quote": "widely disseminated across the Internet, and in ways that show little or no understanding of the research",
+          "quote_sha256": "a712f31a787c456e3d1693cba28b62ec4d4a6f14db9d196176671f15fa66efd3",
+          "span_id": "span-lapakko-2007-abstract",
+          "supports": "The author reports broad online propagation and misunderstanding."
+        }
+      },
+      "id": "em:dossier-span:sha256:c1467876a5fe3b23ef7a4455bb504e3a27c480d7f437d2bef5f4ecde399cc86b",
+      "key": "span-lapakko-2007-abstract",
+      "locator": {
+        "label": "authoritative landing, Abstract",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:95dcb11743dc3084a82159fda3d90e35b0c1e5416989283d770ce4540ffa577c",
+      "edition_key": "edition-ctamj-volume-34-article-2",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.12; indexed PDF readback",
+          "quote": "63 of the 79 sites (80%) used the 7-38-55 numbers as a general statement about the overall nature of communication",
+          "quote_sha256": "d40f9be8d74579dc4b55180886d0eb17374f260e487bba97bc5a676a1a197c42",
+          "span_id": "span-lapakko-2007-63-of-79",
+          "supports": "The bounded website sample quantified broad generalization."
+        }
+      },
+      "id": "em:dossier-span:sha256:d605d3d8afa9041a9fec755d7b92abd56f0760b86e0e0cd966649d86bc81c994",
+      "key": "span-lapakko-2007-63-of-79",
+      "locator": {
+        "label": "journal p.12; indexed PDF readback",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:054513e403862a7e7b9092d7667ceb4d3be303365d08cba9ae4e5e5ba2f72d34",
+      "edition_key": "edition-ctamj-volume-34-article-2",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.13; indexed PDF readback, Limitations",
+          "quote": "sampling procedure in this study involved a type of convenience sample ... only made use of one electronic search engine, Google",
+          "quote_sha256": "fc3c646bac3611993037d02aa42b56b0c374b8c2ea99260859d36aa057bc4231",
+          "segments": [
+            "sampling procedure in this study involved a type of convenience sample",
+            "only made use of one electronic search engine, Google"
+          ],
+          "span_id": "span-lapakko-2007-limitations",
+          "span_kind": "verbatim_segments",
+          "supports": "The study itself limits any prevalence inference from its purposive web sample."
+        }
+      },
+      "id": "em:dossier-span:sha256:7d15e3ed19317d29bada3e7e746b5934f3e54c6bd3d008075f42554992b6fce6",
+      "key": "span-lapakko-2007-limitations",
+      "locator": {
+        "label": "journal p.13; indexed PDF readback, Limitations",
+        "pointer": "/source_record/spans/2",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:832b8feda03ef4145d2bf313d051aff44e8b33c22da11ab0060787d2a76fc11d",
+      "edition_key": "edition-kaaj-silent-messages-page-2016",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "HTML body, equation following the inconsistent-messages paragraph",
+          "quote": "Total Liking = 7% Verbal Liking + 38% Vocal Liking + 55% Facial Liking",
+          "quote_sha256": "f74af100fbb21524c77c32d9d52a14dc6ff661fbb6685402365363ca1f532738",
+          "span_id": "span-author-equation",
+          "supports": "The author page repeats the equation as Total Liking."
+        }
+      },
+      "id": "em:dossier-span:sha256:67a7bc2fa42ce9b3efd70cb4cdf0b70ae411c99947aad9ade29b6821f0399e13",
+      "key": "span-author-equation",
+      "locator": {
+        "label": "HTML body, equation following the inconsistent-messages paragraph",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:17fc31577e9efe03e26b79276749e7a724ffbe134ac1af41b51c1fe9d227a8cf",
+      "edition_key": "edition-kaaj-silent-messages-page-2016",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "HTML body, strong element following the equation",
+          "quote": "Unless a communicator is talking about their feelings or attitudes, these equations are not applicable",
+          "quote_sha256": "b177c97d10c09f52d123b7b2eb3577bd07cfc84d3f5954140f1d64045e463611",
+          "span_id": "span-author-qualification",
+          "supports": "The author's public qualification rejects general application to other communication."
+        }
+      },
+      "id": "em:dossier-span:sha256:b96e6d9440921c4a3e761ca4189183c6da82d37e4a94b8a5933309fabdd15e00",
+      "key": "span-author-qualification",
+      "locator": {
+        "label": "HTML body, strong element following the equation",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:6a7e1b46e0d8c84cc99ec4889d9f6a1fb59f27b705bd51b8c1fa4044e9e191f8",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "fields": {
+            "author_1": "Albert Mehrabian",
+            "author_2": "Susan R. Ferris"
+          },
+          "locator": "journal p.248; PDF p.1, title block",
+          "quote": "authors=Albert Mehrabian; Susan R. Ferris",
+          "quote_sha256": "ccbbe41f1e4ec76d7d14620f62caa2af412b1b8228fccdbf0ae43062408d35f7",
+          "span_id": "span-ferris-authors",
+          "span_kind": "structured_transcription",
+          "supports": "The title block identifies the P2 authors for author-lineage comparison."
+        }
+      },
+      "id": "em:dossier-span:sha256:dd3072e84713013cdfac707870e4e018cc516690481bbde86d70503043ea00cd",
+      "key": "span-ferris-authors",
+      "locator": {
+        "label": "journal p.248; PDF p.1, title block",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:0b97104409c92a83ff20e4b1081be0327d582e54f24d5262b4c31b24f6cb4979",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "fields": {
+            "public_health_service_grant": "1 R03-MH-12629-01",
+            "university_of_california_grant": "2189"
+          },
+          "locator": "journal p.248; PDF p.1, footnote 1",
+          "quote": "grants=United States Public Health Service 1 R03-MH-12629-01; University of California 2189",
+          "quote_sha256": "cda7dfc2f1ed1632a34e92b220fca7788184c09ddb0016ce23fbfba056e2cfe2",
+          "span_id": "span-ferris-grants",
+          "span_kind": "structured_transcription",
+          "supports": "P2 shares the reported University of California grant identifier with P1 and reports a different Public Health Service grant."
+        }
+      },
+      "id": "em:dossier-span:sha256:4e9f3e6f6a89ba2add81e7d08b6311ad4f69b31c8aeb344b8c1ac534d11b2170",
+      "key": "span-ferris-grants",
+      "locator": {
+        "label": "journal p.248; PDF p.1, footnote 1",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:293aedc5af3fab7f7cc039d6cd4f24333e135b2923d09ccd300b9389374ffb79",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.248; PDF p.1, footnote 1",
+          "quote": "Dee Nieto, Nina Spitzer, and Barbara Ullman, who acted as models, and Elaine Blackman and Katherine Nelson, who, along with one of the authors, acted as speakers in preparing the experimental materials.",
+          "quote_sha256": "f2c2c6a9095ce271eb0842c7b7268bfc09c732405f448a928ee4876b2eeed48b",
+          "span_id": "span-ferris-models-speakers",
+          "supports": "P2 names its models and two of its speakers while leaving the author-speaker unnamed."
+        }
+      },
+      "id": "em:dossier-span:sha256:db61b9fb6aeab0aff72e817c8b1fe27c6f09824098391a83d26a61decd50a8a1",
+      "key": "span-ferris-models-speakers",
+      "locator": {
+        "label": "journal p.248; PDF p.1, footnote 1",
+        "pointer": "/source_record/spans/2",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:220db2149c0f0244a0e43b6bfeb4d941396a6783121b071b799f69cd8ebe0704",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.248; PDF p.1, abstract",
+          "quote": "3 degrees of attitude (i.e., positive, neutral, and negative) in facial expression ... were each combined with 3 degrees of attitude communicated vocally",
+          "quote_sha256": "0a55d590acd009bec93e34c67f9c4b528154411b32575493cb9f9fde2b41924c",
+          "segments": [
+            "3 degrees of attitude (i.e., positive, neutral, and negative) in facial expression",
+            "were each combined with 3 degrees of attitude communicated vocally"
+          ],
+          "span_id": "span-ferris-target",
+          "span_kind": "verbatim_segments",
+          "supports": "P2 crossed facial and vocal attitude cues; verbal wording was not varied."
+        }
+      },
+      "id": "em:dossier-span:sha256:f3ddd9da7391eb4a4b95240c128531dc4fbc508003f35bced324be48d5cf8784",
+      "key": "span-ferris-target",
+      "locator": {
+        "label": "journal p.248; PDF p.1, abstract",
+        "pointer": "/source_record/spans/3",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:af3ea87f2d7d460331048afbea8bed571db8d1b7bfc9b88f9dfae16eac02a87b",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.249; PDF p.2, Method/Subjects",
+          "quote": "A group of 25 subjects (Ss) was used ... A second group of 17 Ss was used ... A third group of 20 Ss was used ... All 62 Ss were female University of California undergraduates",
+          "quote_sha256": "3a4983215b94a8f7a35dfc1867bd6c435a3cd2b380bc8e9986a711c731452528",
+          "segments": [
+            "A group of 25 subjects (Ss) was used",
+            "A second group of 17 Ss was used",
+            "A third group of 20 Ss was used",
+            "All 62 Ss were female University of California undergraduates"
+          ],
+          "span_id": "span-ferris-sample",
+          "span_kind": "verbatim_segments",
+          "supports": "P2 used three groups totaling 62 female undergraduates for stimulus selection and the combined task."
+        }
+      },
+      "id": "em:dossier-span:sha256:9d8a8e388c3c933b491506fea53f696a0dcbf60f4a3898740a54ed3ed0d8417a",
+      "key": "span-ferris-sample",
+      "locator": {
+        "label": "journal p.249; PDF p.2, Method/Subjects",
+        "pointer": "/source_record/spans/4",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:1c8f1af0b30bdd33c03329bd4415d9e1a7f590dc0ae1fe778473c47a23b00cff",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.249; PDF p.2, Introduction",
+          "quote": "Mehrabian and Wiener's (1967) study indicated that the dominant component in a two-channel communication determines the meaning of inconsistent communications",
+          "quote_sha256": "c25471b821ce495d1763c8f398825a939f67fb6856a2cef7f162fe6416d87912",
+          "span_id": "span-ferris-citation-p1",
+          "supports": "P2 explicitly cites P1 as a premise for its hypothesis."
+        }
+      },
+      "id": "em:dossier-span:sha256:a60872a61cdc5c9626bf08cead17b1c6a5d133fabab5822e29b15eb0ebe3ffbe",
+      "key": "span-ferris-citation-p1",
+      "locator": {
+        "label": "journal p.249; PDF p.2, Introduction",
+        "pointer": "/source_record/spans/5",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:8dedb954a92c8050788780fd9b97a9f29f72707bc9eaa648e2972943501890cc",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.250; PDF p.3, Materials",
+          "quote": "The word \"maybe\" was selected as an appropriate neutral verbal carrier of vocal communications",
+          "quote_sha256": "56c335cc10ba6cd0b1e00bbb4571a1fea45c4b9abde580f86093310dcc9f121e",
+          "span_id": "span-ferris-maybe",
+          "supports": "The only word in the combined face-tone task was the neutral carrier maybe."
+        }
+      },
+      "id": "em:dossier-span:sha256:eb6e9d70d7779c830efe8d2b3ea7d4cc4891009b9af2b1f42831f87b00613ef5",
+      "key": "span-ferris-maybe",
+      "locator": {
+        "label": "journal p.250; PDF p.3, Materials",
+        "pointer": "/source_record/spans/6",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:fa09f76126dae7eb46c331df6ffa7f8b671f4002a64646ace7e448d80e3562d0",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.250; PDF p.3, Materials and Design",
+          "quote": "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person ... there were 36 experimental conditions ... 3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions",
+          "quote_sha256": "4907fba561fdbd65d1135094c20e780a5813d5d27bc111a8d02440833a7acb30",
+          "segments": [
+            "Photographs of three female models were taken as they attempted to use facial expressions to communicate like, neutrality, and dislike towards another person",
+            "there were 36 experimental conditions",
+            "3 Vocal Attitude X 3 Facial Attitude X 2 Speaker X 2 Model interactions"
+          ],
+          "span_id": "span-ferris-design",
+          "span_kind": "verbatim_segments",
+          "supports": "P2 used facial photographs and varied face and tone, not three channels."
+        }
+      },
+      "id": "em:dossier-span:sha256:740367903de0dee8f3c17d3f89796b8e5217e12555a8dcd9a7a13b827a403f2c",
+      "key": "span-ferris-design",
+      "locator": {
+        "label": "journal p.250; PDF p.3, Materials and Design",
+        "pointer": "/source_record/spans/7",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:0e3dcdaf6984a8b118d93a236e025bcd1f565e61b41a823b9a14002f004b16cf",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.251; PDF p.4, Procedure",
+          "quote": "an attitude scale designated \"like,\" +3 and \"dislike,\" —3 at its poles",
+          "quote_sha256": "f75aae955db7d8f43645cdf9892aed90b48c9b02e6316dfc342219ae3dc82b47",
+          "span_id": "span-ferris-scale",
+          "supports": "P2 used a liking-versus-disliking attitude scale like the construct operationalized in P1."
+        }
+      },
+      "id": "em:dossier-span:sha256:d511758388ae44413d135dac608585cf1a08ad6cd2fe0208388750142c6c9def",
+      "key": "span-ferris-scale",
+      "locator": {
+        "label": "journal p.251; PDF p.4, Procedure",
+        "pointer": "/source_record/spans/8",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:8aa2729b7ef029023794395a31dbd45ec393ce5d06c7ba93f10d67ca31120f1e",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.251; PDF p.4, Results",
+          "quote": "The Facial Attitude factor accounted for 41.4% of the total sum of squares ... the Vocal Attitude factor accounted for 19.3% of the total sum of squares",
+          "quote_sha256": "bd118404b90041fbbb3c264018163e4b4c03db1d33c6a4b007360d6387845b4d",
+          "segments": [
+            "The Facial Attitude factor accounted for 41.4% of the total sum of squares",
+            "the Vocal Attitude factor accounted for 19.3% of the total sum of squares"
+          ],
+          "span_id": "span-ferris-sums-of-squares",
+          "span_kind": "verbatim_segments",
+          "supports": "The reported task-level sums of squares favored the facial factor."
+        }
+      },
+      "id": "em:dossier-span:sha256:26c019f540c5f70299c0e3ec45f83638608f4748d3028b5701a933d8c1756c43",
+      "key": "span-ferris-sums-of-squares",
+      "locator": {
+        "label": "journal p.251; PDF p.4, Results",
+        "pointer": "/source_record/spans/9",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:bcc0eade411f9c8c396c9b9fcdba75229f47d89257a82c908cb4cf7e98c0ce49",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "fields": {
+            "dependent": "A_T",
+            "facial_coefficient": "1.50",
+            "facial_term": "A_F",
+            "vocal_coefficient": "1.03",
+            "vocal_term": "A_V"
+          },
+          "locator": "journal p.251; PDF p.4, Results",
+          "quote": "A_T = 1.50 A_F + 1.03 A_V",
+          "quote_sha256": "7cf8e54d2b0fddc90a956178f67bb65ec005d41bb9b1c17e676e92458fbbf692",
+          "span_id": "span-ferris-regression",
+          "span_kind": "structured_transcription",
+          "supports": "P2 reports the two-channel facial-vocal regression coefficients."
+        }
+      },
+      "id": "em:dossier-span:sha256:547e7603aa1b4f25f5a0d80061dbc0ac993dda410472b8c85b4f4bd5c016c033",
+      "key": "span-ferris-regression",
+      "locator": {
+        "label": "journal p.251; PDF p.4, Results",
+        "pointer": "/source_record/spans/10",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:53ed12503f6f297e17aa6a73173f5c32fc5fc44b686048639e6acb0cd900ec9e",
+      "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.252; PDF p.5, final Discussion paragraph",
+          "quote": "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967) ... It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects ... with the coefficients of .07, .38, and .55, respectively",
+          "quote_sha256": "25b2e2dcf6675d0e73fd204bb0e6303caa18f2fe5d9d6df5c7dea105cf49a50f",
+          "segments": [
+            "A final comment is required to integrate the implications of the findings of the present study with the findings of the Mehrabian and Wiener study (1967)",
+            "It is suggested that the combined effect of simultaneous verbal, vocal, and facial attitude communications is a weighted sum of their independent effects",
+            "with the coefficients of .07, .38, and .55, respectively"
+          ],
+          "span_id": "span-ferris-proposal",
+          "span_kind": "verbatim_segments",
+          "supports": "The three coefficients appear as a proposed cross-study integration, not as the result of P2's experiment."
+        }
+      },
+      "id": "em:dossier-span:sha256:54ca43f182a145d9e37dd08e3a7a206002f76077d3fe4125ffcbc71a87f08ee9",
+      "key": "span-ferris-proposal",
+      "locator": {
+        "label": "journal p.252; PDF p.5, final Discussion paragraph",
+        "pointer": "/source_record/spans/11",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:82edc478aaf90f7256ef12983d8990ba351b4c2cbf89995d2a3fa2de4a02f145",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "fields": {
+            "author_1": "Albert Mehrabian",
+            "author_2": "Morton Wiener"
+          },
+          "locator": "journal p.109; PDF p.1, title block",
+          "quote": "authors=Albert Mehrabian; Morton Wiener",
+          "quote_sha256": "9f86c9e0e9a0912dc98e89492e403b3604c93a4c4b291594c31b9dff098be20d",
+          "span_id": "span-wiener-authors",
+          "span_kind": "structured_transcription",
+          "supports": "The title block identifies the P1 authors for author-lineage comparison."
+        }
+      },
+      "id": "em:dossier-span:sha256:68463071a120d798a394701f71076be4d5aae0c27f7346db58fc92e063d772b7",
+      "key": "span-wiener-authors",
+      "locator": {
+        "label": "journal p.109; PDF p.1, title block",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:a81c4e8fa7026bc0ef68acf15fb71839eef2be533dd7dab4e83850248221b50c",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.109; PDF p.1, footnote 1",
+          "quote": "This study was supported in part by University of California Grant 2189 and in part by United States Public Health Service Grant M-3860.",
+          "quote_sha256": "f36d310eb93d14dc5a0d0761bcfd5196da637264c310574f76c7c212cb7efadb",
+          "span_id": "span-wiener-grants",
+          "supports": "P1 reports the two funding identifiers used in the grant-lineage comparison."
+        }
+      },
+      "id": "em:dossier-span:sha256:bb98dee09bbfd437277f9b17e780e7a9a084fb5fa4026a286e7e8838904158c0",
+      "key": "span-wiener-grants",
+      "locator": {
+        "label": "journal p.109; PDF p.1, footnote 1",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:a8cdaf1a34a0999bed915a34ce580ce4aa7fec551948b82641b04230cc09427d",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.109; PDF p.1, footnote 1",
+          "quote": "Sylvia Norman and Dena Sugar, who acted as speakers in the recording of the experimental conditions",
+          "quote_sha256": "5fe2933c7f2a1e18b24f4421d9dd0180582f30887cd123618fe848945db1a85a",
+          "span_id": "span-wiener-speakers",
+          "supports": "P1 names its two recorded speakers."
+        }
+      },
+      "id": "em:dossier-span:sha256:3231d6d73513141e4b51577164028298e5984b5f3d80749e59951e8222a3d821",
+      "key": "span-wiener-speakers",
+      "locator": {
+        "label": "journal p.109; PDF p.1, footnote 1",
+        "pointer": "/source_record/spans/2",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:fea4c8c77dc0c21357695d68cf2d92d67df47b1f334204aa3dd395d91484ef9d",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.109; PDF p.1, footnote 1",
+          "quote": "Susan Ferris, for her comments on the manuscript",
+          "quote_sha256": "400ac8d3f7b66282787262afc078cb26a6b8090d7d1b3d9cc1cbafd2ba590e21",
+          "span_id": "span-wiener-ferris-acknowledgment",
+          "supports": "P1 acknowledges the future P2 coauthor, establishing a social/program link beyond the shared Mehrabian authorship."
+        }
+      },
+      "id": "em:dossier-span:sha256:b573429590fdf84f708aa3a009aa4fe7cbab635dec25823656e8bb9a04c8bfad",
+      "key": "span-wiener-ferris-acknowledgment",
+      "locator": {
+        "label": "journal p.109; PDF p.1, footnote 1",
+        "pointer": "/source_record/spans/3",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e5a5e1ffb2ebed6cd6dc939f4ec23d4e956df40f5b5e12b187296c72ec8a24fd",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.109; PDF p.1, abstract",
+          "quote": "inconsistent communication of attitude in 2 components of a message",
+          "quote_sha256": "32365cd2cac9626ee55ebdea19048ae1a2b9b70801559c91a3b26916b5d0c108",
+          "span_id": "span-wiener-target",
+          "supports": "The experiment concerns a two-component attitude message, not communication in general."
+        }
+      },
+      "id": "em:dossier-span:sha256:7617e2274e69c13dc0a1d727714c6fffca0ec5d0a1efd824e8c4419e5ecaecec",
+      "key": "span-wiener-target",
+      "locator": {
+        "label": "journal p.109; PDF p.1, abstract",
+        "pointer": "/source_record/spans/4",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:878d98c8f706d93d8e5daa466feb939c9f0bc4fcd886900ba55ee416543a78b3",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal pp.109-110; PDF pp.1-2, abstract and Materials",
+          "quote": "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice ... the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents",
+          "quote_sha256": "488d310c64fb4445de8193a17dce78b0fe41533b54446429038687fa082b1e97",
+          "segments": [
+            "single-word contents were each combined with 3 degrees of attitude communicated in tone of voice",
+            "the words MAYBE, REALLY, and OH were selected as comparable instances of neutral contents"
+          ],
+          "span_id": "span-wiener-single-words",
+          "span_kind": "verbatim_segments",
+          "supports": "The verbal stimuli were isolated words crossed with vocal tone, and maybe was one of P1's three selected neutral words."
+        }
+      },
+      "id": "em:dossier-span:sha256:11c65a8ab733095f84feca57f1468f4e4412de125937978e6354b630ab739c67",
+      "key": "span-wiener-single-words",
+      "locator": {
+        "label": "journal pp.109-110; PDF pp.1-2, abstract and Materials",
+        "pointer": "/source_record/spans/5",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:0eefeb725dcdcbcc3628a841cdf4645e01c2f93be5e7639b1560110a915e6149",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.110; PDF p.2, Method/Subjects",
+          "quote": "Forty-five subjects were used in the initial selection ... A second group of 30 subjects was used in the remaining portion of the study.",
+          "quote_sha256": "4b7b80fe130fafffae5829f4d71f7bb0dd795103ea0d0601c019d77b648efd80",
+          "segments": [
+            "Forty-five subjects were used in the initial selection",
+            "A second group of 30 subjects was used in the remaining portion of the study."
+          ],
+          "span_id": "span-wiener-sample",
+          "span_kind": "verbatim_segments",
+          "supports": "P1 used 45 undergraduates for word selection and 30 for the remaining experiment."
+        }
+      },
+      "id": "em:dossier-span:sha256:88540bb84cd162d661a378a5634879223ee65dee2739807f39c5309b5f439fd8",
+      "key": "span-wiener-sample",
+      "locator": {
+        "label": "journal p.110; PDF p.2, Method/Subjects",
+        "pointer": "/source_record/spans/6",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:fef166170b36d45130767891e6bf19f537f3f0a5f1eac1be055ea4175f902ceb",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.111; PDF p.3, Procedure",
+          "quote": "using all the information available ... using only the information contained in the meanings of the words ... using only the information contained in the tone",
+          "quote_sha256": "4cb1102a04af97ed38d0a2e7c205dfad7deb5844a79d106d05259cf7ac9f30c3",
+          "segments": [
+            "using all the information available",
+            "using only the information contained in the meanings of the words",
+            "using only the information contained in the tone"
+          ],
+          "span_id": "span-wiener-instructions",
+          "span_kind": "verbatim_segments",
+          "supports": "Separate instruction groups estimated combined, content-only, and tone-only contributions."
+        }
+      },
+      "id": "em:dossier-span:sha256:dd2709aefc7120620b30c1036cbafd5ba843d1b68b1fa2ce6f183355f778d45d",
+      "key": "span-wiener-instructions",
+      "locator": {
+        "label": "journal p.111; PDF p.3, Procedure",
+        "pointer": "/source_record/spans/7",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:27df3aca72c5cc9ea017067ac17a7932a37dd2cc10b9f38164fb2f301e873650",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.110; PDF p.2, Materials",
+          "quote": "Two female speakers were employed to read each of the nine selected words with each of the three positive, neutral, and negative tones.",
+          "quote_sha256": "d0fd2ff6d09434d59506dd8baa65db231331bca622f7a360cb8d26bf10ac0f59",
+          "span_id": "span-wiener-stimulus-recording",
+          "supports": "P1 used recorded female voices and nine selected words crossed with three tones."
+        }
+      },
+      "id": "em:dossier-span:sha256:e510a2d7ca16d153dc294d8f3631b130c0d27af5c433add243619384e13e82f6",
+      "key": "span-wiener-stimulus-recording",
+      "locator": {
+        "label": "journal p.110; PDF p.2, Materials",
+        "pointer": "/source_record/spans/8",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:295def92855616c9cfcbccf976f9f93e1f1ccc76cfc3d42d06ba78ec063dd5a7",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.111; PDF p.3, Procedure",
+          "quote": "\"Positive\" refers to liking, preferring or having high evaluations and \"negative\" refers to disliking, not preferring or having low evaluations of the addressee.",
+          "quote_sha256": "79a892503102e31330c91f06aff865e9c50794cef6a8708a11145d8e616630a9",
+          "span_id": "span-wiener-scale",
+          "supports": "P1 operationalized its attitude scale as liking versus disliking."
+        }
+      },
+      "id": "em:dossier-span:sha256:d696a01a061052b2735801b75115378303979c6fab789c2dfcccdc710f449b07",
+      "key": "span-wiener-scale",
+      "locator": {
+        "label": "journal p.111; PDF p.3, Procedure",
+        "pointer": "/source_record/spans/9",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:761cfd2bd83d57abecdecadb7b987c615cabdfddd72703381ca1b903d19c3255",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.113; PDF p.5, Discussion",
+          "quote": "messages involving single words spoken with intonation are primarily based on the attitude carried in the tonal component",
+          "quote_sha256": "24b4829f5b2eea31c281bba86db573262bea45e6250c8beedd675b8f9a45db40",
+          "span_id": "span-wiener-result-boundary",
+          "supports": "Tone dominated this narrow inconsistent single-word attitude task."
+        }
+      },
+      "id": "em:dossier-span:sha256:72bb45e3cb04eaaa19f4a9711d74f4366a458e1ae7897a5409a1062f038fc10b",
+      "key": "span-wiener-result-boundary",
+      "locator": {
+        "label": "journal p.113; PDF p.5, Discussion",
+        "pointer": "/source_record/spans/10",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:1f66fc733072a9927de032b62f0b5e96dfc6658513120e232169865b2e12e27d",
+      "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "journal p.113; PDF p.5, Discussion",
+          "quote": "can be safely extended only to communication situations in which no additional information about the communicator-addressee relationship is available",
+          "quote_sha256": "9c4d9597c61175b0e6ced4918ddea51d3aeb53df8e555780d626172e992cc68b",
+          "span_id": "span-wiener-safe-extension",
+          "supports": "The paper explicitly limits extension of its result."
+        }
+      },
+      "id": "em:dossier-span:sha256:4ca8683388722f5ebca52b7e3e3f784251c7d368de30262ea264ced57ee9e07f",
+      "key": "span-wiener-safe-extension",
+      "locator": {
+        "label": "journal p.113; PDF p.5, Discussion",
+        "pointer": "/source_record/spans/11",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:ff46a19ba7348d36caf9e749bc427e19b1e00e89ed5306d3c01c2533d10cd6b3",
+      "edition_key": "edition-silent-messages-1971",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "fields": {
+            "dependent": "Total liking",
+            "facial": "55% facial liking",
+            "verbal": "7% verbal liking",
+            "vocal": "38% vocal liking"
+          },
+          "locator": "PDF p.51, Inconsistent messages chapter",
+          "quote": "Total liking = 7% verbal liking + 38% vocal liking + 55% facial liking",
+          "quote_sha256": "b64646d71e22e4e9508d73d3b4896301ebf38472816e0002115a9ceea44e8f22",
+          "span_id": "span-silent-1971-liking",
+          "span_kind": "structured_transcription",
+          "supports": "The 1971 edition repeats the three-part liking equation."
+        }
+      },
+      "id": "em:dossier-span:sha256:178e0fb9b61623e38cd59a7f988191bc015b17c2d3e619c41faa50ed2a8e3d19",
+      "key": "span-silent-1971-liking",
+      "locator": {
+        "label": "PDF p.51, Inconsistent messages chapter",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:d221b89ba1ec0a6ebcfbe0ddd9db1a5033e2aa40adc3b488e99363f03e7314d0",
+      "edition_key": "edition-silent-messages-1971",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "PDF p.52, paragraph following Total feeling equation",
+          "quote": "Numerical values in this equation are only approximate ... restrict ourselves to the analysis of only one dimension of feeling at a time",
+          "quote_sha256": "f42ea8e4be606d422d7b6ab9495c3b03ad812d953dff3034ef07b5fa66613201",
+          "segments": [
+            "Numerical values in this equation are only approximate",
+            "restrict ourselves to the analysis of only one dimension of feeling at a time"
+          ],
+          "span_id": "span-silent-1971-boundary",
+          "span_kind": "verbatim_segments",
+          "supports": "The book calls the values approximate and limits use to one feeling dimension."
+        }
+      },
+      "id": "em:dossier-span:sha256:3af7779059c593bbd60ad80cdc28c7af7f542b55883594e33d90e3c7ac949075",
+      "key": "span-silent-1971-boundary",
+      "locator": {
+        "label": "PDF p.52, paragraph following Total feeling equation",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:0aea216641f6e03efd85523e296cf7339572d5d5844d646f347fc6d31f1ebb4e",
+      "edition_key": "edition-silent-messages-1981-second",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "fields": {
+            "edition_name": "2d ed.",
+            "isbn_10": "0534009107",
+            "number_of_pages": 196,
+            "publish_date": "1981"
+          },
+          "locator": "Open Library JSON: /edition_name, /publish_date, /isbn_10, /number_of_pages",
+          "quote": "edition_name=2d ed.; publish_date=1981; isbn_10=0534009107; number_of_pages=196",
+          "quote_sha256": "3520c0ef2afb95d687d9a61df564ccc1105381c6fab8a6ff5954779f3466dd2b",
+          "span_id": "span-silent-1981-metadata",
+          "span_kind": "structured_transcription",
+          "supports": "The 1981 second-edition identity is bibliographically closed, but its formula pages were not collated."
+        }
+      },
+      "id": "em:dossier-span:sha256:218906349ebfb83cf2386a2bdb73829d8145b2a84a7d4825e33df937e3b0a626",
+      "key": "span-silent-1981-metadata",
+      "locator": {
+        "label": "Open Library JSON: /edition_name, /publish_date, /isbn_10, /number_of_pages",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    }
+  ],
+  "stage": "draft",
+  "title": "Case 004: What the Mehrabian 7-38-55 weighting did and did not show",
+  "visibility": "public"
+}
