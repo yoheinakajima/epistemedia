@@ -15,6 +15,8 @@ from typing import Any
 from build_candidate import (
     ACCEPTED_PACKET_ID,
     ARTIFACT_INVENTORY_PATH,
+    CALCULATION_EDITION_KEY,
+    CALCULATION_WORK_KEY,
     GIT_SEARCH_PATH,
     OUTPUT_PATH,
     PACKET_PATH,
@@ -22,7 +24,9 @@ from build_candidate import (
     SOURCE_RECORDS_PATH,
     build_candidate,
     canonical_json,
+    collect_cells,
     dossier_key,
+    expanded_edge_relations,
     reproduce_derivations,
     sha256_bytes,
 )
@@ -147,11 +151,17 @@ def verify_candidate_document(
         "candidate admission boundary drift",
     )
 
-    expected_work_keys = {source["work_id"] for source in sources}
-    expected_edition_keys = {dossier_key(source["edition_id"]) for source in sources}
-    expected_span_keys = {span["span_id"] for source in sources for span in source["spans"]}
+    research_work_keys = {source["work_id"] for source in sources}
+    research_edition_keys = {dossier_key(source["edition_id"]) for source in sources}
+    parent_span_keys = {span["span_id"] for source in sources for span in source["spans"]}
     expected_claim_keys = {claim["claim_id"] for claim in claims}
     expected_calculation_keys = {item["derivation_id"] for item in derivations}
+    calculation_span_keys = {
+        f"span-calculation-{derivation_id}" for derivation_id in expected_calculation_keys
+    }
+    expected_work_keys = research_work_keys | {CALCULATION_WORK_KEY}
+    expected_edition_keys = research_edition_keys | {CALCULATION_EDITION_KEY}
+    expected_span_keys = parent_span_keys | calculation_span_keys
     expected_proposition_keys = (
         expected_claim_keys
         | expected_calculation_keys
@@ -166,6 +176,16 @@ def verify_candidate_document(
         "lineage-evaluation-synthesis",
     }
     expected_edge_keys = {item["edge_id"] for item in edges}
+    source_to_lineage = {
+        source_id: lineage["lineage_id"]
+        for lineage in lineages
+        for source_id in lineage["source_ids"]
+    }
+    edge_relation_specs = {
+        relation["key"]: {**relation, "edge": edge}
+        for edge in edges
+        for relation in expanded_edge_relations(edge, source_to_lineage)
+    }
     expected_assertion_keys = {
         f"assertion-{key}" for key in expected_claim_keys | expected_calculation_keys
     } | {
@@ -173,9 +193,9 @@ def verify_candidate_document(
         "assertion-encyclopedia-evaluation",
         "assertion-skeptical-evaluation",
     }
-    expected_relation_keys = {
-        f"relation-{key}" for key in expected_assertion_keys
-    } | expected_edge_keys
+    expected_relation_keys = {f"relation-{key}" for key in expected_assertion_keys} | set(
+        edge_relation_specs
+    )
 
     actual_sets = {
         "source_work_keys": {item["key"] for item in dossier["source_works"]},
@@ -203,7 +223,8 @@ def verify_candidate_document(
         require(actual_sets[key] == expected_sets[key], f"{key} identity drift")
 
     assertions = {item["key"]: item for item in dossier["assertions"]}
-    spans = {item["key"] for item in dossier["spans"]}
+    span_records = {item["key"]: item for item in dossier["spans"]}
+    spans = set(span_records)
     for claim in claims:
         assertion = assertions[f"assertion-{claim['claim_id']}"]
         require(
@@ -215,16 +236,31 @@ def verify_candidate_document(
             "input_span_ids"
         ]
     )
+    cell_index: dict[str, dict[str, Any]] = {}
+    collect_cells(source_register, cell_index)
     for derivation in derivations:
-        expected = set(derivation.get("input_span_ids", parameter_spans))
+        calculation_span_key = f"span-calculation-{derivation['derivation_id']}"
+        expected = set(derivation.get("input_span_ids", parameter_spans)) | {calculation_span_key}
         assertion = assertions[f"assertion-{derivation['derivation_id']}"]
         require(
             set(assertion["span_keys"]) == expected,
             f"calculation span closure drift: {derivation['derivation_id']}",
         )
+        expected_record = {
+            "derivation": derivation,
+            "resolved_input_cells": [
+                cell_index[cell_id] for cell_id in derivation.get("input_cell_ids", [])
+            ],
+        }
+        require(
+            span_records[calculation_span_key]["extent"]
+            == {"type": "json-value", "value": expected_record},
+            f"calculation record or input-cell closure drift: {derivation['derivation_id']}",
+        )
     relations = {item["key"]: item for item in dossier["evidence_relations"]}
-    for edge in edges:
-        relation = relations[edge["edge_id"]]
+    for relation_key, spec in edge_relation_specs.items():
+        edge = spec["edge"]
+        relation = relations[relation_key]
         expected_basis = {span for evidence in edge["evidence"] for span in evidence["span_ids"]}
         require(
             set(relation["basis_span_keys"]) == expected_basis,
@@ -235,6 +271,14 @@ def verify_candidate_document(
         )
         require(
             edge["edge_type"] in relation["note"], f"typed edge dimension drift: {edge['edge_id']}"
+        )
+        require(
+            relation["from_ref"] == spec["from_ref"] and relation["to_ref"] == spec["to_ref"],
+            f"typed edge endpoint drift: {edge['edge_id']}",
+        )
+        require(
+            f"accepted_edge_id={edge['edge_id']}" in relation["note"],
+            f"typed edge group identity drift: {edge['edge_id']}",
         )
 
     root_count = sum(item["independent_roots"] for item in lineages)
@@ -300,6 +344,10 @@ def verify_candidate_document(
             "source_works": len(expected_work_keys),
             "editions": len(expected_edition_keys),
             "spans": len(expected_span_keys),
+            "research_source_works": len(research_work_keys),
+            "research_editions": len(research_edition_keys),
+            "parent_spans": len(parent_span_keys),
+            "calculation_records": len(calculation_span_keys),
             "claims": len(expected_claim_keys),
             "calculations": len(expected_calculation_keys),
             "lineage_groups": len(lineages),

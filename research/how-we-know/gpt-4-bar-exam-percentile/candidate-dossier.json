@@ -146,11 +146,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:d0bb101dbace56489d1c95c2bbd1c9051a28b48d25f16b75a8b77270f11d3de3",
+      "id": "em:dossier-assertion:sha256:f5102c2dfb6527bc325f323f122a10c78a78bc7422ed053fbe00e8edf7d6ab1d",
       "key": "assertion-derive-illinois-feb-2018-298",
       "lineage_key": "lineage-illinois-comparison-root",
       "proposition_key": "derive-illinois-feb-2018-298",
       "span_keys": [
+        "span-calculation-derive-illinois-feb-2018-298",
         "span-illinois-feb-2018-anchors"
       ],
       "stance": "asserts",
@@ -162,11 +163,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:4b509c22eb73b2b0d8d89476bbbc17a04a6ac8d318d8cfea1c4c11a429e7fe3c",
+      "id": "em:dossier-assertion:sha256:173e036ea146192840c20d9a90986e589e15e92a37c4018264f3dba905e58e4c",
       "key": "assertion-derive-illinois-jul-2018-298",
       "lineage_key": "lineage-illinois-comparison-root",
       "proposition_key": "derive-illinois-jul-2018-298",
       "span_keys": [
+        "span-calculation-derive-illinois-jul-2018-298",
         "span-illinois-jul-2018-anchors"
       ],
       "stance": "asserts",
@@ -178,11 +180,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:c73504bf5a70984e59ee4772625e2999be052ccb8f9a3de8b2af40ff5ebbcf21",
+      "id": "em:dossier-assertion:sha256:2c467a78217c9cfd8e1927f656d2c404085fc79f1544227ad10737e3c0e96bb4",
       "key": "assertion-derive-illinois-feb-2019-298",
       "lineage_key": "lineage-illinois-comparison-root",
       "proposition_key": "derive-illinois-feb-2019-298",
       "span_keys": [
+        "span-calculation-derive-illinois-feb-2019-298",
         "span-illinois-feb-2019-anchors"
       ],
       "stance": "asserts",
@@ -194,11 +197,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:9d4172fc996bfaa85587779dda85680055d639b082f2b46aed95acc1ef82e718",
+      "id": "em:dossier-assertion:sha256:46b0fa65ec0a5d666de7e82ebfe7ea040c7bccf9d1862d67389fdc9ae6f6d6cb",
       "key": "assertion-derive-martinez-parameters",
       "lineage_key": "lineage-martinez-analysis-root",
       "proposition_key": "derive-martinez-parameters",
       "span_keys": [
+        "span-calculation-derive-martinez-parameters",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -215,11 +219,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:d634b8ec4f117743e033d2d26a88438dca0969a13bc3804659edd34ec4a48af9",
+      "id": "em:dossier-assertion:sha256:a5fe847c3d60f4185c2335a2160eb3e8223fb2e1a8e2174b611efd1cc9f442d0",
       "key": "assertion-derive-martinez-first-time-ube",
       "lineage_key": "lineage-martinez-analysis-root",
       "proposition_key": "derive-martinez-first-time-ube",
       "span_keys": [
+        "span-calculation-derive-martinez-first-time-ube",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -236,11 +241,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:d408977cf7ed477f1a6c505f3fd69391ebe7fcd3ec7183b4b7517dfc51a1b6f9",
+      "id": "em:dossier-assertion:sha256:0e84c467e4cdeee807106e9fa021760a1a2e63bcd7fb41c4cfccea488558b23f",
       "key": "assertion-derive-martinez-passers-ube",
       "lineage_key": "lineage-martinez-analysis-root",
       "proposition_key": "derive-martinez-passers-ube",
       "span_keys": [
+        "span-calculation-derive-martinez-passers-ube",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -257,11 +263,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:55eba61d65e0c5d63d30b2e647bb0cf7b2e5f960c2f23f330833030681a1c44f",
+      "id": "em:dossier-assertion:sha256:7df08eee7d48ee98980dc48dcd4257c04f6a03ee5db70b69f16762e4122880ff",
       "key": "assertion-derive-martinez-first-time-mbe",
       "lineage_key": "lineage-martinez-analysis-root",
       "proposition_key": "derive-martinez-first-time-mbe",
       "span_keys": [
+        "span-calculation-derive-martinez-first-time-mbe",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -278,11 +285,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:11f5436b4cca5de028d8c76bc3117219741ed748be5c66708623d28a59ee78cf",
+      "id": "em:dossier-assertion:sha256:837a7e443196825e489e5e7f7a09e74cdcd36ce65a43cf63c504a479c59da0a5",
       "key": "assertion-derive-martinez-passers-mbe",
       "lineage_key": "lineage-martinez-analysis-root",
       "proposition_key": "derive-martinez-passers-mbe",
       "span_keys": [
+        "span-calculation-derive-martinez-passers-mbe",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -299,11 +307,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:a8902a81343652f6be9bebbcc41f41c30f505fb9136bd801c6997942fc3a21e8",
+      "id": "em:dossier-assertion:sha256:cd35ba2db639224fb309527b6345a677d99b6477c0af28d3b1780b3b760db33e",
       "key": "assertion-derive-martinez-first-time-essay",
       "lineage_key": "lineage-martinez-analysis-root",
       "proposition_key": "derive-martinez-first-time-essay",
       "span_keys": [
+        "span-calculation-derive-martinez-first-time-essay",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -320,11 +329,12 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:ad46e5c90bf46aa4222d702587ad707abcba01fbcf704cd3151a533e0cb9d80c",
+      "id": "em:dossier-assertion:sha256:bfe2fd3438fb2f351efa67ef5066876074b428fd1fcd8b6c379070873fda676b",
       "key": "assertion-derive-martinez-passers-essay",
       "lineage_key": "lineage-martinez-analysis-root",
       "proposition_key": "derive-martinez-passers-essay",
       "span_keys": [
+        "span-calculation-derive-martinez-passers-essay",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -341,11 +351,21 @@
         "kind": "collective"
       },
       "asserted_at": "2026-08-28T00:39:59Z",
-      "id": "em:dossier-assertion:sha256:3aa5e220f57ed92ab248dcd3a79914e824b03b0849bf95dce13fa91d6f0704f8",
+      "id": "em:dossier-assertion:sha256:2e8dc348bfb244e5893590f986a355f2bd0a95292c216cc4e83d00b29d95dfe8",
       "key": "assertion-reviewed-source-register",
       "lineage_key": "lineage-reviewed-source-register",
       "proposition_key": "prop-reviewed-source-register",
       "span_keys": [
+        "span-calculation-derive-illinois-feb-2018-298",
+        "span-calculation-derive-illinois-feb-2019-298",
+        "span-calculation-derive-illinois-jul-2018-298",
+        "span-calculation-derive-martinez-first-time-essay",
+        "span-calculation-derive-martinez-first-time-mbe",
+        "span-calculation-derive-martinez-first-time-ube",
+        "span-calculation-derive-martinez-parameters",
+        "span-calculation-derive-martinez-passers-essay",
+        "span-calculation-derive-martinez-passers-mbe",
+        "span-calculation-derive-martinez-passers-ube",
         "span-illinois-feb-2018-anchors",
         "span-illinois-feb-2019-anchors",
         "span-illinois-jul-2018-anchors",
@@ -455,7 +475,7 @@
         "assertion-encyclopedia-evaluation",
         "assertion-skeptical-evaluation"
       ],
-      "id": "em:dossier-claim-family:sha256:1e6dccad5435c33c446d77024498561f8e44f9ed4579eb3740cd05ac57fcfd3a",
+      "id": "em:dossier-claim-family:sha256:e0f227a7b4360061b9230b9a437632870ce56f233feebeb26bd15270636d8c36",
       "key": "family-gpt4-bar-exam-percentile",
       "proposition_keys": [
         "claim-launch-score-label",
@@ -506,9 +526,11 @@
         "edge-author-social-collaboration",
         "edge-benchmark-illinois-charts",
         "edge-citation-katz-to-martinez",
-        "edge-comparison-class-first-time-passers",
+        "edge-comparison-class-first-time-passers--1",
+        "edge-comparison-class-first-time-passers--2",
         "edge-data-reported-score-reuse",
-        "edge-derivation-comparison-inputs",
+        "edge-derivation-comparison-inputs--1",
+        "edge-derivation-comparison-inputs--2",
         "edge-material-shared-exam-items",
         "edge-method-single-free-response-run",
         "edge-model-historical-snapshots",
@@ -518,7 +540,7 @@
       "visibility": "public"
     }
   ],
-  "dossier_id": "em:dossier:sha256:e3d91aa0bc840a20036a57d48971585efa41b3b8d36310d00c0ec37341793306",
+  "dossier_id": "em:dossier:sha256:babe89ba3bda594a8d9f2db86a5a2987f284437a069b940d19b6928856d936d1",
   "editions": [
     {
       "content": {
@@ -2029,6 +2051,369 @@
       "retrieved_at": "2026-08-27T14:40:54Z",
       "visibility": "public",
       "work_key": "work-reshetar-testing-column-february-july"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-calculation-register-v1",
+        "records": [
+          {
+            "derivation": {
+              "derivation_id": "derive-illinois-feb-2018-298",
+              "equation": "p298 = p290 + ((298 - 290) / 10) * (p300 - p290)",
+              "input_cell_ids": [
+                "cell-illinois-feb-2018-290",
+                "cell-illinois-feb-2018-300"
+              ],
+              "input_span_ids": [
+                "span-illinois-feb-2018-anchors"
+              ],
+              "inputs": {
+                "p290": 85.0,
+                "p300": 90.0,
+                "score": 298
+              },
+              "method": "reviewer sensitivity only: linear interpolation",
+              "result_percentile": 89.0,
+              "uncertainty": "Neither Illinois nor OpenAI disclosed this interpolation; it cannot be attributed as the launch method."
+            },
+            "resolved_input_cells": [
+              {
+                "cell_id": "cell-illinois-feb-2018-290",
+                "percentile": 85,
+                "score": 290
+              },
+              {
+                "cell_id": "cell-illinois-feb-2018-300",
+                "percentile": 90,
+                "score": 300
+              }
+            ]
+          },
+          {
+            "derivation": {
+              "derivation_id": "derive-illinois-jul-2018-298",
+              "equation": "p298 = p290 + ((298 - 290) / 10) * (p300 - p290)",
+              "input_cell_ids": [
+                "cell-illinois-jul-2018-290",
+                "cell-illinois-jul-2018-300"
+              ],
+              "input_span_ids": [
+                "span-illinois-jul-2018-anchors"
+              ],
+              "inputs": {
+                "p290": 59.0,
+                "p300": 70.0,
+                "score": 298
+              },
+              "method": "reviewer sensitivity only: linear interpolation",
+              "result_percentile": 67.8,
+              "uncertainty": "Neither Illinois nor OpenAI disclosed this interpolation; it cannot be attributed as the launch method."
+            },
+            "resolved_input_cells": [
+              {
+                "cell_id": "cell-illinois-jul-2018-290",
+                "percentile": 59,
+                "score": 290
+              },
+              {
+                "cell_id": "cell-illinois-jul-2018-300",
+                "percentile": 70,
+                "score": 300
+              }
+            ]
+          },
+          {
+            "derivation": {
+              "derivation_id": "derive-illinois-feb-2019-298",
+              "equation": "p298 = p290 + ((298 - 290) / 10) * (p300 - p290)",
+              "input_cell_ids": [
+                "cell-illinois-feb-2019-290",
+                "cell-illinois-feb-2019-300"
+              ],
+              "input_span_ids": [
+                "span-illinois-feb-2019-anchors"
+              ],
+              "inputs": {
+                "p290": 83.0,
+                "p300": 90.0,
+                "score": 298
+              },
+              "method": "reviewer sensitivity only: linear interpolation",
+              "result_percentile": 88.6,
+              "uncertainty": "Neither Illinois nor OpenAI disclosed this interpolation; it cannot be attributed as the launch method."
+            },
+            "resolved_input_cells": [
+              {
+                "cell_id": "cell-illinois-feb-2019-290",
+                "percentile": 83,
+                "score": 290
+              },
+              {
+                "cell_id": "cell-illinois-feb-2019-300",
+                "percentile": 90,
+                "score": 300
+              }
+            ]
+          },
+          {
+            "derivation": {
+              "derivation_id": "derive-martinez-parameters",
+              "input_cell_ids": [
+                "cell-martinez-july-mbe-85",
+                "cell-martinez-july-mbe-90",
+                "cell-martinez-july-mbe-95",
+                "cell-martinez-july-mbe-100",
+                "cell-martinez-july-mbe-105",
+                "cell-martinez-july-mbe-110",
+                "cell-martinez-july-mbe-115",
+                "cell-martinez-july-mbe-120",
+                "cell-martinez-july-mbe-125",
+                "cell-martinez-july-mbe-130",
+                "cell-martinez-july-mbe-135",
+                "cell-martinez-july-mbe-140",
+                "cell-martinez-july-mbe-145",
+                "cell-martinez-july-mbe-150",
+                "cell-martinez-july-mbe-155",
+                "cell-martinez-july-mbe-160",
+                "cell-martinez-july-mbe-165",
+                "cell-martinez-july-mbe-170",
+                "cell-martinez-july-mbe-175",
+                "cell-martinez-july-mbe-180",
+                "cell-martinez-july-mbe-185",
+                "cell-ncbe-ube-score-266",
+                "cell-ny-first-timers-rate"
+              ],
+              "input_span_ids": [
+                "span-reshetar-first-time-mean",
+                "span-martinez-mean-assumption",
+                "span-martinez-script-july-mbe-distribution",
+                "span-martinez-script-ube-sd",
+                "span-ncbe-ny-cutoff-2022",
+                "span-ny-first-timers-2022"
+              ],
+              "inputs": {
+                "assumed_first_time_essay_mean": 143.8,
+                "assumed_first_time_ube_mean": 287.6,
+                "first_time_mbe_mean": 143.8,
+                "july_mbe_binned_observations": 1002,
+                "new_york_cutoff": 266.0,
+                "new_york_nonpass_proportion": 0.27
+              },
+              "method": "analytic reproduction of the executable OSF inputs",
+              "results": {
+                "derived_ube_sd": 35.24729455256271,
+                "sample_mbe_sd": 17.74327194332649,
+                "z_at_0_27": -0.6128129910166272
+              },
+              "uncertainty": "The UBE distribution is inferred from aggregate inputs and normality; the essay mean/SD are assumed rather than observed."
+            },
+            "resolved_input_cells": [
+              {
+                "cell_id": "cell-martinez-july-mbe-85",
+                "count": 2,
+                "score": 85
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-90",
+                "count": 2,
+                "score": 90
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-95",
+                "count": 5,
+                "score": 95
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-100",
+                "count": 6,
+                "score": 100
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-105",
+                "count": 13,
+                "score": 105
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-110",
+                "count": 22,
+                "score": 110
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-115",
+                "count": 33,
+                "score": 115
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-120",
+                "count": 56,
+                "score": 120
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-125",
+                "count": 73,
+                "score": 125
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-130",
+                "count": 78,
+                "score": 130
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-135",
+                "count": 104,
+                "score": 135
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-140",
+                "count": 96,
+                "score": 140
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-145",
+                "count": 101,
+                "score": 145
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-150",
+                "count": 99,
+                "score": 150
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-155",
+                "count": 99,
+                "score": 155
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-160",
+                "count": 79,
+                "score": 160
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-165",
+                "count": 64,
+                "score": 165
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-170",
+                "count": 38,
+                "score": 170
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-175",
+                "count": 22,
+                "score": 175
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-180",
+                "count": 8,
+                "score": 180
+              },
+              {
+                "cell_id": "cell-martinez-july-mbe-185",
+                "count": 2,
+                "score": 185
+              },
+              {
+                "cell_id": "cell-ncbe-ube-score-266",
+                "column": "Score",
+                "row": "266",
+                "text": "266"
+              },
+              {
+                "cell_id": "cell-ny-first-timers-rate",
+                "column": "Rate",
+                "row": "ALL Candidates",
+                "text": "73%"
+              }
+            ]
+          },
+          {
+            "derivation": {
+              "comparison_population": "modeled first-time UBE takers",
+              "depends_on": [
+                "derive-martinez-parameters"
+              ],
+              "derivation_id": "derive-martinez-first-time-ube",
+              "equation": "100 * Phi((298 - 287.6) / derived_ube_sd)",
+              "method": "normal CDF at score 298",
+              "result_percentile": 61.60252541656707
+            },
+            "resolved_input_cells": []
+          },
+          {
+            "derivation": {
+              "comparison_population": "modeled first-time scores at or above 270",
+              "depends_on": [
+                "derive-martinez-parameters"
+              ],
+              "derivation_id": "derive-martinez-passers-ube",
+              "equation": "100 * (F(298) - F(270)) / (1 - F(270))",
+              "method": "normal CDF conditional on modeled UBE score >= 270",
+              "result_percentile": 44.45020553281165,
+              "uncertainty": "The script uses 270 for this filter after using New York's 266 cutoff to infer UBE SD."
+            },
+            "resolved_input_cells": []
+          },
+          {
+            "derivation": {
+              "comparison_population": "modeled first-time MBE takers",
+              "depends_on": [
+                "derive-martinez-parameters"
+              ],
+              "derivation_id": "derive-martinez-first-time-mbe",
+              "method": "normal CDF at MBE score 158",
+              "result_percentile": 78.82324690739395
+            },
+            "resolved_input_cells": []
+          },
+          {
+            "derivation": {
+              "comparison_population": "modeled MBE scores at or above 135",
+              "depends_on": [
+                "derive-martinez-parameters"
+              ],
+              "derivation_id": "derive-martinez-passers-mbe",
+              "method": "normal CDF conditional on modeled MBE score >= 135",
+              "result_percentile": 69.31081545343784
+            },
+            "resolved_input_cells": []
+          },
+          {
+            "derivation": {
+              "comparison_population": "modeled first-time essay scores",
+              "depends_on": [
+                "derive-martinez-parameters"
+              ],
+              "derivation_id": "derive-martinez-first-time-essay",
+              "method": "normal CDF at essay score 140 using assumed MBE distribution",
+              "result_percentile": 41.520892709392534
+            },
+            "resolved_input_cells": []
+          },
+          {
+            "derivation": {
+              "comparison_population": "modeled essay scores at or above 135",
+              "depends_on": [
+                "derive-martinez-parameters"
+              ],
+              "derivation_id": "derive-martinez-passers-essay",
+              "method": "normal CDF conditional on modeled essay score >= 135",
+              "result_percentile": 15.252536216882072
+            },
+            "resolved_input_cells": []
+          }
+        ]
+      },
+      "content_digest": "sha256:ab330f3d40dfdb5e467da1f66c8f2d318b6b5ed88b770555956d3c5c79151a4b",
+      "content_length": 7141,
+      "edition_label": "Exact accepted EM-0032 derivations and resolved input cells",
+      "id": "em:dossier-edition:sha256:32d3146687af86ae7865d08fbc1636a0c0aa6195e52cb00350ce4b0d525ade2c",
+      "key": "edition-em0032-calculation-register",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-28T00:39:59Z",
+      "visibility": "public",
+      "work_key": "work-em0032-calculation-register"
     }
   ],
   "evaluations": [
@@ -2175,10 +2560,11 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-illinois-feb-2018-298",
         "span-illinois-feb-2018-anchors"
       ],
-      "from_ref": "span-illinois-feb-2018-anchors",
-      "id": "em:dossier-evidence-relation:sha256:37e4c27caac0dff08f5046a13257a01d9100fefeaac63bd9dceeb84b4f4b4bc1",
+      "from_ref": "span-calculation-derive-illinois-feb-2018-298",
+      "id": "em:dossier-evidence-relation:sha256:89e465da9ccc872747e2d6c2cf69dbffd57f4c4e3ddd1ec6974b3ce4f3653ecc",
       "key": "relation-assertion-derive-illinois-feb-2018-298",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2187,10 +2573,11 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-illinois-jul-2018-298",
         "span-illinois-jul-2018-anchors"
       ],
-      "from_ref": "span-illinois-jul-2018-anchors",
-      "id": "em:dossier-evidence-relation:sha256:8fb50d95521243b3cbc5313cd7d8a36027e7604b6e5d0d0da471f885f7402099",
+      "from_ref": "span-calculation-derive-illinois-jul-2018-298",
+      "id": "em:dossier-evidence-relation:sha256:76480f3d580abb1b7f822049d98d9d71df986bb9468385f053bc736857135b09",
       "key": "relation-assertion-derive-illinois-jul-2018-298",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2199,10 +2586,11 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-illinois-feb-2019-298",
         "span-illinois-feb-2019-anchors"
       ],
-      "from_ref": "span-illinois-feb-2019-anchors",
-      "id": "em:dossier-evidence-relation:sha256:9fd355a30180da884e9349db13e4cd86d4511713599c110ef0291ea9e6555c28",
+      "from_ref": "span-calculation-derive-illinois-feb-2019-298",
+      "id": "em:dossier-evidence-relation:sha256:eab848ea50c1f7403f46775de29a61ab145b1ef616b6ddedd1befaf47c47d626",
       "key": "relation-assertion-derive-illinois-feb-2019-298",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2211,6 +2599,7 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-martinez-parameters",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -2218,8 +2607,8 @@
         "span-ny-first-timers-2022",
         "span-reshetar-first-time-mean"
       ],
-      "from_ref": "span-martinez-mean-assumption",
-      "id": "em:dossier-evidence-relation:sha256:707f491ccc50138f09d660c29fab72e3726892dc639fb0e97d2fab568757e49b",
+      "from_ref": "span-calculation-derive-martinez-parameters",
+      "id": "em:dossier-evidence-relation:sha256:592ad3c88ad3d542736bb92ba9aeab1c3f375fd40d9688295eb6e8021a7d88e7",
       "key": "relation-assertion-derive-martinez-parameters",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2228,6 +2617,7 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-martinez-first-time-ube",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -2235,8 +2625,8 @@
         "span-ny-first-timers-2022",
         "span-reshetar-first-time-mean"
       ],
-      "from_ref": "span-martinez-mean-assumption",
-      "id": "em:dossier-evidence-relation:sha256:cc2426b0c0b245ee928dc7c50611012fffdb19324e9a5113b164cd2292b46c3a",
+      "from_ref": "span-calculation-derive-martinez-first-time-ube",
+      "id": "em:dossier-evidence-relation:sha256:a2c43a47e3f6b92d24687c9aa8fc109e6c1395031b0d99748789cacc006a0718",
       "key": "relation-assertion-derive-martinez-first-time-ube",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2245,6 +2635,7 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-martinez-passers-ube",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -2252,8 +2643,8 @@
         "span-ny-first-timers-2022",
         "span-reshetar-first-time-mean"
       ],
-      "from_ref": "span-martinez-mean-assumption",
-      "id": "em:dossier-evidence-relation:sha256:1c40ee806dec991ca6af8dfa06aa32ecb44f11b6a9e68cf2e462cb757b322d26",
+      "from_ref": "span-calculation-derive-martinez-passers-ube",
+      "id": "em:dossier-evidence-relation:sha256:20f088f009065cfc3380add119f1dd245d0cc60c26ce7304d2603d810dcceac5",
       "key": "relation-assertion-derive-martinez-passers-ube",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2262,6 +2653,7 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-martinez-first-time-mbe",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -2269,8 +2661,8 @@
         "span-ny-first-timers-2022",
         "span-reshetar-first-time-mean"
       ],
-      "from_ref": "span-martinez-mean-assumption",
-      "id": "em:dossier-evidence-relation:sha256:04e4957580926b390e8edb1f0faf279d6919869917f9028c276acece3f695f66",
+      "from_ref": "span-calculation-derive-martinez-first-time-mbe",
+      "id": "em:dossier-evidence-relation:sha256:e7b1110a59e6ed3c7a511c4e1e77aa7664a34e076f572963e8d3790a981334bc",
       "key": "relation-assertion-derive-martinez-first-time-mbe",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2279,6 +2671,7 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-martinez-passers-mbe",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -2286,8 +2679,8 @@
         "span-ny-first-timers-2022",
         "span-reshetar-first-time-mean"
       ],
-      "from_ref": "span-martinez-mean-assumption",
-      "id": "em:dossier-evidence-relation:sha256:2d21b8ed3c2e2c8334c52095ac77c173da73fa5d077f0ef1deab5bbeec9ba6ba",
+      "from_ref": "span-calculation-derive-martinez-passers-mbe",
+      "id": "em:dossier-evidence-relation:sha256:1dd0e17278567855ddd02c50c7a61cc75f28fc83737928dcc68e610cce4ba6b2",
       "key": "relation-assertion-derive-martinez-passers-mbe",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2296,6 +2689,7 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-martinez-first-time-essay",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -2303,8 +2697,8 @@
         "span-ny-first-timers-2022",
         "span-reshetar-first-time-mean"
       ],
-      "from_ref": "span-martinez-mean-assumption",
-      "id": "em:dossier-evidence-relation:sha256:c1f780c3e77539a3d43d188528704055e5d50ef5d4f33942db4fed1756234046",
+      "from_ref": "span-calculation-derive-martinez-first-time-essay",
+      "id": "em:dossier-evidence-relation:sha256:13748298644aa578769bbabfff2cef7491504ee79bf1d180ece2b059135ed552",
       "key": "relation-assertion-derive-martinez-first-time-essay",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2313,6 +2707,7 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-martinez-passers-essay",
         "span-martinez-mean-assumption",
         "span-martinez-script-july-mbe-distribution",
         "span-martinez-script-ube-sd",
@@ -2320,8 +2715,8 @@
         "span-ny-first-timers-2022",
         "span-reshetar-first-time-mean"
       ],
-      "from_ref": "span-martinez-mean-assumption",
-      "id": "em:dossier-evidence-relation:sha256:dfb70df4bb5a79afa280d5b8ad07a8b015ce2c047bfc9a233be9bb013ba55ae9",
+      "from_ref": "span-calculation-derive-martinez-passers-essay",
+      "id": "em:dossier-evidence-relation:sha256:ab1d937208a7dd4488c51004af267a03414306012ee327ecf10c05d0645a32b7",
       "key": "relation-assertion-derive-martinez-passers-essay",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2330,6 +2725,16 @@
     },
     {
       "basis_span_keys": [
+        "span-calculation-derive-illinois-feb-2018-298",
+        "span-calculation-derive-illinois-feb-2019-298",
+        "span-calculation-derive-illinois-jul-2018-298",
+        "span-calculation-derive-martinez-first-time-essay",
+        "span-calculation-derive-martinez-first-time-mbe",
+        "span-calculation-derive-martinez-first-time-ube",
+        "span-calculation-derive-martinez-parameters",
+        "span-calculation-derive-martinez-passers-essay",
+        "span-calculation-derive-martinez-passers-mbe",
+        "span-calculation-derive-martinez-passers-ube",
         "span-illinois-feb-2018-anchors",
         "span-illinois-feb-2019-anchors",
         "span-illinois-jul-2018-anchors",
@@ -2366,8 +2771,8 @@
         "span-openai-v6-table-score",
         "span-reshetar-first-time-mean"
       ],
-      "from_ref": "span-illinois-feb-2018-anchors",
-      "id": "em:dossier-evidence-relation:sha256:e9db7d77ad9702f43ce468dfc73d6e483b2fd9cd314d638aa32a35630b49f136",
+      "from_ref": "span-calculation-derive-illinois-feb-2018-298",
+      "id": "em:dossier-evidence-relation:sha256:3e878eb44b62d3f9ecbd842fe0140c601d65e93a62843a90bd314e3bcab78903",
       "key": "relation-assertion-reviewed-source-register",
       "note": "Material proposition closes over the listed exact reviewed spans.",
       "relation_type": "support",
@@ -2415,9 +2820,9 @@
         "span-openai-v1-collaborators"
       ],
       "from_ref": "lineage-model-performance-root",
-      "id": "em:dossier-evidence-relation:sha256:a1dee0a0bf90aed31bd9f9c913778ed445644cf34e30923651a3f7ee55454235",
+      "id": "em:dossier-evidence-relation:sha256:b616095462050178a4dedd71e5ad524effaa71d20808eceb206d203f9aae8204",
       "key": "edge-author-social-collaboration",
-      "note": "accepted_dimension=author-social; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=The vendor report and study are socially linked manifestations, not independent tests.",
+      "note": "accepted_edge_id=edge-author-social-collaboration; accepted_dimension=author-social; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=The vendor report and study are socially linked manifestations, not independent tests.",
       "relation_type": "dependence",
       "to_ref": "lineage-model-performance-root",
       "visibility": "public"
@@ -2429,9 +2834,9 @@
         "span-illinois-jul-2018-anchors"
       ],
       "from_ref": "lineage-illinois-comparison-root",
-      "id": "em:dossier-evidence-relation:sha256:57771550d1c18b441e7d9a1a7569ad4a4bf453b8acdf0a38a2405dbe2a9fb933",
+      "id": "em:dossier-evidence-relation:sha256:3bbbc190e0662f0d0cf22c4bf02a5abe6f9e71e95061afd3dc94f535c83fb57a",
       "key": "edge-benchmark-illinois-charts",
-      "note": "accepted_dimension=benchmark; from=lineage-illinois-comparison-root; to=lineage-martinez-analysis-root; effects=It is comparison data, not an additional GPT-4 performance root. | Population drift affects rank without changing the model score. | It is a sensitivity input, not a replication of the model run.",
+      "note": "accepted_edge_id=edge-benchmark-illinois-charts; accepted_dimension=benchmark; from=lineage-illinois-comparison-root; to=lineage-martinez-analysis-root; effects=It is comparison data, not an additional GPT-4 performance root. | Population drift affects rank without changing the model score. | It is a sensitivity input, not a replication of the model run.",
       "relation_type": "dependence",
       "to_ref": "lineage-martinez-analysis-root",
       "visibility": "public"
@@ -2441,9 +2846,9 @@
         "span-katz-vor-range"
       ],
       "from_ref": "lineage-model-performance-root",
-      "id": "em:dossier-evidence-relation:sha256:37faad827536d4e58371ebe7b1934c9fd81d18705dac7a7fbcf994c4e61e301c",
+      "id": "em:dossier-evidence-relation:sha256:a8c16efd90634c0a152f0fdd7a0a02f8d844004ea05edec24ec4651bf00764cc",
       "key": "edge-citation-katz-to-martinez",
-      "note": "accepted_dimension=citation; from=lineage-model-performance-root; to=lineage-martinez-analysis-root; effects=Citation links the analysis lineage to the same reported score.",
+      "note": "accepted_edge_id=edge-citation-katz-to-martinez; accepted_dimension=citation; from=lineage-model-performance-root; to=lineage-martinez-analysis-root; effects=Citation links the analysis lineage to the same reported score.",
       "relation_type": "dependence",
       "to_ref": "lineage-martinez-analysis-root",
       "visibility": "public"
@@ -2456,9 +2861,24 @@
         "span-ny-first-timers-2022"
       ],
       "from_ref": "lineage-ncbe-comparison-root",
-      "id": "em:dossier-evidence-relation:sha256:dc91800f915f77b648556d97a8c02a16916198b169e4df18384983a4978e3211",
-      "key": "edge-comparison-class-first-time-passers",
-      "note": "accepted_dimension=comparison-class; from=lineage-ncbe-comparison-root,lineage-new-york-pass-rate-root; to=lineage-martinez-analysis-root; effects=Comparison populations are not interchangeable. | Administration mix can change percentile without new model evidence. | It parameterizes the comparison model rather than testing GPT-4. | The threshold defines a modeled comparator boundary.",
+      "id": "em:dossier-evidence-relation:sha256:c26568911130747cbc372db3bcb7c6a64cecaa0134fb60ab0def98d7ceb621e4",
+      "key": "edge-comparison-class-first-time-passers--1",
+      "note": "accepted_edge_id=edge-comparison-class-first-time-passers; accepted_dimension=comparison-class; from=lineage-ncbe-comparison-root,lineage-new-york-pass-rate-root; to=lineage-martinez-analysis-root; effects=Comparison populations are not interchangeable. | Administration mix can change percentile without new model evidence. | It parameterizes the comparison model rather than testing GPT-4. | The threshold defines a modeled comparator boundary.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-martinez-analysis-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ncbe-jurisdiction-status",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ncbe-snapshot-composition",
+        "span-ny-first-timers-2022"
+      ],
+      "from_ref": "lineage-new-york-pass-rate-root",
+      "id": "em:dossier-evidence-relation:sha256:0b7e8f83a90479b952cdbf35c12046e8810bf312a6f413158f9d4567bc45849b",
+      "key": "edge-comparison-class-first-time-passers--2",
+      "note": "accepted_edge_id=edge-comparison-class-first-time-passers; accepted_dimension=comparison-class; from=lineage-ncbe-comparison-root,lineage-new-york-pass-rate-root; to=lineage-martinez-analysis-root; effects=Comparison populations are not interchangeable. | Administration mix can change percentile without new model evidence. | It parameterizes the comparison model rather than testing GPT-4. | The threshold defines a modeled comparator boundary.",
       "relation_type": "dependence",
       "to_ref": "lineage-martinez-analysis-root",
       "visibility": "public"
@@ -2469,9 +2889,9 @@
         "span-martinez-score-validation"
       ],
       "from_ref": "lineage-model-performance-root",
-      "id": "em:dossier-evidence-relation:sha256:37addb9a8b624572f8aa1a2c861b956139e9f2e5b8a8a7d9ecf0023fa66f18e8",
+      "id": "em:dossier-evidence-relation:sha256:691d48bc190063d50b6e811c7455ec325b1f29bcc7452301694470e83211188a",
       "key": "edge-data-reported-score-reuse",
-      "note": "accepted_dimension=data; from=lineage-model-performance-root; to=lineage-martinez-analysis-root; effects=The re-analysis is not a new model-performance experiment. | Score validation changes warrant, not the participant or model-performance root count.",
+      "note": "accepted_edge_id=edge-data-reported-score-reuse; accepted_dimension=data; from=lineage-model-performance-root; to=lineage-martinez-analysis-root; effects=The re-analysis is not a new model-performance experiment. | Score validation changes warrant, not the participant or model-performance root count.",
       "relation_type": "dependence",
       "to_ref": "lineage-martinez-analysis-root",
       "visibility": "public"
@@ -2484,9 +2904,24 @@
         "span-reshetar-first-time-mean"
       ],
       "from_ref": "lineage-ncbe-comparison-root",
-      "id": "em:dossier-evidence-relation:sha256:d4aa4acff5462496dbda287fd0eb220ed5cae8fd9aac952a15d8b1c1e710308c",
-      "key": "edge-derivation-comparison-inputs",
-      "note": "accepted_dimension=derivation; from=lineage-ncbe-comparison-root,lineage-new-york-pass-rate-root; to=lineage-martinez-analysis-root; effects=The value is a modeled input, not a GPT-4 observation. | Executable transformations do not create new source or performance roots.",
+      "id": "em:dossier-evidence-relation:sha256:8e1e29f851db71dfa10a5e236ce568d68a73d9c9dcc9e57be569669606ec66a7",
+      "key": "edge-derivation-comparison-inputs--1",
+      "note": "accepted_edge_id=edge-derivation-comparison-inputs; accepted_dimension=derivation; from=lineage-ncbe-comparison-root,lineage-new-york-pass-rate-root; to=lineage-martinez-analysis-root; effects=The value is a modeled input, not a GPT-4 observation. | Executable transformations do not create new source or performance roots.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-martinez-analysis-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-thresholds",
+        "span-martinez-script-ube-sd",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "lineage-new-york-pass-rate-root",
+      "id": "em:dossier-evidence-relation:sha256:4cb023d071772f2c5de160eda970a23d215bd0e51de0ebef48513742b7b92ab4",
+      "key": "edge-derivation-comparison-inputs--2",
+      "note": "accepted_edge_id=edge-derivation-comparison-inputs; accepted_dimension=derivation; from=lineage-ncbe-comparison-root,lineage-new-york-pass-rate-root; to=lineage-martinez-analysis-root; effects=The value is a modeled input, not a GPT-4 observation. | Executable transformations do not create new source or performance roots.",
       "relation_type": "dependence",
       "to_ref": "lineage-martinez-analysis-root",
       "visibility": "public"
@@ -2496,9 +2931,9 @@
         "span-katz-vor-materials"
       ],
       "from_ref": "lineage-model-performance-root",
-      "id": "em:dossier-evidence-relation:sha256:a8abbd7d2af1c0afa13938b9072efca4db0bc3a890487b4f8867ab64e5f8af01",
+      "id": "em:dossier-evidence-relation:sha256:8f61eda50599e5c6c226c2dcb7818c8627f23979fd5b51669aa62e5d52f6d110",
       "key": "edge-material-shared-exam-items",
-      "note": "accepted_dimension=material; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=All score manifestations inherit the same exam-item materials.",
+      "note": "accepted_edge_id=edge-material-shared-exam-items; accepted_dimension=material; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=All score manifestations inherit the same exam-item materials.",
       "relation_type": "dependence",
       "to_ref": "lineage-model-performance-root",
       "visibility": "public"
@@ -2508,9 +2943,9 @@
         "span-openai-v1-free-response-run"
       ],
       "from_ref": "lineage-model-performance-root",
-      "id": "em:dossier-evidence-relation:sha256:a8a978d2ee6b6d8b9b91bef05682d1a7a1b0dcc55856f1125bdd10a1e44354ef",
+      "id": "em:dossier-evidence-relation:sha256:1ed5b88123954bc8da25cf9422c2df70e30d3569ddd99213e9cf5590bf8522c3",
       "key": "edge-method-single-free-response-run",
-      "note": "accepted_dimension=method; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=Repeated documents do not supply repeated-run independence.",
+      "note": "accepted_edge_id=edge-method-single-free-response-run; accepted_dimension=method; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=Repeated documents do not supply repeated-run independence.",
       "relation_type": "dependence",
       "to_ref": "lineage-model-performance-root",
       "visibility": "public"
@@ -2520,9 +2955,9 @@
         "span-openai-v1-snapshots"
       ],
       "from_ref": "lineage-model-performance-root",
-      "id": "em:dossier-evidence-relation:sha256:975f1bcd562a0f6b6ec2a452afa3435453fca96fd8c15935ff318d5025c7307f",
+      "id": "em:dossier-evidence-relation:sha256:e7c0af1eebfe5fa400bcb3369655f40adf482a99cc91a370f6e6a586f847f133",
       "key": "edge-model-historical-snapshots",
-      "note": "accepted_dimension=model; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=The two snapshots are components of one reported experiment, not two evidence roots.",
+      "note": "accepted_edge_id=edge-model-historical-snapshots; accepted_dimension=model; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=The two snapshots are components of one reported experiment, not two evidence roots.",
       "relation_type": "dependence",
       "to_ref": "lineage-model-performance-root",
       "visibility": "public"
@@ -2533,9 +2968,9 @@
         "span-katz-vor-score-discrepancy"
       ],
       "from_ref": "lineage-model-performance-root",
-      "id": "em:dossier-evidence-relation:sha256:ae8287b86afe64c3260fefde28af27997bf47720d0369ad72ee949ec09a7a318",
+      "id": "em:dossier-evidence-relation:sha256:21278e42f97e114bc1442703ca96eea56725d7bb221a07e5c31f5adfc512b040",
       "key": "edge-score-component-composite",
-      "note": "accepted_dimension=score; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=297 and 298 are scoring variants within one experiment.",
+      "note": "accepted_edge_id=edge-score-component-composite; accepted_dimension=score; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=297 and 298 are scoring variants within one experiment.",
       "relation_type": "dependence",
       "to_ref": "lineage-model-performance-root",
       "visibility": "public"
@@ -2688,6 +3123,16 @@
         "assertion-reviewed-source-register"
       ],
       "basis_span_keys": [
+        "span-calculation-derive-illinois-feb-2018-298",
+        "span-calculation-derive-illinois-feb-2019-298",
+        "span-calculation-derive-illinois-jul-2018-298",
+        "span-calculation-derive-martinez-first-time-essay",
+        "span-calculation-derive-martinez-first-time-mbe",
+        "span-calculation-derive-martinez-first-time-ube",
+        "span-calculation-derive-martinez-parameters",
+        "span-calculation-derive-martinez-passers-essay",
+        "span-calculation-derive-martinez-passers-mbe",
+        "span-calculation-derive-martinez-passers-ube",
         "span-illinois-feb-2018-anchors",
         "span-illinois-feb-2019-anchors",
         "span-illinois-jul-2018-anchors",
@@ -2735,7 +3180,7 @@
         "source",
         "retrieval"
       ],
-      "id": "em:dossier-lineage:sha256:0d8a3d3705dfdfa415e4c2afceb900e9134dcc98a431fd18cd9028a554aa8470",
+      "id": "em:dossier-lineage:sha256:422cbc1bffe9bc601c6fa32dfee1ab2dd3cd27d9da36b34f7dab9a750775db7c",
       "key": "lineage-reviewed-source-register",
       "note": "Relation-derived disclosure-safe projection of the exact reviewed EM-0032 register.",
       "status": "known",
@@ -2747,6 +3192,16 @@
         "assertion-skeptical-evaluation"
       ],
       "basis_span_keys": [
+        "span-calculation-derive-illinois-feb-2018-298",
+        "span-calculation-derive-illinois-feb-2019-298",
+        "span-calculation-derive-illinois-jul-2018-298",
+        "span-calculation-derive-martinez-first-time-essay",
+        "span-calculation-derive-martinez-first-time-mbe",
+        "span-calculation-derive-martinez-first-time-ube",
+        "span-calculation-derive-martinez-parameters",
+        "span-calculation-derive-martinez-passers-essay",
+        "span-calculation-derive-martinez-passers-mbe",
+        "span-calculation-derive-martinez-passers-ube",
         "span-illinois-feb-2018-anchors",
         "span-illinois-feb-2019-anchors",
         "span-illinois-jul-2018-anchors",
@@ -2795,7 +3250,7 @@
         "model",
         "method"
       ],
-      "id": "em:dossier-lineage:sha256:a4e336f26ab372b0b7c2ebdb611cb787848b44980eba9b2478f13d5f939e9d65",
+      "id": "em:dossier-lineage:sha256:63bb5757d022c2dc2941c35017b5ef7539216b0707ce9c0653cd512acc7fba8c",
       "key": "lineage-evaluation-synthesis",
       "note": "Policy-relative synthesis over one unchanged source graph; no new empirical root.",
       "status": "known",
@@ -2860,80 +3315,80 @@
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:99ec4bf85ed609ff55526e96ac653c6ce531ad911e47df0af46b36deb5c046ce",
+      "id": "em:dossier-proposition:sha256:b3eb260778bfb82eeb304b0af6d0f95ae5970cb1e83f64f824eadc453cf0a11f",
       "key": "derive-illinois-feb-2018-298",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "reviewer sensitivity only: linear interpolation: 89.0.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=\"Neither Illinois nor OpenAI disclosed this interpolation; it cannot be attributed as the launch method.\"; resolved_input_cells=2; not an additional model-performance experiment.",
+      "text": "reviewer sensitivity only: linear interpolation: 89.0; equation=\"p298 = p290 + ((298 - 290) / 10) * (p300 - p290)\"; comparison_population=null; depends_on=[].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:f230cbb48f98d83df54f6ed9c3a33d46878521216231cb2fb7761c624768aa11",
+      "id": "em:dossier-proposition:sha256:16d42772ecd2e1cf09e10207fd84bcdd82413184a1ca7e0a6f71222759c24539",
       "key": "derive-illinois-jul-2018-298",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "reviewer sensitivity only: linear interpolation: 67.8.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=\"Neither Illinois nor OpenAI disclosed this interpolation; it cannot be attributed as the launch method.\"; resolved_input_cells=2; not an additional model-performance experiment.",
+      "text": "reviewer sensitivity only: linear interpolation: 67.8; equation=\"p298 = p290 + ((298 - 290) / 10) * (p300 - p290)\"; comparison_population=null; depends_on=[].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:523f8a6b39ee54e3f011533920997e54d92e0aeb992f51aceb0b1b7142438650",
+      "id": "em:dossier-proposition:sha256:5e417788588abd558e96b1e86a8abbf760107f1b2c5cf87ab39ef6533de01c6f",
       "key": "derive-illinois-feb-2019-298",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "reviewer sensitivity only: linear interpolation: 88.6.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=\"Neither Illinois nor OpenAI disclosed this interpolation; it cannot be attributed as the launch method.\"; resolved_input_cells=2; not an additional model-performance experiment.",
+      "text": "reviewer sensitivity only: linear interpolation: 88.6; equation=\"p298 = p290 + ((298 - 290) / 10) * (p300 - p290)\"; comparison_population=null; depends_on=[].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:4d8e57e90301b4c327de9d6489711c4739b33bc02e1e49fc9f5b29cb358d1431",
+      "id": "em:dossier-proposition:sha256:8a265341b3cca87de499aa7fe9807fcb85405a680c9899fb2844a96717923ac6",
       "key": "derive-martinez-parameters",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "analytic reproduction of the executable OSF inputs: {\"derived_ube_sd\":35.24729455256271,\"sample_mbe_sd\":17.74327194332649,\"z_at_0_27\":-0.6128129910166272}.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=\"The UBE distribution is inferred from aggregate inputs and normality; the essay mean/SD are assumed rather than observed.\"; resolved_input_cells=23; not an additional model-performance experiment.",
+      "text": "analytic reproduction of the executable OSF inputs: {\"derived_ube_sd\":35.24729455256271,\"sample_mbe_sd\":17.74327194332649,\"z_at_0_27\":-0.6128129910166272}; equation=null; comparison_population=null; depends_on=[].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:563fa2d1621699d79b50d19ee0c91afb2ec36cd9a5814bdf9fd05adefd4132a1",
+      "id": "em:dossier-proposition:sha256:e239947e9f182874d45854038dd31c8374fadebae4638ef0e25f91f286fe7202",
       "key": "derive-martinez-first-time-ube",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "normal CDF at score 298: 61.60252541656707.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=null; resolved_input_cells=0; not an additional model-performance experiment.",
+      "text": "normal CDF at score 298: 61.60252541656707; equation=\"100 * Phi((298 - 287.6) / derived_ube_sd)\"; comparison_population=\"modeled first-time UBE takers\"; depends_on=[\"derive-martinez-parameters\"].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:a5ad5ecb3b3222fe7d26558641c766d69a1e9893bfa24bf56f531e313c450c09",
+      "id": "em:dossier-proposition:sha256:9119f9ff62ea1e7760aabb53df19e6824e081aaab2d28ddac873b49ba1829c69",
       "key": "derive-martinez-passers-ube",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "normal CDF conditional on modeled UBE score >= 270: 44.45020553281165.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=\"The script uses 270 for this filter after using New York's 266 cutoff to infer UBE SD.\"; resolved_input_cells=0; not an additional model-performance experiment.",
+      "text": "normal CDF conditional on modeled UBE score >= 270: 44.45020553281165; equation=\"100 * (F(298) - F(270)) / (1 - F(270))\"; comparison_population=\"modeled first-time scores at or above 270\"; depends_on=[\"derive-martinez-parameters\"].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:4dae2b30b8c63439e9dc0291b308d48f1e5ecddd335123b7873dfc143cf34fda",
+      "id": "em:dossier-proposition:sha256:added6c64552253aad1f336b1c4d88de6dd6172647d50fa5bddd3820feecf458",
       "key": "derive-martinez-first-time-mbe",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "normal CDF at MBE score 158: 78.82324690739395.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=null; resolved_input_cells=0; not an additional model-performance experiment.",
+      "text": "normal CDF at MBE score 158: 78.82324690739395; equation=null; comparison_population=\"modeled first-time MBE takers\"; depends_on=[\"derive-martinez-parameters\"].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:bd5d782643d2e6b3ded101a0c5b14a9aa1d28ebd4bbef7764e06591b526fc927",
+      "id": "em:dossier-proposition:sha256:c564ce54eb3b2d6f72781fee0e99f5162aec79993a6aa87f999d7b8d2775420e",
       "key": "derive-martinez-passers-mbe",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "normal CDF conditional on modeled MBE score >= 135: 69.31081545343784.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=null; resolved_input_cells=0; not an additional model-performance experiment.",
+      "text": "normal CDF conditional on modeled MBE score >= 135: 69.31081545343784; equation=null; comparison_population=\"modeled MBE scores at or above 135\"; depends_on=[\"derive-martinez-parameters\"].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:8ff9c547d9ae472642c94744dd6ead38ca619497db2bec161d3f0d6cc83b1bfa",
+      "id": "em:dossier-proposition:sha256:8b4297b5104a65c7f8bddf8b32ed22ff861e9c48bfd3f310cd2004f0422891a3",
       "key": "derive-martinez-first-time-essay",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "normal CDF at essay score 140 using assumed MBE distribution: 41.520892709392534.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=null; resolved_input_cells=0; not an additional model-performance experiment.",
+      "text": "normal CDF at essay score 140 using assumed MBE distribution: 41.520892709392534; equation=null; comparison_population=\"modeled first-time essay scores\"; depends_on=[\"derive-martinez-parameters\"].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:bf6cefa5884c457638f6b822e1484f41e91869e368f1d65f4511a8ac812bd21d",
+      "id": "em:dossier-proposition:sha256:6c97aaa7a9bc70f03c07f91df685245b1a1278b97bb4e9bcf56f7e85861dda76",
       "key": "derive-martinez-passers-essay",
-      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
-      "text": "normal CDF conditional on modeled essay score >= 135: 15.252536216882072.",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell register; uncertainty=null; resolved_input_cells=0; not an additional model-performance experiment.",
+      "text": "normal CDF conditional on modeled essay score >= 135: 15.252536216882072; equation=null; comparison_population=\"modeled essay scores at or above 135\"; depends_on=[\"derive-martinez-parameters\"].",
       "visibility": "public"
     },
     {
-      "id": "em:dossier-proposition:sha256:20c2ddd07c0055957850fb945699c81c87231a3ce34aa6b6f14dc70b69d4d6a4",
+      "id": "em:dossier-proposition:sha256:da68d48e236b494c0874cbb700e8ef91a1d039b6507def522a2cb52a2eda5b02",
       "key": "prop-reviewed-source-register",
       "scope": "Counts are relation-derived from the exact accepted packet.",
-      "text": "The accepted packet contains 19 source editions across 8 works, 35 parent spans, 8 bounded claims, 10 calculations, 5 lineage roots, and 10 typed dependence edges.",
+      "text": "The accepted packet contains 19 source editions across 8 source works, 35 parent spans, 10 structured calculation records, 8 bounded claims, 5 lineage groups, and 10 typed dependence-edge groups.",
       "visibility": "public"
     },
     {
@@ -3048,6 +3503,18 @@
       "kind": "webpage",
       "license": "no open license confirmed",
       "title": "The Testing Column: Why Are February Bar Exam Pass Rates Lower than July Pass Rates?",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://github.com/yoheinakajima/epistemedia/blob/700a822f38d00d13cc0661fd577bdb7e6e5b34dd/research/how-we-know/gpt-4-bar-exam-percentile/candidate-packet.json",
+      "creators": [
+        "Epistemedia deterministic dossier compiler"
+      ],
+      "id": "em:dossier-source-work:sha256:bb86be7b07b85a8d09a4fab4b2526a49c82b959ee3fb31bcf33ff7a5e6e27831",
+      "key": "work-em0032-calculation-register",
+      "kind": "dataset",
+      "license": "Repository instrumentation under Apache-2.0; accepted source licenses remain attached to their source editions",
+      "title": "EM-0032 accepted calculation and input-cell register",
       "visibility": "public"
     }
   ],
@@ -4222,6 +4689,502 @@
       "locator": {
         "label": "paragraph beginning 'The numbers from 2019'",
         "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:3037e78d052c9ae7ef8fc027de340daa7e7a1e7488092ce8c1d4ab46cfe1762e",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "derivation_id": "derive-illinois-feb-2018-298",
+            "equation": "p298 = p290 + ((298 - 290) / 10) * (p300 - p290)",
+            "input_cell_ids": [
+              "cell-illinois-feb-2018-290",
+              "cell-illinois-feb-2018-300"
+            ],
+            "input_span_ids": [
+              "span-illinois-feb-2018-anchors"
+            ],
+            "inputs": {
+              "p290": 85.0,
+              "p300": 90.0,
+              "score": 298
+            },
+            "method": "reviewer sensitivity only: linear interpolation",
+            "result_percentile": 89.0,
+            "uncertainty": "Neither Illinois nor OpenAI disclosed this interpolation; it cannot be attributed as the launch method."
+          },
+          "resolved_input_cells": [
+            {
+              "cell_id": "cell-illinois-feb-2018-290",
+              "percentile": 85,
+              "score": 290
+            },
+            {
+              "cell_id": "cell-illinois-feb-2018-300",
+              "percentile": 90,
+              "score": 300
+            }
+          ]
+        }
+      },
+      "id": "em:dossier-span:sha256:ba2cde38323123970a17e90771d1f6e21ad66d1ddfa53841749b93e1113694ea",
+      "key": "span-calculation-derive-illinois-feb-2018-298",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-illinois-feb-2018-298",
+        "pointer": "/records/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:1e02e47e6e3f6a7c2422be3a698ecce3d17899aef055d0f47f2745ec043366f5",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "derivation_id": "derive-illinois-jul-2018-298",
+            "equation": "p298 = p290 + ((298 - 290) / 10) * (p300 - p290)",
+            "input_cell_ids": [
+              "cell-illinois-jul-2018-290",
+              "cell-illinois-jul-2018-300"
+            ],
+            "input_span_ids": [
+              "span-illinois-jul-2018-anchors"
+            ],
+            "inputs": {
+              "p290": 59.0,
+              "p300": 70.0,
+              "score": 298
+            },
+            "method": "reviewer sensitivity only: linear interpolation",
+            "result_percentile": 67.8,
+            "uncertainty": "Neither Illinois nor OpenAI disclosed this interpolation; it cannot be attributed as the launch method."
+          },
+          "resolved_input_cells": [
+            {
+              "cell_id": "cell-illinois-jul-2018-290",
+              "percentile": 59,
+              "score": 290
+            },
+            {
+              "cell_id": "cell-illinois-jul-2018-300",
+              "percentile": 70,
+              "score": 300
+            }
+          ]
+        }
+      },
+      "id": "em:dossier-span:sha256:88fbcd4b7b93f462ad98350235a550f2b34f2dbc1a811849f0f40dc7cb03ee18",
+      "key": "span-calculation-derive-illinois-jul-2018-298",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-illinois-jul-2018-298",
+        "pointer": "/records/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:76a57ca09947680e56c24258540370c4538e5e7d69931cb76882834e659fb1f2",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "derivation_id": "derive-illinois-feb-2019-298",
+            "equation": "p298 = p290 + ((298 - 290) / 10) * (p300 - p290)",
+            "input_cell_ids": [
+              "cell-illinois-feb-2019-290",
+              "cell-illinois-feb-2019-300"
+            ],
+            "input_span_ids": [
+              "span-illinois-feb-2019-anchors"
+            ],
+            "inputs": {
+              "p290": 83.0,
+              "p300": 90.0,
+              "score": 298
+            },
+            "method": "reviewer sensitivity only: linear interpolation",
+            "result_percentile": 88.6,
+            "uncertainty": "Neither Illinois nor OpenAI disclosed this interpolation; it cannot be attributed as the launch method."
+          },
+          "resolved_input_cells": [
+            {
+              "cell_id": "cell-illinois-feb-2019-290",
+              "percentile": 83,
+              "score": 290
+            },
+            {
+              "cell_id": "cell-illinois-feb-2019-300",
+              "percentile": 90,
+              "score": 300
+            }
+          ]
+        }
+      },
+      "id": "em:dossier-span:sha256:b16e9a841685191e39868f05b3b6e4ab6adbd109794b3af87845e3609e2bfa8d",
+      "key": "span-calculation-derive-illinois-feb-2019-298",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-illinois-feb-2019-298",
+        "pointer": "/records/2",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:b92c0e5f9e2866c3806a45f478310c538513bb17644f78c91900edf5fc547d2e",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "derivation_id": "derive-martinez-parameters",
+            "input_cell_ids": [
+              "cell-martinez-july-mbe-85",
+              "cell-martinez-july-mbe-90",
+              "cell-martinez-july-mbe-95",
+              "cell-martinez-july-mbe-100",
+              "cell-martinez-july-mbe-105",
+              "cell-martinez-july-mbe-110",
+              "cell-martinez-july-mbe-115",
+              "cell-martinez-july-mbe-120",
+              "cell-martinez-july-mbe-125",
+              "cell-martinez-july-mbe-130",
+              "cell-martinez-july-mbe-135",
+              "cell-martinez-july-mbe-140",
+              "cell-martinez-july-mbe-145",
+              "cell-martinez-july-mbe-150",
+              "cell-martinez-july-mbe-155",
+              "cell-martinez-july-mbe-160",
+              "cell-martinez-july-mbe-165",
+              "cell-martinez-july-mbe-170",
+              "cell-martinez-july-mbe-175",
+              "cell-martinez-july-mbe-180",
+              "cell-martinez-july-mbe-185",
+              "cell-ncbe-ube-score-266",
+              "cell-ny-first-timers-rate"
+            ],
+            "input_span_ids": [
+              "span-reshetar-first-time-mean",
+              "span-martinez-mean-assumption",
+              "span-martinez-script-july-mbe-distribution",
+              "span-martinez-script-ube-sd",
+              "span-ncbe-ny-cutoff-2022",
+              "span-ny-first-timers-2022"
+            ],
+            "inputs": {
+              "assumed_first_time_essay_mean": 143.8,
+              "assumed_first_time_ube_mean": 287.6,
+              "first_time_mbe_mean": 143.8,
+              "july_mbe_binned_observations": 1002,
+              "new_york_cutoff": 266.0,
+              "new_york_nonpass_proportion": 0.27
+            },
+            "method": "analytic reproduction of the executable OSF inputs",
+            "results": {
+              "derived_ube_sd": 35.24729455256271,
+              "sample_mbe_sd": 17.74327194332649,
+              "z_at_0_27": -0.6128129910166272
+            },
+            "uncertainty": "The UBE distribution is inferred from aggregate inputs and normality; the essay mean/SD are assumed rather than observed."
+          },
+          "resolved_input_cells": [
+            {
+              "cell_id": "cell-martinez-july-mbe-85",
+              "count": 2,
+              "score": 85
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-90",
+              "count": 2,
+              "score": 90
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-95",
+              "count": 5,
+              "score": 95
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-100",
+              "count": 6,
+              "score": 100
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-105",
+              "count": 13,
+              "score": 105
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-110",
+              "count": 22,
+              "score": 110
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-115",
+              "count": 33,
+              "score": 115
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-120",
+              "count": 56,
+              "score": 120
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-125",
+              "count": 73,
+              "score": 125
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-130",
+              "count": 78,
+              "score": 130
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-135",
+              "count": 104,
+              "score": 135
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-140",
+              "count": 96,
+              "score": 140
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-145",
+              "count": 101,
+              "score": 145
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-150",
+              "count": 99,
+              "score": 150
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-155",
+              "count": 99,
+              "score": 155
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-160",
+              "count": 79,
+              "score": 160
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-165",
+              "count": 64,
+              "score": 165
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-170",
+              "count": 38,
+              "score": 170
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-175",
+              "count": 22,
+              "score": 175
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-180",
+              "count": 8,
+              "score": 180
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-185",
+              "count": 2,
+              "score": 185
+            },
+            {
+              "cell_id": "cell-ncbe-ube-score-266",
+              "column": "Score",
+              "row": "266",
+              "text": "266"
+            },
+            {
+              "cell_id": "cell-ny-first-timers-rate",
+              "column": "Rate",
+              "row": "ALL Candidates",
+              "text": "73%"
+            }
+          ]
+        }
+      },
+      "id": "em:dossier-span:sha256:b36533d6f13983fa968a987d5263ea1ab6220a87e2b416ab59a0c3d40ea03d09",
+      "key": "span-calculation-derive-martinez-parameters",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-martinez-parameters",
+        "pointer": "/records/3",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:95f5718ef7d21ae6fb0218ba919638f6bee7e0a849abfab1144857c83941d8c2",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "comparison_population": "modeled first-time UBE takers",
+            "depends_on": [
+              "derive-martinez-parameters"
+            ],
+            "derivation_id": "derive-martinez-first-time-ube",
+            "equation": "100 * Phi((298 - 287.6) / derived_ube_sd)",
+            "method": "normal CDF at score 298",
+            "result_percentile": 61.60252541656707
+          },
+          "resolved_input_cells": []
+        }
+      },
+      "id": "em:dossier-span:sha256:282eac343e251f80212871bfab6bbad216ef94e8989d5f56387cc19a79d72aca",
+      "key": "span-calculation-derive-martinez-first-time-ube",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-martinez-first-time-ube",
+        "pointer": "/records/4",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:5cd325ee19d0d60ca21ed01dcf1cc3c6cfb1edfb2f9fb702d680f03a2ec1a8f3",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "comparison_population": "modeled first-time scores at or above 270",
+            "depends_on": [
+              "derive-martinez-parameters"
+            ],
+            "derivation_id": "derive-martinez-passers-ube",
+            "equation": "100 * (F(298) - F(270)) / (1 - F(270))",
+            "method": "normal CDF conditional on modeled UBE score >= 270",
+            "result_percentile": 44.45020553281165,
+            "uncertainty": "The script uses 270 for this filter after using New York's 266 cutoff to infer UBE SD."
+          },
+          "resolved_input_cells": []
+        }
+      },
+      "id": "em:dossier-span:sha256:3738518581952127b4be8dbb224e03a6eb3126a5ec5c685a837cba9e0d7bfcde",
+      "key": "span-calculation-derive-martinez-passers-ube",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-martinez-passers-ube",
+        "pointer": "/records/5",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:0222f9c217d52a28eaeb28caf33d560864fd14ba99c48d7ebd7fa0aa4fdba995",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "comparison_population": "modeled first-time MBE takers",
+            "depends_on": [
+              "derive-martinez-parameters"
+            ],
+            "derivation_id": "derive-martinez-first-time-mbe",
+            "method": "normal CDF at MBE score 158",
+            "result_percentile": 78.82324690739395
+          },
+          "resolved_input_cells": []
+        }
+      },
+      "id": "em:dossier-span:sha256:46a2e94c6b7fa7049cb7e26fb0def120ac9445a8bd95c1b21478c0db1e94424a",
+      "key": "span-calculation-derive-martinez-first-time-mbe",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-martinez-first-time-mbe",
+        "pointer": "/records/6",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:bc34a7eda1879f438d7e7945440d3db419371f000787488a1830b7c283f81845",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "comparison_population": "modeled MBE scores at or above 135",
+            "depends_on": [
+              "derive-martinez-parameters"
+            ],
+            "derivation_id": "derive-martinez-passers-mbe",
+            "method": "normal CDF conditional on modeled MBE score >= 135",
+            "result_percentile": 69.31081545343784
+          },
+          "resolved_input_cells": []
+        }
+      },
+      "id": "em:dossier-span:sha256:25dbcaa16173c2875dcab51c6fbd9210df50cf2aa03cb3e2514724edcc667200",
+      "key": "span-calculation-derive-martinez-passers-mbe",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-martinez-passers-mbe",
+        "pointer": "/records/7",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:a9c27ee78ab735acd0cc44a48abf93543d47b7e31106e8b749ad9acd73d94272",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "comparison_population": "modeled first-time essay scores",
+            "depends_on": [
+              "derive-martinez-parameters"
+            ],
+            "derivation_id": "derive-martinez-first-time-essay",
+            "method": "normal CDF at essay score 140 using assumed MBE distribution",
+            "result_percentile": 41.520892709392534
+          },
+          "resolved_input_cells": []
+        }
+      },
+      "id": "em:dossier-span:sha256:7fe07e6a8c3bfc7145de80e008268fc0c0e4c52008cdcc2c56229e50818ae891",
+      "key": "span-calculation-derive-martinez-first-time-essay",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-martinez-first-time-essay",
+        "pointer": "/records/8",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e28cf7118b36578f51acca1366d26808d9189b9b699ff2f8ce7c4b77bde9b468",
+      "edition_key": "edition-em0032-calculation-register",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "derivation": {
+            "comparison_population": "modeled essay scores at or above 135",
+            "depends_on": [
+              "derive-martinez-parameters"
+            ],
+            "derivation_id": "derive-martinez-passers-essay",
+            "method": "normal CDF conditional on modeled essay score >= 135",
+            "result_percentile": 15.252536216882072
+          },
+          "resolved_input_cells": []
+        }
+      },
+      "id": "em:dossier-span:sha256:75c94b1ed032d669e53b051fa98d8234be91d8062a23ee43147ac17553d9e5db",
+      "key": "span-calculation-derive-martinez-passers-essay",
+      "locator": {
+        "label": "accepted derivation and input cells: derive-martinez-passers-essay",
+        "pointer": "/records/9",
         "type": "json-pointer"
       },
       "visibility": "public"

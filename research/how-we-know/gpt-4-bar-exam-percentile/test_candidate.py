@@ -5,7 +5,13 @@ from __future__ import annotations
 import copy
 
 import pytest
-from build_candidate import PACKET_PATH, build_candidate
+from build_candidate import (
+    PACKET_PATH,
+    build_candidate,
+    canonical_json,
+    digest,
+    sha256_bytes,
+)
 from verify_candidate import (
     VerificationError,
     load,
@@ -82,6 +88,41 @@ def test_incomplete_typed_lineage_evidence_fails_closed() -> None:
     edge["basis_span_keys"].pop()
     forged = restamp(candidate)
     with pytest.raises(VerificationError, match="typed edge evidence drift"):
+        verify_candidate_document(forged, packet(), require_exact_build=False)
+
+
+def test_calculation_record_cannot_drop_exact_input_cells() -> None:
+    candidate = build_candidate()
+    span = next(
+        item
+        for item in candidate["spans"]
+        if item["key"] == "span-calculation-derive-martinez-parameters"
+    )
+    span["extent"]["value"]["resolved_input_cells"].pop()
+    span["digest"] = digest(span["extent"]["value"])
+    edition = next(
+        item
+        for item in candidate["editions"]
+        if item["key"] == "edition-em0032-calculation-register"
+    )
+    encoded = canonical_json(edition["content"])
+    edition["content_digest"] = "sha256:" + sha256_bytes(encoded)
+    edition["content_length"] = len(encoded)
+    forged = restamp(candidate)
+    with pytest.raises(VerificationError, match="input-cell closure drift"):
+        verify_candidate_document(forged, packet(), require_exact_build=False)
+
+
+def test_multi_source_typed_edge_cannot_drop_new_york_endpoint() -> None:
+    candidate = build_candidate()
+    relation = next(
+        item
+        for item in candidate["evidence_relations"]
+        if item["key"] == "edge-comparison-class-first-time-passers--2"
+    )
+    relation["from_ref"] = "lineage-ncbe-comparison-root"
+    forged = restamp(candidate)
+    with pytest.raises(VerificationError, match="typed edge endpoint drift"):
         verify_candidate_document(forged, packet(), require_exact_build=False)
 
 

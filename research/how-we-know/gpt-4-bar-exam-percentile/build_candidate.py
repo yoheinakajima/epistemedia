@@ -32,6 +32,8 @@ ACCEPTED_PACKET_ID = (
     "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b"
 )
 ASSERTED_AT = "2026-08-28T00:39:59Z"
+CALCULATION_WORK_KEY = "work-em0032-calculation-register"
+CALCULATION_EDITION_KEY = "edition-em0032-calculation-register"
 EXPECTED_COUNTS = {
     "calculations": 10,
     "core_sources": 15,
@@ -128,6 +130,40 @@ def dossier_key(value: str) -> str:
     """Map an accepted external identifier into the dossier key alphabet."""
 
     return value.replace(".", "-")
+
+
+def collect_cells(value: Any, cells: dict[str, dict[str, Any]]) -> None:
+    """Index exact accepted table and code cells without altering their values."""
+
+    if isinstance(value, dict):
+        cell_id = value.get("cell_id")
+        if isinstance(cell_id, str):
+            prior = cells.setdefault(cell_id, value)
+            if prior != value:
+                raise ValueError(f"conflicting accepted cell identity: {cell_id}")
+        for child in value.values():
+            collect_cells(child, cells)
+    elif isinstance(value, list):
+        for child in value:
+            collect_cells(child, cells)
+
+
+def expanded_edge_relations(
+    edge: dict[str, Any], source_to_lineage: dict[str, str]
+) -> list[dict[str, str]]:
+    """Return every accepted typed-edge endpoint as a dossier relation."""
+
+    mapped_from = [source_to_lineage.get(item, item) for item in edge["from_ids"]]
+    mapped_to = [source_to_lineage.get(item, item) for item in edge["to_ids"]]
+    pairs = [(from_ref, to_ref) for from_ref in mapped_from for to_ref in mapped_to]
+    return [
+        {
+            "key": edge["edge_id"] if len(pairs) == 1 else f"{edge['edge_id']}--{index}",
+            "from_ref": from_ref,
+            "to_ref": to_ref,
+        }
+        for index, (from_ref, to_ref) in enumerate(pairs, 1)
+    ]
 
 
 def load_accepted(path: Path, expected_sha256: str) -> dict[str, Any]:
@@ -361,6 +397,40 @@ def build_candidate() -> dict[str, Any]:
                 "visibility": "public",
             }
         )
+    cell_index: dict[str, dict[str, Any]] = {}
+    collect_cells(source_register, cell_index)
+    calculation_records = []
+    for calculation in content["derivations"]:
+        cell_ids = calculation.get("input_cell_ids", [])
+        missing = [cell_id for cell_id in cell_ids if cell_id not in cell_index]
+        if missing:
+            raise ValueError(
+                f"calculation input-cell closure drift: {calculation['derivation_id']} {missing}"
+            )
+        calculation_records.append(
+            {
+                "derivation": calculation,
+                "resolved_input_cells": [cell_index[cell_id] for cell_id in cell_ids],
+            }
+        )
+    source_works.append(
+        {
+            "key": CALCULATION_WORK_KEY,
+            "kind": "dataset",
+            "title": "EM-0032 accepted calculation and input-cell register",
+            "creators": ["Epistemedia deterministic dossier compiler"],
+            "canonical_uri": (
+                "https://github.com/yoheinakajima/epistemedia/blob/"
+                "700a822f38d00d13cc0661fd577bdb7e6e5b34dd/"
+                "research/how-we-know/gpt-4-bar-exam-percentile/candidate-packet.json"
+            ),
+            "license": (
+                "Repository instrumentation under Apache-2.0; accepted source licenses "
+                "remain attached to their source editions"
+            ),
+            "visibility": "public",
+        }
+    )
 
     editions = []
     spans = []
@@ -408,6 +478,48 @@ def build_candidate() -> dict[str, Any]:
                 }
             )
         spans_by_source[source["source_id"]] = source_spans
+
+    calculation_content = {
+        "format": "epistemedia-em0032-calculation-register-v1",
+        "accepted_packet_id": ACCEPTED_PACKET_ID,
+        "records": calculation_records,
+    }
+    calculation_encoded = canonical_json(calculation_content)
+    editions.append(
+        {
+            "key": CALCULATION_EDITION_KEY,
+            "work_key": CALCULATION_WORK_KEY,
+            "edition_label": "Exact accepted EM-0032 derivations and resolved input cells",
+            "media_type": "application/json",
+            "retrieved_at": ASSERTED_AT,
+            "content": calculation_content,
+            "content_digest": "sha256:" + sha256_bytes(calculation_encoded),
+            "content_length": len(calculation_encoded),
+            "visibility": "public",
+        }
+    )
+    calculation_span_ids: dict[str, str] = {}
+    for index, record in enumerate(calculation_records):
+        derivation_id = record["derivation"]["derivation_id"]
+        span_key = f"span-calculation-{derivation_id}"
+        calculation_span_ids[derivation_id] = span_key
+        if span_key in span_ids:
+            raise ValueError(f"duplicate calculation span ID: {span_key}")
+        span_ids.add(span_key)
+        spans.append(
+            {
+                "key": span_key,
+                "edition_key": CALCULATION_EDITION_KEY,
+                "locator": {
+                    "type": "json-pointer",
+                    "pointer": f"/records/{index}",
+                    "label": f"accepted derivation and input cells: {derivation_id}",
+                },
+                "extent": {"type": "json-value", "value": record},
+                "digest": digest(record),
+                "visibility": "public",
+            }
+        )
 
     lineages = []
     for lineage in lineages_input:
@@ -461,13 +573,28 @@ def build_candidate() -> dict[str, Any]:
         }
         for claim in claims
     ]
+    calculation_records_by_id = {
+        record["derivation"]["derivation_id"]: record for record in calculation_records
+    }
     for calculation in content["derivations"]:
         value = calculation.get("results", calculation.get("result_percentile"))
+        record = calculation_records_by_id[calculation["derivation_id"]]
         propositions.append(
             {
                 "key": calculation["derivation_id"],
-                "text": f"{calculation['method']}: {json.dumps(value, sort_keys=True, separators=(',', ':'))}.",
-                "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+                "text": (
+                    f"{calculation['method']}: "
+                    f"{json.dumps(value, sort_keys=True, separators=(',', ':'))}; "
+                    f"equation={json.dumps(calculation.get('equation'))}; "
+                    f"comparison_population={json.dumps(calculation.get('comparison_population'))}; "
+                    f"depends_on={json.dumps(calculation.get('depends_on', []), separators=(',', ':'))}."
+                ),
+                "scope": (
+                    "Mechanical reproduction of accepted EM-0032 inputs and exact input-cell "
+                    f"register; uncertainty={json.dumps(calculation.get('uncertainty'))}; "
+                    f"resolved_input_cells={len(record['resolved_input_cells'])}; not an "
+                    "additional model-performance experiment."
+                ),
                 "visibility": "public",
             }
         )
@@ -475,7 +602,7 @@ def build_candidate() -> dict[str, Any]:
         [
             {
                 "key": "prop-reviewed-source-register",
-                "text": f"The accepted packet contains {len(sources)} source editions across {len(works)} works, {len(span_ids)} parent spans, {len(claims)} bounded claims, {len(content['derivations'])} calculations, {len(lineages_input)} lineage roots, and {len(edges_input)} typed dependence edges.",
+                "text": f"The accepted packet contains {len(sources)} source editions across {len(works)} source works, {EXPECTED_COUNTS['parent_spans']} parent spans, {len(content['derivations'])} structured calculation records, {len(claims)} bounded claims, {len(lineages_input)} lineage groups, and {len(edges_input)} typed dependence-edge groups.",
                 "scope": "Counts are relation-derived from the exact accepted packet.",
                 "visibility": "public",
             },
@@ -544,7 +671,10 @@ def build_candidate() -> dict[str, Any]:
             "accepted-em0032-reviewed-record",
         )
     for derivation in content["derivations"]:
-        basis = derivation.get("input_span_ids", parameter_spans)
+        basis = [
+            *derivation.get("input_span_ids", parameter_spans),
+            calculation_span_ids[derivation["derivation_id"]],
+        ]
         add_assertion(
             f"assertion-{derivation['derivation_id']}",
             derivation["derivation_id"],
@@ -604,17 +734,16 @@ def build_candidate() -> dict[str, Any]:
             or any(item not in lineages_by_key for item in [*mapped_from, *mapped_to])
         ):
             raise ValueError(f"edge endpoint closure drift: {edge['edge_id']}")
-        relations.append(
-            {
-                "key": edge["edge_id"],
-                "relation_type": "dependence",
-                "from_ref": mapped_from[0],
-                "to_ref": mapped_to[0],
-                "basis_span_keys": basis,
-                "note": f"accepted_dimension={edge['edge_type']}; from={','.join(mapped_from)}; to={','.join(mapped_to)}; effects={' | '.join(item['independence_effect'] for item in edge['evidence'])}",
-                "visibility": "public",
-            }
-        )
+        for relation in expanded_edge_relations(edge, source_to_lineage):
+            relations.append(
+                {
+                    **relation,
+                    "relation_type": "dependence",
+                    "basis_span_keys": basis,
+                    "note": f"accepted_edge_id={edge['edge_id']}; accepted_dimension={edge['edge_type']}; from={','.join(mapped_from)}; to={','.join(mapped_to)}; effects={' | '.join(item['independence_effect'] for item in edge['evidence'])}",
+                    "visibility": "public",
+                }
+            )
     for lineage in lineages:
         lineage["assertion_keys"].sort()
 
