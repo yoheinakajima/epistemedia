@@ -1,0 +1,1963 @@
+{
+  "bindings": {
+    "accepted_em0033_review": {
+      "bytes": 37799,
+      "path": "research/how-we-know/mehrabian-7-38-55/independent-review-receipt.json",
+      "sha256": "b70e6ae4f073004cc602860bf0a1c3976d6c7fb12c3440253e68a8ff20538d1b"
+    },
+    "accepted_packet": {
+      "bytes": 65077,
+      "packet_id": "em:research-packet:sha256:a73dc29f0a0c3f05a112b7c392d115cfcc38a1136a683325bf74bebf0c6b2e40",
+      "path": "research/how-we-know/mehrabian-7-38-55/candidate-packet.json",
+      "sha256": "6253a8ece3bb3b5bfb393ec04ad4e0f14b88f567ddea2923300538eadb7c8cde"
+    },
+    "accepted_source_records": {
+      "bytes": 53857,
+      "path": "research/how-we-know/mehrabian-7-38-55/source-records.json",
+      "sha256": "0ac4f87236882d32aa6018e50600a79642b87acdf05e27c291514e770fda081c"
+    },
+    "candidate_documentation": [
+      {
+        "bytes": 5690,
+        "path": "research/how-we-know/mehrabian-7-38-55/DOSSIER.md",
+        "sha256": "b748419fce0196a25ab68c2e8ea5ed43be00280b6738ecedfca61d7a4531b8f8"
+      },
+      {
+        "bytes": 5401,
+        "path": "docs/execution-plans/EM-0035.md",
+        "sha256": "a40ac91113c51de5e387df45ba5a8848aa5dde870605028ae25b8943746804be"
+      }
+    ],
+    "candidate_dossier": {
+      "bytes": 176885,
+      "dossier_id": "em:dossier:sha256:57e80c9a44c478c1c81ba7adedc1bafdef43ff57b4f2984015dcbef84ba66e87",
+      "path": "research/how-we-know/mehrabian-7-38-55/candidate-dossier.json",
+      "sha256": "44e7bf407091d7665d4f1ab2aabc285255364e790e2d17520913f9ba9c57b418"
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "research/how-we-know/mehrabian-7-38-55/build_candidate.py",
+        "--check"
+      ],
+      "completed_at": "2026-08-28T00:18:48Z",
+      "cwd": ".",
+      "exit_code": 0,
+      "started_at": "2026-08-28T00:18:47Z",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "python",
+        "research/how-we-know/mehrabian-7-38-55/verify_candidate.py",
+        "--self-test"
+      ],
+      "completed_at": "2026-08-28T00:18:58Z",
+      "cwd": ".",
+      "exit_code": 0,
+      "started_at": "2026-08-28T00:18:57Z",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "0005d07f68988301b640e014cafd94f1f3b2516a4fa9d4c522b635779cb58241"
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "ruff",
+        "check",
+        "research/how-we-know/mehrabian-7-38-55"
+      ],
+      "completed_at": "2026-08-28T00:19:12Z",
+      "cwd": ".",
+      "exit_code": 0,
+      "started_at": "2026-08-28T00:19:12Z",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "argv": [
+        "make",
+        "check"
+      ],
+      "completed_at": "2026-08-28T00:20:09Z",
+      "cwd": ".",
+      "exit_code": 0,
+      "started_at": "2026-08-28T00:19:20Z",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "0380d5792576abe0f927af4a409f4c858003300cea2fdab76e80211ddb8c44be"
+    }
+  ],
+  "complete": true,
+  "completed_at": "2026-08-28T00:20:45Z",
+  "coverage": {
+    "accepted_claim_ids": [
+      "claim-1981-edition",
+      "claim-book-boundary",
+      "claim-hegstrom-rebuttal",
+      "claim-p1-tone-dominance",
+      "claim-p2-face-tone",
+      "claim-popular-rule",
+      "claim-propagation",
+      "claim-related-context",
+      "claim-replication-search",
+      "claim-seven-origin",
+      "claim-three-coefficient-proposal"
+    ],
+    "accepted_derivation_ids": [
+      "derive-implied-vocal-verbal-ratio",
+      "derive-p2-allocation-with-seven-reserved",
+      "derive-p2-facial-vocal-ratio",
+      "derive-proposed-facial-vocal-ratio",
+      "derive-proposed-sum",
+      "derive-ratio-difference"
+    ],
+    "accepted_lineage_edge_ids": [
+      "edge-p1-p2-author-social",
+      "edge-p1-p2-grant",
+      "edge-p1-p2-material",
+      "edge-p1-p2-method",
+      "edge-p1-p2-participant",
+      "edge-p1-p2-proposal-derivation",
+      "edge-p1-p2-scale",
+      "edge-p1-p2-speaker",
+      "edge-p1-p2-stimulus",
+      "edge-p2-cites-p1",
+      "edge-silent-messages-editions"
+    ],
+    "assertion_keys": [
+      "assertion-1981-edition",
+      "assertion-book-boundary",
+      "assertion-derive-implied-vocal-verbal-ratio",
+      "assertion-derive-p2-allocation-with-seven-reserved",
+      "assertion-derive-p2-facial-vocal-ratio",
+      "assertion-derive-proposed-facial-vocal-ratio",
+      "assertion-derive-proposed-sum",
+      "assertion-derive-ratio-difference",
+      "assertion-encyclopedia-evaluation",
+      "assertion-hegstrom-rebuttal",
+      "assertion-p1-tone-dominance",
+      "assertion-p2-face-tone",
+      "assertion-popular-rule",
+      "assertion-propagation",
+      "assertion-related-context",
+      "assertion-replication-search",
+      "assertion-reviewed-source-register",
+      "assertion-seven-origin",
+      "assertion-skeptical-evaluation",
+      "assertion-three-coefficient-proposal"
+    ],
+    "edition_keys": [
+      "edition-argyle-bjscp-9-3",
+      "edition-argyle-ejsp-1-3",
+      "edition-birmingham-events-20260827",
+      "edition-ctamj-volume-34-article-2",
+      "edition-hampshire-pcc-master-010322",
+      "edition-hegstrom-wjsc-43-2",
+      "edition-kaaj-silent-messages-page-2016",
+      "edition-lapakko-communication-education-46-1",
+      "edition-mehrabian-ferris-jcp-31-3",
+      "edition-mehrabian-wiener-jpsp-6-1",
+      "edition-silent-messages-1971",
+      "edition-silent-messages-1981-second"
+    ],
+    "evaluation_keys": [
+      "evaluation-encyclopedia",
+      "evaluation-skeptical"
+    ],
+    "follow_up_source_ids": [
+      "source-argyle-1970",
+      "source-argyle-1971",
+      "source-hegstrom-1979",
+      "source-lapakko-1997",
+      "source-lapakko-2007"
+    ],
+    "lineage_keys": [
+      "lineage-argyle-related-program",
+      "lineage-author-qualification",
+      "lineage-birmingham-propagation",
+      "lineage-cross-study-proposal",
+      "lineage-follow-up-synthesis",
+      "lineage-general-rule-synthesis",
+      "lineage-hampshire-propagation",
+      "lineage-hegstrom-rebuttal",
+      "lineage-institutional-recirculation",
+      "lineage-lapakko-1997",
+      "lineage-lapakko-2007",
+      "lineage-lapakko-critique-propagation",
+      "lineage-mehrabian-interpretation",
+      "lineage-mehrabian-original-program",
+      "lineage-participant-argyle-1970",
+      "lineage-participant-argyle-1971",
+      "lineage-participant-p1",
+      "lineage-participant-p2",
+      "lineage-propagation-synthesis",
+      "lineage-reviewed-source-register",
+      "lineage-seven-origin-unknown",
+      "lineage-silent-1971",
+      "lineage-silent-1981-unknown"
+    ],
+    "propagation_ids": [
+      "propagation-birmingham-events",
+      "propagation-hampshire-pcc",
+      "propagation-lapakko-web-sample"
+    ],
+    "proposition_keys": [
+      "claim-1981-edition",
+      "claim-book-boundary",
+      "claim-hegstrom-rebuttal",
+      "claim-p1-tone-dominance",
+      "claim-p2-face-tone",
+      "claim-popular-rule",
+      "claim-propagation",
+      "claim-related-context",
+      "claim-replication-search",
+      "claim-seven-origin",
+      "claim-three-coefficient-proposal",
+      "derive-implied-vocal-verbal-ratio",
+      "derive-p2-allocation-with-seven-reserved",
+      "derive-p2-facial-vocal-ratio",
+      "derive-proposed-facial-vocal-ratio",
+      "derive-proposed-sum",
+      "derive-ratio-difference",
+      "prop-encyclopedia-evaluation",
+      "prop-reviewed-source-register",
+      "prop-skeptical-evaluation"
+    ],
+    "relation_keys": [
+      "edge-p1-p2-author-social",
+      "edge-p1-p2-grant",
+      "edge-p1-p2-material",
+      "edge-p1-p2-method",
+      "edge-p1-p2-participant",
+      "edge-p1-p2-proposal-derivation",
+      "edge-p1-p2-scale",
+      "edge-p1-p2-speaker",
+      "edge-p1-p2-stimulus",
+      "edge-p2-cites-p1",
+      "edge-silent-messages-editions",
+      "relation-argyle-context-qualification",
+      "relation-assertion-1981-edition",
+      "relation-assertion-book-boundary",
+      "relation-assertion-derive-implied-vocal-verbal-ratio",
+      "relation-assertion-derive-p2-allocation-with-seven-reserved",
+      "relation-assertion-derive-p2-facial-vocal-ratio",
+      "relation-assertion-derive-proposed-facial-vocal-ratio",
+      "relation-assertion-derive-proposed-sum",
+      "relation-assertion-derive-ratio-difference",
+      "relation-assertion-encyclopedia-evaluation",
+      "relation-assertion-hegstrom-rebuttal",
+      "relation-assertion-p1-tone-dominance",
+      "relation-assertion-p2-face-tone",
+      "relation-assertion-popular-rule",
+      "relation-assertion-propagation",
+      "relation-assertion-related-context",
+      "relation-assertion-replication-search",
+      "relation-assertion-reviewed-source-register",
+      "relation-assertion-seven-origin",
+      "relation-assertion-skeptical-evaluation",
+      "relation-assertion-three-coefficient-proposal",
+      "relation-author-qualification",
+      "relation-hegstrom-direct-rebuttal",
+      "relation-lapakko-method-undercutting"
+    ],
+    "source_work_keys": [
+      "work-argyle-1970",
+      "work-argyle-1971",
+      "work-birmingham-events-page-2020",
+      "work-hampshire-pcc-deck-2022",
+      "work-hegstrom-1979",
+      "work-lapakko-1997",
+      "work-lapakko-2007",
+      "work-mehrabian-author-page",
+      "work-mehrabian-ferris-1967",
+      "work-mehrabian-wiener-1967",
+      "work-silent-messages"
+    ],
+    "span_keys": [
+      "span-argyle-1970-abstract",
+      "span-argyle-1971-experiment-one",
+      "span-argyle-1971-experiment-two",
+      "span-author-equation",
+      "span-author-qualification",
+      "span-birmingham-generalization",
+      "span-ferris-authors",
+      "span-ferris-citation-p1",
+      "span-ferris-design",
+      "span-ferris-grants",
+      "span-ferris-maybe",
+      "span-ferris-models-speakers",
+      "span-ferris-proposal",
+      "span-ferris-regression",
+      "span-ferris-sample",
+      "span-ferris-scale",
+      "span-ferris-sums-of-squares",
+      "span-ferris-target",
+      "span-hampshire-generalization",
+      "span-hegstrom-design",
+      "span-hegstrom-result",
+      "span-lapakko-1997-abstract",
+      "span-lapakko-2007-63-of-79",
+      "span-lapakko-2007-abstract",
+      "span-lapakko-2007-limitations",
+      "span-silent-1971-boundary",
+      "span-silent-1971-liking",
+      "span-silent-1981-metadata",
+      "span-wiener-authors",
+      "span-wiener-ferris-acknowledgment",
+      "span-wiener-grants",
+      "span-wiener-instructions",
+      "span-wiener-result-boundary",
+      "span-wiener-safe-extension",
+      "span-wiener-sample",
+      "span-wiener-scale",
+      "span-wiener-single-words",
+      "span-wiener-speakers",
+      "span-wiener-stimulus-recording",
+      "span-wiener-target"
+    ]
+  },
+  "decision": "pass",
+  "findings": [
+    {
+      "severity": "material",
+      "status": "resolved",
+      "text": "The prior stale-base blocker is resolved by the normal two-parent merge successor. Current origin/main 700a822f38d00d13cc0661fd577bdb7e6e5b34dd is the reviewed base and an ancestor of the exact author head; every EM-0035 substantive blob is unchanged."
+    },
+    {
+      "severity": "informational",
+      "status": "informational",
+      "text": "The candidate preserves exact accepted EM-0033 packet, source-register, and independent-review bytes; 11 works, 12 editions, 40 spans, six calculations, five participant roots, 11 typed edges, three zero-credit propagation objects, and five follow-up dispositions close exactly."
+    },
+    {
+      "severity": "informational",
+      "status": "informational",
+      "text": "Encyclopedia and skeptical evaluations use the same source graph while producing materially distinct labels, reason codes, missing-derivation treatment, and reader upshots."
+    }
+  ],
+  "format": "epistemedia-independent-dossier-review-v1",
+  "git_state": {
+    "fresh_clone": true,
+    "post_review_clean": true,
+    "post_review_head": "bc5e7ce87aa00d773ab9a3f1ec9b68a80c09957b",
+    "pre_review_clean": true,
+    "pre_review_head": "bc5e7ce87aa00d773ab9a3f1ec9b68a80c09957b",
+    "unchanged_during_review": true
+  },
+  "limitations": [
+    "The exact source derivation of the .07 coefficient remains unresolved and receives no credit; the reverse-engineering calculations are sensitivity analyses only.",
+    "The 1981 edition is bibliographically identified but its formula pages remain uncollated against 1971.",
+    "Closed or unavailable source text is not inferred beyond accepted quote-minimal spans, retrieval identities, access gaps, and license treatments.",
+    "The bounded follow-up search is not exhaustive; propagation objects document circulation and receive zero scientific-rule evidence credit.",
+    "This pass approves only the reversible research candidate receipt. It does not admit, feature, publish, promote, deploy, merge, or establish a universal law of communication."
+  ],
+  "repository": {
+    "branch": "codex/em-0035-case004-dossier",
+    "diff_sha256": "6feaa1d97a693819debdd44d1cf6f74db92783d7f55c256992278260bbb8b2f5",
+    "pull_request": 60,
+    "reviewed_author_head": "bc5e7ce87aa00d773ab9a3f1ec9b68a80c09957b",
+    "reviewed_author_tree": "9988fa4e0b381db23f58d35e68d63c873eb4a122",
+    "reviewed_base": "700a822f38d00d13cc0661fd577bdb7e6e5b34dd",
+    "url": "https://github.com/yoheinakajima/epistemedia"
+  },
+  "review_results": {
+    "calculations": [
+      {
+        "derivation_id": "derive-implied-vocal-verbal-ratio",
+        "expected_result_sha256": "a384aadcd9e3dec5e0b09c41f18a5ec6d365b006296c044bd7e1f8592c15cd51",
+        "observed_result_sha256": "a384aadcd9e3dec5e0b09c41f18a5ec6d365b006296c044bd7e1f8592c15cd51",
+        "reproduced": true,
+        "status": "pass"
+      },
+      {
+        "derivation_id": "derive-p2-allocation-with-seven-reserved",
+        "expected_result_sha256": "83755fa489879266e59d8beccc1d27eea878aa47da658948a4a1d244f2fe87cc",
+        "observed_result_sha256": "83755fa489879266e59d8beccc1d27eea878aa47da658948a4a1d244f2fe87cc",
+        "reproduced": true,
+        "status": "pass"
+      },
+      {
+        "derivation_id": "derive-p2-facial-vocal-ratio",
+        "expected_result_sha256": "2285e5757b118b506875c31f7871b0258ebff677bb29382409ed98167675ae07",
+        "observed_result_sha256": "2285e5757b118b506875c31f7871b0258ebff677bb29382409ed98167675ae07",
+        "reproduced": true,
+        "status": "pass"
+      },
+      {
+        "derivation_id": "derive-proposed-facial-vocal-ratio",
+        "expected_result_sha256": "09e6e74dfde3024a8f7e9628f72ce899b3ab078ecaa189cf625ff5ed9677a2a9",
+        "observed_result_sha256": "09e6e74dfde3024a8f7e9628f72ce899b3ab078ecaa189cf625ff5ed9677a2a9",
+        "reproduced": true,
+        "status": "pass"
+      },
+      {
+        "derivation_id": "derive-proposed-sum",
+        "expected_result_sha256": "d0ff5974b6aa52cf562bea5921840c032a860a91a3512f7fe8f768f6bbe005f6",
+        "observed_result_sha256": "d0ff5974b6aa52cf562bea5921840c032a860a91a3512f7fe8f768f6bbe005f6",
+        "reproduced": true,
+        "status": "pass"
+      },
+      {
+        "derivation_id": "derive-ratio-difference",
+        "expected_result_sha256": "d02890db613586d87ab2b53e56460f83ba6a5fe24950437cfbc106b03d3f4663",
+        "observed_result_sha256": "d02890db613586d87ab2b53e56460f83ba6a5fe24950437cfbc106b03d3f4663",
+        "reproduced": true,
+        "status": "pass"
+      }
+    ],
+    "counts": {
+      "expected_accepted_relation_counts": {
+        "claims": 11,
+        "derivations": 6,
+        "follow_up_objects": 5,
+        "lineage_edges": 11,
+        "lineage_groups": 6,
+        "participant_data_roots": 5,
+        "propagation_objects": 3,
+        "quote_minimal_spans": 40,
+        "source_records": 12
+      },
+      "expected_dossier_counts": {
+        "assertions": 20,
+        "claim_families": 1,
+        "editions": 12,
+        "evaluations": 2,
+        "evidence_relations": 35,
+        "lineages": 23,
+        "propositions": 20,
+        "source_works": 11,
+        "spans": 40
+      },
+      "observed_accepted_relation_counts": {
+        "claims": 11,
+        "derivations": 6,
+        "follow_up_objects": 5,
+        "lineage_edges": 11,
+        "lineage_groups": 6,
+        "participant_data_roots": 5,
+        "propagation_objects": 3,
+        "quote_minimal_spans": 40,
+        "source_records": 12
+      },
+      "observed_dossier_counts": {
+        "assertions": 20,
+        "claim_families": 1,
+        "editions": 12,
+        "evaluations": 2,
+        "evidence_relations": 35,
+        "lineages": 23,
+        "propositions": 20,
+        "source_works": 11,
+        "spans": 40
+      },
+      "relation_derived": true,
+      "status": "pass"
+    },
+    "evaluations": [
+      {
+        "evaluation_key": "evaluation-encyclopedia",
+        "materially_distinct_checked": true,
+        "reason_codes": [
+          "historical-proposal-documented",
+          "two-participant-roots-kept-distinct",
+          "cross-study-integration-not-one-experiment",
+          "scope-qualification-retained"
+        ],
+        "same_source_graph_checked": true,
+        "source_graph_sha256": "e02032b582b7c0706b7498169653e98c190d27a692a8ef7ac8250b68628a28f8",
+        "status": "pass"
+      },
+      {
+        "evaluation_key": "evaluation-skeptical",
+        "materially_distinct_checked": true,
+        "reason_codes": [
+          "no-reviewed-three-channel-test",
+          "seven-percent-origin-unresolved",
+          "direct-rebuttal-message-specific",
+          "propagation-zero-truth-credit",
+          "second-edition-formula-pages-uncollated"
+        ],
+        "same_source_graph_checked": true,
+        "source_graph_sha256": "e02032b582b7c0706b7498169653e98c190d27a692a8ef7ac8250b68628a28f8",
+        "status": "pass"
+      }
+    ],
+    "lineages": [
+      {
+        "basis_span_keys": [
+          "span-argyle-1970-abstract",
+          "span-argyle-1971-experiment-one",
+          "span-argyle-1971-experiment-two"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-participant-argyle-1970",
+          "lineage-participant-argyle-1971"
+        ],
+        "lineage_key": "lineage-argyle-related-program",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-author-equation",
+          "span-author-qualification"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-author-qualification",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-birmingham-generalization"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-birmingham-propagation",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-ferris-citation-p1",
+          "span-ferris-design",
+          "span-ferris-proposal",
+          "span-ferris-regression"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-mehrabian-original-program"
+        ],
+        "lineage_key": "lineage-cross-study-proposal",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-argyle-1970-abstract",
+          "span-argyle-1971-experiment-one",
+          "span-argyle-1971-experiment-two",
+          "span-hegstrom-design",
+          "span-hegstrom-result",
+          "span-lapakko-1997-abstract"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-argyle-related-program",
+          "lineage-hegstrom-rebuttal",
+          "lineage-lapakko-1997"
+        ],
+        "lineage_key": "lineage-follow-up-synthesis",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-argyle-1970-abstract",
+          "span-argyle-1971-experiment-one",
+          "span-argyle-1971-experiment-two",
+          "span-author-equation",
+          "span-author-qualification",
+          "span-birmingham-generalization",
+          "span-ferris-authors",
+          "span-ferris-citation-p1",
+          "span-ferris-design",
+          "span-ferris-grants",
+          "span-ferris-maybe",
+          "span-ferris-models-speakers",
+          "span-ferris-proposal",
+          "span-ferris-regression",
+          "span-ferris-sample",
+          "span-ferris-scale",
+          "span-ferris-sums-of-squares",
+          "span-ferris-target",
+          "span-hampshire-generalization",
+          "span-hegstrom-design",
+          "span-hegstrom-result",
+          "span-lapakko-1997-abstract",
+          "span-lapakko-2007-63-of-79",
+          "span-lapakko-2007-abstract",
+          "span-lapakko-2007-limitations",
+          "span-silent-1971-boundary",
+          "span-silent-1971-liking",
+          "span-silent-1981-metadata",
+          "span-wiener-authors",
+          "span-wiener-ferris-acknowledgment",
+          "span-wiener-grants",
+          "span-wiener-instructions",
+          "span-wiener-result-boundary",
+          "span-wiener-safe-extension",
+          "span-wiener-sample",
+          "span-wiener-scale",
+          "span-wiener-single-words",
+          "span-wiener-speakers",
+          "span-wiener-stimulus-recording",
+          "span-wiener-target"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-argyle-related-program",
+          "lineage-cross-study-proposal",
+          "lineage-hegstrom-rebuttal",
+          "lineage-mehrabian-interpretation",
+          "lineage-propagation-synthesis"
+        ],
+        "lineage_key": "lineage-general-rule-synthesis",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-hampshire-generalization"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-hampshire-propagation",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-hegstrom-design",
+          "span-hegstrom-result"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-hegstrom-rebuttal",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-birmingham-generalization",
+          "span-hampshire-generalization"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-birmingham-propagation",
+          "lineage-hampshire-propagation"
+        ],
+        "lineage_key": "lineage-institutional-recirculation",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-lapakko-1997-abstract"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-lapakko-1997",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-lapakko-2007-63-of-79",
+          "span-lapakko-2007-abstract",
+          "span-lapakko-2007-limitations"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-lapakko-2007",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-lapakko-1997-abstract",
+          "span-lapakko-2007-63-of-79",
+          "span-lapakko-2007-abstract",
+          "span-lapakko-2007-limitations"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-lapakko-1997",
+          "lineage-lapakko-2007"
+        ],
+        "lineage_key": "lineage-lapakko-critique-propagation",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-author-equation",
+          "span-author-qualification",
+          "span-silent-1971-boundary",
+          "span-silent-1971-liking",
+          "span-silent-1981-metadata"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-author-qualification",
+          "lineage-silent-1971",
+          "lineage-silent-1981-unknown"
+        ],
+        "lineage_key": "lineage-mehrabian-interpretation",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-ferris-authors",
+          "span-ferris-citation-p1",
+          "span-ferris-design",
+          "span-ferris-grants",
+          "span-ferris-maybe",
+          "span-ferris-models-speakers",
+          "span-ferris-proposal",
+          "span-ferris-regression",
+          "span-ferris-sample",
+          "span-ferris-scale",
+          "span-ferris-sums-of-squares",
+          "span-ferris-target",
+          "span-wiener-authors",
+          "span-wiener-ferris-acknowledgment",
+          "span-wiener-grants",
+          "span-wiener-instructions",
+          "span-wiener-result-boundary",
+          "span-wiener-safe-extension",
+          "span-wiener-sample",
+          "span-wiener-scale",
+          "span-wiener-single-words",
+          "span-wiener-speakers",
+          "span-wiener-stimulus-recording",
+          "span-wiener-target"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-participant-p1",
+          "lineage-participant-p2"
+        ],
+        "lineage_key": "lineage-mehrabian-original-program",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-argyle-1970-abstract"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-participant-argyle-1970",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-argyle-1971-experiment-one",
+          "span-argyle-1971-experiment-two"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-participant-argyle-1971",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-wiener-authors",
+          "span-wiener-ferris-acknowledgment",
+          "span-wiener-grants",
+          "span-wiener-instructions",
+          "span-wiener-result-boundary",
+          "span-wiener-safe-extension",
+          "span-wiener-sample",
+          "span-wiener-scale",
+          "span-wiener-single-words",
+          "span-wiener-speakers",
+          "span-wiener-stimulus-recording",
+          "span-wiener-target"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-participant-p1",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-ferris-authors",
+          "span-ferris-citation-p1",
+          "span-ferris-design",
+          "span-ferris-grants",
+          "span-ferris-maybe",
+          "span-ferris-models-speakers",
+          "span-ferris-proposal",
+          "span-ferris-regression",
+          "span-ferris-sample",
+          "span-ferris-scale",
+          "span-ferris-sums-of-squares",
+          "span-ferris-target"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-participant-p2",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-birmingham-generalization",
+          "span-hampshire-generalization",
+          "span-lapakko-2007-63-of-79",
+          "span-lapakko-2007-abstract",
+          "span-lapakko-2007-limitations"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-institutional-recirculation",
+          "lineage-lapakko-critique-propagation"
+        ],
+        "lineage_key": "lineage-propagation-synthesis",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-argyle-1970-abstract",
+          "span-argyle-1971-experiment-one",
+          "span-argyle-1971-experiment-two",
+          "span-author-equation",
+          "span-author-qualification",
+          "span-birmingham-generalization",
+          "span-ferris-authors",
+          "span-ferris-citation-p1",
+          "span-ferris-design",
+          "span-ferris-grants",
+          "span-ferris-maybe",
+          "span-ferris-models-speakers",
+          "span-ferris-proposal",
+          "span-ferris-regression",
+          "span-ferris-sample",
+          "span-ferris-scale",
+          "span-ferris-sums-of-squares",
+          "span-ferris-target",
+          "span-hampshire-generalization",
+          "span-hegstrom-design",
+          "span-hegstrom-result",
+          "span-lapakko-1997-abstract",
+          "span-lapakko-2007-63-of-79",
+          "span-lapakko-2007-abstract",
+          "span-lapakko-2007-limitations",
+          "span-silent-1971-boundary",
+          "span-silent-1971-liking",
+          "span-silent-1981-metadata",
+          "span-wiener-authors",
+          "span-wiener-ferris-acknowledgment",
+          "span-wiener-grants",
+          "span-wiener-instructions",
+          "span-wiener-result-boundary",
+          "span-wiener-safe-extension",
+          "span-wiener-sample",
+          "span-wiener-scale",
+          "span-wiener-single-words",
+          "span-wiener-speakers",
+          "span-wiener-stimulus-recording",
+          "span-wiener-target"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-argyle-related-program",
+          "lineage-hegstrom-rebuttal",
+          "lineage-institutional-recirculation",
+          "lineage-lapakko-critique-propagation",
+          "lineage-mehrabian-interpretation",
+          "lineage-mehrabian-original-program"
+        ],
+        "lineage_key": "lineage-reviewed-source-register",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-ferris-proposal",
+          "span-ferris-regression",
+          "span-silent-1971-liking"
+        ],
+        "dependence_checked": true,
+        "depends_on": [
+          "lineage-cross-study-proposal"
+        ],
+        "lineage_key": "lineage-seven-origin-unknown",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-silent-1971-boundary",
+          "span-silent-1971-liking"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-silent-1971",
+        "status": "pass"
+      },
+      {
+        "basis_span_keys": [
+          "span-silent-1981-metadata"
+        ],
+        "dependence_checked": true,
+        "depends_on": [],
+        "lineage_key": "lineage-silent-1981-unknown",
+        "status": "pass"
+      }
+    ],
+    "propositions": [
+      {
+        "assertion_keys": [
+          "assertion-1981-edition"
+        ],
+        "proposition_key": "claim-1981-edition",
+        "relation_keys": [
+          "relation-assertion-1981-edition"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-author-qualification",
+          "span-silent-1981-metadata"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-book-boundary"
+        ],
+        "proposition_key": "claim-book-boundary",
+        "relation_keys": [
+          "relation-assertion-book-boundary"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-silent-1971-boundary",
+          "span-silent-1971-liking"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-hegstrom-rebuttal"
+        ],
+        "proposition_key": "claim-hegstrom-rebuttal",
+        "relation_keys": [
+          "relation-assertion-hegstrom-rebuttal"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-hegstrom-design",
+          "span-hegstrom-result"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-p1-tone-dominance"
+        ],
+        "proposition_key": "claim-p1-tone-dominance",
+        "relation_keys": [
+          "relation-assertion-p1-tone-dominance"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-wiener-result-boundary",
+          "span-wiener-safe-extension",
+          "span-wiener-single-words"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-p2-face-tone"
+        ],
+        "proposition_key": "claim-p2-face-tone",
+        "relation_keys": [
+          "relation-assertion-p2-face-tone"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-design",
+          "span-ferris-maybe",
+          "span-ferris-regression",
+          "span-ferris-sums-of-squares"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-popular-rule"
+        ],
+        "proposition_key": "claim-popular-rule",
+        "relation_keys": [
+          "relation-assertion-popular-rule",
+          "relation-author-qualification",
+          "relation-hegstrom-direct-rebuttal",
+          "relation-lapakko-method-undercutting"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-author-qualification",
+          "span-ferris-target",
+          "span-hegstrom-result",
+          "span-wiener-target"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-propagation"
+        ],
+        "proposition_key": "claim-propagation",
+        "relation_keys": [
+          "relation-assertion-propagation"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-birmingham-generalization",
+          "span-hampshire-generalization",
+          "span-lapakko-2007-63-of-79",
+          "span-lapakko-2007-limitations"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-related-context"
+        ],
+        "proposition_key": "claim-related-context",
+        "relation_keys": [
+          "relation-argyle-context-qualification",
+          "relation-assertion-related-context"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-argyle-1970-abstract",
+          "span-argyle-1971-experiment-one",
+          "span-argyle-1971-experiment-two"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-replication-search"
+        ],
+        "proposition_key": "claim-replication-search",
+        "relation_keys": [
+          "relation-assertion-replication-search"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-argyle-1971-experiment-two",
+          "span-hegstrom-result",
+          "span-lapakko-1997-abstract"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-seven-origin"
+        ],
+        "proposition_key": "claim-seven-origin",
+        "relation_keys": [
+          "relation-assertion-seven-origin"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-proposal",
+          "span-ferris-regression",
+          "span-silent-1971-liking"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-three-coefficient-proposal"
+        ],
+        "proposition_key": "claim-three-coefficient-proposal",
+        "relation_keys": [
+          "relation-assertion-three-coefficient-proposal"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-design",
+          "span-ferris-proposal",
+          "span-ferris-target"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-derive-implied-vocal-verbal-ratio"
+        ],
+        "proposition_key": "derive-implied-vocal-verbal-ratio",
+        "relation_keys": [
+          "relation-assertion-derive-implied-vocal-verbal-ratio"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-proposal"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-derive-p2-allocation-with-seven-reserved"
+        ],
+        "proposition_key": "derive-p2-allocation-with-seven-reserved",
+        "relation_keys": [
+          "relation-assertion-derive-p2-allocation-with-seven-reserved"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-proposal",
+          "span-ferris-regression"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-derive-p2-facial-vocal-ratio"
+        ],
+        "proposition_key": "derive-p2-facial-vocal-ratio",
+        "relation_keys": [
+          "relation-assertion-derive-p2-facial-vocal-ratio"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-regression"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-derive-proposed-facial-vocal-ratio"
+        ],
+        "proposition_key": "derive-proposed-facial-vocal-ratio",
+        "relation_keys": [
+          "relation-assertion-derive-proposed-facial-vocal-ratio"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-proposal"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-derive-proposed-sum"
+        ],
+        "proposition_key": "derive-proposed-sum",
+        "relation_keys": [
+          "relation-assertion-derive-proposed-sum"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-proposal"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-derive-ratio-difference"
+        ],
+        "proposition_key": "derive-ratio-difference",
+        "relation_keys": [
+          "relation-assertion-derive-ratio-difference"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-proposal",
+          "span-ferris-regression"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-encyclopedia-evaluation"
+        ],
+        "proposition_key": "prop-encyclopedia-evaluation",
+        "relation_keys": [
+          "relation-assertion-encyclopedia-evaluation"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-author-qualification",
+          "span-ferris-design",
+          "span-ferris-proposal",
+          "span-ferris-target",
+          "span-silent-1971-boundary",
+          "span-wiener-target"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-reviewed-source-register"
+        ],
+        "proposition_key": "prop-reviewed-source-register",
+        "relation_keys": [
+          "relation-assertion-reviewed-source-register"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-argyle-1970-abstract",
+          "span-argyle-1971-experiment-one",
+          "span-argyle-1971-experiment-two",
+          "span-author-equation",
+          "span-author-qualification",
+          "span-birmingham-generalization",
+          "span-ferris-authors",
+          "span-ferris-citation-p1",
+          "span-ferris-design",
+          "span-ferris-grants",
+          "span-ferris-maybe",
+          "span-ferris-models-speakers",
+          "span-ferris-proposal",
+          "span-ferris-regression",
+          "span-ferris-sample",
+          "span-ferris-scale",
+          "span-ferris-sums-of-squares",
+          "span-ferris-target",
+          "span-hampshire-generalization",
+          "span-hegstrom-design",
+          "span-hegstrom-result",
+          "span-lapakko-1997-abstract",
+          "span-lapakko-2007-63-of-79",
+          "span-lapakko-2007-abstract",
+          "span-lapakko-2007-limitations",
+          "span-silent-1971-boundary",
+          "span-silent-1971-liking",
+          "span-silent-1981-metadata",
+          "span-wiener-authors",
+          "span-wiener-ferris-acknowledgment",
+          "span-wiener-grants",
+          "span-wiener-instructions",
+          "span-wiener-result-boundary",
+          "span-wiener-safe-extension",
+          "span-wiener-sample",
+          "span-wiener-scale",
+          "span-wiener-single-words",
+          "span-wiener-speakers",
+          "span-wiener-stimulus-recording",
+          "span-wiener-target"
+        ],
+        "status": "pass"
+      },
+      {
+        "assertion_keys": [
+          "assertion-skeptical-evaluation"
+        ],
+        "proposition_key": "prop-skeptical-evaluation",
+        "relation_keys": [
+          "relation-assertion-skeptical-evaluation"
+        ],
+        "sentence_closure_checked": true,
+        "span_keys": [
+          "span-ferris-design",
+          "span-ferris-proposal",
+          "span-ferris-target",
+          "span-hegstrom-result",
+          "span-lapakko-1997-abstract",
+          "span-wiener-target"
+        ],
+        "status": "pass"
+      }
+    ],
+    "sources": [
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-argyle-1970-crossref-20260827"
+        ],
+        "edition_key": "edition-argyle-bjscp-9-3",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-argyle-1970",
+        "span_keys": [
+          "span-argyle-1970-abstract"
+        ],
+        "status": "pass",
+        "work_key": "work-argyle-1970"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-argyle-1971-crossref-20260827"
+        ],
+        "edition_key": "edition-argyle-ejsp-1-3",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-argyle-1971",
+        "span_keys": [
+          "span-argyle-1971-experiment-one",
+          "span-argyle-1971-experiment-two"
+        ],
+        "status": "pass",
+        "work_key": "work-argyle-1971"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-birmingham-20260827"
+        ],
+        "edition_key": "edition-birmingham-events-20260827",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-birmingham-events-2020",
+        "span_keys": [
+          "span-birmingham-generalization"
+        ],
+        "status": "pass",
+        "work_key": "work-birmingham-events-page-2020"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-hampshire-20260827"
+        ],
+        "edition_key": "edition-hampshire-pcc-master-010322",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-hampshire-pcc-2022",
+        "span_keys": [
+          "span-hampshire-generalization"
+        ],
+        "status": "pass",
+        "work_key": "work-hampshire-pcc-deck-2022"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-hegstrom-crossref-20260827",
+          "capture-hegstrom-eric-20260827"
+        ],
+        "edition_key": "edition-hegstrom-wjsc-43-2",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-hegstrom-1979",
+        "span_keys": [
+          "span-hegstrom-design",
+          "span-hegstrom-result"
+        ],
+        "status": "pass",
+        "work_key": "work-hegstrom-1979"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-lapakko-1997-crossref-20260827",
+          "capture-lapakko-1997-eric-20260827"
+        ],
+        "edition_key": "edition-lapakko-communication-education-46-1",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-lapakko-1997",
+        "span_keys": [
+          "span-lapakko-1997-abstract"
+        ],
+        "status": "pass",
+        "work_key": "work-lapakko-1997"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-lapakko-2007-crossref-20260827",
+          "capture-lapakko-2007-landing-20260827",
+          "readback-lapakko-2007-pdf-20260827"
+        ],
+        "edition_key": "edition-ctamj-volume-34-article-2",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-lapakko-2007",
+        "span_keys": [
+          "span-lapakko-2007-63-of-79",
+          "span-lapakko-2007-abstract",
+          "span-lapakko-2007-limitations"
+        ],
+        "status": "pass",
+        "work_key": "work-lapakko-2007"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-author-page-20260827"
+        ],
+        "edition_key": "edition-kaaj-silent-messages-page-2016",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-mehrabian-author-qualification",
+        "span_keys": [
+          "span-author-equation",
+          "span-author-qualification"
+        ],
+        "status": "pass",
+        "work_key": "work-mehrabian-author-page"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-ferris-crossref-20260823",
+          "capture-ferris-openalex-20260827",
+          "capture-ferris-pubmed-20260827",
+          "capture-ferris-scan-20260823"
+        ],
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_keys": [
+          "span-ferris-authors",
+          "span-ferris-citation-p1",
+          "span-ferris-design",
+          "span-ferris-grants",
+          "span-ferris-maybe",
+          "span-ferris-models-speakers",
+          "span-ferris-proposal",
+          "span-ferris-regression",
+          "span-ferris-sample",
+          "span-ferris-scale",
+          "span-ferris-sums-of-squares",
+          "span-ferris-target"
+        ],
+        "status": "pass",
+        "work_key": "work-mehrabian-ferris-1967"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-wiener-crossref-20260827",
+          "capture-wiener-openalex-20260827",
+          "capture-wiener-pubmed-20260827",
+          "capture-wiener-scan-20260823"
+        ],
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_keys": [
+          "span-wiener-authors",
+          "span-wiener-ferris-acknowledgment",
+          "span-wiener-grants",
+          "span-wiener-instructions",
+          "span-wiener-result-boundary",
+          "span-wiener-safe-extension",
+          "span-wiener-sample",
+          "span-wiener-scale",
+          "span-wiener-single-words",
+          "span-wiener-speakers",
+          "span-wiener-stimulus-recording",
+          "span-wiener-target"
+        ],
+        "status": "pass",
+        "work_key": "work-mehrabian-wiener-1967"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-silent-1971-openlibrary-20260823",
+          "capture-silent-1971-scan-20260827"
+        ],
+        "edition_key": "edition-silent-messages-1971",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-silent-messages-1971",
+        "span_keys": [
+          "span-silent-1971-boundary",
+          "span-silent-1971-liking"
+        ],
+        "status": "pass",
+        "work_key": "work-silent-messages"
+      },
+      {
+        "access_and_gap_checked": true,
+        "capture_ids": [
+          "capture-silent-1981-openlibrary-20260827"
+        ],
+        "edition_key": "edition-silent-messages-1981-second",
+        "identity_checked": true,
+        "license_treatment_checked": true,
+        "source_id": "source-silent-messages-1981",
+        "span_keys": [
+          "span-silent-1981-metadata"
+        ],
+        "status": "pass",
+        "work_key": "work-silent-messages"
+      }
+    ],
+    "spans": [
+      {
+        "edition_key": "edition-argyle-bjscp-9-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:75bb9f2b9bf5c6dbfd26a2628aabf677e631ba9851ef607aa6006b9c499b2feb",
+        "quote_sha256": "1c646e683fa1fae891328ff0aa173a6819a4bffdaa3d85b14ab35d321fc51fce",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-argyle-1970",
+        "span_key": "span-argyle-1970-abstract",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-argyle-ejsp-1-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:ae9e89c0355eac4c1f6c10e9e29b25e97a98e5566ad0b931ce3a56ce205c6b3e",
+        "quote_sha256": "0cf68d8b04488ee2dae7795e58ef3204eda6ea25a69ab0e8aa9799cf324d821b",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-argyle-1971",
+        "span_key": "span-argyle-1971-experiment-one",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-argyle-ejsp-1-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:802725074f3cf29bb7df2595a197a41006f302dbd070f4c1d5fd69377199e637",
+        "quote_sha256": "02f4d3fdaf74b293076b3521515a54d6968638aaa4882fc9a3f25c4a7442333f",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-argyle-1971",
+        "span_key": "span-argyle-1971-experiment-two",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-kaaj-silent-messages-page-2016",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:832b8feda03ef4145d2bf313d051aff44e8b33c22da11ab0060787d2a76fc11d",
+        "quote_sha256": "f74af100fbb21524c77c32d9d52a14dc6ff661fbb6685402365363ca1f532738",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-author-qualification",
+        "span_key": "span-author-equation",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-kaaj-silent-messages-page-2016",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:17fc31577e9efe03e26b79276749e7a724ffbe134ac1af41b51c1fe9d227a8cf",
+        "quote_sha256": "b177c97d10c09f52d123b7b2eb3577bd07cfc84d3f5954140f1d64045e463611",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-author-qualification",
+        "span_key": "span-author-qualification",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-birmingham-events-20260827",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:7fadc1793ce8dc246fc58b2adb489786eb264a422fc20c06b27264600e4121f9",
+        "quote_sha256": "efbc0d7cb80da147fd0c043ea73dd348b337b0d44281ff3144588a0788f71ff9",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-birmingham-events-2020",
+        "span_key": "span-birmingham-generalization",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:6a7e1b46e0d8c84cc99ec4889d9f6a1fb59f27b705bd51b8c1fa4044e9e191f8",
+        "quote_sha256": "ccbbe41f1e4ec76d7d14620f62caa2af412b1b8228fccdbf0ae43062408d35f7",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-authors",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:1c8f1af0b30bdd33c03329bd4415d9e1a7f590dc0ae1fe778473c47a23b00cff",
+        "quote_sha256": "c25471b821ce495d1763c8f398825a939f67fb6856a2cef7f162fe6416d87912",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-citation-p1",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:fa09f76126dae7eb46c331df6ffa7f8b671f4002a64646ace7e448d80e3562d0",
+        "quote_sha256": "4907fba561fdbd65d1135094c20e780a5813d5d27bc111a8d02440833a7acb30",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-design",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:0b97104409c92a83ff20e4b1081be0327d582e54f24d5262b4c31b24f6cb4979",
+        "quote_sha256": "cda7dfc2f1ed1632a34e92b220fca7788184c09ddb0016ce23fbfba056e2cfe2",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-grants",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:8dedb954a92c8050788780fd9b97a9f29f72707bc9eaa648e2972943501890cc",
+        "quote_sha256": "56c335cc10ba6cd0b1e00bbb4571a1fea45c4b9abde580f86093310dcc9f121e",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-maybe",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:293aedc5af3fab7f7cc039d6cd4f24333e135b2923d09ccd300b9389374ffb79",
+        "quote_sha256": "f2c2c6a9095ce271eb0842c7b7268bfc09c732405f448a928ee4876b2eeed48b",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-models-speakers",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:53ed12503f6f297e17aa6a73173f5c32fc5fc44b686048639e6acb0cd900ec9e",
+        "quote_sha256": "25b2e2dcf6675d0e73fd204bb0e6303caa18f2fe5d9d6df5c7dea105cf49a50f",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-proposal",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:bcc0eade411f9c8c396c9b9fcdba75229f47d89257a82c908cb4cf7e98c0ce49",
+        "quote_sha256": "7cf8e54d2b0fddc90a956178f67bb65ec005d41bb9b1c17e676e92458fbbf692",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-regression",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:af3ea87f2d7d460331048afbea8bed571db8d1b7bfc9b88f9dfae16eac02a87b",
+        "quote_sha256": "3a4983215b94a8f7a35dfc1867bd6c435a3cd2b380bc8e9986a711c731452528",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-sample",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:0e3dcdaf6984a8b118d93a236e025bcd1f565e61b41a823b9a14002f004b16cf",
+        "quote_sha256": "f75aae955db7d8f43645cdf9892aed90b48c9b02e6316dfc342219ae3dc82b47",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-scale",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:8aa2729b7ef029023794395a31dbd45ec393ce5d06c7ba93f10d67ca31120f1e",
+        "quote_sha256": "bd118404b90041fbbb3c264018163e4b4c03db1d33c6a4b007360d6387845b4d",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-sums-of-squares",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-ferris-jcp-31-3",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:220db2149c0f0244a0e43b6bfeb4d941396a6783121b071b799f69cd8ebe0704",
+        "quote_sha256": "0a55d590acd009bec93e34c67f9c4b528154411b32575493cb9f9fde2b41924c",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-ferris-1967",
+        "span_key": "span-ferris-target",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-hampshire-pcc-master-010322",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:a93da9a7d23a8c4493fc2fd09a983c5aa6a75dff91861bf528a6408478782e1b",
+        "quote_sha256": "88c8a056a68b7c5e737a5bdee82c65e6bf1e68002df30fc04961d7acf5b7a2ec",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-hampshire-pcc-2022",
+        "span_key": "span-hampshire-generalization",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-hegstrom-wjsc-43-2",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:9940e90fe3daa217ffb54ae30f060049767ba1dd0b3cee7af122a5e2afa7850f",
+        "quote_sha256": "6a5cf9079b86b76fe5c7cbc41c1cf69ee015b2537e6bccc0fbccfef3ec4b992e",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-hegstrom-1979",
+        "span_key": "span-hegstrom-design",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-hegstrom-wjsc-43-2",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:8984ae9eb204a78ae87c6bf2e367d74699e49a53e0892ada7d3d93c25bdb8873",
+        "quote_sha256": "a05c496c590dbd519f345528c97b7badf4b1888fbdeb59952a7c24ad0d69af96",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-hegstrom-1979",
+        "span_key": "span-hegstrom-result",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-lapakko-communication-education-46-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:66eee82a6f2ee78c7193b781786c02a3bc883bf69a9f8d3fcc58d0fb3e295d12",
+        "quote_sha256": "e62ce29580268d0767bdfd1fd1e87898381c16c05cc97f789ea19e464b025fc6",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-lapakko-1997",
+        "span_key": "span-lapakko-1997-abstract",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-ctamj-volume-34-article-2",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:95dcb11743dc3084a82159fda3d90e35b0c1e5416989283d770ce4540ffa577c",
+        "quote_sha256": "d40f9be8d74579dc4b55180886d0eb17374f260e487bba97bc5a676a1a197c42",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-lapakko-2007",
+        "span_key": "span-lapakko-2007-63-of-79",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-ctamj-volume-34-article-2",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:fc269da48a2344a2ef5ca68062d89d49ed6bd6391ad965d2e757b5b405d6c169",
+        "quote_sha256": "a712f31a787c456e3d1693cba28b62ec4d4a6f14db9d196176671f15fa66efd3",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-lapakko-2007",
+        "span_key": "span-lapakko-2007-abstract",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-ctamj-volume-34-article-2",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:054513e403862a7e7b9092d7667ceb4d3be303365d08cba9ae4e5e5ba2f72d34",
+        "quote_sha256": "fc3c646bac3611993037d02aa42b56b0c374b8c2ea99260859d36aa057bc4231",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-lapakko-2007",
+        "span_key": "span-lapakko-2007-limitations",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-silent-messages-1971",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:d221b89ba1ec0a6ebcfbe0ddd9db1a5033e2aa40adc3b488e99363f03e7314d0",
+        "quote_sha256": "f42ea8e4be606d422d7b6ab9495c3b03ad812d953dff3034ef07b5fa66613201",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-silent-messages-1971",
+        "span_key": "span-silent-1971-boundary",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-silent-messages-1971",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:ff46a19ba7348d36caf9e749bc427e19b1e00e89ed5306d3c01c2533d10cd6b3",
+        "quote_sha256": "b64646d71e22e4e9508d73d3b4896301ebf38472816e0002115a9ceea44e8f22",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-silent-messages-1971",
+        "span_key": "span-silent-1971-liking",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-silent-messages-1981-second",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:0aea216641f6e03efd85523e296cf7339572d5d5844d646f347fc6d31f1ebb4e",
+        "quote_sha256": "3520c0ef2afb95d687d9a61df564ccc1105381c6fab8a6ff5954779f3466dd2b",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-silent-messages-1981",
+        "span_key": "span-silent-1981-metadata",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:82edc478aaf90f7256ef12983d8990ba351b4c2cbf89995d2a3fa2de4a02f145",
+        "quote_sha256": "9f86c9e0e9a0912dc98e89492e403b3604c93a4c4b291594c31b9dff098be20d",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-authors",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:fea4c8c77dc0c21357695d68cf2d92d67df47b1f334204aa3dd395d91484ef9d",
+        "quote_sha256": "400ac8d3f7b66282787262afc078cb26a6b8090d7d1b3d9cc1cbafd2ba590e21",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-ferris-acknowledgment",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:a81c4e8fa7026bc0ef68acf15fb71839eef2be533dd7dab4e83850248221b50c",
+        "quote_sha256": "f36d310eb93d14dc5a0d0761bcfd5196da637264c310574f76c7c212cb7efadb",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-grants",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:fef166170b36d45130767891e6bf19f537f3f0a5f1eac1be055ea4175f902ceb",
+        "quote_sha256": "4cb1102a04af97ed38d0a2e7c205dfad7deb5844a79d106d05259cf7ac9f30c3",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-instructions",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:761cfd2bd83d57abecdecadb7b987c615cabdfddd72703381ca1b903d19c3255",
+        "quote_sha256": "24b4829f5b2eea31c281bba86db573262bea45e6250c8beedd675b8f9a45db40",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-result-boundary",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:1f66fc733072a9927de032b62f0b5e96dfc6658513120e232169865b2e12e27d",
+        "quote_sha256": "9c4d9597c61175b0e6ced4918ddea51d3aeb53df8e555780d626172e992cc68b",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-safe-extension",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:0eefeb725dcdcbcc3628a841cdf4645e01c2f93be5e7639b1560110a915e6149",
+        "quote_sha256": "4b7b80fe130fafffae5829f4d71f7bb0dd795103ea0d0601c019d77b648efd80",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-sample",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:295def92855616c9cfcbccf976f9f93e1f1ccc76cfc3d42d06ba78ec063dd5a7",
+        "quote_sha256": "79a892503102e31330c91f06aff865e9c50794cef6a8708a11145d8e616630a9",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-scale",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:878d98c8f706d93d8e5daa466feb939c9f0bc4fcd886900ba55ee416543a78b3",
+        "quote_sha256": "488d310c64fb4445de8193a17dce78b0fe41533b54446429038687fa082b1e97",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-single-words",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:a8cdaf1a34a0999bed915a34ce580ce4aa7fec551948b82641b04230cc09427d",
+        "quote_sha256": "5fe2933c7f2a1e18b24f4421d9dd0180582f30887cd123618fe848945db1a85a",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-speakers",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:27df3aca72c5cc9ea017067ac17a7932a37dd2cc10b9f38164fb2f301e873650",
+        "quote_sha256": "d0fd2ff6d09434d59506dd8baa65db231331bca622f7a360cb8d26bf10ac0f59",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-stimulus-recording",
+        "status": "pass"
+      },
+      {
+        "edition_key": "edition-mehrabian-wiener-jpsp-6-1",
+        "license_treatment_checked": true,
+        "locator_checked": true,
+        "parent_span_digest": "sha256:e5a5e1ffb2ebed6cd6dc939f4ec23d4e956df40f5b5e12b187296c72ec8a24fd",
+        "quote_sha256": "32365cd2cac9626ee55ebdea19048ae1a2b9b70801559c91a3b26916b5d0c108",
+        "retrieval_identity_checked": true,
+        "segment_or_field_checked": true,
+        "source_id": "source-mehrabian-wiener-1967",
+        "span_key": "span-wiener-target",
+        "status": "pass"
+      }
+    ]
+  },
+  "reviewer": {
+    "author_agent_id": "codex-em0035-author",
+    "authoring_notes_used_as_evidence": false,
+    "fresh_clone": true,
+    "id": "codex-independent-em0035-reviewer",
+    "notes": "Fresh independent clone and exact-head successor review. The normal merge successor was byte-identical to the fully audited author content across every research and documentation path; accepted EM-0033 evidence and the dossier were revalidated from repository bytes. Authoring notes were not used as evidence.",
+    "reviewer_was_author": false,
+    "role": "independent-reviewer"
+  },
+  "started_at": "2026-08-28T00:17:30Z",
+  "task_id": "EM-0035"
+}

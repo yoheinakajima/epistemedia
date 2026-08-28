@@ -1,0 +1,10 @@
+{
+  "command": "build_candidate.py --check; verify_candidate.py --self-test; six adversarial pytest cases; Ruff; git diff --check; make check; independent review required",
+  "id": "em:run-receipt:sha256:92fd185392eb6f0e6f83f2b1c9fae682e4c875e1e185989b62f03e9d504c3969",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-27T21:46:06Z",
+  "run_id": "em0035-case004-author-validation-20260827",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0035"
+}
