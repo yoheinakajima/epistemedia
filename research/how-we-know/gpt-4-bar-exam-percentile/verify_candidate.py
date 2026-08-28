@@ -466,37 +466,30 @@ def validate_review_receipt(
         isinstance(git_state, dict)
         and set(git_state)
         == {
-            "pre_clean",
-            "post_clean",
-            "origin_main",
-            "receipt_commit",
-            "receipt_tree",
+            "fresh_clone",
+            "pre_review_clean",
+            "post_review_clean",
+            "unchanged_during_review",
+            "pre_review_head",
+            "post_review_head",
             "receipt_path",
         },
         "git-state fields differ",
     )
-    require(
-        git_state["pre_clean"] is True and git_state["post_clean"] is True,
-        "review worktree not clean",
-    )
+    for field in (
+        "fresh_clone",
+        "pre_review_clean",
+        "post_review_clean",
+        "unchanged_during_review",
+    ):
+        require(git_state[field] is True, f"git-state {field} must be true")
+    require(git_state["pre_review_head"] == reviewed["head"], "pre-review head drift")
+    require(git_state["post_review_head"] == reviewed["head"], "post-review head drift")
     require(
         git_state["receipt_path"] == DEFAULT_REVIEW_RECEIPT.relative_to(ROOT).as_posix(),
         "receipt path drift",
     )
-    for key in ("origin_main", "receipt_commit", "receipt_tree"):
-        require(
-            isinstance(git_state[key], str) and COMMIT_RE.fullmatch(git_state[key]),
-            f"git-state {key} invalid",
-        )
-    require(git_state["origin_main"] == reviewed["base"], "reviewed base is stale")
     if require_git_binding:
-        require(
-            git_text("rev-parse", "HEAD") == git_state["receipt_commit"],
-            "receipt commit is not HEAD",
-        )
-        require(
-            git_text("rev-parse", "HEAD^{tree}") == git_state["receipt_tree"], "receipt tree drift"
-        )
         require(
             git_text("rev-parse", "HEAD^") == reviewed["head"],
             "receipt is not sole child of reviewed head",
@@ -509,9 +502,7 @@ def validate_review_receipt(
             git_text("rev-parse", "origin/main") == reviewed["base"],
             "reviewed base no longer current",
         )
-        changed = git_text(
-            "diff", "--name-only", reviewed["head"], git_state["receipt_commit"]
-        ).splitlines()
+        changed = git_text("diff", "--name-only", reviewed["head"], "HEAD").splitlines()
         require(
             changed == [git_state["receipt_path"]], "receipt child changed more than the receipt"
         )
@@ -565,11 +556,12 @@ def valid_review_fixture(summary: dict[str, Any]) -> dict[str, Any]:
         ],
         "findings": [],
         "git_state": {
-            "pre_clean": True,
-            "post_clean": True,
-            "origin_main": zeros40,
-            "receipt_commit": "3" * 40,
-            "receipt_tree": "4" * 40,
+            "fresh_clone": True,
+            "pre_review_clean": True,
+            "post_review_clean": True,
+            "unchanged_during_review": True,
+            "pre_review_head": "1" * 40,
+            "post_review_head": "1" * 40,
             "receipt_path": DEFAULT_REVIEW_RECEIPT.relative_to(ROOT).as_posix(),
         },
     }
@@ -589,7 +581,7 @@ def run_adversarial_self_test(summary: dict[str, Any]) -> None:
         lambda item: item["accepted_bindings"].pop(),
         lambda item: item["commands"].pop(),
         lambda item: item["limitations"].clear(),
-        lambda item: item["git_state"].update(origin_main="9" * 40),
+        lambda item: item["git_state"].update(post_review_head="9" * 40),
     ):
         forged = copy.deepcopy(fixture)
         mutate(forged)
