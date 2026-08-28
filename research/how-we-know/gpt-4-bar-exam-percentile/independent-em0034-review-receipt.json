@@ -1,0 +1,335 @@
+{
+  "format": "epistemedia-independent-dossier-review-v1",
+  "task_id": "EM-0034",
+  "repository": "https://github.com/yoheinakajima/epistemedia",
+  "reviewer": {
+    "id": "codex-independent-em0034-reviewer",
+    "independent": true,
+    "authored_candidate": false,
+    "fresh_clone": true,
+    "model_family": "OpenAI GPT-5"
+  },
+  "decision": "pass",
+  "complete": true,
+  "started_at": "2026-08-28T15:57:21Z",
+  "completed_at": "2026-08-28T15:59:23Z",
+  "reviewed": {
+    "base": "ead2b5887da233dde4e790f0c6c0aea15e59f074",
+    "head": "1c5a8318b2bb770c38a07a96f731531ba1c53a32",
+    "tree": "b7356ab1578e8a1eea76cb14e36d7a15b0e00d48",
+    "dossier": {
+      "bytes": 224792,
+      "path": "research/how-we-know/gpt-4-bar-exam-percentile/candidate-dossier.json",
+      "sha256": "32c4457b3823237b2f988a26d51b2f6222af8060e662993524aff1c1a5d79e5d",
+      "dossier_id": "em:dossier:sha256:babe89ba3bda594a8d9f2db86a5a2987f284437a069b940d19b6928856d936d1"
+    },
+    "source_graph_sha256": "2bb896ded74d63469ec4e3947d75adfd6ac9a9c5dee6fe0db7ef9251760da38e"
+  },
+  "accepted_bindings": [
+    {
+      "bytes": 210543,
+      "path": "research/how-we-know/gpt-4-bar-exam-percentile/candidate-packet.json",
+      "sha256": "07dec44bc2cf893b19ba6307e34aef60b6127b5e881e319ff4132c8e69972d1a"
+    },
+    {
+      "bytes": 92747,
+      "path": "research/how-we-know/gpt-4-bar-exam-percentile/independent-review-receipt.json",
+      "sha256": "0606e98ed7ff98f1d0e69509db5edcd8dce774c62c48981bd5aec8f23a95ad20"
+    },
+    {
+      "bytes": 64382,
+      "path": "research/how-we-know/gpt-4-bar-exam-percentile/source-records.json",
+      "sha256": "385bbc193be495597ef0fe2a675220ca443297e673b32947c8d8ffcd1a6366da"
+    },
+    {
+      "bytes": 62565,
+      "path": "research/how-we-know/gpt-4-bar-exam-percentile/artifact-inventory.json",
+      "sha256": "f9e45045831a15fcb40c7f542c73651e5dc63ba081b145d00260bee91192c25b"
+    },
+    {
+      "bytes": 51950,
+      "path": "research/how-we-know/gpt-4-bar-exam-percentile/git-blob-search-manifest.json",
+      "sha256": "708657f61bc759f3a5b439affde1a677177859b50a8bc960012b81dcebcdb122"
+    }
+  ],
+  "coverage": {
+    "assertion_keys": [
+      "assertion-claim-february-sensitive",
+      "assertion-claim-july-sensitive",
+      "assertion-claim-launch-comparison-unspecified",
+      "assertion-claim-launch-score-label",
+      "assertion-claim-martinez-first-time",
+      "assertion-claim-martinez-passers-conflict",
+      "assertion-claim-no-lawyer-rank",
+      "assertion-claim-score-discrepancy",
+      "assertion-derive-illinois-feb-2018-298",
+      "assertion-derive-illinois-feb-2019-298",
+      "assertion-derive-illinois-jul-2018-298",
+      "assertion-derive-martinez-first-time-essay",
+      "assertion-derive-martinez-first-time-mbe",
+      "assertion-derive-martinez-first-time-ube",
+      "assertion-derive-martinez-parameters",
+      "assertion-derive-martinez-passers-essay",
+      "assertion-derive-martinez-passers-mbe",
+      "assertion-derive-martinez-passers-ube",
+      "assertion-encyclopedia-evaluation",
+      "assertion-reviewed-source-register",
+      "assertion-skeptical-evaluation"
+    ],
+    "calculation_ids": [
+      "derive-illinois-feb-2018-298",
+      "derive-illinois-feb-2019-298",
+      "derive-illinois-jul-2018-298",
+      "derive-martinez-first-time-essay",
+      "derive-martinez-first-time-mbe",
+      "derive-martinez-first-time-ube",
+      "derive-martinez-parameters",
+      "derive-martinez-passers-essay",
+      "derive-martinez-passers-mbe",
+      "derive-martinez-passers-ube"
+    ],
+    "edition_keys": [
+      "edition-em0032-calculation-register",
+      "edition-illinois-feb-2018",
+      "edition-illinois-feb-2019",
+      "edition-illinois-jul-2018",
+      "edition-katz-figshare-25018513-v1",
+      "edition-katz-git-commit-90997f7-tree-810bd4a",
+      "edition-katz-rsta-2024",
+      "edition-katz-ssrn-4389233",
+      "edition-martinez-2024-vor",
+      "edition-martinez-osf-analysis-new",
+      "edition-martinez-osf-c8ygu",
+      "edition-ncbe-first-repeat-2022",
+      "edition-ncbe-mbe-2022",
+      "edition-ncbe-snapshot-2022",
+      "edition-ncbe-ube-2022",
+      "edition-ncbe-ube-scores-2026-08-27",
+      "edition-ny-passrates-2022",
+      "edition-openai-2303-08774v1",
+      "edition-openai-2303-08774v6",
+      "edition-reshetar-testing-column-spring-2022"
+    ],
+    "lineage_edge_ids": [
+      "edge-author-social-collaboration",
+      "edge-benchmark-illinois-charts",
+      "edge-citation-katz-to-martinez",
+      "edge-comparison-class-first-time-passers",
+      "edge-data-reported-score-reuse",
+      "edge-derivation-comparison-inputs",
+      "edge-material-shared-exam-items",
+      "edge-method-single-free-response-run",
+      "edge-model-historical-snapshots",
+      "edge-score-component-composite"
+    ],
+    "lineage_keys": [
+      "lineage-evaluation-synthesis",
+      "lineage-illinois-comparison-root",
+      "lineage-martinez-analysis-root",
+      "lineage-model-performance-root",
+      "lineage-ncbe-comparison-root",
+      "lineage-new-york-pass-rate-root",
+      "lineage-reviewed-source-register"
+    ],
+    "proposition_keys": [
+      "claim-february-sensitive",
+      "claim-july-sensitive",
+      "claim-launch-comparison-unspecified",
+      "claim-launch-score-label",
+      "claim-martinez-first-time",
+      "claim-martinez-passers-conflict",
+      "claim-no-lawyer-rank",
+      "claim-score-discrepancy",
+      "derive-illinois-feb-2018-298",
+      "derive-illinois-feb-2019-298",
+      "derive-illinois-jul-2018-298",
+      "derive-martinez-first-time-essay",
+      "derive-martinez-first-time-mbe",
+      "derive-martinez-first-time-ube",
+      "derive-martinez-parameters",
+      "derive-martinez-passers-essay",
+      "derive-martinez-passers-mbe",
+      "derive-martinez-passers-ube",
+      "prop-encyclopedia-evaluation",
+      "prop-reviewed-source-register",
+      "prop-skeptical-evaluation"
+    ],
+    "relation_keys": [
+      "edge-author-social-collaboration",
+      "edge-benchmark-illinois-charts",
+      "edge-citation-katz-to-martinez",
+      "edge-comparison-class-first-time-passers--1",
+      "edge-comparison-class-first-time-passers--2",
+      "edge-data-reported-score-reuse",
+      "edge-derivation-comparison-inputs--1",
+      "edge-derivation-comparison-inputs--2",
+      "edge-material-shared-exam-items",
+      "edge-method-single-free-response-run",
+      "edge-model-historical-snapshots",
+      "edge-score-component-composite",
+      "relation-assertion-claim-february-sensitive",
+      "relation-assertion-claim-july-sensitive",
+      "relation-assertion-claim-launch-comparison-unspecified",
+      "relation-assertion-claim-launch-score-label",
+      "relation-assertion-claim-martinez-first-time",
+      "relation-assertion-claim-martinez-passers-conflict",
+      "relation-assertion-claim-no-lawyer-rank",
+      "relation-assertion-claim-score-discrepancy",
+      "relation-assertion-derive-illinois-feb-2018-298",
+      "relation-assertion-derive-illinois-feb-2019-298",
+      "relation-assertion-derive-illinois-jul-2018-298",
+      "relation-assertion-derive-martinez-first-time-essay",
+      "relation-assertion-derive-martinez-first-time-mbe",
+      "relation-assertion-derive-martinez-first-time-ube",
+      "relation-assertion-derive-martinez-parameters",
+      "relation-assertion-derive-martinez-passers-essay",
+      "relation-assertion-derive-martinez-passers-mbe",
+      "relation-assertion-derive-martinez-passers-ube",
+      "relation-assertion-encyclopedia-evaluation",
+      "relation-assertion-reviewed-source-register",
+      "relation-assertion-skeptical-evaluation"
+    ],
+    "source_work_keys": [
+      "work-em0032-calculation-register",
+      "work-illinois-percentile-charts",
+      "work-katz-gpt4-bar",
+      "work-martinez-reanalysis",
+      "work-ncbe-2022-statistics",
+      "work-ncbe-ube",
+      "work-ny-2022-passrates",
+      "work-openai-gpt4-report",
+      "work-reshetar-testing-column-february-july"
+    ],
+    "span_keys": [
+      "span-calculation-derive-illinois-feb-2018-298",
+      "span-calculation-derive-illinois-feb-2019-298",
+      "span-calculation-derive-illinois-jul-2018-298",
+      "span-calculation-derive-martinez-first-time-essay",
+      "span-calculation-derive-martinez-first-time-mbe",
+      "span-calculation-derive-martinez-first-time-ube",
+      "span-calculation-derive-martinez-parameters",
+      "span-calculation-derive-martinez-passers-essay",
+      "span-calculation-derive-martinez-passers-mbe",
+      "span-calculation-derive-martinez-passers-ube",
+      "span-illinois-feb-2018-anchors",
+      "span-illinois-feb-2019-anchors",
+      "span-illinois-jul-2018-anchors",
+      "span-katz-vor-abstract-score",
+      "span-katz-vor-components",
+      "span-katz-vor-materials",
+      "span-katz-vor-percentile-boundary",
+      "span-katz-vor-range",
+      "span-katz-vor-score-discrepancy",
+      "span-martinez-abstract-ranks",
+      "span-martinez-discussion-48",
+      "span-martinez-mean-assumption",
+      "span-martinez-model-assumptions",
+      "span-martinez-results-45",
+      "span-martinez-score-validation",
+      "span-martinez-script-comment-conflict",
+      "span-martinez-script-july-mbe-distribution",
+      "span-martinez-script-thresholds",
+      "span-martinez-script-ube-sd",
+      "span-martinez-table-45",
+      "span-ncbe-jurisdiction-status",
+      "span-ncbe-mbe-2022-counts",
+      "span-ncbe-ny-cutoff-2022",
+      "span-ncbe-snapshot-composition",
+      "span-ncbe-snapshot-typo",
+      "span-ncbe-ube-weights",
+      "span-ny-first-timers-2022",
+      "span-openai-v1-abstract-top-ten",
+      "span-openai-v1-collaborators",
+      "span-openai-v1-free-response-run",
+      "span-openai-v1-scoring",
+      "span-openai-v1-snapshots",
+      "span-openai-v1-table-score",
+      "span-openai-v6-table-score",
+      "span-reshetar-first-time-mean"
+    ]
+  },
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "research/how-we-know/gpt-4-bar-exam-percentile/build_candidate.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "python",
+        "research/how-we-know/gpt-4-bar-exam-percentile/verify_candidate.py",
+        "--self-test"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "42e3a9b3c109f75a761a1a829a904af0224da51d69b51221c68a9cb30108becc"
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "research/how-we-know/gpt-4-bar-exam-percentile/test_candidate.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "585ba42829657b9e2d56f8614be6c3365a8405474eed008559511ab50f2ffcfb"
+    },
+    {
+      "argv": [
+        "ruff",
+        "check",
+        "research/how-we-know/gpt-4-bar-exam-percentile/build_candidate.py",
+        "research/how-we-know/gpt-4-bar-exam-percentile/verify_candidate.py",
+        "research/how-we-know/gpt-4-bar-exam-percentile/test_candidate.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "ead2b5887da233dde4e790f0c6c0aea15e59f074..1c5a8318b2bb770c38a07a96f731531ba1c53a32"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "make",
+        "check",
+        "PYTHON=/private/tmp/em0034-independent-review.v8smBm/repo/.venv/bin/python"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9e45d714ee36459e11298f1864b94534c65fa5eacea8f3d74bba13362638be4a"
+    }
+  ],
+  "limitations": [
+    "This review verifies the bounded historical candidate and does not establish current model behavior, general legal competence, practicing-lawyer quality, or a current product ranking.",
+    "The launch comparison distribution, original top-ten-percent chart, national UBE distribution, and proprietary inputs remain unresolved and receive no invented value or evidentiary credit.",
+    "The Martinez re-analysis remains model- and assumption-dependent, including its retained 45/48 internal discrepancy and its separate comparison populations.",
+    "This receipt does not admit, feature, publish, deploy, or describe Case 003 as live."
+  ],
+  "findings": [
+    "Accepted EM-0032 artifacts and receipts are byte-identical to accepted commit 700a822f38d00d13cc0661fd577bdb7e6e5b34dd.",
+    "All ten accepted derivations close through exact structured calculation spans, parent spans, and resolved input-cell identities.",
+    "All ten accepted typed dependence-edge groups retain exact evidence and every mapped structural endpoint.",
+    "The 297/298 and 45/48 discrepancies, comparison-class boundaries, historical-model boundary, and lawyer-comparator limitation remain visible.",
+    "Encyclopedia and skeptical evaluations use one unchanged source graph with materially different reasons and reader upshots.",
+    "Exact-head CI run 33187448187 and job 98904022930 completed successfully with no review threads."
+  ],
+  "git_state": {
+    "fresh_clone": true,
+    "pre_review_clean": true,
+    "post_review_clean": true,
+    "unchanged_during_review": true,
+    "pre_review_head": "1c5a8318b2bb770c38a07a96f731531ba1c53a32",
+    "post_review_head": "1c5a8318b2bb770c38a07a96f731531ba1c53a32",
+    "receipt_path": "research/how-we-know/gpt-4-bar-exam-percentile/independent-em0034-review-receipt.json"
+  }
+}
