@@ -1,0 +1,10 @@
+{
+  "command": "build_packet.py --check; verify_packet.py; verify_packet.py --require-review (expected fail); ruff check; make check",
+  "id": "em:run-receipt:sha256:29d70e6b9e446331ee58d45fe0cf88fcfc95f38bcdfee340bcf7302f5173bb35",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-27T15:51:53Z",
+  "run_id": "em0032-author-validation-20260827",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0032"
+}
