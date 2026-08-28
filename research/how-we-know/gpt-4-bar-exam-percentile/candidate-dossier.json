@@ -1,0 +1,4233 @@
+{
+  "assertions": [
+    {
+      "actor": {
+        "id": "accepted-em0032-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:a3d71e28d0bf3602752a29727659782855a07b71d503841cfb82d25819cce382",
+      "key": "assertion-claim-launch-score-label",
+      "lineage_key": "lineage-model-performance-root",
+      "proposition_key": "claim-launch-score-label",
+      "span_keys": [
+        "span-openai-v1-table-score"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0032-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:e5b09f98417934e590aa916b7e5c657dc707fb55ab33c81d87a6a724d48fc159",
+      "key": "assertion-claim-launch-comparison-unspecified",
+      "lineage_key": "lineage-model-performance-root",
+      "proposition_key": "claim-launch-comparison-unspecified",
+      "span_keys": [
+        "span-katz-vor-percentile-boundary",
+        "span-openai-v1-scoring"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0032-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:69abcd1669d34803c874bc6fae4a0c98a6032aaac088d8ee6ee6d7a21b098906",
+      "key": "assertion-claim-score-discrepancy",
+      "lineage_key": "lineage-model-performance-root",
+      "proposition_key": "claim-score-discrepancy",
+      "span_keys": [
+        "span-katz-vor-abstract-score",
+        "span-katz-vor-score-discrepancy",
+        "span-openai-v1-table-score"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0032-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:4d19bb08b6c5b6a93562979baf4325fe72ed00c92d854f403e6e3fea4db35665",
+      "key": "assertion-claim-february-sensitive",
+      "lineage_key": "lineage-illinois-comparison-root",
+      "proposition_key": "claim-february-sensitive",
+      "span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-feb-2019-anchors"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0032-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:8feb34c96f4f746c4cea970e4ced3e891be6c2faa4d74e8370abed8ab69e8371",
+      "key": "assertion-claim-july-sensitive",
+      "lineage_key": "lineage-illinois-comparison-root",
+      "proposition_key": "claim-july-sensitive",
+      "span_keys": [
+        "span-illinois-jul-2018-anchors"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0032-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:1e01cf8d95dfde4cf053070bfdcc291f54e0cc8280922b2f323d41cb231d213d",
+      "key": "assertion-claim-martinez-first-time",
+      "lineage_key": "lineage-martinez-analysis-root",
+      "proposition_key": "claim-martinez-first-time",
+      "span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-model-assumptions",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0032-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:35a975b45cb9ebe6fed26d97fde109f534f7ce69613026271c16226ebf3c1182",
+      "key": "assertion-claim-martinez-passers-conflict",
+      "lineage_key": "lineage-martinez-analysis-root",
+      "proposition_key": "claim-martinez-passers-conflict",
+      "span_keys": [
+        "span-martinez-discussion-48",
+        "span-martinez-results-45",
+        "span-martinez-script-thresholds",
+        "span-martinez-table-45"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "accepted-em0032-reviewed-record",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:3c3793e084854e911d7a2aece20cf4a7f9f430d3f71a36e87cee09ed9228a514",
+      "key": "assertion-claim-no-lawyer-rank",
+      "lineage_key": "lineage-model-performance-root",
+      "proposition_key": "claim-no-lawyer-rank",
+      "span_keys": [
+        "span-martinez-model-assumptions",
+        "span-openai-v1-abstract-top-ten"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:d0bb101dbace56489d1c95c2bbd1c9051a28b48d25f16b75a8b77270f11d3de3",
+      "key": "assertion-derive-illinois-feb-2018-298",
+      "lineage_key": "lineage-illinois-comparison-root",
+      "proposition_key": "derive-illinois-feb-2018-298",
+      "span_keys": [
+        "span-illinois-feb-2018-anchors"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:4b509c22eb73b2b0d8d89476bbbc17a04a6ac8d318d8cfea1c4c11a429e7fe3c",
+      "key": "assertion-derive-illinois-jul-2018-298",
+      "lineage_key": "lineage-illinois-comparison-root",
+      "proposition_key": "derive-illinois-jul-2018-298",
+      "span_keys": [
+        "span-illinois-jul-2018-anchors"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:c73504bf5a70984e59ee4772625e2999be052ccb8f9a3de8b2af40ff5ebbcf21",
+      "key": "assertion-derive-illinois-feb-2019-298",
+      "lineage_key": "lineage-illinois-comparison-root",
+      "proposition_key": "derive-illinois-feb-2019-298",
+      "span_keys": [
+        "span-illinois-feb-2019-anchors"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:9d4172fc996bfaa85587779dda85680055d639b082f2b46aed95acc1ef82e718",
+      "key": "assertion-derive-martinez-parameters",
+      "lineage_key": "lineage-martinez-analysis-root",
+      "proposition_key": "derive-martinez-parameters",
+      "span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:d634b8ec4f117743e033d2d26a88438dca0969a13bc3804659edd34ec4a48af9",
+      "key": "assertion-derive-martinez-first-time-ube",
+      "lineage_key": "lineage-martinez-analysis-root",
+      "proposition_key": "derive-martinez-first-time-ube",
+      "span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:d408977cf7ed477f1a6c505f3fd69391ebe7fcd3ec7183b4b7517dfc51a1b6f9",
+      "key": "assertion-derive-martinez-passers-ube",
+      "lineage_key": "lineage-martinez-analysis-root",
+      "proposition_key": "derive-martinez-passers-ube",
+      "span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:55eba61d65e0c5d63d30b2e647bb0cf7b2e5f960c2f23f330833030681a1c44f",
+      "key": "assertion-derive-martinez-first-time-mbe",
+      "lineage_key": "lineage-martinez-analysis-root",
+      "proposition_key": "derive-martinez-first-time-mbe",
+      "span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:11f5436b4cca5de028d8c76bc3117219741ed748be5c66708623d28a59ee78cf",
+      "key": "assertion-derive-martinez-passers-mbe",
+      "lineage_key": "lineage-martinez-analysis-root",
+      "proposition_key": "derive-martinez-passers-mbe",
+      "span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:a8902a81343652f6be9bebbcc41f41c30f505fb9136bd801c6997942fc3a21e8",
+      "key": "assertion-derive-martinez-first-time-essay",
+      "lineage_key": "lineage-martinez-analysis-root",
+      "proposition_key": "derive-martinez-first-time-essay",
+      "span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-deterministic-calculator",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:ad46e5c90bf46aa4222d702587ad707abcba01fbcf704cd3151a533e0cb9d80c",
+      "key": "assertion-derive-martinez-passers-essay",
+      "lineage_key": "lineage-martinez-analysis-root",
+      "proposition_key": "derive-martinez-passers-essay",
+      "span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-relation-counter",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:3aa5e220f57ed92ab248dcd3a79914e824b03b0849bf95dce13fa91d6f0704f8",
+      "key": "assertion-reviewed-source-register",
+      "lineage_key": "lineage-reviewed-source-register",
+      "proposition_key": "prop-reviewed-source-register",
+      "span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-feb-2019-anchors",
+        "span-illinois-jul-2018-anchors",
+        "span-katz-vor-abstract-score",
+        "span-katz-vor-components",
+        "span-katz-vor-materials",
+        "span-katz-vor-percentile-boundary",
+        "span-katz-vor-range",
+        "span-katz-vor-score-discrepancy",
+        "span-martinez-abstract-ranks",
+        "span-martinez-discussion-48",
+        "span-martinez-mean-assumption",
+        "span-martinez-model-assumptions",
+        "span-martinez-results-45",
+        "span-martinez-score-validation",
+        "span-martinez-script-comment-conflict",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-thresholds",
+        "span-martinez-script-ube-sd",
+        "span-martinez-table-45",
+        "span-ncbe-jurisdiction-status",
+        "span-ncbe-mbe-2022-counts",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ncbe-snapshot-composition",
+        "span-ncbe-snapshot-typo",
+        "span-ncbe-ube-weights",
+        "span-ny-first-timers-2022",
+        "span-openai-v1-abstract-top-ten",
+        "span-openai-v1-collaborators",
+        "span-openai-v1-free-response-run",
+        "span-openai-v1-scoring",
+        "span-openai-v1-snapshots",
+        "span-openai-v1-table-score",
+        "span-openai-v6-table-score",
+        "span-reshetar-first-time-mean"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-encyclopedia-policy",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:8c64a3c751e1bad3faab5172bec9a473e31ccc5a1640b06549a27c70e9f11e72",
+      "key": "assertion-encyclopedia-evaluation",
+      "lineage_key": "lineage-evaluation-synthesis",
+      "proposition_key": "prop-encyclopedia-evaluation",
+      "span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-jul-2018-anchors",
+        "span-katz-vor-score-discrepancy",
+        "span-martinez-discussion-48",
+        "span-martinez-table-45",
+        "span-openai-v1-table-score"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    },
+    {
+      "actor": {
+        "id": "em0034-skeptical-policy",
+        "kind": "collective"
+      },
+      "asserted_at": "2026-08-28T00:39:59Z",
+      "id": "em:dossier-assertion:sha256:c319d19fd97b0f89f7d910c06a2e76b6c89a4dcd0ffe0f0c686256093b8d9b2a",
+      "key": "assertion-skeptical-evaluation",
+      "lineage_key": "lineage-evaluation-synthesis",
+      "proposition_key": "prop-skeptical-evaluation",
+      "span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-jul-2018-anchors",
+        "span-katz-vor-percentile-boundary",
+        "span-martinez-discussion-48",
+        "span-martinez-model-assumptions",
+        "span-martinez-results-45",
+        "span-martinez-script-thresholds",
+        "span-openai-v1-scoring"
+      ],
+      "stance": "asserts",
+      "visibility": "public"
+    }
+  ],
+  "claim_families": [
+    {
+      "assertion_keys": [
+        "assertion-claim-launch-score-label",
+        "assertion-claim-launch-comparison-unspecified",
+        "assertion-claim-score-discrepancy",
+        "assertion-claim-february-sensitive",
+        "assertion-claim-july-sensitive",
+        "assertion-claim-martinez-first-time",
+        "assertion-claim-martinez-passers-conflict",
+        "assertion-claim-no-lawyer-rank",
+        "assertion-derive-illinois-feb-2018-298",
+        "assertion-derive-illinois-jul-2018-298",
+        "assertion-derive-illinois-feb-2019-298",
+        "assertion-derive-martinez-parameters",
+        "assertion-derive-martinez-first-time-ube",
+        "assertion-derive-martinez-passers-ube",
+        "assertion-derive-martinez-first-time-mbe",
+        "assertion-derive-martinez-passers-mbe",
+        "assertion-derive-martinez-first-time-essay",
+        "assertion-derive-martinez-passers-essay",
+        "assertion-reviewed-source-register",
+        "assertion-encyclopedia-evaluation",
+        "assertion-skeptical-evaluation"
+      ],
+      "id": "em:dossier-claim-family:sha256:1e6dccad5435c33c446d77024498561f8e44f9ed4579eb3740cd05ac57fcfd3a",
+      "key": "family-gpt4-bar-exam-percentile",
+      "proposition_keys": [
+        "claim-launch-score-label",
+        "claim-launch-comparison-unspecified",
+        "claim-score-discrepancy",
+        "claim-february-sensitive",
+        "claim-july-sensitive",
+        "claim-martinez-first-time",
+        "claim-martinez-passers-conflict",
+        "claim-no-lawyer-rank",
+        "derive-illinois-feb-2018-298",
+        "derive-illinois-jul-2018-298",
+        "derive-illinois-feb-2019-298",
+        "derive-martinez-parameters",
+        "derive-martinez-first-time-ube",
+        "derive-martinez-passers-ube",
+        "derive-martinez-first-time-mbe",
+        "derive-martinez-passers-mbe",
+        "derive-martinez-first-time-essay",
+        "derive-martinez-passers-essay",
+        "prop-reviewed-source-register",
+        "prop-encyclopedia-evaluation",
+        "prop-skeptical-evaluation"
+      ],
+      "question": "How did a historical simulated UBE score reported for GPT-4 become a roughly 90th-percentile claim, and how does the rank change when the comparison population changes?",
+      "relation_keys": [
+        "relation-assertion-claim-launch-score-label",
+        "relation-assertion-claim-launch-comparison-unspecified",
+        "relation-assertion-claim-score-discrepancy",
+        "relation-assertion-claim-february-sensitive",
+        "relation-assertion-claim-july-sensitive",
+        "relation-assertion-claim-martinez-first-time",
+        "relation-assertion-claim-martinez-passers-conflict",
+        "relation-assertion-claim-no-lawyer-rank",
+        "relation-assertion-derive-illinois-feb-2018-298",
+        "relation-assertion-derive-illinois-jul-2018-298",
+        "relation-assertion-derive-illinois-feb-2019-298",
+        "relation-assertion-derive-martinez-parameters",
+        "relation-assertion-derive-martinez-first-time-ube",
+        "relation-assertion-derive-martinez-passers-ube",
+        "relation-assertion-derive-martinez-first-time-mbe",
+        "relation-assertion-derive-martinez-passers-mbe",
+        "relation-assertion-derive-martinez-first-time-essay",
+        "relation-assertion-derive-martinez-passers-essay",
+        "relation-assertion-reviewed-source-register",
+        "relation-assertion-encyclopedia-evaluation",
+        "relation-assertion-skeptical-evaluation",
+        "edge-author-social-collaboration",
+        "edge-benchmark-illinois-charts",
+        "edge-citation-katz-to-martinez",
+        "edge-comparison-class-first-time-passers",
+        "edge-data-reported-score-reuse",
+        "edge-derivation-comparison-inputs",
+        "edge-material-shared-exam-items",
+        "edge-method-single-free-response-run",
+        "edge-model-historical-snapshots",
+        "edge-score-component-composite"
+      ],
+      "title": "GPT-4 bar-exam percentile: one score, multiple comparison classes",
+      "visibility": "public"
+    }
+  ],
+  "dossier_id": "em:dossier:sha256:e3d91aa0bc840a20036a57d48971585efa41b3b8d36310d00c0ec37341793306",
+  "editions": [
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Illinois Board of Admissions to the Bar",
+          "captured_bytes": 41491,
+          "captured_sha256": "500d734d54cfaae23b94a988469a8a626fc71abefd5793424bfbe83aabe9e1b7",
+          "core": true,
+          "edition_id": "edition-illinois-feb-2018",
+          "identifier": "February 2018 official chart",
+          "license": "no open license confirmed",
+          "media_type": "application/pdf",
+          "published": "2018-02",
+          "retrieved_at": "2026-08-27T05:45:28Z",
+          "role": "February comparison-population root",
+          "source_id": "source-illinois-feb-2018",
+          "spans": [
+            {
+              "cells": [
+                {
+                  "cell_id": "cell-illinois-feb-2018-300",
+                  "percentile": 90,
+                  "score": 300
+                },
+                {
+                  "cell_id": "cell-illinois-feb-2018-290",
+                  "percentile": 85,
+                  "score": 290
+                }
+              ],
+              "format": "table-cell-transcription",
+              "locator": "total-scale table, rows 300 and 290",
+              "normalization": "exact-cell-text",
+              "span_id": "span-illinois-feb-2018-anchors",
+              "supports": "The chart brackets 298 but contains no printed 298 row or interpolation rule."
+            }
+          ],
+          "title": "Illinois February 2018 Bar Examination Percentile Equivalents",
+          "treatment": "quote only necessary numerical anchors",
+          "url": "https://www.ilbaradmissions.org/percentile-equivalent-charts-feb-2018",
+          "work_id": "work-illinois-percentile-charts"
+        }
+      },
+      "content_digest": "sha256:44de7bd89cd4aeacee7b38d7077ff659e3baf552cb9b295401ec9b7229c04964",
+      "content_length": 1327,
+      "edition_label": "Reviewed source-record projection of edition-illinois-feb-2018",
+      "id": "em:dossier-edition:sha256:9be0e724fc35f74c96e635c6263f8f44ef804c3406c34b268bb710b24228a368",
+      "key": "edition-illinois-feb-2018",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T05:45:28Z",
+      "visibility": "public",
+      "work_key": "work-illinois-percentile-charts"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Illinois Board of Admissions to the Bar",
+          "captured_bytes": 40394,
+          "captured_sha256": "b313a414728db06d9170f79f0177927a3343e3744fc39ba3cadaff1fddc27faa",
+          "core": true,
+          "edition_id": "edition-illinois-feb-2019",
+          "identifier": "February 2019 official chart",
+          "license": "no open license confirmed",
+          "media_type": "application/pdf",
+          "published": "2019-02",
+          "retrieved_at": "2026-08-27T05:45:29Z",
+          "role": "alternate February comparison-population root",
+          "source_id": "source-illinois-feb-2019",
+          "spans": [
+            {
+              "cells": [
+                {
+                  "cell_id": "cell-illinois-feb-2019-300",
+                  "percentile": 90,
+                  "score": 300
+                },
+                {
+                  "cell_id": "cell-illinois-feb-2019-290",
+                  "percentile": 83,
+                  "score": 290
+                }
+              ],
+              "format": "table-cell-transcription",
+              "locator": "total-scale table, rows 300 and 290",
+              "normalization": "exact-cell-text",
+              "span_id": "span-illinois-feb-2019-anchors",
+              "supports": "This later February chart also brackets 298 but supplies no interpolation rule."
+            }
+          ],
+          "title": "Illinois February 2019 Bar Examination Percentile Equivalents",
+          "treatment": "quote only necessary numerical anchors",
+          "url": "https://www.ilbaradmissions.org/percentile-equivalent-charts-february-2019",
+          "work_id": "work-illinois-percentile-charts"
+        }
+      },
+      "content_digest": "sha256:91185bd6263d73e5976b5b00f28fb9b62301be0bb0347b1d0a308c295f6a6151",
+      "content_length": 1344,
+      "edition_label": "Reviewed source-record projection of edition-illinois-feb-2019",
+      "id": "em:dossier-edition:sha256:2c2badc4c75c58ca49007bda1f0c1fcad4b301ecd060bc905bd8a741acd80925",
+      "key": "edition-illinois-feb-2019",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T05:45:29Z",
+      "visibility": "public",
+      "work_key": "work-illinois-percentile-charts"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Illinois Board of Admissions to the Bar",
+          "captured_bytes": 41047,
+          "captured_sha256": "9b4251dc1147789eceb9e4e4b3cbdb4e98ab4634f286e8f4d8917d4e0970a299",
+          "core": true,
+          "edition_id": "edition-illinois-jul-2018",
+          "identifier": "July 2018 official chart",
+          "license": "no open license confirmed",
+          "media_type": "application/pdf",
+          "published": "2018-07",
+          "retrieved_at": "2026-08-27T05:45:28Z",
+          "role": "July comparison-population root",
+          "source_id": "source-illinois-jul-2018",
+          "spans": [
+            {
+              "cells": [
+                {
+                  "cell_id": "cell-illinois-jul-2018-300",
+                  "percentile": 70,
+                  "score": 300
+                },
+                {
+                  "cell_id": "cell-illinois-jul-2018-290",
+                  "percentile": 59,
+                  "score": 290
+                }
+              ],
+              "format": "table-cell-transcription",
+              "locator": "total-scale table, rows 300 and 290",
+              "normalization": "exact-cell-text",
+              "span_id": "span-illinois-jul-2018-anchors",
+              "supports": "The July chart places the same score region far below the February chart."
+            }
+          ],
+          "title": "Illinois July 2018 Bar Examination Percentile Equivalents",
+          "treatment": "quote only necessary numerical anchors",
+          "url": "https://www.ilbaradmissions.org/percentile-equivalent-charts-july-2018",
+          "work_id": "work-illinois-percentile-charts"
+        }
+      },
+      "content_digest": "sha256:a9aa31983924ffec8d0e713ad29fc16a0e466557a57eba5061577afc4698bae6",
+      "content_length": 1312,
+      "edition_label": "Reviewed source-record projection of edition-illinois-jul-2018",
+      "id": "em:dossier-edition:sha256:2b720aa3b7368249b079f4bc7d3de383efc590510bc33e1ed88db133e9293237",
+      "key": "edition-illinois-jul-2018",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T05:45:28Z",
+      "visibility": "public",
+      "work_key": "work-illinois-percentile-charts"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Katz et al. / The Royal Society",
+          "captured_bytes": 4917,
+          "captured_sha256": "ce59483bb4dae6871cadf3afa9d650e00d4c524b75083f0c43706436d1220ba6",
+          "core": true,
+          "edition_id": "edition-katz-figshare-25018513-v1",
+          "identifier": "DOI 10.6084/m9.figshare.25018513.v1; file 44102266",
+          "license": "CC BY 4.0 at the article/file level; collection-level license null",
+          "media_type": "application/json",
+          "published": "2024",
+          "retrieved_at": "2026-08-27T04:45:09Z",
+          "role": "supplement manifestation; same study root",
+          "source_id": "source-katz-figshare",
+          "spans": [],
+          "title": "Appendix for GPT-4 passes the Bar Exam",
+          "treatment": "retain file-level scope; do not generalize the license to the collection",
+          "url": "https://api.figshare.com/v2/articles/25018513",
+          "work_id": "work-katz-gpt4-bar"
+        }
+      },
+      "content_digest": "sha256:bb86e3b9bce81b6c2b715db417a0b95029f6db421892df512e93bd7154482efa",
+      "content_length": 962,
+      "edition_label": "Reviewed source-record projection of edition-katz-figshare-25018513-v1",
+      "id": "em:dossier-edition:sha256:bad064591687462c5cf05ecdcb265303857d13823ddd296cca7ab42c3def3d0c",
+      "key": "edition-katz-figshare-25018513-v1",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T04:45:09Z",
+      "visibility": "public",
+      "work_key": "work-katz-gpt4-bar"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Michael James Bommarito and study authors",
+          "captured_bytes": 29311,
+          "captured_sha256": "9541fd9b9677738aae5fac3048eaa5efc2a23ff5a97ecedec74492eb451e86fb",
+          "core": true,
+          "edition_id": "edition-katz-git-commit-90997f7-tree-810bd4a",
+          "identifier": "Git commit 90997f740c7197f3f300b013e4345e2ad5621f96; resolved tree 810bd4a9a8ffb51e457715d2312d28d3e9657240",
+          "license": "no repository license at the pinned tree",
+          "media_type": "application/json",
+          "published": "2023",
+          "retrieved_at": "2026-08-27T04:45:08Z",
+          "role": "mechanical artifact manifestation; same study root",
+          "semantic_capture": {
+            "bytes": 23967,
+            "command": [
+              "python",
+              "-m",
+              "json.tool",
+              "--sort-keys"
+            ],
+            "normalizer_id": "canonical-json-v1",
+            "sha256": "77eed8a0e0bacf7ded2368209120bd7d2e1390419ece9421373bc9c696f83105"
+          },
+          "source_id": "source-katz-git-snapshot",
+          "spans": [],
+          "title": "gpt4-passes-the-bar repository snapshot",
+          "treatment": "metadata inventory and quote-minimal readback only",
+          "url": "https://api.github.com/repos/mjbommar/gpt4-passes-the-bar/git/trees/90997f740c7197f3f300b013e4345e2ad5621f96?recursive=1",
+          "work_id": "work-katz-gpt4-bar"
+        }
+      },
+      "content_digest": "sha256:d87d5fb2c80dbf24ddfb7f824193bec2ba1ea7ae30dc9a93af80c95be8875efd",
+      "content_length": 1281,
+      "edition_label": "Reviewed source-record projection of edition-katz-git-commit-90997f7-tree-810bd4a",
+      "id": "em:dossier-edition:sha256:f1382b4191b42316a0a8fae7eb538f1c22159b60e25df6c37ce27aade8c2ecb3",
+      "key": "edition-katz-git-commit-90997f7-tree-810bd4a",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T04:45:08Z",
+      "visibility": "public",
+      "work_key": "work-katz-gpt4-bar"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Daniel Martin Katz, Michael James Bommarito, Shang Gao, and Pablo Arredondo",
+          "captured_bytes": 16942,
+          "captured_sha256": "146a68d349dae70ece09fefe79cd04808a40afb8f1e19a4c63941678330cb90b",
+          "core": true,
+          "edition_id": "edition-katz-ssrn-4389233",
+          "identifier": "DOI 10.2139/ssrn.4389233; SSRN 4389233",
+          "license": "no open license confirmed",
+          "media_type": "application/json",
+          "published": "2023-03-15",
+          "retrieved_at": "2026-08-27T14:52:21Z",
+          "role": "preprint identity; same study root",
+          "source_id": "source-katz-ssrn",
+          "spans": [],
+          "title": "GPT-4 Passes the Bar Exam",
+          "treatment": "metadata only; do not redistribute the manuscript",
+          "url": "https://api.crossref.org/works/10.2139/ssrn.4389233",
+          "work_id": "work-katz-gpt4-bar"
+        }
+      },
+      "content_digest": "sha256:6bacfc670d736f73d34e00d16804dc951363887c4bcf3aa1d973b706524e6803",
+      "content_length": 911,
+      "edition_label": "Reviewed source-record projection of edition-katz-ssrn-4389233",
+      "id": "em:dossier-edition:sha256:26ed0f13c9f7e66afd7042b71b9ec3f4a40df33b3ae139ff6fe6b6710c98d6de",
+      "key": "edition-katz-ssrn-4389233",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T14:52:21Z",
+      "visibility": "public",
+      "work_key": "work-katz-gpt4-bar"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Daniel Martin Katz, Michael James Bommarito, Shang Gao, and Pablo Arredondo",
+          "captured_bytes": 117084,
+          "captured_sha256": "d5a7b3d5cba67eb070f13e5e72700a11b2f081af664aad197acb37427aa47264",
+          "core": true,
+          "edition_id": "edition-katz-rsta-2024",
+          "identifier": "DOI 10.1098/rsta.2023.0254; PMCID PMC10894685; PMID 38403056",
+          "license": "CC BY 4.0",
+          "media_type": "application/xml",
+          "published": "2024-02-26",
+          "retrieved_at": "2026-08-27T04:45:08Z",
+          "role": "underlying study version of record",
+          "source_id": "source-katz-vor",
+          "spans": [
+            {
+              "locator": "abstract",
+              "quote": "Graded across the UBE components, in the manner in which a human test-taker would be, GPT-4 scores approximately 297 points",
+              "span_id": "span-katz-vor-abstract-score",
+              "supports": "The study version of record reports approximately 297, not 298."
+            },
+            {
+              "cells": [
+                {
+                  "cell_id": "cell-katz-gpt4-mbe",
+                  "column": "GPT-4",
+                  "row": "MBE",
+                  "text": "157 points"
+                },
+                {
+                  "cell_id": "cell-katz-gpt4-mee",
+                  "column": "GPT-4",
+                  "row": "MEE",
+                  "text": "84 points"
+                },
+                {
+                  "cell_id": "cell-katz-gpt4-mpt",
+                  "column": "GPT-4",
+                  "row": "MPT",
+                  "text": "56 points"
+                },
+                {
+                  "cell_id": "cell-katz-gpt4-overall",
+                  "column": "GPT-4",
+                  "row": "overall score",
+                  "text": "297 points"
+                }
+              ],
+              "format": "table-cell-transcription",
+              "locator": "§4(d), Table 7",
+              "normalization": "exact-cell-text",
+              "span_id": "span-katz-vor-components",
+              "supports": "The version-of-record component scores sum to 297."
+            },
+            {
+              "locator": "footnote 4",
+              "quote": "Best prompt and/or hyperparameter combination on the MBE would push this score to 298 or higher. Here, we report the MBE average of 75.7% which composites to a 297.",
+              "span_id": "span-katz-vor-score-discrepancy",
+              "supports": "The source itself explains the 298-versus-approximately-297 discrepancy as a scoring-choice difference."
+            },
+            {
+              "locator": "footnote 5",
+              "quote": "there is no publicly available July 2022 national bar exam percentiles against which to compare these results",
+              "span_id": "span-katz-vor-percentile-boundary",
+              "supports": "The study states that the matching national July 2022 comparison distribution was unavailable."
+            },
+            {
+              "format": "exact-contiguous-text",
+              "locator": "footnote 5",
+              "normalization": "collapse-whitespace",
+              "quote": "While we are not fully convinced of the methodological approach taken in some subsequent analysis [78], we do agree that it would be better to consider the raw 297 UBE as falling within a range between 68th and 90th percentile (depending on the precise state and timing of the exam administration).",
+              "span_id": "span-katz-vor-range",
+              "supports": "The version of record treats the percentile as comparison-population-dependent."
+            },
+            {
+              "format": "exact-segments",
+              "locator": "§3(a), materials",
+              "normalization": "collapse-whitespace",
+              "segments": [
+                {
+                  "segment_id": "segment-katz-mee-mpt-materials",
+                  "text": "For the MEE and the MPT, we collected the most recently released questions from the July 2022 Bar Examination."
+                },
+                {
+                  "segment_id": "segment-katz-mbe-materials",
+                  "text": "The MBE questions used in this study are official multistate bar examination questions from previous administrations of the UBE [65]."
+                }
+              ],
+              "span_id": "span-katz-vor-materials",
+              "supports": "The study components share disclosed exam-item materials and administration lineage."
+            }
+          ],
+          "title": "GPT-4 passes the bar exam",
+          "treatment": "attributed quotation permitted; keep excerpts minimal",
+          "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10894685/fullTextXML",
+          "work_id": "work-katz-gpt4-bar"
+        }
+      },
+      "content_digest": "sha256:9d10cfedd531e62d96ea27bb78b00a9148e6b5d8135807836c5982e65a42416e",
+      "content_length": 3551,
+      "edition_label": "Reviewed source-record projection of edition-katz-rsta-2024",
+      "id": "em:dossier-edition:sha256:21621ede6a23bb3f98867c0918e5d9808d6dced5ca3f271a3a52e561810f2f7b",
+      "key": "edition-katz-rsta-2024",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T04:45:08Z",
+      "visibility": "public",
+      "work_key": "work-katz-gpt4-bar"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Eric Martínez",
+          "captured_bytes": 12730,
+          "captured_sha256": "e73b60d3bcba8075b8e513f53d079541ca11b32fa68a8a1201a6442644add588",
+          "core": false,
+          "edition_id": "edition-martinez-osf-analysis-new",
+          "identifier": "OSF file gujmp; SHA-256 e73b60d3bcba8075b8e513f53d079541ca11b32fa68a8a1201a6442644add588",
+          "license": "no file license confirmed",
+          "media_type": "text/plain",
+          "published": "2024",
+          "retrieved_at": "2026-08-27T05:48:35Z",
+          "role": "supplemental derivation implementation",
+          "source_id": "source-martinez-analysis-new",
+          "spans": [
+            {
+              "cells": [
+                {
+                  "cell_id": "cell-martinez-july-mbe-85",
+                  "count": 2,
+                  "score": 85
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-90",
+                  "count": 2,
+                  "score": 90
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-95",
+                  "count": 5,
+                  "score": 95
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-100",
+                  "count": 6,
+                  "score": 100
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-105",
+                  "count": 13,
+                  "score": 105
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-110",
+                  "count": 22,
+                  "score": 110
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-115",
+                  "count": 33,
+                  "score": 115
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-120",
+                  "count": 56,
+                  "score": 120
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-125",
+                  "count": 73,
+                  "score": 125
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-130",
+                  "count": 78,
+                  "score": 130
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-135",
+                  "count": 104,
+                  "score": 135
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-140",
+                  "count": 96,
+                  "score": 140
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-145",
+                  "count": 101,
+                  "score": 145
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-150",
+                  "count": 99,
+                  "score": 150
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-155",
+                  "count": 99,
+                  "score": 155
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-160",
+                  "count": 79,
+                  "score": 160
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-165",
+                  "count": 64,
+                  "score": 165
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-170",
+                  "count": 38,
+                  "score": 170
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-175",
+                  "count": 22,
+                  "score": 175
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-180",
+                  "count": 8,
+                  "score": 180
+                },
+                {
+                  "cell_id": "cell-martinez-july-mbe-185",
+                  "count": 2,
+                  "score": 185
+                }
+              ],
+              "code_lines": [
+                {
+                  "line_id": "line-martinez-july-distribution-55",
+                  "text": "July_distribution <- c(rep(85, 2), rep(90, 2), rep(95, 5), rep(100, 6), rep(105, 13),"
+                },
+                {
+                  "line_id": "line-martinez-july-distribution-56",
+                  "text": "                      rep(110, 22), rep(115, 33), rep(120, 56), rep(125, 73), rep(130, 78),"
+                },
+                {
+                  "line_id": "line-martinez-july-distribution-57",
+                  "text": "                      rep(135, 104), rep(140, 96), rep(145, 101), rep(150, 99), rep(155, 99),"
+                },
+                {
+                  "line_id": "line-martinez-july-distribution-58",
+                  "text": "                      rep(160, 79), rep(165, 64), rep(170, 38), rep(175, 22), rep(180, 8), rep(185, 2))"
+                }
+              ],
+              "format": "code-table-transcription",
+              "locator": "lines 55-58",
+              "normalization": "exact-code-text",
+              "span_id": "span-martinez-script-july-mbe-distribution",
+              "supports": "The executable analysis expands these 21 score-count cells to estimate the July MBE sample standard deviation."
+            },
+            {
+              "format": "code-segment-transcription",
+              "locator": "lines 104-112",
+              "normalization": "exact-code-text",
+              "segments": [
+                {
+                  "segment_id": "segment-martinez-code-mean",
+                  "text": "mean <- 287.6"
+                },
+                {
+                  "segment_id": "segment-martinez-code-quantile",
+                  "text": "quantile_value <- 266"
+                },
+                {
+                  "segment_id": "segment-martinez-code-percentile",
+                  "text": "percentile <- 0.27  # 24%"
+                },
+                {
+                  "segment_id": "segment-martinez-code-z-score",
+                  "text": "z_score <- qnorm(percentile)"
+                },
+                {
+                  "segment_id": "segment-martinez-code-ube-sd",
+                  "text": "sd_UBE <- (quantile_value - mean) / z_score"
+                }
+              ],
+              "span_id": "span-martinez-script-ube-sd",
+              "supports": "The script derives UBE standard deviation from mean 287.6, cutoff 266, and non-pass proportion 0.27."
+            },
+            {
+              "format": "code-segment-transcription",
+              "locator": "lines 106-109",
+              "normalization": "exact-code-text",
+              "segments": [
+                {
+                  "segment_id": "segment-martinez-code-comment-value",
+                  "text": "percentile <- 0.27  # 24%"
+                },
+                {
+                  "segment_id": "segment-martinez-code-comment-prose",
+                  "text": "# Calculate the z-score for the 24th percentile"
+                }
+              ],
+              "span_id": "span-martinez-script-comment-conflict",
+              "supports": "The executable value is 0.27 while adjacent comments say 24%, an internal code-comment discrepancy."
+            },
+            {
+              "format": "code-segment-transcription",
+              "locator": "lines 166-168",
+              "normalization": "exact-code-text",
+              "segments": [
+                {
+                  "segment_id": "segment-martinez-code-filter-ube",
+                  "text": "filtered_data_ube <- data_ube[data_ube >= 270]"
+                },
+                {
+                  "segment_id": "segment-martinez-code-filter-mbe",
+                  "text": "filtered_data_mbe <- data_mbe[data_mbe >= 135]"
+                },
+                {
+                  "segment_id": "segment-martinez-code-filter-essay",
+                  "text": "filtered_data_essay <- data_essay[data_essay >= 135]"
+                }
+              ],
+              "span_id": "span-martinez-script-thresholds",
+              "supports": "The passers analysis filters UBE at 270 even though the SD input uses New York's 266 cutoff."
+            }
+          ],
+          "title": "percentile_analysis_new.Rmd",
+          "treatment": "quote-minimal code readback only; do not redistribute the full file",
+          "url": "https://osf.io/download/gujmp/?view_only=dcc617accc464491922b77414867a066",
+          "work_id": "work-martinez-reanalysis"
+        }
+      },
+      "content_digest": "sha256:c90a873989a59d231475a13a92e3ad1d0d3276514ad54e4e5df695cd35e48666",
+      "content_length": 4947,
+      "edition_label": "Reviewed source-record projection of edition-martinez-osf-analysis-new",
+      "id": "em:dossier-edition:sha256:b135493e681d789459bf386b90f79308cc68da4559b410ad6e818779a81f2745",
+      "key": "edition-martinez-osf-analysis-new",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T05:48:35Z",
+      "visibility": "public",
+      "work_key": "work-martinez-reanalysis"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Eric Martínez",
+          "capture_observations": [
+            {
+              "bytes": 3696,
+              "role": "author-snapshot",
+              "sha256": "06c756ef9d72bce0e92e821917bd5ca02fa1d5089b965689a2dd4f4d28f15bf5"
+            },
+            {
+              "bytes": 3697,
+              "role": "independent-snapshot",
+              "sha256": "b18212bf119cd65f826d137a1306a266b446de193618822fcdcea3eae0903a6f"
+            }
+          ],
+          "captured_bytes": 3696,
+          "captured_sha256": "06c756ef9d72bce0e92e821917bd5ca02fa1d5089b965689a2dd4f4d28f15bf5",
+          "core": true,
+          "edition_id": "edition-martinez-osf-c8ygu",
+          "identifier": "OSF node c8ygu; anonymous view token dcc617accc464491922b77414867a066",
+          "license": "no node or file license confirmed",
+          "media_type": "application/json",
+          "published": "2024",
+          "retrieved_at": "2026-08-27T04:45:11Z",
+          "role": "analysis-code manifestation; same re-analysis root",
+          "semantic_capture": {
+            "bytes": 3697,
+            "command": [
+              "python",
+              "-m",
+              "json.tool",
+              "--sort-keys"
+            ],
+            "normalizer_id": "canonical-json-v1",
+            "sha256": "b18212bf119cd65f826d137a1306a266b446de193618822fcdcea3eae0903a6f"
+          },
+          "source_id": "source-martinez-osf",
+          "spans": [],
+          "title": "Re-evaluating GPT-4's bar exam performance analysis deposit",
+          "treatment": "metadata and quote-minimal script spans only; no redistribution",
+          "url": "https://api.osf.io/v2/nodes/c8ygu/?view_only=dcc617accc464491922b77414867a066",
+          "work_id": "work-martinez-reanalysis"
+        }
+      },
+      "content_digest": "sha256:594e1d16ee96cab6d9e7560a442fa1f8f49431a9a0ab6e0fa042ffc2a0a90a33",
+      "content_length": 1442,
+      "edition_label": "Reviewed source-record projection of edition-martinez-osf-c8ygu",
+      "id": "em:dossier-edition:sha256:ead84e62f14b619d3f84b9780c47ba91315c5d0ac135da40f8adb9f2f3ac78bb",
+      "key": "edition-martinez-osf-c8ygu",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T04:45:11Z",
+      "visibility": "public",
+      "work_key": "work-martinez-reanalysis"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "Eric Martínez",
+          "captured_bytes": 888663,
+          "captured_sha256": "bbab759cb88e93a5216936af1edb2726eb8eb0edde3148d18c1093bed9226e76",
+          "carrier": {
+            "carrier_id": "carrier-tamu-facscholar-3387",
+            "institution": "Texas A&M University School of Law",
+            "journal_page_range": "581-604",
+            "landing_capture": {
+              "bytes": 40754,
+              "retrieved_at": "2026-08-23T17:23:50Z",
+              "sha256": "d28416c1a0681b281062d47c811e14013b822399eb0fb2abdf323d0c9841517f"
+            },
+            "page_count": 25,
+            "retrieval_limitation": "The institutional landing page remains public and identifies the PDF, DOI, pages, and CC BY 4.0 rights; automated direct-PDF refreshes can return HTTP 403, so the exact credential-free 2026-08-23 capture is retained by digest.",
+            "span_readback_ids": [
+              "span-martinez-abstract-ranks",
+              "span-martinez-table-45",
+              "span-martinez-model-assumptions",
+              "span-martinez-mean-assumption",
+              "span-martinez-results-45",
+              "span-martinez-discussion-48",
+              "span-martinez-score-validation"
+            ]
+          },
+          "core": true,
+          "edition_id": "edition-martinez-2024-vor",
+          "identifier": "DOI 10.1007/s10506-024-09396-9",
+          "landing_url": "https://scholarship.law.tamu.edu/facscholar/2405/",
+          "license": "CC BY 4.0",
+          "media_type": "application/pdf",
+          "published": "2024-03-30",
+          "publisher_url": "https://link.springer.com/content/pdf/10.1007/s10506-024-09396-9.pdf",
+          "retrieved_at": "2026-08-23T17:24:01Z",
+          "role": "distinct analytical root reusing the reported score",
+          "source_id": "source-martinez-vor",
+          "spans": [
+            {
+              "format": "exact-segments",
+              "locator": "abstract, journal p. 581",
+              "normalization": "collapse-whitespace",
+              "segments": [
+                {
+                  "segment_id": "segment-martinez-abstract-first-time",
+                  "text": "Third, examining official NCBE data and using several conservative statistical assumptions, GPT-4’s performance against first-time test takers is estimated to be ∼62nd percentile, including ∼42nd percentile on essays."
+                },
+                {
+                  "segment_id": "segment-martinez-abstract-passers",
+                  "text": "Fourth, when examining only those who passed the exam (i.e. licensed or license-pending attorneys), GPT-4’s performance is estimated to drop to ∼48th percentile overall, and ∼15th percentile on essays."
+                }
+              ],
+              "span_id": "span-martinez-abstract-ranks",
+              "supports": "The abstract reports modeled 62nd and 48th ranks for distinct comparison populations."
+            },
+            {
+              "cells": [
+                {
+                  "cell_id": "cell-martinez-july-ube",
+                  "column": "UBE",
+                  "row": "July test-takers",
+                  "text": "1st–68th"
+                },
+                {
+                  "cell_id": "cell-martinez-first-timers-ube",
+                  "column": "UBE",
+                  "row": "All first-timers",
+                  "text": "2nd–62rd"
+                },
+                {
+                  "cell_id": "cell-martinez-qualified-attorneys-ube",
+                  "column": "UBE",
+                  "row": "Qualified attorneys",
+                  "text": "0th–45th"
+                }
+              ],
+              "format": "table-cell-transcription",
+              "locator": "Table 3, journal p. 591",
+              "normalization": "exact-cell-text",
+              "span_id": "span-martinez-table-45",
+              "supports": "The table reports 45th, not 48th, for the passers/qualified-attorneys comparison."
+            },
+            {
+              "format": "exact-contiguous-text",
+              "locator": "§3.1, journal pp. 588-589",
+              "normalization": "collapse-whitespace",
+              "quote": "Assuming that UBE scores (as well as MBE and essay subscores) are normally distributed, percentiles of GPT’s score can be directly computed after computing the parameters of these distributions (i.e. the mean and standard deviation).",
+              "span_id": "span-martinez-model-assumptions",
+              "supports": "The re-analysis is model-based and depends on a normality assumption."
+            },
+            {
+              "format": "exact-segments",
+              "locator": "§3.1, journal p. 588",
+              "normalization": "collapse-whitespace",
+              "segments": [
+                {
+                  "segment_id": "segment-martinez-essay-mean",
+                  "text": "Thus, the methodology here assumed that the mean first-time essay score is 143.8."
+                },
+                {
+                  "segment_id": "segment-martinez-ube-mean",
+                  "text": "Given that the total UBE score is computed directly by adding MBE and essay scores (National Conference of Bar Examiners n.d.-h), an assumption was made that mean first-time UBE score is 287.6 (143.8 + 143.8)."
+                }
+              ],
+              "span_id": "span-martinez-mean-assumption",
+              "supports": "The UBE mean is derived from an assumed essay mean, not directly observed as a national UBE mean."
+            },
+            {
+              "format": "exact-contiguous-text",
+              "locator": "§3.2.2, journal p. 591",
+              "normalization": "collapse-whitespace",
+              "quote": "With regard to the aggregate UBE score, GPT-4 scored in the ∼45th percentile.",
+              "span_id": "span-martinez-results-45",
+              "supports": "The results section reports 45th among those who passed."
+            },
+            {
+              "format": "exact-contiguous-text",
+              "locator": "discussion, journal p. 598",
+              "normalization": "collapse-whitespace",
+              "quote": "when examining only those who passed the exam, GPT-4’s performance is estimated to drop to ∼48th percentile overall, and ∼15th percentile on essays.",
+              "span_id": "span-martinez-discussion-48",
+              "supports": "The discussion reports 48th, creating an internal 45th-versus-48th conflict."
+            },
+            {
+              "format": "exact-contiguous-text",
+              "locator": "introduction, journal p. 584",
+              "normalization": "collapse-whitespace",
+              "quote": "The paper successfully replicates the MBE score of 158, but highlights several methodological issues in the grading of the MPT + MEE components of the exam, which call into question the validity of the essay score (140).",
+              "span_id": "span-martinez-score-validation",
+              "supports": "The MBE and author-graded essay components have different validation status."
+            }
+          ],
+          "title": "Re-evaluating GPT-4's bar exam performance",
+          "treatment": "attributed quotation permitted; retain assumptions and internal conflicts",
+          "url": "https://scholarship.law.tamu.edu/cgi/viewcontent.cgi?article=3387&context=facscholar",
+          "work_id": "work-martinez-reanalysis"
+        }
+      },
+      "content_digest": "sha256:c74c66e3adc8a45af5bac9e338c11d927dd2d95c8386b2d4bb52ef2591c7a0a5",
+      "content_length": 5582,
+      "edition_label": "Reviewed source-record projection of edition-martinez-2024-vor",
+      "id": "em:dossier-edition:sha256:65219a4731cb2e79f58629db4793e659a48da74aa74c3a3db5049ce260701667",
+      "key": "edition-martinez-2024-vor",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-23T17:24:01Z",
+      "visibility": "public",
+      "work_key": "work-martinez-reanalysis"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "National Conference of Bar Examiners",
+          "capture_observations": [
+            {
+              "bytes": 372700,
+              "role": "author-snapshot",
+              "sha256": "d5edc89f2c781ab7a795602cdc4a6b42b3da457f13972c8660db9a2b976df448"
+            },
+            {
+              "bytes": 372700,
+              "role": "independent-review-snapshot",
+              "sha256": "6a2701bcd45855deaefcb1c7e4437125765adc756c4f193280c1f338691ad69c"
+            },
+            {
+              "bytes": 372700,
+              "role": "author-recapture-2026-08-27",
+              "sha256": "0c6f9b9ac682e46ccd6961425dbb613d05833268733d76fbea2b189d4750bd20"
+            }
+          ],
+          "captured_bytes": 372700,
+          "captured_sha256": "d5edc89f2c781ab7a795602cdc4a6b42b3da457f13972c8660db9a2b976df448",
+          "core": true,
+          "edition_id": "edition-ncbe-first-repeat-2022",
+          "identifier": "official 2022 jurisdiction-reported table",
+          "license": "no open license confirmed",
+          "media_type": "text/html",
+          "published": "2023",
+          "retrieved_at": "2026-08-27T05:45:35Z",
+          "role": "jurisdiction-reported status boundary",
+          "semantic_capture": {
+            "bytes": 18887,
+            "command": [
+              "python3",
+              "normalize_html_visible_text.py",
+              "--collapse-whitespace",
+              "--root-id",
+              "post-24476"
+            ],
+            "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+            "root_id": "post-24476",
+            "sha256": "28a6ddf863f104d59b23674ed11a46951b87e088f4774c277f642e6d077e582d"
+          },
+          "source_id": "source-ncbe-first-repeat-2022",
+          "spans": [
+            {
+              "format": "exact-contiguous-text",
+              "locator": "table note",
+              "normalization": "collapse-whitespace",
+              "quote": "NOTE: First-time exam and repeat test taker data supplied by the jurisdictions in this chart are based on those examinees’ testing experience in the reporting jurisdiction only and do not account for possible previous attempts at the bar examination in other jurisdictions.",
+              "span_id": "span-ncbe-jurisdiction-status",
+              "supports": "Jurisdiction-reported status is not the same denominator as NCBE's cross-jurisdiction MBE-based classification."
+            }
+          ],
+          "title": "First-Time Exam Takers and Repeaters in 2022",
+          "treatment": "quote only necessary methodological boundary",
+          "url": "https://thebarexaminer.ncbex.org/2022-statistics/first-time-exam-takers-and-repeaters-in-2022/",
+          "work_id": "work-ncbe-2022-statistics"
+        }
+      },
+      "content_digest": "sha256:f42357f4f20e9db92a1a48755cb2f269123cb4ee93cecc042bff83d990989794",
+      "content_length": 2204,
+      "edition_label": "Reviewed source-record projection of edition-ncbe-first-repeat-2022",
+      "id": "em:dossier-edition:sha256:b3dddcd76a7bbe208e296d4b9a13fc53e91cd14df2ae42ee1c91803569240eca",
+      "key": "edition-ncbe-first-repeat-2022",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T05:45:35Z",
+      "visibility": "public",
+      "work_key": "work-ncbe-2022-statistics"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "National Conference of Bar Examiners",
+          "capture_observations": [
+            {
+              "bytes": 278417,
+              "role": "author-snapshot",
+              "sha256": "f21c45a6e9d1c1b3a5a538ff4bc5b28751928fac53cb5d174e6ec64488c6b784"
+            },
+            {
+              "bytes": 299423,
+              "role": "independent-review-snapshot",
+              "sha256": "5cccb74667eb9aed6afc6e958c9ebe82cc5b6f896e15f0463f1758da346e24e6"
+            },
+            {
+              "bytes": 299419,
+              "role": "author-recapture-2026-08-27",
+              "sha256": "fac79782ff4ca575e75cc1d0cc2bc1f3346f00afaa95570a073f3cad70614541"
+            }
+          ],
+          "captured_bytes": 278417,
+          "captured_sha256": "f21c45a6e9d1c1b3a5a538ff4bc5b28751928fac53cb5d174e6ec64488c6b784",
+          "core": true,
+          "edition_id": "edition-ncbe-mbe-2022",
+          "identifier": "official 2022 MBE statistics",
+          "license": "no open license confirmed",
+          "media_type": "text/html",
+          "published": "2023",
+          "retrieved_at": "2026-08-27T05:45:33Z",
+          "role": "authoritative 2022 MBE distribution root",
+          "semantic_capture": {
+            "bytes": 4767,
+            "command": [
+              "python3",
+              "normalize_html_visible_text.py",
+              "--collapse-whitespace",
+              "--root-id",
+              "post-24258"
+            ],
+            "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+            "root_id": "post-24258",
+            "sha256": "d738481ea3a38e6da39748d47aacc1291112766ec4720917ad0529a02a1f491e"
+          },
+          "source_id": "source-ncbe-mbe-2022",
+          "spans": [
+            {
+              "cells": [
+                {
+                  "cell_id": "cell-ncbe-mbe-count-february",
+                  "column": "February",
+                  "row": "Number of Examinees",
+                  "text": "16,504"
+                },
+                {
+                  "cell_id": "cell-ncbe-mbe-count-july",
+                  "column": "July",
+                  "row": "Number of Examinees",
+                  "text": "44,705"
+                },
+                {
+                  "cell_id": "cell-ncbe-mbe-count-overall",
+                  "column": "2022 Overall",
+                  "row": "Number of Examinees",
+                  "text": "61,209"
+                },
+                {
+                  "cell_id": "cell-ncbe-mbe-mean-february",
+                  "column": "February",
+                  "row": "Mean Scaled Score",
+                  "text": "132.6"
+                },
+                {
+                  "cell_id": "cell-ncbe-mbe-mean-july",
+                  "column": "July",
+                  "row": "Mean Scaled Score",
+                  "text": "140.3"
+                },
+                {
+                  "cell_id": "cell-ncbe-mbe-mean-overall",
+                  "column": "2022 Overall",
+                  "row": "Mean Scaled Score",
+                  "text": "138.3"
+                },
+                {
+                  "cell_id": "cell-ncbe-mbe-sd-february",
+                  "column": "February",
+                  "row": "Standard Deviation",
+                  "text": "15.4"
+                },
+                {
+                  "cell_id": "cell-ncbe-mbe-sd-july",
+                  "column": "July",
+                  "row": "Standard Deviation",
+                  "text": "17.0"
+                },
+                {
+                  "cell_id": "cell-ncbe-mbe-sd-overall",
+                  "column": "2022 Overall",
+                  "row": "Standard Deviation",
+                  "text": "17.0"
+                }
+              ],
+              "format": "table-cell-transcription",
+              "locator": "2022 MBE National Summary Statistics",
+              "normalization": "exact-cell-text",
+              "span_id": "span-ncbe-mbe-2022-counts",
+              "supports": "February, July, and overall MBE populations differ in size and distribution."
+            }
+          ],
+          "title": "The Multistate Bar Examination (MBE): 2022 statistics",
+          "treatment": "quote only necessary aggregate statistics",
+          "url": "https://thebarexaminer.ncbex.org/2022-statistics/the-multistate-bar-examination-mbe/",
+          "work_id": "work-ncbe-2022-statistics"
+        }
+      },
+      "content_digest": "sha256:ab04a05f122d9dff51b76f2e9be9f78c0bdcf25f58fc62047cc4c5abd040346c",
+      "content_length": 2799,
+      "edition_label": "Reviewed source-record projection of edition-ncbe-mbe-2022",
+      "id": "em:dossier-edition:sha256:3b7b0ad7942bb25d248c4fffe8e6bcfa1b806e7f695c9cda6ffd170359cc1ba6",
+      "key": "edition-ncbe-mbe-2022",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T05:45:33Z",
+      "visibility": "public",
+      "work_key": "work-ncbe-2022-statistics"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "National Conference of Bar Examiners",
+          "capture_observations": [
+            {
+              "bytes": 188472,
+              "role": "author-snapshot",
+              "sha256": "391deeac882bfe4dfb69a58e852c465ffbcc9e1d2e0a8557208f82cf795309a0"
+            },
+            {
+              "bytes": 188472,
+              "role": "independent-review-snapshot",
+              "sha256": "6417676e0a1efb43fdf7a0014e45f253b14e63fd14097d1bc9b2e77699c8c728"
+            },
+            {
+              "bytes": 188472,
+              "role": "author-recapture-2026-08-27",
+              "sha256": "1343b00bd6f500d7309b137b8dbbe98765a824e32b280a21dc3201f7f7110c2d"
+            }
+          ],
+          "captured_bytes": 188472,
+          "captured_sha256": "391deeac882bfe4dfb69a58e852c465ffbcc9e1d2e0a8557208f82cf795309a0",
+          "core": true,
+          "edition_id": "edition-ncbe-snapshot-2022",
+          "identifier": "official 2022 statistics snapshot",
+          "license": "no open license confirmed",
+          "media_type": "text/html",
+          "published": "2023",
+          "retrieved_at": "2026-08-27T05:45:33Z",
+          "role": "first-time/repeater composition root",
+          "semantic_capture": {
+            "bytes": 5449,
+            "command": [
+              "python3",
+              "normalize_html_visible_text.py",
+              "--collapse-whitespace",
+              "--root-id",
+              "post-24228"
+            ],
+            "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+            "root_id": "post-24228",
+            "sha256": "d1373f31770be2bbecb821047ef0ea95cb0c50e6088e0c26322de921cf797917"
+          },
+          "source_id": "source-ncbe-snapshot-2022",
+          "spans": [
+            {
+              "format": "exact-segments",
+              "locator": "NCBE MBE-based data, February and July 2022 totals",
+              "normalization": "collapse-whitespace",
+              "segments": [
+                {
+                  "segment_id": "segment-ncbe-february-repeaters-count",
+                  "text": "February likely repeaters taking: 11,289"
+                },
+                {
+                  "segment_id": "segment-ncbe-february-repeaters-percent",
+                  "text": "68% of February 2022 examinees were likely repeaters"
+                },
+                {
+                  "segment_id": "segment-ncbe-february-first-timers-count",
+                  "text": "February likely first-timers taking: 5,215"
+                },
+                {
+                  "segment_id": "segment-ncbe-february-first-timers-percent",
+                  "text": "32% of February 2022 examinees were likely first-time takers"
+                },
+                {
+                  "segment_id": "segment-ncbe-july-repeaters-count",
+                  "text": "July likely repeaters taking: 10,200"
+                },
+                {
+                  "segment_id": "segment-ncbe-july-repeaters-percent",
+                  "text": "23% of July 2022 examinees were likely repeaters"
+                },
+                {
+                  "segment_id": "segment-ncbe-july-first-timers-count",
+                  "text": "July likely first-timers taking: 34,505"
+                },
+                {
+                  "segment_id": "segment-ncbe-july-first-timers-percent",
+                  "text": "77% of July 2021 examinees were likely first-time takers"
+                }
+              ],
+              "span_id": "span-ncbe-snapshot-composition",
+              "supports": "February and July have materially different inferred first-time/repeater composition."
+            },
+            {
+              "locator": "NCBE MBE-based data, July 2022 section",
+              "quote": "77% of July 2021 examinees were likely first-time takers",
+              "span_id": "span-ncbe-snapshot-typo",
+              "supports": "The page's July 2022 section contains an apparent 2021 year-label typo that must not be silently corrected in quotation."
+            }
+          ],
+          "title": "2022 Statistics Snapshot",
+          "treatment": "quote only necessary population aggregates",
+          "url": "https://thebarexaminer.ncbex.org/2022-statistics/2022-statistics-snapshot/",
+          "work_id": "work-ncbe-2022-statistics"
+        }
+      },
+      "content_digest": "sha256:d2ce119a524286fa88bbaf4438c9052d77a5b728990db41cbc8cad70dc6740c4",
+      "content_length": 3066,
+      "edition_label": "Reviewed source-record projection of edition-ncbe-snapshot-2022",
+      "id": "em:dossier-edition:sha256:5e5c17ba424f84711ba55a14e9bf2b2846c2c05389280d7e21e1f1b2ad37810d",
+      "key": "edition-ncbe-snapshot-2022",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T05:45:33Z",
+      "visibility": "public",
+      "work_key": "work-ncbe-2022-statistics"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "National Conference of Bar Examiners",
+          "captured_bytes": 260280,
+          "captured_sha256": "eb3e0b45cd4496cfc15669c267f25107c27e31489ece46dd43def1356a966e52",
+          "core": false,
+          "edition_id": "edition-ncbe-ube-2022",
+          "identifier": "official 2022 UBE statistics",
+          "license": "no open license confirmed",
+          "media_type": "text/html",
+          "published": "2023",
+          "retrieved_at": "2026-08-27T14:57:28Z",
+          "role": "supplemental cutoff source",
+          "source_id": "source-ncbe-ube-2022",
+          "spans": [
+            {
+              "cells": [
+                {
+                  "cell_id": "cell-ncbe-ube-score-266",
+                  "column": "Score",
+                  "row": "266",
+                  "text": "266"
+                },
+                {
+                  "cell_id": "cell-ncbe-ube-jurisdictions-266",
+                  "column": "Jurisdictions",
+                  "row": "266",
+                  "text": "Connecticut; District of Columbia; Illinois; Iowa; Kansas; Kentucky; Maryland; Montana; New Jersey; New York; South Carolina; Virgin Islands"
+                }
+              ],
+              "format": "table-cell-transcription",
+              "locator": "Minimum Passing UBE Score by Jurisdiction in 2022, row 266",
+              "normalization": "exact-cell-text",
+              "span_id": "span-ncbe-ny-cutoff-2022",
+              "supports": "New York's 2022 minimum passing UBE score was 266."
+            }
+          ],
+          "title": "The Uniform Bar Examination (UBE): 2022 statistics",
+          "treatment": "quote only the historical jurisdiction cutoff",
+          "url": "https://thebarexaminer.ncbex.org/2022-statistics/the-uniform-bar-examination-ube/",
+          "work_id": "work-ncbe-2022-statistics"
+        }
+      },
+      "content_digest": "sha256:b55af410679b66b8a0057d5f8dd17baec7985675c94d7af44818f5c4c418cfb7",
+      "content_length": 1467,
+      "edition_label": "Reviewed source-record projection of edition-ncbe-ube-2022",
+      "id": "em:dossier-edition:sha256:2000492e8e5040cd8f5eaa216e7fc1d4d21d4f58afbfc6af5a218f4f53333081",
+      "key": "edition-ncbe-ube-2022",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T14:57:28Z",
+      "visibility": "public",
+      "work_key": "work-ncbe-2022-statistics"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "National Conference of Bar Examiners",
+          "captured_bytes": 63952,
+          "captured_sha256": "359f8d4e94e128480fe474f07e87a0b019ff20f4cd6041d0b7bfe904b8a84628",
+          "core": true,
+          "edition_id": "edition-ncbe-ube-scores-2026-08-27",
+          "identifier": "official NCBE legacy UBE scoring page",
+          "license": "no open license confirmed",
+          "media_type": "text/html",
+          "published": "current page captured 2026-08-27",
+          "retrieved_at": "2026-08-27T05:45:29Z",
+          "role": "authoritative score-construction root",
+          "semantic_capture": {
+            "bytes": 1123,
+            "command": [
+              "python3",
+              "normalize_html_visible_text.py",
+              "--collapse-whitespace",
+              "--root-id",
+              "block-ncbe-content"
+            ],
+            "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+            "root_id": "block-ncbe-content",
+            "sha256": "c7484bfc7a063ddde35b93e488f95c0e33894106e5f90df2b66cab9cb18837b7"
+          },
+          "source_id": "source-ncbe-ube-mechanics",
+          "spans": [
+            {
+              "locator": "legacy UBE scoring overview",
+              "quote": "The MBE is weighted 50%, the MEE 30%, and the MPT 20%. Legacy UBE total scores are reported on a 400-point scale.",
+              "span_id": "span-ncbe-ube-weights",
+              "supports": "The score is a 400-point weighted composite, not a direct percentile."
+            }
+          ],
+          "title": "UBE Scores",
+          "treatment": "quote only necessary scoring mechanics",
+          "url": "https://www.ncbex.org/exams/ube/ube-scores",
+          "work_id": "work-ncbe-ube"
+        }
+      },
+      "content_digest": "sha256:249e8af9b19c323af39a3551b37e7d440e88068e67754e473d2e95710a00b06b",
+      "content_length": 1469,
+      "edition_label": "Reviewed source-record projection of edition-ncbe-ube-scores-2026-08-27",
+      "id": "em:dossier-edition:sha256:fa5ebf94d982c0734720afa2447912cd49899da36767ccc26327d4011edbe696",
+      "key": "edition-ncbe-ube-scores-2026-08-27",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T05:45:29Z",
+      "visibility": "public",
+      "work_key": "work-ncbe-ube"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "New York State Board of Law Examiners",
+          "captured_bytes": 65751,
+          "captured_sha256": "9cddfa2dbe71b11e01a5ee24a328952cdb8c6a81ee140e83a8a1713aa4c17088",
+          "core": false,
+          "edition_id": "edition-ny-passrates-2022",
+          "identifier": "2022_NY_Bar_Exam_PassRates.pdf",
+          "license": "no open license confirmed",
+          "media_type": "application/pdf",
+          "published": "2022",
+          "retrieved_at": "2026-08-27T14:40:54Z",
+          "role": "supplemental pass-rate input",
+          "source_id": "source-ny-passrates-2022",
+          "spans": [
+            {
+              "cells": [
+                {
+                  "cell_id": "cell-ny-first-timers-took",
+                  "column": "Took",
+                  "row": "ALL Candidates",
+                  "text": "9,457"
+                },
+                {
+                  "cell_id": "cell-ny-first-timers-passed",
+                  "column": "Passed",
+                  "row": "ALL Candidates",
+                  "text": "6,867"
+                },
+                {
+                  "cell_id": "cell-ny-first-timers-rate",
+                  "column": "Rate",
+                  "row": "ALL Candidates",
+                  "text": "73%"
+                }
+              ],
+              "format": "table-cell-transcription",
+              "locator": "FIRST TIMERS, ALL Candidates, Combined 2022",
+              "normalization": "exact-cell-text",
+              "span_id": "span-ny-first-timers-2022",
+              "supports": "The combined first-time pass rate was 73%, so the complementary non-pass proportion used by the re-analysis is 27%."
+            }
+          ],
+          "title": "New York Bar Exam 2022 Statistics",
+          "treatment": "quote only necessary aggregate counts",
+          "url": "https://www.nybarexam.org/ExamStats/2022_NY_Bar_Exam_PassRates.pdf",
+          "work_id": "work-ny-2022-passrates"
+        }
+      },
+      "content_digest": "sha256:bbdcb28fb38b0d7d03ddb4e4bcfbcca170d2443491a180fee0978c7510cdb74f",
+      "content_length": 1464,
+      "edition_label": "Reviewed source-record projection of edition-ny-passrates-2022",
+      "id": "em:dossier-edition:sha256:10bbf9ff899ba3ad12de154e0ab9ea7cc3f34c0f2263e79951e26539911bec5f",
+      "key": "edition-ny-passrates-2022",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T14:40:54Z",
+      "visibility": "public",
+      "work_key": "work-ny-2022-passrates"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "OpenAI",
+          "captured_bytes": 5229731,
+          "captured_sha256": "053056a10114d22e4c47b6b5be25e54c320b5f1beeae7466e8638dac0f5f5f66",
+          "core": true,
+          "edition_id": "edition-openai-2303.08774v1",
+          "identifier": "arXiv:2303.08774v1; DOI 10.48550/arXiv.2303.08774",
+          "license": "arXiv non-exclusive distribution license; no Creative Commons license confirmed",
+          "media_type": "application/pdf",
+          "published": "2023-03-15",
+          "retrieved_at": "2026-08-27T04:45:06Z",
+          "role": "launch-edition claim carrier",
+          "source_id": "source-openai-v1",
+          "spans": [
+            {
+              "locator": "abstract, PDF p. 1",
+              "quote": "passing a simulated bar exam with a score around the top 10% of test takers",
+              "span_id": "span-openai-v1-abstract-top-ten",
+              "supports": "The launch report used the top-10-percent wording and said test takers, not lawyers."
+            },
+            {
+              "locator": "Table 1, PDF p. 5",
+              "quote": "Uniform Bar Exam (MBE+MEE+MPT) 298 / 400 (~90th)",
+              "span_id": "span-openai-v1-table-score",
+              "supports": "The report displayed 298/400 and approximately 90th percentile together."
+            },
+            {
+              "locator": "Appendix A.5, PDF p. 25",
+              "quote": "Percentiles are based on the most recently available score distributions for test-takers of each exam type.",
+              "span_id": "span-openai-v1-scoring",
+              "supports": "The report described a generic percentile method but did not name a UBE distribution in this passage."
+            },
+            {
+              "locator": "Appendix A.6, PDF p. 25",
+              "quote": "We ran GPT-4 multiple-choice questions using a model snapshot from March 1, 2023, whereas the free-response questions were run and scored using a non-final model snapshot from February 23, 2023.",
+              "span_id": "span-openai-v1-snapshots",
+              "supports": "The reported composite used two historical model snapshots rather than a stable current product identity."
+            },
+            {
+              "format": "exact-contiguous-text",
+              "locator": "Appendix A.1, PDF p. 23",
+              "normalization": "collapse-whitespace",
+              "quote": "The Uniform Bar Exam was run by our collaborators at CaseText and Stanford CodeX.",
+              "span_id": "span-openai-v1-collaborators",
+              "supports": "The launch report declares author-social collaboration rather than an independent vendor-versus-study replication."
+            },
+            {
+              "locator": "Appendix A.3, PDF p. 24",
+              "quote": "we simply ran these free response questions each only a single time at our best-guess temperature (0.6) and prompt",
+              "span_id": "span-openai-v1-free-response-run",
+              "supports": "The free-response component was a single best-guess run, not a repeated performance estimate."
+            }
+          ],
+          "title": "GPT-4 Technical Report",
+          "treatment": "link and quote minimally; do not redistribute the PDF",
+          "url": "https://arxiv.org/pdf/2303.08774v1",
+          "work_id": "work-openai-gpt4-report"
+        }
+      },
+      "content_digest": "sha256:1703b719a1fad06284c9cde691496e2ee6cc9371ab7808d8abfc50ab3ed0c2f9",
+      "content_length": 2759,
+      "edition_label": "Reviewed source-record projection of edition-openai-2303.08774v1",
+      "id": "em:dossier-edition:sha256:859fa96f390685d21c4db9633a6d9c7fec7abe76cdf8a1f8c0c9c82501b193eb",
+      "key": "edition-openai-2303-08774v1",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T04:45:06Z",
+      "visibility": "public",
+      "work_key": "work-openai-gpt4-report"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "authors_or_org": "OpenAI",
+          "captured_bytes": 5245564,
+          "captured_sha256": "c33a66dadca2388d7b172d6293b00dc32b71110c6f38fafe0d41112e61be7774",
+          "core": true,
+          "edition_id": "edition-openai-2303.08774v6",
+          "identifier": "arXiv:2303.08774v6; DOI 10.48550/arXiv.2303.08774",
+          "license": "arXiv non-exclusive distribution license; no Creative Commons license confirmed",
+          "media_type": "application/pdf",
+          "published": "2024-03-04",
+          "retrieved_at": "2026-08-27T04:45:07Z",
+          "role": "later edition drift check",
+          "source_id": "source-openai-v6",
+          "spans": [
+            {
+              "locator": "Table 1, PDF p. 5",
+              "quote": "Uniform Bar Exam (MBE+MEE+MPT) 298 / 400 (~90th)",
+              "span_id": "span-openai-v6-table-score",
+              "supports": "The later arXiv edition retained the same displayed score and percentile label."
+            }
+          ],
+          "title": "GPT-4 Technical Report",
+          "treatment": "link and quote minimally; do not redistribute the PDF",
+          "url": "https://arxiv.org/pdf/2303.08774v6",
+          "work_id": "work-openai-gpt4-report"
+        }
+      },
+      "content_digest": "sha256:f030c61bac9fd3f29d72f72a7be2affaf5044828d3d5fbcb8d61e1524079f00e",
+      "content_length": 1112,
+      "edition_label": "Reviewed source-record projection of edition-openai-2303.08774v6",
+      "id": "em:dossier-edition:sha256:4ea62e0b74ad06538749d7b38054a839105c069f21fcd7798171e192daa978f6",
+      "key": "edition-openai-2303-08774v6",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T04:45:07Z",
+      "visibility": "public",
+      "work_key": "work-openai-gpt4-report"
+    },
+    {
+      "content": {
+        "accepted_packet_id": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+        "format": "epistemedia-em0032-source-record-projection-v1",
+        "source_record": {
+          "attribution_conflict": {
+            "html_json_ld_author": "Jim Leach",
+            "treatment": "Use the visible print byline for work attribution; retain the conflicting JSON-LD site metadata without silently treating it as authorship.",
+            "visible_print_byline": "Rosemary Reshetar, EdD"
+          },
+          "authors_or_org": "Rosemary Reshetar, EdD / National Conference of Bar Examiners",
+          "capture_observations": [
+            {
+              "bytes": 218131,
+              "role": "author-snapshot",
+              "sha256": "174a5adc50f0235f70ebea3b6c4ed85fbe91df8c18d8144286876fe6b95e70bd"
+            },
+            {
+              "bytes": 218131,
+              "role": "independent-snapshot",
+              "sha256": "ca8dd034a3a41f43fd177ce493cf1489f894c3ae65610033d4e3c26a472a83f3"
+            },
+            {
+              "bytes": 218131,
+              "role": "changes-required-reviewer",
+              "sha256": "3e0af4b53f984113fd347ba426d665ad5b3cfbedb3505013fae55d219877423a"
+            },
+            {
+              "bytes": 218131,
+              "role": "correction-author",
+              "sha256": "0707ff4563ca7969d8ee11c136da9c15e195ee7d827199b58ed95d6a10f4d7ab"
+            }
+          ],
+          "captured_bytes": 218131,
+          "captured_sha256": "174a5adc50f0235f70ebea3b6c4ed85fbe91df8c18d8144286876fe6b95e70bd",
+          "core": false,
+          "edition_id": "edition-reshetar-testing-column-spring-2022",
+          "identifier": "The Bar Examiner, Spring 2022 (Vol. 91, No. 1), pp. 51-53",
+          "license": "no open license confirmed",
+          "media_type": "text/html",
+          "published": "2022-03",
+          "retrieved_at": "2026-08-27T14:40:54Z",
+          "role": "supplemental first-time MBE mean input",
+          "semantic_capture": {
+            "bytes": 12498,
+            "command": [
+              "python3",
+              "normalize_html_visible_text.py",
+              "--collapse-whitespace",
+              "--root-id",
+              "post-22614"
+            ],
+            "normalizer_id": "html-visible-text-root-id-collapse-whitespace-v1",
+            "root_id": "post-22614",
+            "sha256": "2222ea3b0110bcc02c189bb5d79ee9264ada557b2edae09077d985d472da92f6"
+          },
+          "source_id": "source-reshetar-testing-column-2022",
+          "spans": [
+            {
+              "format": "exact-contiguous-text",
+              "locator": "paragraph beginning 'The numbers from 2019'",
+              "normalization": "collapse-whitespace",
+              "quote": "The numbers from 2019, the last prepandemic year, are typical: all likely first-time test takers earned an average MBE score of 143.8. Likely repeaters, however, earned an average MBE score of 132.4.",
+              "span_id": "span-reshetar-first-time-mean",
+              "supports": "The re-analysis uses 143.8 as the first-time MBE mean."
+            }
+          ],
+          "title": "The Testing Column: Why Are February Bar Exam Pass Rates Lower than July Pass Rates?",
+          "treatment": "quote only necessary group means",
+          "url": "https://thebarexaminer.ncbex.org/article/spring-2022/the-testing-column-5/",
+          "work_id": "work-reshetar-testing-column-february-july"
+        }
+      },
+      "content_digest": "sha256:460f8d22d10526ee2a92e1fb4045e1cabacb0dc4a668e142a91a30592ccf0ed2",
+      "content_length": 2566,
+      "edition_label": "Reviewed source-record projection of edition-reshetar-testing-column-spring-2022",
+      "id": "em:dossier-edition:sha256:852a2ad23d9f6f760f0f21c4147eb6dd1b3c936ea9704e3dc3f743de193e4e49",
+      "key": "edition-reshetar-testing-column-spring-2022",
+      "media_type": "application/json",
+      "retrieved_at": "2026-08-27T14:40:54Z",
+      "visibility": "public",
+      "work_key": "work-reshetar-testing-column-february-july"
+    }
+  ],
+  "evaluations": [
+    {
+      "claim_family_key": "family-gpt4-bar-exam-percentile",
+      "frontier": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+      "id": "em:dossier-evaluation:sha256:d226bb76bfc7e5859aee445c70acaa0176d854865f9287ff0d8fd684abb51f0d",
+      "key": "evaluation-encyclopedia",
+      "label": "historical simulated score documented; percentile is comparison-class dependent",
+      "policy_id": "epistemedia-encyclopedia-v1",
+      "reason_codes": [
+        "historical-score-preserved",
+        "score-297-298-boundary",
+        "comparison-populations-separated",
+        "current-product-inference-withheld"
+      ],
+      "visibility": "public"
+    },
+    {
+      "claim_family_key": "family-gpt4-bar-exam-percentile",
+      "frontier": "em:research-packet:sha256:535d07e59563b12f66e590c31b0d53a21db1a8dfce1487129a54c5e86b9fd55b",
+      "id": "em:dossier-evaluation:sha256:30828fa79a94a2fd925bf69849609aa14c1bb61f9b5c9aa3d0787125adf4b744",
+      "key": "evaluation-skeptical",
+      "label": "withhold general 90th-percentile and lawyer-quality claims",
+      "policy_id": "epistemedia-skeptical-v1",
+      "reason_codes": [
+        "launch-distribution-unresolved",
+        "administration-sensitivity-material",
+        "martinez-assumptions-material",
+        "45-48-conflict-retained",
+        "no-practicing-lawyer-comparator"
+      ],
+      "visibility": "public"
+    }
+  ],
+  "evidence_relations": [
+    {
+      "basis_span_keys": [
+        "span-openai-v1-table-score"
+      ],
+      "from_ref": "span-openai-v1-table-score",
+      "id": "em:dossier-evidence-relation:sha256:c4c25358513582c6f0bec9b1006974b13e32d524aff7d3f65ecd7107e0501b7f",
+      "key": "relation-assertion-claim-launch-score-label",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "claim-launch-score-label",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-katz-vor-percentile-boundary",
+        "span-openai-v1-scoring"
+      ],
+      "from_ref": "span-katz-vor-percentile-boundary",
+      "id": "em:dossier-evidence-relation:sha256:affd0ea72f66e971c487ac561d1d99587c411a4aade9a9e4908ea32f842f20c5",
+      "key": "relation-assertion-claim-launch-comparison-unspecified",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "claim-launch-comparison-unspecified",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-katz-vor-abstract-score",
+        "span-katz-vor-score-discrepancy",
+        "span-openai-v1-table-score"
+      ],
+      "from_ref": "span-katz-vor-abstract-score",
+      "id": "em:dossier-evidence-relation:sha256:e9d39349fc7f22c3a9130402cf5608a2399cfdd054dfc68f2f80943a58693fea",
+      "key": "relation-assertion-claim-score-discrepancy",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "claim-score-discrepancy",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-feb-2019-anchors"
+      ],
+      "from_ref": "span-illinois-feb-2018-anchors",
+      "id": "em:dossier-evidence-relation:sha256:42a1ee6d6d5401c06d4982292f6e68ab82e3eccce9b9367fffc39c67e33c951d",
+      "key": "relation-assertion-claim-february-sensitive",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "claim-february-sensitive",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-illinois-jul-2018-anchors"
+      ],
+      "from_ref": "span-illinois-jul-2018-anchors",
+      "id": "em:dossier-evidence-relation:sha256:73716abf204fa15d841ff6b95c2dfbe303e3fcb4e06c26923a8fa5a618593415",
+      "key": "relation-assertion-claim-july-sensitive",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "claim-july-sensitive",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-model-assumptions",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022"
+      ],
+      "from_ref": "span-martinez-mean-assumption",
+      "id": "em:dossier-evidence-relation:sha256:9eab2effd3cc904155efeba8e0f0fcc8a1c651a180827275569eafefd16b4193",
+      "key": "relation-assertion-claim-martinez-first-time",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "claim-martinez-first-time",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-discussion-48",
+        "span-martinez-results-45",
+        "span-martinez-script-thresholds",
+        "span-martinez-table-45"
+      ],
+      "from_ref": "span-martinez-discussion-48",
+      "id": "em:dossier-evidence-relation:sha256:98f71b562a1c5d46cd4a56ad684083756ac580d2ecdc0c1db9cb1b0438094252",
+      "key": "relation-assertion-claim-martinez-passers-conflict",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "claim-martinez-passers-conflict",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-model-assumptions",
+        "span-openai-v1-abstract-top-ten"
+      ],
+      "from_ref": "span-martinez-model-assumptions",
+      "id": "em:dossier-evidence-relation:sha256:557b5a29466beafd389b33f1f9c0ab1cf0c96adda878cdc87363397912088a19",
+      "key": "relation-assertion-claim-no-lawyer-rank",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "claim-no-lawyer-rank",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-illinois-feb-2018-anchors"
+      ],
+      "from_ref": "span-illinois-feb-2018-anchors",
+      "id": "em:dossier-evidence-relation:sha256:37e4c27caac0dff08f5046a13257a01d9100fefeaac63bd9dceeb84b4f4b4bc1",
+      "key": "relation-assertion-derive-illinois-feb-2018-298",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-illinois-feb-2018-298",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-illinois-jul-2018-anchors"
+      ],
+      "from_ref": "span-illinois-jul-2018-anchors",
+      "id": "em:dossier-evidence-relation:sha256:8fb50d95521243b3cbc5313cd7d8a36027e7604b6e5d0d0da471f885f7402099",
+      "key": "relation-assertion-derive-illinois-jul-2018-298",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-illinois-jul-2018-298",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-illinois-feb-2019-anchors"
+      ],
+      "from_ref": "span-illinois-feb-2019-anchors",
+      "id": "em:dossier-evidence-relation:sha256:9fd355a30180da884e9349db13e4cd86d4511713599c110ef0291ea9e6555c28",
+      "key": "relation-assertion-derive-illinois-feb-2019-298",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-illinois-feb-2019-298",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "span-martinez-mean-assumption",
+      "id": "em:dossier-evidence-relation:sha256:707f491ccc50138f09d660c29fab72e3726892dc639fb0e97d2fab568757e49b",
+      "key": "relation-assertion-derive-martinez-parameters",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-martinez-parameters",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "span-martinez-mean-assumption",
+      "id": "em:dossier-evidence-relation:sha256:cc2426b0c0b245ee928dc7c50611012fffdb19324e9a5113b164cd2292b46c3a",
+      "key": "relation-assertion-derive-martinez-first-time-ube",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-martinez-first-time-ube",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "span-martinez-mean-assumption",
+      "id": "em:dossier-evidence-relation:sha256:1c40ee806dec991ca6af8dfa06aa32ecb44f11b6a9e68cf2e462cb757b322d26",
+      "key": "relation-assertion-derive-martinez-passers-ube",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-martinez-passers-ube",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "span-martinez-mean-assumption",
+      "id": "em:dossier-evidence-relation:sha256:04e4957580926b390e8edb1f0faf279d6919869917f9028c276acece3f695f66",
+      "key": "relation-assertion-derive-martinez-first-time-mbe",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-martinez-first-time-mbe",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "span-martinez-mean-assumption",
+      "id": "em:dossier-evidence-relation:sha256:2d21b8ed3c2e2c8334c52095ac77c173da73fa5d077f0ef1deab5bbeec9ba6ba",
+      "key": "relation-assertion-derive-martinez-passers-mbe",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-martinez-passers-mbe",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "span-martinez-mean-assumption",
+      "id": "em:dossier-evidence-relation:sha256:c1f780c3e77539a3d43d188528704055e5d50ef5d4f33942db4fed1756234046",
+      "key": "relation-assertion-derive-martinez-first-time-essay",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-martinez-first-time-essay",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-mean-assumption",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-ube-sd",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ny-first-timers-2022",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "span-martinez-mean-assumption",
+      "id": "em:dossier-evidence-relation:sha256:dfb70df4bb5a79afa280d5b8ad07a8b015ce2c047bfc9a233be9bb013ba55ae9",
+      "key": "relation-assertion-derive-martinez-passers-essay",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "derive-martinez-passers-essay",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-feb-2019-anchors",
+        "span-illinois-jul-2018-anchors",
+        "span-katz-vor-abstract-score",
+        "span-katz-vor-components",
+        "span-katz-vor-materials",
+        "span-katz-vor-percentile-boundary",
+        "span-katz-vor-range",
+        "span-katz-vor-score-discrepancy",
+        "span-martinez-abstract-ranks",
+        "span-martinez-discussion-48",
+        "span-martinez-mean-assumption",
+        "span-martinez-model-assumptions",
+        "span-martinez-results-45",
+        "span-martinez-score-validation",
+        "span-martinez-script-comment-conflict",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-thresholds",
+        "span-martinez-script-ube-sd",
+        "span-martinez-table-45",
+        "span-ncbe-jurisdiction-status",
+        "span-ncbe-mbe-2022-counts",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ncbe-snapshot-composition",
+        "span-ncbe-snapshot-typo",
+        "span-ncbe-ube-weights",
+        "span-ny-first-timers-2022",
+        "span-openai-v1-abstract-top-ten",
+        "span-openai-v1-collaborators",
+        "span-openai-v1-free-response-run",
+        "span-openai-v1-scoring",
+        "span-openai-v1-snapshots",
+        "span-openai-v1-table-score",
+        "span-openai-v6-table-score",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "span-illinois-feb-2018-anchors",
+      "id": "em:dossier-evidence-relation:sha256:e9db7d77ad9702f43ce468dfc73d6e483b2fd9cd314d638aa32a35630b49f136",
+      "key": "relation-assertion-reviewed-source-register",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "prop-reviewed-source-register",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-jul-2018-anchors",
+        "span-katz-vor-score-discrepancy",
+        "span-martinez-discussion-48",
+        "span-martinez-table-45",
+        "span-openai-v1-table-score"
+      ],
+      "from_ref": "span-illinois-feb-2018-anchors",
+      "id": "em:dossier-evidence-relation:sha256:b5178be59850e8cea5c897dadecd9d3b241b546ac798eefa177c5f838eac3741",
+      "key": "relation-assertion-encyclopedia-evaluation",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "support",
+      "to_ref": "prop-encyclopedia-evaluation",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-jul-2018-anchors",
+        "span-katz-vor-percentile-boundary",
+        "span-martinez-discussion-48",
+        "span-martinez-model-assumptions",
+        "span-martinez-results-45",
+        "span-martinez-script-thresholds",
+        "span-openai-v1-scoring"
+      ],
+      "from_ref": "span-illinois-feb-2018-anchors",
+      "id": "em:dossier-evidence-relation:sha256:f21caa0d0cc492d5b575a90c86962df846dec7e792b22da920ef0f38f4d3f757",
+      "key": "relation-assertion-skeptical-evaluation",
+      "note": "Material proposition closes over the listed exact reviewed spans.",
+      "relation_type": "undercutting",
+      "to_ref": "prop-skeptical-evaluation",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-openai-v1-collaborators"
+      ],
+      "from_ref": "lineage-model-performance-root",
+      "id": "em:dossier-evidence-relation:sha256:a1dee0a0bf90aed31bd9f9c913778ed445644cf34e30923651a3f7ee55454235",
+      "key": "edge-author-social-collaboration",
+      "note": "accepted_dimension=author-social; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=The vendor report and study are socially linked manifestations, not independent tests.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-model-performance-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-feb-2019-anchors",
+        "span-illinois-jul-2018-anchors"
+      ],
+      "from_ref": "lineage-illinois-comparison-root",
+      "id": "em:dossier-evidence-relation:sha256:57771550d1c18b441e7d9a1a7569ad4a4bf453b8acdf0a38a2405dbe2a9fb933",
+      "key": "edge-benchmark-illinois-charts",
+      "note": "accepted_dimension=benchmark; from=lineage-illinois-comparison-root; to=lineage-martinez-analysis-root; effects=It is comparison data, not an additional GPT-4 performance root. | Population drift affects rank without changing the model score. | It is a sensitivity input, not a replication of the model run.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-martinez-analysis-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-katz-vor-range"
+      ],
+      "from_ref": "lineage-model-performance-root",
+      "id": "em:dossier-evidence-relation:sha256:37faad827536d4e58371ebe7b1934c9fd81d18705dac7a7fbcf994c4e61e301c",
+      "key": "edge-citation-katz-to-martinez",
+      "note": "accepted_dimension=citation; from=lineage-model-performance-root; to=lineage-martinez-analysis-root; effects=Citation links the analysis lineage to the same reported score.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-martinez-analysis-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-ncbe-jurisdiction-status",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ncbe-snapshot-composition",
+        "span-ny-first-timers-2022"
+      ],
+      "from_ref": "lineage-ncbe-comparison-root",
+      "id": "em:dossier-evidence-relation:sha256:dc91800f915f77b648556d97a8c02a16916198b169e4df18384983a4978e3211",
+      "key": "edge-comparison-class-first-time-passers",
+      "note": "accepted_dimension=comparison-class; from=lineage-ncbe-comparison-root,lineage-new-york-pass-rate-root; to=lineage-martinez-analysis-root; effects=Comparison populations are not interchangeable. | Administration mix can change percentile without new model evidence. | It parameterizes the comparison model rather than testing GPT-4. | The threshold defines a modeled comparator boundary.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-martinez-analysis-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-katz-vor-components",
+        "span-martinez-score-validation"
+      ],
+      "from_ref": "lineage-model-performance-root",
+      "id": "em:dossier-evidence-relation:sha256:37addb9a8b624572f8aa1a2c861b956139e9f2e5b8a8a7d9ecf0023fa66f18e8",
+      "key": "edge-data-reported-score-reuse",
+      "note": "accepted_dimension=data; from=lineage-model-performance-root; to=lineage-martinez-analysis-root; effects=The re-analysis is not a new model-performance experiment. | Score validation changes warrant, not the participant or model-performance root count.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-martinez-analysis-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-thresholds",
+        "span-martinez-script-ube-sd",
+        "span-reshetar-first-time-mean"
+      ],
+      "from_ref": "lineage-ncbe-comparison-root",
+      "id": "em:dossier-evidence-relation:sha256:d4aa4acff5462496dbda287fd0eb220ed5cae8fd9aac952a15d8b1c1e710308c",
+      "key": "edge-derivation-comparison-inputs",
+      "note": "accepted_dimension=derivation; from=lineage-ncbe-comparison-root,lineage-new-york-pass-rate-root; to=lineage-martinez-analysis-root; effects=The value is a modeled input, not a GPT-4 observation. | Executable transformations do not create new source or performance roots.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-martinez-analysis-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-katz-vor-materials"
+      ],
+      "from_ref": "lineage-model-performance-root",
+      "id": "em:dossier-evidence-relation:sha256:a8abbd7d2af1c0afa13938b9072efca4db0bc3a890487b4f8867ab64e5f8af01",
+      "key": "edge-material-shared-exam-items",
+      "note": "accepted_dimension=material; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=All score manifestations inherit the same exam-item materials.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-model-performance-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-openai-v1-free-response-run"
+      ],
+      "from_ref": "lineage-model-performance-root",
+      "id": "em:dossier-evidence-relation:sha256:a8a978d2ee6b6d8b9b91bef05682d1a7a1b0dcc55856f1125bdd10a1e44354ef",
+      "key": "edge-method-single-free-response-run",
+      "note": "accepted_dimension=method; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=Repeated documents do not supply repeated-run independence.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-model-performance-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-openai-v1-snapshots"
+      ],
+      "from_ref": "lineage-model-performance-root",
+      "id": "em:dossier-evidence-relation:sha256:975f1bcd562a0f6b6ec2a452afa3435453fca96fd8c15935ff318d5025c7307f",
+      "key": "edge-model-historical-snapshots",
+      "note": "accepted_dimension=model; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=The two snapshots are components of one reported experiment, not two evidence roots.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-model-performance-root",
+      "visibility": "public"
+    },
+    {
+      "basis_span_keys": [
+        "span-katz-vor-components",
+        "span-katz-vor-score-discrepancy"
+      ],
+      "from_ref": "lineage-model-performance-root",
+      "id": "em:dossier-evidence-relation:sha256:ae8287b86afe64c3260fefde28af27997bf47720d0369ad72ee949ec09a7a318",
+      "key": "edge-score-component-composite",
+      "note": "accepted_dimension=score; from=lineage-model-performance-root; to=lineage-model-performance-root; effects=297 and 298 are scoring variants within one experiment.",
+      "relation_type": "dependence",
+      "to_ref": "lineage-model-performance-root",
+      "visibility": "public"
+    }
+  ],
+  "format": "epistemedia-dossier-v0.1",
+  "lineages": [
+    {
+      "assertion_keys": [
+        "assertion-claim-launch-comparison-unspecified",
+        "assertion-claim-launch-score-label",
+        "assertion-claim-no-lawyer-rank",
+        "assertion-claim-score-discrepancy"
+      ],
+      "basis_span_keys": [
+        "span-katz-vor-abstract-score",
+        "span-katz-vor-components",
+        "span-katz-vor-materials",
+        "span-katz-vor-percentile-boundary",
+        "span-katz-vor-range",
+        "span-katz-vor-score-discrepancy",
+        "span-openai-v1-abstract-top-ten",
+        "span-openai-v1-collaborators",
+        "span-openai-v1-free-response-run",
+        "span-openai-v1-scoring",
+        "span-openai-v1-snapshots",
+        "span-openai-v1-table-score",
+        "span-openai-v6-table-score"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "method",
+        "model",
+        "social"
+      ],
+      "id": "em:dossier-lineage:sha256:c8b81e09b0245e5c5302dd89be2d627f7658d7ab0d5de6d56adef3df0f65e145",
+      "key": "lineage-model-performance-root",
+      "note": "one historical simulated-UBE experiment assembled from multiple-choice and author-graded free-response components; independent_roots=1; dependence=shared model snapshots | shared prompts and purchased/public exam material | shared score outputs | OpenAI collaboration with study authors | report/preprint/VOR/repository/supplement manifestations",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-claim-martinez-first-time",
+        "assertion-claim-martinez-passers-conflict",
+        "assertion-derive-martinez-first-time-essay",
+        "assertion-derive-martinez-first-time-mbe",
+        "assertion-derive-martinez-first-time-ube",
+        "assertion-derive-martinez-parameters",
+        "assertion-derive-martinez-passers-essay",
+        "assertion-derive-martinez-passers-mbe",
+        "assertion-derive-martinez-passers-ube"
+      ],
+      "basis_span_keys": [
+        "span-martinez-abstract-ranks",
+        "span-martinez-discussion-48",
+        "span-martinez-mean-assumption",
+        "span-martinez-model-assumptions",
+        "span-martinez-results-45",
+        "span-martinez-score-validation",
+        "span-martinez-script-comment-conflict",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-thresholds",
+        "span-martinez-script-ube-sd",
+        "span-martinez-table-45"
+      ],
+      "depends_on": [
+        "lineage-model-performance-root",
+        "lineage-illinois-comparison-root",
+        "lineage-ncbe-comparison-root",
+        "lineage-new-york-pass-rate-root"
+      ],
+      "dimensions": [
+        "data",
+        "method",
+        "model",
+        "source"
+      ],
+      "id": "em:dossier-lineage:sha256:e6057f0dbfa37d0264e471e67a3941297a56467e67cad715d0eb37490d320cdd",
+      "key": "lineage-martinez-analysis-root",
+      "note": "one re-analysis of the reported historical score against alternate aggregate comparison populations; independent_roots=1; dependence=reuses the reported OpenAI/Katz score | reuses Illinois and NCBE aggregates | VOR and OSF are manifestations of the same analysis",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-claim-february-sensitive",
+        "assertion-claim-july-sensitive",
+        "assertion-derive-illinois-feb-2018-298",
+        "assertion-derive-illinois-feb-2019-298",
+        "assertion-derive-illinois-jul-2018-298"
+      ],
+      "basis_span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-feb-2019-anchors",
+        "span-illinois-jul-2018-anchors"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "source"
+      ],
+      "id": "em:dossier-lineage:sha256:a5b9820aa7d6c9062b89944f259392c039fbe5285b626d4f71d54dfd44f51a20",
+      "key": "lineage-illinois-comparison-root",
+      "note": "official administration-specific Illinois aggregate charts; independent_roots=3; dependence=same state scoring system | different administrations and population composition | no disclosed 297/298 row or interpolation",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-ncbe-jurisdiction-status",
+        "span-ncbe-mbe-2022-counts",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ncbe-snapshot-composition",
+        "span-ncbe-snapshot-typo",
+        "span-ncbe-ube-weights",
+        "span-reshetar-first-time-mean"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "source"
+      ],
+      "id": "em:dossier-lineage:sha256:a674ad6aa3453c54eb437d844fd6070006c25bbb05cb6463bfffd2eee9e24eae",
+      "key": "lineage-ncbe-comparison-root",
+      "note": "official NCBE scoring and population aggregates; independent_roots=1; dependence=multiple tables and explanatory pages from one statistical authority | jurisdiction-reported and NCBE MBE-based first-time classifications differ",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [],
+      "basis_span_keys": [
+        "span-ny-first-timers-2022"
+      ],
+      "depends_on": [],
+      "dimensions": [
+        "data",
+        "source"
+      ],
+      "id": "em:dossier-lineage:sha256:b426c4edd6b881b995272c355d5dc869ffe4153c0bcbe662e7ffef1a5267e48b",
+      "key": "lineage-new-york-pass-rate-root",
+      "note": "New York 2022 first-time pass counts; independent_roots=1; dependence=same jurisdiction and year used to parameterize the Martínez model",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-reviewed-source-register"
+      ],
+      "basis_span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-feb-2019-anchors",
+        "span-illinois-jul-2018-anchors",
+        "span-katz-vor-abstract-score",
+        "span-katz-vor-components",
+        "span-katz-vor-materials",
+        "span-katz-vor-percentile-boundary",
+        "span-katz-vor-range",
+        "span-katz-vor-score-discrepancy",
+        "span-martinez-abstract-ranks",
+        "span-martinez-discussion-48",
+        "span-martinez-mean-assumption",
+        "span-martinez-model-assumptions",
+        "span-martinez-results-45",
+        "span-martinez-score-validation",
+        "span-martinez-script-comment-conflict",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-thresholds",
+        "span-martinez-script-ube-sd",
+        "span-martinez-table-45",
+        "span-ncbe-jurisdiction-status",
+        "span-ncbe-mbe-2022-counts",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ncbe-snapshot-composition",
+        "span-ncbe-snapshot-typo",
+        "span-ncbe-ube-weights",
+        "span-ny-first-timers-2022",
+        "span-openai-v1-abstract-top-ten",
+        "span-openai-v1-collaborators",
+        "span-openai-v1-free-response-run",
+        "span-openai-v1-scoring",
+        "span-openai-v1-snapshots",
+        "span-openai-v1-table-score",
+        "span-openai-v6-table-score",
+        "span-reshetar-first-time-mean"
+      ],
+      "depends_on": [
+        "lineage-illinois-comparison-root",
+        "lineage-martinez-analysis-root",
+        "lineage-model-performance-root",
+        "lineage-ncbe-comparison-root",
+        "lineage-new-york-pass-rate-root"
+      ],
+      "dimensions": [
+        "source",
+        "retrieval"
+      ],
+      "id": "em:dossier-lineage:sha256:0d8a3d3705dfdfa415e4c2afceb900e9134dcc98a431fd18cd9028a554aa8470",
+      "key": "lineage-reviewed-source-register",
+      "note": "Relation-derived disclosure-safe projection of the exact reviewed EM-0032 register.",
+      "status": "known",
+      "visibility": "public"
+    },
+    {
+      "assertion_keys": [
+        "assertion-encyclopedia-evaluation",
+        "assertion-skeptical-evaluation"
+      ],
+      "basis_span_keys": [
+        "span-illinois-feb-2018-anchors",
+        "span-illinois-feb-2019-anchors",
+        "span-illinois-jul-2018-anchors",
+        "span-katz-vor-abstract-score",
+        "span-katz-vor-components",
+        "span-katz-vor-materials",
+        "span-katz-vor-percentile-boundary",
+        "span-katz-vor-range",
+        "span-katz-vor-score-discrepancy",
+        "span-martinez-abstract-ranks",
+        "span-martinez-discussion-48",
+        "span-martinez-mean-assumption",
+        "span-martinez-model-assumptions",
+        "span-martinez-results-45",
+        "span-martinez-score-validation",
+        "span-martinez-script-comment-conflict",
+        "span-martinez-script-july-mbe-distribution",
+        "span-martinez-script-thresholds",
+        "span-martinez-script-ube-sd",
+        "span-martinez-table-45",
+        "span-ncbe-jurisdiction-status",
+        "span-ncbe-mbe-2022-counts",
+        "span-ncbe-ny-cutoff-2022",
+        "span-ncbe-snapshot-composition",
+        "span-ncbe-snapshot-typo",
+        "span-ncbe-ube-weights",
+        "span-ny-first-timers-2022",
+        "span-openai-v1-abstract-top-ten",
+        "span-openai-v1-collaborators",
+        "span-openai-v1-free-response-run",
+        "span-openai-v1-scoring",
+        "span-openai-v1-snapshots",
+        "span-openai-v1-table-score",
+        "span-openai-v6-table-score",
+        "span-reshetar-first-time-mean"
+      ],
+      "depends_on": [
+        "lineage-illinois-comparison-root",
+        "lineage-martinez-analysis-root",
+        "lineage-model-performance-root",
+        "lineage-ncbe-comparison-root",
+        "lineage-new-york-pass-rate-root"
+      ],
+      "dimensions": [
+        "source",
+        "model",
+        "method"
+      ],
+      "id": "em:dossier-lineage:sha256:a4e336f26ab372b0b7c2ebdb611cb787848b44980eba9b2478f13d5f939e9d65",
+      "key": "lineage-evaluation-synthesis",
+      "note": "Policy-relative synthesis over one unchanged source graph; no new empirical root.",
+      "status": "known",
+      "visibility": "public"
+    }
+  ],
+  "propositions": [
+    {
+      "id": "em:dossier-proposition:sha256:c8893cb50e4e0702860b0e95d0bcff6b42ec4829435614188dfc775c3b790780",
+      "key": "claim-launch-score-label",
+      "scope": "Accepted EM-0032 reported-assertion; evidence cutoff 2026-08-27.",
+      "text": "OpenAI's launch-edition report displayed 298/400 and approximately 90th percentile for a simulated UBE.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:0e95785a0aeb86c6b85771df4f9717da9521e2f9e5d52d608e451465e1240d2f",
+      "key": "claim-launch-comparison-unspecified",
+      "scope": "Accepted EM-0032 bounded-negative-result; evidence cutoff 2026-08-27.",
+      "text": "The launch report says test takers but does not disclose a UBE administration, jurisdiction, population composition, chart, or interpolation for the displayed percentile.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:16536a669965de8c6a44bbd1474c6289ed91a1c68f758a1e1c650f572aa7ec19",
+      "key": "claim-score-discrepancy",
+      "scope": "Accepted EM-0032 lineage-qualified-synthesis; evidence cutoff 2026-08-27.",
+      "text": "The report's 298 and study's approximately 297 are distinct scoring choices within one underlying experiment, not independent performance roots.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:1034ba4421c1aff2e41f247b73a2bb166fe691ba39953b278845bada50032f33",
+      "key": "claim-february-sensitive",
+      "scope": "Accepted EM-0032 reviewer-derived-sensitivity; evidence cutoff 2026-08-27.",
+      "text": "A linear interpolation not supplied by the sources places 298 near 89th in the February 2018 chart and 88.6th in the February 2019 chart.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:c03843891cd010c53ddbe03e8d0128baeeccd8dedde381d2aaf3ed9a8bf08752",
+      "key": "claim-july-sensitive",
+      "scope": "Accepted EM-0032 reviewer-derived-sensitivity; evidence cutoff 2026-08-27.",
+      "text": "The same disclosed linear interpolation places 298 near 67.8th in the July 2018 Illinois chart.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:fe66108f071fdcc1e63e50df325d22f059b385b733de0db6a9c2b4e8a3357474",
+      "key": "claim-martinez-first-time",
+      "scope": "Accepted EM-0032 assumption-bound-derived-result; evidence cutoff 2026-08-27.",
+      "text": "Under Martínez's modeled assumptions, 298 is approximately 62nd percentile among first-time takers.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:4c6ac4b24cbd908f89d988c4bb1dbc008e9ff3b5bb4fffaa313145d1762465ce",
+      "key": "claim-martinez-passers-conflict",
+      "scope": "Accepted EM-0032 within-edition-conflict; evidence cutoff 2026-08-27.",
+      "text": "The Martínez version of record and code support roughly 45th under the encoded passers model, while its abstract and discussion say roughly 48th; the packet preserves 45/48 as an internal discrepancy.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:e98f731fe4f066e80cefdb1712238ca5d5b9c08854f86b5a99bd132df05177a6",
+      "key": "claim-no-lawyer-rank",
+      "scope": "Accepted EM-0032 scope-boundary; evidence cutoff 2026-08-27.",
+      "text": "None of the captured sources measures performance against practicing lawyers or establishes general legal competence.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:99ec4bf85ed609ff55526e96ac653c6ce531ad911e47df0af46b36deb5c046ce",
+      "key": "derive-illinois-feb-2018-298",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "reviewer sensitivity only: linear interpolation: 89.0.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:f230cbb48f98d83df54f6ed9c3a33d46878521216231cb2fb7761c624768aa11",
+      "key": "derive-illinois-jul-2018-298",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "reviewer sensitivity only: linear interpolation: 67.8.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:523f8a6b39ee54e3f011533920997e54d92e0aeb992f51aceb0b1b7142438650",
+      "key": "derive-illinois-feb-2019-298",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "reviewer sensitivity only: linear interpolation: 88.6.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:4d8e57e90301b4c327de9d6489711c4739b33bc02e1e49fc9f5b29cb358d1431",
+      "key": "derive-martinez-parameters",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "analytic reproduction of the executable OSF inputs: {\"derived_ube_sd\":35.24729455256271,\"sample_mbe_sd\":17.74327194332649,\"z_at_0_27\":-0.6128129910166272}.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:563fa2d1621699d79b50d19ee0c91afb2ec36cd9a5814bdf9fd05adefd4132a1",
+      "key": "derive-martinez-first-time-ube",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "normal CDF at score 298: 61.60252541656707.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:a5ad5ecb3b3222fe7d26558641c766d69a1e9893bfa24bf56f531e313c450c09",
+      "key": "derive-martinez-passers-ube",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "normal CDF conditional on modeled UBE score >= 270: 44.45020553281165.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:4dae2b30b8c63439e9dc0291b308d48f1e5ecddd335123b7873dfc143cf34fda",
+      "key": "derive-martinez-first-time-mbe",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "normal CDF at MBE score 158: 78.82324690739395.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:bd5d782643d2e6b3ded101a0c5b14a9aa1d28ebd4bbef7764e06591b526fc927",
+      "key": "derive-martinez-passers-mbe",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "normal CDF conditional on modeled MBE score >= 135: 69.31081545343784.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:8ff9c547d9ae472642c94744dd6ead38ca619497db2bec161d3f0d6cc83b1bfa",
+      "key": "derive-martinez-first-time-essay",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "normal CDF at essay score 140 using assumed MBE distribution: 41.520892709392534.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:bf6cefa5884c457638f6b822e1484f41e91869e368f1d65f4511a8ac812bd21d",
+      "key": "derive-martinez-passers-essay",
+      "scope": "Mechanical reproduction of accepted EM-0032 inputs; not an additional model-performance experiment.",
+      "text": "normal CDF conditional on modeled essay score >= 135: 15.252536216882072.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:20c2ddd07c0055957850fb945699c81c87231a3ce34aa6b6f14dc70b69d4d6a4",
+      "key": "prop-reviewed-source-register",
+      "scope": "Counts are relation-derived from the exact accepted packet.",
+      "text": "The accepted packet contains 19 source editions across 8 works, 35 parent spans, 8 bounded claims, 10 calculations, 5 lineage roots, and 10 typed dependence edges.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:c35156c37a695804fc801942de8730ebacb7c4d59a343cd1b1875ec5356403c3",
+      "key": "prop-encyclopedia-evaluation",
+      "scope": "Encyclopedia policy documents the historical result while preserving comparison-class and score-version boundaries.",
+      "text": "GPT-4 received a historical simulated UBE score reported as 298 and approximately 90th percentile, but percentile meaning changes with administration and comparison population.",
+      "visibility": "public"
+    },
+    {
+      "id": "em:dossier-proposition:sha256:adc858966cca9dcffbace181ab6b5d6d294b9485d2e6280d5809460b574c5cec",
+      "key": "prop-skeptical-evaluation",
+      "scope": "Skeptical policy gives no present-product, practicing-lawyer, or general legal-competence inference.",
+      "text": "Withhold a general 90th-percentile or lawyer-quality claim: the launch comparison distribution is unresolved, the same score ranges from about 68th to 89th in official Illinois sensitivities, and the modeled re-analysis preserves 45/48 and other assumption-dependent results.",
+      "visibility": "public"
+    }
+  ],
+  "question": "How did a historical simulated UBE score reported for GPT-4 become a roughly 90th-percentile claim, and how does the rank change when the comparison population changes?",
+  "scope": "Evidence through 2026-08-27; disclosure-safe candidate derived only from accepted EM-0032 bytes. It is not admitted, not featured, not live, and not published, and it does not describe current model behavior or general legal competence.",
+  "source_works": [
+    {
+      "canonical_uri": "https://www.ilbaradmissions.org/percentile-equivalent-charts-feb-2018",
+      "creators": [
+        "Illinois Board of Admissions to the Bar"
+      ],
+      "id": "em:dossier-source-work:sha256:a2e64d0c97109c831bb2facc8c180da8179ed37526502ea73dbe3016fdf003dd",
+      "key": "work-illinois-percentile-charts",
+      "kind": "report",
+      "license": "no open license confirmed",
+      "title": "Illinois February 2018 Bar Examination Percentile Equivalents",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://api.figshare.com/v2/articles/25018513",
+      "creators": [
+        "Katz et al. / The Royal Society"
+      ],
+      "id": "em:dossier-source-work:sha256:880443d56eafdb224149d953f7de48e7550d53f814008551895b180ecb4b203b",
+      "key": "work-katz-gpt4-bar",
+      "kind": "dataset",
+      "license": "CC BY 4.0; CC BY 4.0 at the article/file level; collection-level license null; no open license confirmed; no repository license at the pinned tree",
+      "title": "Appendix for GPT-4 passes the Bar Exam",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://osf.io/download/gujmp/?view_only=dcc617accc464491922b77414867a066",
+      "creators": [
+        "Eric Martínez"
+      ],
+      "id": "em:dossier-source-work:sha256:3e91b5cabaf08b648f9e9e505d7fa5e9519cca7becf3ec753b1777075e4d512b",
+      "key": "work-martinez-reanalysis",
+      "kind": "dataset",
+      "license": "CC BY 4.0; no file license confirmed; no node or file license confirmed",
+      "title": "percentile_analysis_new.Rmd",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://thebarexaminer.ncbex.org/2022-statistics/first-time-exam-takers-and-repeaters-in-2022/",
+      "creators": [
+        "National Conference of Bar Examiners"
+      ],
+      "id": "em:dossier-source-work:sha256:324982bb2b90295b84f9e309ab84ca9a46cd0f1be9e9e3079a18bcc20bf58e63",
+      "key": "work-ncbe-2022-statistics",
+      "kind": "webpage",
+      "license": "no open license confirmed",
+      "title": "First-Time Exam Takers and Repeaters in 2022",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://www.ncbex.org/exams/ube/ube-scores",
+      "creators": [
+        "National Conference of Bar Examiners"
+      ],
+      "id": "em:dossier-source-work:sha256:b47219c37f4a05fe9b0e845c88e18772c03122389c8f6d42261a6f85a8cd50d1",
+      "key": "work-ncbe-ube",
+      "kind": "webpage",
+      "license": "no open license confirmed",
+      "title": "UBE Scores",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://www.nybarexam.org/ExamStats/2022_NY_Bar_Exam_PassRates.pdf",
+      "creators": [
+        "New York State Board of Law Examiners"
+      ],
+      "id": "em:dossier-source-work:sha256:51aa3262776f5da4a8ef12ab7f49366ef761951213e3a38f519a0a6b5d6534f1",
+      "key": "work-ny-2022-passrates",
+      "kind": "report",
+      "license": "no open license confirmed",
+      "title": "New York Bar Exam 2022 Statistics",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://arxiv.org/pdf/2303.08774v1",
+      "creators": [
+        "OpenAI"
+      ],
+      "id": "em:dossier-source-work:sha256:2c6c231a62e11f961467d990d3bd0ad2d4d4568fcd39891c16e6fe4622e9448b",
+      "key": "work-openai-gpt4-report",
+      "kind": "paper",
+      "license": "arXiv non-exclusive distribution license; no Creative Commons license confirmed",
+      "title": "GPT-4 Technical Report",
+      "visibility": "public"
+    },
+    {
+      "canonical_uri": "https://thebarexaminer.ncbex.org/article/spring-2022/the-testing-column-5/",
+      "creators": [
+        "Rosemary Reshetar, EdD / National Conference of Bar Examiners"
+      ],
+      "id": "em:dossier-source-work:sha256:802fad21dc2e69f5baff90d345e036b898bf958351af8eae39f346d23e005a12",
+      "key": "work-reshetar-testing-column-february-july",
+      "kind": "webpage",
+      "license": "no open license confirmed",
+      "title": "The Testing Column: Why Are February Bar Exam Pass Rates Lower than July Pass Rates?",
+      "visibility": "public"
+    }
+  ],
+  "spans": [
+    {
+      "digest": "sha256:b3b8f789db7571a4fd8ed73e5380f2847aae920172722b9f6f51eec96c62e9ce",
+      "edition_key": "edition-illinois-feb-2018",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cells": [
+            {
+              "cell_id": "cell-illinois-feb-2018-300",
+              "percentile": 90,
+              "score": 300
+            },
+            {
+              "cell_id": "cell-illinois-feb-2018-290",
+              "percentile": 85,
+              "score": 290
+            }
+          ],
+          "format": "table-cell-transcription",
+          "locator": "total-scale table, rows 300 and 290",
+          "normalization": "exact-cell-text",
+          "span_id": "span-illinois-feb-2018-anchors",
+          "supports": "The chart brackets 298 but contains no printed 298 row or interpolation rule."
+        }
+      },
+      "id": "em:dossier-span:sha256:56a011a09e4e7dd05afbc0309c94d4dcfa1ecf1d6fd3df6a6a6f65204c7ccf03",
+      "key": "span-illinois-feb-2018-anchors",
+      "locator": {
+        "label": "total-scale table, rows 300 and 290",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:29f7ab38f7ff54e4576aa5b3c6fd310debd0520513f68fc3e21744af073923f8",
+      "edition_key": "edition-illinois-feb-2019",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cells": [
+            {
+              "cell_id": "cell-illinois-feb-2019-300",
+              "percentile": 90,
+              "score": 300
+            },
+            {
+              "cell_id": "cell-illinois-feb-2019-290",
+              "percentile": 83,
+              "score": 290
+            }
+          ],
+          "format": "table-cell-transcription",
+          "locator": "total-scale table, rows 300 and 290",
+          "normalization": "exact-cell-text",
+          "span_id": "span-illinois-feb-2019-anchors",
+          "supports": "This later February chart also brackets 298 but supplies no interpolation rule."
+        }
+      },
+      "id": "em:dossier-span:sha256:1e2736835309f364d7f8553b6e26a7c9802dce86c720c84fa2097f7e3a755ca3",
+      "key": "span-illinois-feb-2019-anchors",
+      "locator": {
+        "label": "total-scale table, rows 300 and 290",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:fe399dcc350821ac8ab546593931f1e34b24d811cad9062126e487a53783a783",
+      "edition_key": "edition-illinois-jul-2018",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cells": [
+            {
+              "cell_id": "cell-illinois-jul-2018-300",
+              "percentile": 70,
+              "score": 300
+            },
+            {
+              "cell_id": "cell-illinois-jul-2018-290",
+              "percentile": 59,
+              "score": 290
+            }
+          ],
+          "format": "table-cell-transcription",
+          "locator": "total-scale table, rows 300 and 290",
+          "normalization": "exact-cell-text",
+          "span_id": "span-illinois-jul-2018-anchors",
+          "supports": "The July chart places the same score region far below the February chart."
+        }
+      },
+      "id": "em:dossier-span:sha256:3ec4b97842a7b34ea0a2857a50da7f6a02eb1556351c7ec727b2cccd2743637c",
+      "key": "span-illinois-jul-2018-anchors",
+      "locator": {
+        "label": "total-scale table, rows 300 and 290",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:57920d8649f509df54908d08dfaefb9860e1afc005095c6cd4cb051344dff044",
+      "edition_key": "edition-katz-rsta-2024",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "abstract",
+          "quote": "Graded across the UBE components, in the manner in which a human test-taker would be, GPT-4 scores approximately 297 points",
+          "span_id": "span-katz-vor-abstract-score",
+          "supports": "The study version of record reports approximately 297, not 298."
+        }
+      },
+      "id": "em:dossier-span:sha256:ee862ec363b34142a0bebb11247959c3457a8982de69653364d7d36f10059703",
+      "key": "span-katz-vor-abstract-score",
+      "locator": {
+        "label": "abstract",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e6c808d4b4dcd243210518497a0c8788d06ee91d8571c474c13514c2c8afe04b",
+      "edition_key": "edition-katz-rsta-2024",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cells": [
+            {
+              "cell_id": "cell-katz-gpt4-mbe",
+              "column": "GPT-4",
+              "row": "MBE",
+              "text": "157 points"
+            },
+            {
+              "cell_id": "cell-katz-gpt4-mee",
+              "column": "GPT-4",
+              "row": "MEE",
+              "text": "84 points"
+            },
+            {
+              "cell_id": "cell-katz-gpt4-mpt",
+              "column": "GPT-4",
+              "row": "MPT",
+              "text": "56 points"
+            },
+            {
+              "cell_id": "cell-katz-gpt4-overall",
+              "column": "GPT-4",
+              "row": "overall score",
+              "text": "297 points"
+            }
+          ],
+          "format": "table-cell-transcription",
+          "locator": "§4(d), Table 7",
+          "normalization": "exact-cell-text",
+          "span_id": "span-katz-vor-components",
+          "supports": "The version-of-record component scores sum to 297."
+        }
+      },
+      "id": "em:dossier-span:sha256:293687df5cf4b74d839237414173205591aacf4850103e1621aece4f21fb763b",
+      "key": "span-katz-vor-components",
+      "locator": {
+        "label": "§4(d), Table 7",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:0ce9516e5b95f3b35121d471b8ab8d39b67199ffb40941deb28e07e2a07926ab",
+      "edition_key": "edition-katz-rsta-2024",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "footnote 4",
+          "quote": "Best prompt and/or hyperparameter combination on the MBE would push this score to 298 or higher. Here, we report the MBE average of 75.7% which composites to a 297.",
+          "span_id": "span-katz-vor-score-discrepancy",
+          "supports": "The source itself explains the 298-versus-approximately-297 discrepancy as a scoring-choice difference."
+        }
+      },
+      "id": "em:dossier-span:sha256:5dd561ae54601a051ef573af4ec859665f4f1d2fb801788a1339de8b16dd44fc",
+      "key": "span-katz-vor-score-discrepancy",
+      "locator": {
+        "label": "footnote 4",
+        "pointer": "/source_record/spans/2",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:53c5c3cd65f0c06ae12ec339f9a8f503b977ebaf9c1cd8723d9caecfa42bcdcb",
+      "edition_key": "edition-katz-rsta-2024",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "footnote 5",
+          "quote": "there is no publicly available July 2022 national bar exam percentiles against which to compare these results",
+          "span_id": "span-katz-vor-percentile-boundary",
+          "supports": "The study states that the matching national July 2022 comparison distribution was unavailable."
+        }
+      },
+      "id": "em:dossier-span:sha256:ca6ba91cbc68c2a3aa343fc059aa3058d27baa364e998d9c05393578c6045d5c",
+      "key": "span-katz-vor-percentile-boundary",
+      "locator": {
+        "label": "footnote 5",
+        "pointer": "/source_record/spans/3",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:7e376175b36f8e2809bc74e378c7354858289a689370b70f82df2965d32b9026",
+      "edition_key": "edition-katz-rsta-2024",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-contiguous-text",
+          "locator": "footnote 5",
+          "normalization": "collapse-whitespace",
+          "quote": "While we are not fully convinced of the methodological approach taken in some subsequent analysis [78], we do agree that it would be better to consider the raw 297 UBE as falling within a range between 68th and 90th percentile (depending on the precise state and timing of the exam administration).",
+          "span_id": "span-katz-vor-range",
+          "supports": "The version of record treats the percentile as comparison-population-dependent."
+        }
+      },
+      "id": "em:dossier-span:sha256:477c595f89b6efc4f4fac04d627e65d95daa7929d10f76d3486a96c6c8bf8b06",
+      "key": "span-katz-vor-range",
+      "locator": {
+        "label": "footnote 5",
+        "pointer": "/source_record/spans/4",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:9107c310f1bb38d087940d7432c989d2ab81d8e79356bc6a42a6c64bbf2db37e",
+      "edition_key": "edition-katz-rsta-2024",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-segments",
+          "locator": "§3(a), materials",
+          "normalization": "collapse-whitespace",
+          "segments": [
+            {
+              "segment_id": "segment-katz-mee-mpt-materials",
+              "text": "For the MEE and the MPT, we collected the most recently released questions from the July 2022 Bar Examination."
+            },
+            {
+              "segment_id": "segment-katz-mbe-materials",
+              "text": "The MBE questions used in this study are official multistate bar examination questions from previous administrations of the UBE [65]."
+            }
+          ],
+          "span_id": "span-katz-vor-materials",
+          "supports": "The study components share disclosed exam-item materials and administration lineage."
+        }
+      },
+      "id": "em:dossier-span:sha256:076f2679614413d88a366ceec578a4c96672df24e2fe9dc8afe1242c8c7a5496",
+      "key": "span-katz-vor-materials",
+      "locator": {
+        "label": "§3(a), materials",
+        "pointer": "/source_record/spans/5",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:9912e2d4f1e369b4f9529d27b6d1fef5936814f0c6151a9fe9f675af8c375e0c",
+      "edition_key": "edition-martinez-osf-analysis-new",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cells": [
+            {
+              "cell_id": "cell-martinez-july-mbe-85",
+              "count": 2,
+              "score": 85
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-90",
+              "count": 2,
+              "score": 90
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-95",
+              "count": 5,
+              "score": 95
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-100",
+              "count": 6,
+              "score": 100
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-105",
+              "count": 13,
+              "score": 105
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-110",
+              "count": 22,
+              "score": 110
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-115",
+              "count": 33,
+              "score": 115
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-120",
+              "count": 56,
+              "score": 120
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-125",
+              "count": 73,
+              "score": 125
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-130",
+              "count": 78,
+              "score": 130
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-135",
+              "count": 104,
+              "score": 135
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-140",
+              "count": 96,
+              "score": 140
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-145",
+              "count": 101,
+              "score": 145
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-150",
+              "count": 99,
+              "score": 150
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-155",
+              "count": 99,
+              "score": 155
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-160",
+              "count": 79,
+              "score": 160
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-165",
+              "count": 64,
+              "score": 165
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-170",
+              "count": 38,
+              "score": 170
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-175",
+              "count": 22,
+              "score": 175
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-180",
+              "count": 8,
+              "score": 180
+            },
+            {
+              "cell_id": "cell-martinez-july-mbe-185",
+              "count": 2,
+              "score": 185
+            }
+          ],
+          "code_lines": [
+            {
+              "line_id": "line-martinez-july-distribution-55",
+              "text": "July_distribution <- c(rep(85, 2), rep(90, 2), rep(95, 5), rep(100, 6), rep(105, 13),"
+            },
+            {
+              "line_id": "line-martinez-july-distribution-56",
+              "text": "                      rep(110, 22), rep(115, 33), rep(120, 56), rep(125, 73), rep(130, 78),"
+            },
+            {
+              "line_id": "line-martinez-july-distribution-57",
+              "text": "                      rep(135, 104), rep(140, 96), rep(145, 101), rep(150, 99), rep(155, 99),"
+            },
+            {
+              "line_id": "line-martinez-july-distribution-58",
+              "text": "                      rep(160, 79), rep(165, 64), rep(170, 38), rep(175, 22), rep(180, 8), rep(185, 2))"
+            }
+          ],
+          "format": "code-table-transcription",
+          "locator": "lines 55-58",
+          "normalization": "exact-code-text",
+          "span_id": "span-martinez-script-july-mbe-distribution",
+          "supports": "The executable analysis expands these 21 score-count cells to estimate the July MBE sample standard deviation."
+        }
+      },
+      "id": "em:dossier-span:sha256:c93f04ab5c92ae7955b75278cff1f0392210fc5462823dbe30cba42b5ffbab38",
+      "key": "span-martinez-script-july-mbe-distribution",
+      "locator": {
+        "label": "lines 55-58",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:29d389334aa2b12045b1d9febb630b66d80d832615d0764534e4e0a2ac49b55b",
+      "edition_key": "edition-martinez-osf-analysis-new",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "code-segment-transcription",
+          "locator": "lines 104-112",
+          "normalization": "exact-code-text",
+          "segments": [
+            {
+              "segment_id": "segment-martinez-code-mean",
+              "text": "mean <- 287.6"
+            },
+            {
+              "segment_id": "segment-martinez-code-quantile",
+              "text": "quantile_value <- 266"
+            },
+            {
+              "segment_id": "segment-martinez-code-percentile",
+              "text": "percentile <- 0.27  # 24%"
+            },
+            {
+              "segment_id": "segment-martinez-code-z-score",
+              "text": "z_score <- qnorm(percentile)"
+            },
+            {
+              "segment_id": "segment-martinez-code-ube-sd",
+              "text": "sd_UBE <- (quantile_value - mean) / z_score"
+            }
+          ],
+          "span_id": "span-martinez-script-ube-sd",
+          "supports": "The script derives UBE standard deviation from mean 287.6, cutoff 266, and non-pass proportion 0.27."
+        }
+      },
+      "id": "em:dossier-span:sha256:7c297fee53ebcae4ddc2b4bd2301d9742b570914c364b3993890c92c3ab42d83",
+      "key": "span-martinez-script-ube-sd",
+      "locator": {
+        "label": "lines 104-112",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:2b759e8e3e101214c3c2218fc2d6d3bd9bb25f03a25adecc9ce37c5217d8a8c3",
+      "edition_key": "edition-martinez-osf-analysis-new",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "code-segment-transcription",
+          "locator": "lines 106-109",
+          "normalization": "exact-code-text",
+          "segments": [
+            {
+              "segment_id": "segment-martinez-code-comment-value",
+              "text": "percentile <- 0.27  # 24%"
+            },
+            {
+              "segment_id": "segment-martinez-code-comment-prose",
+              "text": "# Calculate the z-score for the 24th percentile"
+            }
+          ],
+          "span_id": "span-martinez-script-comment-conflict",
+          "supports": "The executable value is 0.27 while adjacent comments say 24%, an internal code-comment discrepancy."
+        }
+      },
+      "id": "em:dossier-span:sha256:604d16bac6cb6e327c75f0e46d0d0e0cf615793113672922b1f14062213c66b7",
+      "key": "span-martinez-script-comment-conflict",
+      "locator": {
+        "label": "lines 106-109",
+        "pointer": "/source_record/spans/2",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e4f31613c4c910062cc0c84109333b81d866660c9565c354ac91f5fc1f76716f",
+      "edition_key": "edition-martinez-osf-analysis-new",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "code-segment-transcription",
+          "locator": "lines 166-168",
+          "normalization": "exact-code-text",
+          "segments": [
+            {
+              "segment_id": "segment-martinez-code-filter-ube",
+              "text": "filtered_data_ube <- data_ube[data_ube >= 270]"
+            },
+            {
+              "segment_id": "segment-martinez-code-filter-mbe",
+              "text": "filtered_data_mbe <- data_mbe[data_mbe >= 135]"
+            },
+            {
+              "segment_id": "segment-martinez-code-filter-essay",
+              "text": "filtered_data_essay <- data_essay[data_essay >= 135]"
+            }
+          ],
+          "span_id": "span-martinez-script-thresholds",
+          "supports": "The passers analysis filters UBE at 270 even though the SD input uses New York's 266 cutoff."
+        }
+      },
+      "id": "em:dossier-span:sha256:7da66b96a0ba3914388da9f878232040b78dc3be4727b77afe738797c9e53c8b",
+      "key": "span-martinez-script-thresholds",
+      "locator": {
+        "label": "lines 166-168",
+        "pointer": "/source_record/spans/3",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:29b4a769a3ca1d4de9c23bb7a8ffa40dca88f0071635f08c501122c0fb998dd7",
+      "edition_key": "edition-martinez-2024-vor",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-segments",
+          "locator": "abstract, journal p. 581",
+          "normalization": "collapse-whitespace",
+          "segments": [
+            {
+              "segment_id": "segment-martinez-abstract-first-time",
+              "text": "Third, examining official NCBE data and using several conservative statistical assumptions, GPT-4’s performance against first-time test takers is estimated to be ∼62nd percentile, including ∼42nd percentile on essays."
+            },
+            {
+              "segment_id": "segment-martinez-abstract-passers",
+              "text": "Fourth, when examining only those who passed the exam (i.e. licensed or license-pending attorneys), GPT-4’s performance is estimated to drop to ∼48th percentile overall, and ∼15th percentile on essays."
+            }
+          ],
+          "span_id": "span-martinez-abstract-ranks",
+          "supports": "The abstract reports modeled 62nd and 48th ranks for distinct comparison populations."
+        }
+      },
+      "id": "em:dossier-span:sha256:01063b773261eb48e045c4cba80256039f319207d4abe45751cc80bac3eb3142",
+      "key": "span-martinez-abstract-ranks",
+      "locator": {
+        "label": "abstract, journal p. 581",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:200178847adc47281f699728e39c7ce7bb3f84704ed70de68b2e0c012f955be5",
+      "edition_key": "edition-martinez-2024-vor",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cells": [
+            {
+              "cell_id": "cell-martinez-july-ube",
+              "column": "UBE",
+              "row": "July test-takers",
+              "text": "1st–68th"
+            },
+            {
+              "cell_id": "cell-martinez-first-timers-ube",
+              "column": "UBE",
+              "row": "All first-timers",
+              "text": "2nd–62rd"
+            },
+            {
+              "cell_id": "cell-martinez-qualified-attorneys-ube",
+              "column": "UBE",
+              "row": "Qualified attorneys",
+              "text": "0th–45th"
+            }
+          ],
+          "format": "table-cell-transcription",
+          "locator": "Table 3, journal p. 591",
+          "normalization": "exact-cell-text",
+          "span_id": "span-martinez-table-45",
+          "supports": "The table reports 45th, not 48th, for the passers/qualified-attorneys comparison."
+        }
+      },
+      "id": "em:dossier-span:sha256:474fb98347f7e6e5fa04ed79707987e9ee63b657d6f1c5e2435843ec6a1cddbe",
+      "key": "span-martinez-table-45",
+      "locator": {
+        "label": "Table 3, journal p. 591",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:3a80dd544d7516c8d33d8b55a4cdf44a2975a279ad377d53b09927cfcc26a733",
+      "edition_key": "edition-martinez-2024-vor",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-contiguous-text",
+          "locator": "§3.1, journal pp. 588-589",
+          "normalization": "collapse-whitespace",
+          "quote": "Assuming that UBE scores (as well as MBE and essay subscores) are normally distributed, percentiles of GPT’s score can be directly computed after computing the parameters of these distributions (i.e. the mean and standard deviation).",
+          "span_id": "span-martinez-model-assumptions",
+          "supports": "The re-analysis is model-based and depends on a normality assumption."
+        }
+      },
+      "id": "em:dossier-span:sha256:cceeb7bbb8f7496871eeb81724f8be4bcd784bde0cbf28a236ecd81d5ad7b8b3",
+      "key": "span-martinez-model-assumptions",
+      "locator": {
+        "label": "§3.1, journal pp. 588-589",
+        "pointer": "/source_record/spans/2",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:d292fbd6a0a2c16559d69c651b273374cef4c7383b7c2605b97f85381bf8c62d",
+      "edition_key": "edition-martinez-2024-vor",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-segments",
+          "locator": "§3.1, journal p. 588",
+          "normalization": "collapse-whitespace",
+          "segments": [
+            {
+              "segment_id": "segment-martinez-essay-mean",
+              "text": "Thus, the methodology here assumed that the mean first-time essay score is 143.8."
+            },
+            {
+              "segment_id": "segment-martinez-ube-mean",
+              "text": "Given that the total UBE score is computed directly by adding MBE and essay scores (National Conference of Bar Examiners n.d.-h), an assumption was made that mean first-time UBE score is 287.6 (143.8 + 143.8)."
+            }
+          ],
+          "span_id": "span-martinez-mean-assumption",
+          "supports": "The UBE mean is derived from an assumed essay mean, not directly observed as a national UBE mean."
+        }
+      },
+      "id": "em:dossier-span:sha256:ecc711638dfc4b30115783c7b8d7f32b292b8c723a36f8dfbf421e41923b9461",
+      "key": "span-martinez-mean-assumption",
+      "locator": {
+        "label": "§3.1, journal p. 588",
+        "pointer": "/source_record/spans/3",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:94dbb34cb0b30aefe6ad46a54298be28df4bf1014c3a0d389f63e4615b3dc9bf",
+      "edition_key": "edition-martinez-2024-vor",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-contiguous-text",
+          "locator": "§3.2.2, journal p. 591",
+          "normalization": "collapse-whitespace",
+          "quote": "With regard to the aggregate UBE score, GPT-4 scored in the ∼45th percentile.",
+          "span_id": "span-martinez-results-45",
+          "supports": "The results section reports 45th among those who passed."
+        }
+      },
+      "id": "em:dossier-span:sha256:e4d9982c357259d2e11c9d6e647569ca0338134240924a766792fbba54de7502",
+      "key": "span-martinez-results-45",
+      "locator": {
+        "label": "§3.2.2, journal p. 591",
+        "pointer": "/source_record/spans/4",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:d999f5238c2ce339081283354841c9949e5a6a71a5370ea28eb635484832a707",
+      "edition_key": "edition-martinez-2024-vor",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-contiguous-text",
+          "locator": "discussion, journal p. 598",
+          "normalization": "collapse-whitespace",
+          "quote": "when examining only those who passed the exam, GPT-4’s performance is estimated to drop to ∼48th percentile overall, and ∼15th percentile on essays.",
+          "span_id": "span-martinez-discussion-48",
+          "supports": "The discussion reports 48th, creating an internal 45th-versus-48th conflict."
+        }
+      },
+      "id": "em:dossier-span:sha256:0b68dabbe1d021424ed271a53217094910a82be36032ddf2fb7d527e519ac280",
+      "key": "span-martinez-discussion-48",
+      "locator": {
+        "label": "discussion, journal p. 598",
+        "pointer": "/source_record/spans/5",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:11db34f6066f861f338266e98c11852743b727734f62c1a773ae257bf219e609",
+      "edition_key": "edition-martinez-2024-vor",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-contiguous-text",
+          "locator": "introduction, journal p. 584",
+          "normalization": "collapse-whitespace",
+          "quote": "The paper successfully replicates the MBE score of 158, but highlights several methodological issues in the grading of the MPT + MEE components of the exam, which call into question the validity of the essay score (140).",
+          "span_id": "span-martinez-score-validation",
+          "supports": "The MBE and author-graded essay components have different validation status."
+        }
+      },
+      "id": "em:dossier-span:sha256:47ce609849ae1ff1224df62ce9b453707dd9b7a93cd4413822c84178eac7f853",
+      "key": "span-martinez-score-validation",
+      "locator": {
+        "label": "introduction, journal p. 584",
+        "pointer": "/source_record/spans/6",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:1feddb6e088dae626d7d1cc8f6a0207c19ac7e9f736830bf3a3ae4085e374a42",
+      "edition_key": "edition-ncbe-first-repeat-2022",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-contiguous-text",
+          "locator": "table note",
+          "normalization": "collapse-whitespace",
+          "quote": "NOTE: First-time exam and repeat test taker data supplied by the jurisdictions in this chart are based on those examinees’ testing experience in the reporting jurisdiction only and do not account for possible previous attempts at the bar examination in other jurisdictions.",
+          "span_id": "span-ncbe-jurisdiction-status",
+          "supports": "Jurisdiction-reported status is not the same denominator as NCBE's cross-jurisdiction MBE-based classification."
+        }
+      },
+      "id": "em:dossier-span:sha256:f8fe10f696eb9dc37fa067a0b10401f5bf1e29589d6c6071cfaa44c15e59b183",
+      "key": "span-ncbe-jurisdiction-status",
+      "locator": {
+        "label": "table note",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:0f6d015b519414ebec9cd4f12bbf7dea62dc9f77fb21378d73690b451d5f0f1e",
+      "edition_key": "edition-ncbe-mbe-2022",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cells": [
+            {
+              "cell_id": "cell-ncbe-mbe-count-february",
+              "column": "February",
+              "row": "Number of Examinees",
+              "text": "16,504"
+            },
+            {
+              "cell_id": "cell-ncbe-mbe-count-july",
+              "column": "July",
+              "row": "Number of Examinees",
+              "text": "44,705"
+            },
+            {
+              "cell_id": "cell-ncbe-mbe-count-overall",
+              "column": "2022 Overall",
+              "row": "Number of Examinees",
+              "text": "61,209"
+            },
+            {
+              "cell_id": "cell-ncbe-mbe-mean-february",
+              "column": "February",
+              "row": "Mean Scaled Score",
+              "text": "132.6"
+            },
+            {
+              "cell_id": "cell-ncbe-mbe-mean-july",
+              "column": "July",
+              "row": "Mean Scaled Score",
+              "text": "140.3"
+            },
+            {
+              "cell_id": "cell-ncbe-mbe-mean-overall",
+              "column": "2022 Overall",
+              "row": "Mean Scaled Score",
+              "text": "138.3"
+            },
+            {
+              "cell_id": "cell-ncbe-mbe-sd-february",
+              "column": "February",
+              "row": "Standard Deviation",
+              "text": "15.4"
+            },
+            {
+              "cell_id": "cell-ncbe-mbe-sd-july",
+              "column": "July",
+              "row": "Standard Deviation",
+              "text": "17.0"
+            },
+            {
+              "cell_id": "cell-ncbe-mbe-sd-overall",
+              "column": "2022 Overall",
+              "row": "Standard Deviation",
+              "text": "17.0"
+            }
+          ],
+          "format": "table-cell-transcription",
+          "locator": "2022 MBE National Summary Statistics",
+          "normalization": "exact-cell-text",
+          "span_id": "span-ncbe-mbe-2022-counts",
+          "supports": "February, July, and overall MBE populations differ in size and distribution."
+        }
+      },
+      "id": "em:dossier-span:sha256:b00f1cab5f375334f432b9de6ffb480cebae7ee1557ad424feb6a6223ae1cf25",
+      "key": "span-ncbe-mbe-2022-counts",
+      "locator": {
+        "label": "2022 MBE National Summary Statistics",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:c389829939a67dd8c1d353a75cb1bdbc6823160e0582ba17bf83ba6d1e939dbc",
+      "edition_key": "edition-ncbe-snapshot-2022",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-segments",
+          "locator": "NCBE MBE-based data, February and July 2022 totals",
+          "normalization": "collapse-whitespace",
+          "segments": [
+            {
+              "segment_id": "segment-ncbe-february-repeaters-count",
+              "text": "February likely repeaters taking: 11,289"
+            },
+            {
+              "segment_id": "segment-ncbe-february-repeaters-percent",
+              "text": "68% of February 2022 examinees were likely repeaters"
+            },
+            {
+              "segment_id": "segment-ncbe-february-first-timers-count",
+              "text": "February likely first-timers taking: 5,215"
+            },
+            {
+              "segment_id": "segment-ncbe-february-first-timers-percent",
+              "text": "32% of February 2022 examinees were likely first-time takers"
+            },
+            {
+              "segment_id": "segment-ncbe-july-repeaters-count",
+              "text": "July likely repeaters taking: 10,200"
+            },
+            {
+              "segment_id": "segment-ncbe-july-repeaters-percent",
+              "text": "23% of July 2022 examinees were likely repeaters"
+            },
+            {
+              "segment_id": "segment-ncbe-july-first-timers-count",
+              "text": "July likely first-timers taking: 34,505"
+            },
+            {
+              "segment_id": "segment-ncbe-july-first-timers-percent",
+              "text": "77% of July 2021 examinees were likely first-time takers"
+            }
+          ],
+          "span_id": "span-ncbe-snapshot-composition",
+          "supports": "February and July have materially different inferred first-time/repeater composition."
+        }
+      },
+      "id": "em:dossier-span:sha256:352571f2e61d157a8943ca6216ef23f38b6ae5cde1b55838d1a424bcc4ee9f09",
+      "key": "span-ncbe-snapshot-composition",
+      "locator": {
+        "label": "NCBE MBE-based data, February and July 2022 totals",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:6a3cc9c780c5f1bab27881609822639c99cf920c1064c85ef0789321b8161c9b",
+      "edition_key": "edition-ncbe-snapshot-2022",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "NCBE MBE-based data, July 2022 section",
+          "quote": "77% of July 2021 examinees were likely first-time takers",
+          "span_id": "span-ncbe-snapshot-typo",
+          "supports": "The page's July 2022 section contains an apparent 2021 year-label typo that must not be silently corrected in quotation."
+        }
+      },
+      "id": "em:dossier-span:sha256:18c342f29fabaa7237022a7223cdfee6b71eea32be78bf2daaacce144441d8c3",
+      "key": "span-ncbe-snapshot-typo",
+      "locator": {
+        "label": "NCBE MBE-based data, July 2022 section",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:8e029f660745d0cb0de2acd77e8d6e8c8f9c544d1ba560c3250bc30861ad653b",
+      "edition_key": "edition-ncbe-ube-2022",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cells": [
+            {
+              "cell_id": "cell-ncbe-ube-score-266",
+              "column": "Score",
+              "row": "266",
+              "text": "266"
+            },
+            {
+              "cell_id": "cell-ncbe-ube-jurisdictions-266",
+              "column": "Jurisdictions",
+              "row": "266",
+              "text": "Connecticut; District of Columbia; Illinois; Iowa; Kansas; Kentucky; Maryland; Montana; New Jersey; New York; South Carolina; Virgin Islands"
+            }
+          ],
+          "format": "table-cell-transcription",
+          "locator": "Minimum Passing UBE Score by Jurisdiction in 2022, row 266",
+          "normalization": "exact-cell-text",
+          "span_id": "span-ncbe-ny-cutoff-2022",
+          "supports": "New York's 2022 minimum passing UBE score was 266."
+        }
+      },
+      "id": "em:dossier-span:sha256:160241d336f3cc06be5b4d52f6ac9229563916a9ca197dbbacb968b7c60981f8",
+      "key": "span-ncbe-ny-cutoff-2022",
+      "locator": {
+        "label": "Minimum Passing UBE Score by Jurisdiction in 2022, row 266",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:36c870be616697365e98e9eff8c3cdc750fb5d6e58f9e53503b18a5c39184356",
+      "edition_key": "edition-ncbe-ube-scores-2026-08-27",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "legacy UBE scoring overview",
+          "quote": "The MBE is weighted 50%, the MEE 30%, and the MPT 20%. Legacy UBE total scores are reported on a 400-point scale.",
+          "span_id": "span-ncbe-ube-weights",
+          "supports": "The score is a 400-point weighted composite, not a direct percentile."
+        }
+      },
+      "id": "em:dossier-span:sha256:f8f5356b4ee9007a4edd1f95933fbc5e2b620c253cf0638fb2c8ecc9a0f1b421",
+      "key": "span-ncbe-ube-weights",
+      "locator": {
+        "label": "legacy UBE scoring overview",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e55680bc3d09d5c2968a8449c122db232a89c5f89b29dc9944b69c2b1eeeee11",
+      "edition_key": "edition-ny-passrates-2022",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "cells": [
+            {
+              "cell_id": "cell-ny-first-timers-took",
+              "column": "Took",
+              "row": "ALL Candidates",
+              "text": "9,457"
+            },
+            {
+              "cell_id": "cell-ny-first-timers-passed",
+              "column": "Passed",
+              "row": "ALL Candidates",
+              "text": "6,867"
+            },
+            {
+              "cell_id": "cell-ny-first-timers-rate",
+              "column": "Rate",
+              "row": "ALL Candidates",
+              "text": "73%"
+            }
+          ],
+          "format": "table-cell-transcription",
+          "locator": "FIRST TIMERS, ALL Candidates, Combined 2022",
+          "normalization": "exact-cell-text",
+          "span_id": "span-ny-first-timers-2022",
+          "supports": "The combined first-time pass rate was 73%, so the complementary non-pass proportion used by the re-analysis is 27%."
+        }
+      },
+      "id": "em:dossier-span:sha256:468763dc341321dd638ef9a08f6606ac5e02806a4086e4b0ba7bc05400c1d703",
+      "key": "span-ny-first-timers-2022",
+      "locator": {
+        "label": "FIRST TIMERS, ALL Candidates, Combined 2022",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:61393f3895d80b5bb5e4e4240ff6c4b8bb9246f22b58ac1a766643c63887e95a",
+      "edition_key": "edition-openai-2303-08774v1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "abstract, PDF p. 1",
+          "quote": "passing a simulated bar exam with a score around the top 10% of test takers",
+          "span_id": "span-openai-v1-abstract-top-ten",
+          "supports": "The launch report used the top-10-percent wording and said test takers, not lawyers."
+        }
+      },
+      "id": "em:dossier-span:sha256:c574b1bd1adfdbb6b446b321eb656c49dc7a710ed609089c52069dd4da29d296",
+      "key": "span-openai-v1-abstract-top-ten",
+      "locator": {
+        "label": "abstract, PDF p. 1",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:9b8313637a2bd3881a98d675793538fbeb77ac8ac64f945ca8ae2d962d3fd79a",
+      "edition_key": "edition-openai-2303-08774v1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "Table 1, PDF p. 5",
+          "quote": "Uniform Bar Exam (MBE+MEE+MPT) 298 / 400 (~90th)",
+          "span_id": "span-openai-v1-table-score",
+          "supports": "The report displayed 298/400 and approximately 90th percentile together."
+        }
+      },
+      "id": "em:dossier-span:sha256:959d593b53bd7991549571a95aa96133113958253fa6176851f1fb9bc6203534",
+      "key": "span-openai-v1-table-score",
+      "locator": {
+        "label": "Table 1, PDF p. 5",
+        "pointer": "/source_record/spans/1",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:5abbca6a7e803506a3ed9db112873db65bfb4ba80dde648b0ba7b9ae96161a9f",
+      "edition_key": "edition-openai-2303-08774v1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "Appendix A.5, PDF p. 25",
+          "quote": "Percentiles are based on the most recently available score distributions for test-takers of each exam type.",
+          "span_id": "span-openai-v1-scoring",
+          "supports": "The report described a generic percentile method but did not name a UBE distribution in this passage."
+        }
+      },
+      "id": "em:dossier-span:sha256:2400a4ddb632abda72527df1b7e8f30dd7f400818992926a8e8119c057e9aff5",
+      "key": "span-openai-v1-scoring",
+      "locator": {
+        "label": "Appendix A.5, PDF p. 25",
+        "pointer": "/source_record/spans/2",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:9dc5f4260c333122ddb37e7ca7e2f3eecd1d1976475145759b772a7701c58f1e",
+      "edition_key": "edition-openai-2303-08774v1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "Appendix A.6, PDF p. 25",
+          "quote": "We ran GPT-4 multiple-choice questions using a model snapshot from March 1, 2023, whereas the free-response questions were run and scored using a non-final model snapshot from February 23, 2023.",
+          "span_id": "span-openai-v1-snapshots",
+          "supports": "The reported composite used two historical model snapshots rather than a stable current product identity."
+        }
+      },
+      "id": "em:dossier-span:sha256:6f6629457faeeb750d379bc919a2030743b0fd07db285521e3a54a46f02ab3ab",
+      "key": "span-openai-v1-snapshots",
+      "locator": {
+        "label": "Appendix A.6, PDF p. 25",
+        "pointer": "/source_record/spans/3",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:e0b72dc61e4614a425e991b3fd9641db637b3516311659728f615bed0ea4100c",
+      "edition_key": "edition-openai-2303-08774v1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-contiguous-text",
+          "locator": "Appendix A.1, PDF p. 23",
+          "normalization": "collapse-whitespace",
+          "quote": "The Uniform Bar Exam was run by our collaborators at CaseText and Stanford CodeX.",
+          "span_id": "span-openai-v1-collaborators",
+          "supports": "The launch report declares author-social collaboration rather than an independent vendor-versus-study replication."
+        }
+      },
+      "id": "em:dossier-span:sha256:61f2be1da866e5764042a9022c4a0a0eb5d320a0df71f95a24a1a1eb5fd271ac",
+      "key": "span-openai-v1-collaborators",
+      "locator": {
+        "label": "Appendix A.1, PDF p. 23",
+        "pointer": "/source_record/spans/4",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:eebbf2c0c2999d72a017e9af6b4799d65577fb0715ac5d85e6ee757e05aae78e",
+      "edition_key": "edition-openai-2303-08774v1",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "Appendix A.3, PDF p. 24",
+          "quote": "we simply ran these free response questions each only a single time at our best-guess temperature (0.6) and prompt",
+          "span_id": "span-openai-v1-free-response-run",
+          "supports": "The free-response component was a single best-guess run, not a repeated performance estimate."
+        }
+      },
+      "id": "em:dossier-span:sha256:8b5e9985c61e0fea14503003ec6422ec54340f4069def5d98d5e1b7147da6ba6",
+      "key": "span-openai-v1-free-response-run",
+      "locator": {
+        "label": "Appendix A.3, PDF p. 24",
+        "pointer": "/source_record/spans/5",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:62e0aa067c561b82430a89c5dc4f78c7c56a813ffcc28f0b4a03e13bf435815e",
+      "edition_key": "edition-openai-2303-08774v6",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "locator": "Table 1, PDF p. 5",
+          "quote": "Uniform Bar Exam (MBE+MEE+MPT) 298 / 400 (~90th)",
+          "span_id": "span-openai-v6-table-score",
+          "supports": "The later arXiv edition retained the same displayed score and percentile label."
+        }
+      },
+      "id": "em:dossier-span:sha256:b140fc449913ee25e879a4c74632f4c5487097525c8f3ad313155cb6b9de6522",
+      "key": "span-openai-v6-table-score",
+      "locator": {
+        "label": "Table 1, PDF p. 5",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    },
+    {
+      "digest": "sha256:1452bea6f3158b2b58d90800d02a6cf2348935e6a194e07ab22efc88c5f26302",
+      "edition_key": "edition-reshetar-testing-column-spring-2022",
+      "extent": {
+        "type": "json-value",
+        "value": {
+          "format": "exact-contiguous-text",
+          "locator": "paragraph beginning 'The numbers from 2019'",
+          "normalization": "collapse-whitespace",
+          "quote": "The numbers from 2019, the last prepandemic year, are typical: all likely first-time test takers earned an average MBE score of 143.8. Likely repeaters, however, earned an average MBE score of 132.4.",
+          "span_id": "span-reshetar-first-time-mean",
+          "supports": "The re-analysis uses 143.8 as the first-time MBE mean."
+        }
+      },
+      "id": "em:dossier-span:sha256:6f0efeaf8fa67729f3f75793e1b64ce9961bb3463e5acc9d9c4a1d5aeb588520",
+      "key": "span-reshetar-first-time-mean",
+      "locator": {
+        "label": "paragraph beginning 'The numbers from 2019'",
+        "pointer": "/source_record/spans/0",
+        "type": "json-pointer"
+      },
+      "visibility": "public"
+    }
+  ],
+  "stage": "draft",
+  "title": "Case 003: What GPT-4's 90th-percentile bar-exam claim compared",
+  "visibility": "public"
+}
