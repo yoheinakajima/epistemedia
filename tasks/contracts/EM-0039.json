@@ -1,0 +1,60 @@
+{
+  "id": "EM-0039",
+  "title": "Publish the mission and four-case narrative",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Turn the four accepted How We Know cases into a coherent public introduction to Epistemedia: publish the owner-approved mission as a versioned record and deterministic About surface; explain the four distinct failure modes without changing any accepted dossier meaning; separate primary reader navigation from utility navigation; preserve honest current, live, and future capability boundaries; and publish a real-reader comprehension instrument whose completion requires actual human responses rather than synthetic inference.",
+  "depends_on": [
+    "EM-0037"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "catalog/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "research/**",
+      "catalog/dossiers/**"
+    ]
+  },
+  "required_evaluation": [
+    "byte and semantic preservation of every accepted dossier, independent review receipt, feature manifest, relation, count, evaluation, and evidence conclusion for Cases 001-004",
+    "line-by-line editorial comparison with the owner-approved mission language while preserving the distinction among truth, evidence, bounded policy-relative evaluation, provenance, and current implementation state",
+    "deterministic HTML, Markdown, and JSON parity for the About surface, including canonical URLs, stable content identities, discovery, sitemap, llms.txt, local REST, MCP, and CLI exposure where those read-only interfaces already apply",
+    "homepage first-viewport review confirming that the featured evidence case remains substantive and the site does not become a broad marketing manifesto",
+    "four-case narrative review confirming that overgeneralization, false independence, missing comparison class, and scope inflation are editorial failure-mode labels rather than stored evidence statuses or universal verdicts",
+    "primary versus utility navigation review at desktop and mobile widths with no JavaScript, native keyboard access, visible focus, no overflow, canonical internal links, and stable agent discovery",
+    "fail-closed regression tests for current live capabilities and explicitly future capabilities, including hosted API, hosted MCP, authenticated proposal submission, admission, and automatic merging",
+    "real-reader comprehension instrument review confirming that synthetic tests cover mechanics only and that no human-comprehension result is claimed without retained answers from an actual reader",
+    "public disclosure noninterference audit, whole-release identity parity, exact path-scope comparison, full deterministic make check, clean tracked state, and fresh-clone exact-head independent review",
+    "protected merge, resulting-main validation, separately authorized Pages deployment, and live custom-domain route and release-identity read-back before any claim that the new public surface is live"
+  ],
+  "acceptance": [
+    "a versioned mission record preserves the owner-approved voice while accurately stating that public readings are compiled from accepted records under named policies rather than stamping global truth",
+    "the mission is available at stable /about/ HTML, Markdown, and JSON routes with a visible version, governance boundary, current-state section, and machine-readable identity",
+    "the homepage contains a compact purpose statement, the featured case, a four-case failure-mode narrative, a three-step explanation of how Epistemedia reads a claim, and participation paths without replacing the forensic editorial hierarchy",
+    "the How We Know index presents Cases 001-004 as four unit tests for how knowledge can fail, with each case's familiar claim, failure mode, bounded finding, defining count, and unresolved boundary",
+    "primary navigation exposes How We Know, About, and For agents while Substrate, Docs, Status, and GitHub remain available as visibly secondary utilities",
+    "current copy states that the four-case library and cold-start research kit are live only after verified deployment, while the hosted API, hosted MCP write surface, and authenticated submission queue remain unavailable until separately governed and deployed",
+    "a public reader-check instrument asks a human to explain the evidence unit, run-independence rule, lens difference, a current limitation, and a source-inspection path; its result remains pending until an actual human responds",
+    "all accepted Case 001-004 evidence artifacts and meanings remain unchanged and make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task changes mission, information architecture, navigation, and explanatory presentation; it does not change accepted evidence, source spans, counts, policy semantics, or case evaluations.",
+    "The four failure-mode labels are an editorial map across the first library, not a complete epistemology taxonomy or a new evidence classification.",
+    "This task may describe and link the non-admitting research kit but may not implement EM-0038, accept hosted submissions, admit evidence, create or merge contribution pull requests, or expose a write-capable API or MCP service.",
+    "No synthetic agent, browser test, or model review may be reported as a real-reader comprehension result.",
+    "No research provider call, dossier research, policy change, constitution change, credential use, account provisioning, spend, DNS change, publication, or deployment is authorized merely by registering this task; protected merge and Pages deployment require their normal later gates."
+  ]
+}
