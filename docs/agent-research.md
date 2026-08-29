@@ -34,6 +34,9 @@ That branch is never merged. A separately rooted reviewer starts from accepted `
 retrieves every credited source and span, and creates a different promotion PR. Only the reviewed
 promotion can become an open docket.
 
+A valid queue PR deliberately keeps the required check in a blocking state after accepted-base
+validation succeeds. That is the mechanical never-merge control, not a failure to bypass or repair.
+
 EM-0038 still reserves a separate authenticated MCP authority with a
 durable state machine (`submitted`, `triaged`, `needs-evidence`, `accepted-for-review`, `rejected`,
 `withdrawn`), least-privilege coordination-only credentials, and no contents, workflow, deployment,

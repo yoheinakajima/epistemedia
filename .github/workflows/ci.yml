@@ -16,6 +16,7 @@ jobs:
   check:
     permissions:
       contents: read
+      pull-requests: read
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -24,13 +25,13 @@ jobs:
           path: candidate
           fetch-depth: 0
           persist-credentials: false
-      - name: Classify an untrusted docket-only submission
+      - name: Classify docket contribution mode
         id: classify
         shell: bash
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
-          submission_only=false
+          mode=normal
           if [[ -n "$BASE_SHA" ]]; then
             mapfile -t changed < <(git -C candidate diff --name-only "$BASE_SHA...HEAD")
             if [[ ${#changed[@]} -gt 0 ]]; then
@@ -41,11 +42,25 @@ jobs:
                   break
                 fi
               done
+              if [[ "$submission_only" == true ]]; then
+                mode=submission
+              else
+                promotion_only=true
+                for path in "${changed[@]}"; do
+                  if [[ ! "$path" =~ ^research/open-dockets/[^/]+/(intake\.json|proposal\.json|promotion-receipt\.json|review\.json)$ ]]; then
+                    promotion_only=false
+                    break
+                  fi
+                done
+                if [[ "$promotion_only" == true ]]; then
+                  mode=promotion
+                fi
+              fi
             fi
           fi
-          echo "submission_only=$submission_only" >> "$GITHUB_OUTPUT"
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        if: steps.classify.outputs.submission_only == 'true'
+        if: steps.classify.outputs.mode != 'normal'
         with:
           ref: ${{ github.event.pull_request.base.sha }}
           path: validator
@@ -57,16 +72,26 @@ jobs:
           cache: pip
           cache-dependency-path: candidate/pyproject.toml
       - name: Install
-        if: steps.classify.outputs.submission_only != 'true'
+        if: steps.classify.outputs.mode == 'normal'
         working-directory: candidate
         run: python -m pip install -e '.[dev]'
       - name: Validate, build, test, audit, and verify deterministic state
-        if: steps.classify.outputs.submission_only != 'true'
+        if: steps.classify.outputs.mode == 'normal'
         working-directory: candidate
         run: make check
-      - name: Validate untrusted submission using accepted-base code
-        if: steps.classify.outputs.submission_only == 'true'
+      - name: Validate and block untrusted submission using accepted-base code
+        if: steps.classify.outputs.mode == 'submission'
         env:
           PYTHONPATH: validator/src
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: python validator/ops/validate_submission_pr.py --candidate candidate --base-sha "$BASE_SHA"
+      - name: Validate promotion using accepted-base code
+        if: steps.classify.outputs.mode == 'promotion'
+        env:
+          PYTHONPATH: validator/src
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          CANDIDATE_SHA: ${{ github.event.pull_request.head.sha }}
+          CURRENT_PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python validator/ops/validate_promotion_pr.py --candidate candidate --base-sha "$BASE_SHA"

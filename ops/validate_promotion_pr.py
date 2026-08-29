@@ -1,0 +1,167 @@
+#!/usr/bin/env python3
+"""Validate one reviewed open-docket promotion using accepted-base code."""
+
+from __future__ import annotations
+
+import argparse
+import base64
+import json
+import os
+import subprocess
+import tempfile
+import urllib.request
+from pathlib import Path
+from typing import Any
+from urllib.parse import quote
+
+from epistemedia.open_dockets import load_open_dockets, validate_submission_directory
+
+
+def git(candidate: Path, *args: str) -> str:
+    return subprocess.run(
+        ["git", "-C", str(candidate), *args],
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
+
+
+def changed(candidate: Path, start: str, end: str) -> list[str]:
+    return git(candidate, "diff", "--name-only", f"{start}...{end}").splitlines()
+
+
+def github_json(path: str) -> Any:
+    repository = os.environ["GITHUB_REPOSITORY"]
+    request = urllib.request.Request(
+        f"https://api.github.com/repos/{repository}/{path}",
+        headers={
+            "accept": "application/vnd.github+json",
+            "authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+            "user-agent": "epistemedia-accepted-base-promotion-validator",
+            "x-github-api-version": "2022-11-28",
+        },
+    )
+    with urllib.request.urlopen(request, timeout=30) as response:
+        return json.load(response)
+
+
+def github_file(path: str, ref: str) -> bytes:
+    payload = github_json(f"contents/{quote(path, safe='/')}?ref={quote(ref, safe='')}")
+    if not isinstance(payload, dict) or payload.get("encoding") != "base64":
+        raise ValueError(f"GitHub content response is not a base64 file: {path}")
+    encoded = "".join(str(payload.get("content", "")).split())
+    return base64.b64decode(encoded, validate=True)
+
+
+def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
+    errors: list[str] = []
+    head = git(candidate, "rev-parse", "HEAD")
+    parent = git(candidate, "rev-parse", "HEAD^")
+    parent_tree = git(candidate, "rev-parse", f"{parent}^{{tree}}")
+    candidate_sha = os.environ.get("CANDIDATE_SHA")
+    if candidate_sha and head != candidate_sha:
+        errors.append("candidate checkout does not match pull-request head")
+    receipt_paths = [
+        path for path in changed(candidate, base_sha, head)
+        if path.startswith("research/open-dockets/") and path.endswith("/promotion-receipt.json")
+    ]
+    if len(receipt_paths) != 1:
+        errors.append("promotion must contain exactly one promotion receipt")
+        receipt_path = None
+    else:
+        receipt_path = receipt_paths[0]
+    receipt: dict[str, Any] = {}
+    if receipt_path:
+        receipt = json.loads((candidate / receipt_path).read_text(encoding="utf-8"))
+        if receipt.get("reviewed_head") != parent:
+            errors.append("promotion receipt does not bind the receipt commit parent")
+        if receipt.get("reviewed_tree") != parent_tree:
+            errors.append("promotion receipt does not bind the reviewed tree")
+        slug_dir = str(Path(receipt_path).parent)
+        expected_reviewed = {
+            f"{slug_dir}/intake.json",
+            f"{slug_dir}/proposal.json",
+            f"{slug_dir}/review.json",
+        }
+        if set(changed(candidate, base_sha, parent)) != expected_reviewed:
+            errors.append("reviewed parent must add exactly one three-file promoted docket")
+        receipt_delta = changed(candidate, parent, head)
+        if receipt_delta != [receipt_path]:
+            errors.append("receipt commit must add only the promotion receipt")
+    dockets, docket_errors = load_open_dockets(candidate)
+    errors.extend(docket_errors)
+    if receipt_path:
+        slug = Path(receipt_path).parent.name
+        if sum(docket.slug == slug for docket in dockets) != 1:
+            errors.append("promoted docket did not load exactly once")
+    source_pr_number = receipt.get("source_pr_number")
+    if isinstance(source_pr_number, int) and source_pr_number > 0:
+        source_pr = github_json(f"pulls/{source_pr_number}")
+        if source_pr.get("html_url") != (
+            f"https://github.com/{os.environ['GITHUB_REPOSITORY']}/pull/{source_pr_number}"
+        ):
+            errors.append("source pull request URL is not canonical")
+        if source_pr.get("head", {}).get("sha") != receipt.get("source_pr_head"):
+            errors.append("source pull request head drifted from the review binding")
+        if source_pr.get("base", {}).get("sha") != base_sha:
+            errors.append("source pull request does not target the promotion base")
+        if source_pr.get("state") != "open" or source_pr.get("draft") is not True:
+            errors.append("source submission must remain open and draft")
+        if source_pr_number == int(os.environ.get("CURRENT_PR_NUMBER", "0")):
+            errors.append("promotion pull request cannot be its own source submission")
+        files = github_json(f"pulls/{source_pr_number}/files?per_page=100")
+        paths = sorted(item.get("filename", "") for item in files)
+        parents = {str(Path(path).parent) for path in paths}
+        if any(item.get("status") != "added" for item in files):
+            errors.append("source pull request files must all be newly added")
+        if len(parents) != 1 or set(Path(path).name for path in paths) != {
+            "PR_BODY.md", "intake.json", "proposal.json"
+        }:
+            errors.append("source pull request is not one exact submission-directory diff")
+        elif receipt_path:
+            source_parent = next(iter(parents))
+            source_head = str(receipt.get("source_pr_head"))
+            source_files = {
+                name: github_file(f"{source_parent}/{name}", source_head)
+                for name in ("PR_BODY.md", "intake.json", "proposal.json")
+            }
+            with tempfile.TemporaryDirectory(prefix="epistemedia-source-submission-") as tmp:
+                submission_dir = Path(tmp) / "submission"
+                submission_dir.mkdir()
+                for name, value in source_files.items():
+                    (submission_dir / name).write_bytes(value)
+                errors.extend(
+                    f"source submission: {error}"
+                    for error in validate_submission_directory(submission_dir)
+                )
+            promoted_dir = candidate / Path(receipt_path).parent
+            for name in ("intake.json", "proposal.json"):
+                if source_files[name] != (promoted_dir / name).read_bytes():
+                    errors.append(f"promoted {name} does not match the bound source submission")
+    else:
+        errors.append("promotion receipt source PR number is invalid")
+    return {
+        "format": "epistemedia-open-docket-promotion-check-v0.1",
+        "valid": not errors,
+        "base_sha": base_sha,
+        "candidate_head": head,
+        "reviewed_head": parent,
+        "receipt_path": receipt_path,
+        "errors": errors,
+        "admitted": not errors,
+        "merge_permitted": not errors,
+    }
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--candidate", type=Path, required=True)
+    parser.add_argument("--base-sha", required=True)
+    args = parser.parse_args()
+    result = validate(args.candidate.resolve(), args.base_sha)
+    print(json.dumps(result, indent=2, sort_keys=True))
+    return 0 if result["valid"] else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

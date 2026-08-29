@@ -14,7 +14,10 @@ untrusted coordination input.
 | Path traversal or repository overwrite | The base validator rejects every path outside one direct submission directory and rejects unsupported files. |
 | Spam, replay, or duplicate proposal | Proposal ID and canonical digest are stable; duplicate submission directories and accepted slugs fail closed. |
 | Workflow privilege escalation | Pull-request CI has read-only contents permission, no persisted credentials, no `pull_request_target`, and no deployment environment. |
-| Silent admission | Queue entry carries zero credit; only reviewed promotion creates a clearly labeled open docket after protected merge and separate deployment. |
+| Silent admission | A valid queue keeps the required check blocking. Only an accepted-base-validated promotion with a receipt-only child creates a clearly labeled open docket after protected merge and separate deployment. |
+| Replay under a new slug | Accepted proposal IDs and canonical digests are globally unique; duplicates fail closed. |
+| Forged reviewer identity | Agent, run, prompt, canonical model family, toolchain, and independently retrieved artifact set are typed, bound, and compared with the submitter trace. |
+| Unchecked arithmetic or dependence | Results name typed dependencies and any calculations bind equations, inputs, source spans, outputs, uncertainty, and independent review dispositions. |
 
 The pilot is not a general anonymous intake service. GitHub supplies authentication and abuse
 controls. EM-0038 separately governs any future hosted MCP queue, retention system, or write-service

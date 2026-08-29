@@ -12,13 +12,17 @@ from test_research_kit import valid_proposal
 from epistemedia.cli import main
 from epistemedia.core import build_public
 from epistemedia.open_dockets import (
+    PROMOTION_RECEIPT_FORMAT,
     REVIEW_FORMAT,
+    docket_html,
+    docket_markdown,
     load_open_dockets,
     prepare_submission,
     trace_template,
     validate_action_trace,
     validate_submission_directory,
 )
+from epistemedia.research_kit import validate_proposal
 from epistemedia.server import Gateway, Request, tool_definitions
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,6 +69,8 @@ def review_for(bundle: dict, intake: dict, *, model_family: str = "codex") -> di
             "fresh_clone": True,
             "author_notes_seen": False,
             "authoring_agent_artifacts_used": False,
+            "toolchain": ["independent HTTPS retrieval", "local digest verifier"],
+            "source_artifact_sha256s": ["b" * 64],
         },
         "source_reviews": [
             {
@@ -87,6 +93,25 @@ def review_for(bundle: dict, intake: dict, *, model_family: str = "codex") -> di
             }
             for source in bundle["sources"]
         ],
+        "calculation_reviews": [
+            {
+                "calculation_id": item["calculation_id"],
+                "equation_checked": True,
+                "inputs_checked": True,
+                "output_reproduced": True,
+                "disposition": "credit-as-bounded",
+            }
+            for item in bundle["calculations"]
+        ],
+        "dependency_reviews": [
+            {
+                "dependency_id": item["dependency_id"],
+                "kind_checked": True,
+                "source_span_checked": True,
+                "disposition": "credit-as-bounded",
+            }
+            for item in bundle["dependencies"]
+        ],
         "public": {
             "slug": "test-open-docket",
             "title": "A testable open docket",
@@ -106,10 +131,29 @@ def promote(tmp_path: Path, *, model_family: str = "codex") -> Path:
     destination.mkdir(parents=True)
     shutil.copy2(submission / "proposal.json", destination / "proposal.json")
     shutil.copy2(submission / "intake.json", destination / "intake.json")
+    review = review_for(bundle, intake, model_family=model_family)
     (destination / "review.json").write_text(
-        json.dumps(review_for(bundle, intake, model_family=model_family), indent=2, sort_keys=True)
-        + "\n",
+        json.dumps(review, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
+    )
+    receipt = {
+        "format": PROMOTION_RECEIPT_FORMAT,
+        "decision": "pass",
+        "recorded_at": "2026-08-29T21:10:00Z",
+        "reviewed_head": "c" * 40,
+        "reviewed_tree": "d" * 40,
+        "source_pr_number": review["binding"]["source_pr_number"],
+        "source_pr_head": review["binding"]["source_pr_head"],
+        "proposal_sha256": hashlib.sha256(
+            (destination / "proposal.json").read_bytes()
+        ).hexdigest(),
+        "review_sha256": hashlib.sha256(
+            (destination / "review.json").read_bytes()
+        ).hexdigest(),
+        "reviewer": review["reviewer"],
+    }
+    (destination / "promotion-receipt.json").write_text(
+        json.dumps(receipt, indent=2, sort_keys=True) + "\n"
     )
     return destination
 
@@ -172,6 +216,9 @@ def test_cli_prepares_submission_but_performs_no_git_or_review_action(
         lambda value: value["events"][0].update(note="chain-of-thought: private"),
         lambda value: value["events"][0].update(note="system prompt follows"),
         lambda value: value["events"][0].update(note="Read /Users/alice/private.txt"),
+        lambda value: value["events"][0].update(note="Read /tmp/private-source.txt"),
+        lambda value: value["events"][0].update(note="Contact alice@example.org"),
+        lambda value: value["events"][0].update(note="x" * 2_049),
         lambda value: value["events"][0].update(note="github_pat_" + "a" * 24),
         lambda value: value["events"][0].update(artifact_sha256="not-a-digest"),
         lambda value: value["events"].append(copy.deepcopy(value["events"][0])),
@@ -201,6 +248,25 @@ def test_same_model_family_cannot_review_its_own_submission(tmp_path: Path) -> N
     assert any("model_family must differ" in error for error in errors)
 
 
+def test_model_family_comparison_is_case_insensitive(tmp_path: Path) -> None:
+    promote(tmp_path, model_family="Claude")
+    _, errors = load_open_dockets(tmp_path)
+    assert any("after normalization" in error for error in errors)
+    assert any("canonical lowercase" in error for error in errors)
+
+
+def test_reviewer_identity_and_artifact_set_are_typed_and_exact(tmp_path: Path) -> None:
+    destination = promote(tmp_path)
+    review_path = destination / "review.json"
+    review = json.loads(review_path.read_text())
+    review["reviewer"]["agent_id"] = 1
+    review["reviewer"]["source_artifact_sha256s"] = ["c" * 64]
+    review_path.write_text(json.dumps(review, indent=2, sort_keys=True) + "\n")
+    _, errors = load_open_dockets(tmp_path)
+    assert any("agent_id must be a meaningful string" in error for error in errors)
+    assert any("source-artifact set does not exactly match" in error for error in errors)
+
+
 def test_missing_span_review_fails_closed(tmp_path: Path) -> None:
     destination = promote(tmp_path)
     review = json.loads((destination / "review.json").read_text())
@@ -219,6 +285,84 @@ def test_forged_quote_digest_fails_closed(tmp_path: Path) -> None:
     dockets, errors = load_open_dockets(tmp_path)
     assert dockets == []
     assert any("quote digest does not match" in error for error in errors)
+
+
+def test_duplicate_accepted_proposal_fails_closed(tmp_path: Path) -> None:
+    first = promote(tmp_path)
+    second = tmp_path / "research" / "open-dockets" / "second-open-docket"
+    shutil.copytree(first, second)
+    review = json.loads((second / "review.json").read_text())
+    review["public"]["slug"] = "second-open-docket"
+    (second / "review.json").write_text(json.dumps(review, indent=2, sort_keys=True) + "\n")
+    receipt = json.loads((second / "promotion-receipt.json").read_text())
+    receipt["review_sha256"] = hashlib.sha256((second / "review.json").read_bytes()).hexdigest()
+    (second / "promotion-receipt.json").write_text(
+        json.dumps(receipt, indent=2, sort_keys=True) + "\n"
+    )
+    _, errors = load_open_dockets(tmp_path)
+    assert any("duplicates accepted docket" in error for error in errors)
+
+
+def test_calculation_and_dependency_closure_are_required() -> None:
+    bundle = valid_proposal()
+    bundle["results"][0]["dependency_ids"] = []
+    assert any(
+        "must retain at least one typed dependence" in error
+        for error in validate_proposal(bundle)["errors"]
+    )
+
+    calculated = valid_proposal()
+    calculated["results"][0]["calculation_ids"] = ["calc-1"]
+    calculated["calculations"] = [
+        {
+            "calculation_id": "calc-1",
+            "equation": "numerator / denominator",
+            "inputs": [
+                {
+                    "name": "numerator",
+                    "value": "1",
+                    "source_id": "source-1",
+                    "span_id": "missing-span",
+                }
+            ],
+            "output": "1",
+            "uncertainty": "Bounded fixture.",
+            "depends_on": [],
+        }
+    ]
+    assert any(
+        "does not bind an existing source/span pair" in error
+        for error in validate_proposal(calculated)["errors"]
+    )
+
+
+def test_human_open_docket_projection_retains_full_reviewable_record(tmp_path: Path) -> None:
+    promote(tmp_path)
+    dockets, errors = load_open_dockets(tmp_path)
+    assert errors == []
+    data = dockets[0].projection("https://epistemedia.org")
+    markdown = docket_markdown(data)
+    rendered = docket_html(data)
+    for label in (
+        "Calculations",
+        "Typed dependencies",
+        "Counterevidence",
+        "Negative results",
+        "Lineage",
+        "Independent review receipt",
+        "Edition",
+        "License",
+    ):
+        assert label in markdown
+    for label in (
+        "Calculations",
+        "Typed dependencies",
+        "Counterevidence",
+        "Negative results",
+        "Lineage",
+        "Independent review receipt",
+    ):
+        assert label in rendered
 
 
 def test_public_build_exposes_submit_and_empty_open_docket_routes(tmp_path: Path) -> None:
@@ -241,6 +385,9 @@ def test_ci_uses_base_validator_for_submission_only_pull_requests() -> None:
     assert "ref: ${{ github.event.pull_request.base.sha }}" in workflow
     assert "PYTHONPATH: validator/src" in workflow
     assert "python validator/ops/validate_submission_pr.py" in workflow
+    assert "python validator/ops/validate_promotion_pr.py" in workflow
+    assert "Validate and block untrusted submission" in workflow
+    assert "steps.classify.outputs.mode == 'promotion'" in workflow
     assert "persist-credentials: false" in workflow
     assert "pull_request_target" not in workflow
     assert "cache-dependency-path: candidate/pyproject.toml" in workflow
@@ -258,6 +405,15 @@ def test_submission_rejects_symlinks_and_mutated_credit_boundary(tmp_path: Path)
     (directory / "intake.json").unlink()
     (directory / "intake.json").symlink_to(directory / "proposal.json")
     assert any("non-symlink" in error for error in validate_submission_directory(directory))
+
+
+def test_submission_binds_and_sanitizes_pr_body(tmp_path: Path) -> None:
+    _, _, result = prepared(tmp_path)
+    directory = result["directory"]
+    (directory / "PR_BODY.md").write_text("chain-of-thought github_pat_" + "a" * 30)
+    errors = validate_submission_directory(directory)
+    assert any("pr_body_sha256" in error for error in errors)
+    assert any("PR_BODY.md contains prohibited" in error for error in errors)
 
 
 def test_review_pr_url_must_bind_the_exact_pr_number(tmp_path: Path) -> None:
@@ -292,6 +448,8 @@ def test_submission_guide_and_open_dockets_have_read_only_interface_parity(
     )
     assert status == 200
     assert response["data"] == []
+    assert main(["--root", str(ROOT), "open-dockets", "list"]) == 0
+    assert json.loads(capsys.readouterr().out)["data"] == []
     names = {tool["name"] for tool in tool_definitions()}
     assert {"get_docket_submission_guide", "list_open_dockets", "get_open_docket"} <= names
     assert all(tool["annotations"]["readOnlyHint"] is True for tool in tool_definitions())

@@ -17,24 +17,29 @@ INTAKE_FORMAT = "epistemedia-open-docket-intake-v0.1"
 TRACE_FORMAT = "epistemedia-disclosure-safe-action-trace-v0.1"
 REVIEW_FORMAT = "epistemedia-open-docket-review-v0.1"
 DOCKET_FORMAT = "epistemedia-open-docket-v0.1"
+PROMOTION_RECEIPT_FORMAT = "epistemedia-open-docket-promotion-receipt-v0.1"
 SUBMISSION_ROOT = Path("research/open-dockets/submissions")
 ACCEPTED_ROOT = Path("research/open-dockets")
 MAX_TRACE_EVENTS = 250
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 GIT_OBJECT_ID = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+MODEL_FAMILY = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 INTAKE_FIELDS = {
     "format",
     "status",
     "proposal_id",
     "proposal_sha256",
     "proposal_bytes",
+    "pr_body_sha256",
+    "pr_body_bytes",
     "submitted_at",
     "submitter",
     "trace",
     "credit",
     "queue",
 }
+EMAIL = re.compile(r"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b")
 
 
 def canonical_json(value: Any) -> bytes:
@@ -51,6 +56,8 @@ def _contains_disallowed_text(value: Any) -> bool:
     if isinstance(value, str):
         lowered = value.lower()
         if any(pattern.search(value) for pattern in SECRET_PATTERNS):
+            return True
+        if EMAIL.search(value) or re.search(r"(?<![A-Za-z0-9])/(?:tmp|var|opt|etc)/", value):
             return True
         return any(
             marker in lowered
@@ -99,6 +106,10 @@ def validate_action_trace(trace: Any) -> list[str]:
         for field in event_fields - {"sequence", "artifact_sha256"}:
             if not isinstance(event.get(field), str) or not event[field].strip():
                 errors.append(f"{path}.{field} must be a non-empty string")
+            else:
+                limit = 2_048 if field == "target" else 512
+                if len(event[field]) > limit:
+                    errors.append(f"{path}.{field} exceeds {limit} characters")
         artifact = event.get("artifact_sha256")
         if artifact != "none" and (not isinstance(artifact, str) or not SHA256.fullmatch(artifact)):
             errors.append(f"{path}.artifact_sha256 must be a SHA-256 or none")
@@ -173,18 +184,35 @@ def prepare_submission(
             raise ValueError(f"{name} is empty or contains prohibited private data")
     if not SHA256.fullmatch(prompt_sha256):
         raise ValueError("prompt_sha256 must be a lowercase SHA-256")
+    if not MODEL_FAMILY.fullmatch(model_family):
+        raise ValueError("model_family must be a canonical lowercase slug")
     proposal_bytes = canonical_json(bundle)
     proposal_id = validation["proposal_id"]
     slug = _slug(bundle["question"], proposal_id)
     destination = root / SUBMISSION_ROOT / slug
     if destination.exists():
         raise ValueError(f"submission already exists: {slug}")
+    title = f"[docket submission] {bundle['question']}"
+    body = (
+        "## Autonomous open-docket submission\n\n"
+        f"- Proposal: `{proposal_id}`\n"
+        f"- Proposal SHA-256: `{sha256_bytes(proposal_bytes)}`\n"
+        f"- Submitter agent: `{agent_id}`\n"
+        f"- Model family: `{model_family}`\n\n"
+        "This draft PR is an untrusted queue item with zero evidential credit. It must not "
+        "be merged. A separately rooted reviewer may create a promotion PR from accepted main.\n"
+    )
+    body_bytes = body.encode("utf-8")
+    if len(body_bytes) > 16_384 or _contains_disallowed_text(body):
+        raise ValueError("generated PR body exceeds disclosure-safe size or content limits")
     intake = {
         "format": INTAKE_FORMAT,
         "status": "submitted-for-independent-review",
         "proposal_id": proposal_id,
         "proposal_sha256": sha256_bytes(proposal_bytes),
         "proposal_bytes": len(proposal_bytes),
+        "pr_body_sha256": sha256_bytes(body_bytes),
+        "pr_body_bytes": len(body_bytes),
         "submitted_at": submitted_at,
         "submitter": {
             "agent_id": agent_id,
@@ -199,16 +227,6 @@ def prepare_submission(
     destination.mkdir(parents=True)
     (destination / "proposal.json").write_bytes(proposal_bytes)
     (destination / "intake.json").write_bytes(canonical_json(intake))
-    title = f"[docket submission] {bundle['question']}"
-    body = (
-        "## Autonomous open-docket submission\n\n"
-        f"- Proposal: `{proposal_id}`\n"
-        f"- Proposal SHA-256: `{intake['proposal_sha256']}`\n"
-        f"- Submitter agent: `{agent_id}`\n"
-        f"- Model family: `{model_family}`\n\n"
-        "This draft PR is an untrusted queue item with zero evidential credit. It must not "
-        "be merged. A separately rooted reviewer may create a promotion PR from accepted main.\n"
-    )
     (destination / "PR_BODY.md").write_text(body, encoding="utf-8")
     return {
         "slug": slug,
@@ -251,11 +269,18 @@ def validate_submission_directory(path: Path) -> list[str]:
         "proposal_id": validation.get("proposal_id"),
         "proposal_sha256": sha256_bytes(proposal_bytes),
         "proposal_bytes": len(proposal_bytes),
+        "pr_body_sha256": sha256_bytes((path / "PR_BODY.md").read_bytes()),
+        "pr_body_bytes": (path / "PR_BODY.md").stat().st_size,
     }
     for key, expected_value in expected_values.items():
         if intake.get(key) != expected_value:
             errors.append(f"intake {key} does not bind proposal")
     errors.extend(validate_action_trace(intake.get("trace")))
+    pr_body = (path / "PR_BODY.md").read_text(encoding="utf-8")
+    if len(pr_body.encode("utf-8")) > 16_384:
+        errors.append("PR_BODY.md exceeds 16384 bytes")
+    if _contains_disallowed_text(pr_body):
+        errors.append("PR_BODY.md contains prohibited private or secret-shaped data")
     submitter = intake.get("submitter")
     if not isinstance(submitter, dict) or set(submitter) != {
         "agent_id",
@@ -270,6 +295,8 @@ def validate_submission_directory(path: Path) -> list[str]:
                 errors.append(f"intake submitter {key} is invalid")
         if not SHA256.fullmatch(str(submitter.get("prompt_sha256", ""))):
             errors.append("intake submitter prompt digest is invalid")
+        if not MODEL_FAMILY.fullmatch(str(submitter.get("model_family", ""))):
+            errors.append("intake submitter model family is not canonical")
     if _contains_disallowed_text(intake):
         errors.append("intake contains prohibited private data")
     return errors
@@ -281,6 +308,7 @@ class OpenDocket:
     proposal: dict[str, Any]
     intake: dict[str, Any]
     review: dict[str, Any]
+    promotion_receipt: dict[str, Any]
     proposal_sha256: str
 
     def projection(self, base_url: str) -> dict[str, Any]:
@@ -290,19 +318,27 @@ class OpenDocket:
             "slug": self.slug,
             "title": self.review["public"]["title"],
             "question": self.proposal["question"],
+            "scope": self.proposal["scope"],
             "why_it_matters": self.review["public"]["why_it_matters"],
             "bounded_reading": self.review["public"]["bounded_reading"],
             "practical_reading": self.review["public"]["practical_reading"],
             "proposal_id": self.intake["proposal_id"],
             "proposal_sha256": self.proposal_sha256,
             "results": self.proposal["results"],
+            "calculations": self.proposal["calculations"],
+            "dependencies": self.proposal["dependencies"],
             "sources": self.proposal["sources"],
             "counterevidence": self.proposal["counterevidence"],
             "negative_results": self.proposal["negative_results"],
             "limitations": self.proposal["limitations"],
             "unresolved": self.proposal["unresolved"],
+            "search_notes": self.proposal["search_notes"],
             "lineage": self.proposal["lineage"],
+            "runtime": self.proposal["runtime"],
+            "license": self.proposal["license"],
+            "intake": self.intake,
             "review": self.review,
+            "promotion_receipt": self.promotion_receipt,
             "boundary": (
                 "An open docket is an independently reviewed contribution artifact, not a "
                 "numbered How We Know case or universal verdict."
@@ -326,9 +362,11 @@ def _validate_review(path: Path, bundle: dict[str, Any], intake: dict[str, Any])
         "decision",
         "reviewed_at",
         "binding",
-        "reviewer",
-        "source_reviews",
-        "public",
+            "reviewer",
+            "source_reviews",
+            "calculation_reviews",
+            "dependency_reviews",
+            "public",
         "limitations",
     }
     if not isinstance(review, dict) or set(review) != expected:
@@ -374,6 +412,8 @@ def _validate_review(path: Path, bundle: dict[str, Any], intake: dict[str, Any])
         "fresh_clone",
         "author_notes_seen",
         "authoring_agent_artifacts_used",
+        "toolchain",
+        "source_artifact_sha256s",
     }
     if not isinstance(reviewer, dict) or set(reviewer) != reviewer_fields:
         errors.append("reviewer identity and independence fields are incomplete")
@@ -381,6 +421,16 @@ def _validate_review(path: Path, bundle: dict[str, Any], intake: dict[str, Any])
         for key in ("agent_id", "model_family", "run_id", "prompt_sha256"):
             if reviewer.get(key) == submitter.get(key):
                 errors.append(f"reviewer {key} must differ from submitter")
+        for key in ("agent_id", "model_family", "run_id"):
+            value = reviewer.get(key)
+            if not isinstance(value, str) or len(value.strip()) < 3:
+                errors.append(f"reviewer {key} must be a meaningful string")
+        if str(reviewer.get("model_family", "")).casefold() == str(
+            submitter.get("model_family", "")
+        ).casefold():
+            errors.append("reviewer model_family must differ from submitter after normalization")
+        if not MODEL_FAMILY.fullmatch(str(reviewer.get("model_family", ""))):
+            errors.append("reviewer model_family must be a canonical lowercase slug")
         if not SHA256.fullmatch(str(reviewer.get("prompt_sha256", ""))):
             errors.append("reviewer prompt digest is invalid")
         if reviewer.get("fresh_clone") is not True:
@@ -389,6 +439,23 @@ def _validate_review(path: Path, bundle: dict[str, Any], intake: dict[str, Any])
             errors.append("reviewer must not see author notes")
         if reviewer.get("authoring_agent_artifacts_used") is not False:
             errors.append("reviewer must not use authoring-agent source artifacts")
+        toolchain = reviewer.get("toolchain")
+        if not isinstance(toolchain, list) or not toolchain or not all(
+            isinstance(item, str) and item.strip() for item in toolchain
+        ):
+            errors.append("reviewer toolchain must be a non-empty string list")
+        artifacts = reviewer.get("source_artifact_sha256s")
+        if not isinstance(artifacts, list) or not artifacts or not all(
+            isinstance(item, str) and SHA256.fullmatch(item) for item in artifacts
+        ):
+            errors.append("reviewer source artifacts must be non-empty SHA-256 values")
+        author_artifacts = {
+            event.get("artifact_sha256")
+            for event in intake.get("trace", {}).get("events", [])
+            if event.get("artifact_sha256") != "none"
+        }
+        if isinstance(artifacts, list) and author_artifacts.intersection(artifacts):
+            errors.append("reviewer source artifacts overlap author trace artifacts")
     source_reviews = review.get("source_reviews")
     expected_sources = {
         source["source_id"]: {
@@ -446,6 +513,52 @@ def _validate_review(path: Path, bundle: dict[str, Any], intake: dict[str, Any])
         observed_sources[source_id] = spans
     if observed_sources != {key: set(value) for key, value in expected_sources.items()}:
         errors.append("source review coverage does not exactly match proposal sources and spans")
+    reviewed_artifacts = {
+        record.get("artifact_sha256")
+        for record in source_reviews
+        if isinstance(record, dict) and SHA256.fullmatch(str(record.get("artifact_sha256", "")))
+    }
+    declared_artifacts = set(reviewer.get("source_artifact_sha256s", [])) if isinstance(reviewer, dict) else set()
+    if declared_artifacts != reviewed_artifacts:
+        errors.append("reviewer source-artifact set does not exactly match source reviews")
+    calculation_reviews = review.get("calculation_reviews")
+    expected_calculations = {item["calculation_id"] for item in bundle.get("calculations", [])}
+    observed_calculations: set[str] = set()
+    if not isinstance(calculation_reviews, list):
+        errors.append("calculation_reviews must be a list")
+        calculation_reviews = []
+    for item in calculation_reviews:
+        if not isinstance(item, dict) or set(item) != {
+            "calculation_id", "equation_checked", "inputs_checked", "output_reproduced", "disposition"
+        }:
+            errors.append("calculation review is incomplete")
+            continue
+        observed_calculations.add(item.get("calculation_id"))
+        if any(item.get(key) is not True for key in ("equation_checked", "inputs_checked", "output_reproduced")):
+            errors.append(f"calculation {item.get('calculation_id')} is not reproduced")
+        if item.get("disposition") != "credit-as-bounded":
+            errors.append(f"calculation {item.get('calculation_id')} is not creditable")
+    if observed_calculations != expected_calculations:
+        errors.append("calculation review coverage does not exactly match proposal")
+    dependency_reviews = review.get("dependency_reviews")
+    expected_dependencies = {item["dependency_id"] for item in bundle.get("dependencies", [])}
+    observed_dependencies: set[str] = set()
+    if not isinstance(dependency_reviews, list):
+        errors.append("dependency_reviews must be a list")
+        dependency_reviews = []
+    for item in dependency_reviews:
+        if not isinstance(item, dict) or set(item) != {
+            "dependency_id", "kind_checked", "source_span_checked", "disposition"
+        }:
+            errors.append("dependency review is incomplete")
+            continue
+        observed_dependencies.add(item.get("dependency_id"))
+        if item.get("kind_checked") is not True or item.get("source_span_checked") is not True:
+            errors.append(f"dependency {item.get('dependency_id')} is not independently closed")
+        if item.get("disposition") != "credit-as-bounded":
+            errors.append(f"dependency {item.get('dependency_id')} is not creditable")
+    if observed_dependencies != expected_dependencies:
+        errors.append("dependency review coverage does not exactly match proposal")
     public = review.get("public")
     if not isinstance(public, dict) or set(public) != {
         "slug",
@@ -464,15 +577,49 @@ def _validate_review(path: Path, bundle: dict[str, Any], intake: dict[str, Any])
     return errors
 
 
+def validate_promotion_receipt(
+    receipt: Any, proposal: dict[str, Any], review: dict[str, Any]
+) -> list[str]:
+    errors: list[str] = []
+    expected = {
+        "format", "decision", "recorded_at", "reviewed_head", "reviewed_tree",
+        "source_pr_number", "source_pr_head", "proposal_sha256", "review_sha256", "reviewer"
+    }
+    if not isinstance(receipt, dict) or set(receipt) != expected:
+        return ["promotion receipt fields are incomplete or unsupported"]
+    if receipt.get("format") != PROMOTION_RECEIPT_FORMAT or receipt.get("decision") != "pass":
+        errors.append("promotion receipt must record pass in the supported format")
+    for key in ("reviewed_head", "source_pr_head"):
+        if not GIT_OBJECT_ID.fullmatch(str(receipt.get(key, ""))):
+            errors.append(f"promotion receipt {key} is invalid")
+    if not GIT_OBJECT_ID.fullmatch(str(receipt.get("reviewed_tree", ""))):
+        errors.append("promotion receipt reviewed_tree is invalid")
+    if receipt.get("source_pr_number") != review.get("binding", {}).get("source_pr_number"):
+        errors.append("promotion receipt source PR number does not match review")
+    if receipt.get("source_pr_head") != review.get("binding", {}).get("source_pr_head"):
+        errors.append("promotion receipt source PR head does not match review")
+    if receipt.get("proposal_sha256") != sha256_bytes(canonical_json(proposal)):
+        errors.append("promotion receipt proposal digest is invalid")
+    if receipt.get("review_sha256") != sha256_bytes(canonical_json(review)):
+        errors.append("promotion receipt review digest is invalid")
+    if receipt.get("reviewer") != review.get("reviewer"):
+        errors.append("promotion receipt reviewer does not match review")
+    if _contains_disallowed_text(receipt):
+        errors.append("promotion receipt contains prohibited private data")
+    return errors
+
+
 def load_open_dockets(root: Path) -> tuple[list[OpenDocket], list[str]]:
     dockets: list[OpenDocket] = []
     errors: list[str] = []
     if not (root / ACCEPTED_ROOT).exists():
         return dockets, errors
+    proposal_ids: dict[str, str] = {}
+    proposal_digests: dict[str, str] = {}
     for path in sorted((root / ACCEPTED_ROOT).iterdir()):
         if not path.is_dir() or path.name == "submissions":
             continue
-        expected = {"intake.json", "proposal.json", "review.json"}
+        expected = {"intake.json", "proposal.json", "review.json", "promotion-receipt.json"}
         if {item.name for item in path.iterdir()} != expected:
             errors.append(f"{path.relative_to(root)} must contain exactly {', '.join(sorted(expected))}")
             continue
@@ -480,12 +627,16 @@ def load_open_dockets(root: Path) -> tuple[list[OpenDocket], list[str]]:
             proposal = json.loads((path / "proposal.json").read_text(encoding="utf-8"))
             intake = json.loads((path / "intake.json").read_text(encoding="utf-8"))
             review = json.loads((path / "review.json").read_text(encoding="utf-8"))
+            promotion_receipt = json.loads(
+                (path / "promotion-receipt.json").read_text(encoding="utf-8")
+            )
         except (OSError, json.JSONDecodeError) as exc:
             errors.append(f"{path.relative_to(root)}: {exc}")
             continue
         validation = validate_proposal(proposal)
         local_errors = list(validation["errors"])
         local_errors.extend(_validate_review(path / "review.json", proposal, intake))
+        local_errors.extend(validate_promotion_receipt(promotion_receipt, proposal, review))
         proposal_bytes = canonical_json(proposal)
         if not isinstance(intake, dict) or set(intake) != INTAKE_FIELDS:
             local_errors.append("accepted docket intake fields are incomplete or unsupported")
@@ -506,20 +657,45 @@ def load_open_dockets(root: Path) -> tuple[list[OpenDocket], list[str]]:
             "prompt_sha256",
         }:
             local_errors.append("accepted docket submitter identity is incomplete")
-        elif not SHA256.fullmatch(str(submitter.get("prompt_sha256", ""))):
-            local_errors.append("accepted docket submitter prompt digest is invalid")
+        else:
+            for key in ("agent_id", "model_family", "run_id"):
+                if not isinstance(submitter.get(key), str) or not submitter[key].strip():
+                    local_errors.append(f"accepted docket submitter {key} is invalid")
+            if not SHA256.fullmatch(str(submitter.get("prompt_sha256", ""))):
+                local_errors.append("accepted docket submitter prompt digest is invalid")
+            if not MODEL_FAMILY.fullmatch(str(submitter.get("model_family", ""))):
+                local_errors.append("accepted docket submitter model family is not canonical")
         if intake.get("proposal_id") != validation.get("proposal_id"):
             local_errors.append("accepted docket intake proposal ID is invalid")
         if intake.get("proposal_sha256") != sha256_bytes(proposal_bytes):
             local_errors.append("accepted docket intake proposal digest is invalid")
         if intake.get("proposal_bytes") != len(proposal_bytes):
             local_errors.append("accepted docket intake proposal bytes are invalid")
+        proposal_id = intake.get("proposal_id")
+        proposal_digest = intake.get("proposal_sha256")
+        if proposal_id in proposal_ids:
+            local_errors.append(f"proposal ID duplicates accepted docket {proposal_ids[proposal_id]}")
+        if proposal_digest in proposal_digests:
+            local_errors.append(
+                f"proposal digest duplicates accepted docket {proposal_digests[proposal_digest]}"
+            )
         if review.get("public", {}).get("slug") != path.name:
             local_errors.append("accepted docket directory must match public slug")
         if local_errors:
             errors.extend(f"{path.relative_to(root)}: {item}" for item in local_errors)
             continue
-        dockets.append(OpenDocket(path.name, proposal, intake, review, sha256_bytes(proposal_bytes)))
+        proposal_ids[proposal_id] = path.name
+        proposal_digests[proposal_digest] = path.name
+        dockets.append(
+            OpenDocket(
+                path.name,
+                proposal,
+                intake,
+                review,
+                promotion_receipt,
+                sha256_bytes(proposal_bytes),
+            )
+        )
     return dockets, errors
 
 
@@ -555,12 +731,70 @@ def docket_markdown(data: dict[str, Any]) -> str:
         )
     lines.extend(["## Sources and exact spans", ""])
     for source in data["sources"]:
-        lines.extend([f"### [{source['title']}]({source['url']})", ""])
+        lines.extend(
+            [
+                f"### [{source['title']}]({source['url']})",
+                "",
+                f"**Edition:** {source['edition']}  ",
+                f"**License:** {source['license']}",
+                "",
+            ]
+        )
         for span in source["exact_spans"]:
             lines.extend(
                 [f"- `{span['span_id']}` — {span['locator']}: “{span['quote']}”", ""]
             )
-    lines.extend(["## Limitations", "", *[f"- {item}" for item in data["limitations"]], ""])
+    lines.extend(["## Calculations", ""])
+    lines.extend(
+        [
+            f"- `{item['calculation_id']}` — `{item['equation']}` → {item['output']} (uncertainty: {item['uncertainty']})"
+            for item in data["calculations"]
+        ] or ["- None declared."]
+    )
+    lines.extend(["", "## Typed dependencies", ""])
+    lines.extend(
+        [f"- `{item['dependency_id']}` ({item['kind']}) — {item['description']}" for item in data["dependencies"]]
+        or ["- None declared."]
+    )
+    lines.extend(["", "## Counterevidence", ""])
+    lines.extend(
+        [f"- **{item['claim']}** — {item['evidence']} ({item['qualification']})" for item in data["counterevidence"]]
+        or ["- None recorded."]
+    )
+    lines.extend(["", "## Negative results", ""])
+    lines.extend(
+        [f"- {item['result']} — {item['disposition']}" for item in data["negative_results"]]
+        or ["- None recorded."]
+    )
+    lines.extend(["", "## Lineage", ""])
+    lines.extend(
+        [
+            f"- **Prompt digest:** {data['lineage']['prompt_sha256']}",
+            f"- **Run:** {data['lineage']['run_identity']}",
+            f"- **Provider/model:** {data['lineage']['provider_model_identity']}",
+            f"- **Retrieval environment:** {data['lineage']['retrieval_environment']}",
+            *[f"- **Shared dependency:** {item}" for item in data["lineage"]["shared_dependencies"]],
+        ]
+    )
+    lines.extend(["", "## Independent review receipt", ""])
+    lines.extend(
+        [
+            f"- **Reviewer:** {data['review']['reviewer']['agent_id']} ({data['review']['reviewer']['model_family']})",
+            f"- **Source PR:** {data['review']['binding']['source_pr_url']}",
+            f"- **Reviewed head:** `{data['promotion_receipt']['reviewed_head']}`",
+            f"- **Proposal digest:** `{data['proposal_sha256']}`",
+        ]
+    )
+    lines.extend(["", "## Contribution trace", ""])
+    lines.extend(
+        [
+            f"- **Submitting agent:** {data['intake']['submitter']['agent_id']} ({data['intake']['submitter']['model_family']})",
+            f"- **Reported cost:** {data['intake']['trace']['cost']['amount']} {data['intake']['trace']['cost']['currency']} — {data['intake']['trace']['cost']['basis']}",
+            *[f"- **Failure retained:** {item}" for item in data["intake"]["trace"]["failures"]],
+            *[f"- **Intervention retained:** {item}" for item in data["intake"]["trace"]["interventions"]],
+        ]
+    )
+    lines.extend(["", "## Limitations", "", *[f"- {item}" for item in data["limitations"]], ""])
     lines.extend(["## Unresolved", "", *[f"- {item}" for item in data["unresolved"]], ""])
     lines.extend(["## Boundary", "", data["boundary"], ""])
     return "\n".join(lines)
@@ -589,6 +823,51 @@ def docket_html(data: dict[str, Any]) -> str:
     )
     limitations = "".join(f"<li>{html.escape(item)}</li>" for item in data["limitations"])
     unresolved = "".join(f"<li>{html.escape(item)}</li>" for item in data["unresolved"])
+    calculations = "".join(
+        f'<li><code>{html.escape(item["calculation_id"])}</code> · '
+        f'<code>{html.escape(item["equation"])}</code> → {html.escape(item["output"])}'
+        f'<br><span class="scope-note">Uncertainty: {html.escape(item["uncertainty"])}</span></li>'
+        for item in data["calculations"]
+    ) or "<li>None declared.</li>"
+    dependencies = "".join(
+        f'<li><code>{html.escape(item["dependency_id"])}</code> · '
+        f'{html.escape(item["kind"])} — {html.escape(item["description"])}</li>'
+        for item in data["dependencies"]
+    ) or "<li>None declared.</li>"
+    counterevidence = "".join(
+        f'<li><strong>{html.escape(item["claim"])}</strong> — '
+        f'{html.escape(item["evidence"])} <span class="scope-note">{html.escape(item["qualification"])}</span></li>'
+        for item in data["counterevidence"]
+    ) or "<li>None recorded.</li>"
+    negatives = "".join(
+        f'<li>{html.escape(item["result"])} — {html.escape(item["disposition"])}</li>'
+        for item in data["negative_results"]
+    ) or "<li>None recorded.</li>"
+    lineage = "".join(
+        f"<li><strong>{html.escape(label)}:</strong> {html.escape(str(value))}</li>"
+        for label, value in (
+            ("Prompt digest", data["lineage"]["prompt_sha256"]),
+            ("Run", data["lineage"]["run_identity"]),
+            ("Provider/model", data["lineage"]["provider_model_identity"]),
+            ("Retrieval environment", data["lineage"]["retrieval_environment"]),
+        )
+    )
+    review = data["review"]
+    receipt = data["promotion_receipt"]
+    review_receipt = (
+        f'<p>Reviewed by <strong>{html.escape(review["reviewer"]["agent_id"])}</strong> '
+        f'({html.escape(review["reviewer"]["model_family"])}). '
+        f'<a href="{html.escape(review["binding"]["source_pr_url"])}">Source submission PR</a>.</p>'
+        f'<p class="identity-note">Reviewed head <code>{html.escape(receipt["reviewed_head"])}</code> · '
+        f'proposal <code>{html.escape(data["proposal_sha256"])}</code></p>'
+    )
+    contribution_trace = (
+        f'<p>Submitted by <strong>{html.escape(data["intake"]["submitter"]["agent_id"])}</strong> '
+        f'({html.escape(data["intake"]["submitter"]["model_family"])}).</p>'
+        f'<p>Reported cost: {html.escape(str(data["intake"]["trace"]["cost"]["amount"]))} '
+        f'{html.escape(data["intake"]["trace"]["cost"]["currency"])} · '
+        f'{html.escape(data["intake"]["trace"]["cost"]["basis"])}</p>'
+    )
     return (
         '<article class="dossier-page"><header class="hero hero-compact">'
         '<p class="eyebrow">Open docket · independently reviewed contribution</p>'
@@ -599,6 +878,13 @@ def docket_html(data: dict[str, Any]) -> str:
         f"<p><strong>For practice:</strong> {html.escape(data['practical_reading'])}</p></section>"
         f'<section><h2>What the proposal found</h2><div class="case-grid">{results}</div></section>'
         f'<section><h2>Sources and exact spans</h2>{sources}</section>'
+        f'<section class="two-column"><div><h2>Calculations</h2><ul>{calculations}</ul></div>'
+        f'<div><h2>Typed dependencies</h2><ul>{dependencies}</ul></div></section>'
+        f'<section class="two-column"><div><h2>Counterevidence</h2><ul>{counterevidence}</ul></div>'
+        f'<div><h2>Negative results</h2><ul>{negatives}</ul></div></section>'
+        f'<section class="two-column"><div><h2>Lineage</h2><ul>{lineage}</ul></div>'
+        f'<div><h2>Contribution trace</h2>{contribution_trace}</div></section>'
+        f'<section><h2>Independent review receipt</h2>{review_receipt}</section>'
         f'<section class="two-column"><div><h2>Limitations</h2><ul>{limitations}</ul></div>'
         f'<div><h2>Unresolved</h2><ul>{unresolved}</ul></div></section>'
         f'<p class="scope-note"><strong>Boundary:</strong> {html.escape(data["boundary"])}</p></article>'
@@ -633,7 +919,7 @@ def submission_guide(base_url: str) -> dict[str, Any]:
             "git push -u origin submission/<generated-slug>",
             "gh pr create --draft --title \"[docket submission] ...\" --body-file research/open-dockets/submissions/<generated-slug>/PR_BODY.md",
         ],
-        "success": "Return the draft pull-request URL. Do not review, approve, merge, or publish it.",
+        "success": "Return the draft pull-request URL. Its required queue check intentionally remains blocking after successful validation so the submission branch cannot merge. Do not review, approve, merge, or publish it.",
         "boundary": "Queue entry is untrusted coordination state and receives zero evidential credit.",
         "templates": {
             "proposal": f"{base}/agents/proposal-template.json",
@@ -658,6 +944,7 @@ def submission_guide_markdown(base_url: str) -> str:
             guide["boundary"],
             "",
             "The submitting agent must stop after opening the draft pull request. A separately rooted reviewer re-fetches every credited source and span and creates a different promotion pull request. The submitted branch is never merged directly.",
+            "A valid queue PR deliberately retains a blocking required check. That red check is the mechanical never-merge control, not a request to repair or bypass the queue.",
             "",
             "## Procedure",
             "",

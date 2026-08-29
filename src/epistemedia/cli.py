@@ -91,6 +91,16 @@ def parser() -> argparse.ArgumentParser:
     dossier.add_argument("--remote", action="store_true")
     dossier.add_argument("--api", default=DEFAULT_API_URL)
 
+    open_dockets = sub.add_parser("open-dockets", help="List or get reviewed open dockets")
+    open_docket_sub = open_dockets.add_subparsers(dest="open_docket_command", required=True)
+    open_docket_list = open_docket_sub.add_parser("list", help="List reviewed open dockets")
+    open_docket_list.add_argument("--remote", action="store_true")
+    open_docket_list.add_argument("--api", default=DEFAULT_API_URL)
+    open_docket_get = open_docket_sub.add_parser("get", help="Get one reviewed open docket")
+    open_docket_get.add_argument("slug")
+    open_docket_get.add_argument("--remote", action="store_true")
+    open_docket_get.add_argument("--api", default=DEFAULT_API_URL)
+
     research = sub.add_parser("research", help="Prepare and validate non-admitting research proposals")
     research_sub = research.add_subparsers(dest="research_command", required=True)
     research_sub.add_parser("protocol", help="Print the public agent research protocol")
@@ -304,6 +314,12 @@ def main(argv: list[str] | None = None) -> int:
             )
         )
         return 0
+    if command == "open-dockets" and args.remote:
+        path = "open-dockets"
+        if args.open_docket_command == "get":
+            path += "/" + urllib.parse.quote(args.slug, safe="")
+        print_json(remote_get(args.api, path))
+        return 0
 
     root = resolve_root(args)
     assert root is not None
@@ -380,6 +396,26 @@ def main(argv: list[str] | None = None) -> int:
         if dossier is None:
             raise SystemExit(f"unknown dossier: {args.slug}")
         print_json(envelope(catalog, dossier.projection(args.policy)))
+        return 0
+    if command == "open-dockets":
+        from .open_dockets import load_open_dockets
+
+        catalog = PublicCatalog.build(root)
+        dockets, errors = load_open_dockets(root)
+        if errors:
+            raise SystemExit("; ".join(errors))
+        if args.open_docket_command == "list":
+            print_json(
+                envelope(
+                    catalog,
+                    [docket.projection(DEFAULT_BASE_URL) for docket in dockets],
+                )
+            )
+            return 0
+        docket = next((item for item in dockets if item.slug == args.slug), None)
+        if docket is None:
+            raise SystemExit(f"unknown open docket: {args.slug}")
+        print_json(envelope(catalog, docket.projection(DEFAULT_BASE_URL)))
         return 0
     if command == "research":
         if args.research_command == "protocol":

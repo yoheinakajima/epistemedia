@@ -92,8 +92,10 @@ def main() -> int:
     parser.add_argument("--base-sha", required=True)
     args = parser.parse_args()
     result = validate(args.candidate.resolve(), args.base_sha)
+    result["queue_validated"] = result["valid"]
+    result["required_check_intentionally_blocking"] = True
     print(json.dumps(result, indent=2, sort_keys=True))
-    return 0 if result["valid"] else 1
+    return 1
 
 
 if __name__ == "__main__":

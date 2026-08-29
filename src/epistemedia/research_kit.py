@@ -35,6 +35,8 @@ PROPOSAL_FIELDS = {
     "cutoff",
     "scope",
     "results",
+    "calculations",
+    "dependencies",
     "sources",
     "counterevidence",
     "negative_results",
@@ -56,6 +58,8 @@ RESULT_FIELDS = {
     "interpretation",
     "warrant",
     "uncertainty",
+    "calculation_ids",
+    "dependency_ids",
 }
 REPORTED_VALUE_FIELDS = {"numerator", "denominator", "rate", "comparison"}
 RESULT_SCOPE_FIELDS = {
@@ -96,6 +100,22 @@ LINEAGE_FIELDS = {
 }
 RUNTIME_FIELDS = {"started_at", "completed_at", "agent", "toolchain"}
 LICENSE_FIELDS = {"bundle", "source_material"}
+CALCULATION_FIELDS = {
+    "calculation_id",
+    "equation",
+    "inputs",
+    "output",
+    "uncertainty",
+    "depends_on",
+}
+CALCULATION_INPUT_FIELDS = {"name", "value", "source_id", "span_id"}
+DEPENDENCY_FIELDS = {
+    "dependency_id",
+    "kind",
+    "description",
+    "source_ids",
+    "exact_span_ids",
+}
 
 
 def _digest(value: Any) -> str:
@@ -143,6 +163,7 @@ def protocol_document(base_url: str) -> dict[str, Any]:
             "Restate the question, cutoff, included scope, excluded scope, and comparison target.",
             "Prefer primary public editions; record exact URL, edition, access state, and license.",
             "Bind each material proposition to quote-minimal exact spans and explicit locators.",
+            "Represent every calculated result with its equation, source-bound inputs, output, uncertainty, and calculation dependencies; attach typed source, data, method, material, and derivation dependencies to each result.",
             "Record counterevidence, negative results, unresolved items, and inaccessible carriers.",
             "Collapse shared prompt, runtime, retrieval, source, data, method, and derivation lineages; never count runs as independent by default.",
             "Prepare the proposal bundle and run fail-closed validation before any handoff.",
@@ -246,6 +267,18 @@ def proposal_template(
                 "interpretation": "REPLACE with a bounded interpretation",
                 "warrant": "REPLACE with why the cited span supports the proposition",
                 "uncertainty": "REPLACE with uncertainty and unresolved dependence",
+                "calculation_ids": [],
+                "dependency_ids": ["dependency-1"],
+            }
+        ],
+        "calculations": [],
+        "dependencies": [
+            {
+                "dependency_id": "dependency-1",
+                "kind": "source",
+                "description": "REPLACE with the source, data, method, material, or derivation dependence",
+                "source_ids": ["source-1"],
+                "exact_span_ids": ["span-1"],
             }
         ],
         "sources": [
@@ -506,6 +539,7 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
         errors.append("bundle.results must be a non-empty list")
         results = []
     result_ids: set[str] = set()
+    result_records: list[tuple[str, dict[str, Any]]] = []
     for result_index, raw_result in enumerate(results):
         path = f"bundle.results[{result_index}]"
         result = _exact_fields(raw_result, RESULT_FIELDS, path, errors)
@@ -515,6 +549,7 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
         if result_id in result_ids:
             errors.append(f"duplicate result_id: {result_id}")
         result_ids.add(result_id)
+        result_records.append((path, result))
         for field in {"proposition", "interpretation", "warrant", "uncertainty"}:
             _string(result.get(field), f"{path}.{field}", errors, allow_unknown=False)
         reported = _exact_fields(
@@ -557,6 +592,80 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
                 errors.append(f"{path} references missing span_id: {span_id}")
             elif span_to_source[span_id] not in refs:
                 errors.append(f"{path} span {span_id} is outside its source_ids")
+
+    calculations = root.get("calculations")
+    if not isinstance(calculations, list):
+        errors.append("bundle.calculations must be a list")
+        calculations = []
+    calculation_ids: set[str] = set()
+    for index, raw_calculation in enumerate(calculations):
+        path = f"bundle.calculations[{index}]"
+        calculation = _exact_fields(raw_calculation, CALCULATION_FIELDS, path, errors)
+        calculation_id = _string(
+            calculation.get("calculation_id"), f"{path}.calculation_id", errors, allow_unknown=False
+        )
+        if calculation_id in calculation_ids:
+            errors.append(f"duplicate calculation_id: {calculation_id}")
+        calculation_ids.add(calculation_id)
+        for field in ("equation", "output", "uncertainty"):
+            _string(calculation.get(field), f"{path}.{field}", errors, allow_unknown=False)
+        inputs = calculation.get("inputs")
+        if not isinstance(inputs, list) or not inputs:
+            errors.append(f"{path}.inputs must be a non-empty list")
+            inputs = []
+        for input_index, raw_input in enumerate(inputs):
+            input_path = f"{path}.inputs[{input_index}]"
+            value = _exact_fields(raw_input, CALCULATION_INPUT_FIELDS, input_path, errors)
+            for field in ("name", "value"):
+                _string(value.get(field), f"{input_path}.{field}", errors, allow_unknown=False)
+            source_id = _string(value.get("source_id"), f"{input_path}.source_id", errors, allow_unknown=False)
+            span_id = _string(value.get("span_id"), f"{input_path}.span_id", errors, allow_unknown=False)
+            if source_id not in source_ids or span_to_source.get(span_id) != source_id:
+                errors.append(f"{input_path} does not bind an existing source/span pair")
+        _string_list(calculation.get("depends_on"), f"{path}.depends_on", errors)
+    for index, calculation in enumerate(calculations):
+        for dependency in calculation.get("depends_on", []):
+            if dependency not in calculation_ids:
+                errors.append(f"bundle.calculations[{index}] references missing calculation: {dependency}")
+
+    dependencies = root.get("dependencies")
+    if not isinstance(dependencies, list):
+        errors.append("bundle.dependencies must be a list")
+        dependencies = []
+    dependency_ids: set[str] = set()
+    for index, raw_dependency in enumerate(dependencies):
+        path = f"bundle.dependencies[{index}]"
+        dependency = _exact_fields(raw_dependency, DEPENDENCY_FIELDS, path, errors)
+        dependency_id = _string(
+            dependency.get("dependency_id"), f"{path}.dependency_id", errors, allow_unknown=False
+        )
+        if dependency_id in dependency_ids:
+            errors.append(f"duplicate dependency_id: {dependency_id}")
+        dependency_ids.add(dependency_id)
+        for field in ("kind", "description"):
+            _string(dependency.get(field), f"{path}.{field}", errors, allow_unknown=False)
+        refs = _string_list(dependency.get("source_ids"), f"{path}.source_ids", errors)
+        spans = _string_list(dependency.get("exact_span_ids"), f"{path}.exact_span_ids", errors)
+        if not refs or not spans:
+            errors.append(f"{path} must bind at least one source and exact span")
+        for ref in refs:
+            if ref not in source_ids:
+                errors.append(f"{path} references missing source_id: {ref}")
+        for span_id in spans:
+            if span_to_source.get(span_id) not in refs:
+                errors.append(f"{path} references an unbound span: {span_id}")
+
+    for path, result in result_records:
+        calculation_refs = _string_list(result.get("calculation_ids"), f"{path}.calculation_ids", errors)
+        dependency_refs = _string_list(result.get("dependency_ids"), f"{path}.dependency_ids", errors)
+        if not dependency_refs:
+            errors.append(f"{path}.dependency_ids must retain at least one typed dependence")
+        for ref in calculation_refs:
+            if ref not in calculation_ids:
+                errors.append(f"{path} references missing calculation_id: {ref}")
+        for ref in dependency_refs:
+            if ref not in dependency_ids:
+                errors.append(f"{path} references missing dependency_id: {ref}")
 
     for collection_key, fields in (
         ("counterevidence", COUNTER_FIELDS),
