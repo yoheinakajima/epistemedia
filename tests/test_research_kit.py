@@ -60,11 +60,34 @@ def valid_proposal() -> dict:
                 "interpretation": "This closes only the stated example.",
                 "warrant": "Direct quote-minimal source span.",
                 "uncertainty": "No independent reproduction in this bundle.",
-                "calculation_ids": [],
+                "calculation_ids": ["calculation-1"],
+                "calculation_status": "reproduced",
                 "dependency_ids": ["dependency-1"],
             }
         ],
-        "calculations": [],
+        "calculations": [
+            {
+                "calculation_id": "calculation-1",
+                "equation": "1 supported proposition / 1 tested proposition",
+                "inputs": [
+                    {
+                        "name": "supported propositions",
+                        "value": "1",
+                        "source_id": "source-1",
+                        "span_id": "span-1",
+                    },
+                    {
+                        "name": "tested propositions",
+                        "value": "1",
+                        "source_id": "source-1",
+                        "span_id": "span-1",
+                    },
+                ],
+                "output": "1/1",
+                "uncertainty": "Fixture-only identity calculation.",
+                "depends_on": [],
+            }
+        ],
         "dependencies": [
             {
                 "dependency_id": "dependency-1",

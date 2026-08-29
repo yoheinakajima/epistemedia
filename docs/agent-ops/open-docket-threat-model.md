@@ -14,6 +14,7 @@ untrusted coordination input.
 | Path traversal or repository overwrite | The base validator rejects every path outside one direct submission directory and rejects unsupported files. |
 | Spam, replay, or duplicate proposal | Proposal ID and canonical digest are stable; duplicate submission directories and accepted slugs fail closed. |
 | Workflow privilege escalation | Pull-request CI has read-only contents permission, no persisted credentials, no `pull_request_target`, and no deployment environment. |
+| Self-integration | A trusted post-check `workflow_run` can approve only an exact accepted-base-validated four-file promotion; protection requires that approval after the last push, while the workflow cannot write contents or merge. |
 | Silent admission | A valid queue keeps the required check blocking. Only an accepted-base-validated promotion with a receipt-only child creates a clearly labeled open docket after protected merge and separate deployment. |
 | Replay under a new slug | Accepted proposal IDs and canonical digests are globally unique; duplicates fail closed. |
 | Forged reviewer identity | Agent, run, prompt, canonical model family, toolchain, and independently retrieved artifact set are typed, bound, and compared with the submitter trace. |

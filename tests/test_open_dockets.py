@@ -4,6 +4,7 @@ import copy
 import hashlib
 import json
 import shutil
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -24,6 +25,8 @@ from epistemedia.open_dockets import (
 )
 from epistemedia.research_kit import validate_proposal
 from epistemedia.server import Gateway, Request, tool_definitions
+from ops import validate_promotion_pr as promotion_validator
+from ops.classify_docket_pr import classify_paths
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -32,9 +35,25 @@ def prompt_digest(character: str) -> str:
     return character * 64
 
 
+def trace_for(bundle: dict) -> dict:
+    trace = trace_template()
+    for source in bundle["sources"]:
+        trace["events"].append(
+            {
+                "sequence": len(trace["events"]) + 1,
+                "action": "retrieve-source",
+                "target": source["url"],
+                "status": "completed",
+                "artifact_sha256": "a" * 64,
+                "note": "Public source independently retrieved; only its digest is recorded.",
+            }
+        )
+    return trace
+
+
 def prepared(tmp_path: Path) -> tuple[dict, dict, dict]:
     bundle = valid_proposal()
-    trace = trace_template()
+    trace = trace_for(bundle)
     result = prepare_submission(
         tmp_path,
         bundle,
@@ -176,8 +195,9 @@ def test_submission_is_deterministic_untrusted_and_not_admitted(tmp_path: Path) 
 def test_cli_prepares_submission_but_performs_no_git_or_review_action(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:
-    (tmp_path / "proposal.json").write_text(json.dumps(valid_proposal()))
-    (tmp_path / "trace.json").write_text(json.dumps(trace_template()))
+    bundle = valid_proposal()
+    (tmp_path / "proposal.json").write_text(json.dumps(bundle))
+    (tmp_path / "trace.json").write_text(json.dumps(trace_for(bundle)))
     assert (
         main(
             [
@@ -217,8 +237,11 @@ def test_cli_prepares_submission_but_performs_no_git_or_review_action(
         lambda value: value["events"][0].update(note="system prompt follows"),
         lambda value: value["events"][0].update(note="Read /Users/alice/private.txt"),
         lambda value: value["events"][0].update(note="Read /tmp/private-source.txt"),
+        lambda value: value["events"][0].update(note="Read ../../private-source.txt"),
+        lambda value: value["events"][0].update(note=r"Read D:\Temp\private-source.txt"),
         lambda value: value["events"][0].update(note="Contact alice@example.org"),
         lambda value: value["events"][0].update(note="x" * 2_049),
+        lambda value: value["failures"].append("x" * 100_000),
         lambda value: value["events"][0].update(note="github_pat_" + "a" * 24),
         lambda value: value["events"][0].update(artifact_sha256="not-a-digest"),
         lambda value: value["events"].append(copy.deepcopy(value["events"][0])),
@@ -381,8 +404,8 @@ def test_public_build_exposes_submit_and_empty_open_docket_routes(tmp_path: Path
 
 def test_ci_uses_base_validator_for_submission_only_pull_requests() -> None:
     workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
-    assert "submission_only" in workflow
-    assert "ref: ${{ github.event.pull_request.base.sha }}" in workflow
+    assert "classify_docket_pr.py" in workflow
+    assert "ref: ${{ github.event.pull_request.base.sha || github.sha }}" in workflow
     assert "PYTHONPATH: validator/src" in workflow
     assert "python validator/ops/validate_submission_pr.py" in workflow
     assert "python validator/ops/validate_promotion_pr.py" in workflow
@@ -392,6 +415,132 @@ def test_ci_uses_base_validator_for_submission_only_pull_requests() -> None:
     assert "pull_request_target" not in workflow
     assert "cache-dependency-path: candidate/pyproject.toml" in workflow
     assert "--diff-filter" not in (ROOT / "ops" / "validate_submission_pr.py").read_text()
+
+
+def test_sensitive_mixed_paths_never_execute_candidate_code() -> None:
+    submission = "research/open-dockets/submissions/test/proposal.json"
+    promotion = "research/open-dockets/test/review.json"
+    assert classify_paths([submission, "pyproject.toml"]) == "submission"
+    assert classify_paths([promotion, "pyproject.toml"]) == "promotion"
+    assert classify_paths([submission, promotion]) == "submission"
+    assert classify_paths(["README.md"]) == "normal"
+
+
+def test_trusted_post_check_workflow_can_only_approve_exact_promotions() -> None:
+    workflow = (ROOT / ".github" / "workflows" / "approve-open-docket-promotion.yml").read_text()
+    assert "workflow_run:" in workflow
+    assert "github.event.workflow_run.conclusion == 'success'" in workflow
+    assert "pull-requests: write" in workflow
+    assert "contents: write" not in workflow
+    assert "gh pr review" in workflow
+    assert "gh pr merge" not in workflow
+    assert "${#paths[@]} -eq 4" in workflow
+    assert "pull_request_target" not in workflow
+
+
+def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    repository = tmp_path / "repo"
+    repository.mkdir()
+
+    def run_git(*args: str) -> str:
+        return subprocess.run(
+            ["git", "-C", str(repository), *args],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+
+    run_git("init", "-b", "main")
+    run_git("config", "user.name", "Test Integrator")
+    run_git("config", "user.email", "integrator@example.invalid")
+    (repository / "README.md").write_text("accepted base\n")
+    run_git("add", "README.md")
+    run_git("commit", "-m", "base")
+    base = run_git("rev-parse", "HEAD")
+
+    destination = promote(repository)
+    submission = next((repository / "research" / "open-dockets" / "submissions").iterdir())
+    artifact = b"The bounded result was observed."
+    artifact_digest = hashlib.sha256(artifact).hexdigest()
+    for intake_path in (submission / "intake.json", destination / "intake.json"):
+        intake = json.loads(intake_path.read_text())
+        intake["trace"]["events"][1]["artifact_sha256"] = artifact_digest
+        intake_path.write_text(json.dumps(intake, indent=2, sort_keys=True) + "\n")
+    review_path = destination / "review.json"
+    review = json.loads(review_path.read_text())
+    review["source_reviews"][0]["artifact_sha256"] = artifact_digest
+    review["reviewer"]["source_artifact_sha256s"] = [artifact_digest]
+    review_path.write_text(json.dumps(review, indent=2, sort_keys=True) + "\n")
+    receipt_path = destination / "promotion-receipt.json"
+    receipt = json.loads(receipt_path.read_text())
+    receipt_path.unlink()
+    source_files = {
+        name: (submission / name).read_bytes()
+        for name in ("PR_BODY.md", "intake.json", "proposal.json")
+    }
+    shutil.rmtree(repository / "research" / "open-dockets" / "submissions")
+    run_git("add", str(destination.relative_to(repository)))
+    run_git("commit", "-m", "promote reviewed docket")
+    reviewed_head = run_git("rev-parse", "HEAD")
+    reviewed_tree = run_git("rev-parse", "HEAD^{tree}")
+    receipt.update(
+        {
+            "reviewed_head": reviewed_head,
+            "reviewed_tree": reviewed_tree,
+            "proposal_sha256": hashlib.sha256(
+                (destination / "proposal.json").read_bytes()
+            ).hexdigest(),
+            "review_sha256": hashlib.sha256(review_path.read_bytes()).hexdigest(),
+            "reviewer": review["reviewer"],
+        }
+    )
+    receipt_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+    run_git("add", str(receipt_path.relative_to(repository)))
+    run_git("commit", "-m", "receipt")
+    head = run_git("rev-parse", "HEAD")
+
+    monkeypatch.setenv("CANDIDATE_SHA", head)
+    monkeypatch.setenv("CURRENT_PR_NUMBER", "200")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "yoheinakajima/epistemedia")
+    monkeypatch.setenv("GITHUB_TOKEN", "test-token")
+
+    def fake_github_json(path: str):
+        if path == "pulls/100":
+            return {
+                "html_url": "https://github.com/yoheinakajima/epistemedia/pull/100",
+                "head": {"sha": "a" * 40},
+                "base": {"sha": base},
+                "state": "open",
+                "draft": True,
+            }
+        if path.startswith("pulls/100/files"):
+            parent = "research/open-dockets/submissions/source"
+            return [
+                {"filename": f"{parent}/{name}", "status": "added"}
+                for name in ("PR_BODY.md", "intake.json", "proposal.json")
+            ]
+        raise AssertionError(path)
+
+    monkeypatch.setattr(promotion_validator, "github_json", fake_github_json)
+    monkeypatch.setattr(
+        promotion_validator,
+        "github_file",
+        lambda path, ref: source_files[Path(path).name],
+    )
+    monkeypatch.setattr(promotion_validator, "fetch_public", lambda url: artifact)
+    result = promotion_validator.validate(repository, base)
+    assert result["valid"] is True, result["errors"]
+
+    receipt["reviewed_head"] = "f" * 40
+    receipt_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+    run_git("add", str(receipt_path.relative_to(repository)))
+    run_git("commit", "--amend", "--no-edit")
+    monkeypatch.setenv("CANDIDATE_SHA", run_git("rev-parse", "HEAD"))
+    result = promotion_validator.validate(repository, base)
+    assert result["valid"] is False
+    assert any("receipt does not bind" in error for error in result["errors"])
 
 
 def test_submission_rejects_symlinks_and_mutated_credit_boundary(tmp_path: Path) -> None:

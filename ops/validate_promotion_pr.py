@@ -5,8 +5,11 @@ from __future__ import annotations
 
 import argparse
 import base64
+import hashlib
+import html
 import json
 import os
+import re
 import subprocess
 import tempfile
 import urllib.request
@@ -30,6 +33,14 @@ def changed(candidate: Path, start: str, end: str) -> list[str]:
     return git(candidate, "diff", "--name-only", f"{start}...{end}").splitlines()
 
 
+def changed_status(candidate: Path, start: str, end: str) -> list[tuple[str, str]]:
+    records = []
+    for line in git(candidate, "diff", "--name-status", f"{start}...{end}").splitlines():
+        status, path = line.split("\t", 1)
+        records.append((status, path))
+    return records
+
+
 def github_json(path: str) -> Any:
     repository = os.environ["GITHUB_REPOSITORY"]
     request = urllib.request.Request(
@@ -51,6 +62,23 @@ def github_file(path: str, ref: str) -> bytes:
         raise ValueError(f"GitHub content response is not a base64 file: {path}")
     encoded = "".join(str(payload.get("content", "")).split())
     return base64.b64decode(encoded, validate=True)
+
+
+def fetch_public(url: str) -> bytes:
+    request = urllib.request.Request(
+        url,
+        headers={"accept": "*/*", "user-agent": "epistemedia-independent-promotion-check/0.1"},
+    )
+    with urllib.request.urlopen(request, timeout=45) as response:
+        value = response.read(25_000_001)
+    if len(value) > 25_000_000:
+        raise ValueError(f"independent source retrieval exceeds 25MB: {url}")
+    return value
+
+
+def normalized_text(value: str) -> str:
+    without_markup = re.sub(r"<[^>]+>", " ", value)
+    return " ".join(html.unescape(without_markup).split())
 
 
 def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
@@ -85,9 +113,15 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
         }
         if set(changed(candidate, base_sha, parent)) != expected_reviewed:
             errors.append("reviewed parent must add exactly one three-file promoted docket")
+        if set(changed_status(candidate, base_sha, parent)) != {
+            ("A", path) for path in expected_reviewed
+        }:
+            errors.append("reviewed docket files must be newly added and immutable")
         receipt_delta = changed(candidate, parent, head)
         if receipt_delta != [receipt_path]:
             errors.append("receipt commit must add only the promotion receipt")
+        if changed_status(candidate, parent, head) != [("A", receipt_path)]:
+            errors.append("promotion receipt must be newly added in the receipt-only child")
     dockets, docket_errors = load_open_dockets(candidate)
     errors.extend(docket_errors)
     if receipt_path:
@@ -138,6 +172,39 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
             for name in ("intake.json", "proposal.json"):
                 if source_files[name] != (promoted_dir / name).read_bytes():
                     errors.append(f"promoted {name} does not match the bound source submission")
+            proposal = json.loads((promoted_dir / "proposal.json").read_text(encoding="utf-8"))
+            intake = json.loads((promoted_dir / "intake.json").read_text(encoding="utf-8"))
+            review = json.loads((promoted_dir / "review.json").read_text(encoding="utf-8"))
+            source_reviews = {
+                item["source_id"]: item for item in review.get("source_reviews", [])
+                if isinstance(item, dict) and isinstance(item.get("source_id"), str)
+            }
+            for source in proposal.get("sources", []):
+                source_id = source.get("source_id")
+                try:
+                    artifact = fetch_public(source["url"])
+                except Exception as exc:
+                    errors.append(f"independent CI retrieval failed for {source_id}: {exc}")
+                    continue
+                digest = hashlib.sha256(artifact).hexdigest()
+                if digest != source_reviews.get(source_id, {}).get("artifact_sha256"):
+                    errors.append(f"independent CI artifact digest mismatch for {source_id}")
+                author_digests = {
+                    event.get("artifact_sha256")
+                    for event in intake.get("trace", {}).get("events", [])
+                    if event.get("action") == "retrieve-source"
+                    and event.get("target") == source.get("url")
+                }
+                if author_digests != {digest}:
+                    errors.append(f"author trace artifact digest mismatch for {source_id}")
+                media_type = str(source.get("media_type", "")).lower()
+                if any(token in media_type for token in ("html", "text", "json", "xml")):
+                    text = normalized_text(artifact.decode("utf-8", errors="replace"))
+                    for span in source.get("exact_spans", []):
+                        if normalized_text(str(span.get("quote", ""))) not in text:
+                            errors.append(
+                                f"independent CI text containment failed for {span.get('span_id')}"
+                            )
     else:
         errors.append("promotion receipt source PR number is invalid")
     return {

@@ -66,7 +66,9 @@ def validate(candidate: Path, base_sha: str) -> dict[str, object]:
                         if intake.get("proposal_id") == existing.get("proposal_id"):
                             errors.append("proposal ID already exists in an accepted open docket")
                         if intake.get("proposal_sha256") == existing.get("proposal_sha256"):
-                            errors.append("proposal digest already exists in an accepted open docket")
+                            errors.append(
+                                "proposal digest already exists in an accepted open docket"
+                            )
     return {
         "format": "epistemedia-untrusted-submission-check-v0.1",
         "valid": not errors,

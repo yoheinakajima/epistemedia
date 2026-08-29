@@ -1,0 +1,52 @@
+name: approve-open-docket-promotion
+
+on:
+  workflow_run:
+    workflows: [validate]
+    types: [completed]
+
+permissions: {}
+
+concurrency:
+  group: approve-open-docket-${{ github.event.workflow_run.id }}
+  cancel-in-progress: false
+
+jobs:
+  approve:
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.pull_requests[0].number != null
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: false
+      - name: Approve only an accepted-base-validated promotion shape
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+          REVIEWED_HEAD: ${{ github.event.workflow_run.head_sha }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual_head="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq .head.sha)"
+          [[ "$actual_head" == "$REVIEWED_HEAD" ]]
+          mapfile -t paths < <(gh api --paginate "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files?per_page=100" --jq '.[].filename')
+          [[ ${#paths[@]} -eq 4 ]]
+          parent=""
+          for path in "${paths[@]}"; do
+            [[ "$path" =~ ^research/open-dockets/[^/]+/(intake\.json|proposal\.json|promotion-receipt\.json|review\.json)$ ]]
+            current_parent="${path%/*}"
+            if [[ -z "$parent" ]]; then
+              parent="$current_parent"
+            else
+              [[ "$parent" == "$current_parent" ]]
+            fi
+          done
+          gh pr review "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --approve \
+            --body "Approved by the trusted post-validation integrator after accepted-base promotion checks passed at exact head ${REVIEWED_HEAD}."

@@ -59,6 +59,7 @@ RESULT_FIELDS = {
     "warrant",
     "uncertainty",
     "calculation_ids",
+    "calculation_status",
     "dependency_ids",
 }
 REPORTED_VALUE_FIELDS = {"numerator", "denominator", "rate", "comparison"}
@@ -162,6 +163,7 @@ def protocol_document(base_url: str) -> dict[str, Any]:
         "steps": [
             "Restate the question, cutoff, included scope, excluded scope, and comparison target.",
             "Prefer primary public editions; record exact URL, edition, access state, and license.",
+            "For every proposal source, add a retrieve-source action-trace event with the exact public URL and independently computed artifact SHA-256; do not copy source payloads into the trace.",
             "Bind each material proposition to quote-minimal exact spans and explicit locators.",
             "Represent every calculated result with its equation, source-bound inputs, output, uncertainty, and calculation dependencies; attach typed source, data, method, material, and derivation dependencies to each result.",
             "Record counterevidence, negative results, unresolved items, and inaccessible carriers.",
@@ -267,11 +269,28 @@ def proposal_template(
                 "interpretation": "REPLACE with a bounded interpretation",
                 "warrant": "REPLACE with why the cited span supports the proposition",
                 "uncertainty": "REPLACE with uncertainty and unresolved dependence",
-                "calculation_ids": [],
+                "calculation_ids": ["calculation-1"],
+                "calculation_status": "reproduced",
                 "dependency_ids": ["dependency-1"],
             }
         ],
-        "calculations": [],
+        "calculations": [
+            {
+                "calculation_id": "calculation-1",
+                "equation": "REPLACE with an explicit equation or identity mapping",
+                "inputs": [
+                    {
+                        "name": "REPLACE with input name",
+                        "value": "REPLACE with source-reported input value",
+                        "source_id": "source-1",
+                        "span_id": "span-1",
+                    }
+                ],
+                "output": "REPLACE with reproduced output",
+                "uncertainty": "REPLACE with calculation uncertainty",
+                "depends_on": [],
+            }
+        ],
         "dependencies": [
             {
                 "dependency_id": "dependency-1",
@@ -658,6 +677,19 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
     for path, result in result_records:
         calculation_refs = _string_list(result.get("calculation_ids"), f"{path}.calculation_ids", errors)
         dependency_refs = _string_list(result.get("dependency_ids"), f"{path}.dependency_ids", errors)
+        calculation_status = result.get("calculation_status")
+        if calculation_status not in {"reproduced", "not-applicable-no-derived-value"}:
+            errors.append(f"{path}.calculation_status is invalid")
+        if calculation_status == "reproduced" and not calculation_refs:
+            errors.append(f"{path} must reference a reproduced calculation")
+        if calculation_status == "not-applicable-no-derived-value" and calculation_refs:
+            errors.append(f"{path} cannot reference calculations marked not applicable")
+        reported_text = " ".join(
+            str(result.get("reported_value", {}).get(field, ""))
+            for field in REPORTED_VALUE_FIELDS
+        )
+        if re.search(r"\d", reported_text) and calculation_status != "reproduced":
+            errors.append(f"{path} reports numeric values without reproduced calculation closure")
         if not dependency_refs:
             errors.append(f"{path}.dependency_ids must retain at least one typed dependence")
         for ref in calculation_refs:
@@ -666,6 +698,47 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
         for ref in dependency_refs:
             if ref not in dependency_ids:
                 errors.append(f"{path} references missing dependency_id: {ref}")
+
+    referenced_calculations = {
+        ref for _, result in result_records for ref in result.get("calculation_ids", [])
+    }
+    referenced_calculations.update(
+        ref for calculation in calculations for ref in calculation.get("depends_on", [])
+    )
+    orphan_calculations = calculation_ids - referenced_calculations
+    if orphan_calculations:
+        errors.append("orphan calculations: " + ", ".join(sorted(orphan_calculations)))
+    referenced_dependencies = {
+        ref for _, result in result_records for ref in result.get("dependency_ids", [])
+    }
+    orphan_dependencies = dependency_ids - referenced_dependencies
+    if orphan_dependencies:
+        errors.append("orphan dependencies: " + ", ".join(sorted(orphan_dependencies)))
+    allowed_dependency_kinds = {"source", "data", "method", "material", "derivation", "runtime", "prompt"}
+    for index, dependency in enumerate(dependencies):
+        if dependency.get("kind") not in allowed_dependency_kinds:
+            errors.append(f"bundle.dependencies[{index}].kind is not a supported dependence type")
+    calculation_graph = {
+        calculation.get("calculation_id"): set(calculation.get("depends_on", []))
+        for calculation in calculations
+    }
+    visiting: set[str] = set()
+    visited: set[str] = set()
+
+    def visit_calculation(node: str) -> None:
+        if node in visiting:
+            errors.append(f"calculation dependency cycle includes: {node}")
+            return
+        if node in visited:
+            return
+        visiting.add(node)
+        for dependency in calculation_graph.get(node, set()):
+            visit_calculation(dependency)
+        visiting.remove(node)
+        visited.add(node)
+
+    for calculation_id in calculation_graph:
+        visit_calculation(calculation_id)
 
     for collection_key, fields in (
         ("counterevidence", COUNTER_FIELDS),

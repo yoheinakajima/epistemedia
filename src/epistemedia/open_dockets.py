@@ -59,6 +59,10 @@ def _contains_disallowed_text(value: Any) -> bool:
             return True
         if EMAIL.search(value) or re.search(r"(?<![A-Za-z0-9])/(?:tmp|var|opt|etc)/", value):
             return True
+        if re.search(r"(?:^|[\s'\"`])(?:\.\.[/\\])+", value):
+            return True
+        if re.search(r"(?:^|[\s'\"`])[A-Za-z]:\\", value):
+            return True
         return any(
             marker in lowered
             for marker in (
@@ -118,6 +122,8 @@ def validate_action_trace(trace: Any) -> list[str]:
             isinstance(item, str) and item.strip() for item in trace.get(key, [])
         ):
             errors.append(f"trace.{key} must be a list of non-empty strings")
+        elif len(trace[key]) > 100 or any(len(item) > 512 for item in trace[key]):
+            errors.append(f"trace.{key} exceeds disclosure-safe item or size limits")
     cost = trace.get("cost")
     if not isinstance(cost, dict) or set(cost) != {"amount", "currency", "basis"}:
         errors.append("trace.cost must contain amount, currency, and basis")
@@ -153,6 +159,36 @@ def trace_template() -> dict[str, Any]:
     }
 
 
+def canonical_pr_body(
+    bundle: dict[str, Any], proposal_id: str, proposal_sha256: str, agent_id: str, model_family: str
+) -> str:
+    return (
+        "## Autonomous open-docket submission\n\n"
+        f"- Proposal: `{proposal_id}`\n"
+        f"- Proposal SHA-256: `{proposal_sha256}`\n"
+        f"- Submitter agent: `{agent_id}`\n"
+        f"- Model family: `{model_family}`\n\n"
+        "This draft PR is an untrusted queue item with zero evidential credit. It must not "
+        "be merged. A separately rooted reviewer may create a promotion PR from accepted main.\n"
+    )
+
+
+def validate_trace_against_bundle(trace: dict[str, Any], bundle: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    expected_urls = {source["url"] for source in bundle.get("sources", [])}
+    retrieved: set[str] = set()
+    for event in trace.get("events", []):
+        if event.get("action") == "retrieve-source" and event.get("artifact_sha256") != "none":
+            retrieved.add(event.get("target"))
+    missing = sorted(expected_urls - retrieved)
+    extra = sorted(retrieved - expected_urls)
+    if missing:
+        errors.append("trace lacks independently recorded source retrievals: " + ", ".join(missing))
+    if extra:
+        errors.append("trace records source retrievals outside the proposal: " + ", ".join(extra))
+    return errors
+
+
 def _slug(question: str, proposal_id: str) -> str:
     words = re.findall(r"[a-z0-9]+", question.lower())[:8]
     stem = "-".join(words) or "open-docket"
@@ -171,7 +207,7 @@ def prepare_submission(
     submitted_at: str,
 ) -> dict[str, Any]:
     validation = validate_proposal(bundle)
-    trace_errors = validate_action_trace(trace)
+    trace_errors = [*validate_action_trace(trace), *validate_trace_against_bundle(trace, bundle)]
     if not validation["valid"] or trace_errors:
         raise ValueError("; ".join([*validation["errors"], *trace_errors]))
     for name, value in {
@@ -193,14 +229,8 @@ def prepare_submission(
     if destination.exists():
         raise ValueError(f"submission already exists: {slug}")
     title = f"[docket submission] {bundle['question']}"
-    body = (
-        "## Autonomous open-docket submission\n\n"
-        f"- Proposal: `{proposal_id}`\n"
-        f"- Proposal SHA-256: `{sha256_bytes(proposal_bytes)}`\n"
-        f"- Submitter agent: `{agent_id}`\n"
-        f"- Model family: `{model_family}`\n\n"
-        "This draft PR is an untrusted queue item with zero evidential credit. It must not "
-        "be merged. A separately rooted reviewer may create a promotion PR from accepted main.\n"
+    body = canonical_pr_body(
+        bundle, proposal_id, sha256_bytes(proposal_bytes), agent_id, model_family
     )
     body_bytes = body.encode("utf-8")
     if len(body_bytes) > 16_384 or _contains_disallowed_text(body):
@@ -276,12 +306,23 @@ def validate_submission_directory(path: Path) -> list[str]:
         if intake.get(key) != expected_value:
             errors.append(f"intake {key} does not bind proposal")
     errors.extend(validate_action_trace(intake.get("trace")))
+    errors.extend(validate_trace_against_bundle(intake.get("trace", {}), bundle))
+    submitter = intake.get("submitter")
     pr_body = (path / "PR_BODY.md").read_text(encoding="utf-8")
     if len(pr_body.encode("utf-8")) > 16_384:
         errors.append("PR_BODY.md exceeds 16384 bytes")
     if _contains_disallowed_text(pr_body):
         errors.append("PR_BODY.md contains prohibited private or secret-shaped data")
-    submitter = intake.get("submitter")
+    if isinstance(submitter, dict):
+        expected_body = canonical_pr_body(
+            bundle,
+            str(intake.get("proposal_id", "")),
+            str(intake.get("proposal_sha256", "")),
+            str(submitter.get("agent_id", "")),
+            str(submitter.get("model_family", "")),
+        )
+        if pr_body != expected_body:
+            errors.append("PR_BODY.md does not match the canonical non-admitting body")
     if not isinstance(submitter, dict) or set(submitter) != {
         "agent_id",
         "model_family",
@@ -449,13 +490,8 @@ def _validate_review(path: Path, bundle: dict[str, Any], intake: dict[str, Any])
             isinstance(item, str) and SHA256.fullmatch(item) for item in artifacts
         ):
             errors.append("reviewer source artifacts must be non-empty SHA-256 values")
-        author_artifacts = {
-            event.get("artifact_sha256")
-            for event in intake.get("trace", {}).get("events", [])
-            if event.get("artifact_sha256") != "none"
-        }
-        if isinstance(artifacts, list) and author_artifacts.intersection(artifacts):
-            errors.append("reviewer source artifacts overlap author trace artifacts")
+        if set(toolchain or []) == set(bundle.get("runtime", {}).get("toolchain", [])):
+            errors.append("reviewer toolchain must not equal the author toolchain")
     source_reviews = review.get("source_reviews")
     expected_sources = {
         source["source_id"]: {
@@ -796,6 +832,18 @@ def docket_markdown(data: dict[str, Any]) -> str:
     )
     lines.extend(["", "## Limitations", "", *[f"- {item}" for item in data["limitations"]], ""])
     lines.extend(["## Unresolved", "", *[f"- {item}" for item in data["unresolved"]], ""])
+    lines.extend(
+        [
+            "## Complete machine record",
+            "",
+            "The complete projection below preserves every field represented in the JSON twin.",
+            "",
+            "```json",
+            json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True),
+            "```",
+            "",
+        ]
+    )
     lines.extend(["## Boundary", "", data["boundary"], ""])
     return "\n".join(lines)
 
@@ -887,6 +935,9 @@ def docket_html(data: dict[str, Any]) -> str:
         f'<section><h2>Independent review receipt</h2>{review_receipt}</section>'
         f'<section class="two-column"><div><h2>Limitations</h2><ul>{limitations}</ul></div>'
         f'<div><h2>Unresolved</h2><ul>{unresolved}</ul></div></section>'
+        '<details class="technical-disclosure"><summary>Complete machine record</summary>'
+        '<p>Every field in the JSON twin is preserved below.</p>'
+        f'<pre><code>{html.escape(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True))}</code></pre></details>'
         f'<p class="scope-note"><strong>Boundary:</strong> {html.escape(data["boundary"])}</p></article>'
     )
 
@@ -911,6 +962,7 @@ def submission_guide(base_url: str) -> dict[str, Any]:
             ".venv/bin/python -m epistemedia research prepare --question \"YOUR QUESTION\" --output proposal.json",
             "curl -fsSLo action-trace.json https://epistemedia.org/agents/action-trace-template.json",
             "complete proposal.json and action-trace.json from public primary-source research",
+            "ensure action-trace.json has one retrieve-source event per proposal source with exact URL and artifact SHA-256, but no source payload",
             ".venv/bin/python -m epistemedia research validate proposal.json",
             ".venv/bin/python -m epistemedia research submit proposal.json --trace action-trace.json --agent-id YOUR_AGENT --model-family YOUR_MODEL_FAMILY --run-id YOUR_RUN_ID --prompt-sha256 PROMPT_SHA256 --submitted-at YYYY-MM-DDTHH:MM:SSZ",
             "git switch -c submission/<generated-slug>",
