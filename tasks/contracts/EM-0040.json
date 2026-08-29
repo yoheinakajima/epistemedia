@@ -32,11 +32,12 @@
   "required_evaluation": [
     "independent governance review loaded from the accepted base branch before implementation approval",
     "threat model for untrusted source text, prompt injection, path traversal, repository overwrite, private or secret-shaped data, malicious links, oversized bundles, spam, replay, duplicate submission, forged review receipts, contributor self-approval, and workflow privilege escalation",
-    "cold-start test in which a context-isolated Claude coding agent receives only the public submission URL and a short instruction, with its full prompt, runtime identity where available, tool trace, output, failures, interventions, and cost recorded",
+    "cold-start test in which a context-isolated Claude coding agent receives only the public submission URL and a short instruction, with its full user-facing prompt, runtime identity where available, disclosure-safe structured action trace, output digest, failures, interventions, and cost recorded while excluding chain-of-thought, private model context, credentials, personal data, and source bytes beyond licensed quote-minimal spans",
     "exact proposal-to-source, edition, span, proposition, warrant, calculation, counterevidence, negative-result, uncertainty, license, and dependence closure",
     "separate contributor, independent reviewer, and protected integrator roles with the submitting agent unable to create or forge its own accepted review predicate",
     "read-only pull-request validation for untrusted contributions with no secrets, write token, deployment credential, environment access, pull-request-target execution, or contributor-controlled workflow execution",
     "deterministic queue identity, proposal digest, immutable intake record, independent review receipt, duplicate and supersession semantics, public status, rejection disposition, and audit trail",
+    "adversarial validation that disclosure-safe traces reject chain-of-thought or private model context, credentials, personal data, local paths, restricted source payloads, and unlicensed source text beyond quote-minimal attributed spans",
     "human-readable open-docket projection that preserves every material limitation and clearly distinguishes an independently reviewed proposal from a numbered How We Know case or universal truth",
     "full interface parity, disclosure audit, adversarial tests, deterministic rebuild, exact path-scope comparison, clean state, protected merge, resulting-main validation, separately authorized Pages deployment, and live route and release-identity read-back"
   ],
