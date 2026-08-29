@@ -1,0 +1,62 @@
+{
+  "id": "EM-0040",
+  "title": "Pilot an autonomous GitHub-native docket contribution",
+  "status": "ready",
+  "change_class": "governance-normative",
+  "objective": "Let an unfamiliar external coding agent start from one public URL, choose and research a bounded claim, validate and submit a portable proposal through a GitHub-native review queue, receive independent non-author source and span review, and reach a clearly labeled public open-docket projection through the normal protected merge path without further owner hand-holding.",
+  "depends_on": [
+    "EM-0037",
+    "EM-0039"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "research/open-dockets/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**",
+      ".github/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      "tasks/contracts/**",
+      "catalog/dossiers/**",
+      "research/how-we-know/**"
+    ]
+  },
+  "required_evaluation": [
+    "independent governance review loaded from the accepted base branch before implementation approval",
+    "threat model for untrusted source text, prompt injection, path traversal, repository overwrite, private or secret-shaped data, malicious links, oversized bundles, spam, replay, duplicate submission, forged review receipts, contributor self-approval, and workflow privilege escalation",
+    "cold-start test in which a context-isolated Claude coding agent receives only the public submission URL and a short instruction, with its full prompt, runtime identity where available, tool trace, output, failures, interventions, and cost recorded",
+    "exact proposal-to-source, edition, span, proposition, warrant, calculation, counterevidence, negative-result, uncertainty, license, and dependence closure",
+    "separate contributor, independent reviewer, and protected integrator roles with the submitting agent unable to create or forge its own accepted review predicate",
+    "read-only pull-request validation for untrusted contributions with no secrets, write token, deployment credential, environment access, pull-request-target execution, or contributor-controlled workflow execution",
+    "deterministic queue identity, proposal digest, immutable intake record, independent review receipt, duplicate and supersession semantics, public status, rejection disposition, and audit trail",
+    "human-readable open-docket projection that preserves every material limitation and clearly distinguishes an independently reviewed proposal from a numbered How We Know case or universal truth",
+    "full interface parity, disclosure audit, adversarial tests, deterministic rebuild, exact path-scope comparison, clean state, protected merge, resulting-main validation, separately authorized Pages deployment, and live route and release-identity read-back"
+  ],
+  "acceptance": [
+    "one stable public /agents/submit/ route gives a cold-start coding agent the complete question-selection, research, bundle, validation, Git, pull-request, status, and non-admission instructions without private conversational context",
+    "the local CLI validates a ready proposal and prepares a deterministic GitHub submission directory and draft pull-request payload, but cannot approve, review, merge, deploy, or alter policy",
+    "a submitted proposal is represented by one canonical digest and append-only intake record under research/open-dockets, while invalid, duplicate, replayed, oversized, private, secret-shaped, or unsupported input fails closed",
+    "untrusted pull-request CI runs with read-only repository permission and proves proposal structure, source/span closure, path scope, generated-state determinism, and absence of admission or self-review artifacts",
+    "publication requires an independently rooted reviewer to re-retrieve and inspect every credited source and exact span, append an exact-head review receipt, and pass a fail-closed receipt verifier loaded from the accepted base",
+    "the submitting agent receives zero automatic warrant or independence credit and cannot satisfy the independent-review predicate with another run sharing its authoring context, model family, prompt, source artifacts, or hidden notes",
+    "only a separate authorized integrator may use the normal protected squash path after exact-head CI and receipt validation; no administrator bypass, force push, contributor self-merge, or workflow-secret merge is permitted",
+    "after accepted merge and separately authorized deployment, the new artifact appears as a clearly labeled open docket with HTML, Markdown, and JSON twins, inspectable sources and spans, limitations, lineage, review receipt, and release identity",
+    "the pilot succeeds only if Claude completes research and submission from the public URL and the independent review-to-public path completes without an additional owner clarification or repair; any intervention is retained as a failed or partial result rather than hidden",
+    "the existing four numbered cases, accepted dossier bytes, policies, counts, evaluations, and public meanings remain unchanged"
+  ],
+  "limitations": [
+    "This is a GitHub-native autonomous contribution pilot, not the authenticated hosted MCP queue governed by EM-0038; it does not claim that public MCP submission is available.",
+    "An open docket is an independently reviewed contribution artifact, not automatically a numbered How We Know case, accepted scientific consensus, or globally true verdict.",
+    "No deterministic validator can establish source truth by itself; source and span credit requires a separate non-author review lineage.",
+    "No provider credential, paid model call, spending authority, GitHub App, secret, account provisioning, deployment, DNS change, or publication is authorized merely by registering this task; the Claude pilot, protected merge, and Pages deployment must each use their explicit bounded authority and recorded receipts.",
+    "The real-reader comprehension instrument remains optional and is not part of this pilot's success predicate."
+  ]
+}
