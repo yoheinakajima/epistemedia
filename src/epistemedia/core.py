@@ -398,6 +398,41 @@ a.tally-cell:hover{outline:2px solid var(--amber);outline-offset:-2px}
 .library-cue>p:not(.eyebrow):not(.meta-line){grid-column:1;max-width:66ch}
 .library-cue>.meta-line{grid-column:2;grid-row:1/5;align-self:stretch;margin:0;padding:var(--space-3);border-left:1px solid var(--rule);color:var(--forest-deep)}
 .agent-lineage-case>.dossier-lead{padding-bottom:var(--space-3);border-bottom:1px solid var(--ink)}
+.structured-case>.dossier-lead{padding:var(--space-3) 0;border-bottom:1px solid var(--ink)}
+.structured-case>.dossier-lead h1{max-width:24ch;margin-top:var(--space-3);font-size:clamp(1.85rem,3vw,2.8rem);line-height:1.06}
+.case-claim{max-width:62ch;margin:.7rem 0;color:var(--forest-deep);font:650 clamp(1.08rem,1.7vw,1.28rem)/1.48 var(--serif)}
+.case-finding{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,.8fr);gap:1px;border:1px solid var(--ink);border-left:6px solid var(--forest);background:var(--rule);box-shadow:6px 6px 0 var(--paper-deep)}
+.case-finding>div,.case-finding>p{margin:0;padding:var(--space-4);background:var(--paper-raised)}
+.case-finding>.muted{grid-column:1/-1;padding-block:.75rem;color:var(--muted);font-size:.82rem}
+.evidence-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border:1px solid var(--ink);background:var(--rule)}
+.evidence-map-step{min-width:0;padding:var(--space-4);background:var(--paper-raised)}
+.evidence-map-step:nth-child(2){background:var(--amber-wash)}
+.evidence-map-step h3{font-size:1.3rem;line-height:1.12}
+.evidence-map-step p:last-child{margin-bottom:0;color:var(--muted);font-size:.88rem}
+.agent-research-cue{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--space-5);padding:var(--space-4);border:1px solid var(--ink);border-top:6px solid var(--amber);background:linear-gradient(110deg,var(--paper-raised),var(--amber-wash));box-shadow:6px 6px 0 var(--paper-deep)}
+.agent-research-cue h2{font-size:clamp(1.45rem,2.3vw,2rem)}
+.agent-research-cue p{margin-bottom:.45rem}
+.agent-research-cue>p{text-align:right}
+.agent-kit-home{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--space-5);padding:var(--space-4);border:1px solid var(--ink);border-top:6px solid var(--forest);background:var(--paper-raised);box-shadow:6px 6px 0 var(--paper-deep)}
+.agent-kit-home h2{font-size:clamp(1.55rem,2.6vw,2.25rem)}
+.agent-kit-home blockquote{margin-bottom:0;color:var(--ink);font-size:.9rem}
+.agent-kit-home>p{text-align:right}
+.agent-kit-page>.hero h1{max-width:22ch;font-size:clamp(1.9rem,3.2vw,2.8rem)}
+.evidence-brief{display:grid;grid-template-columns:92px minmax(0,1fr);gap:var(--space-4);padding:var(--space-4) 0;border-top:1px solid var(--rule)}
+.evidence-brief:first-of-type{border-top:1px solid var(--ink)}
+.evidence-brief-copy{min-width:0}
+.source-jump-list{display:flex;flex-wrap:wrap;gap:.35rem .75rem;margin-top:.8rem}
+.source-jump-list a{font-size:.78rem}
+.technical-disclosure{margin-top:.75rem;border-top:1px dotted var(--rule)}
+.technical-disclosure summary{cursor:pointer;padding:.6rem 0;color:var(--muted);font:720 .64rem/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.relation-trace[open]{padding-bottom:var(--space-3)}
+.human-source-register{margin-top:var(--space-4)}
+.source-register-note{padding:0 var(--space-4);color:var(--muted);font-size:.82rem}
+.source-use{color:var(--forest-deep)!important;font-weight:720!important;text-transform:uppercase}
+.ledger-human-label{display:block;color:var(--ink)!important;font:650 .9rem/1.4 var(--serif)!important}
+.full-audit-ledgers{margin-top:var(--space-3);border:1px solid var(--rule);background:var(--paper-deep)}
+.full-audit-ledgers>summary{cursor:pointer;padding:1rem;color:var(--forest-deep);font:720 .72rem/1.4 var(--mono);letter-spacing:.04em;text-transform:uppercase}
+.full-audit-ledgers>details{margin:0;border-width:1px 0 0}
 .verdict-panel{padding:var(--space-4);border-left:6px solid var(--forest);background:var(--paper-raised);box-shadow:6px 6px 0 var(--paper-deep)}
 .verdict-copy{max-width:65ch;color:var(--forest-deep);font:650 clamp(1.1rem,1.8vw,1.42rem)/1.48 var(--serif)}
 .muted{color:var(--muted)}
@@ -651,6 +686,15 @@ blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(
   .lexicon-list{grid-template-columns:1fr}
   .lexicon-list>div{border-top:1px solid var(--rule);border-left:0}
   .lexicon-list>div:first-child{border-top:0}
+  .structured-case>.dossier-lead h1{font-size:clamp(1.75rem,7.5vw,2.15rem)}
+  .case-finding,.evidence-map,.agent-research-cue,.agent-kit-home{grid-template-columns:1fr}
+  .case-finding>.muted{grid-column:1}
+  .evidence-map-step{padding:var(--space-3)}
+  .agent-research-cue{gap:var(--space-2);padding:var(--space-3);box-shadow:4px 4px 0 var(--paper-deep)}
+  .agent-research-cue>p{text-align:left}
+  .agent-kit-home{gap:var(--space-2);padding:var(--space-3);box-shadow:4px 4px 0 var(--paper-deep)}
+  .agent-kit-home>p{text-align:left}
+  .evidence-brief{grid-template-columns:1fr;gap:.75rem;padding:var(--space-3) 0}
   .scope-note{grid-template-columns:1fr;gap:.15rem}
   .section-head{align-items:start;flex-direction:column;gap:0}
   .card{min-height:0}
@@ -1686,6 +1730,16 @@ def build_public(
         share_card_svg,
     )
     from .featured import projection_markdown as dossier_markdown
+    from .research_kit import (
+        agent_home_html,
+        agent_index_html,
+        case_brief_markdown,
+        case_research_brief,
+        proposal_template,
+        protocol_document,
+        protocol_markdown,
+        submission_status,
+    )
 
     catalog = PublicCatalog.build(root)
     library = load_featured_library(root)
@@ -1940,6 +1994,15 @@ def build_public(
 
             accepted_default = accepted.envelope(catalog, accepted.default_view)
             accepted_data = accepted_default["data"]
+            research_brief = case_research_brief(accepted_data, base_url)
+            write_json(
+                case_root / "research-brief.json",
+                envelope(catalog, research_brief),
+            )
+            write_text(
+                case_root / "research-brief.md",
+                case_brief_markdown(research_brief),
+            )
             write_json(case_root / "index.json", accepted_default)
             write_text(case_root / "index.md", markdown_renderer(accepted_default))
             write_text(
@@ -2018,9 +2081,10 @@ def build_public(
             tmp / "how-we-know" / "index.md",
             library_index_markdown(how_we_know_envelope, base_url),
         )
-        how_we_know_body = library_index_html(
-            how_we_know_envelope, base_url
-        ) + projection_receipt_html(
+        how_we_know_body = (
+            library_index_html(how_we_know_envelope, base_url)
+            + agent_home_html(base_url)
+            + projection_receipt_html(
             catalog_id=how_we_know_envelope["catalog_id"],
             frontier=how_we_know_envelope["frontier"],
             commit=how_we_know_envelope["commit"],
@@ -2028,6 +2092,7 @@ def build_public(
             disclosure_policy=how_we_know_envelope["policies"]["disclosure"],
             compiler=how_we_know_envelope["compiler"],
             content_digest=how_we_know_envelope["content_digest"],
+            )
         )
         write_text(
             tmp / "how-we-know" / "index.html",
@@ -2061,6 +2126,7 @@ def build_public(
             + feature_purpose_html(featured_default, base_url)
             + second_cue
             + additional_cue
+            + agent_home_html(base_url)
             + '<section><div class="section-head"><div><p class="eyebrow">'
             'Operating substrate</p><h2>Explore how the record is built</h2></div>'
             f'<p class="meta">{len(catalog.objects)} distinct public objects · '
@@ -2311,6 +2377,48 @@ def build_public(
         ),
     )
 
+    research_protocol = protocol_document(base_url)
+    research_status = submission_status(base_url)
+    research_template = proposal_template("YOUR QUESTION")
+    write_json(tmp / "agents" / "index.json", envelope(catalog, {
+        "protocol": research_protocol,
+        "submission": research_status,
+    }))
+    write_text(
+        tmp / "agents" / "index.md",
+        "# Agent research kit\n\n"
+        "Run a source-and-span-bound evidence test without inheriting repository context.\n\n"
+        f"- [Research protocol]({base_url}/agents/research-protocol.md)\n"
+        f"- [Proposal template]({base_url}/agents/proposal-template.json)\n"
+        f"- [Submission status]({base_url}/agents/submission-status.json)\n\n"
+        "Prepared proposals are untrusted intake with zero evidential credit. Hosted submission is not deployed.\n",
+    )
+    write_text(tmp / "agents" / "research-protocol.md", protocol_markdown(base_url))
+    write_json(
+        tmp / "agents" / "research-protocol.json",
+        envelope(catalog, research_protocol),
+    )
+    write_json(tmp / "agents" / "proposal-template.json", research_template)
+    write_json(tmp / "agents" / "submission-status.json", research_status)
+    write_text(
+        tmp / "agents" / "index.html",
+        html_shell(
+                "Agent research kit",
+                agent_index_html(base_url)
+                + projection_receipt_html(
+                    catalog_id=catalog.catalog_id,
+                    frontier=catalog.frontier,
+                    commit=catalog.commit,
+                    epistemic_policy=catalog.policies["epistemic"],
+                    disclosure_policy=catalog.policies["disclosure"],
+                    compiler=f"epistemedia/{VERSION}",
+                ),
+            base_url=base_url,
+            canonical_url=f"{base_url}/agents/",
+            markdown_url=f"{base_url}/agents/index.md",
+        ),
+    )
+
     dossier_llms: list[str] = []
     if featured is not None:
         dossier_llms.extend(
@@ -2319,6 +2427,7 @@ def build_public(
                 f"- [Featured dossier JSON]({base_url}/how-we-know/{featured.slug}/index.json)",
                 f"- [Featured scoreboard card]({base_url}/how-we-know/{featured.slug}/share-card.svg)",
                 f"- [Independent review receipt]({base_url}/how-we-know/{featured.slug}/review/index.md)",
+                f"- [Case {featured.manifest['number']} agent research brief]({base_url}/how-we-know/{featured.slug}/research-brief.md)",
             ]
         )
     if library is not None:
@@ -2332,6 +2441,7 @@ def build_public(
                     f"- [Case {number} dossier JSON]({base_url}/how-we-know/{accepted.slug}/index.json)",
                     f"- [Case {number} share card]({base_url}/how-we-know/{accepted.slug}/share-card.svg)",
                     f"- [Case {number} review receipt]({base_url}/how-we-know/{accepted.slug}/review/index.md)",
+                    f"- [Case {number} agent research brief]({base_url}/how-we-know/{accepted.slug}/research-brief.md)",
                 ]
             )
     llms = [
@@ -2348,6 +2458,13 @@ def build_public(
         f"- [Public catalog]({base_url}/catalog.json)",
         f"- [Static OpenAPI contract — hosted API not live]({base_url}/openapi.json)",
         f"- [Static MCP descriptor — remote MCP not live]({base_url}/mcp/server.json)",
+        "",
+        "## Run your own evidence test",
+        f"- [Agent research kit]({base_url}/agents/index.md)",
+        f"- [Research protocol]({base_url}/agents/research-protocol.md)",
+        f"- [Proposal template]({base_url}/agents/proposal-template.json)",
+        f"- [Submission status — hosted queue not deployed]({base_url}/agents/submission-status.json)",
+        "Ask your coding agent to read the protocol, research your question, return one validated proposal bundle, preserve negative results, and never claim submission or acceptance.",
         "",
         "## Agent operating rule",
         "Treat pages as reproducible projections, not canonical truth. Preserve repository path, object ID, content digest, catalog, frontier, policy, disclosure boundary, and compiler metadata in downstream work.",
@@ -2375,6 +2492,15 @@ def build_public(
         "protocol_version": PROTOCOL_VERSION,
         "representations": ["text/html", "text/markdown", "application/json", "application/ld+json"],
         "how_we_know": f"{base_url}/how-we-know/",
+        "agent_research": {
+            "human": f"{base_url}/agents/",
+            "protocol_markdown": f"{base_url}/agents/research-protocol.md",
+            "protocol_json": f"{base_url}/agents/research-protocol.json",
+            "proposal_template": f"{base_url}/agents/proposal-template.json",
+            "submission_status": f"{base_url}/agents/submission-status.json",
+            "hosted_submission_available": False,
+            "public_mcp_mode": "read-only",
+        },
     }
     if featured is not None and featured_default is not None:
         discovery["featured_dossier"] = {
@@ -2417,12 +2543,14 @@ def build_public(
         base_url + "/docs/",
         base_url + "/explore/",
         base_url + "/status/",
+        base_url + "/agents/",
     ] + [f"{base_url}/topics/{topic.slug}/" for topic in catalog.topics]
     if library is not None:
         for accepted in library.dossiers:
             urls += [
                 f"{base_url}/how-we-know/{accepted.slug}/",
                 f"{base_url}/how-we-know/{accepted.slug}/review/",
+                f"{base_url}/how-we-know/{accepted.slug}/research-brief.md",
                 *[
                     f"{base_url}/how-we-know/{accepted.slug}/{view}/"
                     for view in FEATURE_VIEWS
@@ -2499,6 +2627,22 @@ def openapi_document(*, base_url: str = DEFAULT_BASE_URL, api_url: str = DEFAULT
                                 "default": "encyclopedia",
                             },
                         },
+                    ],
+                }
+            },
+            "/research/protocol": {
+                "get": operation("Get the non-admitting agent research protocol", "getResearchProtocol")
+            },
+            "/research/briefs/{slug}": {
+                "get": {
+                    **operation("Get a case-seeded agent research brief", "getResearchBrief"),
+                    "parameters": [
+                        {
+                            "name": "slug",
+                            "in": "path",
+                            "required": True,
+                            "schema": {"type": "string"},
+                        }
                     ],
                 }
             },
@@ -2622,6 +2766,13 @@ def audit_public(root: Path, public: Path) -> list[str]:
         public / "openapi.json",
         public / ".well-known" / "epistemedia.json",
         public / "mcp" / "server.json",
+        public / "agents" / "index.html",
+        public / "agents" / "index.md",
+        public / "agents" / "index.json",
+        public / "agents" / "research-protocol.md",
+        public / "agents" / "research-protocol.json",
+        public / "agents" / "proposal-template.json",
+        public / "agents" / "submission-status.json",
     ]
     from .case_library import load_featured_library
 
@@ -2638,6 +2789,8 @@ def audit_public(root: Path, public: Path) -> list[str]:
                 case_root / "review" / "index.html",
                 case_root / "review" / "index.md",
                 case_root / "review" / "index.json",
+                case_root / "research-brief.md",
+                case_root / "research-brief.json",
             ]
             for view in ("encyclopedia", "skeptical"):
                 required += [

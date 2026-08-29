@@ -1,0 +1,9 @@
+{
+  "agent_id": "codex-case-polish-builder",
+  "id": "em:task-claim:sha256:d920afbb7673d981729f6830c1ab3be088a716f97d3bc658fa6abfcc21927744",
+  "kind": "task-claim",
+  "recorded_at": "2026-08-29T04:04:24Z",
+  "schema": "https://epistemedia.com/schemas/task-claim-v1.json",
+  "status": "proposed",
+  "task_id": "EM-0037"
+}

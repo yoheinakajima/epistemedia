@@ -21,6 +21,8 @@ GET /v1/topics
 GET /v1/topics/{slug}?lens=skeptical
 GET /v1/dossiers
 GET /v1/dossiers/{slug}?policy=skeptical
+GET /v1/research/protocol
+GET /v1/research/briefs/{slug}
 GET /v1/objects/{id}
 GET /v1/claims/{id}/trace
 ```
@@ -56,6 +58,9 @@ Read-only tools include:
 - `compare_lenses`
 - `get_next_contribution`
 - `validate_bundle`
+- `get_research_protocol`
+- `prepare_research_proposal`
+- `validate_research_proposal`
 
 Resources use URIs such as:
 
@@ -69,6 +74,11 @@ epistemedia://object/{id}
 The HTTP adapter implements the stateless MCP 2026-07-28 Streamable HTTP binding. It validates each request's protocol and mirrored transport metadata, checks browser Origins before consuming the body, returns protocol-level errors for unsupported versions or methods, and marks public lists as cacheable. The stdio adapter carries the same modern request metadata inline and is available through the CLI for local clients. Deployment limits and exact environment variables are defined in [the public API and MCP deployment contract](api-mcp-deployment.md).
 
 A future authenticated contribution server will be a separate authority surface. Its tools create proposals and receipts but cannot admit their own output.
+
+The research-proposal tools are read-only and local to the request. `prepare` returns a draft JSON
+scaffold; `validate` checks format, source/span references, lineage fields, input limits, and
+secret/private-path exclusions. Neither tool stores or submits a proposal. Current queue status is
+published at `https://epistemedia.org/agents/submission-status.json`.
 
 ## CLI
 
@@ -89,6 +99,9 @@ epistemedia search "disclosure noninterference"
 epistemedia project governance --lens skeptical
 epistemedia dossier corrections-and-familiarity-backfire --policy skeptical
 epistemedia dossier agent-citation-lineage --policy skeptical
+epistemedia research protocol
+epistemedia research prepare --question "YOUR QUESTION" --output proposal.json
+epistemedia research validate proposal.json
 epistemedia repo next
 epistemedia mcp serve
 ```
@@ -105,7 +118,7 @@ epistemedia dossier agent-citation-lineage --policy skeptical --remote
 
 Every accepted dossier's HTML, Markdown, static JSON, local REST response, MCP resource/tool output,
 and CLI output are compiled from that dossier's same disclosure-safe object. The deterministic
-registry currently exposes Cases 001 and 002; the machine envelopes preserve each exact dossier,
+registry currently exposes Cases 001 through 004; the machine envelopes preserve each exact dossier,
 catalog, frontier, accepted commit, policy IDs, compiler, and content digest. The hosted API and MCP
 destinations remain unverified until provider read-back proves them.
 
