@@ -1,0 +1,10 @@
+{
+  "command": "PYTHONPATH=src make check PYTHON=.venv/bin/python",
+  "id": "em:run-receipt:sha256:d67703f288e9ac5088d676c7885d01304a363bfdf1738787df0c05e14e7c2338",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-29T01:36:15Z",
+  "run_id": "em0036-human-closure-correction",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0036"
+}

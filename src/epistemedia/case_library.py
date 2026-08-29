@@ -1234,6 +1234,104 @@ class BoundedPropositionDossier(AgentLineageDossier):
 
         return cls(root, selected_path, manifest, dossier, receipt)
 
+    def relation_trace(self, relation_key: str) -> dict[str, Any]:
+        """Close a bounded relation over its proposition, lineage, and calculations."""
+        indexes = self.indexes()
+        relation = indexes["evidence_relations"][relation_key]
+        proposition = indexes["propositions"].get(relation["to_ref"])
+        assertion = next(
+            (
+                item
+                for item in indexes["assertions"].values()
+                if proposition is not None
+                and item["proposition_key"] == proposition["key"]
+            ),
+            None,
+        )
+        if assertion is None:
+            assertion = indexes["assertions"].get(relation["from_ref"])
+            if assertion is not None:
+                proposition = indexes["propositions"][assertion["proposition_key"]]
+        lineage = (
+            indexes["lineages"].get(assertion["lineage_key"])
+            if assertion is not None
+            else indexes["lineages"].get(relation["from_ref"])
+        )
+        if proposition is None or assertion is None or lineage is None:
+            raise FeaturedDossierError(
+                f"bounded material relation lacks proposition closure: {relation_key}"
+            )
+
+        dependencies = sorted(
+            (
+                item
+                for item in indexes["evidence_relations"].values()
+                if item["relation_type"] == "dependence"
+                and lineage["key"] in {item["from_ref"], item["to_ref"]}
+            ),
+            key=lambda item: item["key"],
+        )
+        calculation_traces = []
+        for candidate_assertion in sorted(
+            indexes["assertions"].values(), key=lambda item: item["key"]
+        ):
+            candidate_key = candidate_assertion["proposition_key"]
+            if (
+                candidate_assertion["lineage_key"] != lineage["key"]
+                or not candidate_key.startswith("derive-")
+            ):
+                continue
+            candidate_proposition = indexes["propositions"][candidate_key]
+            candidate_relations = sorted(
+                (
+                    item
+                    for item in indexes["evidence_relations"].values()
+                    if item["to_ref"] == candidate_key
+                    and item["relation_type"] == "support"
+                ),
+                key=lambda item: item["key"],
+            )
+            for candidate_relation in candidate_relations:
+                calculation_sources = [
+                    self.span_trace(key)
+                    for key in dict.fromkeys(
+                        candidate_assertion["span_keys"]
+                        + candidate_relation.get("basis_span_keys", [])
+                    )
+                    if key in indexes["spans"]
+                ]
+                calculation_traces.append(
+                    {
+                        "relation": candidate_relation,
+                        "proposition": candidate_proposition,
+                        "assertion": candidate_assertion,
+                        "sources": calculation_sources,
+                    }
+                )
+
+        span_keys = list(assertion["span_keys"])
+        span_keys.extend(relation.get("basis_span_keys", []))
+        for dependency in dependencies:
+            span_keys.extend(dependency.get("basis_span_keys", []))
+        unique_span_keys = list(
+            dict.fromkeys(key for key in span_keys if key in indexes["spans"])
+        )
+        if not unique_span_keys:
+            raise FeaturedDossierError(
+                f"bounded material relation lacks exact source spans: {relation_key}"
+            )
+        return {
+            "relation": relation,
+            "relation_label": relation["relation_type"].replace("-", " "),
+            "statement": proposition["text"],
+            "proposition": proposition,
+            "assertion": assertion,
+            "lineage": lineage,
+            "dependencies": dependencies,
+            "calculations": calculation_traces,
+            "sources": [self.span_trace(key) for key in unique_span_keys],
+        }
+
     def count_ledgers(self) -> dict[str, list[dict[str, Any]]]:
         indexes = self.indexes()
         ledgers: dict[str, list[dict[str, Any]]] = {}
@@ -1551,6 +1649,25 @@ def agent_projection_markdown(document: dict[str, Any]) -> str:
         lines.append("")
         lines.append(item["statement"])
         lines.append("")
+        lines.append(f"- Relation: `{item['relation']['key']}` · `{item['relation']['id']}`")
+        if isinstance(item.get("proposition"), dict):
+            lines.append(
+                f"- Proposition: `{item['proposition']['key']}` · `{item['proposition']['id']}`"
+            )
+        if isinstance(item.get("assertion"), dict):
+            lines.append(
+                f"- Assertion: `{item['assertion']['key']}` · `{item['assertion']['id']}`"
+            )
+        if isinstance(item.get("lineage"), dict):
+            lines.append(
+                f"- Lineage: `{item['lineage']['key']}` · `{item['lineage']['id']}`"
+            )
+        for dependency in item.get("dependencies", []):
+            lines.append(
+                f"- Dependence: `{dependency['key']}` · `{dependency['id']}` · "
+                f"`{dependency['from_ref']}` → `{dependency['to_ref']}`"
+            )
+        lines.append("")
         for source in item["sources"]:
             span = source["span"]
             edition = source["edition"]
@@ -1566,6 +1683,41 @@ def agent_projection_markdown(document: dict[str, Any]) -> str:
                     "",
                 ]
             )
+        for calculation in item.get("calculations", []):
+            lines.extend(
+                [
+                    f"#### Calculation · `{calculation['relation']['key']}`",
+                    "",
+                    calculation["proposition"]["text"],
+                    "",
+                    f"- Proposition: `{calculation['proposition']['id']}`",
+                    f"- Assertion: `{calculation['assertion']['id']}`",
+                ]
+            )
+            for source in calculation["sources"]:
+                span = source["span"]
+                edition = source["edition"]
+                work = source["source_work"]
+                lines.extend(
+                    [
+                        f"- Input/source: `{span['key']}` · `{span['digest']}`",
+                        f"  - Work: `{work['id']}` · {work['license']}",
+                        f"  - Edition: `{edition['id']}` · `{edition['content_digest']}`",
+                        f"  - Locator: {span['locator']['label']}",
+                    ]
+                )
+                if span["key"].startswith("span-calculation-"):
+                    lines.extend(
+                        [
+                            "",
+                            "```json",
+                            json.dumps(
+                                span["extent"].get("value"), indent=2, sort_keys=True
+                            ),
+                            "```",
+                        ]
+                    )
+            lines.append("")
     lines.extend(["## Complete count ledgers", ""])
     for section in data["ledger_sections"]:
         key = section["key"]
@@ -1575,6 +1727,28 @@ def agent_projection_markdown(document: dict[str, Any]) -> str:
         for item in items:
             identity, label = _display_item(item)
             lines.append(f"- `{identity}` — {label}")
+            obj = item.get("object")
+            if isinstance(obj, dict):
+                lines.append(
+                    f"  - {item.get('object_type', 'object')}: "
+                    f"`{item.get('object_key', 'unknown')}` · `{obj.get('id', 'unknown')}`"
+                )
+                if obj.get("status") is not None:
+                    lines.append(f"  - Status: {obj['status']}")
+                if obj.get("dimensions"):
+                    lines.append(
+                        "  - Dependence dimensions: "
+                        + ", ".join(f"`{value}`" for value in obj["dimensions"])
+                    )
+            basis = item.get("basis")
+            if isinstance(basis, dict):
+                lines.extend(
+                    [
+                        f"  - Basis span: `{basis['span']['id']}` · `{basis['span']['digest']}`",
+                        f"  - Basis edition: `{basis['edition']['id']}` · `{basis['edition']['content_digest']}`",
+                        f"  - Basis work: `{basis['source_work']['id']}` · {basis['source_work']['license']}",
+                    ]
+                )
         lines.append("")
     lines.extend(
         [
@@ -1628,11 +1802,83 @@ def _agent_source_xray(item: dict[str, Any], index: int) -> str:
             f"<div><dt>License</dt><dd>{html.escape(str(work['license']))} · {html.escape(str(source['license_treatment']))}</dd></div>"
             "</dl></article>"
         )
+    identity_rows = []
+    for label, value in (
+        ("Relation", item.get("relation")),
+        ("Proposition", item.get("proposition")),
+        ("Assertion", item.get("assertion")),
+        ("Lineage", item.get("lineage")),
+    ):
+        if not isinstance(value, dict):
+            continue
+        identity_rows.append(
+            f"<div><dt>{label}</dt><dd><code>{html.escape(str(value.get('key', 'unknown')))}</code> "
+            f"<code>{html.escape(str(value.get('id', 'unknown')))}</code></dd></div>"
+        )
+    dependency_html = "".join(
+        '<li class="ledger-entry"><code>'
+        f"{html.escape(dependency['key'])}</code><span>"
+        f"{html.escape(dependency['from_ref'])} → {html.escape(dependency['to_ref'])}"
+        f"<small>{html.escape(dependency['id'])}</small>"
+        f"<small>{html.escape(dependency['note'])}</small></span></li>"
+        for dependency in item.get("dependencies", [])
+    )
+    calculation_html = "".join(
+        _calculation_html(calculation) for calculation in item.get("calculations", [])
+    )
     return (
         '<details class="source-xray">'
         f"<summary><span>{index:02d}</span> {html.escape(item['statement'])}</summary>"
         f"<p class=\"relation-label\">Typed relation: {html.escape(item['relation_label'])}</p>"
+        f'<dl class="receipt-grid compact">{"".join(identity_rows)}</dl>'
+        + (
+            '<h4>Typed dependence</h4><ol class="ledger-list">'
+            + dependency_html
+            + "</ol>"
+            if dependency_html
+            else ""
+        )
+        + calculation_html
         + "".join(sources)
+        + "</details>"
+    )
+
+
+def _calculation_html(calculation: dict[str, Any]) -> str:
+    source_rows = []
+    calculation_record = None
+    for source in calculation["sources"]:
+        span = source["span"]
+        edition = source["edition"]
+        work = source["source_work"]
+        source_rows.append(
+            '<li class="ledger-entry"><code>'
+            f"{html.escape(span['key'])}</code><span>{html.escape(span['locator']['label'])}"
+            f"<small>{html.escape(span['id'])} · {html.escape(span['digest'])}</small>"
+            f"<small>{html.escape(edition['id'])} · {html.escape(edition['content_digest'])}</small>"
+            f"<small>{html.escape(work['id'])} · {html.escape(str(work['license']))} · "
+            f"{html.escape(str(source['license_treatment']))}</small></span></li>"
+        )
+        if span["key"].startswith("span-calculation-"):
+            calculation_record = span["extent"].get("value")
+    record_html = ""
+    if calculation_record is not None:
+        record_html = (
+            '<pre class="calculation-record"><code>'
+            + html.escape(json.dumps(calculation_record, indent=2, sort_keys=True))
+            + "</code></pre>"
+        )
+    return (
+        '<details class="technical-disclosure calculation-disclosure">'
+        f"<summary>Calculation · {html.escape(calculation['proposition']['text'])}</summary>"
+        '<dl class="receipt-grid compact">'
+        f"<div><dt>Relation</dt><dd><code>{html.escape(calculation['relation']['key'])}</code> "
+        f"<code>{html.escape(calculation['relation']['id'])}</code></dd></div>"
+        f"<div><dt>Proposition</dt><dd><code>{html.escape(calculation['proposition']['id'])}</code></dd></div>"
+        f"<div><dt>Assertion</dt><dd><code>{html.escape(calculation['assertion']['id'])}</code></dd></div>"
+        "</dl>"
+        + record_html
+        + f'<ol class="ledger-list">{"".join(source_rows)}</ol>'
         + "</details>"
     )
 
@@ -1641,10 +1887,40 @@ def _ledger_html(key: str, title: str, items: list[dict[str, Any]]) -> str:
     rows = []
     for item in items:
         identity, label = _display_item(item)
+        obj = item.get("object") if isinstance(item.get("object"), dict) else {}
+        provenance_rows = [
+            f"<div><dt>Member</dt><dd><code>{html.escape(identity)}</code></dd></div>",
+            f"<div><dt>Object type</dt><dd>{html.escape(str(item.get('object_type', 'unknown')))}</dd></div>",
+            f"<div><dt>Object key</dt><dd><code>{html.escape(str(item.get('object_key', 'unknown')))}</code></dd></div>",
+            f"<div><dt>Object ID</dt><dd><code>{html.escape(str(obj.get('id', 'unknown')))}</code></dd></div>",
+        ]
+        if obj.get("status") is not None:
+            provenance_rows.append(
+                f"<div><dt>Status</dt><dd>{html.escape(str(obj['status']))}</dd></div>"
+            )
+        if obj.get("dimensions"):
+            provenance_rows.append(
+                "<div><dt>Dependence</dt><dd>"
+                + html.escape(", ".join(str(value) for value in obj["dimensions"]))
+                + "</dd></div>"
+            )
+        basis = item.get("basis")
+        if isinstance(basis, dict):
+            provenance_rows.extend(
+                [
+                    f"<div><dt>Basis span</dt><dd><code>{html.escape(basis['span']['id'])}</code> "
+                    f"<code>{html.escape(basis['span']['digest'])}</code></dd></div>",
+                    f"<div><dt>Basis edition</dt><dd><code>{html.escape(basis['edition']['id'])}</code> "
+                    f"<code>{html.escape(basis['edition']['content_digest'])}</code></dd></div>",
+                    f"<div><dt>Basis work</dt><dd><code>{html.escape(basis['source_work']['id'])}</code> · "
+                    f"{html.escape(str(basis['source_work']['license']))}</dd></div>",
+                ]
+            )
         rows.append(
-            '<li class="ledger-entry">'
-            f"<code>{html.escape(identity)}</code><span>{html.escape(label)}</span>"
-            "</li>"
+            '<li class="ledger-entry"><details class="technical-disclosure ledger-provenance">'
+            f"<summary><code>{html.escape(identity)}</code> {html.escape(label)}</summary>"
+            f'<dl class="receipt-grid compact">{"".join(provenance_rows)}</dl>'
+            "</details></li>"
         )
     return (
         f'<details class="source-xray ledger-group" id="{html.escape(key)}">'

@@ -156,6 +156,10 @@ def test_bounded_case_sources_close_and_policy_views_diverge(slug: str) -> None:
     for projection in (encyclopedia, skeptical):
         for relation in projection["featured_relations"]:
             assert relation["statement"]
+            assert relation["statement"] == relation["proposition"]["text"]
+            assert relation["assertion"]["proposition_key"] == relation["proposition"]["key"]
+            assert relation["assertion"]["lineage_key"] == relation["lineage"]["key"]
+            assert relation["relation"]["to_ref"] == relation["proposition"]["key"]
             assert relation["sources"]
             for source in relation["sources"]:
                 assert source["source_work"]["id"].startswith("em:dossier-source-work:sha256:")
@@ -167,6 +171,53 @@ def test_bounded_case_sources_close_and_policy_views_diverge(slug: str) -> None:
                 assert re.fullmatch(r"(?:sha256:)?[0-9a-f]{64}", source["span"]["digest"])
                 assert source["span"]["locator"]["label"]
                 assert source["license_treatment"] is not None
+
+
+def test_bounded_case_human_projection_closes_calculations_and_provenance(
+    tmp_path: Path,
+) -> None:
+    case003 = bounded_case(CASE_003).projection("encyclopedia")
+    calculations = [
+        calculation
+        for relation in case003["featured_relations"]
+        for calculation in relation["calculations"]
+    ]
+    assert calculations
+    calculation_spans = [
+        source["span"]
+        for calculation in calculations
+        for source in calculation["sources"]
+        if source["span"]["key"].startswith("span-calculation-")
+    ]
+    assert calculation_spans
+    records = [span["extent"]["value"] for span in calculation_spans]
+    assert any(record["derivation"].get("equation") for record in records)
+    assert any(record["derivation"].get("input_cell_ids") for record in records)
+    assert any(record.get("resolved_input_cells") for record in records)
+    assert any(record["derivation"].get("depends_on") for record in records)
+    assert any(relation["dependencies"] for relation in case003["featured_relations"])
+
+    public = tmp_path / "public"
+    build_public(ROOT, public)
+    case003_html = (public / "how-we-know" / CASE_003 / "index.html").read_text()
+    case003_markdown = (public / "how-we-know" / CASE_003 / "index.md").read_text()
+    case004_html = (public / "how-we-know" / CASE_004 / "index.html").read_text()
+    for rendered in (case003_html, case003_markdown):
+        assert "OpenAI&#x27;s launch-edition report" in rendered or (
+            "OpenAI's launch-edition report" in rendered
+        )
+        assert "relation-assertion-claim-launch-score-label" in rendered
+        assert "lineage-model-performance-root" in rendered
+        assert "span-calculation-derive-illinois-feb-2018-298" in rendered
+        assert "p298 = p290 + ((298 - 290) / 10) * (p300 - p290)" in rendered
+        assert "resolved_input_cells" in rendered
+        assert "edge-derivation-comparison-inputs" in rendered
+        assert "Basis span" in rendered
+        assert "Basis edition" in rendered
+        assert "Basis work" in rendered
+    assert "P1 found tone dominance" in case004_html
+    assert "edge-p1-p2-method" in case004_html
+    assert "lineage-participant-p1" in case004_html
 
 
 def test_case002_exact_inputs_counts_ledgers_and_review_are_bound() -> None:
