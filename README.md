@@ -273,6 +273,12 @@ https://epistemedia.org                 Human site and documentation
 https://epistemedia.org/llms.txt        Agent orientation
 https://epistemedia.org/openapi.json    Static API contract
 https://epistemedia.org/mcp/server.json Static MCP descriptor
+```
+
+Generated in the current candidate projection, pending separately authorized deployment and live
+provider read-back:
+
+```text
 https://epistemedia.org/agents/         Agent research kit
 ```
 

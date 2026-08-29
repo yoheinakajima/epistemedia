@@ -20,9 +20,11 @@ MAX_TEXT = 20_000
 MAX_ITEMS = 500
 SECRET_PATTERNS = (
     re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
-    re.compile(r"\bghp_[A-Za-z0-9]{20,}\b"),
-    re.compile(r"\bsk-[A-Za-z0-9]{20,}\b"),
-    re.compile(r"(?:^|[\s'\"])(?:/Users/|C:\\Users\\)"),
+    re.compile(r"\b(?:ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b"),
+    re.compile(r"\b(?:sk-proj-[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9_-]{20,})\b"),
+    re.compile(r"\b(?:AKIA|ASIA)[0-9A-Z]{16}\b"),
+    re.compile(r"(?<![A-Za-z0-9:])/(?:Users|home|private|root)/"),
+    re.compile(r"(?:^|[\s'\"`])[A-Za-z]:\\Users\\"),
 )
 PLACEHOLDER_PATTERN = re.compile(r"\b(?:REPLACE|YOUR QUESTION|YYYY-MM-DD)\b")
 

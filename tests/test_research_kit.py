@@ -265,7 +265,27 @@ def test_valid_proposal_closes_sources_spans_and_never_submits() -> None:
             "private-path or secret-shaped",
         ),
         (
+            lambda value: value.update(search_notes=["Read /home/alice/private.txt"]),
+            "private-path or secret-shaped",
+        ),
+        (
+            lambda value: value.update(search_notes=["Read /private/tmp/secret.txt"]),
+            "private-path or secret-shaped",
+        ),
+        (
             lambda value: value["runtime"].update(agent="ghp_" + "a" * 24),
+            "private-path or secret-shaped",
+        ),
+        (
+            lambda value: value["runtime"].update(agent="sk-proj-" + "a" * 24),
+            "private-path or secret-shaped",
+        ),
+        (
+            lambda value: value["runtime"].update(agent="github_pat_" + "a" * 24),
+            "private-path or secret-shaped",
+        ),
+        (
+            lambda value: value["runtime"].update(agent="AKIA" + "A" * 16),
             "private-path or secret-shaped",
         ),
         (
@@ -282,6 +302,18 @@ def test_validator_fails_closed_on_adversarial_bundles(mutation, error_fragment:
     assert any(error_fragment in error for error in result["errors"])
     assert result["submitted"] is False
     assert result["admitted"] is False
+
+
+def test_readme_keeps_agent_route_pending_until_live_readback() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    live, pending = readme.split(
+        "Generated in the current candidate projection, pending separately authorized deployment",
+        1,
+    )
+    assert (
+        "https://epistemedia.org/agents/" not in live.split("Verified live human surfaces:", 1)[1]
+    )
+    assert "https://epistemedia.org/agents/" in pending
 
 
 def test_validator_rejects_oversize_and_never_projects_untrusted_content() -> None:
