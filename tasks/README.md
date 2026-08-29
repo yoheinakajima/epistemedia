@@ -53,5 +53,6 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0037` — polish Cases 002–004 and publish a cold-start, non-admitting agent research kit (ready; depends on `EM-0036`)
 - `EM-0038` — govern a separate authenticated MCP research-submission queue with no admission or merge authority (ready; depends on `EM-0037`; governance path required)
 - `EM-0039` — publish the versioned mission, four-case narrative, reader-first navigation, and real-reader comprehension instrument without changing accepted evidence or implementing the submission queue (ready; depends on `EM-0037`)
+- `EM-0040` — pilot a cold-start autonomous GitHub-native docket contribution from one public URL through independent non-author review and protected publication (ready; depends on `EM-0037` and `EM-0039`; governance path required)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.
