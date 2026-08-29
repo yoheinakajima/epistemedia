@@ -1,6 +1,6 @@
 # Reversible claim dossiers
 
-Status: reversible alpha application contracts exercised by two reviewed vertical slices.
+Status: reversible alpha application contracts exercised by four reviewed vertical slices.
 
 The dossier module represents enough structure to test a real **How We Know** case without promoting an early model into the Epistemic Mesh protocol. It lives in `epistemedia.dossier`, not `schemas/`, and may change incompatibly while the pilot is measured.
 
@@ -97,11 +97,12 @@ public_projection = DossierProjection.from_dossier(dossier)
 print(public_projection.id)
 ```
 
-The synthetic fixture builder and adversarial mutations are in `tests/test_dossiers.py`. The first
-two real applications are selected in `catalog/dossiers/`: Case 001 preserves its legacy feature
-profile, while Case 002 uses a separate agent-citation-lineage profile with different count units
-and display grammar. Both remain byte-bound to their independent review receipts. Synthetic
-fixtures demonstrate mechanics only and make no empirical or philosophical claims.
+The synthetic fixture builder and adversarial mutations are in `tests/test_dossiers.py`. Four real
+applications are selected in `catalog/dossiers/`: Case 001 preserves its legacy feature profile;
+Case 002 uses its agent-citation-lineage profile; and Cases 003–004 share a generic bounded-
+proposition adapter while retaining their own count units, ledgers, terminology, and practical
+readings. Every case remains byte-bound to its independent review receipt. Synthetic fixtures
+demonstrate mechanics only and make no empirical or philosophical claims.
 
 ## Promotion boundary
 

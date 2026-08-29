@@ -1663,11 +1663,14 @@ def build_public(
 ) -> dict[str, Any]:
     from .case_library import (
         AgentLineageDossier,
+        BoundedPropositionDossier,
+        additional_cases_home_cue,
         agent_page_html,
         agent_projection_markdown,
         agent_review_html,
         agent_review_markdown,
         agent_share_card_svg,
+        bounded_share_card_svg,
         case002_home_cue,
         library_index_html,
         library_index_markdown,
@@ -1865,17 +1868,32 @@ def build_public(
 
     if library is not None and featured is not None and featured_default is not None:
         for accepted in library.dossiers:
-            is_agent_case = isinstance(accepted, AgentLineageDossier)
-            markdown_renderer = (
-                agent_projection_markdown if is_agent_case else dossier_markdown
+            is_structured_case = isinstance(
+                accepted, (AgentLineageDossier, BoundedPropositionDossier)
             )
-            page_renderer = agent_page_html if is_agent_case else feature_page_html
-            card_renderer = agent_share_card_svg if is_agent_case else share_card_svg
+            markdown_renderer = (
+                agent_projection_markdown
+                if is_structured_case
+                else dossier_markdown
+            )
+            page_renderer = (
+                agent_page_html if is_structured_case else feature_page_html
+            )
+            if isinstance(accepted, BoundedPropositionDossier):
+                card_renderer = bounded_share_card_svg
+            elif isinstance(accepted, AgentLineageDossier):
+                card_renderer = agent_share_card_svg
+            else:
+                card_renderer = share_card_svg
             review_markdown_renderer = (
-                agent_review_markdown if is_agent_case else review_receipt_markdown
+                agent_review_markdown
+                if is_structured_case
+                else review_receipt_markdown
             )
             review_html_renderer = (
-                agent_review_html if is_agent_case else review_receipt_html
+                agent_review_html
+                if is_structured_case
+                else review_receipt_html
             )
             case_root = tmp / "how-we-know" / accepted.slug
             for view in FEATURE_VIEWS:
@@ -2030,10 +2048,19 @@ def build_public(
             None,
         )
         second_cue = case002_home_cue(second, base_url) if second is not None else ""
+        additional_cue = additional_cases_home_cue(
+            [
+                item
+                for item in dossier_summaries
+                if item["number"] not in {"001", "002"}
+            ],
+            base_url,
+        )
         home_body = (
             feature_home_html(featured_default, base_url)
             + feature_purpose_html(featured_default, base_url)
             + second_cue
+            + additional_cue
             + '<section><div class="section-head"><div><p class="eyebrow">'
             'Operating substrate</p><h2>Explore how the record is built</h2></div>'
             f'<p class="meta">{len(catalog.objects)} distinct public objects · '
@@ -2065,6 +2092,18 @@ def build_public(
             if second is not None
             else ""
         )
+        additional_markdown = "".join(
+            "\n## How We Know · Case "
+            f"{item['number']}\n\n"
+            f"[{item['title']}]({base_url}/how-we-know/{item['slug']}/)\n\n"
+            f"> {item['evaluation']}\n\n"
+            + "".join(
+                f"- {card['label'].title()}: **{card['value']}**\n"
+                for card in item["count_cards"]
+            )
+            for item in dossier_summaries
+            if item["number"] not in {"001", "002"}
+        )
         home_markdown = (
             "# Epistemedia\n\nKnowledge that can show its work.\n\n"
             f"## How We Know · Case {default_data['number']}\n\n"
@@ -2090,6 +2129,8 @@ def build_public(
             f"[Skeptical]({base_url}/how-we-know/{featured.slug}/skeptical/) · "
             f"[Evidence docket]({base_url}/how-we-know/{featured.slug}/#evidence-record-title)\n"
             + case002_markdown
+            + additional_markdown
+            + f"\n[View all four cases]({base_url}/how-we-know/)\n"
             + "\n## Operating substrate\n\n"
             f"{len(catalog.objects)} distinct public objects · "
             f"{catalog.topic_membership_count()} topic memberships across "

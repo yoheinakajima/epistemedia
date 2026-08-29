@@ -1,0 +1,10 @@
+{
+  "command": "PYTHONPATH=src make check PYTHON=.venv/bin/python",
+  "id": "em:run-receipt:sha256:ad469df08b1797831e77d976d6c89cfe401f1a85c119c007e1f01ddd80a2d6fe",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-29T00:30:59Z",
+  "run_id": "em0036-four-case-author-validation",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0036"
+}

@@ -1,0 +1,222 @@
+{
+  "format": "epistemedia-bounded-proposition-feature-v0.1",
+  "profile": "bounded-proposition-v0.1",
+  "number": "003",
+  "slug": "gpt-4-bar-exam-percentile",
+  "status": "accepted",
+  "task_id": "EM-0034",
+  "dossier_path": "research/how-we-know/gpt-4-bar-exam-percentile/candidate-dossier.json",
+  "dossier_id": "em:dossier:sha256:babe89ba3bda594a8d9f2db86a5a2987f284437a069b940d19b6928856d936d1",
+  "dossier_sha256": "32c4457b3823237b2f988a26d51b2f6222af8060e662993524aff1c1a5d79e5d",
+  "dossier_bytes": 224792,
+  "review_receipt_path": "research/how-we-know/gpt-4-bar-exam-percentile/independent-em0034-review-receipt.json",
+  "review_receipt_sha256": "f35f8c093778ad1cdeafc57746575f1a82d12fe6e6fbf0d1d4a546e3c5296e1e",
+  "review_receipt_bytes": 13568,
+  "review_receipt_format": "epistemedia-independent-dossier-review-v1",
+  "reviewer_id": "codex-independent-em0034-reviewer",
+  "reviewed_head": "1c5a8318b2bb770c38a07a96f731531ba1c53a32",
+  "reviewed_tree": "b7356ab1578e8a1eea76cb14e36d7a15b0e00d48",
+  "selection_note": "Accepted as a bounded historical score-and-comparison-class case after independent review of exact source, calculation, and lineage closure.",
+  "public_scope": "Historical evidence through 2026-08-27 about one simulated UBE score and the comparison populations used to rank it. This evidence file does not describe current model behavior, practicing-lawyer quality, or general legal competence.",
+  "claim_family_key": "family-gpt4-bar-exam-percentile",
+  "target_proposition_key": "claim-launch-score-label",
+  "default_view": "encyclopedia",
+  "views": {
+    "encyclopedia": {
+      "evaluation_key": "evaluation-encyclopedia",
+      "featured_relation_keys": [
+        "relation-assertion-claim-launch-score-label",
+        "relation-assertion-claim-score-discrepancy",
+        "relation-assertion-claim-february-sensitive",
+        "relation-assertion-claim-july-sensitive",
+        "relation-assertion-claim-martinez-first-time",
+        "relation-assertion-claim-martinez-passers-conflict"
+      ]
+    },
+    "skeptical": {
+      "evaluation_key": "evaluation-skeptical",
+      "featured_relation_keys": [
+        "relation-assertion-claim-launch-comparison-unspecified",
+        "relation-assertion-claim-july-sensitive",
+        "relation-assertion-claim-martinez-passers-conflict",
+        "relation-assertion-claim-no-lawyer-rank"
+      ]
+    }
+  },
+  "count_cards": [
+    {
+      "key": "historical_model_runs",
+      "label": "historical model run",
+      "anchor": "historical-model-runs",
+      "note": "Report, paper, repository, and supplement share one experiment",
+      "members": [
+        {
+          "item_key": "root-historical-simulated-ube-run",
+          "collection": "lineages",
+          "object_key": "lineage-model-performance-root",
+          "basis_span_key": "span-katz-vor-abstract-score",
+          "label": "Historical simulated-UBE model-performance root"
+        }
+      ]
+    },
+    {
+      "key": "administration_sensitivities",
+      "label": "official administration sensitivities",
+      "anchor": "administration-sensitivities",
+      "note": "The same score ranks differently across official Illinois charts",
+      "members": [
+        {
+          "item_key": "root-illinois-february-2018",
+          "collection": "lineages",
+          "object_key": "lineage-illinois-comparison-root",
+          "basis_span_key": "span-illinois-feb-2018-anchors",
+          "label": "Illinois February 2018 comparison root"
+        },
+        {
+          "item_key": "root-illinois-february-2019",
+          "collection": "lineages",
+          "object_key": "lineage-illinois-comparison-root",
+          "basis_span_key": "span-illinois-feb-2019-anchors",
+          "label": "Illinois February 2019 comparison root"
+        },
+        {
+          "item_key": "root-illinois-july-2018",
+          "collection": "lineages",
+          "object_key": "lineage-illinois-comparison-root",
+          "basis_span_key": "span-illinois-jul-2018-anchors",
+          "label": "Illinois July 2018 comparison root"
+        }
+      ]
+    },
+    {
+      "key": "independent_evidence_roots",
+      "label": "rooted evidence units",
+      "anchor": "independent-evidence-roots",
+      "note": "Seven units after editions and reused score inputs are collapsed",
+      "members": [
+        {
+          "item_key": "root-model-performance",
+          "collection": "lineages",
+          "object_key": "lineage-model-performance-root",
+          "basis_span_key": "span-katz-vor-abstract-score",
+          "label": "Historical model-performance root"
+        },
+        {
+          "item_key": "root-martinez-reanalysis",
+          "collection": "lineages",
+          "object_key": "lineage-martinez-analysis-root",
+          "basis_span_key": "span-martinez-results-45",
+          "label": "Martinez modeled re-analysis root"
+        },
+        {
+          "item_key": "root-illinois-feb-2018",
+          "collection": "lineages",
+          "object_key": "lineage-illinois-comparison-root",
+          "basis_span_key": "span-illinois-feb-2018-anchors",
+          "label": "Illinois February 2018 root"
+        },
+        {
+          "item_key": "root-illinois-feb-2019",
+          "collection": "lineages",
+          "object_key": "lineage-illinois-comparison-root",
+          "basis_span_key": "span-illinois-feb-2019-anchors",
+          "label": "Illinois February 2019 root"
+        },
+        {
+          "item_key": "root-illinois-jul-2018",
+          "collection": "lineages",
+          "object_key": "lineage-illinois-comparison-root",
+          "basis_span_key": "span-illinois-jul-2018-anchors",
+          "label": "Illinois July 2018 root"
+        },
+        {
+          "item_key": "root-ncbe-aggregates",
+          "collection": "lineages",
+          "object_key": "lineage-ncbe-comparison-root",
+          "basis_span_key": "span-ncbe-mbe-2022-counts",
+          "label": "NCBE scoring and population aggregate root"
+        },
+        {
+          "item_key": "root-new-york-pass-rates",
+          "collection": "lineages",
+          "object_key": "lineage-new-york-pass-rate-root",
+          "basis_span_key": "span-ny-first-timers-2022",
+          "label": "New York first-time pass-rate root"
+        }
+      ]
+    },
+    {
+      "key": "unresolved_boundaries",
+      "label": "unresolved boundaries",
+      "anchor": "unresolved-boundaries",
+      "note": "Visible limits receive no invented value or broader interpretation",
+      "members": [
+        {
+          "item_key": "boundary-launch-comparator",
+          "collection": "assertions",
+          "object_key": "assertion-claim-launch-comparison-unspecified",
+          "basis_span_key": "span-katz-vor-percentile-boundary",
+          "label": "Launch comparison distribution is unspecified"
+        },
+        {
+          "item_key": "boundary-45-48",
+          "collection": "assertions",
+          "object_key": "assertion-claim-martinez-passers-conflict",
+          "basis_span_key": "span-martinez-results-45",
+          "label": "Martinez 45th-versus-48th internal discrepancy"
+        },
+        {
+          "item_key": "boundary-lawyer-quality",
+          "collection": "assertions",
+          "object_key": "assertion-claim-no-lawyer-rank",
+          "basis_span_key": "span-openai-v1-abstract-top-ten",
+          "label": "No practicing-lawyer comparison"
+        }
+      ]
+    }
+  ],
+  "practical_readings": {
+    "encyclopedia": {
+      "text": "Treat the historical score as a score, not as a universal percentile: name the exam administration and comparison population every time.",
+      "qualifier": "The documented result concerns one historical simulated-UBE run assembled from multiple score components.",
+      "basis_relation_keys": [
+        "relation-assertion-claim-launch-score-label",
+        "relation-assertion-claim-february-sensitive",
+        "relation-assertion-claim-july-sensitive"
+      ]
+    },
+    "skeptical": {
+      "text": "Do not repeat '90th percentile' without its missing comparison distribution, and do not translate the result into lawyer quality.",
+      "qualifier": "Official-chart sensitivities and the modeled re-analysis answer narrower questions and are not current product rankings.",
+      "basis_relation_keys": [
+        "relation-assertion-claim-launch-comparison-unspecified",
+        "relation-assertion-claim-martinez-passers-conflict",
+        "relation-assertion-claim-no-lawyer-rank"
+      ]
+    }
+  },
+  "dependence_warning": "The report, research paper, repository, and supplements are manifestations of one historical model run; the Martinez analysis reuses that score and aggregate comparison data.",
+  "warrant_warning": "Percentile is not a property of the score alone. It depends on the administration, population, cutoff, interpolation, and model assumptions.",
+  "lexicon": [
+    {
+      "term": "Comparison population",
+      "definition": "The people or scores against which a percentile is calculated."
+    },
+    {
+      "term": "Administration sensitivity",
+      "definition": "How the same score ranks under a different exam date and population."
+    },
+    {
+      "term": "Historical model run",
+      "definition": "One past evaluation setup, not a claim about a current product."
+    },
+    {
+      "term": "Modeled re-analysis",
+      "definition": "A calculation using disclosed assumptions and reused source values."
+    },
+    {
+      "term": "Boundary",
+      "definition": "A missing comparator, conflict, or scope limit that remains visible."
+    }
+  ]
+}

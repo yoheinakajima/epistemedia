@@ -1,0 +1,204 @@
+{
+  "format": "epistemedia-bounded-proposition-feature-v0.1",
+  "profile": "bounded-proposition-v0.1",
+  "number": "004",
+  "slug": "mehrabian-7-38-55",
+  "status": "accepted",
+  "task_id": "EM-0035",
+  "dossier_path": "research/how-we-know/mehrabian-7-38-55/candidate-dossier.json",
+  "dossier_id": "em:dossier:sha256:57e80c9a44c478c1c81ba7adedc1bafdef43ff57b4f2984015dcbef84ba66e87",
+  "dossier_sha256": "44e7bf407091d7665d4f1ab2aabc285255364e790e2d17520913f9ba9c57b418",
+  "dossier_bytes": 176885,
+  "review_receipt_path": "research/how-we-know/mehrabian-7-38-55/independent-em0035-review-receipt.json",
+  "review_receipt_sha256": "0bb9184660deb3ef83addbcdb7be61d49f234026d6d484747b51628a4f8f087f",
+  "review_receipt_bytes": 71345,
+  "review_receipt_format": "epistemedia-independent-dossier-review-v1",
+  "reviewer_id": "codex-independent-em0035-reviewer",
+  "reviewed_head": "bc5e7ce87aa00d773ab9a3f1ec9b68a80c09957b",
+  "reviewed_tree": "9988fa4e0b381db23f58d35e68d63c873eb4a122",
+  "selection_note": "Accepted as a bounded primary-source and propagation-lineage case after independent review preserved the narrow experiments, later proposal, direct rebuttal, and unresolved coefficient origin.",
+  "public_scope": "Historical evidence through 2026-08-27 about the narrow experiments, cross-study proposal, later qualification, direct rebuttal, and propagation of 7-38-55. This evidence file does not establish a universal law of communication.",
+  "claim_family_key": "family-mehrabian-7-38-55",
+  "target_proposition_key": "claim-popular-rule",
+  "default_view": "encyclopedia",
+  "views": {
+    "encyclopedia": {
+      "evaluation_key": "evaluation-encyclopedia",
+      "featured_relation_keys": [
+        "relation-assertion-p1-tone-dominance",
+        "relation-assertion-p2-face-tone",
+        "relation-assertion-three-coefficient-proposal",
+        "relation-assertion-book-boundary",
+        "relation-hegstrom-direct-rebuttal",
+        "relation-author-qualification"
+      ]
+    },
+    "skeptical": {
+      "evaluation_key": "evaluation-skeptical",
+      "featured_relation_keys": [
+        "relation-assertion-popular-rule",
+        "relation-assertion-three-coefficient-proposal",
+        "relation-assertion-seven-origin",
+        "relation-hegstrom-direct-rebuttal",
+        "relation-assertion-propagation",
+        "relation-assertion-replication-search"
+      ]
+    }
+  },
+  "count_cards": [
+    {
+      "key": "original_experiments",
+      "label": "original 1967 experiments",
+      "anchor": "original-experiments",
+      "note": "Two different participant groups tested two different channel pairings",
+      "members": [
+        {
+          "item_key": "experiment-words-and-tone",
+          "collection": "lineages",
+          "object_key": "lineage-participant-p1",
+          "basis_span_key": "span-wiener-result-boundary",
+          "label": "Words-and-tone participant root"
+        },
+        {
+          "item_key": "experiment-face-and-tone",
+          "collection": "lineages",
+          "object_key": "lineage-participant-p2",
+          "basis_span_key": "span-ferris-design",
+          "label": "Face-and-tone participant root"
+        }
+      ]
+    },
+    {
+      "key": "participant_data_roots",
+      "label": "participant-data roots",
+      "anchor": "participant-data-roots",
+      "note": "Original, direct-rebuttal, and related studies remain separate",
+      "members": [
+        {
+          "item_key": "root-p1",
+          "collection": "lineages",
+          "object_key": "lineage-participant-p1",
+          "basis_span_key": "span-wiener-sample",
+          "label": "1967 words-and-tone root"
+        },
+        {
+          "item_key": "root-p2",
+          "collection": "lineages",
+          "object_key": "lineage-participant-p2",
+          "basis_span_key": "span-ferris-sample",
+          "label": "1967 face-and-tone root"
+        },
+        {
+          "item_key": "root-hegstrom",
+          "collection": "lineages",
+          "object_key": "lineage-hegstrom-rebuttal",
+          "basis_span_key": "span-hegstrom-result",
+          "label": "Hegstrom all-channel rebuttal root"
+        },
+        {
+          "item_key": "root-argyle-1970",
+          "collection": "lineages",
+          "object_key": "lineage-participant-argyle-1970",
+          "basis_span_key": "span-argyle-1970-abstract",
+          "label": "Argyle 1970 related-study root"
+        },
+        {
+          "item_key": "root-argyle-1971",
+          "collection": "lineages",
+          "object_key": "lineage-participant-argyle-1971",
+          "basis_span_key": "span-argyle-1971-experiment-one",
+          "label": "Argyle 1971 related-study root"
+        }
+      ]
+    },
+    {
+      "key": "zero_credit_propagation",
+      "label": "zero-credit propagation objects",
+      "anchor": "zero-credit-propagation",
+      "note": "Circulation documents popularity, not scientific truth",
+      "members": [
+        {
+          "item_key": "propagation-lapakko",
+          "collection": "lineages",
+          "object_key": "lineage-lapakko-2007",
+          "basis_span_key": "span-lapakko-2007-63-of-79",
+          "label": "Bounded website-circulation sample"
+        },
+        {
+          "item_key": "propagation-hampshire",
+          "collection": "lineages",
+          "object_key": "lineage-hampshire-propagation",
+          "basis_span_key": "span-hampshire-generalization",
+          "label": "Hampshire institutional recirculation"
+        },
+        {
+          "item_key": "propagation-birmingham",
+          "collection": "lineages",
+          "object_key": "lineage-birmingham-propagation",
+          "basis_span_key": "span-birmingham-generalization",
+          "label": "Birmingham institutional recirculation"
+        }
+      ]
+    },
+    {
+      "key": "unresolved_derivations",
+      "label": "unresolved coefficient derivation",
+      "anchor": "unresolved-derivations",
+      "note": "Reverse engineering does not recover the source of the verbal weight",
+      "members": [
+        {
+          "item_key": "unknown-seven-percent-origin",
+          "collection": "lineages",
+          "object_key": "lineage-seven-origin-unknown",
+          "basis_span_key": "span-ferris-proposal",
+          "label": "Exact source derivation of the .07 coefficient remains unknown"
+        }
+      ]
+    }
+  ],
+  "practical_readings": {
+    "encyclopedia": {
+      "text": "Use 7-38-55 only as the history of a narrow feelings-and-attitudes proposal assembled across two linked experiments.",
+      "qualifier": "The original participant roots, cross-study proposal, later qualification, and follow-up evidence are different objects.",
+      "basis_relation_keys": [
+        "relation-assertion-p1-tone-dominance",
+        "relation-assertion-p2-face-tone",
+        "relation-assertion-three-coefficient-proposal",
+        "relation-author-qualification"
+      ]
+    },
+    "skeptical": {
+      "text": "Do not teach that 93 percent of communication is nonverbal: no reviewed three-channel experiment established that universal rule.",
+      "qualifier": "The .07 origin remains unresolved, and direct all-channel evidence produced message-specific equations.",
+      "basis_relation_keys": [
+        "relation-assertion-popular-rule",
+        "relation-assertion-seven-origin",
+        "relation-hegstrom-direct-rebuttal"
+      ]
+    }
+  },
+  "dependence_warning": "The two 1967 participant groups are distinct, but their papers share authorship, grants, materials, methods, scales, speakers, citation, and the later cross-study derivation.",
+  "warrant_warning": "The fixed three-number formula was proposed across studies; neither original experiment tested verbal, vocal, and facial channels together.",
+  "lexicon": [
+    {
+      "term": "Participant-data root",
+      "definition": "One distinct reported participant collection after shared papers and programs are collapsed."
+    },
+    {
+      "term": "Cross-study proposal",
+      "definition": "An integration suggested across studies, not a result directly tested in one experiment."
+    },
+    {
+      "term": "Propagation object",
+      "definition": "A document showing that a claim circulated; it supplies no truth credit."
+    },
+    {
+      "term": "Direct rebuttal",
+      "definition": "A later all-channel test whose reported equations challenge a fixed universal rule."
+    },
+    {
+      "term": "Unresolved derivation",
+      "definition": "A coefficient origin the reviewed primary editions do not disclose."
+    }
+  ]
+}

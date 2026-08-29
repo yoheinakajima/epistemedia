@@ -26,6 +26,8 @@ from epistemedia.server import Gateway, Request, tool_definitions
 
 ROOT = Path(__file__).resolve().parents[1]
 SLUG = "corrections-and-familiarity-backfire"
+CASE_003 = "gpt-4-bar-exam-percentile"
+CASE_004 = "mehrabian-7-38-55"
 
 
 class PageStructureParser(HTMLParser):
@@ -37,9 +39,7 @@ class PageStructureParser(HTMLParser):
         self.skip_targets: list[str] = []
         self.hrefs: list[str] = []
 
-    def handle_starttag(
-        self, tag: str, attrs: list[tuple[str, str | None]]
-    ) -> None:
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
         if len(tag) == 2 and tag[0] == "h" and tag[1].isdigit():
             self.headings.append(int(tag[1]))
@@ -111,7 +111,9 @@ def test_deployment_url_does_not_change_catalog_identity(tmp_path: Path) -> None
     assert a["catalog_id"] == b["catalog_id"]
     assert a["frontier"] == b["frontier"]
     # A release manifest includes rendered files, so its own ID may change with links.
-    assert (tmp_path / "a" / "catalog.json").read_text() == (tmp_path / "b" / "catalog.json").read_text()
+    assert (tmp_path / "a" / "catalog.json").read_text() == (
+        tmp_path / "b" / "catalog.json"
+    ).read_text()
 
 
 def test_public_build_emits_every_interface(tmp_path: Path) -> None:
@@ -154,6 +156,22 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
         "how-we-know/agent-citation-lineage/encyclopedia/share-card.svg",
         "how-we-know/agent-citation-lineage/skeptical/share-card.svg",
     ]
+    for case_slug in (CASE_003, CASE_004):
+        expected.extend(
+            [
+                f"how-we-know/{case_slug}/index.html",
+                f"how-we-know/{case_slug}/index.md",
+                f"how-we-know/{case_slug}/index.json",
+                f"how-we-know/{case_slug}/encyclopedia/index.html",
+                f"how-we-know/{case_slug}/skeptical/index.html",
+                f"how-we-know/{case_slug}/review/index.html",
+                f"how-we-know/{case_slug}/review/index.md",
+                f"how-we-know/{case_slug}/review/index.json",
+                f"how-we-know/{case_slug}/share-card.svg",
+                f"how-we-know/{case_slug}/encyclopedia/share-card.svg",
+                f"how-we-know/{case_slug}/skeptical/share-card.svg",
+            ]
+        )
     assert all((public / path).exists() for path in expected)
     assert manifest["file_count"] > 10
     assert audit_public(ROOT, public) == []
@@ -164,10 +182,14 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert discovery["openapi"] == "https://epistemedia.org/openapi.json"
     assert discovery["mcp"] == "https://mcp.epistemedia.org/mcp"
     assert discovery["featured_dossier"]["human"] == (
-        "https://epistemedia.org/how-we-know/"
-        "corrections-and-familiarity-backfire/"
+        "https://epistemedia.org/how-we-know/corrections-and-familiarity-backfire/"
     )
-    assert [item["number"] for item in discovery["dossiers"]] == ["001", "002"]
+    assert [item["number"] for item in discovery["dossiers"]] == [
+        "001",
+        "002",
+        "003",
+        "004",
+    ]
 
     llms = (public / "llms.txt").read_text()
     assert "Static OpenAPI contract — hosted API not live" in llms
@@ -176,6 +198,8 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "https://epistemedia.org/mcp/server.json" in llms
     assert "https://api.epistemedia.org/openapi.json" not in llms
     assert "Case 002 evidence dossier" in llms
+    assert "Case 003 evidence dossier" in llms
+    assert "Case 004 evidence dossier" in llms
 
     obj = next(obj for obj in PublicCatalog.build(ROOT).objects if obj.kind == "documentation")
     file_key = quote(obj.id, safe="")
@@ -190,11 +214,11 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert '<link rel="canonical" href="https://epistemedia.org/docs/">' in docs_html
 
     object_html = (public / "objects" / file_key / "index.html").read_text()
-    expected_canonical = f'https://epistemedia.org/objects/{route_key}/'
+    expected_canonical = f"https://epistemedia.org/objects/{route_key}/"
     assert f'<link rel="canonical" href="{expected_canonical}">' in object_html
     assert object_html.count("<h1>") == 1
     assert 'id="source-content-title"' in object_html
-    assert '<h3>' in object_html
+    assert "<h3>" in object_html
     assert obj.id in object_html
     assert manifest["catalog_id"] in object_html
 
@@ -215,33 +239,35 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "These counts follow evidence lineage, not paper titles" in home_html
     assert 'aria-label="How to read Case 001"' in home_html
     assert f'href="https://epistemedia.org/how-we-know/{SLUG}/skeptical/"' in home_html
-    assert (
-        f'href="https://epistemedia.org/how-we-know/{SLUG}/#evidence-record-title"'
-        in home_html
-    )
+    assert f'href="https://epistemedia.org/how-we-know/{SLUG}/#evidence-record-title"' in home_html
     assert home_html.index("Does repeating misinformation") < home_html.index(
         "Explore how the record is built"
     )
-    assert home_html.index("Does repeating misinformation") < home_html.index(
-        "Information tells you what was said"
-    ) < home_html.index("Explore how the record is built")
+    assert (
+        home_html.index("Does repeating misinformation")
+        < home_html.index("Information tells you what was said")
+        < home_html.index("Explore how the record is built")
+    )
     assert "projection-receipt" in home_html
     assert manifest["catalog_id"] in home_html
     assert ">Substrate</a>" in home_html
     assert "Also in How We Know · Case 002" in home_html
     assert "Open Case 002" in home_html
+    assert "Case 003" in home_html
+    assert "Case 004" in home_html
+    assert "View all four cases" in home_html
 
     home_markdown = (public / "index.md").read_text()
     assert "## Why this exists" in home_markdown
     assert "The counts follow evidence lineage, not paper titles." in home_markdown
-    assert f"[Skeptical](https://epistemedia.org/how-we-know/{SLUG}/skeptical/)" in (
-        home_markdown
-    )
+    assert f"[Skeptical](https://epistemedia.org/how-we-know/{SLUG}/skeptical/)" in (home_markdown)
 
     how_we_know_html = (public / "how-we-know" / "index.html").read_text()
     assert "Case 001" in how_we_know_html
     assert "Case 002" in how_we_know_html
-    assert "2 accepted cases" in how_we_know_html
+    assert "Case 003" in how_we_know_html
+    assert "Case 004" in how_we_know_html
+    assert "4 accepted cases" in how_we_know_html
     assert "No future case is advertised as available" in how_we_know_html
     assert "home-case" not in how_we_know_html
     assert how_we_know_html.count("<h1>") == 1
@@ -252,10 +278,7 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert explore_markdown.startswith("# Substrate\n")
 
     share_card = (
-        public
-        / "how-we-know"
-        / "corrections-and-familiarity-backfire"
-        / "share-card.svg"
+        public / "how-we-know" / "corrections-and-familiarity-backfire" / "share-card.svg"
     ).read_text()
     assert share_card.startswith('<?xml version="1.0" encoding="UTF-8"?>')
     assert "CASE 001" in share_card
@@ -273,13 +296,10 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "## Projection manifest" in topic_markdown
     assert "projection-receipt" in topic_html
     assert (
-        f'<link rel="canonical" href="https://epistemedia.org/topics/{topic.slug}/">'
-        in topic_html
+        f'<link rel="canonical" href="https://epistemedia.org/topics/{topic.slug}/">' in topic_html
     )
 
-    experimental_html = (
-        public / "topics" / topic.slug / "skeptical" / "index.html"
-    ).read_text()
+    experimental_html = (public / "topics" / topic.slug / "skeptical" / "index.html").read_text()
     assert experimental_html.count("<h1>") == 1
     assert "Experimental lens manifest." in experimental_html
     assert "not a differentiated editorial result" in experimental_html
@@ -288,7 +308,7 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     status_html = (public / "status" / "index.html").read_text()
     assert "Canonical human site" in status_markdown
     assert status_markdown.count("not verified live") == 3
-    assert "2 independently reviewed How We Know dossiers" in status_markdown
+    assert "4 independently reviewed How We Know dossiers" in status_markdown
     assert "Verified live · HTTPS" in status_html
     assert status_html.count("Reserved · unverified") == 3
 
@@ -301,9 +321,7 @@ def test_homepage_count_language_reconciles_distinct_objects_and_memberships(
     catalog = PublicCatalog.build(ROOT)
     home_html = (public / "index.html").read_text()
     home_markdown = (public / "index.md").read_text()
-    membership_counts = [
-        len(catalog.selected_objects(topic)) for topic in catalog.topics
-    ]
+    membership_counts = [len(catalog.selected_objects(topic)) for topic in catalog.topics]
     membership_total = sum(membership_counts)
 
     assert catalog.topic_membership_count() == membership_total
@@ -491,9 +509,7 @@ Readable child summary.
     assert "independ" not in serialized.lower()
 
 
-def test_topic_human_surface_and_projection_parity(
-    tmp_path: Path, capsys: object
-) -> None:
+def test_topic_human_surface_and_projection_parity(tmp_path: Path, capsys: object) -> None:
     public = tmp_path / "public"
     catalog = PublicCatalog.build(ROOT)
     topic = catalog.topic_map()["epistemedia"]
@@ -512,16 +528,14 @@ def test_topic_human_surface_and_projection_parity(
     assert static_json == projection
     assert topic_html.count('class="topic-object-card"') == projection["object_count"]
     assert topic_html.count("<summary>Technical identity</summary>") == projection["object_count"]
-    assert "<details class=\"object-identity\" open" not in topic_html
+    assert '<details class="object-identity" open' not in topic_html
     assert ".object-identity dd" in topic_html
     assert "font:.64rem/1.45 var(--mono)" in topic_html
     assert "Also filed under" in topic_html
     assert "References in source" in topic_html
     assert "related objects" not in topic_html.lower()
     assert "similar objects" not in topic_html.lower()
-    relation_labels = set(
-        re.findall(r'class="relation-label">([^<]+)</span>', topic_html)
-    )
+    relation_labels = set(re.findall(r'class="relation-label">([^<]+)</span>', topic_html))
     assert relation_labels == {"Also filed under", "References in source"}
     assert "/topics/epistemedia/architecture.md" not in topic_html
     assert "## Objects" in topic_markdown
@@ -568,19 +582,15 @@ def test_topic_human_surface_and_projection_parity(
     assert "**References in source:**" in skeptical_markdown
 
     gateway = Gateway(ROOT)
-    status, _, rest = gateway.handle_api(
-        Request("GET", f"/v1/topics/{topic.slug}", {}, {}, b"")
-    )
+    status, _, rest = gateway.handle_api(Request("GET", f"/v1/topics/{topic.slug}", {}, {}, b""))
     assert status == 200
     assert rest["data"] == projection
     assert gateway.read_resource(f"epistemedia://topic/{topic.slug}") == projection
-    assert gateway.call_tool(
-        "get_topic", {"slug": topic.slug, "lens": "encyclopedia"}
-    ) == projection
+    assert (
+        gateway.call_tool("get_topic", {"slug": topic.slug, "lens": "encyclopedia"}) == projection
+    )
 
-    assert main(
-        ["--root", str(ROOT), "project", topic.slug, "--lens", "encyclopedia"]
-    ) == 0
+    assert main(["--root", str(ROOT), "project", topic.slug, "--lens", "encyclopedia"]) == 0
     cli_projection = json.loads(capsys.readouterr().out)  # type: ignore[attr-defined]
     assert cli_projection == projection
 
@@ -591,7 +601,7 @@ def test_public_status_copy_distinguishes_live_and_target_surfaces() -> None:
     api_docs = (ROOT / "docs" / "api-mcp-cli.md").read_text()
     assert "canonical static site live at <https://epistemedia.org/>" in readme
     assert "sharing redirect and hosted API/MCP runtime" in readme
-    assert "two bounded, independently reviewed, application-level dossier graphs" in readme
+    assert "four independently reviewed, application-level dossiers" in readme
     assert "does not yet replay the normative event model" in readme
     assert "Case 001 remains the homepage lead" in readme
     assert "does **not** yet instantiate that claim/evidence graph" not in readme
@@ -609,7 +619,10 @@ def test_object_ids_are_content_and_path_addressed() -> None:
     obj = catalog.objects[0]
     assert obj.id.startswith("em:")
     assert len(obj.content_digest) == 64
-    assert obj.id == stable_id(obj.kind, {"path": obj.path, "content_digest": obj.content_digest, "media_type": obj.media_type})
+    assert obj.id == stable_id(
+        obj.kind,
+        {"path": obj.path, "content_digest": obj.content_digest, "media_type": obj.media_type},
+    )
 
 
 def test_search_is_stable() -> None:
@@ -643,9 +656,7 @@ def mcp_request(
         "accept": "application/json, text/event-stream",
         "content-type": "application/json; charset=utf-8",
         "mcp-protocol-version": str(
-            body_params.get("_meta", {}).get(
-                "io.modelcontextprotocol/protocolVersion", ""
-            )
+            body_params.get("_meta", {}).get("io.modelcontextprotocol/protocolVersion", "")
         ),
         "mcp-method": method,
     }
@@ -694,7 +705,9 @@ def test_api_and_mcp_expose_same_catalog() -> None:
 
 def test_mcp_tool_result_carries_catalog_and_frontier() -> None:
     gateway = Gateway(ROOT)
-    result = gateway.mcp_method("tools/call", {"name": "search_knowledge", "arguments": {"query": "governance"}})
+    result = gateway.mcp_method(
+        "tools/call", {"name": "search_knowledge", "arguments": {"query": "governance"}}
+    )
     structured = result["structuredContent"]
     assert structured["catalog_id"] == gateway.catalog().catalog_id
     assert structured["frontier"] == gateway.catalog().frontier
@@ -793,9 +806,7 @@ def test_mcp_streamable_http_rejects_get_delete_and_http_cancellation() -> None:
         assert headers["allow"] == "POST, OPTIONS"
         assert result["error"]["code"] == -32600
 
-    status, _, result = gateway.handle_mcp(
-        mcp_request("notifications/cancelled", request_id=None)
-    )
+    status, _, result = gateway.handle_mcp(mcp_request("notifications/cancelled", request_id=None))
     assert status == 404
     assert result["error"]["code"] == -32601
     assert "id" not in result
@@ -935,9 +946,11 @@ def test_private_mutation_has_no_public_effect(tmp_path: Path) -> None:
 def test_asgi_status_smoke() -> None:
     gateway = Gateway(ROOT)
     sent: list[dict] = []
-    incoming = iter([
-        {"type": "http.request", "body": b"", "more_body": False},
-    ])
+    incoming = iter(
+        [
+            {"type": "http.request", "body": b"", "more_body": False},
+        ]
+    )
 
     async def receive() -> dict:
         return next(incoming)
@@ -945,7 +958,19 @@ def test_asgi_status_smoke() -> None:
     async def send(message: dict) -> None:
         sent.append(message)
 
-    asyncio.run(gateway({"type": "http", "method": "GET", "path": "/v1/status", "query_string": b"", "headers": []}, receive, send))
+    asyncio.run(
+        gateway(
+            {
+                "type": "http",
+                "method": "GET",
+                "path": "/v1/status",
+                "query_string": b"",
+                "headers": [],
+            },
+            receive,
+            send,
+        )
+    )
     assert sent[0]["status"] == 200
     body = json.loads(sent[1]["body"])
     assert body["catalog_id"] == gateway.catalog().catalog_id
@@ -991,9 +1016,7 @@ def test_asgi_enforces_body_query_response_rate_and_timeout_limits() -> None:
         body: bytes = b"",
     ) -> list[dict]:
         sent: list[dict] = []
-        incoming = iter(
-            [{"type": "http.request", "body": body, "more_body": False}]
-        )
+        incoming = iter([{"type": "http.request", "body": body, "more_body": False}])
 
         async def receive() -> dict:
             return next(incoming)
