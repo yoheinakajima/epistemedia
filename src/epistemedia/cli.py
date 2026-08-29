@@ -27,6 +27,7 @@ from .core import (
 )
 from .featured import FEATURE_VIEWS
 from .mission import load_mission
+from .open_dockets import prepare_submission
 from .research_kit import (
     case_research_brief,
     proposal_template,
@@ -93,6 +94,7 @@ def parser() -> argparse.ArgumentParser:
     research = sub.add_parser("research", help="Prepare and validate non-admitting research proposals")
     research_sub = research.add_subparsers(dest="research_command", required=True)
     research_sub.add_parser("protocol", help="Print the public agent research protocol")
+    research_sub.add_parser("submission-guide", help="Print the autonomous GitHub submission guide")
     prepare = research_sub.add_parser("prepare", help="Create a deterministic draft proposal scaffold")
     prepare.add_argument("--question")
     prepare.add_argument("--case", dest="case_slug")
@@ -100,6 +102,16 @@ def parser() -> argparse.ArgumentParser:
     prepare.add_argument("--output", type=Path)
     validate_research = research_sub.add_parser("validate", help="Fail-closed validation of one proposal JSON file")
     validate_research.add_argument("bundle", type=Path)
+    submit_research = research_sub.add_parser(
+        "submit", help="Prepare a deterministic GitHub draft-PR submission directory"
+    )
+    submit_research.add_argument("bundle", type=Path)
+    submit_research.add_argument("--trace", required=True, type=Path)
+    submit_research.add_argument("--agent-id", required=True)
+    submit_research.add_argument("--model-family", required=True)
+    submit_research.add_argument("--run-id", required=True)
+    submit_research.add_argument("--prompt-sha256", required=True)
+    submit_research.add_argument("--submitted-at", required=True)
 
     repo = sub.add_parser("repo", help="Repository-native agent operations")
     repo_sub = repo.add_subparsers(dest="repo_command", required=True)
@@ -373,6 +385,11 @@ def main(argv: list[str] | None = None) -> int:
         if args.research_command == "protocol":
             print_json(protocol_document(DEFAULT_BASE_URL))
             return 0
+        if args.research_command == "submission-guide":
+            from .open_dockets import submission_guide
+
+            print_json(submission_guide(DEFAULT_BASE_URL))
+            return 0
         if args.research_command == "prepare":
             question = args.question
             brief = None
@@ -414,6 +431,57 @@ def main(argv: list[str] | None = None) -> int:
             result = validate_proposal(bundle)
             print_json(result)
             return 0 if result["valid"] else 1
+        if args.research_command == "submit":
+            bundle_path = args.bundle if args.bundle.is_absolute() else root / args.bundle
+            trace_path = args.trace if args.trace.is_absolute() else root / args.trace
+            try:
+                bundle = json.loads(bundle_path.read_text(encoding="utf-8"))
+                trace = json.loads(trace_path.read_text(encoding="utf-8"))
+                prepared = prepare_submission(
+                    root,
+                    bundle,
+                    trace,
+                    agent_id=args.agent_id,
+                    model_family=args.model_family,
+                    run_id=args.run_id,
+                    prompt_sha256=args.prompt_sha256,
+                    submitted_at=args.submitted_at,
+                )
+            except (OSError, json.JSONDecodeError, ValueError) as exc:
+                print_json(
+                    {
+                        "valid": False,
+                        "errors": [str(exc)],
+                        "submitted": False,
+                        "admitted": False,
+                    }
+                )
+                return 1
+            directory = prepared["directory"]
+            print_json(
+                {
+                    "valid": True,
+                    "submitted": False,
+                    "admitted": False,
+                    "slug": prepared["slug"],
+                    "proposal_id": prepared["proposal_id"],
+                    "proposal_sha256": prepared["proposal_sha256"],
+                    "directory": str(directory.relative_to(root)),
+                    "next_steps": [
+                        f"git switch -c submission/{prepared['slug']}",
+                        f"git add {directory.relative_to(root)}",
+                        f"git commit -m 'research: submit open docket {prepared['slug']}'",
+                        f"git push -u origin submission/{prepared['slug']}",
+                        (
+                            "gh pr create --draft "
+                            f"--title {json.dumps(prepared['pull_request_title'])} "
+                            f"--body-file {prepared['pull_request_body'].relative_to(root)}"
+                        ),
+                    ],
+                    "note": "Stop after opening the draft PR; do not review, merge, or publish it.",
+                }
+            )
+            return 0
     if command == "repo":
         if args.repo_command == "next":
             return next_tasks(root)

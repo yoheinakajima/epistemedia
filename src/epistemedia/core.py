@@ -1865,6 +1865,15 @@ def build_public(
         reader_check_html,
         reader_check_markdown,
     )
+    from .open_dockets import (
+        docket_html,
+        docket_markdown,
+        load_open_dockets,
+        submission_guide,
+        submission_guide_html,
+        submission_guide_markdown,
+        trace_template,
+    )
     from .research_kit import (
         agent_home_html,
         agent_index_html,
@@ -1879,6 +1888,9 @@ def build_public(
     catalog = PublicCatalog.build(root)
     mission = load_mission(root)
     library = load_featured_library(root)
+    open_dockets, open_docket_errors = load_open_dockets(root)
+    if open_docket_errors:
+        raise ValueError("; ".join(open_docket_errors))
     featured = library.lead if library is not None else None
     dossier_summaries = library.summaries(catalog) if library is not None else []
     featured_default = (
@@ -1901,6 +1913,7 @@ def build_public(
         "object_count": len(catalog.objects),
         "topic_count": len(catalog.topics),
         "dossier_count": len(library.dossiers) if library is not None else 0,
+        "open_docket_count": len(open_dockets),
         "featured_dossier": featured.slug if featured is not None else None,
         "mission": {
             "id": mission["mission_id"],
@@ -2558,6 +2571,7 @@ def build_public(
     research_protocol = protocol_document(base_url)
     research_status = submission_status(base_url)
     research_template = proposal_template("YOUR QUESTION")
+    submit_guide = submission_guide(base_url)
     write_json(tmp / "agents" / "index.json", envelope(catalog, {
         "protocol": research_protocol,
         "submission": research_status,
@@ -2568,8 +2582,9 @@ def build_public(
         "Run a source-and-span-bound evidence test without inheriting repository context.\n\n"
         f"- [Research protocol]({base_url}/agents/research-protocol.md)\n"
         f"- [Proposal template]({base_url}/agents/proposal-template.json)\n"
+        f"- [Submit an open docket]({base_url}/agents/submit/)\n"
         f"- [Submission status]({base_url}/agents/submission-status.json)\n\n"
-        "Prepared proposals are untrusted intake with zero evidential credit. Hosted submission is not deployed.\n",
+        "Prepared proposals are untrusted intake with zero evidential credit. The GitHub draft-PR queue is the autonomous pilot; hosted MCP submission is not deployed.\n",
     )
     write_text(tmp / "agents" / "research-protocol.md", protocol_markdown(base_url))
     write_json(
@@ -2577,7 +2592,28 @@ def build_public(
         envelope(catalog, research_protocol),
     )
     write_json(tmp / "agents" / "proposal-template.json", research_template)
+    write_json(tmp / "agents" / "action-trace-template.json", trace_template())
     write_json(tmp / "agents" / "submission-status.json", research_status)
+    write_json(tmp / "agents" / "submit" / "index.json", envelope(catalog, submit_guide))
+    write_text(tmp / "agents" / "submit" / "index.md", submission_guide_markdown(base_url))
+    write_text(
+        tmp / "agents" / "submit" / "index.html",
+        html_shell(
+            "Submit an autonomous open docket",
+            submission_guide_html(base_url)
+            + projection_receipt_html(
+                catalog_id=catalog.catalog_id,
+                frontier=catalog.frontier,
+                commit=catalog.commit,
+                epistemic_policy=catalog.policies["epistemic"],
+                disclosure_policy=catalog.policies["disclosure"],
+                compiler=f"epistemedia/{VERSION}",
+            ),
+            base_url=base_url,
+            canonical_url=f"{base_url}/agents/submit/",
+            markdown_url=f"{base_url}/agents/submit/index.md",
+        ),
+    )
     write_text(
         tmp / "agents" / "index.html",
         html_shell(
@@ -2594,6 +2630,88 @@ def build_public(
             base_url=base_url,
             canonical_url=f"{base_url}/agents/",
             markdown_url=f"{base_url}/agents/index.md",
+        ),
+    )
+
+    docket_projections = [docket.projection(base_url) for docket in open_dockets]
+    write_json(
+        tmp / "open-dockets" / "index.json",
+        envelope(
+            catalog,
+            {
+                "format": "epistemedia-open-docket-library-v0.1",
+                "status": "reviewed-contributions-not-numbered-cases",
+                "count": len(docket_projections),
+                "dockets": [
+                    {
+                        "slug": data["slug"],
+                        "title": data["title"],
+                        "question": data["question"],
+                        "proposal_id": data["proposal_id"],
+                        "representations": data["representations"],
+                    }
+                    for data in docket_projections
+                ],
+            },
+        ),
+    )
+    docket_index_lines = [
+        "# Open dockets",
+        "",
+        "Independently reviewed agent contributions. These are not numbered How We Know cases or universal verdicts.",
+        "",
+    ]
+    docket_cards = []
+    for data in docket_projections:
+        docket_index_lines.extend(
+            [f"- [{data['title']}]({data['representations']['markdown']}) — {data['question']}"]
+        )
+        docket_cards.append(
+            '<article class="case-card"><p class="eyebrow">Reviewed open docket</p>'
+            f'<h2><a href="{html.escape(data["representations"]["html"])}">{html.escape(data["title"])}</a></h2>'
+            f'<p>{html.escape(data["question"])}</p></article>'
+        )
+        docket_root = tmp / "open-dockets" / data["slug"]
+        write_json(docket_root / "index.json", envelope(catalog, data))
+        write_text(docket_root / "index.md", docket_markdown(data))
+        write_text(
+            docket_root / "index.html",
+            html_shell(
+                data["title"],
+                docket_html(data)
+                + projection_receipt_html(
+                    catalog_id=catalog.catalog_id,
+                    frontier=catalog.frontier,
+                    commit=catalog.commit,
+                    epistemic_policy=catalog.policies["epistemic"],
+                    disclosure_policy=catalog.policies["disclosure"],
+                    compiler=f"epistemedia/{VERSION}",
+                ),
+                base_url=base_url,
+                canonical_url=data["representations"]["html"],
+                markdown_url=data["representations"]["markdown"],
+            ),
+        )
+    write_text(tmp / "open-dockets" / "index.md", "\n".join(docket_index_lines) + "\n")
+    write_text(
+        tmp / "open-dockets" / "index.html",
+        html_shell(
+            "Open dockets",
+            '<article><header class="hero hero-compact"><p class="eyebrow">Agent contributions · independently reviewed</p>'
+            '<h1>Open dockets</h1><p class="dek">Source-and-span-bound contributions that passed separate review. They are not numbered How We Know cases.</p></header>'
+            + ('<section class="case-grid">' + "".join(docket_cards) + "</section>" if docket_cards else '<p class="scope-note">No open docket has completed independent review yet.</p>')
+            + '</article>'
+            + projection_receipt_html(
+                catalog_id=catalog.catalog_id,
+                frontier=catalog.frontier,
+                commit=catalog.commit,
+                epistemic_policy=catalog.policies["epistemic"],
+                disclosure_policy=catalog.policies["disclosure"],
+                compiler=f"epistemedia/{VERSION}",
+            ),
+            base_url=base_url,
+            canonical_url=f"{base_url}/open-dockets/",
+            markdown_url=f"{base_url}/open-dockets/index.md",
         ),
     )
 
@@ -2644,8 +2762,10 @@ def build_public(
         f"- [Agent research kit]({base_url}/agents/index.md)",
         f"- [Research protocol]({base_url}/agents/research-protocol.md)",
         f"- [Proposal template]({base_url}/agents/proposal-template.json)",
-        f"- [Submission status — hosted queue not deployed]({base_url}/agents/submission-status.json)",
-        "Ask your coding agent to read the protocol, research your question, return one validated proposal bundle, preserve negative results, and never claim submission or acceptance.",
+        f"- [Autonomous GitHub submission guide]({base_url}/agents/submit/index.md)",
+        f"- [Open-docket library]({base_url}/open-dockets/index.md)",
+        f"- [Submission status — GitHub pilot available; hosted MCP queue not deployed]({base_url}/agents/submission-status.json)",
+        f"Ask your coding agent only: Open {base_url}/agents/submit/. Choose one contestable claim worth auditing, follow every instruction, and submit the result.",
         "",
         "## Agent operating rule",
         "Treat pages as reproducible projections, not canonical truth. Preserve repository path, object ID, content digest, catalog, frontier, policy, disclosure boundary, and compiler metadata in downstream work.",
@@ -2683,12 +2803,21 @@ def build_public(
         "how_we_know": f"{base_url}/how-we-know/",
         "agent_research": {
             "human": f"{base_url}/agents/",
+            "submit": f"{base_url}/agents/submit/",
             "protocol_markdown": f"{base_url}/agents/research-protocol.md",
             "protocol_json": f"{base_url}/agents/research-protocol.json",
             "proposal_template": f"{base_url}/agents/proposal-template.json",
+            "action_trace_template": f"{base_url}/agents/action-trace-template.json",
             "submission_status": f"{base_url}/agents/submission-status.json",
             "hosted_submission_available": False,
+            "github_submission_available": True,
             "public_mcp_mode": "read-only",
+        },
+        "open_dockets": {
+            "human": f"{base_url}/open-dockets/",
+            "markdown": f"{base_url}/open-dockets/index.md",
+            "json": f"{base_url}/open-dockets/index.json",
+            "count": len(docket_projections),
         },
     }
     if featured is not None and featured_default is not None:
@@ -2735,7 +2864,10 @@ def build_public(
         base_url + "/explore/",
         base_url + "/status/",
         base_url + "/agents/",
+        base_url + "/agents/submit/",
+        base_url + "/open-dockets/",
     ] + [f"{base_url}/topics/{topic.slug}/" for topic in catalog.topics]
+    urls += [f"{base_url}/open-dockets/{data['slug']}/" for data in docket_projections]
     if library is not None:
         for accepted in library.dossiers:
             urls += [
@@ -2824,6 +2956,25 @@ def openapi_document(*, base_url: str = DEFAULT_BASE_URL, api_url: str = DEFAULT
             },
             "/research/protocol": {
                 "get": operation("Get the non-admitting agent research protocol", "getResearchProtocol")
+            },
+            "/research/submission-guide": {
+                "get": operation("Get the autonomous GitHub docket-submission guide", "getDocketSubmissionGuide")
+            },
+            "/open-dockets": {
+                "get": operation("List independently reviewed open dockets", "listOpenDockets")
+            },
+            "/open-dockets/{slug}": {
+                "get": {
+                    **operation("Get one independently reviewed open docket", "getOpenDocket"),
+                    "parameters": [
+                        {
+                            "name": "slug",
+                            "in": "path",
+                            "required": True,
+                            "schema": {"type": "string"},
+                        }
+                    ],
+                }
             },
             "/research/briefs/{slug}": {
                 "get": {
@@ -2917,9 +3068,15 @@ def validate_repository(root: Path) -> list[str]:
                 errors.append(f"object lacks content digest: {obj.path}")
         from .case_library import load_featured_library
         from .mission import load_mission
+        from .open_dockets import SUBMISSION_ROOT, load_open_dockets
 
         load_featured_library(root)
         load_mission(root)
+        _, docket_errors = load_open_dockets(root)
+        errors.extend(docket_errors)
+        submissions = root / SUBMISSION_ROOT
+        if submissions.exists() and any(submissions.iterdir()):
+            errors.append("accepted history must not contain untrusted submission-queue directories")
     except Exception as exc:
         errors.append(str(exc))
     # Common secret patterns are hard failures in accepted text files.
@@ -2972,7 +3129,14 @@ def audit_public(root: Path, public: Path) -> list[str]:
         public / "agents" / "research-protocol.md",
         public / "agents" / "research-protocol.json",
         public / "agents" / "proposal-template.json",
+        public / "agents" / "action-trace-template.json",
         public / "agents" / "submission-status.json",
+        public / "agents" / "submit" / "index.html",
+        public / "agents" / "submit" / "index.md",
+        public / "agents" / "submit" / "index.json",
+        public / "open-dockets" / "index.html",
+        public / "open-dockets" / "index.md",
+        public / "open-dockets" / "index.json",
     ]
     from .case_library import load_featured_library
 
@@ -2999,6 +3163,17 @@ def audit_public(root: Path, public: Path) -> list[str]:
                     case_root / view / "index.json",
                     case_root / view / "share-card.svg",
                 ]
+    from .open_dockets import load_open_dockets
+
+    open_dockets, docket_errors = load_open_dockets(root)
+    findings.extend(docket_errors)
+    for docket in open_dockets:
+        docket_root = public / "open-dockets" / docket.slug
+        required += [
+            docket_root / "index.html",
+            docket_root / "index.md",
+            docket_root / "index.json",
+        ]
     for path in required:
         if not path.exists():
             findings.append(f"missing public interface: {path.relative_to(public)}")

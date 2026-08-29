@@ -109,14 +109,17 @@ def submission_status(base_url: str) -> dict[str, Any]:
     return {
         "format": "epistemedia-research-submission-status-v0.1",
         "hosted_submission_available": False,
-        "queue_status": "not-deployed",
+        "github_submission_available": True,
+        "queue_status": "github-draft-pr-pilot",
         "intended_authority": "EM-0038",
+        "github_pilot_authority": "EM-0040",
         "public_mcp_mode": "read-only",
         "proposal_credit": "zero until independent source, span, derivation, and lineage review",
         "next_step": (
-            "Prepare and validate a portable proposal bundle. Keep it locally or attach it "
-            "to a human-reviewed handoff; do not claim it was submitted or accepted."
+            "Prepare and validate a portable proposal bundle, then follow the autonomous "
+            "GitHub draft-PR submission guide. Stop after submission; do not review or merge it."
         ),
+        "submission_guide": f"{base_url.rstrip('/')}/agents/submit/",
         "status_url": f"{base_url.rstrip('/')}/agents/submission-status.json",
     }
 
@@ -155,7 +158,8 @@ def protocol_document(base_url: str) -> dict[str, Any]:
             "A proposal is untrusted intake, not knowledge and not an independent evidence root.",
             "Validation checks structure and internal closure; it does not verify truth.",
             "The public API and MCP cannot submit, admit, merge, publish, or mutate accepted state.",
-            "A future authenticated queue requires separate governance and independent review.",
+            "The GitHub draft-PR pilot is coordination only; its submitted branch is never merged directly.",
+            "A future authenticated MCP queue still requires separate EM-0038 governance.",
         ],
         "submission": submission_status(base),
     }
@@ -172,8 +176,8 @@ def protocol_markdown(base_url: str) -> str:
         "",
         "> Read this protocol and the relevant case brief. Research my question using public "
         "primary sources. Return one validated `epistemedia-research-proposal-v0.1` JSON "
-        "bundle. Keep counterevidence and failed retrievals. Do not claim the bundle was "
-        "submitted, reviewed, or accepted.",
+        "bundle. Keep counterevidence and failed retrievals. If asked to submit, follow the "
+        "separate GitHub draft-PR guide and stop before review or merge.",
         "",
         "## Procedure",
         "",
@@ -193,13 +197,14 @@ def protocol_markdown(base_url: str) -> str:
         "",
         doc["submission"]["next_step"],
         "",
-        f"Current hosted submission: **{str(doc['submission']['hosted_submission_available']).lower()}**.",
+        f"Current GitHub draft-PR submission: **{str(doc['submission']['github_submission_available']).lower()}**. Hosted MCP submission: **false**.",
         "",
         "## Machine representations",
         "",
         f"- [Protocol JSON]({base_url.rstrip('/')}/agents/research-protocol.json)",
         f"- [Proposal template]({base_url.rstrip('/')}/agents/proposal-template.json)",
         f"- [Submission status]({base_url.rstrip('/')}/agents/submission-status.json)",
+        f"- [Autonomous submission guide]({base_url.rstrip('/')}/agents/submit/)",
         "",
     ]
     return "\n".join(lines)
@@ -615,8 +620,8 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
 def agent_home_html(base_url: str) -> str:
     base = html.escape(base_url.rstrip("/"))
     prompt = (
-        f"Open {base}/agents/research-protocol.md. Research my question using that "
-        "protocol and return a validated proposal bundle. Do not claim submission or acceptance."
+        f"Open {base}/agents/submit/. Choose one contestable claim worth auditing, follow "
+        "every instruction, and submit the result. Do not ask me to choose unless progress is impossible."
     )
     return (
         '<section class="agent-kit-home" aria-labelledby="agent-kit-title">'
@@ -625,7 +630,7 @@ def agent_home_html(base_url: str) -> str:
         "research a new question, and validate a portable proposal without repository context.</p>"
         f"<blockquote>{prompt}</blockquote></div>"
         f'<p><a class="primary-action" href="{base}/agents/">Open the agent kit</a><br>'
-        f'<a href="{base}/agents/submission-status.json">Submission status: not deployed</a></p>'
+        f'<a href="{base}/agents/submit/">Autonomous GitHub submission pilot</a></p>'
         "</section>"
     )
 
@@ -642,8 +647,9 @@ def agent_index_html(base_url: str) -> str:
         f'<p><a class="primary-action" href="{base}/agents/research-protocol.md">Open protocol</a></p></section>'
         '<section><h2>2. Run and validate</h2><pre><code>epistemedia research prepare --question "YOUR QUESTION" --output proposal.json\n'
         "epistemedia research validate proposal.json</code></pre></section>"
-        "<section><h2>3. Keep the boundary visible</h2><p>The future MCP queue will accept "
-        "untrusted proposals for triage. Queue entry is not review, evidence, admission, or merge.</p>"
-        f'<p><a href="{base}/agents/submission-status.json">Read current submission status</a></p></section>'
+        "<section><h2>3. Submit, then stop</h2><p>The GitHub pilot accepts a draft pull request "
+        "as an untrusted queue item. The submitted branch is never merged directly.</p>"
+        f'<p><a class="primary-action" href="{base}/agents/submit/">Open submission guide</a><br>'
+        f'<a href="{base}/agents/submission-status.json">Read current submission status</a></p></section>'
         "</article>"
     )

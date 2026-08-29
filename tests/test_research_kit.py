@@ -135,7 +135,14 @@ def test_public_agent_kit_is_cold_start_discoverable(tmp_path: Path) -> None:
         "agents/research-protocol.md",
         "agents/research-protocol.json",
         "agents/proposal-template.json",
+        "agents/action-trace-template.json",
         "agents/submission-status.json",
+        "agents/submit/index.html",
+        "agents/submit/index.md",
+        "agents/submit/index.json",
+        "open-dockets/index.html",
+        "open-dockets/index.md",
+        "open-dockets/index.json",
     ]
     for path in required:
         assert (public / path).is_file(), path
@@ -152,10 +159,12 @@ def test_public_agent_kit_is_cold_start_discoverable(tmp_path: Path) -> None:
     assert llms.count("agent research brief") == 4
     discovery = json.loads((public / ".well-known" / "epistemedia.json").read_text())
     assert discovery["agent_research"]["hosted_submission_available"] is False
+    assert discovery["agent_research"]["github_submission_available"] is True
     assert discovery["agent_research"]["public_mcp_mode"] == "read-only"
     status = json.loads((public / "agents" / "submission-status.json").read_text())
     assert status["hosted_submission_available"] is False
-    assert status["queue_status"] == "not-deployed"
+    assert status["queue_status"] == "github-draft-pr-pilot"
+    assert status["github_submission_available"] is True
     assert status["proposal_credit"].startswith("zero")
 
 
