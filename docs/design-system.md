@@ -93,15 +93,18 @@ participant-data roots, target-comparable roots, unresolved roots, and counterev
 separates captured reports, URL strings, source works, candidate warrants, and unresolved citation
 occurrences. Counts are derived from dossier relations and typed ledgers; no displayed total is
 maintained as independent marketing copy, and visual similarity never implies interchangeable
-units.
+units. Cases 003 and 004 use the same reversible bounded-proposition presentation but bring their
+own count-card definitions: score-comparison roots and unresolved boundaries for Case 003;
+original experiments, participant-data roots, zero-credit propagation, and unresolved derivation
+for Case 004.
 
 ### Purpose bridge
 
 The homepage places one short explanatory bridge immediately after the featured dossier. It names
 the product move from repeated information to warranted knowledge, illustrates that move with the
 accepted case counts, and routes readers to the brief, skeptical view, and evidence docket. It is
-not a second hero, marketing manifesto, or generalized philosophical claim. A compact library cue
-then routes to Case 002 without displacing Case 001 or advertising unreviewed future work.
+not a second hero, marketing manifesto, or generalized philosophical claim. Compact library cues
+route to Cases 002–004 without displacing Case 001 or advertising unreviewed future work.
 
 ### Catalog count language
 

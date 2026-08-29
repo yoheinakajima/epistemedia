@@ -41,6 +41,9 @@ if TYPE_CHECKING:
 AGENT_LINEAGE_FORMAT = "epistemedia-agent-lineage-feature-v0.1"
 AGENT_LINEAGE_PROFILE = "agent-citation-lineage-v0.1"
 AGENT_PROJECTION_FORMAT = "epistemedia-agent-lineage-projection-v0.1"
+BOUNDED_PROPOSITION_FORMAT = "epistemedia-bounded-proposition-feature-v0.1"
+BOUNDED_PROPOSITION_PROFILE = "bounded-proposition-v0.1"
+BOUNDED_PROJECTION_FORMAT = "epistemedia-bounded-proposition-projection-v0.1"
 MANIFEST_DIRECTORY = Path("catalog/dossiers")
 AGENT_MANIFEST_FIELDS = {
     "claim_family_key",
@@ -65,6 +68,46 @@ AGENT_MANIFEST_FIELDS = {
     "views",
 }
 AGENT_VIEW_FIELDS = {"evaluation_key", "featured_relation_keys"}
+BOUNDED_MANIFEST_FIELDS = {
+    "claim_family_key",
+    "count_cards",
+    "default_view",
+    "dependence_warning",
+    "dossier_bytes",
+    "dossier_id",
+    "dossier_path",
+    "dossier_sha256",
+    "format",
+    "lexicon",
+    "number",
+    "practical_readings",
+    "profile",
+    "public_scope",
+    "review_receipt_bytes",
+    "review_receipt_format",
+    "review_receipt_path",
+    "review_receipt_sha256",
+    "reviewed_head",
+    "reviewed_tree",
+    "reviewer_id",
+    "selection_note",
+    "slug",
+    "status",
+    "target_proposition_key",
+    "task_id",
+    "views",
+    "warrant_warning",
+}
+BOUNDED_COUNT_CARD_FIELDS = {"anchor", "key", "label", "members", "note"}
+BOUNDED_COUNT_MEMBER_FIELDS = {
+    "basis_span_key",
+    "collection",
+    "item_key",
+    "label",
+    "object_key",
+}
+BOUNDED_PRACTICAL_FIELDS = {"basis_relation_keys", "qualifier", "text"}
+BOUNDED_LEXICON_FIELDS = {"definition", "term"}
 AUDIT_WORK_KEY = "work-em0026-audit-instrument"
 AUDIT_EDITION_KEY = "edition-em0026-audit-projection"
 COUNT_SPAN_KEYS = {
@@ -142,6 +185,22 @@ AGENT_PRACTICAL_READINGS = {
         ),
     },
 }
+AGENT_LEDGER_SECTIONS = (
+    ("reports", "Captured reports", "reports"),
+    ("citation-occurrences", "Citation occurrences", "citation_occurrences"),
+    ("cited-urls", "Distinct cited URL strings", "cited_urls"),
+    ("resolving-urls", "Resolving URL roots", "resolving_urls"),
+    ("source-works", "Source works", "source_works"),
+    ("examined-editions", "Examined editions", "editions"),
+    ("accepted-spans", "Accepted exact span roots", "exact_spans"),
+    ("candidate-warrants", "Candidate warrant roots", "candidate_warrants"),
+    ("confirmed-warrants", "Independently confirmed warrant roots", "confirmed_warrants"),
+    ("pending-warrants", "Pending warrant groups", "pending_warrants"),
+    ("unresolved-citations", "Unresolved citation occurrences", "unresolved_citations"),
+    ("unsupported-claims", "Unsupported or force-raised claims", "unsupported_claims"),
+    ("rejected-claims", "Independently rejected claims", "rejected_claims"),
+    ("inaccessible-citations", "Inaccessible carriers", "inaccessible_citations"),
+)
 
 
 def _positive_integer(value: Any, context: str) -> int:
@@ -665,6 +724,9 @@ class AgentLineageDossier:
         practical = AGENT_PRACTICAL_READINGS[view]
         repository = _object(self.receipt["repository"], "Case 002 receipt.repository")
         limitations = self.receipt.get("limitations", [])
+        display_title = self.dossier["title"].removeprefix(
+            f"Case {self.manifest['number']}: "
+        )
         return {
             "format": AGENT_PROJECTION_FORMAT,
             "profile": AGENT_LINEAGE_PROFILE,
@@ -675,7 +737,7 @@ class AgentLineageDossier:
             "selection_manifest": self.manifest_path.relative_to(self.root).as_posix(),
             "selection_manifest_sha256": _sha256(self.manifest_path),
             "dossier_id": self.dossier["dossier_id"],
-            "title": self.dossier["title"],
+            "title": display_title,
             "question": self.dossier["question"],
             "scope": self.dossier["scope"],
             "claim_family": family,
@@ -733,6 +795,10 @@ class AgentLineageDossier:
                 },
             ],
             "count_ledgers": ledgers,
+            "ledger_sections": [
+                {"anchor": anchor, "title": title, "key": key}
+                for anchor, title, key in AGENT_LEDGER_SECTIONS
+            ],
             "lexicon": list(AGENT_LEXICON),
             "practical_reading": {
                 **practical,
@@ -823,7 +889,516 @@ class AgentLineageDossier:
         }
 
 
-AcceptedDossier = FeaturedDossier | AgentLineageDossier
+@dataclass(frozen=True)
+class BoundedPropositionDossier(AgentLineageDossier):
+    """A strict generic adapter over one reviewed bounded-proposition dossier."""
+
+    @classmethod
+    def load(cls, root: Path, manifest_path: Path) -> BoundedPropositionDossier:
+        root = root.resolve()
+        selected_path = _inside(root, manifest_path.as_posix(), "bounded manifest")
+        try:
+            manifest = _object(
+                json.loads(selected_path.read_text()), "bounded manifest"
+            )
+        except json.JSONDecodeError as exc:
+            raise FeaturedDossierError("bounded manifest is not valid JSON") from exc
+        _exact_fields(manifest, BOUNDED_MANIFEST_FIELDS, "bounded manifest")
+        if manifest["format"] != BOUNDED_PROPOSITION_FORMAT:
+            raise FeaturedDossierError("unsupported bounded manifest format")
+        if manifest["profile"] != BOUNDED_PROPOSITION_PROFILE:
+            raise FeaturedDossierError("unsupported bounded projection profile")
+        if manifest["status"] != "accepted":
+            raise FeaturedDossierError("bounded selection status must be accepted")
+        slug = _string(manifest["slug"], "bounded manifest.slug")
+        if SAFE_SLUG.fullmatch(slug) is None:
+            raise FeaturedDossierError("bounded manifest.slug is not URL-safe")
+        number = _string(manifest["number"], "bounded manifest.number")
+        if not number.isdigit():
+            raise FeaturedDossierError("bounded manifest.number must contain digits")
+        default_view = _string(manifest["default_view"], "bounded default_view")
+        if default_view not in FEATURE_VIEWS:
+            raise FeaturedDossierError("bounded default view is unsupported")
+        reviewed_head = _string(manifest["reviewed_head"], "bounded reviewed_head")
+        reviewed_tree = _string(manifest["reviewed_tree"], "bounded reviewed_tree")
+        if GIT_SHA.fullmatch(reviewed_head) is None or GIT_SHA.fullmatch(
+            reviewed_tree
+        ) is None:
+            raise FeaturedDossierError("bounded reviewed Git identity is malformed")
+        _string(manifest["public_scope"], "bounded public_scope")
+        _string(manifest["selection_note"], "bounded selection_note")
+        _string(manifest["dependence_warning"], "bounded dependence_warning")
+        _string(manifest["warrant_warning"], "bounded warrant_warning")
+
+        views = _object(manifest["views"], "bounded manifest.views")
+        if set(views) != set(FEATURE_VIEWS):
+            raise FeaturedDossierError(
+                "bounded manifest must define encyclopedia and skeptical views"
+            )
+        for view_name in FEATURE_VIEWS:
+            view = _object(views[view_name], f"bounded views.{view_name}")
+            _exact_fields(view, AGENT_VIEW_FIELDS, f"bounded views.{view_name}")
+            _string(view["evaluation_key"], f"bounded {view_name} evaluation")
+            if not _strings(
+                view["featured_relation_keys"],
+                f"bounded {view_name} featured relations",
+            ):
+                raise FeaturedDossierError(
+                    f"bounded {view_name} featured relations are empty"
+                )
+        if views["encyclopedia"] == views["skeptical"]:
+            raise FeaturedDossierError("bounded views must differ materially")
+
+        dossier_path = _inside(
+            root,
+            _string(manifest["dossier_path"], "bounded dossier_path"),
+            "bounded dossier_path",
+        )
+        receipt_path = _inside(
+            root,
+            _string(manifest["review_receipt_path"], "bounded receipt_path"),
+            "bounded receipt_path",
+        )
+        for label, path, digest_key, bytes_key in (
+            ("dossier", dossier_path, "dossier_sha256", "dossier_bytes"),
+            (
+                "review receipt",
+                receipt_path,
+                "review_receipt_sha256",
+                "review_receipt_bytes",
+            ),
+        ):
+            expected_digest = _string(
+                manifest[digest_key], f"bounded {digest_key}"
+            )
+            if SHA256.fullmatch(expected_digest) is None:
+                raise FeaturedDossierError(f"bounded {digest_key} is not SHA-256")
+            expected_bytes = _positive_integer(
+                manifest[bytes_key], f"bounded {bytes_key}"
+            )
+            if _sha256(path) != expected_digest or path.stat().st_size != expected_bytes:
+                raise FeaturedDossierError(
+                    f"bounded {label} bytes differ from the accepted manifest"
+                )
+        try:
+            source_dossier = _object(
+                json.loads(dossier_path.read_text()), "bounded dossier"
+            )
+            receipt = _object(json.loads(receipt_path.read_text()), "bounded receipt")
+        except json.JSONDecodeError as exc:
+            raise FeaturedDossierError(
+                "bounded dossier or receipt is invalid JSON"
+            ) from exc
+        try:
+            dossier = public_dossier(source_dossier)
+        except ValueError as exc:
+            raise FeaturedDossierError(
+                "bounded dossier fails public validation"
+            ) from exc
+        if dossier["dossier_id"] != manifest["dossier_id"]:
+            raise FeaturedDossierError(
+                "bounded dossier identity differs from manifest"
+            )
+
+        if receipt.get("format") != manifest["review_receipt_format"]:
+            raise FeaturedDossierError(
+                "bounded review format differs from manifest"
+            )
+        if receipt.get("decision") != "pass" or receipt.get("complete") is not True:
+            raise FeaturedDossierError(
+                "bounded dossier lacks a complete independent pass"
+            )
+        if receipt.get("task_id") != manifest["task_id"]:
+            raise FeaturedDossierError("bounded review task differs from manifest")
+        reviewer = _object(receipt.get("reviewer"), "bounded receipt.reviewer")
+        if reviewer.get("id") != manifest["reviewer_id"]:
+            raise FeaturedDossierError("bounded reviewer differs from manifest")
+        if reviewer.get("fresh_clone") is not True:
+            raise FeaturedDossierError("bounded review did not use a fresh clone")
+        if manifest["task_id"] == "EM-0034":
+            if reviewer.get("independent") is not True:
+                raise FeaturedDossierError("bounded reviewer is not independent")
+            if reviewer.get("authored_candidate") is not False:
+                raise FeaturedDossierError(
+                    "bounded reviewer authorship boundary is not closed"
+                )
+        elif manifest["task_id"] == "EM-0035":
+            if reviewer.get("reviewer_was_author") is not False:
+                raise FeaturedDossierError("bounded reviewer was the author")
+            if reviewer.get("authoring_notes_used_as_evidence") is not False:
+                raise FeaturedDossierError(
+                    "bounded review used authoring notes as evidence"
+                )
+        else:
+            raise FeaturedDossierError("unsupported bounded review task")
+        git_state = _object(receipt.get("git_state"), "bounded receipt.git_state")
+        for key in (
+            "fresh_clone",
+            "pre_review_clean",
+            "post_review_clean",
+            "unchanged_during_review",
+        ):
+            if git_state.get(key) is not True:
+                raise FeaturedDossierError(
+                    f"bounded receipt Git predicate did not pass: {key}"
+                )
+
+        reviewed = receipt.get("reviewed")
+        if isinstance(reviewed, dict):
+            bound_head = reviewed.get("head")
+            bound_tree = reviewed.get("tree")
+            candidate = _object(reviewed.get("dossier"), "bounded reviewed.dossier")
+        else:
+            repository = _object(
+                receipt.get("repository"), "bounded receipt.repository"
+            )
+            bound_head = repository.get("reviewed_author_head")
+            bound_tree = repository.get("reviewed_author_tree")
+            bindings = _object(receipt.get("bindings"), "bounded receipt.bindings")
+            candidate = _object(
+                bindings.get("candidate_dossier"),
+                "bounded receipt candidate_dossier",
+            )
+        if bound_head != reviewed_head or bound_tree != reviewed_tree:
+            raise FeaturedDossierError(
+                "bounded reviewed Git identity differs from manifest"
+            )
+        expected_candidate = {
+            "path": dossier_path.relative_to(root).as_posix(),
+            "sha256": manifest["dossier_sha256"],
+            "bytes": manifest["dossier_bytes"],
+        }
+        for key, value in expected_candidate.items():
+            if candidate.get(key) != value:
+                raise FeaturedDossierError(
+                    f"bounded review does not bind dossier {key}"
+                )
+        candidate_identity = candidate.get(
+            "dossier_id", candidate.get("id")
+        )
+        if candidate_identity != dossier["dossier_id"]:
+            raise FeaturedDossierError(
+                "bounded review does not bind dossier identity"
+            )
+
+        indexes = {
+            name: _index(dossier[name])
+            for name in (
+                "source_works",
+                "editions",
+                "spans",
+                "propositions",
+                "lineages",
+                "assertions",
+                "evidence_relations",
+                "claim_families",
+                "evaluations",
+            )
+        }
+        family_key = _string(
+            manifest["claim_family_key"], "bounded claim_family_key"
+        )
+        target_key = _string(
+            manifest["target_proposition_key"], "bounded target_proposition_key"
+        )
+        family = indexes["claim_families"].get(family_key)
+        if family is None or target_key not in family["proposition_keys"]:
+            raise FeaturedDossierError(
+                "bounded target is outside its claim family"
+            )
+        for view_name in FEATURE_VIEWS:
+            view = views[view_name]
+            evaluation = indexes["evaluations"].get(view["evaluation_key"])
+            if evaluation is None or evaluation["claim_family_key"] != family_key:
+                raise FeaturedDossierError(
+                    f"bounded {view_name} evaluation is invalid"
+                )
+            if evaluation["policy_id"] != f"epistemedia-{view_name}-v1":
+                raise FeaturedDossierError(
+                    f"bounded {view_name} policy is unexpected"
+                )
+            for relation_key in view["featured_relation_keys"]:
+                if relation_key not in indexes["evidence_relations"]:
+                    raise FeaturedDossierError(
+                        f"bounded featured relation is missing: {relation_key}"
+                    )
+
+        cards = manifest["count_cards"]
+        if not isinstance(cards, list) or not cards:
+            raise FeaturedDossierError("bounded count_cards must be a non-empty list")
+        card_keys: set[str] = set()
+        anchors: set[str] = set()
+        for card_index, raw_card in enumerate(cards):
+            card = _object(raw_card, f"bounded count_cards[{card_index}]")
+            _exact_fields(
+                card, BOUNDED_COUNT_CARD_FIELDS, f"bounded count_cards[{card_index}]"
+            )
+            card_key = _string(card["key"], "bounded count card key")
+            anchor = _string(card["anchor"], "bounded count card anchor")
+            _string(card["label"], "bounded count card label")
+            _string(card["note"], "bounded count card note")
+            if card_key in card_keys or anchor in anchors:
+                raise FeaturedDossierError(
+                    "bounded count cards contain duplicate keys or anchors"
+                )
+            card_keys.add(card_key)
+            anchors.add(anchor)
+            members = card["members"]
+            if not isinstance(members, list) or not members:
+                raise FeaturedDossierError(
+                    f"bounded count card has no members: {card_key}"
+                )
+            member_keys: set[str] = set()
+            for member_index, raw_member in enumerate(members):
+                member = _object(
+                    raw_member,
+                    f"bounded {card_key}.members[{member_index}]",
+                )
+                _exact_fields(
+                    member,
+                    BOUNDED_COUNT_MEMBER_FIELDS,
+                    f"bounded {card_key}.members[{member_index}]",
+                )
+                item_key = _string(member["item_key"], "bounded count item_key")
+                collection = _string(
+                    member["collection"], "bounded count collection"
+                )
+                object_key = _string(
+                    member["object_key"], "bounded count object_key"
+                )
+                _string(member["label"], "bounded count member label")
+                if item_key in member_keys:
+                    raise FeaturedDossierError(
+                        f"bounded count card has duplicate member: {item_key}"
+                    )
+                member_keys.add(item_key)
+                if collection not in indexes or object_key not in indexes[collection]:
+                    raise FeaturedDossierError(
+                        f"bounded count member is not in dossier: {collection}.{object_key}"
+                    )
+                basis_span_key = member["basis_span_key"]
+                if basis_span_key is not None:
+                    basis_span_key = _string(
+                        basis_span_key, "bounded count basis_span_key"
+                    )
+                    if basis_span_key not in indexes["spans"]:
+                        raise FeaturedDossierError(
+                            f"bounded count basis span is missing: {basis_span_key}"
+                        )
+                    source = indexes[collection][object_key]
+                    source_spans = source.get(
+                        "basis_span_keys", source.get("span_keys", [])
+                    )
+                    if basis_span_key not in source_spans:
+                        raise FeaturedDossierError(
+                            f"bounded count basis span is outside member: {item_key}"
+                        )
+
+        practical_readings = _object(
+            manifest["practical_readings"], "bounded practical_readings"
+        )
+        if set(practical_readings) != set(FEATURE_VIEWS):
+            raise FeaturedDossierError(
+                "bounded practical readings must cover both views"
+            )
+        for view_name in FEATURE_VIEWS:
+            practical = _object(
+                practical_readings[view_name],
+                f"bounded practical_readings.{view_name}",
+            )
+            _exact_fields(
+                practical,
+                BOUNDED_PRACTICAL_FIELDS,
+                f"bounded practical_readings.{view_name}",
+            )
+            _string(practical["text"], "bounded practical text")
+            _string(practical["qualifier"], "bounded practical qualifier")
+            for relation_key in _strings(
+                practical["basis_relation_keys"],
+                "bounded practical basis_relation_keys",
+            ):
+                if relation_key not in indexes["evidence_relations"]:
+                    raise FeaturedDossierError(
+                        f"bounded practical relation is missing: {relation_key}"
+                    )
+        lexicon = manifest["lexicon"]
+        if not isinstance(lexicon, list) or len(lexicon) < 3:
+            raise FeaturedDossierError("bounded lexicon must have at least three terms")
+        for item_index, raw_item in enumerate(lexicon):
+            item = _object(raw_item, f"bounded lexicon[{item_index}]")
+            _exact_fields(
+                item, BOUNDED_LEXICON_FIELDS, f"bounded lexicon[{item_index}]"
+            )
+            _string(item["term"], "bounded lexicon term")
+            _string(item["definition"], "bounded lexicon definition")
+
+        return cls(root, selected_path, manifest, dossier, receipt)
+
+    def count_ledgers(self) -> dict[str, list[dict[str, Any]]]:
+        indexes = self.indexes()
+        ledgers: dict[str, list[dict[str, Any]]] = {}
+        for card in self.manifest["count_cards"]:
+            entries = []
+            for member in card["members"]:
+                obj = indexes[member["collection"]][member["object_key"]]
+                entry = {
+                    "key": member["item_key"],
+                    "title": member["label"],
+                    "object_type": member["collection"],
+                    "object_key": member["object_key"],
+                    "object": obj,
+                }
+                basis_span_key = member["basis_span_key"]
+                if basis_span_key is not None:
+                    entry["basis"] = self.span_trace(basis_span_key)
+                entries.append(entry)
+            ledgers[card["key"]] = entries
+        return ledgers
+
+    def derived_counts(self) -> dict[str, int]:
+        return {
+            key: len(entries) for key, entries in self.count_ledgers().items()
+        }
+
+    def projection(self, view: str) -> dict[str, Any]:
+        if view not in FEATURE_VIEWS:
+            raise FeaturedDossierError(f"unknown dossier policy view: {view}")
+        indexes = self.indexes()
+        family = indexes["claim_families"][self.manifest["claim_family_key"]]
+        evaluation = indexes["evaluations"][
+            self.manifest["views"][view]["evaluation_key"]
+        ]
+        ledgers = self.count_ledgers()
+        counts = self.derived_counts()
+        count_cards = [
+            {
+                "key": card["key"],
+                "ledger_key": card["key"],
+                "value": counts[card["key"]],
+                "label": card["label"],
+                "anchor": card["anchor"],
+                "note": card["note"],
+            }
+            for card in self.manifest["count_cards"]
+        ]
+        featured_relations = [
+            self.relation_trace(key)
+            for key in self.manifest["views"][view]["featured_relation_keys"]
+        ]
+        practical = self.manifest["practical_readings"][view]
+        reviewer = _object(self.receipt["reviewer"], "bounded reviewer")
+        reviewed = self.receipt.get("reviewed")
+        if isinstance(reviewed, dict):
+            reviewed_base = reviewed.get("base", "unknown")
+        else:
+            repository = _object(
+                self.receipt.get("repository"), "bounded receipt.repository"
+            )
+            reviewed_base = repository.get("reviewed_base", "unknown")
+        limitations = self.receipt.get("limitations", [])
+        display_title = self.dossier["title"].removeprefix(
+            f"Case {self.manifest['number']}: "
+        )
+        return {
+            "format": BOUNDED_PROJECTION_FORMAT,
+            "profile": BOUNDED_PROPOSITION_PROFILE,
+            "slug": self.slug,
+            "number": self.manifest["number"],
+            "selection_status": self.manifest["status"],
+            "selection_note": self.manifest["selection_note"],
+            "selection_manifest": self.manifest_path.relative_to(self.root).as_posix(),
+            "selection_manifest_sha256": _sha256(self.manifest_path),
+            "dossier_id": self.dossier["dossier_id"],
+            "title": display_title,
+            "question": self.dossier["question"],
+            "scope": self.manifest["public_scope"],
+            "research_scope": self.dossier["scope"],
+            "claim_family": family,
+            "target_proposition": indexes["propositions"][
+                self.manifest["target_proposition_key"]
+            ],
+            "view": {
+                "id": view,
+                "policy_id": evaluation["policy_id"],
+                "evaluation_id": evaluation["id"],
+                "label": evaluation["label"],
+                "reason_codes": evaluation["reason_codes"],
+            },
+            "counts": counts,
+            "count_cards": count_cards,
+            "count_ledgers": ledgers,
+            "ledger_sections": [
+                {
+                    "anchor": card["anchor"],
+                    "key": card["key"],
+                    "title": card["label"].title(),
+                }
+                for card in self.manifest["count_cards"]
+            ],
+            "lexicon": self.manifest["lexicon"],
+            "practical_reading": practical,
+            "featured_relations": featured_relations,
+            "dependence_warning": self.manifest["dependence_warning"],
+            "warrant_warning": self.manifest["warrant_warning"],
+            "source_work_count": len(indexes["source_works"]),
+            "edition_count": len(indexes["editions"]),
+            "span_count": len(indexes["spans"]),
+            "source_works": sorted(
+                indexes["source_works"].values(), key=lambda item: item["key"]
+            ),
+            "review": {
+                "decision": self.receipt["decision"],
+                "reviewer_id": reviewer["id"],
+                "independence_statement": (
+                    "A separate Codex review agent used a fresh clone, did not author "
+                    "the candidate, and checked exact source, calculation, lineage, "
+                    "receipt, repository, and deterministic-build closure. The review "
+                    "did not decide that the bounded scientific claim is universally true."
+                ),
+                "fresh_clone": True,
+                "reviewed_head": self.manifest["reviewed_head"],
+                "reviewed_base": reviewed_base,
+                "reviewed_tree": self.manifest["reviewed_tree"],
+                "receipt_path": self.manifest["review_receipt_path"],
+                "receipt_sha256": _sha256(
+                    self.root / self.manifest["review_receipt_path"]
+                ),
+                "completed_at": self.receipt.get("completed_at", "unknown"),
+                "checked_scope": [
+                    "Exact accepted packet, dossier, and review-receipt bytes",
+                    "Source, edition, span, calculation, and license closure",
+                    "Count grammar, unresolved items, and typed dependence edges",
+                    "Policy divergence, adversarial validation, and deterministic build",
+                ],
+                "limitations": (
+                    limitations
+                    if isinstance(limitations, list)
+                    and all(isinstance(item, str) for item in limitations)
+                    else []
+                ),
+            },
+            "dossier": self.dossier,
+        }
+
+    def review_envelope(self, catalog: PublicCatalog) -> dict[str, Any]:
+        from .core import envelope
+
+        projection = self.projection(self.default_view)
+        return envelope(
+            catalog,
+            {
+                "format": "epistemedia-public-review-receipt-v0.1",
+                "profile": BOUNDED_PROPOSITION_PROFILE,
+                "slug": projection["slug"],
+                "number": projection["number"],
+                "title": projection["title"],
+                "dossier_id": projection["dossier_id"],
+                "review": projection["review"],
+            },
+        )
+
+
+AcceptedDossier = FeaturedDossier | AgentLineageDossier | BoundedPropositionDossier
 
 
 @dataclass(frozen=True)
@@ -876,6 +1451,8 @@ def load_featured_library(
             dossiers.append(FeaturedDossier.load(root, manifest_path))
         elif manifest_format == AGENT_LINEAGE_FORMAT:
             dossiers.append(AgentLineageDossier.load(root, manifest_path))
+        elif manifest_format == BOUNDED_PROPOSITION_FORMAT:
+            dossiers.append(BoundedPropositionDossier.load(root, manifest_path))
         else:
             raise FeaturedDossierError(
                 f"unsupported dossier manifest format at {manifest_path}: {manifest_format}"
@@ -990,22 +1567,9 @@ def agent_projection_markdown(document: dict[str, Any]) -> str:
                 ]
             )
     lines.extend(["## Complete count ledgers", ""])
-    ledger_order = [
-        ("reports", "Captured reports"),
-        ("citation_occurrences", "Citation occurrences"),
-        ("cited_urls", "Distinct URL strings"),
-        ("resolving_urls", "Resolving URL roots"),
-        ("source_works", "Source works"),
-        ("editions", "Examined editions"),
-        ("exact_spans", "Accepted exact spans"),
-        ("candidate_warrants", "Candidate warrants"),
-        ("pending_warrants", "Pending warrants"),
-        ("unresolved_citations", "Unresolved citations"),
-        ("unsupported_claims", "Unsupported or force-raised claims"),
-        ("rejected_claims", "Independently rejected claims"),
-        ("inaccessible_citations", "Inaccessible carriers"),
-    ]
-    for key, title in ledger_order:
+    for section in data["ledger_sections"]:
+        key = section["key"]
+        title = section["title"]
         items = data["count_ledgers"][key]
         lines.extend([f"### {title} ({len(items)})", ""])
         for item in items:
@@ -1031,6 +1595,8 @@ def agent_projection_markdown(document: dict[str, Any]) -> str:
 def _source_extent(source: dict[str, Any]) -> str:
     extent = source["span"]["extent"]
     value = extent.get("quote", extent.get("value"))
+    if isinstance(value, dict) and isinstance(value.get("quote"), str):
+        return value["quote"]
     if isinstance(value, (dict, list)):
         return json.dumps(value, indent=2, sort_keys=True)
     return str(value)
@@ -1108,32 +1674,20 @@ def agent_page_html(document: dict[str, Any], base_url: str) -> str:
         _agent_source_xray(item, index)
         for index, item in enumerate(data["featured_relations"], 1)
     )
-    ledger_specs = [
-        ("reports", "Captured reports", "reports"),
-        ("citation-occurrences", "Citation occurrences", "citation_occurrences"),
-        ("cited-urls", "Distinct cited URL strings", "cited_urls"),
-        ("resolving-urls", "Resolving URL roots", "resolving_urls"),
-        ("source-works", "Source works", "source_works"),
-        ("examined-editions", "Examined editions", "editions"),
-        ("accepted-spans", "Accepted exact span roots", "exact_spans"),
-        ("candidate-warrants", "Candidate warrant roots", "candidate_warrants"),
-        ("confirmed-warrants", "Independently confirmed warrant roots", "confirmed_warrants"),
-        ("pending-warrants", "Pending warrant groups", "pending_warrants"),
-        ("unresolved-citations", "Unresolved citation occurrences", "unresolved_citations"),
-        ("unsupported-claims", "Unsupported or force-raised claims", "unsupported_claims"),
-        ("rejected-claims", "Independently rejected claims", "rejected_claims"),
-        ("inaccessible-citations", "Inaccessible carriers", "inaccessible_citations"),
-    ]
     ledgers = "".join(
-        _ledger_html(anchor, title, data["count_ledgers"][key])
-        for anchor, title, key in ledger_specs
+        _ledger_html(
+            section["anchor"],
+            section["title"],
+            data["count_ledgers"][section["key"]],
+        )
+        for section in data["ledger_sections"]
     )
     lexicon = "".join(
         f"<div><dt>{html.escape(item['term'])}</dt><dd>{html.escape(item['definition'])}</dd></div>"
         for item in data["lexicon"]
     )
     return f"""
-<article class="dossier-page agent-lineage-case">
+<article class="dossier-page {html.escape(data['profile'])}">
   <header class="dossier-lead">
     <p class="eyebrow">How We Know · Case {html.escape(data['number'])} · {html.escape(view)}</p>
     <h1>{html.escape(data['title'])}</h1>
@@ -1149,7 +1703,7 @@ def agent_page_html(document: dict[str, Any], base_url: str) -> str:
   </section>
   <section aria-labelledby="accounting-title">
     <p class="eyebrow">Lineage accounting</p>
-    <h2 id="accounting-title">Agreement is not a vote count</h2>
+    <h2 id="accounting-title">{html.escape(data.get('accounting_heading', 'The units count different things'))}</h2>
     <div class="evidence-tally agent-tally">{cards}</div>
     <p class="qualification"><strong>Shared capture:</strong> {html.escape(data['dependence_warning'])}</p>
     <p class="qualification"><strong>Warrant boundary:</strong> {html.escape(data['warrant_warning'])}</p>
@@ -1206,6 +1760,57 @@ def agent_share_card_svg(document: dict[str, Any], base_url: str) -> str:
 <text x="70" y="505" font-family="ui-sans-serif,sans-serif" font-size="22" fill="#4e554d">{counts['unresolved_citations']} citations unresolved · {counts['unsupported_or_force_raised_claims']} claims receive no credit</text>
 <text x="70" y="565" font-family="ui-monospace,monospace" font-size="15" fill="#4e554d">{html.escape(data['dossier_id'])}</text>
 <metadata>{html.escape(json.dumps({'canonical': canonical, 'catalog_id': document['catalog_id'], 'frontier': document['frontier'], 'commit': document['commit'], 'content_digest': document['content_digest']}, sort_keys=True))}</metadata>
+</svg>
+"""
+
+
+def bounded_share_card_svg(document: dict[str, Any], base_url: str) -> str:
+    data = document["data"]
+    title_lines = textwrap.wrap(data["title"], width=39)[:2]
+    title = "".join(
+        f'<tspan x="70" dy="{0 if index == 0 else 54}">{html.escape(line)}</tspan>'
+        for index, line in enumerate(title_lines)
+    )
+    cards = data["count_cards"][:4]
+    card_width = 270
+    card_markup = []
+    for index, card in enumerate(cards):
+        x = 70 + index * card_width
+        label_lines = textwrap.wrap(card["label"], width=22)[:3]
+        label_markup = "".join(
+            f'<tspan x="{x}" dy="{0 if line_index == 0 else 22}">'
+            f"{html.escape(line)}</tspan>"
+            for line_index, line in enumerate(label_lines)
+        )
+        card_markup.append(
+            f'<text x="{x}" y="345" font-size="72" font-weight="800">'
+            f'{card["value"]}</text><text x="{x}" y="382" font-size="18">'
+            f"{label_markup}</text>"
+        )
+    finding = textwrap.shorten(data["view"]["label"], width=86, placeholder="…")
+    canonical = f"{base_url}/how-we-know/{data['slug']}/{data['view']['id']}/"
+    description = " · ".join(
+        f"{card['value']} {card['label']}" for card in cards
+    )
+    metadata = {
+        "canonical": canonical,
+        "catalog_id": document["catalog_id"],
+        "frontier": document["frontier"],
+        "commit": document["commit"],
+        "dossier_id": data["dossier_id"],
+        "content_digest": document["content_digest"],
+    }
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+<title id="title">Case {html.escape(data['number'])}: {html.escape(data['title'])}</title>
+<desc id="desc">{html.escape(description)}</desc>
+<rect width="1200" height="630" fill="#f4efe3"/><rect x="0" y="0" width="18" height="630" fill="#163f31"/><rect x="18" y="0" width="9" height="630" fill="#d96f19"/>
+<text x="70" y="72" font-family="ui-monospace,monospace" font-size="24" fill="#163f31">EPISTEMEDIA · HOW WE KNOW · CASE {html.escape(data['number'])}</text>
+<text x="70" y="145" font-family="Georgia,serif" font-weight="700" font-size="48" fill="#171a16">{title}</text>
+<g font-family="ui-sans-serif,sans-serif" fill="#171a16">{''.join(card_markup)}</g>
+<text x="70" y="470" font-family="Georgia,serif" font-size="29" fill="#171a16">{html.escape(finding)}</text>
+<text x="70" y="525" font-family="ui-sans-serif,sans-serif" font-size="21" fill="#4e554d">Open the ledgers. Inspect the passages. Keep the unresolved record visible.</text>
+<text x="70" y="575" font-family="ui-monospace,monospace" font-size="15" fill="#4e554d">{html.escape(data['dossier_id'])}</text>
+<metadata>{html.escape(json.dumps(metadata, sort_keys=True))}</metadata>
 </svg>
 """
 
@@ -1289,11 +1894,8 @@ def library_index_html(document: dict[str, Any], base_url: str) -> str:
         if item["number"] == "001":
             accounting = "10 apparent support assertions · 4 target-comparable roots · 1 unresolved lineage · 12 counter roots"
         else:
-            counts = item["counts"]
-            accounting = (
-                f"{counts['captured_reports']} reports · {counts['cited_url_strings']} URL strings · "
-                f"{counts['source_work_roots']} works · {counts['candidate_warrant_roots']} candidate warrants · "
-                f"{counts['unresolved_citations']} unresolved citations"
+            accounting = " · ".join(
+                f"{card['value']} {card['label']}" for card in item["count_cards"]
             )
         cards.append(
             '<article class="docket-card library-case">'
@@ -1324,3 +1926,34 @@ def case002_home_cue(summary: dict[str, Any], base_url: str) -> str:
   <p><a href="{html.escape(base_url)}/how-we-know/{html.escape(summary['slug'])}/">Open Case 002</a> · <a href="{html.escape(base_url)}/how-we-know/">View the case library</a></p>
 </section>
 """.strip()
+
+
+def additional_cases_home_cue(
+    summaries: list[dict[str, Any]], base_url: str
+) -> str:
+    if not summaries:
+        return ""
+    cards = []
+    for summary in summaries:
+        accounting = " · ".join(
+            f"{card['value']} {card['label']}"
+            for card in summary["count_cards"][:4]
+        )
+        cards.append(
+            '<article class="docket-card library-case">'
+            f'<p class="eyebrow">Case {html.escape(summary["number"])}</p>'
+            f'<h3><a href="{html.escape(base_url)}/how-we-know/{html.escape(summary["slug"])}/">{html.escape(summary["title"])}</a></h3>'
+            f'<p>{html.escape(summary["evaluation"])}</p>'
+            f'<p class="meta-line">{html.escape(accounting)}</p>'
+            "</article>"
+        )
+    return (
+        '<section class="library-cue" aria-labelledby="more-cases-title">'
+        '<p class="eyebrow">More evidence files</p>'
+        '<h2 id="more-cases-title">The library now tests different claim shapes</h2>'
+        '<div class="docket-grid library-grid">'
+        + "".join(cards)
+        + "</div>"
+        f'<p><a href="{html.escape(base_url)}/how-we-know/">View all four cases</a></p>'
+        "</section>"
+    )
