@@ -1,0 +1,61 @@
+{
+  "id": "EM-0037",
+  "title": "Polish Cases 002-004 and publish the agent research kit",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Make Cases 002, 003, and 004 as legible and narratively useful as Case 001 while preserving their accepted evidence meaning, and publish a cold-start agent research kit that lets an unfamiliar coding agent discover a case, inspect the protocol, run a comparable bounded investigation, validate a portable proposal bundle, and understand that submission is queued for review rather than admitted as knowledge.",
+  "depends_on": [
+    "EM-0036"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "research/**",
+      "catalog/dossiers/**"
+    ]
+  },
+  "required_evaluation": [
+    "byte and semantic preservation of all four accepted dossier, review-receipt, and manifest inputs",
+    "human-first narrative hierarchy and progressive-disclosure review for Cases 002, 003, and 004 without hiding unresolved, no-credit, license, dependence, calculation, or review limitations",
+    "deterministic collapse of repeated human-display source spans by exact accepted identity while retaining every occurrence and relation in Markdown, JSON, ledgers, and machine traces",
+    "complete displayed-count reconciliation with typed member labels and no unknown object type, key, or ID on human ledger summaries",
+    "cold-start agent discovery from homepage, llms.txt, Markdown, JSON, local REST, MCP, and CLI with no inherited repository or conversational context",
+    "portable research-proposal bundle generation and fail-closed structural validation with explicit source, edition, span, warrant, dependence, uncertainty, negative-result, runtime, and license fields",
+    "agent instructions that distinguish exploration, research execution, proposal preparation, queue submission, independent review, and accepted Git history",
+    "prompt-injection, path-traversal, private-context, secret-shaped-data, oversized-input, unsupported-format, duplicate-identity, and admission-language adversarial tests",
+    "no-JavaScript fallback, native keyboard accessibility, desktop and mobile visual review, link integrity, content-type, and canonical-URL checks",
+    "whole-release identity parity, public disclosure noninterference audit, full deterministic make check, exact path-scope comparison, and clean tracked state",
+    "fresh-clone independent exact-head review before protected merge",
+    "provider and route read-back after a separately authorized accepted Pages deployment"
+  ],
+  "acceptance": [
+    "Cases 002, 003, and 004 open with a concise claim, why-it-matters sentence, bounded finding, practical reading, and visual evidence map before technical ledgers",
+    "long ledgers and repeated spans are summarized into readable groups by default while exact accepted objects, occurrences, relations, calculations, and receipts remain reachable without JavaScript",
+    "no human-facing count member displays an unresolved placeholder for object type, key, or ID; any genuinely missing identity is labeled as an evidence gap rather than rendered as unknown metadata chrome",
+    "every case offers an agent-ready action that leads to one stable public research protocol and a case-seeded portable brief",
+    "a cold-start coding agent can recover the research question, comparison target, source and span requirements, dependence rules, negative-result policy, output format, validation command, and submission boundary from public files alone",
+    "the local CLI and read-only MCP surface can prepare and validate a deterministic proposal bundle but cannot submit, admit, merge, publish, or mutate accepted state",
+    "public copy identifies the intended MCP review queue as a separate future authority surface and accurately reports whether hosted submission is available",
+    "Case 001 remains semantically and visually unchanged except for shared discovery links that do not alter its accepted evidence projection",
+    "make check passes without changing accepted source state"
+  ],
+  "limitations": [
+    "This task changes application presentation and publishes a non-admitting research kit; it does not change accepted dossier evidence, policy semantics, review conclusions, or counts.",
+    "The proposal bundle is untrusted intake and carries zero evidential or independence credit until its sources, spans, derivations, and lineage are independently reviewed.",
+    "The public API and MCP remain read-only in this task. A hosted write-capable submission queue requires EM-0038 governance, least-privilege credentials, provider deployment, and external read-back.",
+    "No research provider call, model run, automatic admission, pull-request creation, merge, publication, deployment, DNS change, credential use, account provisioning, or spend is authorized by this task."
+  ]
+}

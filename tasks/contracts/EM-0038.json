@@ -1,0 +1,54 @@
+{
+  "id": "EM-0038",
+  "title": "Govern the MCP research-submission queue",
+  "status": "ready",
+  "change_class": "governance-normative",
+  "objective": "Introduce a separate authenticated MCP contribution authority that accepts validated research-proposal bundles into a durable review queue, returns immutable intake receipts, and can never directly admit evidence, change public truth, merge code, or publish a case.",
+  "depends_on": [
+    "EM-0037"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**",
+      ".github/**"
+    ],
+    "forbidden_paths": [
+      "research/**",
+      "catalog/dossiers/**",
+      "tasks/contracts/**"
+    ]
+  },
+  "required_evaluation": [
+    "independent governance review loaded from the accepted base branch before implementation approval",
+    "threat model for anonymous and authenticated intake, prompt injection, data exfiltration, spam, denial of service, replay, duplicate submission, identity spoofing, and malicious attachments",
+    "least-privilege GitHub App or equivalent persistence review with no contents-write, pull-request, workflow, deployment, package, administration, or merge authority",
+    "append-only queue state machine, idempotency key, canonical bundle digest, immutable receipt, submitter-visible status, rejection and withdrawal semantics, retention policy, and audit trail",
+    "strict separation between coordination queue records and accepted Git-canonical epistemic events",
+    "MCP write-tool transport, authentication, Origin, body-size, rate-limit, timeout, structured-error, and annotation conformance",
+    "independent evaluator and promoter separation with no shared authoring-agent self-approval",
+    "provider deployment, secret handling, log redaction, incident rollback, abuse monitoring, cost cap, external smoke, and public availability read-back"
+  ],
+  "acceptance": [
+    "submit_research_proposal accepts only a valid EM-0037 bundle plus an idempotency key and returns a queue ID, bundle digest, received timestamp, status, and non-admission notice",
+    "the durable queue uses coordination-only records with explicit submitted, triaged, needs-evidence, accepted-for-review, rejected, and withdrawn states",
+    "queue acceptance never creates an accepted dossier, alters a public count, opens or merges a pull request, changes policy, or publishes a page",
+    "promotion from accepted-for-review requires a separately authorized source-capture and independent-review workflow that produces a normal protected pull request",
+    "the submission service has no repository contents-write, pull-request, workflow, deployment, package, administration, DNS, or merge permission",
+    "invalid, duplicate, replayed, oversized, private, secret-shaped, or unsupported submissions fail closed and leave auditable non-sensitive outcomes",
+    "public status and agent instructions report the exact queue endpoint, supported bundle version, limits, retention, privacy boundary, and current availability only after provider read-back"
+  ],
+  "limitations": [
+    "A queued proposal is neither evidence nor knowledge and receives zero warrant or independence credit.",
+    "GitHub Issues or an equivalent queue are coordination state, not canonical epistemic history.",
+    "No provider, account, credential, spend, deployment, DNS, public endpoint, or automatic research execution is authorized merely by registering this task.",
+    "No queue implementation may weaken the existing read-only public gateway or reuse its anonymous deployment identity as write authority."
+  ]
+}
