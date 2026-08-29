@@ -32,6 +32,7 @@ from .core import (
     topic_projection,
 )
 from .featured import FEATURE_VIEWS
+from .mission import load_mission
 from .research_kit import (
     case_research_brief,
     proposal_template,
@@ -135,6 +136,9 @@ class Gateway:
 
     def library(self) -> FeaturedDossierLibrary | None:
         return load_featured_library(self.root)
+
+    def mission(self) -> dict[str, Any]:
+        return load_mission(self.root)
 
     def featured(self) -> AcceptedDossier | None:
         library = self.library()
@@ -384,6 +388,7 @@ class Gateway:
                 "name": "Epistemedia Public API",
                 "version": VERSION,
                 "status": "/v1/status",
+                "mission": "/v1/mission",
                 "search": "/v1/search?q=...",
                 "dossiers": "/v1/dossiers",
                 "research_protocol": "/v1/research/protocol",
@@ -402,7 +407,10 @@ class Gateway:
                 "dossier_count": len(library.dossiers) if library is not None else 0,
                 "featured_dossier": featured.slug if featured is not None else None,
                 "generated_at": catalog.generated_at,
+                "mission_id": self.mission()["mission_id"],
             })
+        if path == "/v1/mission":
+            return 200, {}, envelope(catalog, self.mission())
         if path == "/v1/search":
             query = first(request.query, "q", "")
             limit = clamp_int(first(request.query, "limit", "20"), 1, 100, 20)
@@ -709,6 +717,15 @@ class Gateway:
                     ]
             resources.append(
                 {
+                    "uri": "epistemedia://mission",
+                    "name": "mission",
+                    "title": "Knowledge that can show its work",
+                    "description": "Versioned project mission and current-state boundaries.",
+                    "mimeType": "application/json",
+                }
+            )
+            resources.append(
+                {
                     "uri": "epistemedia://research/protocol",
                     "name": "agent-research-protocol",
                     "title": "Agent research protocol",
@@ -786,6 +803,8 @@ class Gateway:
             return dossier.projection(view)
         if uri == "epistemedia://research/protocol":
             return protocol_document(DEFAULT_BASE_URL)
+        if uri == "epistemedia://mission":
+            return self.mission()
         if uri.startswith("epistemedia://research/brief/"):
             slug = uri[len("epistemedia://research/brief/"):]
             dossier = self.dossier(slug)
@@ -808,6 +827,8 @@ class Gateway:
             if not obj:
                 raise KeyError(object_id)
             return obj.as_dict()
+        if name == "get_mission":
+            return self.mission()
         if name == "get_topic":
             slug = str(arguments.get("slug", ""))
             lens = str(arguments.get("lens", "encyclopedia"))
@@ -914,6 +935,7 @@ def tool_definitions() -> list[dict[str, Any]]:
     return [
         tool("search_knowledge", "Search disclosure-safe public objects.", {"query": {"type": "string"}, "limit": {"type": "integer", "minimum": 1, "maximum": 100}}, ["query"]),
         tool("get_object", "Get one exact object and its source metadata.", {"id": {"type": "string"}}, ["id"]),
+        tool("get_mission", "Get the versioned public mission and current-state boundaries.", {}, []),
         tool("get_topic", "Compile one topic through a selected public lens.", {"slug": {"type": "string"}, "lens": {"type": "string", "enum": sorted(LENSES)}}, ["slug"]),
         tool(
             "get_dossier",

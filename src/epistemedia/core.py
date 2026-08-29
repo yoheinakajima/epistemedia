@@ -138,6 +138,7 @@ a:focus-visible,summary:focus-visible{
   font:700 .75rem/1 var(--mono);
   letter-spacing:-.08em;
 }
+.site-navs{display:flex;align-items:center;gap:1.15rem}
 nav{display:flex;align-items:center;gap:1.1rem}
 nav a{
   display:inline-flex;
@@ -151,6 +152,34 @@ nav a{
   text-transform:uppercase;
 }
 nav a:hover{text-decoration:underline}
+.utility-nav{padding-left:1rem;border-left:1px solid var(--rule);gap:.85rem}
+.utility-nav a{color:var(--muted);font-size:.68rem;letter-spacing:.045em}
+.utility-menu{display:none;position:relative}
+.utility-menu summary{
+  display:inline-flex;
+  min-height:44px;
+  align-items:center;
+  cursor:pointer;
+  color:var(--ink);
+  font:720 .68rem/1 var(--sans);
+  letter-spacing:.055em;
+  text-transform:uppercase;
+}
+.utility-menu nav{
+  position:absolute;
+  z-index:5;
+  top:calc(100% + .2rem);
+  right:0;
+  min-width:150px;
+  align-items:stretch;
+  flex-direction:column;
+  gap:0;
+  padding:.4rem;
+  border:1px solid var(--ink);
+  background:var(--paper-raised);
+  box-shadow:5px 5px 0 var(--paper-deep);
+}
+.utility-menu nav a{min-height:38px;padding:0 .65rem}
 main{padding-block:0 var(--space-6)}
 .site-footer{
   display:grid;
@@ -397,6 +426,80 @@ a.tally-cell:hover{outline:2px solid var(--amber);outline-offset:-2px}
 .library-cue>h2{font-size:clamp(1.5rem,2.8vw,2.35rem);line-height:1.12}
 .library-cue>p:not(.eyebrow):not(.meta-line){grid-column:1;max-width:66ch}
 .library-cue>.meta-line{grid-column:2;grid-row:1/5;align-self:stretch;margin:0;padding:var(--space-3);border-left:1px solid var(--rule);color:var(--forest-deep)}
+.mission-bridge{
+  display:grid;
+  grid-template-columns:minmax(0,.48fr) minmax(0,1fr) auto;
+  gap:.35rem var(--space-5);
+  align-items:center;
+  padding:var(--space-4);
+  border:1px solid var(--ink);
+  border-top:6px solid var(--forest);
+  background:linear-gradient(115deg,var(--forest-deep) 0 31%,var(--paper-raised) 31%);
+  box-shadow:7px 7px 0 var(--paper-deep);
+}
+.mission-bridge>.eyebrow,.mission-bridge>h2{grid-column:1;color:var(--paper-raised)}
+.mission-bridge>h2{margin:0;font-size:clamp(1.55rem,2.6vw,2.2rem)}
+.mission-bridge>p:not(.eyebrow):not(.mission-contrast){grid-column:2;margin:.2rem 0}
+.mission-bridge>.mission-contrast{display:flex;grid-column:2;gap:.45rem;flex-wrap:wrap;margin:.2rem 0;color:var(--muted);font:.7rem/1.4 var(--mono);text-transform:uppercase}
+.mission-contrast span+span:before{content:"→";margin-right:.45rem;color:var(--amber)}
+.mission-bridge>p:last-child{grid-column:3;grid-row:1/4}
+.failure-map>.section-head>.meta,.library-intro>.meta{max-width:46ch;text-align:right;text-transform:none;letter-spacing:0}
+.failure-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-3)}
+.failure-card{
+  min-width:0;
+  padding:var(--space-4);
+  border:1px solid var(--ink);
+  border-top:6px solid var(--forest);
+  background:var(--paper-raised);
+  box-shadow:6px 6px 0 var(--paper-deep);
+}
+.failure-card:nth-child(even){border-top-color:var(--amber)}
+.case-stamp{display:flex;justify-content:space-between;gap:var(--space-3);margin:0 0 var(--space-3);color:var(--muted);font:720 .68rem/1.35 var(--mono);letter-spacing:.055em;text-transform:uppercase}
+.case-stamp span{color:var(--forest-deep)}
+.failure-card h3{max-width:24ch;font-size:clamp(1.35rem,2.2vw,1.85rem);line-height:1.12}
+.failure-finding{font-size:.94rem}
+.failure-count{padding:.75rem;border-left:4px solid var(--amber);background:var(--amber-wash);font:720 .72rem/1.5 var(--mono)}
+.failure-boundary{color:var(--muted);font-size:.82rem}
+.failure-boundary strong{display:block;color:var(--ink);font:.68rem/1.5 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.failure-links{margin-bottom:0;font-size:.82rem}
+.method-strip{padding:var(--space-4);border:1px solid var(--ink);background:var(--forest-deep);color:var(--paper-raised)}
+.method-strip .eyebrow,.method-strip h2,.method-strip h3,.method-strip a{color:var(--paper-raised)}
+.method-strip>h2{margin-bottom:var(--space-3)}
+.method-strip ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:0;padding:0;background:rgba(255,255,255,.22);list-style:none}
+.method-strip li{display:grid;grid-template-columns:auto 1fr;gap:var(--space-3);padding:var(--space-3);background:var(--forest-deep)}
+.method-strip li>span{display:grid;place-items:center;width:2.2rem;height:2.2rem;border:1px solid var(--amber);color:var(--amber-wash);font:720 .68rem/1 var(--mono)}
+.method-strip h3{margin:0 0 .3rem;font-size:1.1rem}
+.method-strip li p{margin:0;color:#d7ddd8;font-size:.82rem}
+.participation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-3)}
+.participation-card{padding:var(--space-4);border:1px solid var(--rule);border-top:4px solid var(--amber);background:var(--paper-raised)}
+.participation-card h3{font-size:1.25rem}
+.participation-card p:last-child{margin-bottom:0;color:var(--muted);font-size:.86rem}
+.mission-page{max-width:1040px;margin-inline:auto}
+.mission-hero{padding:var(--space-5) 0 var(--space-4);border-bottom:1px solid var(--ink)}
+.mission-hero h1{max-width:20ch;font-size:clamp(2.35rem,4.6vw,4.2rem)}
+.mission-id{max-width:100%;font-size:.7rem}
+.mission-problem{display:grid;grid-template-columns:minmax(190px,.35fr) minmax(0,1fr);gap:.2rem var(--space-5);padding:var(--space-4);border-left:7px solid var(--amber);background:var(--amber-wash)}
+.mission-problem>.eyebrow,.mission-problem>h2{grid-column:1}
+.mission-problem>h2{font-size:clamp(1.6rem,3vw,2.45rem)}
+.mission-problem>p:not(.eyebrow){grid-column:2;margin:.15rem 0 .8rem}
+.consequence-grid,.principle-grid,.not-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;border:1px solid var(--ink);background:var(--rule)}
+.principle-card,.not-card{padding:var(--space-3);background:var(--paper-raised)}
+.principle-card h3,.not-card h3{font-size:1.15rem}
+.principle-card p,.not-card p{margin-bottom:0;color:var(--muted);font-size:.84rem}
+.principle-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.principle-grid .principle-card:first-child{background:var(--forest-deep)}
+.principle-grid .principle-card:first-child h3,.principle-grid .principle-card:first-child p{color:var(--paper-raised)}
+.not-grid .not-card{background:var(--paper-deep)}
+.mission-direction{padding:var(--space-4);border:1px solid var(--ink);border-left:7px solid var(--forest);background:var(--paper-raised)}
+.current-state{padding:var(--space-4);border:1px solid var(--ink);background:var(--forest-deep);color:var(--paper-raised)}
+.current-state h2,.current-state a{color:var(--paper-raised)}
+.reader-check{max-width:880px;margin-inline:auto}
+.reader-instructions,.reader-boundary{padding:var(--space-4);border-left:6px solid var(--forest);background:var(--paper-raised)}
+.reader-questions{margin:var(--space-4) 0;padding:0;list-style:none;counter-reset:reader}
+.reader-question{counter-increment:reader;padding:var(--space-4) 0;border-top:1px solid var(--ink)}
+.reader-question:before{content:counter(reader,decimal-leading-zero);display:block;margin-bottom:.35rem;color:var(--amber);font:720 .75rem/1 var(--mono)}
+.reader-question h2{font-size:clamp(1.25rem,2.4vw,1.75rem)}
+.answer-line{min-height:5rem;padding:.75rem;border:1px dashed var(--rule);color:var(--muted);font-size:.78rem}
 .agent-lineage-case>.dossier-lead{padding-bottom:var(--space-3);border-bottom:1px solid var(--ink)}
 .structured-case>.dossier-lead{padding:var(--space-3) 0;border-bottom:1px solid var(--ink)}
 .structured-case>.dossier-lead h1{max-width:24ch;margin-top:var(--space-3);font-size:clamp(1.85rem,3vw,2.8rem);line-height:1.06}
@@ -624,9 +727,15 @@ blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(
 .manifest{border-top:1px solid var(--rule);margin-top:var(--space-5);padding-top:var(--space-3)}
 @media (max-width:640px){
   .site-header,main,.site-footer{width:min(100% - 2rem,var(--page))}
-  .site-header{min-height:58px;gap:.65rem}
+  .site-header{min-height:58px;gap:.4rem}
   .brand{font-size:.9rem}
   .brand-mark{width:1.65rem;height:1.65rem}
+  .site-navs{margin-left:auto;gap:.45rem}
+  .primary-nav{gap:.5rem}
+  .primary-nav a{font-size:.62rem}
+  .utility-nav{display:none}
+  .utility-menu{display:block}
+  .utility-menu nav{gap:0}
   nav{gap:.7rem}
   nav a{font-size:.68rem}
   h1{font-size:clamp(1.9rem,8.2vw,2.5rem)}
@@ -679,6 +788,18 @@ blockquote{margin-left:0;padding:.35rem 0 .35rem 1rem;border-left:4px solid var(
   .library-cue{grid-template-columns:1fr;padding:var(--space-3);box-shadow:4px 4px 0 var(--paper-deep)}
   .library-cue>.eyebrow,.library-cue>h2,.library-cue>p:not(.eyebrow):not(.meta-line),.library-cue>.meta-line{grid-column:1;grid-row:auto}
   .library-cue>.meta-line{padding:var(--space-2) 0 0;border-top:1px solid var(--rule);border-left:0}
+  .mission-bridge{grid-template-columns:1fr;padding:var(--space-3);background:linear-gradient(180deg,var(--forest-deep) 0 33%,var(--paper-raised) 33%);box-shadow:4px 4px 0 var(--paper-deep)}
+  .mission-bridge>.eyebrow,.mission-bridge>h2,.mission-bridge>p:not(.eyebrow):not(.mission-contrast),.mission-bridge>.mission-contrast,.mission-bridge>p:last-child{grid-column:1;grid-row:auto}
+  .mission-bridge>p:not(.eyebrow):not(.mission-contrast){margin-top:var(--space-3)}
+  .failure-map>.section-head>.meta,.library-intro>.meta{text-align:left}
+  .failure-grid,.method-strip ol,.participation-grid,.consequence-grid,.principle-grid,.not-grid{grid-template-columns:1fr}
+  .failure-card{padding:var(--space-3);box-shadow:4px 4px 0 var(--paper-deep)}
+  .method-strip{padding:var(--space-3)}
+  .mission-hero{padding:var(--space-4) 0 var(--space-3)}
+  .mission-hero h1{font-size:clamp(2rem,10vw,2.65rem)}
+  .mission-problem{grid-template-columns:1fr;padding:var(--space-3)}
+  .mission-problem>.eyebrow,.mission-problem>h2,.mission-problem>p:not(.eyebrow){grid-column:1}
+  .participation-card,.reader-instructions,.reader-boundary{padding:var(--space-3)}
   .agent-tally{grid-template-columns:1fr 1fr}
   .agent-tally .tally-cell:last-child{grid-column:1/-1}
   .receipt-grid.compact>div{grid-template-columns:1fr;gap:.15rem}
@@ -1279,7 +1400,11 @@ def html_shell(
 <a class="skip-link" href="#content">Skip to content</a>
 <header class="site-header">
   <a class="brand" href="{html.escape(base_url)}/" aria-label="Epistemedia home"><span class="brand-mark" aria-hidden="true">E/</span><span>Epistemedia</span></a>
-  <nav aria-label="Primary"><a href="{html.escape(base_url)}/how-we-know/">How We Know</a><a href="{html.escape(base_url)}/explore/">Substrate</a><a href="{html.escape(base_url)}/docs/">Docs</a><a href="{html.escape(base_url)}/status/">Status</a></nav>
+  <div class="site-navs">
+    <nav class="primary-nav" aria-label="Primary"><a href="{html.escape(base_url)}/how-we-know/">How We Know</a><a href="{html.escape(base_url)}/about/">About</a><a href="{html.escape(base_url)}/agents/">For agents</a></nav>
+    <nav class="utility-nav" aria-label="Utility"><a href="{html.escape(base_url)}/explore/">Substrate</a><a href="{html.escape(base_url)}/docs/">Docs</a><a href="{html.escape(base_url)}/status/">Status</a><a href="https://github.com/yoheinakajima/epistemedia">GitHub</a></nav>
+    <details class="utility-menu"><summary>Project</summary><nav aria-label="Utility menu"><a href="{html.escape(base_url)}/explore/">Substrate</a><a href="{html.escape(base_url)}/docs/">Docs</a><a href="{html.escape(base_url)}/status/">Status</a><a href="https://github.com/yoheinakajima/epistemedia">GitHub</a></nav></details>
+  </div>
 </header>
 <main id="content" tabindex="-1">{body}</main>
 <footer class="site-footer"><p><strong>Knowledge that can show its work.</strong><br>Human and agent interfaces compile from one public projection.</p><p><a href="https://github.com/yoheinakajima/epistemedia">Source repository</a></p></footer>
@@ -1708,16 +1833,12 @@ def build_public(
     from .case_library import (
         AgentLineageDossier,
         BoundedPropositionDossier,
-        additional_cases_home_cue,
         agent_page_html,
         agent_projection_markdown,
         agent_review_html,
         agent_review_markdown,
         agent_share_card_svg,
         bounded_share_card_svg,
-        case002_home_cue,
-        library_index_html,
-        library_index_markdown,
         load_featured_library,
     )
     from .featured import (
@@ -1730,6 +1851,20 @@ def build_public(
         share_card_svg,
     )
     from .featured import projection_markdown as dossier_markdown
+    from .mission import (
+        about_html,
+        failure_map_html,
+        how_we_know_html,
+        how_we_know_markdown,
+        load_mission,
+        method_html,
+        mission_bridge_html,
+        mission_markdown,
+        participation_html,
+        reader_check_document,
+        reader_check_html,
+        reader_check_markdown,
+    )
     from .research_kit import (
         agent_home_html,
         agent_index_html,
@@ -1742,6 +1877,7 @@ def build_public(
     )
 
     catalog = PublicCatalog.build(root)
+    mission = load_mission(root)
     library = load_featured_library(root)
     featured = library.lead if library is not None else None
     dossier_summaries = library.summaries(catalog) if library is not None else []
@@ -1766,6 +1902,12 @@ def build_public(
         "topic_count": len(catalog.topics),
         "dossier_count": len(library.dossiers) if library is not None else 0,
         "featured_dossier": featured.slug if featured is not None else None,
+        "mission": {
+            "id": mission["mission_id"],
+            "version": mission["version"],
+            "human": f"{base_url}/about/",
+            "machine": f"{base_url}/about/index.json",
+        },
         "protocol_version": PROTOCOL_VERSION,
     })
     write_json(tmp / "search.json", {
@@ -1920,6 +2062,55 @@ def build_public(
         )
         write_text(tmp / "topics" / topic.slug / "index.md", md)
 
+    mission_envelope = envelope(catalog, mission)
+    write_json(tmp / "about" / "index.json", mission_envelope)
+    write_text(tmp / "about" / "index.md", mission_markdown(mission, base_url))
+    write_text(
+        tmp / "about" / "index.html",
+        html_shell(
+            "Mission",
+            about_html(mission, dossier_summaries, base_url)
+            + projection_receipt_html(
+                catalog_id=mission_envelope["catalog_id"],
+                frontier=mission_envelope["frontier"],
+                commit=mission_envelope["commit"],
+                epistemic_policy=mission_envelope["policies"]["epistemic"],
+                disclosure_policy=mission_envelope["policies"]["disclosure"],
+                compiler=mission_envelope["compiler"],
+                content_digest=mission_envelope["content_digest"],
+            ),
+            base_url=base_url,
+            canonical_url=f"{base_url}/about/",
+            markdown_url=f"{base_url}/about/index.md",
+        ),
+    )
+    reader_check = reader_check_document(mission, base_url)
+    reader_envelope = envelope(catalog, reader_check)
+    write_json(tmp / "about" / "reader-check" / "index.json", reader_envelope)
+    write_text(
+        tmp / "about" / "reader-check" / "index.md",
+        reader_check_markdown(reader_check),
+    )
+    write_text(
+        tmp / "about" / "reader-check" / "index.html",
+        html_shell(
+            "First-reader check",
+            reader_check_html(reader_check, base_url)
+            + projection_receipt_html(
+                catalog_id=reader_envelope["catalog_id"],
+                frontier=reader_envelope["frontier"],
+                commit=reader_envelope["commit"],
+                epistemic_policy=reader_envelope["policies"]["epistemic"],
+                disclosure_policy=reader_envelope["policies"]["disclosure"],
+                compiler=reader_envelope["compiler"],
+                content_digest=reader_envelope["content_digest"],
+            ),
+            base_url=base_url,
+            canonical_url=f"{base_url}/about/reader-check/",
+            markdown_url=f"{base_url}/about/reader-check/index.md",
+        ),
+    )
+
     if library is not None and featured is not None and featured_default is not None:
         for accepted in library.dossiers:
             is_structured_case = isinstance(
@@ -2072,6 +2263,8 @@ def build_public(
                 "Truth, evidence, knowledge, and information—where they agree, where they "
                 "differ, and how we can tell."
             ),
+            "mission_id": mission["mission_id"],
+            "failure_modes": mission["cases"],
             "featured": featured.summary(catalog),
             "dossiers": dossier_summaries,
         }
@@ -2079,10 +2272,11 @@ def build_public(
         write_json(tmp / "how-we-know" / "index.json", how_we_know_envelope)
         write_text(
             tmp / "how-we-know" / "index.md",
-            library_index_markdown(how_we_know_envelope, base_url),
+            how_we_know_markdown(mission, dossier_summaries, base_url),
         )
         how_we_know_body = (
-            library_index_html(how_we_know_envelope, base_url)
+            how_we_know_html(mission, dossier_summaries, base_url)
+            + method_html(base_url)
             + agent_home_html(base_url)
             + projection_receipt_html(
             catalog_id=how_we_know_envelope["catalog_id"],
@@ -2108,24 +2302,13 @@ def build_public(
             ),
         )
 
-        second = next(
-            (item for item in dossier_summaries if item["number"] == "002"),
-            None,
-        )
-        second_cue = case002_home_cue(second, base_url) if second is not None else ""
-        additional_cue = additional_cases_home_cue(
-            [
-                item
-                for item in dossier_summaries
-                if item["number"] not in {"001", "002"}
-            ],
-            base_url,
-        )
         home_body = (
             feature_home_html(featured_default, base_url)
+            + mission_bridge_html(mission, base_url)
             + feature_purpose_html(featured_default, base_url)
-            + second_cue
-            + additional_cue
+            + failure_map_html(mission, dossier_summaries, base_url)
+            + method_html(base_url)
+            + participation_html(mission, base_url)
             + agent_home_html(base_url)
             + '<section><div class="section-head"><div><p class="eyebrow">'
             'Operating substrate</p><h2>Explore how the record is built</h2></div>'
@@ -2146,29 +2329,15 @@ def build_public(
                 content_digest=featured_default["content_digest"],
             )
         )
-        case002_markdown = (
-            "\n## How We Know · Case 002\n\n"
-            f"[{second['title']}]({base_url}/how-we-know/{second['slug']}/)\n\n"
-            f"> {second['evaluation']}\n\n"
-            f"- Captured reports: **{second['counts']['captured_reports']}**\n"
-            f"- Distinct URL strings: **{second['counts']['cited_url_strings']}**\n"
-            f"- Source works: **{second['counts']['source_work_roots']}**\n"
-            f"- Candidate warrants: **{second['counts']['candidate_warrant_roots']}**\n"
-            f"- Unresolved citations: **{second['counts']['unresolved_citations']}**\n"
-            if second is not None
-            else ""
-        )
-        additional_markdown = "".join(
-            "\n## How We Know · Case "
-            f"{item['number']}\n\n"
-            f"[{item['title']}]({base_url}/how-we-know/{item['slug']}/)\n\n"
-            f"> {item['evaluation']}\n\n"
-            + "".join(
-                f"- {card['label'].title()}: **{card['value']}**\n"
-                for card in item["count_cards"]
-            )
-            for item in dossier_summaries
-            if item["number"] not in {"001", "002"}
+        failure_markdown = "".join(
+            "\n## Case "
+            f"{item['number']} — {item['failure_mode']}\n\n"
+            f"**Familiar claim:** {item['familiar_claim']}\n\n"
+            f"**Bounded finding:** {item['bounded_finding']}\n\n"
+            f"**Defining count:** {item['defining_count']}\n\n"
+            f"**Still open:** {item['unresolved_boundary']}\n\n"
+            f"[Open Case {item['number']}]({base_url}/how-we-know/{item['slug']}/)\n"
+            for item in mission["cases"]
         )
         home_markdown = (
             "# Epistemedia\n\nKnowledge that can show its work.\n\n"
@@ -2194,9 +2363,18 @@ def build_public(
             f"[Brief]({base_url}/how-we-know/{featured.slug}/) · "
             f"[Skeptical]({base_url}/how-we-know/{featured.slug}/skeptical/) · "
             f"[Evidence docket]({base_url}/how-we-know/{featured.slug}/#evidence-record-title)\n"
-            + case002_markdown
-            + additional_markdown
+            + "\n## Four cases · four failure modes\n\n"
+            + mission["case_map_note"]
+            + "\n"
+            + failure_markdown
             + f"\n[View all four cases]({base_url}/how-we-know/)\n"
+            + "\n## How Epistemedia reads a claim\n\n"
+            + "1. **Trace sources.** Pin the edition and exact passage.\n"
+            + "2. **Collapse echoes.** Follow lineage so repetitions do not become witnesses.\n"
+            + "3. **Apply a named policy.** Keep the rules, limits, and alternative view visible.\n\n"
+            + f"[Read mission v{mission['version']}]({base_url}/about/) · "
+            + f"[Run your own test]({base_url}/agents/) · "
+            + f"[Take the reader check]({base_url}/about/reader-check/)\n"
             + "\n## Operating substrate\n\n"
             f"{len(catalog.objects)} distinct public objects · "
             f"{catalog.topic_membership_count()} topic memberships across "
@@ -2450,6 +2628,9 @@ def build_public(
         "",
         "## Start here",
         f"- [Project overview]({base_url}/index.md)",
+        f"- [Mission v{mission['version']}]({base_url}/about/index.md)",
+        f"- [Mission JSON]({base_url}/about/index.json)",
+        f"- [First-reader check]({base_url}/about/reader-check/index.md)",
         f"- [How We Know]({base_url}/how-we-know/index.md)",
         *dossier_llms,
         f"- [Documentation]({base_url}/docs/index.md)",
@@ -2491,6 +2672,14 @@ def build_public(
         "repository": "https://github.com/yoheinakajima/epistemedia",
         "protocol_version": PROTOCOL_VERSION,
         "representations": ["text/html", "text/markdown", "application/json", "application/ld+json"],
+        "about": {
+            "human": f"{base_url}/about/",
+            "markdown": f"{base_url}/about/index.md",
+            "json": f"{base_url}/about/index.json",
+            "mission_id": mission["mission_id"],
+            "version": mission["version"],
+            "reader_check": f"{base_url}/about/reader-check/",
+        },
         "how_we_know": f"{base_url}/how-we-know/",
         "agent_research": {
             "human": f"{base_url}/agents/",
@@ -2539,6 +2728,8 @@ def build_public(
     write_text(tmp / "robots.txt", "User-agent: *\nAllow: /\nSitemap: " + base_url + "/sitemap.xml\n")
     urls = [
         base_url + "/",
+        base_url + "/about/",
+        base_url + "/about/reader-check/",
         base_url + "/how-we-know/",
         base_url + "/docs/",
         base_url + "/explore/",
@@ -2604,6 +2795,7 @@ def openapi_document(*, base_url: str = DEFAULT_BASE_URL, api_url: str = DEFAULT
         "servers": [{"url": api_url}],
         "paths": {
             "/status": {"get": operation("Current public catalog status", "getStatus")},
+            "/mission": {"get": operation("Get the versioned public mission", "getMission")},
             "/search": {"get": {**operation("Search public objects", "searchKnowledge"), "parameters": [{"name": "q", "in": "query", "required": True, "schema": {"type": "string"}}, {"name": "limit", "in": "query", "schema": {"type": "integer", "default": 20, "maximum": 100}}]}},
             "/dossiers": {
                 "get": operation("List accepted public dossiers", "listDossiers")
@@ -2724,8 +2916,10 @@ def validate_repository(root: Path) -> list[str]:
             if not obj.content_digest:
                 errors.append(f"object lacks content digest: {obj.path}")
         from .case_library import load_featured_library
+        from .mission import load_mission
 
         load_featured_library(root)
+        load_mission(root)
     except Exception as exc:
         errors.append(str(exc))
     # Common secret patterns are hard failures in accepted text files.
@@ -2766,6 +2960,12 @@ def audit_public(root: Path, public: Path) -> list[str]:
         public / "openapi.json",
         public / ".well-known" / "epistemedia.json",
         public / "mcp" / "server.json",
+        public / "about" / "index.html",
+        public / "about" / "index.md",
+        public / "about" / "index.json",
+        public / "about" / "reader-check" / "index.html",
+        public / "about" / "reader-check" / "index.md",
+        public / "about" / "reader-check" / "index.json",
         public / "agents" / "index.html",
         public / "agents" / "index.md",
         public / "agents" / "index.json",

@@ -131,6 +131,12 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
         "openapi.json",
         ".well-known/epistemedia.json",
         "mcp/server.json",
+        "about/index.html",
+        "about/index.md",
+        "about/index.json",
+        "about/reader-check/index.html",
+        "about/reader-check/index.md",
+        "about/reader-check/index.json",
         "docs/llms.txt",
         "how-we-know/index.html",
         "how-we-know/corrections-and-familiarity-backfire/index.html",
@@ -251,8 +257,9 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert "projection-receipt" in home_html
     assert manifest["catalog_id"] in home_html
     assert ">Substrate</a>" in home_html
-    assert "Also in How We Know · Case 002" in home_html
-    assert "Open Case 002" in home_html
+    assert "Four cases · four failure modes" in home_html
+    assert "False independence" in home_html
+    assert "Run a claim through the research kit" in home_html
     assert "Case 003" in home_html
     assert "Case 004" in home_html
     assert "View all four cases" in home_html
@@ -384,17 +391,18 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
         assert "content" in parser.ids, relative
         assert parser.nav_labels[0] == "Primary", relative
         assert parser.nav_labels.count("Primary") == 1, relative
+        base_navigation = ["Primary", "Utility", "Utility menu"]
         if relative == Path("index.html"):
             assert parser.nav_labels == [
-                "Primary",
+                *base_navigation,
                 "Evidence policy",
                 "How to read Case 001",
             ], relative
         elif "Evidence policy" in parser.nav_labels:
-            assert parser.nav_labels == ["Primary", "Evidence policy"], relative
+            assert parser.nav_labels == [*base_navigation, "Evidence policy"], relative
             assert str(relative).startswith("how-we-know/"), relative
         else:
-            assert parser.nav_labels == ["Primary"], relative
+            assert parser.nav_labels == base_navigation, relative
         assert parser.skip_targets == ["#content"], relative
         assert "projection-receipt" in page_html, relative
         assert catalog.catalog_id in page_html, relative

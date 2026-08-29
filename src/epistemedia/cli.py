@@ -26,6 +26,7 @@ from .core import (
     validate_repository,
 )
 from .featured import FEATURE_VIEWS
+from .mission import load_mission
 from .research_kit import (
     case_research_brief,
     proposal_template,
@@ -72,6 +73,10 @@ def parser() -> argparse.ArgumentParser:
     get.add_argument("id")
     get.add_argument("--remote", action="store_true")
     get.add_argument("--api", default=DEFAULT_API_URL)
+
+    mission = sub.add_parser("mission", help="Get the versioned public mission")
+    mission.add_argument("--remote", action="store_true")
+    mission.add_argument("--api", default=DEFAULT_API_URL)
 
     project = sub.add_parser("project", help="Compile or retrieve a topic projection")
     project.add_argument("slug")
@@ -272,6 +277,9 @@ def main(argv: list[str] | None = None) -> int:
     if command == "get" and args.remote:
         print_json(remote_get(args.api, "objects/" + urllib.parse.quote(args.id, safe="")))
         return 0
+    if command == "mission" and args.remote:
+        print_json(remote_get(args.api, "mission"))
+        return 0
     if command == "project" and args.remote:
         print_json(remote_get(args.api, "topics/" + urllib.parse.quote(args.slug, safe=""), {"lens": args.lens}))
         return 0
@@ -336,6 +344,10 @@ def main(argv: list[str] | None = None) -> int:
         if not obj:
             raise SystemExit(f"unknown object: {args.id}")
         print_json({"catalog_id": catalog.catalog_id, "frontier": catalog.frontier, "data": obj.as_dict()})
+        return 0
+    if command == "mission":
+        catalog = PublicCatalog.build(root)
+        print_json(envelope(catalog, load_mission(root)))
         return 0
     if command == "project":
         from .core import topic_projection
