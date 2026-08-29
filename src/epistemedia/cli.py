@@ -26,6 +26,12 @@ from .core import (
     validate_repository,
 )
 from .featured import FEATURE_VIEWS
+from .research_kit import (
+    case_research_brief,
+    proposal_template,
+    protocol_document,
+    validate_proposal,
+)
 from .server import Gateway, MCPRequestError
 
 
@@ -78,6 +84,17 @@ def parser() -> argparse.ArgumentParser:
     dossier.add_argument("--policy", choices=FEATURE_VIEWS, default="encyclopedia")
     dossier.add_argument("--remote", action="store_true")
     dossier.add_argument("--api", default=DEFAULT_API_URL)
+
+    research = sub.add_parser("research", help="Prepare and validate non-admitting research proposals")
+    research_sub = research.add_subparsers(dest="research_command", required=True)
+    research_sub.add_parser("protocol", help="Print the public agent research protocol")
+    prepare = research_sub.add_parser("prepare", help="Create a deterministic draft proposal scaffold")
+    prepare.add_argument("--question")
+    prepare.add_argument("--case", dest="case_slug")
+    prepare.add_argument("--cutoff", default="YYYY-MM-DD")
+    prepare.add_argument("--output", type=Path)
+    validate_research = research_sub.add_parser("validate", help="Fail-closed validation of one proposal JSON file")
+    validate_research.add_argument("bundle", type=Path)
 
     repo = sub.add_parser("repo", help="Repository-native agent operations")
     repo_sub = repo.add_subparsers(dest="repo_command", required=True)
@@ -340,6 +357,51 @@ def main(argv: list[str] | None = None) -> int:
             raise SystemExit(f"unknown dossier: {args.slug}")
         print_json(envelope(catalog, dossier.projection(args.policy)))
         return 0
+    if command == "research":
+        if args.research_command == "protocol":
+            print_json(protocol_document(DEFAULT_BASE_URL))
+            return 0
+        if args.research_command == "prepare":
+            question = args.question
+            brief = None
+            if args.case_slug:
+                library = load_featured_library(root)
+                try:
+                    selected = library.get(args.case_slug) if library is not None else None
+                except KeyError:
+                    selected = None
+                if selected is None:
+                    raise SystemExit(f"unknown dossier: {args.case_slug}")
+                projection = selected.projection(selected.default_view)
+                brief = case_research_brief(projection, DEFAULT_BASE_URL)
+                question = question or projection["question"]
+            if not isinstance(question, str) or not question.strip():
+                raise SystemExit("research prepare requires --question or --case")
+            proposal = proposal_template(
+                question.strip(), cutoff=args.cutoff, case_slug=args.case_slug
+            )
+            output = {"proposal": proposal, "case_brief": brief}
+            if args.output:
+                destination = args.output if args.output.is_absolute() else root / args.output
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_text(
+                    json.dumps(proposal, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+                    encoding="utf-8",
+                )
+                print_json({"output": str(destination), **validate_proposal(proposal)})
+            else:
+                print_json(output)
+            return 0
+        if args.research_command == "validate":
+            bundle_path = args.bundle if args.bundle.is_absolute() else root / args.bundle
+            try:
+                bundle = json.loads(bundle_path.read_text(encoding="utf-8"))
+            except (OSError, json.JSONDecodeError) as exc:
+                print_json({"valid": False, "errors": [str(exc)], "submitted": False, "admitted": False})
+                return 1
+            result = validate_proposal(bundle)
+            print_json(result)
+            return 0 if result["valid"] else 1
     if command == "repo":
         if args.repo_command == "next":
             return next_tasks(root)

@@ -202,6 +202,90 @@ AGENT_LEDGER_SECTIONS = (
     ("inaccessible-citations", "Inaccessible carriers", "inaccessible_citations"),
 )
 
+# Editorial framing is part of the application projection, not the accepted dossier.
+# Each line below restates already-reviewed boundaries in a human-first order while
+# leaving the dossier, receipt, policy, count, and source objects byte-identical.
+CASE_EDITORIAL = {
+    "agent-citation-lineage": {
+        "failure_mode": "False independence",
+        "claim": "Eight research agents agreed, so the answer looked independently corroborated.",
+        "why": (
+            "A cited report can look rigorous while its runs, links, and source claims still "
+            "share one capture program. Counting echoes as witnesses is a direct failure mode "
+            "for agent-generated research."
+        ),
+        "story": [
+            {
+                "label": "What looked persuasive",
+                "title": "Eight polished reports",
+                "text": "The same frozen question produced eight separately captured, citation-rich answers.",
+            },
+            {
+                "label": "What the audit collapsed",
+                "title": "Thirty URLs became eleven works",
+                "text": "Repeated links and editions were grouped, and run multiplicity received zero automatic independence credit.",
+            },
+            {
+                "label": "What remains",
+                "title": "Seven candidates, none confirmed",
+                "text": "Thirty-four citation occurrences remain unresolved; the seven warrant candidates still require independent rooting.",
+            },
+        ],
+    },
+    "gpt-4-bar-exam-percentile": {
+        "failure_mode": "Missing comparison class",
+        "claim": "GPT-4 scored around the 90th percentile on the bar exam.",
+        "why": (
+            "A score can be historical fact while its headline rank changes with the people, "
+            "administration, cutoff, and interpolation used for comparison. The missing noun "
+            "after “percentile” changes what the number means."
+        ),
+        "story": [
+            {
+                "label": "What is documented",
+                "title": "One historical simulated score",
+                "text": "The report, paper, repository, and supplement describe manifestations of one bounded model run.",
+            },
+            {
+                "label": "What moves",
+                "title": "The percentile",
+                "text": "Official administration charts and modeled populations place the same score differently.",
+            },
+            {
+                "label": "What to carry forward",
+                "title": "Score plus comparator",
+                "text": "State the administration and comparison population; do not turn the rank into general legal competence.",
+            },
+        ],
+    },
+    "mehrabian-7-38-55": {
+        "failure_mode": "Scope inflation",
+        "claim": "Only 7% of communication is verbal; 93% is nonverbal.",
+        "why": (
+            "A memorable formula escaped two narrow experiments about inconsistent feelings "
+            "and attitudes, then circulated as a universal law. The missing experimental scope "
+            "is the difference between history and advice."
+        ),
+        "story": [
+            {
+                "label": "What was tested",
+                "title": "Two separate pairings",
+                "text": "One participant group compared words with tone; another compared face with tone.",
+            },
+            {
+                "label": "What was proposed",
+                "title": "A cross-study formula",
+                "text": "The three weights were assembled across studies; no original experiment tested all three channels together.",
+            },
+            {
+                "label": "What was inflated",
+                "title": "A universal 93% slogan",
+                "text": "Later circulation documents popularity, not scientific truth, and the exact origin of the .07 coefficient remains unresolved.",
+            },
+        ],
+    },
+}
+
 
 def _positive_integer(value: Any, context: str) -> int:
     if not isinstance(value, int) or isinstance(value, bool) or value <= 0:
@@ -571,6 +655,22 @@ class AgentLineageDossier:
                 ):
                     if key in entry:
                         entry[key] = sorted(set(entry[key]))
+        for entry in citations.values():
+            entry.update(
+                {
+                    "object_type": "citation_occurrence",
+                    "object_key": entry["key"],
+                    "object": {"id": entry["key"], "status": entry["status"]},
+                }
+            )
+        for entry in urls.values():
+            entry.update(
+                {
+                    "object_type": "cited_url",
+                    "object_key": entry["key"],
+                    "object": {"id": entry["key"], "status": entry["status"]},
+                }
+            )
         return (
             [citations[key] for key in sorted(citations)],
             [urls[key] for key in sorted(urls)],
@@ -591,6 +691,9 @@ class AgentLineageDossier:
                     "requested_model_profile": value["requested_model_profile"],
                     "prompt_sha256": value["prompt_sha256"],
                     "source": trace,
+                    "object_type": "captured_report",
+                    "object_key": value["run_id"],
+                    "object": {"id": value["run_id"], "status": value["status"]},
                 }
             )
         source_works = [
@@ -601,6 +704,9 @@ class AgentLineageDossier:
                 "canonical_uri": work["canonical_uri"],
                 "license": work["license"],
                 "id": work["id"],
+                "object_type": "source_work",
+                "object_key": work["key"],
+                "object": work,
             }
             for work in self.dossier["source_works"]
             if work["key"] != AUDIT_WORK_KEY
@@ -614,6 +720,9 @@ class AgentLineageDossier:
                 "digest": edition["content_digest"],
                 "bytes": edition["content_length"],
                 "source_work_key": edition["work_key"],
+                "object_type": "edition",
+                "object_key": edition["key"],
+                "object": edition,
             }
             for edition in self.dossier["editions"]
             if edition["key"] != AUDIT_EDITION_KEY
@@ -626,6 +735,9 @@ class AgentLineageDossier:
                 "id": span["id"],
                 "digest": span["digest"],
                 "edition_key": span["edition_key"],
+                "object_type": "span",
+                "object_key": span["key"],
+                "object": span,
             }
             for span in self.dossier["spans"]
             if not span["key"].startswith(("span-audit", "span-supplement"))
@@ -637,13 +749,33 @@ class AgentLineageDossier:
             and relation["from_ref"] in indexes["assertions"]
             and relation["from_ref"] != "assertion-derived-counts"
         ]
-        candidates = [self.relation_trace(relation["key"]) for relation in candidate_relations]
+        candidates = []
+        for relation in candidate_relations:
+            trace = self.relation_trace(relation["key"])
+            candidates.append(
+                {
+                    **trace,
+                    "object_type": "evidence_relation",
+                    "object_key": relation["key"],
+                    "object": relation,
+                }
+            )
         pending_relations = [
             relation
             for relation in self.dossier["evidence_relations"]
             if relation["relation_type"] == "qualification"
         ]
-        pending = [self.relation_trace(relation["key"]) for relation in pending_relations]
+        pending = []
+        for relation in pending_relations:
+            trace = self.relation_trace(relation["key"])
+            pending.append(
+                {
+                    **trace,
+                    "object_type": "evidence_relation",
+                    "object_key": relation["key"],
+                    "object": relation,
+                }
+            )
 
         def audit_list(name: str) -> list[Any]:
             value = _audit_value(indexes, COUNT_SPAN_KEYS[name])
@@ -651,14 +783,46 @@ class AgentLineageDossier:
                 raise FeaturedDossierError(f"Case 002 {name} ledger must be a list")
             return value
 
-        unresolved = audit_list("unresolved")
-        inaccessible = audit_list("inaccessible")
+        def citation_gap(raw: Any, status: str) -> dict[str, Any]:
+            item = _object(raw, f"Case 002 {status} citation")
+            identity = _string(
+                item.get("citation_occurrence_id"),
+                f"Case 002 {status} citation identity",
+            )
+            return {
+                **item,
+                "key": identity,
+                "title": str(item.get("raw_title", identity)),
+                "status": status,
+                "object_type": "citation_occurrence",
+                "object_key": identity,
+                "object": {"id": identity, "status": status},
+            }
+
+        unresolved = [citation_gap(item, "unresolved") for item in audit_list("unresolved")]
+        inaccessible = [
+            citation_gap(item, "inaccessible") for item in audit_list("inaccessible")
+        ]
         unsupported = [
-            {"key": item, "title": item, "status": "no-credit"}
+            {
+                "key": item,
+                "title": item,
+                "status": "no-credit",
+                "object_type": "claim_occurrence",
+                "object_key": item,
+                "object": {"id": item, "status": "no-credit"},
+            }
             for item in audit_list("unsupported")
         ]
         rejected = [
-            {"key": item, "title": item, "status": "independently-rejected"}
+            {
+                "key": item,
+                "title": item,
+                "status": "independently-rejected",
+                "object_type": "claim_occurrence",
+                "object_key": item,
+                "object": {"id": item, "status": "independently-rejected"},
+            }
             for item in audit_list("rejected")
         ]
         return {
@@ -740,6 +904,7 @@ class AgentLineageDossier:
             "title": display_title,
             "question": self.dossier["question"],
             "scope": self.dossier["scope"],
+            "editorial": CASE_EDITORIAL[self.slug],
             "claim_family": family,
             "target_proposition": indexes["propositions"][
                 self.manifest["target_proposition_key"]
@@ -1410,6 +1575,7 @@ class BoundedPropositionDossier(AgentLineageDossier):
             "title": display_title,
             "question": self.dossier["question"],
             "scope": self.manifest["public_scope"],
+            "editorial": CASE_EDITORIAL[self.slug],
             "research_scope": self.dossier["scope"],
             "claim_family": family,
             "target_proposition": indexes["propositions"][
@@ -1617,10 +1783,15 @@ def _display_item(item: dict[str, Any]) -> tuple[str, str]:
 
 def agent_projection_markdown(document: dict[str, Any]) -> str:
     data = document["data"]
+    editorial = data["editorial"]
     lines = [
         f"# Case {data['number']} — {data['title']}",
         "",
-        data["question"],
+        f"**Failure mode:** {editorial['failure_mode']}",
+        "",
+        f"**The claim:** {editorial['claim']}",
+        "",
+        f"**Why care:** {editorial['why']}",
         "",
         f"**{data['view']['id'].title()} finding:** {data['view']['label']}",
         "",
@@ -1628,9 +1799,30 @@ def agent_projection_markdown(document: dict[str, Any]) -> str:
         "",
         data["practical_reading"]["qualifier"],
         "",
-        "## Evidence accounting",
+        "## How the claim changes under inspection",
         "",
     ]
+    for index, step in enumerate(editorial["story"], 1):
+        lines.extend(
+            [
+                f"### {index:02d} — {step['title']}",
+                "",
+                f"**{step['label']}:** {step['text']}",
+                "",
+            ]
+        )
+    lines.extend(
+        [
+        "## Run this research with your agent",
+        "",
+        "Open [`research-brief.md`](research-brief.md) for this case and the "
+        "[common protocol](/agents/research-protocol.md). A prepared proposal is untrusted "
+        "intake with zero evidential credit; hosted submission is not available yet.",
+        "",
+        "## Evidence accounting",
+        "",
+        ]
+    )
     for card in data["count_cards"]:
         lines.append(
             f"- [{card['value']} {card['label']}](#{card['anchor']}): {card['note']}"
@@ -1776,22 +1968,49 @@ def _source_extent(source: dict[str, Any]) -> str:
     return str(value)
 
 
-def _agent_source_xray(item: dict[str, Any], index: int) -> str:
-    sources = []
-    for source in item["sources"]:
+def _source_token(source: dict[str, Any]) -> tuple[str, str]:
+    return str(source["span"]["id"]), str(source["span"]["digest"])
+
+
+def _source_register(
+    relations: list[dict[str, Any]],
+) -> tuple[dict[tuple[str, str], str], str]:
+    source_ids: dict[tuple[str, str], str] = {}
+    records: list[dict[str, Any]] = []
+    uses: dict[tuple[str, str], list[int]] = {}
+    for relation_index, item in enumerate(relations, 1):
+        sources = list(item["sources"])
+        for calculation in item.get("calculations", []):
+            sources.extend(calculation["sources"])
+        for source in sources:
+            token = _source_token(source)
+            uses.setdefault(token, []).append(relation_index)
+            if token in source_ids:
+                continue
+            source_id = f"exact-source-{len(records) + 1:02d}"
+            source_ids[token] = source_id
+            records.append(source)
+
+    cards = []
+    for source in records:
+        token = _source_token(source)
+        source_id = source_ids[token]
         span = source["span"]
         edition = source["edition"]
         work = source["source_work"]
         retrieval = source.get("retrieval") or []
         retrieval_text = " · ".join(
-            f"{record.get('retrieval_status', 'unknown')} {record.get('requested_url', '')}"
+            f"{record.get('retrieval_status', 'not-recorded')} {record.get('requested_url', '')}"
             for record in retrieval
-        ) or "No external retrieval record; repository audit span"
-        sources.append(
-            '<article class="source-card">'
+        ) or "Repository audit span; no external retrieval record"
+        relation_uses = ", ".join(f"{index:02d}" for index in sorted(set(uses[token])))
+        cards.append(
+            f'<article class="source-card" id="{source_id}">'
+            f'<p class="source-use">Used by evidence statement {html.escape(relation_uses)}</p>'
             f"<h4>{html.escape(work['title'])}</h4>"
             f"<p>{html.escape(span['locator']['label'])}</p>"
             f"<blockquote>{html.escape(_source_extent(source))}</blockquote>"
+            '<details class="technical-disclosure"><summary>Exact source identity</summary>'
             '<dl class="receipt-grid compact">'
             f"<div><dt>Work</dt><dd><a href=\"{html.escape(work['canonical_uri'])}\">{html.escape(work['id'])}</a></dd></div>"
             f"<div><dt>Edition</dt><dd>{html.escape(edition['id'])}</dd></div>"
@@ -1800,8 +2019,28 @@ def _agent_source_xray(item: dict[str, Any], index: int) -> str:
             f"<div><dt>Span digest</dt><dd>{html.escape(span['digest'])}</dd></div>"
             f"<div><dt>Retrieval</dt><dd>{html.escape(retrieval_text)}</dd></div>"
             f"<div><dt>License</dt><dd>{html.escape(str(work['license']))} · {html.escape(str(source['license_treatment']))}</dd></div>"
-            "</dl></article>"
+            "</dl></details></article>"
         )
+    register = (
+        '<details class="source-register human-source-register">'
+        f"<summary>{len(records)} exact passages · repeated display spans collapsed</summary>"
+        '<p class="source-register-note">This human register shows each exact accepted span once. '
+        "The JSON, Markdown, relations, and ledgers retain every occurrence.</p>"
+        + "".join(cards)
+        + "</details>"
+    )
+    return source_ids, register
+
+
+def _agent_source_xray(
+    item: dict[str, Any], index: int, source_ids: dict[tuple[str, str], str]
+) -> str:
+    source_links = "".join(
+        f'<a href="#{html.escape(source_ids[_source_token(source)])}">'
+        f"{html.escape(source['source_work']['title'])} · "
+        f"{html.escape(source['span']['locator']['label'])}</a>"
+        for source in item["sources"]
+    )
     identity_rows = []
     for label, value in (
         ("Relation", item.get("relation")),
@@ -1827,9 +2066,12 @@ def _agent_source_xray(item: dict[str, Any], index: int) -> str:
         _calculation_html(calculation) for calculation in item.get("calculations", [])
     )
     return (
-        '<details class="source-xray">'
-        f"<summary><span>{index:02d}</span> {html.escape(item['statement'])}</summary>"
-        f"<p class=\"relation-label\">Typed relation: {html.escape(item['relation_label'])}</p>"
+        '<article class="evidence-brief">'
+        f'<div class="evidence-marker"><span>{index:02d}</span>{html.escape(item["relation_label"])}</div>'
+        '<div class="evidence-brief-copy">'
+        f'<p class="material-sentence">{html.escape(item["statement"])}</p>'
+        f'<div class="source-jump-list">{source_links}</div>'
+        '<details class="technical-disclosure relation-trace"><summary>Trace this statement</summary>'
         f'<dl class="receipt-grid compact">{"".join(identity_rows)}</dl>'
         + (
             '<h4>Typed dependence</h4><ol class="ledger-list">'
@@ -1839,8 +2081,7 @@ def _agent_source_xray(item: dict[str, Any], index: int) -> str:
             else ""
         )
         + calculation_html
-        + "".join(sources)
-        + "</details>"
+        + "</details></div></article>"
     )
 
 
@@ -1887,12 +2128,26 @@ def _ledger_html(key: str, title: str, items: list[dict[str, Any]]) -> str:
     rows = []
     for item in items:
         identity, label = _display_item(item)
-        obj = item.get("object") if isinstance(item.get("object"), dict) else {}
+        obj = item.get("object") if isinstance(item.get("object"), dict) else None
+        object_type = item.get("object_type")
+        object_key = item.get("object_key")
+        if (
+            obj is None
+            or not isinstance(object_type, str)
+            or not object_type
+            or not isinstance(object_key, str)
+            or not object_key
+            or not isinstance(obj.get("id"), str)
+            or not obj["id"]
+        ):
+            raise FeaturedDossierError(
+                f"human ledger member lacks typed identity: {key}.{identity}"
+            )
         provenance_rows = [
             f"<div><dt>Member</dt><dd><code>{html.escape(identity)}</code></dd></div>",
-            f"<div><dt>Object type</dt><dd>{html.escape(str(item.get('object_type', 'unknown')))}</dd></div>",
-            f"<div><dt>Object key</dt><dd><code>{html.escape(str(item.get('object_key', 'unknown')))}</code></dd></div>",
-            f"<div><dt>Object ID</dt><dd><code>{html.escape(str(obj.get('id', 'unknown')))}</code></dd></div>",
+            f"<div><dt>Object type</dt><dd>{html.escape(object_type.replace('_', ' '))}</dd></div>",
+            f"<div><dt>Object key</dt><dd><code>{html.escape(object_key)}</code></dd></div>",
+            f"<div><dt>Object ID</dt><dd><code>{html.escape(obj['id'])}</code></dd></div>",
         ]
         if obj.get("status") is not None:
             provenance_rows.append(
@@ -1917,8 +2172,10 @@ def _ledger_html(key: str, title: str, items: list[dict[str, Any]]) -> str:
                 ]
             )
         rows.append(
-            '<li class="ledger-entry"><details class="technical-disclosure ledger-provenance">'
-            f"<summary><code>{html.escape(identity)}</code> {html.escape(label)}</summary>"
+            '<li class="ledger-entry"><span class="ledger-human-label">'
+            f"{html.escape(label)}</span>"
+            '<details class="technical-disclosure ledger-provenance">'
+            "<summary>Technical identity</summary>"
             f'<dl class="receipt-grid compact">{"".join(provenance_rows)}</dl>'
             "</details></li>"
         )
@@ -1946,36 +2203,72 @@ def agent_page_html(document: dict[str, Any], base_url: str) -> str:
         f'<span>{html.escape(card["label"])}</span><small>{html.escape(card["note"])}</small></a>'
         for card in data["count_cards"]
     )
+    source_ids, source_register = _source_register(data["featured_relations"])
     relation_html = "".join(
-        _agent_source_xray(item, index)
+        _agent_source_xray(item, index, source_ids)
         for index, item in enumerate(data["featured_relations"], 1)
     )
+    primary_ledger_keys = {card["ledger_key"] for card in data["count_cards"]}
+    primary_sections = [
+        section for section in data["ledger_sections"] if section["key"] in primary_ledger_keys
+    ]
+    audit_sections = [
+        section for section in data["ledger_sections"] if section["key"] not in primary_ledger_keys
+    ]
     ledgers = "".join(
         _ledger_html(
             section["anchor"],
             section["title"],
             data["count_ledgers"][section["key"]],
         )
-        for section in data["ledger_sections"]
+        for section in primary_sections
+    )
+    audit_ledgers = "".join(
+        _ledger_html(
+            section["anchor"],
+            section["title"],
+            data["count_ledgers"][section["key"]],
+        )
+        for section in audit_sections
+    )
+    audit_html = (
+        '<details class="full-audit-ledgers"><summary>Open the full technical ledger '
+        f"· {len(audit_sections)} additional groups</summary>{audit_ledgers}</details>"
+        if audit_sections
+        else ""
     )
     lexicon = "".join(
         f"<div><dt>{html.escape(item['term'])}</dt><dd>{html.escape(item['definition'])}</dd></div>"
         for item in data["lexicon"]
     )
+    editorial = data["editorial"]
+    story = "".join(
+        '<article class="evidence-map-step">'
+        f'<p class="eyebrow">{index:02d} · {html.escape(step["label"])}</p>'
+        f'<h3>{html.escape(step["title"])}</h3>'
+        f'<p>{html.escape(step["text"])}</p></article>'
+        for index, step in enumerate(editorial["story"], 1)
+    )
     return f"""
-<article class="dossier-page {html.escape(data['profile'])}">
+<article class="dossier-page structured-case {html.escape(data['profile'])}">
   <header class="dossier-lead">
-    <p class="eyebrow">How We Know · Case {html.escape(data['number'])} · {html.escape(view)}</p>
+    <div class="case-rule"><span>How We Know · Case {html.escape(data['number'])}</span><span>{html.escape(editorial['failure_mode'])}</span></div>
     <h1>{html.escape(data['title'])}</h1>
-    <p class="dek">{html.escape(data['question'])}</p>
-    <p class="scope-note">{html.escape(data['scope'])}</p>
+    <p class="case-claim"><strong>The claim:</strong> {html.escape(editorial['claim'])}</p>
+    <p class="dek"><strong>Why care:</strong> {html.escape(editorial['why'])}</p>
     <nav class="policy-switch" aria-label="Evidence policy">{policy_links}</nav>
   </header>
-  <section class="verdict-panel" aria-labelledby="finding-title">
-    <p class="eyebrow" id="finding-title">{html.escape(view)} finding</p>
-    <p class="verdict-copy">{html.escape(data['view']['label'])}</p>
-    <p><strong>What to do with that:</strong> {html.escape(data['practical_reading']['text'])}</p>
+  <section class="case-finding" aria-labelledby="finding-title">
+    <div><p class="eyebrow" id="finding-title">{html.escape(view)} finding</p>
+    <p class="verdict-copy">{html.escape(data['view']['label'])}</p></div>
+    <div><p class="eyebrow">If you use this claim</p><p>{html.escape(data['practical_reading']['text'])}</p></div>
     <p class="muted">{html.escape(data['practical_reading']['qualifier'])}</p>
+  </section>
+  <p class="scope-note"><strong>Boundary</strong><span>{html.escape(data['scope'])}</span></p>
+  <section aria-labelledby="evidence-map-title">
+    <p class="eyebrow">The evidence map</p>
+    <h2 id="evidence-map-title">How the familiar claim changes under inspection</h2>
+    <div class="evidence-map">{story}</div>
   </section>
   <section aria-labelledby="accounting-title">
     <p class="eyebrow">Lineage accounting</p>
@@ -1984,17 +2277,24 @@ def agent_page_html(document: dict[str, Any], base_url: str) -> str:
     <p class="qualification"><strong>Shared capture:</strong> {html.escape(data['dependence_warning'])}</p>
     <p class="qualification"><strong>Warrant boundary:</strong> {html.escape(data['warrant_warning'])}</p>
   </section>
+  <aside class="agent-research-cue" aria-labelledby="agent-research-title">
+    <div><p class="eyebrow">Run the test yourself</p><h2 id="agent-research-title">Give this case to your coding agent</h2>
+    <p>The public brief supplies the question, comparison target, source and span rules, dependence policy, negative-result policy, and output format.</p></div>
+    <p><a class="primary-action" href="{html.escape(base_url)}/how-we-know/{html.escape(data['slug'])}/research-brief.md">Open the agent brief</a><br><a href="{html.escape(base_url)}/agents/research-protocol.md">Read the common protocol</a></p>
+  </aside>
   <section aria-labelledby="record-title">
     <p class="eyebrow">Sentence x-ray</p>
     <h2 id="record-title">What the selected record actually supports</h2>
-    <p>Open a sentence to inspect its exact work, edition, span, retrieval, digest, and license chain.</p>
+    <p>Read the statement first. Its exact work, edition, span, retrieval, digest, and license chain—plus dependence and calculations—remain one disclosure away.</p>
     {relation_html}
+    {source_register}
   </section>
   <section aria-labelledby="ledger-title">
     <p class="eyebrow">Verify every number</p>
     <h2 id="ledger-title">Complete count ledgers</h2>
     <p>Every displayed total is a view over these typed members; no total is maintained as marketing copy.</p>
     {ledgers}
+    {audit_html}
   </section>
   <section aria-labelledby="lexicon-title">
     <p class="eyebrow">Five-line lexicon</p>
@@ -2005,6 +2305,7 @@ def agent_page_html(document: dict[str, Any], base_url: str) -> str:
     <a href="{html.escape(base_url)}/how-we-know/{html.escape(data['slug'])}/index.md">Read as Markdown</a>
     <a href="{html.escape(base_url)}/how-we-know/{html.escape(data['slug'])}/review/">Review receipt</a>
     <a href="{html.escape(base_url)}/how-we-know/{html.escape(data['slug'])}/share-card.svg">Share card</a>
+    <a href="{html.escape(base_url)}/how-we-know/{html.escape(data['slug'])}/research-brief.md">Agent research brief</a>
   </footer>
 </article>
 """.strip()

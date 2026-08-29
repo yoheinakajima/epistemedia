@@ -32,6 +32,12 @@ from .core import (
     topic_projection,
 )
 from .featured import FEATURE_VIEWS
+from .research_kit import (
+    case_research_brief,
+    proposal_template,
+    protocol_document,
+    validate_proposal,
+)
 
 DEFAULT_MAX_BODY_BYTES = 1_048_576
 DEFAULT_MAX_QUERY_BYTES = 8_192
@@ -380,6 +386,7 @@ class Gateway:
                 "status": "/v1/status",
                 "search": "/v1/search?q=...",
                 "dossiers": "/v1/dossiers",
+                "research_protocol": "/v1/research/protocol",
                 "topics": "/v1/topics",
                 "openapi": "/openapi.json",
                 "mcp": "/mcp",
@@ -417,6 +424,19 @@ class Gateway:
                     allowed=list(FEATURE_VIEWS),
                 )
             return 200, {}, dossier.envelope(catalog, policy)
+        if path == "/v1/research/protocol":
+            return 200, {}, envelope(catalog, protocol_document(DEFAULT_BASE_URL))
+        if path.startswith("/v1/research/briefs/"):
+            slug = unquote(path[len("/v1/research/briefs/"):])
+            dossier = self.dossier(slug)
+            if dossier is None:
+                return 404, {}, api_error(catalog, "not_found", f"Unknown dossier: {slug}")
+            return 200, {}, envelope(
+                catalog,
+                case_research_brief(
+                    dossier.projection(dossier.default_view), DEFAULT_BASE_URL
+                ),
+            )
         if path == "/v1/topics":
             return 200, {}, envelope(catalog, [topic.as_dict() for topic in catalog.topics])
         if path.startswith("/v1/topics/"):
@@ -639,7 +659,7 @@ class Gateway:
                 "supportedVersions": [PROTOCOL_VERSION],
                 "capabilities": {"tools": {"listChanged": False}, "resources": {"listChanged": False}},
                 "_meta": {MCP_SERVER_INFO_META: MCP_SERVER_INFO},
-                "instructions": "Read-only access to disclosure-safe projections. Preserve catalog, frontier, policy, and source metadata in downstream use.",
+                "instructions": "Read-only access to disclosure-safe projections and a non-admitting research protocol. Preserve catalog, frontier, policy, source, span, and lineage metadata in downstream use.",
                 "descriptor": mcp_descriptor(DEFAULT_MCP_URL),
                 "ttlMs": 60000,
                 "cacheScope": "public",
@@ -687,6 +707,26 @@ class Gateway:
                         }
                         for view in FEATURE_VIEWS
                     ]
+            resources.append(
+                {
+                    "uri": "epistemedia://research/protocol",
+                    "name": "agent-research-protocol",
+                    "title": "Agent research protocol",
+                    "description": "Prepare and validate an untrusted evidence proposal without submitting it.",
+                    "mimeType": "application/json",
+                }
+            )
+            if library is not None:
+                resources += [
+                    {
+                        "uri": f"epistemedia://research/brief/{dossier.slug}",
+                        "name": f"{dossier.slug}-research-brief",
+                        "title": f"Case {dossier.manifest['number']} research brief",
+                        "description": "Case-seeded scope and closure requirements; context, not evidence.",
+                        "mimeType": "application/json",
+                    }
+                    for dossier in library.dossiers
+                ]
             return {"resultType": "complete", "ttlMs": 60000, "cacheScope": "public", "resources": resources}
         if method == "resources/read":
             uri = params.get("uri", "")
@@ -744,6 +784,16 @@ class Gateway:
             if dossier is None or view not in FEATURE_VIEWS:
                 raise KeyError(uri)
             return dossier.projection(view)
+        if uri == "epistemedia://research/protocol":
+            return protocol_document(DEFAULT_BASE_URL)
+        if uri.startswith("epistemedia://research/brief/"):
+            slug = uri[len("epistemedia://research/brief/"):]
+            dossier = self.dossier(slug)
+            if dossier is None:
+                raise KeyError(slug)
+            return case_research_brief(
+                dossier.projection(dossier.default_view), DEFAULT_BASE_URL
+            )
         if uri == "epistemedia://status":
             return catalog.public_dict()
         raise KeyError(uri)
@@ -820,6 +870,33 @@ class Gateway:
             required = ["schema", "objects", "manifest"]
             missing = [key for key in required if key not in bundle]
             return {"valid": not missing, "missing": missing, "note": "Structural validation only; this does not admit or endorse the bundle."}
+        if name == "get_research_protocol":
+            return protocol_document(DEFAULT_BASE_URL)
+        if name == "prepare_research_proposal":
+            question = str(arguments.get("question", "")).strip()
+            slug_value = arguments.get("case_slug")
+            slug = str(slug_value).strip() if slug_value is not None else None
+            brief = None
+            if slug:
+                dossier = self.dossier(slug)
+                if dossier is None:
+                    raise KeyError(slug)
+                projection = dossier.projection(dossier.default_view)
+                brief = case_research_brief(projection, DEFAULT_BASE_URL)
+                question = question or projection["question"]
+            if not question:
+                raise ValueError("question or case_slug is required")
+            cutoff = str(arguments.get("cutoff", "YYYY-MM-DD"))
+            return {
+                "proposal": proposal_template(
+                    question, cutoff=cutoff, case_slug=slug
+                ),
+                "case_brief": brief,
+                "submitted": False,
+                "admitted": False,
+            }
+        if name == "validate_research_proposal":
+            return validate_proposal(arguments.get("bundle"))
         raise ValueError(f"Unknown tool: {name}")
 
     @staticmethod
@@ -857,6 +934,23 @@ def tool_definitions() -> list[dict[str, Any]]:
         tool("compare_lenses", "Compare policy-explicit projections without collapsing them.", {"slug": {"type": "string"}, "lenses": {"type": "array", "items": {"type": "string", "enum": sorted(LENSES)}}}, ["slug"]),
         tool("get_next_contribution", "List public task contracts suitable for an agent to inspect.", {}, []),
         tool("validate_bundle", "Perform non-admitting structural validation of a contribution bundle.", {"bundle": {"type": "object"}}, ["bundle"]),
+        tool("get_research_protocol", "Get the public, non-admitting agent research protocol.", {}, []),
+        tool(
+            "prepare_research_proposal",
+            "Prepare a deterministic local proposal scaffold; this does not submit it.",
+            {
+                "question": {"type": "string"},
+                "case_slug": {"type": "string"},
+                "cutoff": {"type": "string"},
+            },
+            [],
+        ),
+        tool(
+            "validate_research_proposal",
+            "Fail-closed structural and internal-closure validation; this does not verify truth or submit.",
+            {"bundle": {"type": "object"}},
+            ["bundle"],
+        ),
     ]
 
 

@@ -67,7 +67,7 @@ The complete authority contract is in [`AGENTS.md`](AGENTS.md).
 - bundle validation plus task-claim and run-receipt generation;
 - reproducible builds checked against an independent comparison build.
 
-The normative schemas and architecture describe a broader source, span, proposition, assertion, evidence, derivation, evaluation, and event model. The public compiler now instantiates two bounded, independently reviewed, application-level dossier graphs in the **How We Know** library and performs two named, policy-relative, lineage-aware evaluations over each disclosure-safe projection. It does not yet replay the normative event model into a general canonical epistemic graph, and the dossier adapters remain alpha application contracts rather than protocol standards.
+The normative schemas and architecture describe a broader source, span, proposition, assertion, evidence, derivation, evaluation, and event model. The public compiler now instantiates four bounded, independently reviewed, application-level dossier graphs in the **How We Know** library and performs two named, policy-relative, lineage-aware evaluations over each disclosure-safe projection. It does not yet replay the normative event model into a general canonical epistemic graph, and the dossier adapters remain alpha application contracts rather than protocol standards.
 
 ### Human-facing site
 
@@ -99,6 +99,7 @@ They currently preserve the same included-object inventory. Their labels and man
 - a read-only MCP server over HTTP and stdio;
 - machine-readable task contracts and contribution receipts;
 - portable contributor and trusted-integrator prompts;
+- a cold-start research protocol, case-seeded briefs, and fail-closed proposal validation;
 - deterministic public snapshots for offline use.
 
 All interfaces are intended to return the same accepted catalog, frontier, policy, compiler, object IDs, and content digests.
@@ -160,6 +161,9 @@ epistemedia audit
 epistemedia search "disclosure noninterference"
 epistemedia project governance --lens skeptical
 epistemedia repo next
+epistemedia research protocol
+epistemedia research prepare --question "YOUR QUESTION" --output proposal.json
+epistemedia research validate proposal.json
 epistemedia mcp serve
 ```
 
@@ -207,6 +211,12 @@ Useful entrypoints:
 - [`docs/agent-ops/`](docs/agent-ops/) — operating recipes;
 - [`tasks/`](tasks/) — immutable task contracts and execution state;
 - [`state/current/`](state/current/) — derived current work and audit views.
+
+To research a claim without changing the repository, point an unfamiliar coding agent at
+[`https://epistemedia.org/agents/research-protocol.md`](https://epistemedia.org/agents/research-protocol.md).
+It can prepare and validate a portable proposal bundle locally. The bundle remains untrusted intake
+with zero evidential credit; hosted submission is not deployed, and admission still requires a
+separate independent review and protected Git change.
 
 ## Target architecture
 
@@ -265,6 +275,13 @@ https://epistemedia.org/openapi.json    Static API contract
 https://epistemedia.org/mcp/server.json Static MCP descriptor
 ```
 
+Generated in the current candidate projection, pending separately authorized deployment and live
+provider read-back:
+
+```text
+https://epistemedia.org/agents/         Agent research kit
+```
+
 Reserved production destinations, published in static discovery metadata but not yet backed by a verified hosted runtime:
 
 ```text
@@ -274,7 +291,10 @@ https://mcp.epistemedia.org/mcp         Remote MCP
 
 `https://episte.media/<path>` is reserved as a shorter path-preserving sharing redirect to `https://epistemedia.org`; the redirect is not live yet and will not host a second canonical copy.
 
-The public write boundary, when introduced, will create proposals, contribution bundles, task claims, and receipts. It will not directly edit accepted pages, policies, or truth status.
+The public research kit currently prepares and validates proposals without submitting them. The
+separately governed write boundary, when introduced, will place untrusted bundles into a durable
+review queue. Queue entry will not edit accepted pages, set truth status, create evidential credit,
+or authorize its own review, pull request, or merge.
 
 ## Contributing
 
