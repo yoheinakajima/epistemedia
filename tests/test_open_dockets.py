@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -242,6 +243,10 @@ def test_cli_prepares_submission_but_performs_no_git_or_review_action(
         lambda value: value["events"][0].update(note="Contact alice@example.org"),
         lambda value: value["events"][0].update(note="x" * 2_049),
         lambda value: value["failures"].append("x" * 100_000),
+        lambda value: (
+            value["failures"].extend(["x" * 200] * 25),
+            value["interventions"].extend(["y" * 200] * 25),
+        ),
         lambda value: value["events"][0].update(note="github_pat_" + "a" * 24),
         lambda value: value["events"][0].update(artifact_sha256="not-a-digest"),
         lambda value: value["events"].append(copy.deepcopy(value["events"][0])),
@@ -288,6 +293,20 @@ def test_reviewer_identity_and_artifact_set_are_typed_and_exact(tmp_path: Path) 
     _, errors = load_open_dockets(tmp_path)
     assert any("agent_id must be a meaningful string" in error for error in errors)
     assert any("source-artifact set does not exactly match" in error for error in errors)
+
+
+def test_toolchain_separation_normalizes_case_spacing_and_punctuation(tmp_path: Path) -> None:
+    destination = promote(tmp_path)
+    proposal = json.loads((destination / "proposal.json").read_text())
+    review_path = destination / "review.json"
+    review = json.loads(review_path.read_text())
+    review["reviewer"]["toolchain"] = [
+        re.sub(r"\s+", "-", item.upper())
+        for item in proposal["runtime"]["toolchain"]
+    ]
+    review_path.write_text(json.dumps(review, indent=2, sort_keys=True) + "\n")
+    _, errors = load_open_dockets(tmp_path)
+    assert any("toolchain must not equal" in error for error in errors)
 
 
 def test_missing_span_review_fails_closed(tmp_path: Path) -> None:
@@ -426,6 +445,16 @@ def test_sensitive_mixed_paths_never_execute_candidate_code() -> None:
     assert classify_paths(["README.md"]) == "normal"
 
 
+def test_ci_bootstrap_rejects_docket_paths_until_classifier_is_accepted() -> None:
+    workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
+    assert "if [[ -f validator/ops/classify_docket_pr.py ]]" in workflow
+    assert "grep -q '^research/open-dockets/'" in workflow
+    assert "accepted base lacks the docket classifier; rejecting sensitive diff" in workflow
+    assert workflow.index("grep -q '^research/open-dockets/'") < workflow.index(
+        'echo "mode=normal"'
+    )
+
+
 def test_trusted_post_check_workflow_can_only_approve_exact_promotions() -> None:
     workflow = (ROOT / ".github" / "workflows" / "approve-open-docket-promotion.yml").read_text()
     assert "workflow_run:" in workflow
@@ -436,6 +465,34 @@ def test_trusted_post_check_workflow_can_only_approve_exact_promotions() -> None
     assert "gh pr merge" not in workflow
     assert "${#paths[@]} -eq 4" in workflow
     assert "pull_request_target" not in workflow
+
+
+def test_independent_fetch_rejects_private_dns_resolution(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    monkeypatch.setattr(
+        promotion_validator.socket,
+        "getaddrinfo",
+        lambda *args, **kwargs: [
+            (promotion_validator.socket.AF_INET, 1, 6, "", ("127.0.0.1", 443))
+        ],
+    )
+    with pytest.raises(ValueError, match="non-public address"):
+        promotion_validator.fetch_public("https://example.org/source")
+
+
+def test_independent_fetch_never_follows_source_redirects() -> None:
+    handler = promotion_validator.NoSourceRedirect()
+    request = promotion_validator.urllib.request.Request("https://example.org/source")
+    with pytest.raises(ValueError, match="final public carrier"):
+        handler.redirect_request(
+            request,
+            None,
+            302,
+            "Found",
+            {},
+            "http://127.0.0.1/private",
+        )
 
 
 def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
@@ -603,3 +660,22 @@ def test_submission_guide_and_open_dockets_have_read_only_interface_parity(
     assert {"get_docket_submission_guide", "list_open_dockets", "get_open_docket"} <= names
     assert all(tool["annotations"]["readOnlyHint"] is True for tool in tool_definitions())
     assert not any(word in name for name in names for word in ("submit", "admit", "merge"))
+
+
+def test_markdown_projection_escapes_raw_html_and_uses_a_safe_dynamic_fence(
+    tmp_path: Path,
+) -> None:
+    promote(tmp_path)
+    dockets, errors = load_open_dockets(tmp_path)
+    assert errors == []
+    projection = dockets[0].projection("https://epistemedia.org")
+    dangerous = "bounded </script> text\n```\n# injected heading"
+    projection["sources"][0]["exact_spans"][0]["quote"] = dangerous
+    markdown = docket_markdown(projection)
+    assert "</script>" not in markdown
+    assert "\n# injected heading" not in markdown.split("## Complete machine record", 1)[0]
+    tail = markdown.split("## Complete machine record", 1)[1]
+    opening = next(line for line in tail.splitlines() if line.endswith("json"))
+    fence = opening.removesuffix("json")
+    encoded = tail.split(opening, 1)[1].split(fence, 1)[0].strip()
+    assert json.loads(encoded)["sources"][0]["exact_spans"][0]["quote"] == dangerous

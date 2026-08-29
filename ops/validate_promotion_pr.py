@@ -7,17 +7,28 @@ import argparse
 import base64
 import hashlib
 import html
+import ipaddress
 import json
 import os
 import re
+import socket
 import subprocess
 import tempfile
 import urllib.request
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
 from epistemedia.open_dockets import load_open_dockets, validate_submission_directory
+
+
+class NoSourceRedirect(urllib.request.HTTPRedirectHandler):
+    """Require proposals to name the final carrier instead of following redirects."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise ValueError(
+            f"source URL redirects; record the final public carrier: {req.full_url}"
+        )
 
 
 def git(candidate: Path, *args: str) -> str:
@@ -65,11 +76,28 @@ def github_file(path: str, ref: str) -> bytes:
 
 
 def fetch_public(url: str) -> bytes:
+    parsed = urlsplit(url)
+    if parsed.scheme not in {"http", "https"} or not parsed.hostname:
+        raise ValueError(f"source URL is not public HTTP(S): {url}")
+    addresses = {
+        ipaddress.ip_address(record[4][0])
+        for record in socket.getaddrinfo(
+            parsed.hostname,
+            parsed.port or (443 if parsed.scheme == "https" else 80),
+            type=socket.SOCK_STREAM,
+        )
+    }
+    if not addresses or any(not address.is_global for address in addresses):
+        raise ValueError(f"source URL resolves to a non-public address: {url}")
+
     request = urllib.request.Request(
         url,
         headers={"accept": "*/*", "user-agent": "epistemedia-independent-promotion-check/0.1"},
     )
-    with urllib.request.urlopen(request, timeout=45) as response:
+    opener = urllib.request.build_opener(
+        urllib.request.ProxyHandler({}), NoSourceRedirect()
+    )
+    with opener.open(request, timeout=20) as response:
         value = response.read(25_000_001)
     if len(value) > 25_000_000:
         raise ValueError(f"independent source retrieval exceeds 25MB: {url}")
@@ -179,6 +207,7 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
                 item["source_id"]: item for item in review.get("source_reviews", [])
                 if isinstance(item, dict) and isinstance(item.get("source_id"), str)
             }
+            aggregate_retrieved_bytes = 0
             for source in proposal.get("sources", []):
                 source_id = source.get("source_id")
                 try:
@@ -186,6 +215,10 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
                 except Exception as exc:
                     errors.append(f"independent CI retrieval failed for {source_id}: {exc}")
                     continue
+                aggregate_retrieved_bytes += len(artifact)
+                if aggregate_retrieved_bytes > 100_000_000:
+                    errors.append("independent CI aggregate source retrieval exceeds 100MB")
+                    break
                 digest = hashlib.sha256(artifact).hexdigest()
                 if digest != source_reviews.get(source_id, {}).get("artifact_sha256"):
                     errors.append(f"independent CI artifact digest mismatch for {source_id}")

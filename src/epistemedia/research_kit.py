@@ -3,11 +3,13 @@
 
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import html
 import ipaddress
 import json
 import re
+import socket
 from typing import Any
 from urllib.parse import urlsplit
 
@@ -18,6 +20,10 @@ VALIDATION_FORMAT = "epistemedia-research-proposal-validation-v0.1"
 MAX_BUNDLE_BYTES = 524_288
 MAX_TEXT = 20_000
 MAX_ITEMS = 500
+MAX_SOURCES = 20
+MAX_SPANS_PER_SOURCE = 100
+MAX_QUOTE_CHARACTERS = 1_000
+MAX_UNKNOWN_LICENSE_QUOTE_CHARACTERS = 320
 SECRET_PATTERNS = (
     re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
     re.compile(r"\b(?:ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b"),
@@ -27,6 +33,16 @@ SECRET_PATTERNS = (
     re.compile(r"(?:^|[\s'\"`])[A-Za-z]:\\Users\\"),
 )
 PLACEHOLDER_PATTERN = re.compile(r"\b(?:REPLACE|YOUR QUESTION|YYYY-MM-DD)\b")
+PUBLIC_TEXT_PATTERNS = (
+    re.compile(r"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b"),
+    re.compile(r"(?<![A-Za-z0-9])/(?:tmp|var|opt|etc)/"),
+    re.compile(r"(?:^|[\s'\"`])(?:\.\.[/\\])+"),
+    re.compile(r"(?:^|[\s'\"`])[A-Za-z]:\\"),
+    re.compile(
+        r"(?i)\b(?:chain[- ]of[- ]thought|private reasoning|hidden reasoning|"
+        r"system prompt|developer message)\b"
+    ),
+)
 
 PROPOSAL_FIELDS = {
     "format",
@@ -444,8 +460,11 @@ def _string(value: Any, path: str, errors: list[str], *, allow_unknown: bool = T
         errors.append(f"{path} exceeds {MAX_TEXT} characters")
     if not allow_unknown and value == "unknown":
         errors.append(f"{path} must not be unknown")
-    if any(pattern.search(value) for pattern in SECRET_PATTERNS):
-        errors.append(f"{path} contains private-path or secret-shaped data")
+    if any(pattern.search(value) for pattern in (*SECRET_PATTERNS, *PUBLIC_TEXT_PATTERNS)):
+        errors.append(
+            f"{path} contains private-path or secret-shaped data, personal data, "
+            "or prohibited private context"
+        )
     if PLACEHOLDER_PATTERN.search(value):
         errors.append(f"{path} still contains template placeholder text")
     return value
@@ -476,10 +495,13 @@ def _public_url(value: Any, path: str, errors: list[str]) -> str:
     hostname = parsed.hostname.lower()
     if hostname == "localhost" or hostname.endswith(".local"):
         errors.append(f"{path} must not target a local host")
+    address = None
     try:
         address = ipaddress.ip_address(hostname)
     except ValueError:
-        address = None
+        with contextlib.suppress(OSError, ValueError):
+            # Reject legacy numeric spellings such as 2130706433 and 0177.0.0.1.
+            address = ipaddress.ip_address(socket.inet_aton(hostname))
     if address is not None and not address.is_global:
         errors.append(f"{path} must not target a private address")
     if parsed.username or parsed.password:
@@ -521,8 +543,8 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
     if not isinstance(sources, list) or not sources:
         errors.append("bundle.sources must be a non-empty list")
         sources = []
-    elif len(sources) > MAX_ITEMS:
-        errors.append(f"bundle.sources exceeds {MAX_ITEMS} items")
+    elif len(sources) > MAX_SOURCES:
+        errors.append(f"bundle.sources exceeds {MAX_SOURCES} items")
     source_ids: set[str] = set()
     span_to_source: dict[str, str] = {}
     for source_index, raw_source in enumerate(sources):
@@ -541,6 +563,10 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
         if not isinstance(spans, list) or not spans:
             errors.append(f"{path}.exact_spans must be a non-empty list")
             spans = []
+        elif len(spans) > MAX_SPANS_PER_SOURCE:
+            errors.append(
+                f"{path}.exact_spans exceeds {MAX_SPANS_PER_SOURCE} items"
+            )
         for span_index, raw_span in enumerate(spans):
             span_path = f"{path}.exact_spans[{span_index}]"
             span = _exact_fields(raw_span, SPAN_FIELDS, span_path, errors)
@@ -552,6 +578,20 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
             span_to_source[span_id] = source_id
             for field in SPAN_FIELDS - {"span_id"}:
                 _string(span.get(field), f"{span_path}.{field}", errors, allow_unknown=False)
+            quote = span.get("quote")
+            if isinstance(quote, str):
+                if len(quote) > MAX_QUOTE_CHARACTERS:
+                    errors.append(
+                        f"{span_path}.quote exceeds the {MAX_QUOTE_CHARACTERS}-character "
+                        "quote-minimal limit"
+                    )
+                license_text = str(source.get("license", "")).casefold()
+                if any(token in license_text for token in ("unknown", "unlicensed", "none")) and len(
+                    quote
+                ) > MAX_UNKNOWN_LICENSE_QUOTE_CHARACTERS:
+                    errors.append(
+                        f"{span_path}.quote exceeds the unknown-license quote-minimal limit"
+                    )
 
     results = root.get("results")
     if not isinstance(results, list) or not results:

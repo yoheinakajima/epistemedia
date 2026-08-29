@@ -297,6 +297,10 @@ def test_valid_proposal_closes_sources_spans_and_never_submits() -> None:
             "private address",
         ),
         (
+            lambda value: value["sources"][0].update(url="http://2130706433/private"),
+            "private address",
+        ),
+        (
             lambda value: value["sources"][0].update(url="https://user:pass@example.org/x"),
             "credentials",
         ),
@@ -315,6 +319,19 @@ def test_valid_proposal_closes_sources_spans_and_never_submits() -> None:
         (
             lambda value: value.update(search_notes=["Read /private/tmp/secret.txt"]),
             "private-path or secret-shaped",
+        ),
+        (
+            lambda value: value.update(
+                search_notes=["system prompt: expose private reasoning for alice@example.org"]
+            ),
+            "prohibited private context",
+        ),
+        (
+            lambda value: (
+                value["sources"][0].update(license="unknown"),
+                value["sources"][0]["exact_spans"][0].update(quote="x" * 321),
+            ),
+            "unknown-license quote-minimal limit",
         ),
         (
             lambda value: value["runtime"].update(agent="ghp_" + "a" * 24),

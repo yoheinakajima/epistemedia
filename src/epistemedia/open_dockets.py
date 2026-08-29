@@ -20,7 +20,8 @@ DOCKET_FORMAT = "epistemedia-open-docket-v0.1"
 PROMOTION_RECEIPT_FORMAT = "epistemedia-open-docket-promotion-receipt-v0.1"
 SUBMISSION_ROOT = Path("research/open-dockets/submissions")
 ACCEPTED_ROOT = Path("research/open-dockets")
-MAX_TRACE_EVENTS = 250
+MAX_TRACE_EVENTS = 100
+MAX_TRACE_FREE_TEXT_CHARACTERS = 8_192
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 GIT_OBJECT_ID = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -84,6 +85,16 @@ def _contains_disallowed_text(value: Any) -> bool:
     return False
 
 
+def _normalized_toolchain(values: Any) -> set[str]:
+    if not isinstance(values, list):
+        return set()
+    return {
+        " ".join(re.sub(r"[^a-z0-9]+", " ", item.casefold()).split())
+        for item in values
+        if isinstance(item, str) and item.strip()
+    }
+
+
 def validate_action_trace(trace: Any) -> list[str]:
     errors: list[str] = []
     if not isinstance(trace, dict):
@@ -111,7 +122,7 @@ def validate_action_trace(trace: Any) -> list[str]:
             if not isinstance(event.get(field), str) or not event[field].strip():
                 errors.append(f"{path}.{field} must be a non-empty string")
             else:
-                limit = 2_048 if field == "target" else 512
+                limit = 2_048 if field == "target" else 240
                 if len(event[field]) > limit:
                     errors.append(f"{path}.{field} exceeds {limit} characters")
         artifact = event.get("artifact_sha256")
@@ -122,7 +133,7 @@ def validate_action_trace(trace: Any) -> list[str]:
             isinstance(item, str) and item.strip() for item in trace.get(key, [])
         ):
             errors.append(f"trace.{key} must be a list of non-empty strings")
-        elif len(trace[key]) > 100 or any(len(item) > 512 for item in trace[key]):
+        elif len(trace[key]) > 25 or any(len(item) > 240 for item in trace[key]):
             errors.append(f"trace.{key} exceeds disclosure-safe item or size limits")
     cost = trace.get("cost")
     if not isinstance(cost, dict) or set(cost) != {"amount", "currency", "basis"}:
@@ -135,8 +146,29 @@ def validate_action_trace(trace: Any) -> list[str]:
                 errors.append(f"trace.cost.{key} must be a non-empty string")
     if _contains_disallowed_text(trace):
         errors.append("trace contains private-context, secret-shaped, or prohibited reasoning text")
-    if len(canonical_json(trace)) > 131_072:
-        errors.append("trace exceeds 131072 bytes")
+    free_text = [
+        value
+        for event in events
+        if isinstance(event, dict)
+        for key, value in event.items()
+        if key not in {"sequence", "artifact_sha256"} and isinstance(value, str)
+    ]
+    free_text.extend(
+        item
+        for key in ("failures", "interventions")
+        for item in trace.get(key, [])
+        if isinstance(item, str)
+    )
+    if isinstance(cost, dict):
+        free_text.extend(
+            value for value in cost.values() if isinstance(value, str)
+        )
+    if sum(len(value) for value in free_text) > MAX_TRACE_FREE_TEXT_CHARACTERS:
+        errors.append(
+            f"trace free text exceeds {MAX_TRACE_FREE_TEXT_CHARACTERS} characters"
+        )
+    if len(canonical_json(trace)) > 32_768:
+        errors.append("trace exceeds 32768 bytes")
     return errors
 
 
@@ -490,7 +522,9 @@ def _validate_review(path: Path, bundle: dict[str, Any], intake: dict[str, Any])
             isinstance(item, str) and SHA256.fullmatch(item) for item in artifacts
         ):
             errors.append("reviewer source artifacts must be non-empty SHA-256 values")
-        if set(toolchain or []) == set(bundle.get("runtime", {}).get("toolchain", [])):
+        if _normalized_toolchain(toolchain) == _normalized_toolchain(
+            bundle.get("runtime", {}).get("toolchain", [])
+        ):
             errors.append("reviewer toolchain must not equal the author toolchain")
     source_reviews = review.get("source_reviews")
     expected_sources = {
@@ -736,6 +770,21 @@ def load_open_dockets(root: Path) -> tuple[list[OpenDocket], list[str]]:
 
 
 def docket_markdown(data: dict[str, Any]) -> str:
+    raw_data = data
+
+    def safe_text(value: str) -> str:
+        return html.escape(" ".join(value.split()), quote=False).replace("`", "&#96;")
+
+    def safe_tree(value: Any) -> Any:
+        if isinstance(value, str):
+            return safe_text(value)
+        if isinstance(value, list):
+            return [safe_tree(item) for item in value]
+        if isinstance(value, dict):
+            return {key: safe_tree(item) for key, item in value.items()}
+        return value
+
+    data = safe_tree(data)
     lines = [
         f"# {data['title']}",
         "",
@@ -832,15 +881,24 @@ def docket_markdown(data: dict[str, Any]) -> str:
     )
     lines.extend(["", "## Limitations", "", *[f"- {item}" for item in data["limitations"]], ""])
     lines.extend(["## Unresolved", "", *[f"- {item}" for item in data["unresolved"]], ""])
+    machine_record = json.dumps(raw_data, indent=2, ensure_ascii=False, sort_keys=True)
+    machine_record = (
+        machine_record.replace("&", "\\u0026").replace("<", "\\u003c").replace(">", "\\u003e")
+    )
+    longest_backtick_run = max(
+        (len(match.group(0)) for match in re.finditer(r"`+", machine_record)),
+        default=0,
+    )
+    fence = "`" * max(3, longest_backtick_run + 1)
     lines.extend(
         [
             "## Complete machine record",
             "",
             "The complete projection below preserves every field represented in the JSON twin.",
             "",
-            "```json",
-            json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True),
-            "```",
+            f"{fence}json",
+            machine_record,
+            fence,
             "",
         ]
     )
