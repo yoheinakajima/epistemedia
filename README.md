@@ -6,6 +6,8 @@
 
 **Status:** public alpha with the canonical static site live at <https://epistemedia.org/> and HTTPS enforced. `www.epistemedia.org` redirects to the canonical origin. The repository, local site, API/MCP implementation, CLI, governance substrate, and deterministic build pipeline are implemented; the `episte.media` sharing redirect and hosted API/MCP runtime have not passed production read-back and are not asserted as live.
 
+The owner-approved, versioned public mission is [`Knowledge that can show its work`](catalog/mission.json). Its human projection is compiled at [`/about/`](https://epistemedia.org/about/) after deployment; its machine twin preserves the same version, current-state boundaries, and amendment status.
+
 ## What Epistemedia is
 
 Epistemedia is an early reference implementation and public network built toward the **Epistemic Mesh** protocol.
@@ -238,6 +240,8 @@ The implemented alpha still compiles accepted, disclosure-eligible repository ar
 
 The self-describing repository corpus remains available through **Explore**. Case 001 remains the homepage lead, while the **How We Know** index exposes Cases 001–004 as distinct evidence files derived from the same accepted Git history without replacing it as canonical truth.
 
+Those four cases now form an explicit failure-mode map: overgeneralization, false independence, a missing comparison class, and scope inflation. This is an editorial navigation layer over accepted dossiers, not a new evidential result or a stored verdict.
+
 Read more:
 
 - [`docs/architecture.md`](docs/architecture.md)
@@ -245,6 +249,7 @@ Read more:
 - [`docs/interfaces.md`](docs/interfaces.md)
 - [`docs/brand.md`](docs/brand.md)
 - [`docs/roadmap.md`](docs/roadmap.md)
+- [`catalog/mission.json`](catalog/mission.json) — versioned mission source
 
 ## Repository map
 

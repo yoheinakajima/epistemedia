@@ -1,0 +1,158 @@
+{
+  "format": "epistemedia-mission-v0.3",
+  "version": "0.3",
+  "title": "Knowledge that can show its work",
+  "status": "owner-approved public project statement",
+  "governance_note": "Versioned and amendable through accepted Git history. This mission is a project statement, not evidence, policy, constitution, or a stored verdict.",
+  "problem": [
+    "Claims arrive without their history. Ten articles confirm something that traces back to one whisper. A decade of public-health advice rests partly on an unpublished manuscript nobody can produce. A statistic everyone repeats turns out to mean something its own author never claimed.",
+    "This was always true. AI made it urgent. Writing a confident claim now costs almost nothing, so unwarranted assertions are flooding every channel we have, and the institutions built to vouch for knowledge cannot keep up.",
+    "The same machines can afford something no human ever could: checking. Fetching, tracing, and comparing are becoming cheap enough to challenge reputation-only trust."
+  ],
+  "building": [
+    "Encyclopedias, journals, and feeds usually foreground the conclusion. The evidence, disputes, failed replications, and revisions are harder to inspect, leaving readers with a verdict whose history is expensive to reconstruct.",
+    "Epistemedia stores the process: sources pinned to exact editions and quote-minimal spans; claims; typed relations; data lineage; unresolved records; and named policies. A page here is not the canonical source of truth. It is a reproducible projection of an accepted record under a stated policy.",
+    "No truth-like status is intrinsic to a claim. Public readings are compiled from accepted records under policies you can inspect and compare."
+  ],
+  "consequences": [
+    {
+      "title": "Evidence becomes countable",
+      "text": "Within a bounded case, named evidence units and collapse rules answer how much evidence is present without substituting paper titles or repetition counts."
+    },
+    {
+      "title": "Disagreement becomes debuggable",
+      "text": "Two readings of the same record can differ, and the policy choices producing that difference remain inspectable."
+    },
+    {
+      "title": "Nobody has to win the One True Page",
+      "text": "People can share a record, run different readings, and publish each reading with a receipt."
+    }
+  ],
+  "case_map_note": "These four failure modes are an editorial map of the first library, not a complete taxonomy and not stored evidence statuses.",
+  "cases": [
+    {
+      "number": "001",
+      "slug": "corrections-and-familiarity-backfire",
+      "failure_mode": "Overgeneralization",
+      "familiar_claim": "Repeating a myth while correcting it makes people believe it more.",
+      "bounded_finding": "Some tested formats and contexts report backfire, but the record does not warrant a blanket rule against repeating misinformation inside corrections.",
+      "defining_count": "10 apparent support assertions → 4 target-comparable participant-data roots + 1 unresolved lineage → 12 counterevidence roots",
+      "unresolved_boundary": "The unpublished 2007 Skurnik, Yoon, and Schwarz flu-flyer manuscript remains unavailable."
+    },
+    {
+      "number": "002",
+      "slug": "agent-citation-lineage",
+      "failure_mode": "False independence",
+      "familiar_claim": "Eight research agents agreed, so the answer looked independently corroborated.",
+      "bounded_finding": "Eight captured reports reused overlapping prompt, capture, source, method, and derivation lineages; report agreement alone adds no independent warrant.",
+      "defining_count": "8 reports → 30 URL strings → 11 source works → 7 candidate warrants → 0 independently confirmed warrant roots",
+      "unresolved_boundary": "34 citation occurrences remain unresolved in this historical pilot, which does not estimate current or universal agent behavior."
+    },
+    {
+      "number": "003",
+      "slug": "gpt-4-bar-exam-percentile",
+      "failure_mode": "Missing comparison class",
+      "familiar_claim": "GPT-4 scored around the 90th percentile on the bar exam.",
+      "bounded_finding": "The historical simulated score is documented; its percentile changes with the administration and comparison population.",
+      "defining_count": "1 historical model run · 3 official administration sensitivities · 7 rooted evidence units",
+      "unresolved_boundary": "Three boundaries remain unresolved; the file does not establish current behavior, practicing-lawyer quality, or general legal competence."
+    },
+    {
+      "number": "004",
+      "slug": "mehrabian-7-38-55",
+      "failure_mode": "Scope inflation",
+      "familiar_claim": "Only 7% of communication is verbal; 93% is nonverbal.",
+      "bounded_finding": "The weighting is a narrow historical cross-study proposal from experiments about inconsistent feelings and attitudes, not a universal communication law.",
+      "defining_count": "2 original experiments · 5 participant-data roots · 3 zero-credit propagation objects",
+      "unresolved_boundary": "The exact origin of the .07 coefficient remains unresolved."
+    }
+  ],
+  "principles": [
+    {
+      "title": "Show the work",
+      "text": "A conclusion you cannot inspect is a rumor with good posture."
+    },
+    {
+      "title": "Echoes are not voices",
+      "text": "Ten repetitions of one source are one source."
+    },
+    {
+      "title": "Every number has a list",
+      "text": "No displayed total is maintained as marketing copy."
+    },
+    {
+      "title": "Nobody grades their own work",
+      "text": "Contributors and authoring agents do not supply their own independent review."
+    },
+    {
+      "title": "The record is shared; the reading is yours",
+      "text": "We ask readers to inspect the accepted record and the named policy, not to treat one projection as global truth."
+    },
+    {
+      "title": "Nothing gets lost quietly",
+      "text": "Accepted history is append-only, so what was knowable and when remains answerable."
+    },
+    {
+      "title": "Fork us if we fail you",
+      "text": "Forking is part of the constitutional amendment path, and sovereign realms may accept, reject, or reinterpret imported records."
+    }
+  ],
+  "not_this": [
+    {
+      "title": "Not a global fact-checker",
+      "text": "Epistemedia publishes bounded, policy-relative evaluations. It does not stamp one universal truth label onto a claim."
+    },
+    {
+      "title": "Not an arbiter of truth",
+      "text": "The shared record underneath disagreement is the product; a single final answer is not."
+    },
+    {
+      "title": "Not another One True Page",
+      "text": "People who disagree can pin the same record and publish competing readings whose differences remain inspectable."
+    }
+  ],
+  "direction": [
+    "Agents will do much of the world’s reading and research. Before an agent asserts a fact, it should be able to inspect that claim’s lineage the way a browser checks a certificate: routinely and with a visible failure state.",
+    "Communities that agree on nothing else should still be able to share evidence without inheriting each other’s conclusions.",
+    "We will know the federation is working when a sovereign realm exists that we disagree with, uses the shared protocol, pins the same record, and publishes readings we would not sign."
+  ],
+  "participation": [
+    {
+      "commitment": "Ten minutes",
+      "title": "Try to break a case",
+      "text": "Open a source span, inspect a count, and report a crack. Finding one is a contribution.",
+      "href": "/how-we-know/"
+    },
+    {
+      "commitment": "An afternoon",
+      "title": "Run a claim through the research kit",
+      "text": "Give the public protocol and a case-seeded brief to your coding agent. The output remains an untrusted proposal with zero evidential credit.",
+      "href": "/agents/"
+    },
+    {
+      "commitment": "A weekend",
+      "title": "Propose a missing relation or lens",
+      "text": "Use the open repository and protected contribution path. A proposal cannot admit or approve itself.",
+      "href": "https://github.com/yoheinakajima/epistemedia"
+    },
+    {
+      "commitment": "The long game",
+      "title": "Run a realm",
+      "text": "Apply your field’s standards to the shared substrate while preserving provenance and your right to disagree.",
+      "href": "/docs/"
+    }
+  ],
+  "current_state": {
+    "summary": "Four cases. One realm. Version zero.",
+    "repository_open": true,
+    "compiler_running": true,
+    "governance_open": true,
+    "four_case_library_live_after_deployment_readback": true,
+    "cold_start_research_kit_live_after_deployment_readback": true,
+    "hosted_api_live": false,
+    "hosted_mcp_live": false,
+    "authenticated_submission_queue_live": false,
+    "second_realm_live": false,
+    "note": "The repository, deterministic compiler, four reviewed cases, and public read-only research kit are implemented. The hosted API, hosted MCP service, authenticated submission queue, and second realm are not live."
+  }
+}

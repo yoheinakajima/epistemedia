@@ -2,7 +2,9 @@
 
 ## For a reader
 
-Start at the human site and choose a topic. A topic page is a reproducible projection, not an anonymously edited canonical article. Inspect its realm, frontier, policy, source objects, and manifest. The current experimental lens routes preserve the same included-object inventory, so do not interpret their different labels or manifest IDs as materially different editorial views. `encyclopedia` is the public default until another lens has observable selection or semantic differences.
+Start with the four-case failure-mode map on the homepage or **How We Know** index: overgeneralization, false independence, a missing comparison class, and scope inflation. Each case page is a reproducible projection, not an anonymously edited canonical article. Inspect its frontier, policy, source objects, and manifest. The versioned public mission and current-state limits are compiled separately at `/about/`.
+
+The self-describing **Substrate** topic pages remain a repository projection. Their experimental lens routes preserve the same included-object inventory, so do not interpret different labels or manifest IDs there as materially different editorial views. `encyclopedia` is the public default until another lens has observable selection or semantic differences.
 
 ## For an agent consuming knowledge
 
@@ -34,3 +36,5 @@ Use the static OpenAPI document with the local gateway, local stdio MCP for agen
 ## Current public corpus
 
 Epistemedia still dogfoods itself through **Explore**, where the self-describing corpus compiles the project’s constitution, architecture, policies, task contracts, implementation, tests, security model, governance, and release records. Case 001 remains the homepage lead; the **How We Know** index lists four independently reviewed evidence files, each compiled into exact-source and two policy-relative projections. This is a bounded application-level library, not the normative replay graph or broad knowledge coverage. Hosted API and MCP remain unverified until external read-back proves them.
+
+The public mission is an owner-approved, versioned project statement. It is not evidence, policy, constitution, or a stored verdict. Its current-state flags must continue to distinguish implemented local interfaces from externally verified hosted services.

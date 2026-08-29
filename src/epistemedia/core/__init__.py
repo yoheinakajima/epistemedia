@@ -56,6 +56,12 @@ def audit_public(root: Path, public: Path) -> list[str]:
         public / "openapi.json",
         public / ".well-known" / "epistemedia.json",
         public / "mcp" / "server.json",
+        public / "about" / "index.html",
+        public / "about" / "index.md",
+        public / "about" / "index.json",
+        public / "about" / "reader-check" / "index.html",
+        public / "about" / "reader-check" / "index.md",
+        public / "about" / "reader-check" / "index.json",
     ]
     for path in required:
         if not path.exists():
