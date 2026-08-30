@@ -28,6 +28,25 @@
       "research/how-we-know/**"
     ]
   },
+  "evidence": [
+    {
+      "kind": "failed-cold-start-submission-binding",
+      "repository": "yoheinakajima/epistemedia",
+      "pull_request": 69,
+      "head": "91019affb065cc78d2190e6449121e9a1350cba6",
+      "tree": "0c2e418e6ec1501e59000955dcdaec78ee156a28",
+      "files": {
+        "research/open-dockets/submissions/does-the-llama-4-community-license-qualify-as-695672767c/PR_BODY.md": "faaf39a947ce32b6367ca9c21928d878df71283f65a94d2d1923da7f9d11e162",
+        "research/open-dockets/submissions/does-the-llama-4-community-license-qualify-as-695672767c/intake.json": "9847912c4836bef7736970e6f0ff86d6d14794add1401a37078319b6e18099d6",
+        "research/open-dockets/submissions/does-the-llama-4-community-license-qualify-as-695672767c/proposal.json": "a89a5f2966dae1e1f197685ddde9f32a53f891ffd5d9193fb13ba61c6c1a0a70"
+      }
+    },
+    {
+      "kind": "canonical-cold-start-prompt",
+      "text": "Open https://epistemedia.org/agents/submit/. Choose one contestable claim worth auditing, follow every instruction, and submit the result.",
+      "sha256": "ec8200e61a3c8d94c2c62e5d55d707564914276aa45ec600d4095772141eb1ef"
+    }
+  ],
   "required_evaluation": [
     "independent governance review loaded from the accepted base branch before implementation approval",
     "exact preservation of PR 69 and its three contributor-authored queue files as the immutable failed first-pilot record, with no repair, promotion, merge, or warrant credit",
