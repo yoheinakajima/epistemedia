@@ -3,11 +3,13 @@
 
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import html
 import ipaddress
 import json
 import re
+import socket
 from typing import Any
 from urllib.parse import urlsplit
 
@@ -18,6 +20,10 @@ VALIDATION_FORMAT = "epistemedia-research-proposal-validation-v0.1"
 MAX_BUNDLE_BYTES = 524_288
 MAX_TEXT = 20_000
 MAX_ITEMS = 500
+MAX_SOURCES = 20
+MAX_SPANS_PER_SOURCE = 100
+MAX_QUOTE_CHARACTERS = 1_000
+MAX_UNKNOWN_LICENSE_QUOTE_CHARACTERS = 320
 SECRET_PATTERNS = (
     re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
     re.compile(r"\b(?:ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,})\b"),
@@ -27,6 +33,16 @@ SECRET_PATTERNS = (
     re.compile(r"(?:^|[\s'\"`])[A-Za-z]:\\Users\\"),
 )
 PLACEHOLDER_PATTERN = re.compile(r"\b(?:REPLACE|YOUR QUESTION|YYYY-MM-DD)\b")
+PUBLIC_TEXT_PATTERNS = (
+    re.compile(r"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b"),
+    re.compile(r"(?<![A-Za-z0-9])/(?:tmp|var|opt|etc)/"),
+    re.compile(r"(?:^|[\s'\"`])(?:\.\.[/\\])+"),
+    re.compile(r"(?:^|[\s'\"`])[A-Za-z]:\\"),
+    re.compile(
+        r"(?i)\b(?:chain[- ]of[- ]thought|private reasoning|hidden reasoning|"
+        r"system prompt|developer message)\b"
+    ),
+)
 
 PROPOSAL_FIELDS = {
     "format",
@@ -35,6 +51,8 @@ PROPOSAL_FIELDS = {
     "cutoff",
     "scope",
     "results",
+    "calculations",
+    "dependencies",
     "sources",
     "counterevidence",
     "negative_results",
@@ -56,6 +74,9 @@ RESULT_FIELDS = {
     "interpretation",
     "warrant",
     "uncertainty",
+    "calculation_ids",
+    "calculation_status",
+    "dependency_ids",
 }
 REPORTED_VALUE_FIELDS = {"numerator", "denominator", "rate", "comparison"}
 RESULT_SCOPE_FIELDS = {
@@ -96,6 +117,22 @@ LINEAGE_FIELDS = {
 }
 RUNTIME_FIELDS = {"started_at", "completed_at", "agent", "toolchain"}
 LICENSE_FIELDS = {"bundle", "source_material"}
+CALCULATION_FIELDS = {
+    "calculation_id",
+    "equation",
+    "inputs",
+    "output",
+    "uncertainty",
+    "depends_on",
+}
+CALCULATION_INPUT_FIELDS = {"name", "value", "source_id", "span_id"}
+DEPENDENCY_FIELDS = {
+    "dependency_id",
+    "kind",
+    "description",
+    "source_ids",
+    "exact_span_ids",
+}
 
 
 def _digest(value: Any) -> str:
@@ -109,14 +146,17 @@ def submission_status(base_url: str) -> dict[str, Any]:
     return {
         "format": "epistemedia-research-submission-status-v0.1",
         "hosted_submission_available": False,
-        "queue_status": "not-deployed",
+        "github_submission_available": True,
+        "queue_status": "github-draft-pr-pilot",
         "intended_authority": "EM-0038",
+        "github_pilot_authority": "EM-0040",
         "public_mcp_mode": "read-only",
         "proposal_credit": "zero until independent source, span, derivation, and lineage review",
         "next_step": (
-            "Prepare and validate a portable proposal bundle. Keep it locally or attach it "
-            "to a human-reviewed handoff; do not claim it was submitted or accepted."
+            "Prepare and validate a portable proposal bundle, then follow the autonomous "
+            "GitHub draft-PR submission guide. Stop after submission; do not review or merge it."
         ),
+        "submission_guide": f"{base_url.rstrip('/')}/agents/submit/",
         "status_url": f"{base_url.rstrip('/')}/agents/submission-status.json",
     }
 
@@ -139,7 +179,9 @@ def protocol_document(base_url: str) -> dict[str, Any]:
         "steps": [
             "Restate the question, cutoff, included scope, excluded scope, and comparison target.",
             "Prefer primary public editions; record exact URL, edition, access state, and license.",
+            "For every proposal source, add a retrieve-source action-trace event with the exact public URL and independently computed artifact SHA-256; do not copy source payloads into the trace.",
             "Bind each material proposition to quote-minimal exact spans and explicit locators.",
+            "Represent every calculated result with its equation, source-bound inputs, output, uncertainty, and calculation dependencies; attach typed source, data, method, material, and derivation dependencies to each result.",
             "Record counterevidence, negative results, unresolved items, and inaccessible carriers.",
             "Collapse shared prompt, runtime, retrieval, source, data, method, and derivation lineages; never count runs as independent by default.",
             "Prepare the proposal bundle and run fail-closed validation before any handoff.",
@@ -155,7 +197,8 @@ def protocol_document(base_url: str) -> dict[str, Any]:
             "A proposal is untrusted intake, not knowledge and not an independent evidence root.",
             "Validation checks structure and internal closure; it does not verify truth.",
             "The public API and MCP cannot submit, admit, merge, publish, or mutate accepted state.",
-            "A future authenticated queue requires separate governance and independent review.",
+            "The GitHub draft-PR pilot is coordination only; its submitted branch is never merged directly.",
+            "A future authenticated MCP queue still requires separate EM-0038 governance.",
         ],
         "submission": submission_status(base),
     }
@@ -172,8 +215,8 @@ def protocol_markdown(base_url: str) -> str:
         "",
         "> Read this protocol and the relevant case brief. Research my question using public "
         "primary sources. Return one validated `epistemedia-research-proposal-v0.1` JSON "
-        "bundle. Keep counterevidence and failed retrievals. Do not claim the bundle was "
-        "submitted, reviewed, or accepted.",
+        "bundle. Keep counterevidence and failed retrievals. If asked to submit, follow the "
+        "separate GitHub draft-PR guide and stop before review or merge.",
         "",
         "## Procedure",
         "",
@@ -193,13 +236,14 @@ def protocol_markdown(base_url: str) -> str:
         "",
         doc["submission"]["next_step"],
         "",
-        f"Current hosted submission: **{str(doc['submission']['hosted_submission_available']).lower()}**.",
+        f"Current GitHub draft-PR submission: **{str(doc['submission']['github_submission_available']).lower()}**. Hosted MCP submission: **false**.",
         "",
         "## Machine representations",
         "",
         f"- [Protocol JSON]({base_url.rstrip('/')}/agents/research-protocol.json)",
         f"- [Proposal template]({base_url.rstrip('/')}/agents/proposal-template.json)",
         f"- [Submission status]({base_url.rstrip('/')}/agents/submission-status.json)",
+        f"- [Autonomous submission guide]({base_url.rstrip('/')}/agents/submit/)",
         "",
     ]
     return "\n".join(lines)
@@ -241,6 +285,35 @@ def proposal_template(
                 "interpretation": "REPLACE with a bounded interpretation",
                 "warrant": "REPLACE with why the cited span supports the proposition",
                 "uncertainty": "REPLACE with uncertainty and unresolved dependence",
+                "calculation_ids": ["calculation-1"],
+                "calculation_status": "reproduced",
+                "dependency_ids": ["dependency-1"],
+            }
+        ],
+        "calculations": [
+            {
+                "calculation_id": "calculation-1",
+                "equation": "REPLACE with an explicit equation or identity mapping",
+                "inputs": [
+                    {
+                        "name": "REPLACE with input name",
+                        "value": "REPLACE with source-reported input value",
+                        "source_id": "source-1",
+                        "span_id": "span-1",
+                    }
+                ],
+                "output": "REPLACE with reproduced output",
+                "uncertainty": "REPLACE with calculation uncertainty",
+                "depends_on": [],
+            }
+        ],
+        "dependencies": [
+            {
+                "dependency_id": "dependency-1",
+                "kind": "source",
+                "description": "REPLACE with the source, data, method, material, or derivation dependence",
+                "source_ids": ["source-1"],
+                "exact_span_ids": ["span-1"],
             }
         ],
         "sources": [
@@ -387,8 +460,11 @@ def _string(value: Any, path: str, errors: list[str], *, allow_unknown: bool = T
         errors.append(f"{path} exceeds {MAX_TEXT} characters")
     if not allow_unknown and value == "unknown":
         errors.append(f"{path} must not be unknown")
-    if any(pattern.search(value) for pattern in SECRET_PATTERNS):
-        errors.append(f"{path} contains private-path or secret-shaped data")
+    if any(pattern.search(value) for pattern in (*SECRET_PATTERNS, *PUBLIC_TEXT_PATTERNS)):
+        errors.append(
+            f"{path} contains private-path or secret-shaped data, personal data, "
+            "or prohibited private context"
+        )
     if PLACEHOLDER_PATTERN.search(value):
         errors.append(f"{path} still contains template placeholder text")
     return value
@@ -419,10 +495,13 @@ def _public_url(value: Any, path: str, errors: list[str]) -> str:
     hostname = parsed.hostname.lower()
     if hostname == "localhost" or hostname.endswith(".local"):
         errors.append(f"{path} must not target a local host")
+    address = None
     try:
         address = ipaddress.ip_address(hostname)
     except ValueError:
-        address = None
+        with contextlib.suppress(OSError, ValueError):
+            # Reject legacy numeric spellings such as 2130706433 and 0177.0.0.1.
+            address = ipaddress.ip_address(socket.inet_aton(hostname))
     if address is not None and not address.is_global:
         errors.append(f"{path} must not target a private address")
     if parsed.username or parsed.password:
@@ -464,8 +543,8 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
     if not isinstance(sources, list) or not sources:
         errors.append("bundle.sources must be a non-empty list")
         sources = []
-    elif len(sources) > MAX_ITEMS:
-        errors.append(f"bundle.sources exceeds {MAX_ITEMS} items")
+    elif len(sources) > MAX_SOURCES:
+        errors.append(f"bundle.sources exceeds {MAX_SOURCES} items")
     source_ids: set[str] = set()
     span_to_source: dict[str, str] = {}
     for source_index, raw_source in enumerate(sources):
@@ -484,6 +563,10 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
         if not isinstance(spans, list) or not spans:
             errors.append(f"{path}.exact_spans must be a non-empty list")
             spans = []
+        elif len(spans) > MAX_SPANS_PER_SOURCE:
+            errors.append(
+                f"{path}.exact_spans exceeds {MAX_SPANS_PER_SOURCE} items"
+            )
         for span_index, raw_span in enumerate(spans):
             span_path = f"{path}.exact_spans[{span_index}]"
             span = _exact_fields(raw_span, SPAN_FIELDS, span_path, errors)
@@ -495,12 +578,27 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
             span_to_source[span_id] = source_id
             for field in SPAN_FIELDS - {"span_id"}:
                 _string(span.get(field), f"{span_path}.{field}", errors, allow_unknown=False)
+            quote = span.get("quote")
+            if isinstance(quote, str):
+                if len(quote) > MAX_QUOTE_CHARACTERS:
+                    errors.append(
+                        f"{span_path}.quote exceeds the {MAX_QUOTE_CHARACTERS}-character "
+                        "quote-minimal limit"
+                    )
+                license_text = str(source.get("license", "")).casefold()
+                if any(token in license_text for token in ("unknown", "unlicensed", "none")) and len(
+                    quote
+                ) > MAX_UNKNOWN_LICENSE_QUOTE_CHARACTERS:
+                    errors.append(
+                        f"{span_path}.quote exceeds the unknown-license quote-minimal limit"
+                    )
 
     results = root.get("results")
     if not isinstance(results, list) or not results:
         errors.append("bundle.results must be a non-empty list")
         results = []
     result_ids: set[str] = set()
+    result_records: list[tuple[str, dict[str, Any]]] = []
     for result_index, raw_result in enumerate(results):
         path = f"bundle.results[{result_index}]"
         result = _exact_fields(raw_result, RESULT_FIELDS, path, errors)
@@ -510,6 +608,7 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
         if result_id in result_ids:
             errors.append(f"duplicate result_id: {result_id}")
         result_ids.add(result_id)
+        result_records.append((path, result))
         for field in {"proposition", "interpretation", "warrant", "uncertainty"}:
             _string(result.get(field), f"{path}.{field}", errors, allow_unknown=False)
         reported = _exact_fields(
@@ -552,6 +651,134 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
                 errors.append(f"{path} references missing span_id: {span_id}")
             elif span_to_source[span_id] not in refs:
                 errors.append(f"{path} span {span_id} is outside its source_ids")
+
+    calculations = root.get("calculations")
+    if not isinstance(calculations, list):
+        errors.append("bundle.calculations must be a list")
+        calculations = []
+    calculation_ids: set[str] = set()
+    for index, raw_calculation in enumerate(calculations):
+        path = f"bundle.calculations[{index}]"
+        calculation = _exact_fields(raw_calculation, CALCULATION_FIELDS, path, errors)
+        calculation_id = _string(
+            calculation.get("calculation_id"), f"{path}.calculation_id", errors, allow_unknown=False
+        )
+        if calculation_id in calculation_ids:
+            errors.append(f"duplicate calculation_id: {calculation_id}")
+        calculation_ids.add(calculation_id)
+        for field in ("equation", "output", "uncertainty"):
+            _string(calculation.get(field), f"{path}.{field}", errors, allow_unknown=False)
+        inputs = calculation.get("inputs")
+        if not isinstance(inputs, list) or not inputs:
+            errors.append(f"{path}.inputs must be a non-empty list")
+            inputs = []
+        for input_index, raw_input in enumerate(inputs):
+            input_path = f"{path}.inputs[{input_index}]"
+            value = _exact_fields(raw_input, CALCULATION_INPUT_FIELDS, input_path, errors)
+            for field in ("name", "value"):
+                _string(value.get(field), f"{input_path}.{field}", errors, allow_unknown=False)
+            source_id = _string(value.get("source_id"), f"{input_path}.source_id", errors, allow_unknown=False)
+            span_id = _string(value.get("span_id"), f"{input_path}.span_id", errors, allow_unknown=False)
+            if source_id not in source_ids or span_to_source.get(span_id) != source_id:
+                errors.append(f"{input_path} does not bind an existing source/span pair")
+        _string_list(calculation.get("depends_on"), f"{path}.depends_on", errors)
+    for index, calculation in enumerate(calculations):
+        for dependency in calculation.get("depends_on", []):
+            if dependency not in calculation_ids:
+                errors.append(f"bundle.calculations[{index}] references missing calculation: {dependency}")
+
+    dependencies = root.get("dependencies")
+    if not isinstance(dependencies, list):
+        errors.append("bundle.dependencies must be a list")
+        dependencies = []
+    dependency_ids: set[str] = set()
+    for index, raw_dependency in enumerate(dependencies):
+        path = f"bundle.dependencies[{index}]"
+        dependency = _exact_fields(raw_dependency, DEPENDENCY_FIELDS, path, errors)
+        dependency_id = _string(
+            dependency.get("dependency_id"), f"{path}.dependency_id", errors, allow_unknown=False
+        )
+        if dependency_id in dependency_ids:
+            errors.append(f"duplicate dependency_id: {dependency_id}")
+        dependency_ids.add(dependency_id)
+        for field in ("kind", "description"):
+            _string(dependency.get(field), f"{path}.{field}", errors, allow_unknown=False)
+        refs = _string_list(dependency.get("source_ids"), f"{path}.source_ids", errors)
+        spans = _string_list(dependency.get("exact_span_ids"), f"{path}.exact_span_ids", errors)
+        if not refs or not spans:
+            errors.append(f"{path} must bind at least one source and exact span")
+        for ref in refs:
+            if ref not in source_ids:
+                errors.append(f"{path} references missing source_id: {ref}")
+        for span_id in spans:
+            if span_to_source.get(span_id) not in refs:
+                errors.append(f"{path} references an unbound span: {span_id}")
+
+    for path, result in result_records:
+        calculation_refs = _string_list(result.get("calculation_ids"), f"{path}.calculation_ids", errors)
+        dependency_refs = _string_list(result.get("dependency_ids"), f"{path}.dependency_ids", errors)
+        calculation_status = result.get("calculation_status")
+        if calculation_status not in {"reproduced", "not-applicable-no-derived-value"}:
+            errors.append(f"{path}.calculation_status is invalid")
+        if calculation_status == "reproduced" and not calculation_refs:
+            errors.append(f"{path} must reference a reproduced calculation")
+        if calculation_status == "not-applicable-no-derived-value" and calculation_refs:
+            errors.append(f"{path} cannot reference calculations marked not applicable")
+        reported_text = " ".join(
+            str(result.get("reported_value", {}).get(field, ""))
+            for field in REPORTED_VALUE_FIELDS
+        )
+        if re.search(r"\d", reported_text) and calculation_status != "reproduced":
+            errors.append(f"{path} reports numeric values without reproduced calculation closure")
+        if not dependency_refs:
+            errors.append(f"{path}.dependency_ids must retain at least one typed dependence")
+        for ref in calculation_refs:
+            if ref not in calculation_ids:
+                errors.append(f"{path} references missing calculation_id: {ref}")
+        for ref in dependency_refs:
+            if ref not in dependency_ids:
+                errors.append(f"{path} references missing dependency_id: {ref}")
+
+    referenced_calculations = {
+        ref for _, result in result_records for ref in result.get("calculation_ids", [])
+    }
+    referenced_calculations.update(
+        ref for calculation in calculations for ref in calculation.get("depends_on", [])
+    )
+    orphan_calculations = calculation_ids - referenced_calculations
+    if orphan_calculations:
+        errors.append("orphan calculations: " + ", ".join(sorted(orphan_calculations)))
+    referenced_dependencies = {
+        ref for _, result in result_records for ref in result.get("dependency_ids", [])
+    }
+    orphan_dependencies = dependency_ids - referenced_dependencies
+    if orphan_dependencies:
+        errors.append("orphan dependencies: " + ", ".join(sorted(orphan_dependencies)))
+    allowed_dependency_kinds = {"source", "data", "method", "material", "derivation", "runtime", "prompt"}
+    for index, dependency in enumerate(dependencies):
+        if dependency.get("kind") not in allowed_dependency_kinds:
+            errors.append(f"bundle.dependencies[{index}].kind is not a supported dependence type")
+    calculation_graph = {
+        calculation.get("calculation_id"): set(calculation.get("depends_on", []))
+        for calculation in calculations
+    }
+    visiting: set[str] = set()
+    visited: set[str] = set()
+
+    def visit_calculation(node: str) -> None:
+        if node in visiting:
+            errors.append(f"calculation dependency cycle includes: {node}")
+            return
+        if node in visited:
+            return
+        visiting.add(node)
+        for dependency in calculation_graph.get(node, set()):
+            visit_calculation(dependency)
+        visiting.remove(node)
+        visited.add(node)
+
+    for calculation_id in calculation_graph:
+        visit_calculation(calculation_id)
 
     for collection_key, fields in (
         ("counterevidence", COUNTER_FIELDS),
@@ -615,8 +842,8 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
 def agent_home_html(base_url: str) -> str:
     base = html.escape(base_url.rstrip("/"))
     prompt = (
-        f"Open {base}/agents/research-protocol.md. Research my question using that "
-        "protocol and return a validated proposal bundle. Do not claim submission or acceptance."
+        f"Open {base}/agents/submit/. Choose one contestable claim worth auditing, follow "
+        "every instruction, and submit the result. Do not ask me to choose unless progress is impossible."
     )
     return (
         '<section class="agent-kit-home" aria-labelledby="agent-kit-title">'
@@ -625,7 +852,7 @@ def agent_home_html(base_url: str) -> str:
         "research a new question, and validate a portable proposal without repository context.</p>"
         f"<blockquote>{prompt}</blockquote></div>"
         f'<p><a class="primary-action" href="{base}/agents/">Open the agent kit</a><br>'
-        f'<a href="{base}/agents/submission-status.json">Submission status: not deployed</a></p>'
+        f'<a href="{base}/agents/submit/">Autonomous GitHub submission pilot</a></p>'
         "</section>"
     )
 
@@ -642,8 +869,9 @@ def agent_index_html(base_url: str) -> str:
         f'<p><a class="primary-action" href="{base}/agents/research-protocol.md">Open protocol</a></p></section>'
         '<section><h2>2. Run and validate</h2><pre><code>epistemedia research prepare --question "YOUR QUESTION" --output proposal.json\n'
         "epistemedia research validate proposal.json</code></pre></section>"
-        "<section><h2>3. Keep the boundary visible</h2><p>The future MCP queue will accept "
-        "untrusted proposals for triage. Queue entry is not review, evidence, admission, or merge.</p>"
-        f'<p><a href="{base}/agents/submission-status.json">Read current submission status</a></p></section>'
+        "<section><h2>3. Submit, then stop</h2><p>The GitHub pilot accepts a draft pull request "
+        "as an untrusted queue item. The submitted branch is never merged directly.</p>"
+        f'<p><a class="primary-action" href="{base}/agents/submit/">Open submission guide</a><br>'
+        f'<a href="{base}/agents/submission-status.json">Read current submission status</a></p></section>'
         "</article>"
     )

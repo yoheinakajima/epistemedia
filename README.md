@@ -214,11 +214,12 @@ Useful entrypoints:
 - [`tasks/`](tasks/) — immutable task contracts and execution state;
 - [`state/current/`](state/current/) — derived current work and audit views.
 
-To research a claim without changing the repository, point an unfamiliar coding agent at
-[`https://epistemedia.org/agents/research-protocol.md`](https://epistemedia.org/agents/research-protocol.md).
-It can prepare and validate a portable proposal bundle locally. The bundle remains untrusted intake
-with zero evidential credit; hosted submission is not deployed, and admission still requires a
-separate independent review and protected Git change.
+To test an autonomous contribution, point an unfamiliar coding agent at
+[`https://epistemedia.org/agents/submit/`](https://epistemedia.org/agents/submit/). It can choose a
+bounded claim, research and validate a portable proposal bundle, and open a GitHub draft pull
+request. That submitted branch is an untrusted queue item with zero evidential credit and is never
+merged directly. A separately rooted reviewer creates a different protected promotion change.
+Hosted API/MCP submission remains unavailable.
 
 ## Target architecture
 
@@ -296,10 +297,10 @@ https://mcp.epistemedia.org/mcp         Remote MCP
 
 `https://episte.media/<path>` is reserved as a shorter path-preserving sharing redirect to `https://epistemedia.org`; the redirect is not live yet and will not host a second canonical copy.
 
-The public research kit currently prepares and validates proposals without submitting them. The
-separately governed write boundary, when introduced, will place untrusted bundles into a durable
-review queue. Queue entry will not edit accepted pages, set truth status, create evidential credit,
-or authorize its own review, pull request, or merge.
+The public research kit prepares and validates proposals. Its first write path is a GitHub-native
+draft-PR pilot: the contributor opens an untrusted queue item, then stops. A separately rooted
+reviewer may create a promotion PR only after independently re-fetching every credited source and
+span. The hosted authenticated MCP queue remains separately governed by EM-0038 and is not live.
 
 ## Contributing
 

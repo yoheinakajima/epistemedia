@@ -240,7 +240,8 @@ def test_no_public_write_or_admission_surface_is_implied(tmp_path: Path) -> None
         (public / "agents" / "submission-status.json").read_text()
     )
     assert submission["hosted_submission_available"] is False
-    assert submission["queue_status"] == "not-deployed"
+    assert submission["github_submission_available"] is True
+    assert submission["queue_status"] == "github-draft-pr-pilot"
     names = {item["name"].lower() for item in tool_definitions()}
     assert not any(
         token in name

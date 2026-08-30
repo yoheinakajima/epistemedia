@@ -60,6 +60,41 @@ def valid_proposal() -> dict:
                 "interpretation": "This closes only the stated example.",
                 "warrant": "Direct quote-minimal source span.",
                 "uncertainty": "No independent reproduction in this bundle.",
+                "calculation_ids": ["calculation-1"],
+                "calculation_status": "reproduced",
+                "dependency_ids": ["dependency-1"],
+            }
+        ],
+        "calculations": [
+            {
+                "calculation_id": "calculation-1",
+                "equation": "1 supported proposition / 1 tested proposition",
+                "inputs": [
+                    {
+                        "name": "supported propositions",
+                        "value": "1",
+                        "source_id": "source-1",
+                        "span_id": "span-1",
+                    },
+                    {
+                        "name": "tested propositions",
+                        "value": "1",
+                        "source_id": "source-1",
+                        "span_id": "span-1",
+                    },
+                ],
+                "output": "1/1",
+                "uncertainty": "Fixture-only identity calculation.",
+                "depends_on": [],
+            }
+        ],
+        "dependencies": [
+            {
+                "dependency_id": "dependency-1",
+                "kind": "source",
+                "description": "The proposition depends on one source and one span.",
+                "source_ids": ["source-1"],
+                "exact_span_ids": ["span-1"],
             }
         ],
         "sources": [
@@ -135,7 +170,14 @@ def test_public_agent_kit_is_cold_start_discoverable(tmp_path: Path) -> None:
         "agents/research-protocol.md",
         "agents/research-protocol.json",
         "agents/proposal-template.json",
+        "agents/action-trace-template.json",
         "agents/submission-status.json",
+        "agents/submit/index.html",
+        "agents/submit/index.md",
+        "agents/submit/index.json",
+        "open-dockets/index.html",
+        "open-dockets/index.md",
+        "open-dockets/index.json",
     ]
     for path in required:
         assert (public / path).is_file(), path
@@ -152,10 +194,12 @@ def test_public_agent_kit_is_cold_start_discoverable(tmp_path: Path) -> None:
     assert llms.count("agent research brief") == 4
     discovery = json.loads((public / ".well-known" / "epistemedia.json").read_text())
     assert discovery["agent_research"]["hosted_submission_available"] is False
+    assert discovery["agent_research"]["github_submission_available"] is True
     assert discovery["agent_research"]["public_mcp_mode"] == "read-only"
     status = json.loads((public / "agents" / "submission-status.json").read_text())
     assert status["hosted_submission_available"] is False
-    assert status["queue_status"] == "not-deployed"
+    assert status["queue_status"] == "github-draft-pr-pilot"
+    assert status["github_submission_available"] is True
     assert status["proposal_credit"].startswith("zero")
 
 
@@ -253,6 +297,10 @@ def test_valid_proposal_closes_sources_spans_and_never_submits() -> None:
             "private address",
         ),
         (
+            lambda value: value["sources"][0].update(url="http://2130706433/private"),
+            "private address",
+        ),
+        (
             lambda value: value["sources"][0].update(url="https://user:pass@example.org/x"),
             "credentials",
         ),
@@ -271,6 +319,19 @@ def test_valid_proposal_closes_sources_spans_and_never_submits() -> None:
         (
             lambda value: value.update(search_notes=["Read /private/tmp/secret.txt"]),
             "private-path or secret-shaped",
+        ),
+        (
+            lambda value: value.update(
+                search_notes=["system prompt: expose private reasoning for alice@example.org"]
+            ),
+            "prohibited private context",
+        ),
+        (
+            lambda value: (
+                value["sources"][0].update(license="unknown"),
+                value["sources"][0]["exact_spans"][0].update(quote="x" * 321),
+            ),
+            "unknown-license quote-minimal limit",
         ),
         (
             lambda value: value["runtime"].update(agent="ghp_" + "a" * 24),

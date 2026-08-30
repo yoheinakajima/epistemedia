@@ -33,6 +33,7 @@ from .core import (
 )
 from .featured import FEATURE_VIEWS
 from .mission import load_mission
+from .open_dockets import load_open_dockets, submission_guide
 from .research_kit import (
     case_research_brief,
     proposal_template,
@@ -392,6 +393,8 @@ class Gateway:
                 "search": "/v1/search?q=...",
                 "dossiers": "/v1/dossiers",
                 "research_protocol": "/v1/research/protocol",
+                "docket_submission_guide": "/v1/research/submission-guide",
+                "open_dockets": "/v1/open-dockets",
                 "topics": "/v1/topics",
                 "openapi": "/openapi.json",
                 "mcp": "/mcp",
@@ -434,6 +437,25 @@ class Gateway:
             return 200, {}, dossier.envelope(catalog, policy)
         if path == "/v1/research/protocol":
             return 200, {}, envelope(catalog, protocol_document(DEFAULT_BASE_URL))
+        if path == "/v1/research/submission-guide":
+            return 200, {}, envelope(catalog, submission_guide(DEFAULT_BASE_URL))
+        if path == "/v1/open-dockets":
+            dockets, errors = load_open_dockets(self.root)
+            if errors:
+                raise ValueError("; ".join(errors))
+            return 200, {}, envelope(
+                catalog,
+                [docket.projection(DEFAULT_BASE_URL) for docket in dockets],
+            )
+        if path.startswith("/v1/open-dockets/"):
+            slug = unquote(path[len("/v1/open-dockets/"):])
+            dockets, errors = load_open_dockets(self.root)
+            if errors:
+                raise ValueError("; ".join(errors))
+            docket = next((item for item in dockets if item.slug == slug), None)
+            if docket is None:
+                return 404, {}, api_error(catalog, "not_found", f"Unknown open docket: {slug}")
+            return 200, {}, envelope(catalog, docket.projection(DEFAULT_BASE_URL))
         if path.startswith("/v1/research/briefs/"):
             slug = unquote(path[len("/v1/research/briefs/"):])
             dossier = self.dossier(slug)
@@ -726,6 +748,28 @@ class Gateway:
             )
             resources.append(
                 {
+                    "uri": "epistemedia://research/submission-guide",
+                    "name": "open-docket-submission-guide",
+                    "title": "Submit an open docket",
+                    "description": "Use the autonomous GitHub draft-PR queue without granting evidential credit.",
+                    "mimeType": "application/json",
+                }
+            )
+            dockets, docket_errors = load_open_dockets(self.root)
+            if docket_errors:
+                raise ValueError("; ".join(docket_errors))
+            resources += [
+                {
+                    "uri": f"epistemedia://open-docket/{docket.slug}",
+                    "name": docket.slug,
+                    "title": docket.review["public"]["title"],
+                    "description": docket.review["public"]["bounded_reading"],
+                    "mimeType": "application/json",
+                }
+                for docket in dockets
+            ]
+            resources.append(
+                {
                     "uri": "epistemedia://research/protocol",
                     "name": "agent-research-protocol",
                     "title": "Agent research protocol",
@@ -803,6 +847,17 @@ class Gateway:
             return dossier.projection(view)
         if uri == "epistemedia://research/protocol":
             return protocol_document(DEFAULT_BASE_URL)
+        if uri == "epistemedia://research/submission-guide":
+            return submission_guide(DEFAULT_BASE_URL)
+        if uri.startswith("epistemedia://open-docket/"):
+            slug = uri[len("epistemedia://open-docket/"):]
+            dockets, errors = load_open_dockets(self.root)
+            if errors:
+                raise ValueError("; ".join(errors))
+            docket = next((item for item in dockets if item.slug == slug), None)
+            if docket is None:
+                raise KeyError(slug)
+            return docket.projection(DEFAULT_BASE_URL)
         if uri == "epistemedia://mission":
             return self.mission()
         if uri.startswith("epistemedia://research/brief/"):
@@ -893,6 +948,22 @@ class Gateway:
             return {"valid": not missing, "missing": missing, "note": "Structural validation only; this does not admit or endorse the bundle."}
         if name == "get_research_protocol":
             return protocol_document(DEFAULT_BASE_URL)
+        if name == "get_docket_submission_guide":
+            return submission_guide(DEFAULT_BASE_URL)
+        if name == "list_open_dockets":
+            dockets, errors = load_open_dockets(self.root)
+            if errors:
+                raise ValueError("; ".join(errors))
+            return [docket.projection(DEFAULT_BASE_URL) for docket in dockets]
+        if name == "get_open_docket":
+            slug = str(arguments.get("slug", ""))
+            dockets, errors = load_open_dockets(self.root)
+            if errors:
+                raise ValueError("; ".join(errors))
+            docket = next((item for item in dockets if item.slug == slug), None)
+            if docket is None:
+                raise KeyError(slug)
+            return docket.projection(DEFAULT_BASE_URL)
         if name == "prepare_research_proposal":
             question = str(arguments.get("question", "")).strip()
             slug_value = arguments.get("case_slug")
@@ -957,6 +1028,9 @@ def tool_definitions() -> list[dict[str, Any]]:
         tool("get_next_contribution", "List public task contracts suitable for an agent to inspect.", {}, []),
         tool("validate_bundle", "Perform non-admitting structural validation of a contribution bundle.", {"bundle": {"type": "object"}}, ["bundle"]),
         tool("get_research_protocol", "Get the public, non-admitting agent research protocol.", {}, []),
+        tool("get_docket_submission_guide", "Get the autonomous GitHub draft-PR submission guide.", {}, []),
+        tool("list_open_dockets", "List independently reviewed open dockets.", {}, []),
+        tool("get_open_docket", "Get one independently reviewed open docket.", {"slug": {"type": "string"}}, ["slug"]),
         tool(
             "prepare_research_proposal",
             "Prepare a deterministic local proposal scaffold; this does not submit it.",

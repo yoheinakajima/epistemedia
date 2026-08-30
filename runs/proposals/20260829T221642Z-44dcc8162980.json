@@ -1,0 +1,10 @@
+{
+  "command": "PYTHONPATH=src PATH=.venv/bin:$PATH make check PYTHON=.venv/bin/python",
+  "id": "em:run-receipt:sha256:44dcc81629806c101920f55cfbe274d2ff9524cbad1a26801b8773c287b0b92d",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-29T22:16:42Z",
+  "run_id": "em0040-review-correction-validation",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0040"
+}
