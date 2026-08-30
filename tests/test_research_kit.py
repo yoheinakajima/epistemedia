@@ -90,6 +90,9 @@ def valid_proposal() -> dict:
                                 ("No claim about other propositions.", "comparison"),
                                 ("2026-08-29", "date"),
                                 ("test-agent", "metadata"),
+                                ("One public primary source.", "boundary"),
+                                ("Credential-free HTTPS retrieval.", "process"),
+                                ("Exact source-to-proposition support.", "metadata"),
                             ),
                             start=2,
                         )
@@ -393,6 +396,83 @@ def test_v2_material_claim_atoms_and_license_identity_fail_closed() -> None:
     )
     result = validate_proposal(bundle)
     assert any("recognized identifier or exact license name" in error for error in result["errors"])
+
+
+def test_v2_every_material_result_scope_literal_requires_a_claim_atom() -> None:
+    for field in ("dataset_or_population", "tool_and_retrieval_path", "metric_scope"):
+        bundle = valid_proposal()
+        removed = bundle["results"][0]["scope"][field]
+        bundle["results"][0]["claim_atoms"] = [
+            atom
+            for atom in bundle["results"][0]["claim_atoms"]
+            if atom["text"] != removed
+        ]
+        result = validate_proposal(bundle)
+        assert result["valid"] is False
+        assert any(removed in error for error in result["errors"])
+
+    bundle = valid_proposal()
+    date_atom = next(
+        atom
+        for atom in bundle["results"][0]["claim_atoms"]
+        if atom["text"] == "2026-08-29"
+    )
+    date_atom.update(status="hypothesis", source_ids=[], exact_span_ids=[])
+    result = validate_proposal(bundle)
+    assert result["valid"] is False
+    assert any("2026-08-29" in error for error in result["errors"])
+
+
+def test_v2_inaccessible_source_requires_a_failed_typed_attempt() -> None:
+    bundle = valid_proposal()
+    inaccessible = copy.deepcopy(bundle["sources"][0])
+    inaccessible.update(
+        source_id="source-2",
+        url="https://example.org/inaccessible",
+        retrieval_status="inaccessible",
+        exact_spans=[],
+        license={"status": "unknown", "identifier": "unknown", "basis_span_id": "none"},
+    )
+    bundle["sources"].append(inaccessible)
+    result = validate_proposal(bundle)
+    assert result["valid"] is False
+    assert any(
+        "source source-2 lacks a typed retrieval attempt" in error
+        for error in result["errors"]
+    )
+
+    bundle["retrieval_attempts"].append(
+        {
+            "attempt_id": "attempt-2",
+            "source_id": "source-2",
+            "url": "https://example.org/inaccessible",
+            "attempted_at": "2026-08-29T00:00:40Z",
+            "transport": "https",
+            "outcome": "blocked",
+            "failure_code": "http-403",
+            "artifact_sha256": "none",
+        }
+    )
+    bundle["negative_results"].append(
+        {
+            "result": "The second carrier returned HTTP 403.",
+            "kind": "failed-retrieval",
+            "scope": "One credential-free HTTPS attempt.",
+            "source_ids": ["source-2"],
+            "exact_span_ids": [],
+            "retrieval_attempt_ids": ["attempt-2"],
+            "disposition": "Retained as inaccessible, not counted as contrary evidence.",
+        }
+    )
+    assert validate_proposal(bundle)["valid"] is True
+
+    bundle["negative_results"][-1]["source_ids"] = ["source-1"]
+    result = validate_proposal(bundle)
+    assert result["valid"] is False
+    assert any(
+        "failed retrieval attempt source is outside source_ids" in error
+        for error in result["errors"]
+    )
 
 
 def test_v2_calculation_inputs_and_consumed_outputs_fail_closed() -> None:

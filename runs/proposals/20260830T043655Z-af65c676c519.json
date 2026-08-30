@@ -1,0 +1,10 @@
+{
+  "command": "corrected exact PR71 review findings: all result scope literals require credited supported or qualified source-span atoms; inaccessible sources require failed typed attempts and same-source negative bindings; promotion requires App-ID-4766776 independent-evidence-review on exact parent binding review and attestation digests; missing wrong-App and forged-digest adversaries PASS; focused suite Ruff and full make check PASS; exact-head independent rereview required",
+  "id": "em:run-receipt:sha256:af65c676c519745e6a5adad8daf7703b23ee6638ea5a8a63238f0dca4bc016c9",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-30T04:36:55Z",
+  "run_id": "20260830-em0041-changes-required-correction",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0041"
+}

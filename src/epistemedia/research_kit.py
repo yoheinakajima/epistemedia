@@ -251,7 +251,7 @@ def protocol_document(base_url: str) -> dict[str, Any]:
             "Restate the question, cutoff, included scope, excluded scope, and comparison target.",
             "Prefer primary public editions; record exact URL, edition, access state, and license.",
             "For every proposal source, add a retrieve-source action-trace event with the exact public URL and independently computed artifact SHA-256; do not copy source payloads into the trace.",
-            "Decompose each result into typed claim atoms, including every material proposition, date, comparison, reported-value, and model metadata literal; bind supported atoms to quote-minimal exact spans and explicit locators, while unsupported process explanations remain hypotheses with no evidence credit.",
+            "Decompose each result into typed claim atoms, including every material proposition, reported value, model, population, retrieval path, date, metric, and comparison literal; every required literal must be supported or qualified by quote-minimal exact spans and explicit locators, while unsupported process explanations remain separate hypotheses with no evidence credit.",
             "Represent every calculated result with its equation, source-bound inputs, output, uncertainty, and calculation dependencies; attach typed source, data, method, material, and derivation dependencies to each result.",
             "Record counterevidence, negative results, unresolved items, and inaccessible carriers.",
             "Collapse shared prompt, runtime, retrieval, source, data, method, and derivation lineages; never count runs as independent by default.",
@@ -828,8 +828,13 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
             atom_spans.update(atom_span_refs)
         if atom_sources != set(refs) or atom_spans != set(spans):
             errors.append(f"{path} aggregate source/span bindings must equal its material claim atoms")
-        atom_texts = {
-            str(atom.get("text")) for atom in atoms if isinstance(atom, dict)
+        credited_atom_texts = {
+            str(atom.get("text"))
+            for atom in atoms
+            if isinstance(atom, dict)
+            and atom.get("status") in {"supported", "qualified"}
+            and atom.get("source_ids")
+            and atom.get("exact_span_ids")
         }
         required_material_literals = {
             str(result.get("proposition", "")),
@@ -837,15 +842,20 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
                 str(reported.get(field, ""))
                 for field in REPORTED_VALUE_FIELDS
             ),
-            str(result_scope.get("time", "")),
+            *(
+                str(result_scope.get(field, ""))
+                for field in RESULT_SCOPE_FIELDS - {"models_or_agents"}
+            ),
             *(str(item) for item in models_or_agents),
         }
         missing_material_literals = sorted(
-            value for value in required_material_literals if value and value not in atom_texts
+            value
+            for value in required_material_literals
+            if value and value not in credited_atom_texts
         )
         if missing_material_literals:
             errors.append(
-                f"{path} material proposition, date, comparison, or metadata literals lack exact claim atoms: "
+                f"{path} material proposition, date, comparison, or metadata literals lack exact credited claim atoms: "
                 + "; ".join(missing_material_literals)
             )
 
@@ -1105,6 +1115,10 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
     for source in sources:
         attempts = source_attempts.get(source.get("source_id"), [])
         retrieved = any(item.get("outcome") == "retrieved" for item in attempts)
+        if not attempts:
+            errors.append(
+                f"source {source.get('source_id')} lacks a typed retrieval attempt"
+            )
         if source.get("retrieval_status") == "inaccessible" and retrieved:
             errors.append(f"source {source.get('source_id')} is marked inaccessible but has a retrieved attempt")
         if source.get("retrieval_status") != "inaccessible" and not retrieved:
@@ -1158,6 +1172,17 @@ def validate_proposal(bundle: Any) -> dict[str, Any]:
         if kind == "failed-retrieval":
             if not attempt_refs:
                 errors.append(f"{path} failed retrieval must bind a typed retrieval attempt")
+            if not refs:
+                errors.append(f"{path} failed retrieval must bind its source")
+            bound_attempt_sources = {
+                attempt.get("source_id")
+                for attempt in retrieval_attempts
+                if attempt.get("attempt_id") in attempt_refs
+            }
+            if bound_attempt_sources - set(refs):
+                errors.append(
+                    f"{path} failed retrieval attempt source is outside source_ids"
+                )
             if any(
                 attempt.get("outcome") == "retrieved"
                 for attempt in retrieval_attempts

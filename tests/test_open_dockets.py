@@ -825,8 +825,36 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
     monkeypatch.setenv("CURRENT_PR_NUMBER", "200")
     monkeypatch.setenv("GITHUB_REPOSITORY", "yoheinakajima/epistemedia")
     monkeypatch.setenv("GITHUB_TOKEN", "test-token")
+    expected_external_id = promotion_validator.evidence_review_external_id(
+        hashlib.sha256(review_path.read_bytes()).hexdigest(),
+        hashlib.sha256(
+            (destination / "controller-attestation.json").read_bytes()
+        ).hexdigest(),
+    )
+    review_gate = {
+        "present": True,
+        "app_id": 4_766_776,
+        "external_id": expected_external_id,
+    }
 
     def fake_github_json(path: str):
+        if path == f"commits/{reviewed_head}/check-runs?per_page=100":
+            return {
+                "check_runs": (
+                    [
+                        {
+                            "name": "independent-evidence-review",
+                            "head_sha": reviewed_head,
+                            "status": "completed",
+                            "conclusion": "success",
+                            "external_id": review_gate["external_id"],
+                            "app": {"id": review_gate["app_id"]},
+                        }
+                    ]
+                    if review_gate["present"]
+                    else []
+                )
+            }
         if path == "pulls/100":
             return {
                 "html_url": "https://github.com/yoheinakajima/epistemedia/pull/100",
@@ -862,6 +890,21 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
     )
     result = promotion_validator.validate(repository, base)
     assert result["valid"] is True, result["errors"]
+
+    for field, forged in (
+        ("present", False),
+        ("app_id", 1),
+        ("external_id", "epistemedia-review-v1:" + "0" * 129),
+    ):
+        original = review_gate[field]
+        review_gate[field] = forged
+        result = promotion_validator.validate(repository, base)
+        assert result["valid"] is False
+        assert any(
+            "lacks the App-signed independent evidence-review binding" in error
+            for error in result["errors"]
+        )
+        review_gate[field] = original
 
     receipt["reviewed_head"] = "f" * 40
     receipt_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
