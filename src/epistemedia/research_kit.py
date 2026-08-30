@@ -248,6 +248,7 @@ def protocol_document(base_url: str) -> dict[str, Any]:
             "the selected case research-brief.md, when one exists",
         ],
         "steps": [
+            "Before choosing a question, inspect every accepted dossier, reviewed open docket, and open docket-submission pull request; reject any candidate already covered or closely restating one, and record the comparison in search_notes.",
             "Restate the question, cutoff, included scope, excluded scope, and comparison target.",
             "Prefer primary public editions; record exact URL, edition, access state, and license.",
             "For every proposal source, add a retrieve-source action-trace event with the exact public URL and independently computed artifact SHA-256; do not copy source payloads into the trace.",
@@ -255,10 +256,11 @@ def protocol_document(base_url: str) -> dict[str, Any]:
             "Represent every calculated result with its equation, source-bound inputs, output, uncertainty, and calculation dependencies; attach typed source, data, method, material, and derivation dependencies to each result.",
             "Record counterevidence, negative results, unresolved items, and inaccessible carriers.",
             "Collapse shared prompt, runtime, retrieval, source, data, method, and derivation lineages; never count runs as independent by default.",
-            "Prepare the proposal bundle and run fail-closed validation before any handoff.",
+            "Create the proposal with research prepare so the executable records runtime.started_at; after the evidence packet is complete, run research complete to record runtime.completed_at and fail-closed validate before any handoff. The submit command re-seals completed_at immediately before canonicalizing the queue bytes. Never invent or backdate runtime timestamps.",
         ],
         "required_output_format": PROPOSAL_FORMAT,
         "validation": {
+            "complete_cli": "epistemedia research complete proposal.json",
             "cli": "epistemedia research validate proposal.json",
             "mcp_tool": "validate_research_proposal",
             "static_template": f"{base}/agents/proposal-template.json",
@@ -297,6 +299,7 @@ def protocol_markdown(base_url: str) -> str:
         "",
         "```sh",
         'epistemedia research prepare --question "YOUR QUESTION" --output proposal.json',
+        "epistemedia research complete proposal.json",
         "epistemedia research validate proposal.json",
         "```",
         "",
@@ -1261,6 +1264,7 @@ def agent_index_html(base_url: str) -> str:
         "counterevidence, runtime, and license requirements from public files alone.</p>"
         f'<p><a class="primary-action" href="{base}/agents/research-protocol.md">Open protocol</a></p></section>'
         '<section><h2>2. Run and validate</h2><pre><code>epistemedia research prepare --question "YOUR QUESTION" --output proposal.json\n'
+        "epistemedia research complete proposal.json\n"
         "epistemedia research validate proposal.json</code></pre></section>"
         "<section><h2>3. Submit, then stop</h2><p>The GitHub pilot accepts a draft pull request "
         "as an untrusted queue item. The submitted branch is never merged directly.</p>"

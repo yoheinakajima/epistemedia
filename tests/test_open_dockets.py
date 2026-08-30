@@ -23,6 +23,7 @@ from epistemedia.open_dockets import (
     prepare_submission,
     trace_template,
     validate_action_trace,
+    validate_question_novelty,
     validate_submission_directory,
     validate_trace_against_bundle,
 )
@@ -57,7 +58,51 @@ def trace_for(bundle: dict) -> dict:
     return trace
 
 
+def seed_prior_art(root: Path) -> None:
+    dossier = root / "research" / "how-we-know" / "fixture" / "dossier.json"
+    dossier.parent.mkdir(parents=True, exist_ok=True)
+    dossier.write_text(
+        json.dumps({"question": "Does a fixture sample change color under blue light?"})
+    )
+    manifests = root / "catalog" / "dossiers"
+    manifests.mkdir(parents=True, exist_ok=True)
+    (manifests / "fixture-color-change.json").write_text(
+        json.dumps(
+            {
+                "dossier_path": "research/how-we-know/fixture/dossier.json",
+                "slug": "fixture-color-change",
+            }
+        )
+    )
+
+
+def committed_submission(tmp_path: Path) -> tuple[Path, str, str]:
+    repository = tmp_path / "repo"
+    repository.mkdir()
+
+    def run_git(*args: str) -> str:
+        return subprocess.run(
+            ["git", "-C", str(repository), *args],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+
+    run_git("init", "-b", "main")
+    run_git("config", "user.name", "Test Contributor")
+    run_git("config", "user.email", "contributor@example.invalid")
+    (repository / "README.md").write_text("accepted base\n")
+    run_git("add", "README.md")
+    run_git("commit", "-m", "base")
+    base = run_git("rev-parse", "HEAD")
+    prepared(repository)
+    run_git("add", "research/open-dockets/submissions")
+    run_git("commit", "-m", "submit docket")
+    return repository, base, run_git("rev-parse", "HEAD")
+
+
 def prepared(tmp_path: Path) -> tuple[dict, dict, dict]:
+    seed_prior_art(tmp_path)
     bundle = valid_proposal()
     trace = trace_for(bundle)
     result = prepare_submission(
@@ -267,6 +312,7 @@ def test_submission_is_deterministic_untrusted_and_not_admitted(tmp_path: Path) 
 def test_cli_prepares_submission_but_performs_no_git_or_review_action(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:
+    seed_prior_art(tmp_path)
     bundle = valid_proposal()
     (tmp_path / "proposal.json").write_text(json.dumps(bundle))
     (tmp_path / "trace.json").write_text(json.dumps(trace_for(bundle)))
@@ -297,10 +343,15 @@ def test_cli_prepares_submission_but_performs_no_git_or_review_action(
     assert result["submitted"] is False
     assert result["admitted"] is False
     assert result["next_steps"][-1].startswith("gh pr create --draft")
+    submitted_proposal = json.loads(
+        (tmp_path / result["directory"] / "proposal.json").read_text()
+    )
+    assert submitted_proposal["runtime"]["completed_at"] != bundle["runtime"]["completed_at"]
     assert not (tmp_path / ".git").exists()
 
 
 def test_local_submission_chronology_fails_closed(tmp_path: Path) -> None:
+    seed_prior_art(tmp_path)
     bundle = valid_proposal()
     with pytest.raises(
         ValueError,
@@ -318,31 +369,74 @@ def test_local_submission_chronology_fails_closed(tmp_path: Path) -> None:
         )
 
 
+def test_subject_aware_prior_art_rejects_restatements_without_generic_collision() -> None:
+    exact = validate_question_novelty(
+        ROOT,
+        "Did GPT-4 score in approximately the 90th percentile of test takers on the Uniform Bar Examination?",
+    )
+    assert exact == [
+        "proposal question closely restates accepted dossier gpt-4-bar-exam-percentile"
+    ]
+
+    paraphrase = validate_question_novelty(
+        ROOT,
+        "How was GPT-4 ranked near the ninetieth percentile after a simulated bar test?",
+    )
+    assert paraphrase == [
+        "proposal question closely restates accepted dossier gpt-4-bar-exam-percentile"
+    ]
+
+    unrelated = validate_question_novelty(
+        ROOT,
+        "What primary evidence supports a general rule for communication weighting in neural networks?",
+    )
+    assert unrelated == []
+
+
+def test_prior_art_comparison_fails_closed_on_malformed_accepted_records(
+    tmp_path: Path,
+) -> None:
+    seed_prior_art(tmp_path)
+    manifest = tmp_path / "catalog" / "dossiers" / "fixture-color-change.json"
+    manifest.write_text("{not-json")
+    assert any(
+        "manifest is unreadable or malformed" in error
+        for error in validate_question_novelty(tmp_path, "Does a novel claim hold?")
+    )
+
+    seed_prior_art(tmp_path)
+    dossier = tmp_path / "research" / "how-we-know" / "fixture" / "dossier.json"
+    dossier.write_text(json.dumps({"question": ""}))
+    assert any(
+        "record question must be a non-empty string" in error
+        for error in validate_question_novelty(tmp_path, "Does a novel claim hold?")
+    )
+
+    seed_prior_art(tmp_path)
+    dossier.unlink()
+    assert any(
+        "record is missing or is not a regular file" in error
+        for error in validate_question_novelty(tmp_path, "Does a novel claim hold?")
+    )
+
+
+def test_prior_art_comparison_fails_closed_on_malformed_reviewed_docket(
+    tmp_path: Path,
+) -> None:
+    seed_prior_art(tmp_path)
+    reviewed = tmp_path / "research" / "open-dockets" / "reviewed-fixture"
+    reviewed.mkdir(parents=True)
+    (reviewed / "proposal.json").write_text("[]")
+    assert any(
+        "reviewed open docket reviewed-fixture record must be a JSON object" in error
+        for error in validate_question_novelty(tmp_path, "Does a novel claim hold?")
+    )
+
+
 def test_accepted_base_submission_validator_closes_server_chronology(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    repository = tmp_path / "repo"
-    repository.mkdir()
-
-    def run_git(*args: str) -> str:
-        return subprocess.run(
-            ["git", "-C", str(repository), *args],
-            check=True,
-            capture_output=True,
-            text=True,
-        ).stdout.strip()
-
-    run_git("init", "-b", "main")
-    run_git("config", "user.name", "Test Contributor")
-    run_git("config", "user.email", "contributor@example.invalid")
-    (repository / "README.md").write_text("accepted base\n")
-    run_git("add", "README.md")
-    run_git("commit", "-m", "base")
-    base = run_git("rev-parse", "HEAD")
-    prepared(repository)
-    run_git("add", "research/open-dockets/submissions")
-    run_git("commit", "-m", "submit docket")
-    head = run_git("rev-parse", "HEAD")
+    repository, base, head = committed_submission(tmp_path)
 
     monkeypatch.setenv("CURRENT_PR_NUMBER", "100")
     monkeypatch.setenv("GITHUB_REPOSITORY", "yoheinakajima/epistemedia")
@@ -364,12 +458,97 @@ def test_accepted_base_submission_validator_closes_server_chronology(
                     "committer": {"date": "2026-08-29T20:01:00Z"},
                 }
             }
+        if path == f"commits/{base}":
+            return {
+                "commit": {
+                    "committer": {"date": "2026-08-28T00:00:00Z"},
+                }
+            }
         raise AssertionError(path)
 
     monkeypatch.setattr(submission_validator, "github_json", fake_github_json)
     result = submission_validator.validate(repository, base)
     assert result["valid"] is False
     assert any("chronology must satisfy" in error for error in result["errors"])
+
+
+def test_server_chronology_isolates_accepted_base_after_runtime_start(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    repository, base, head = committed_submission(tmp_path)
+    monkeypatch.setenv("CURRENT_PR_NUMBER", "100")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "yoheinakajima/epistemedia")
+    monkeypatch.setenv("GITHUB_TOKEN", "test-token")
+
+    def fake_github_json(path: str):
+        if path == "pulls/100":
+            return {
+                "head": {"sha": head},
+                "base": {"sha": base},
+                "state": "open",
+                "draft": True,
+                "created_at": "2026-08-29T20:02:00Z",
+            }
+        if path == f"commits/{head}":
+            return {
+                "commit": {
+                    "author": {"date": "2026-08-29T20:00:30Z"},
+                    "committer": {"date": "2026-08-29T20:01:00Z"},
+                }
+            }
+        if path == f"commits/{base}":
+            return {
+                "commit": {
+                    "committer": {"date": "2026-08-29T00:00:30Z"},
+                }
+            }
+        raise AssertionError(path)
+
+    monkeypatch.setattr(submission_validator, "github_json", fake_github_json)
+    result = submission_validator.validate(repository, base)
+    assert result["valid"] is False
+    assert result["errors"] == [
+        "chronology must satisfy accepted base commit <= runtime start <= completion <= intake submission <= commit author <= commit committer <= server PR creation"
+    ]
+
+
+@pytest.mark.parametrize("base_time", [None, "2026-13-29T00:00:00Z"])
+def test_server_chronology_rejects_missing_or_malformed_base_time(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, base_time: str | None
+) -> None:
+    repository, base, head = committed_submission(tmp_path)
+    monkeypatch.setenv("CURRENT_PR_NUMBER", "100")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "yoheinakajima/epistemedia")
+    monkeypatch.setenv("GITHUB_TOKEN", "test-token")
+
+    def fake_github_json(path: str):
+        if path == "pulls/100":
+            return {
+                "head": {"sha": head},
+                "base": {"sha": base},
+                "state": "open",
+                "draft": True,
+                "created_at": "2026-08-29T20:02:00Z",
+            }
+        if path == f"commits/{head}":
+            return {
+                "commit": {
+                    "author": {"date": "2026-08-29T20:00:30Z"},
+                    "committer": {"date": "2026-08-29T20:01:00Z"},
+                }
+            }
+        if path == f"commits/{base}":
+            return {"commit": {"committer": {"date": base_time}}}
+        raise AssertionError(path)
+
+    monkeypatch.setattr(submission_validator, "github_json", fake_github_json)
+    result = submission_validator.validate(repository, base)
+    assert result["valid"] is False
+    assert result["errors"] == [
+        "accepted base commit committer time must use canonical UTC YYYY-MM-DDTHH:MM:SSZ"
+        if base_time is None
+        else "accepted base commit committer time is not a valid timestamp"
+    ]
 
 
 @pytest.mark.parametrize(

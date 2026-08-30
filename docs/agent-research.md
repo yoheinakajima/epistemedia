@@ -25,6 +25,12 @@ Give an unfamiliar coding agent this instruction:
 
 The agent can also seed its scope from any case's `research-brief.md`.
 
+Before it chooses a claim, it must inspect accepted dossiers, reviewed open dockets, and open
+`[docket submission]` pull requests. Accepted, reviewed, queued, and close restatements are prior
+art, not new submissions. The CLI records `runtime.started_at` during `research prepare` and
+`runtime.completed_at` during `research complete`, then re-seals completion during `research submit`;
+agents must not invent or backdate those fields.
+
 ## Why submission and promotion are separate
 
 Case 002 establishes the relevant Sybil-defense rule: repeated runs receive zero automatic

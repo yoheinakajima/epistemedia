@@ -11,7 +11,11 @@ import subprocess
 import urllib.request
 from pathlib import Path
 
-from epistemedia.open_dockets import SUBMISSION_ROOT, validate_submission_directory
+from epistemedia.open_dockets import (
+    SUBMISSION_ROOT,
+    validate_question_novelty,
+    validate_submission_directory,
+)
 from epistemedia.research_kit import parse_utc_timestamp
 
 
@@ -70,6 +74,18 @@ def validate(candidate: Path, base_sha: str) -> dict[str, object]:
             )
         else:
             errors.extend(validate_submission_directory(directory))
+            proposal_path = directory / "proposal.json"
+            if proposal_path.is_file() and not proposal_path.is_symlink():
+                try:
+                    proposal = json.loads(proposal_path.read_text(encoding="utf-8"))
+                except json.JSONDecodeError:
+                    proposal = None
+                if isinstance(proposal, dict):
+                    errors.extend(
+                        validate_question_novelty(
+                            candidate, str(proposal.get("question", ""))
+                        )
+                    )
             intake_path = directory / "intake.json"
             if intake_path.is_file() and not intake_path.is_symlink():
                 try:
@@ -101,7 +117,10 @@ def validate(candidate: Path, base_sha: str) -> dict[str, object]:
                     pr_number = int(os.environ["CURRENT_PR_NUMBER"])
                     pr = github_json(f"pulls/{pr_number}")
                     commit = github_json(f"commits/{head}")
-                    if not isinstance(pr, dict) or not isinstance(commit, dict):
+                    base_commit = github_json(f"commits/{base_sha}")
+                    if not all(
+                        isinstance(item, dict) for item in (pr, commit, base_commit)
+                    ):
                         errors.append("GitHub submission metadata is malformed")
                     else:
                         if pr.get("head", {}).get("sha") != head:
@@ -137,7 +156,13 @@ def validate(candidate: Path, base_sha: str) -> dict[str, object]:
                         pr_created = _github_time(
                             pr.get("created_at"), "GitHub PR created_at", time_errors
                         )
+                        base_committer_time = _github_time(
+                            base_commit.get("commit", {}).get("committer", {}).get("date"),
+                            "accepted base commit committer time",
+                            time_errors,
+                        )
                         ordered = [
+                            base_committer_time,
                             runtime_started,
                             runtime_completed,
                             submitted,
@@ -149,7 +174,7 @@ def validate(candidate: Path, base_sha: str) -> dict[str, object]:
                             values = [value for value in ordered if value is not None]
                             if values != sorted(values):
                                 time_errors.append(
-                                    "chronology must satisfy runtime start <= completion <= intake submission <= commit author <= commit committer <= server PR creation"
+                                    "chronology must satisfy accepted base commit <= runtime start <= completion <= intake submission <= commit author <= commit committer <= server PR creation"
                                 )
                         errors.extend(time_errors)
     return {

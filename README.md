@@ -165,6 +165,7 @@ epistemedia project governance --lens skeptical
 epistemedia repo next
 epistemedia research protocol
 epistemedia research prepare --question "YOUR QUESTION" --output proposal.json
+epistemedia research complete proposal.json
 epistemedia research validate proposal.json
 epistemedia mcp serve
 ```
