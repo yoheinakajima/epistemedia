@@ -23,6 +23,7 @@ from epistemedia.open_dockets import (
     trace_template,
     validate_action_trace,
     validate_submission_directory,
+    validate_trace_against_bundle,
 )
 from epistemedia.research_kit import validate_proposal
 from epistemedia.server import Gateway, Request, tool_definitions
@@ -252,12 +253,33 @@ def test_cli_prepares_submission_but_performs_no_git_or_review_action(
         lambda value: value["events"].append(copy.deepcopy(value["events"][0])),
         lambda value: value["cost"].update(currency="SOURCE_PAYLOAD_" * 500),
         lambda value: value["cost"].update(basis="SOURCE_PAYLOAD_" * 500),
+        lambda value: value["cost"].update(amount=True),
+        lambda value: value["cost"].update(amount=float("nan")),
+        lambda value: value["cost"].update(amount=float("inf")),
+        lambda value: value["cost"].update(amount=1_000_001),
     ],
 )
 def test_disclosure_safe_trace_fails_closed(mutation) -> None:
     trace = trace_template()
     mutation(trace)
     assert validate_action_trace(trace)
+
+
+def test_every_retrieval_target_is_bound_even_when_retrieval_fails() -> None:
+    bundle = valid_proposal()
+    trace = trace_for(bundle)
+    trace["events"].append(
+        {
+            "sequence": len(trace["events"]) + 1,
+            "action": "retrieve-source",
+            "target": "SOURCE_PAYLOAD_" * 100,
+            "status": "failed",
+            "artifact_sha256": "none",
+            "note": "source-payload-omitted",
+        }
+    )
+    assert validate_action_trace(trace) == []
+    assert validate_trace_against_bundle(trace, bundle)
 
 
 def test_independent_promotion_closes_every_source_and_span(tmp_path: Path) -> None:

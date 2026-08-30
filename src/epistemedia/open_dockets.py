@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 import html
 import json
+import math
 import re
 from dataclasses import dataclass
 from pathlib import Path
@@ -21,6 +22,7 @@ PROMOTION_RECEIPT_FORMAT = "epistemedia-open-docket-promotion-receipt-v0.1"
 SUBMISSION_ROOT = Path("research/open-dockets/submissions")
 ACCEPTED_ROOT = Path("research/open-dockets")
 MAX_TRACE_EVENTS = 100
+MAX_TRACE_COST_AMOUNT = 1_000_000
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 GIT_OBJECT_ID = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -182,8 +184,17 @@ def validate_action_trace(trace: Any) -> list[str]:
     if not isinstance(cost, dict) or set(cost) != {"amount", "currency", "basis"}:
         errors.append("trace.cost must contain amount, currency, and basis")
     else:
-        if not isinstance(cost.get("amount"), (int, float)) or cost["amount"] < 0:
-            errors.append("trace.cost.amount must be a non-negative number")
+        amount = cost.get("amount")
+        if (
+            isinstance(amount, bool)
+            or not isinstance(amount, (int, float))
+            or not math.isfinite(amount)
+            or amount < 0
+            or amount > MAX_TRACE_COST_AMOUNT
+        ):
+            errors.append(
+                "trace.cost.amount must be a finite non-boolean number between 0 and 1000000"
+            )
         if cost.get("currency") not in TRACE_CURRENCIES:
             errors.append("trace.cost.currency must use a disclosure-safe currency code")
         if cost.get("basis") not in TRACE_COST_BASES:
@@ -241,8 +252,11 @@ def validate_trace_against_bundle(trace: dict[str, Any], bundle: dict[str, Any])
             errors.append("trace validate-proposal target must be proposal-bundle")
         elif action == "prepare-submission" and target != "github-draft-pr":
             errors.append("trace prepare-submission target must be github-draft-pr")
-        if action == "retrieve-source" and event.get("artifact_sha256") != "none":
-            retrieved.add(event.get("target"))
+        if action == "retrieve-source":
+            if target not in expected_urls:
+                errors.append("trace retrieve-source target must be a proposal source URL")
+            if event.get("artifact_sha256") != "none":
+                retrieved.add(target)
     missing = sorted(expected_urls - retrieved)
     extra = sorted(retrieved - expected_urls)
     if missing:
