@@ -262,16 +262,21 @@ def validate_question_novelty(root: Path, question: str) -> list[str]:
             comparisons.append(record)
 
     accepted_root = root / ACCEPTED_ROOT
-    if accepted_root.exists():
-        if accepted_root.is_symlink() or not accepted_root.is_dir():
+    if accepted_root.is_symlink():
+        errors.append(f"reviewed open-docket root is a symlink: {ACCEPTED_ROOT}")
+    elif accepted_root.exists():
+        if not accepted_root.is_dir():
             errors.append(f"reviewed open-docket root is not a regular directory: {ACCEPTED_ROOT}")
         else:
             for docket_path in sorted(accepted_root.iterdir()):
                 if docket_path.name == "submissions":
                     continue
-                if not docket_path.is_dir() or docket_path.is_symlink():
-                    continue
                 label = f"reviewed open docket {docket_path.name}"
+                if docket_path.is_symlink():
+                    errors.append(f"{label} path must not be a symlink")
+                    continue
+                if not docket_path.is_dir():
+                    continue
                 record = _load_prior_art_record(
                     root,
                     docket_path / "proposal.json",

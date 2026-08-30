@@ -433,6 +433,36 @@ def test_prior_art_comparison_fails_closed_on_malformed_reviewed_docket(
     )
 
 
+def test_prior_art_comparison_fails_closed_on_broken_reviewed_root_symlink(
+    tmp_path: Path,
+) -> None:
+    seed_prior_art(tmp_path)
+    accepted_root = tmp_path / "research" / "open-dockets"
+    accepted_root.symlink_to(tmp_path / "missing-reviewed-root", target_is_directory=True)
+    assert validate_question_novelty(tmp_path, "Does a novel claim hold?") == [
+        "reviewed open-docket root is a symlink: research/open-dockets"
+    ]
+
+
+def test_prior_art_comparison_fails_closed_on_reviewed_docket_symlink(
+    tmp_path: Path,
+) -> None:
+    seed_prior_art(tmp_path)
+    accepted_root = tmp_path / "research" / "open-dockets"
+    accepted_root.mkdir(parents=True)
+    external = tmp_path / "external-reviewed-docket"
+    external.mkdir()
+    (external / "proposal.json").write_text(
+        json.dumps({"question": "Does an external reviewed claim hold?"})
+    )
+    (accepted_root / "linked-reviewed-docket").symlink_to(
+        external, target_is_directory=True
+    )
+    assert validate_question_novelty(tmp_path, "Does a novel claim hold?") == [
+        "reviewed open docket linked-reviewed-docket path must not be a symlink"
+    ]
+
+
 def test_accepted_base_submission_validator_closes_server_chronology(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
