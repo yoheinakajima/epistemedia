@@ -101,6 +101,7 @@ epistemedia dossier corrections-and-familiarity-backfire --policy skeptical
 epistemedia dossier agent-citation-lineage --policy skeptical
 epistemedia research protocol
 epistemedia research prepare --question "YOUR QUESTION" --output proposal.json
+epistemedia research complete proposal.json
 epistemedia research validate proposal.json
 epistemedia repo next
 epistemedia mcp serve

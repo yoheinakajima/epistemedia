@@ -23,6 +23,7 @@ from epistemedia.open_dockets import (
     prepare_submission,
     trace_template,
     validate_action_trace,
+    validate_question_novelty,
     validate_submission_directory,
     validate_trace_against_bundle,
 )
@@ -297,6 +298,14 @@ def test_cli_prepares_submission_but_performs_no_git_or_review_action(
     assert result["submitted"] is False
     assert result["admitted"] is False
     assert result["next_steps"][-1].startswith("gh pr create --draft")
+    submitted_proposal = json.loads(
+        (
+            tmp_path
+            / result["directory"]
+            / "proposal.json"
+        ).read_text()
+    )
+    assert submitted_proposal["runtime"]["completed_at"] != bundle["runtime"]["completed_at"]
     assert not (tmp_path / ".git").exists()
 
 
@@ -316,6 +325,16 @@ def test_local_submission_chronology_fails_closed(tmp_path: Path) -> None:
             prompt_sha256=prompt_digest("1"),
             submitted_at="2026-08-28T23:59:59Z",
         )
+
+
+def test_existing_case_restatement_fails_before_queue_submission() -> None:
+    errors = validate_question_novelty(
+        ROOT,
+        "Did GPT-4 score in approximately the 90th percentile of test takers on the Uniform Bar Examination?",
+    )
+    assert errors == [
+        "proposal question closely restates accepted dossier gpt-4-bar-exam-percentile"
+    ]
 
 
 def test_accepted_base_submission_validator_closes_server_chronology(
@@ -362,6 +381,12 @@ def test_accepted_base_submission_validator_closes_server_chronology(
                 "commit": {
                     "author": {"date": "2026-08-29T19:59:00Z"},
                     "committer": {"date": "2026-08-29T20:01:00Z"},
+                }
+            }
+        if path == f"commits/{base}":
+            return {
+                "commit": {
+                    "committer": {"date": "2026-08-28T00:00:00Z"},
                 }
             }
         raise AssertionError(path)

@@ -71,6 +71,7 @@ def test_irreversible_publication_workflows_are_manual_and_confirmed() -> None:
 def test_pull_request_validation_has_no_secret_or_write_authority() -> None:
     text = workflow("ci.yml")
     assert "pull_request:" in text
+    assert "ref: ${{ github.event.pull_request.head.sha || github.sha }}" in text
     assert "secrets." not in text
     for permission in ("checks: read", "contents: read", "pull-requests: read"):
         assert permission in text

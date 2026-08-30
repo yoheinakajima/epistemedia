@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import http.server
 import json
 import os
@@ -35,6 +36,15 @@ from .research_kit import (
     validate_proposal,
 )
 from .server import Gateway, MCPRequestError
+
+
+def utc_now() -> str:
+    return (
+        dt.datetime.now(dt.timezone.utc)
+        .replace(microsecond=0)
+        .isoformat()
+        .replace("+00:00", "Z")
+    )
 
 
 def parser() -> argparse.ArgumentParser:
@@ -110,6 +120,10 @@ def parser() -> argparse.ArgumentParser:
     prepare.add_argument("--case", dest="case_slug")
     prepare.add_argument("--cutoff", default="YYYY-MM-DD")
     prepare.add_argument("--output", type=Path)
+    complete_research = research_sub.add_parser(
+        "complete", help="Stamp completion time and fail-closed validate one proposal JSON file"
+    )
+    complete_research.add_argument("bundle", type=Path)
     validate_research = research_sub.add_parser("validate", help="Fail-closed validation of one proposal JSON file")
     validate_research.add_argument("bundle", type=Path)
     submit_research = research_sub.add_parser(
@@ -444,6 +458,7 @@ def main(argv: list[str] | None = None) -> int:
             proposal = proposal_template(
                 question.strip(), cutoff=args.cutoff, case_slug=args.case_slug
             )
+            proposal["runtime"]["started_at"] = utc_now()
             output = {"proposal": proposal, "case_brief": brief}
             if args.output:
                 destination = args.output if args.output.is_absolute() else root / args.output
@@ -456,6 +471,31 @@ def main(argv: list[str] | None = None) -> int:
             else:
                 print_json(output)
             return 0
+        if args.research_command == "complete":
+            bundle_path = args.bundle if args.bundle.is_absolute() else root / args.bundle
+            try:
+                bundle = json.loads(bundle_path.read_text(encoding="utf-8"))
+                runtime = bundle.get("runtime")
+                if not isinstance(runtime, dict):
+                    raise ValueError("proposal runtime must be an object")
+                runtime["completed_at"] = utc_now()
+                bundle_path.write_text(
+                    json.dumps(bundle, indent=2, sort_keys=True, ensure_ascii=False) + "\n",
+                    encoding="utf-8",
+                )
+            except (OSError, json.JSONDecodeError, ValueError) as exc:
+                print_json(
+                    {
+                        "valid": False,
+                        "errors": [str(exc)],
+                        "submitted": False,
+                        "admitted": False,
+                    }
+                )
+                return 1
+            result = validate_proposal(bundle)
+            print_json({**result, "output": str(bundle_path)})
+            return 0 if result["valid"] else 1
         if args.research_command == "validate":
             bundle_path = args.bundle if args.bundle.is_absolute() else root / args.bundle
             try:
@@ -472,6 +512,10 @@ def main(argv: list[str] | None = None) -> int:
             try:
                 bundle = json.loads(bundle_path.read_text(encoding="utf-8"))
                 trace = json.loads(trace_path.read_text(encoding="utf-8"))
+                runtime = bundle.get("runtime")
+                if not isinstance(runtime, dict):
+                    raise ValueError("proposal runtime must be an object")
+                runtime["completed_at"] = utc_now()
                 prepared = prepare_submission(
                     root,
                     bundle,
