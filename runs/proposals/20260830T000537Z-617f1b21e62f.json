@@ -1,0 +1,10 @@
+{
+  "command": "PYTHONPATH=src PATH=.venv/bin:$PATH make check PYTHON=.venv/bin/python",
+  "id": "em:run-receipt:sha256:617f1b21e62f7d70cd66c0f78f6f854e493cb03b4b90911bba7b50b8bc4611fb",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-30T00:05:37Z",
+  "run_id": "em0040-five-blocker-successor-validation",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0040"
+}

@@ -46,7 +46,7 @@ def trace_for(bundle: dict) -> dict:
                 "target": source["url"],
                 "status": "completed",
                 "artifact_sha256": "a" * 64,
-                "note": "Public source independently retrieved; only its digest is recorded.",
+                "note": "source-payload-omitted",
             }
         )
     return trace
@@ -89,7 +89,7 @@ def review_for(bundle: dict, intake: dict, *, model_family: str = "codex") -> di
             "fresh_clone": True,
             "author_notes_seen": False,
             "authoring_agent_artifacts_used": False,
-            "toolchain": ["independent HTTPS retrieval", "local digest verifier"],
+            "toolchain": ["browser-cdp", "sha256sum"],
             "source_artifact_sha256s": ["b" * 64],
         },
         "source_reviews": [
@@ -295,7 +295,9 @@ def test_reviewer_identity_and_artifact_set_are_typed_and_exact(tmp_path: Path) 
     assert any("source-artifact set does not exactly match" in error for error in errors)
 
 
-def test_toolchain_separation_normalizes_case_spacing_and_punctuation(tmp_path: Path) -> None:
+def test_toolchain_separation_rejects_normalized_overlap_even_with_extra_tools(
+    tmp_path: Path,
+) -> None:
     destination = promote(tmp_path)
     proposal = json.loads((destination / "proposal.json").read_text())
     review_path = destination / "review.json"
@@ -303,10 +305,10 @@ def test_toolchain_separation_normalizes_case_spacing_and_punctuation(tmp_path: 
     review["reviewer"]["toolchain"] = [
         re.sub(r"\s+", "-", item.upper())
         for item in proposal["runtime"]["toolchain"]
-    ]
+    ] + ["extra-review-label"]
     review_path.write_text(json.dumps(review, indent=2, sort_keys=True) + "\n")
     _, errors = load_open_dockets(tmp_path)
-    assert any("toolchain must not equal" in error for error in errors)
+    assert any("toolchain must be disjoint" in error for error in errors)
 
 
 def test_missing_span_review_fails_closed(tmp_path: Path) -> None:
@@ -448,9 +450,11 @@ def test_sensitive_mixed_paths_never_execute_candidate_code() -> None:
 def test_ci_bootstrap_rejects_docket_paths_until_classifier_is_accepted() -> None:
     workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text()
     assert "if [[ -f validator/ops/classify_docket_pr.py ]]" in workflow
-    assert "grep -q '^research/open-dockets/'" in workflow
+    assert "mapfile -t bootstrap_paths" in workflow
+    assert '[[ "$path" == research/open-dockets/* ]]' in workflow
+    assert "grep -q '^research/open-dockets/'" not in workflow
     assert "accepted base lacks the docket classifier; rejecting sensitive diff" in workflow
-    assert workflow.index("grep -q '^research/open-dockets/'") < workflow.index(
+    assert workflow.index('[[ "$path" == research/open-dockets/* ]]') < workflow.index(
         'echo "mode=normal"'
     )
 
@@ -481,18 +485,39 @@ def test_independent_fetch_rejects_private_dns_resolution(
         promotion_validator.fetch_public("https://example.org/source")
 
 
-def test_independent_fetch_never_follows_source_redirects() -> None:
-    handler = promotion_validator.NoSourceRedirect()
-    request = promotion_validator.urllib.request.Request("https://example.org/source")
+def test_independent_fetch_pins_dns_disables_redirects_and_bounds_bytes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(
+        promotion_validator.socket,
+        "getaddrinfo",
+        lambda *args, **kwargs: [
+            (promotion_validator.socket.AF_INET, 1, 6, "", ("93.184.216.34", 443))
+        ],
+    )
+    observed: list[str] = []
+
+    def fake_run(args, **kwargs):
+        observed.extend(args)
+        Path(args[args.index("--output") + 1]).write_bytes(b"bounded artifact")
+        return subprocess.CompletedProcess(args, 0, stdout="200", stderr="")
+
+    monkeypatch.setattr(promotion_validator.subprocess, "run", fake_run)
+    assert promotion_validator.fetch_public(
+        "https://example.org/source", max_bytes=1234
+    ) == b"bounded artifact"
+    assert "example.org:443:93.184.216.34" in observed
+    assert observed[observed.index("--max-filesize") + 1] == "1234"
+    assert "--location" not in observed
+    assert observed[observed.index("--noproxy") + 1] == "*"
+
+    def fake_redirect(args, **kwargs):
+        Path(args[args.index("--output") + 1]).write_bytes(b"")
+        return subprocess.CompletedProcess(args, 0, stdout="302", stderr="")
+
+    monkeypatch.setattr(promotion_validator.subprocess, "run", fake_redirect)
     with pytest.raises(ValueError, match="final public carrier"):
-        handler.redirect_request(
-            request,
-            None,
-            302,
-            "Found",
-            {},
-            "http://127.0.0.1/private",
-        )
+        promotion_validator.fetch_public("https://example.org/source")
 
 
 def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
@@ -586,7 +611,9 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
         "github_file",
         lambda path, ref: source_files[Path(path).name],
     )
-    monkeypatch.setattr(promotion_validator, "fetch_public", lambda url: artifact)
+    monkeypatch.setattr(
+        promotion_validator, "fetch_public", lambda url, **kwargs: artifact
+    )
     result = promotion_validator.validate(repository, base)
     assert result["valid"] is True, result["errors"]
 
@@ -671,10 +698,13 @@ def test_markdown_projection_escapes_raw_html_and_uses_a_safe_dynamic_fence(
     projection = dockets[0].projection("https://epistemedia.org")
     dangerous = "bounded </script> text\n```\n# injected heading"
     projection["sources"][0]["exact_spans"][0]["quote"] = dangerous
+    projection["sources"][0]["title"] = "safe](javascript:alert(1))"
     markdown = docket_markdown(projection)
     assert "</script>" not in markdown
-    assert "\n# injected heading" not in markdown.split("## Complete machine record", 1)[0]
-    tail = markdown.split("## Complete machine record", 1)[1]
+    human, tail = markdown.split("## Complete machine record", 1)
+    assert "\n# injected heading" not in human
+    assert "[safe](javascript:alert(1))" not in human
+    assert "safe\\]\\(javascript:alert\\(1\\)\\)" in human
     opening = next(line for line in tail.splitlines() if line.endswith("json"))
     fence = opening.removesuffix("json")
     encoded = tail.split(opening, 1)[1].split(fence, 1)[0].strip()

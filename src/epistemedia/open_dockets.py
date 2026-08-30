@@ -21,7 +21,6 @@ PROMOTION_RECEIPT_FORMAT = "epistemedia-open-docket-promotion-receipt-v0.1"
 SUBMISSION_ROOT = Path("research/open-dockets/submissions")
 ACCEPTED_ROOT = Path("research/open-dockets")
 MAX_TRACE_EVENTS = 100
-MAX_TRACE_FREE_TEXT_CHARACTERS = 8_192
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
 GIT_OBJECT_ID = re.compile(r"^(?:[0-9a-f]{40}|[0-9a-f]{64})$")
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -41,6 +40,32 @@ INTAKE_FIELDS = {
     "queue",
 }
 EMAIL = re.compile(r"(?i)\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b")
+TRACE_ACTIONS = {
+    "read-protocol": "public-protocol-read",
+    "retrieve-source": "source-payload-omitted",
+    "validate-proposal": "validation-result-recorded",
+    "prepare-submission": "submission-bundle-prepared",
+}
+TRACE_STATUSES = {"completed", "failed", "partial"}
+TRACE_FAILURE_CODES = {
+    "source-retrieval-failed",
+    "source-access-blocked",
+    "source-identity-unresolved",
+    "span-not-located",
+    "calculation-not-reproduced",
+    "proposal-validation-failed",
+    "git-operation-failed",
+    "pr-creation-failed",
+    "unknown-failure",
+}
+TRACE_INTERVENTION_CODES = {
+    "owner-clarification",
+    "credential-provision",
+    "paid-provider-authorization",
+    "manual-source-retrieval",
+    "proposal-repair",
+    "git-repair",
+}
 
 
 def canonical_json(value: Any) -> bytes:
@@ -118,11 +143,18 @@ def validate_action_trace(trace: Any) -> list[str]:
             continue
         if event.get("sequence") != index + 1:
             errors.append(f"{path}.sequence must be contiguous from 1")
+        action = event.get("action")
+        if action not in TRACE_ACTIONS:
+            errors.append(f"{path}.action is not a supported trace action")
+        if event.get("status") not in TRACE_STATUSES:
+            errors.append(f"{path}.status is not a supported trace status")
+        if event.get("note") != TRACE_ACTIONS.get(action):
+            errors.append(f"{path}.note must use the fixed disclosure-safe action code")
         for field in event_fields - {"sequence", "artifact_sha256"}:
             if not isinstance(event.get(field), str) or not event[field].strip():
                 errors.append(f"{path}.{field} must be a non-empty string")
             else:
-                limit = 2_048 if field == "target" else 240
+                limit = 2_048 if field == "target" else 80
                 if len(event[field]) > limit:
                     errors.append(f"{path}.{field} exceeds {limit} characters")
         artifact = event.get("artifact_sha256")
@@ -133,8 +165,12 @@ def validate_action_trace(trace: Any) -> list[str]:
             isinstance(item, str) and item.strip() for item in trace.get(key, [])
         ):
             errors.append(f"trace.{key} must be a list of non-empty strings")
-        elif len(trace[key]) > 25 or any(len(item) > 240 for item in trace[key]):
+        elif len(trace[key]) > 25:
             errors.append(f"trace.{key} exceeds disclosure-safe item or size limits")
+        else:
+            allowed = TRACE_FAILURE_CODES if key == "failures" else TRACE_INTERVENTION_CODES
+            if any(item not in allowed for item in trace[key]):
+                errors.append(f"trace.{key} must contain only disclosure-safe codes")
     cost = trace.get("cost")
     if not isinstance(cost, dict) or set(cost) != {"amount", "currency", "basis"}:
         errors.append("trace.cost must contain amount, currency, and basis")
@@ -146,27 +182,6 @@ def validate_action_trace(trace: Any) -> list[str]:
                 errors.append(f"trace.cost.{key} must be a non-empty string")
     if _contains_disallowed_text(trace):
         errors.append("trace contains private-context, secret-shaped, or prohibited reasoning text")
-    free_text = [
-        value
-        for event in events
-        if isinstance(event, dict)
-        for key, value in event.items()
-        if key not in {"sequence", "artifact_sha256"} and isinstance(value, str)
-    ]
-    free_text.extend(
-        item
-        for key in ("failures", "interventions")
-        for item in trace.get(key, [])
-        if isinstance(item, str)
-    )
-    if isinstance(cost, dict):
-        free_text.extend(
-            value for value in cost.values() if isinstance(value, str)
-        )
-    if sum(len(value) for value in free_text) > MAX_TRACE_FREE_TEXT_CHARACTERS:
-        errors.append(
-            f"trace free text exceeds {MAX_TRACE_FREE_TEXT_CHARACTERS} characters"
-        )
     if len(canonical_json(trace)) > 32_768:
         errors.append("trace exceeds 32768 bytes")
     return errors
@@ -182,7 +197,7 @@ def trace_template() -> dict[str, Any]:
                 "target": "https://epistemedia.org/agents/submit/",
                 "status": "completed",
                 "artifact_sha256": "none",
-                "note": "Public instructions read; no private context recorded.",
+                "note": "public-protocol-read",
             }
         ],
         "failures": [],
@@ -210,7 +225,15 @@ def validate_trace_against_bundle(trace: dict[str, Any], bundle: dict[str, Any])
     expected_urls = {source["url"] for source in bundle.get("sources", [])}
     retrieved: set[str] = set()
     for event in trace.get("events", []):
-        if event.get("action") == "retrieve-source" and event.get("artifact_sha256") != "none":
+        action = event.get("action")
+        target = event.get("target")
+        if action == "read-protocol" and target != "https://epistemedia.org/agents/submit/":
+            errors.append("trace read-protocol target must be the public submission guide")
+        elif action == "validate-proposal" and target != "proposal-bundle":
+            errors.append("trace validate-proposal target must be proposal-bundle")
+        elif action == "prepare-submission" and target != "github-draft-pr":
+            errors.append("trace prepare-submission target must be github-draft-pr")
+        if action == "retrieve-source" and event.get("artifact_sha256") != "none":
             retrieved.add(event.get("target"))
     missing = sorted(expected_urls - retrieved)
     extra = sorted(retrieved - expected_urls)
@@ -522,10 +545,12 @@ def _validate_review(path: Path, bundle: dict[str, Any], intake: dict[str, Any])
             isinstance(item, str) and SHA256.fullmatch(item) for item in artifacts
         ):
             errors.append("reviewer source artifacts must be non-empty SHA-256 values")
-        if _normalized_toolchain(toolchain) == _normalized_toolchain(
+        author_toolchain = _normalized_toolchain(
             bundle.get("runtime", {}).get("toolchain", [])
-        ):
-            errors.append("reviewer toolchain must not equal the author toolchain")
+        )
+        reviewer_toolchain = _normalized_toolchain(toolchain)
+        if reviewer_toolchain & author_toolchain:
+            errors.append("reviewer toolchain must be disjoint from the author toolchain")
     source_reviews = review.get("source_reviews")
     expected_sources = {
         source["source_id"]: {
@@ -773,7 +798,9 @@ def docket_markdown(data: dict[str, Any]) -> str:
     raw_data = data
 
     def safe_text(value: str) -> str:
-        return html.escape(" ".join(value.split()), quote=False).replace("`", "&#96;")
+        escaped = html.escape(" ".join(value.split()), quote=False)
+        escaped = escaped.replace("\\", "\\\\").replace("`", "&#96;")
+        return re.sub(r"([\[\]()])", r"\\\1", escaped)
 
     def safe_tree(value: Any) -> Any:
         if isinstance(value, str):
@@ -815,10 +842,11 @@ def docket_markdown(data: dict[str, Any]) -> str:
             ]
         )
     lines.extend(["## Sources and exact spans", ""])
-    for source in data["sources"]:
+    for source, raw_source in zip(data["sources"], raw_data["sources"], strict=True):
+        safe_url = html.escape(str(raw_source["url"]), quote=True)
         lines.extend(
             [
-                f"### [{source['title']}]({source['url']})",
+                f"### [{source['title']}](<{safe_url}>)",
                 "",
                 f"**Edition:** {source['edition']}  ",
                 f"**License:** {source['license']}",

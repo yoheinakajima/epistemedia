@@ -51,11 +51,15 @@ jobs:
           else
             # One-time bootstrap for the reviewed EM-0040 implementation. The accepted base
             # predates the classifier, so no docket-sensitive diff may pass this transition.
-            if git -C candidate diff --name-only "$BASE_SHA...HEAD" \
-              | grep -q '^research/open-dockets/'; then
-              echo "accepted base lacks the docket classifier; rejecting sensitive diff" >&2
-              exit 1
-            fi
+            mapfile -t bootstrap_paths < <(
+              git -C candidate diff --name-only "$BASE_SHA...HEAD"
+            )
+            for path in "${bootstrap_paths[@]}"; do
+              if [[ "$path" == research/open-dockets/* ]]; then
+                echo "accepted base lacks the docket classifier; rejecting sensitive diff" >&2
+                exit 1
+              fi
+            done
             echo "mode=normal" >> "$GITHUB_OUTPUT"
           fi
       - name: Install

@@ -22,15 +22,6 @@ from urllib.parse import quote, urlsplit
 from epistemedia.open_dockets import load_open_dockets, validate_submission_directory
 
 
-class NoSourceRedirect(urllib.request.HTTPRedirectHandler):
-    """Require proposals to name the final carrier instead of following redirects."""
-
-    def redirect_request(self, req, fp, code, msg, headers, newurl):
-        raise ValueError(
-            f"source URL redirects; record the final public carrier: {req.full_url}"
-        )
-
-
 def git(candidate: Path, *args: str) -> str:
     return subprocess.run(
         ["git", "-C", str(candidate), *args],
@@ -75,7 +66,7 @@ def github_file(path: str, ref: str) -> bytes:
     return base64.b64decode(encoded, validate=True)
 
 
-def fetch_public(url: str) -> bytes:
+def fetch_public(url: str, *, max_bytes: int = 25_000_000) -> bytes:
     parsed = urlsplit(url)
     if parsed.scheme not in {"http", "https"} or not parsed.hostname:
         raise ValueError(f"source URL is not public HTTP(S): {url}")
@@ -89,18 +80,59 @@ def fetch_public(url: str) -> bytes:
     }
     if not addresses or any(not address.is_global for address in addresses):
         raise ValueError(f"source URL resolves to a non-public address: {url}")
-
-    request = urllib.request.Request(
-        url,
-        headers={"accept": "*/*", "user-agent": "epistemedia-independent-promotion-check/0.1"},
-    )
-    opener = urllib.request.build_opener(
-        urllib.request.ProxyHandler({}), NoSourceRedirect()
-    )
-    with opener.open(request, timeout=20) as response:
-        value = response.read(25_000_001)
-    if len(value) > 25_000_000:
-        raise ValueError(f"independent source retrieval exceeds 25MB: {url}")
+    address = sorted(addresses, key=str)[0]
+    pinned_address = f"[{address}]" if address.version == 6 else str(address)
+    port = parsed.port or (443 if parsed.scheme == "https" else 80)
+    with tempfile.TemporaryDirectory(prefix="epistemedia-pinned-source-") as tmp:
+        output = Path(tmp) / "artifact"
+        result = subprocess.run(
+            [
+                "curl",
+                "--silent",
+                "--show-error",
+                "--fail-with-body",
+                "--connect-timeout",
+                "10",
+                "--max-time",
+                "20",
+                "--max-filesize",
+                str(max_bytes),
+                "--noproxy",
+                "*",
+                "--proto",
+                "=http,https",
+                "--resolve",
+                f"{parsed.hostname}:{port}:{pinned_address}",
+                "--output",
+                str(output),
+                "--write-out",
+                "%{http_code}",
+                "--",
+                url,
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=25,
+        )
+        if result.returncode != 0:
+            raise ValueError(
+                f"pinned source retrieval failed: {result.stderr.strip()[:500]}"
+            )
+        try:
+            status = int(result.stdout.strip())
+        except ValueError as exc:
+            raise ValueError("pinned source retrieval returned no HTTP status") from exc
+        if not 200 <= status < 300:
+            raise ValueError(
+                f"source URL redirects or returned non-success status {status}; "
+                "record the final public carrier"
+            )
+        value = output.read_bytes()
+    if len(value) > max_bytes:
+        raise ValueError(
+            f"independent source retrieval exceeds {max_bytes} bytes: {url}"
+        )
     return value
 
 
@@ -210,15 +242,18 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
             aggregate_retrieved_bytes = 0
             for source in proposal.get("sources", []):
                 source_id = source.get("source_id")
+                remaining_budget = 100_000_000 - aggregate_retrieved_bytes
+                if remaining_budget <= 0:
+                    errors.append("independent CI aggregate source retrieval exceeds 100MB")
+                    break
                 try:
-                    artifact = fetch_public(source["url"])
+                    artifact = fetch_public(
+                        source["url"], max_bytes=min(25_000_000, remaining_budget)
+                    )
                 except Exception as exc:
                     errors.append(f"independent CI retrieval failed for {source_id}: {exc}")
                     continue
                 aggregate_retrieved_bytes += len(artifact)
-                if aggregate_retrieved_bytes > 100_000_000:
-                    errors.append("independent CI aggregate source retrieval exceeds 100MB")
-                    break
                 digest = hashlib.sha256(artifact).hexdigest()
                 if digest != source_reviews.get(source_id, {}).get("artifact_sha256"):
                     errors.append(f"independent CI artifact digest mismatch for {source_id}")
