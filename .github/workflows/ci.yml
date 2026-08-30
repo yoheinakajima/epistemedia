@@ -75,6 +75,9 @@ jobs:
         env:
           PYTHONPATH: validator/src
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          CURRENT_PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: python validator/ops/validate_submission_pr.py --candidate candidate --base-sha "$BASE_SHA"
       - name: Validate promotion using accepted-base code
         if: steps.classify.outputs.mode == 'promotion'

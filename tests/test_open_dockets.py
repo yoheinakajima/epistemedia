@@ -14,6 +14,7 @@ from test_research_kit import valid_proposal
 from epistemedia.cli import main
 from epistemedia.core import build_public
 from epistemedia.open_dockets import (
+    CONTROLLER_ATTESTATION_FORMAT,
     PROMOTION_RECEIPT_FORMAT,
     REVIEW_FORMAT,
     docket_html,
@@ -28,6 +29,7 @@ from epistemedia.open_dockets import (
 from epistemedia.research_kit import validate_proposal
 from epistemedia.server import Gateway, Request, tool_definitions
 from ops import validate_promotion_pr as promotion_validator
+from ops import validate_submission_pr as submission_validator
 from ops.classify_docket_pr import classify_paths
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,14 +41,16 @@ def prompt_digest(character: str) -> str:
 
 def trace_for(bundle: dict) -> dict:
     trace = trace_template()
+    attempts = {item["source_id"]: item for item in bundle["retrieval_attempts"]}
     for source in bundle["sources"]:
+        attempt = attempts[source["source_id"]]
         trace["events"].append(
             {
                 "sequence": len(trace["events"]) + 1,
                 "action": "retrieve-source",
                 "target": source["url"],
-                "status": "completed",
-                "artifact_sha256": "a" * 64,
+                "status": "completed" if attempt["outcome"] == "retrieved" else "failed",
+                "artifact_sha256": attempt["artifact_sha256"],
                 "note": "source-payload-omitted",
             }
         )
@@ -69,7 +73,30 @@ def prepared(tmp_path: Path) -> tuple[dict, dict, dict]:
     return bundle, trace, result
 
 
-def review_for(bundle: dict, intake: dict, *, model_family: str = "codex") -> dict:
+def controller_attestation(intake: dict) -> dict:
+    return {
+        "format": CONTROLLER_ATTESTATION_FORMAT,
+        "observed_at": "2026-08-29T20:30:00Z",
+        "source_pr_number": 100,
+        "source_pr_head": "a" * 40,
+        "session_identity_sha256": "9" * 64,
+        "provider": "anthropic",
+        "model_family": "claude",
+        "model_label": "Claude Opus 5",
+        "effort": "high",
+        "observation_source": "controller-visible-session-metadata",
+        "unavailable_fields": [],
+        "attestor": "epistemedia-control-room",
+    }
+
+
+def review_for(
+    bundle: dict,
+    intake: dict,
+    attestation: dict,
+    *,
+    model_family: str = "codex",
+) -> dict:
     return {
         "format": REVIEW_FORMAT,
         "decision": "pass",
@@ -81,6 +108,9 @@ def review_for(bundle: dict, intake: dict, *, model_family: str = "codex") -> di
             "source_pr_number": 100,
             "source_pr_head": "a" * 40,
             "source_pr_url": "https://github.com/yoheinakajima/epistemedia/pull/100",
+            "controller_attestation_sha256": hashlib.sha256(
+                (json.dumps(attestation, indent=2, sort_keys=True) + "\n").encode()
+            ).hexdigest(),
         },
         "reviewer": {
             "agent_id": "codex-independent-reviewer",
@@ -99,6 +129,8 @@ def review_for(bundle: dict, intake: dict, *, model_family: str = "codex") -> di
                 "retrieved_url": source["url"],
                 "artifact_sha256": "b" * 64,
                 "retrieval_status": "independently-retrieved",
+                "license_checked": True,
+                "license_disposition": "confirmed-known",
                 "spans": [
                     {
                         "span_id": span["span_id"],
@@ -114,15 +146,45 @@ def review_for(bundle: dict, intake: dict, *, model_family: str = "codex") -> di
             }
             for source in bundle["sources"]
         ],
+        "claim_atom_reviews": [
+            {
+                "atom_id": atom["atom_id"],
+                "text_sha256": hashlib.sha256(atom["text"].encode()).hexdigest(),
+                "source_span_checked": atom["status"] in {"supported", "qualified"},
+                "disposition": (
+                    "credit-as-bounded"
+                    if atom["status"] in {"supported", "qualified"}
+                    else f"retain-as-{atom['status']}"
+                ),
+            }
+            for result in bundle["results"]
+            for atom in result["claim_atoms"]
+        ],
         "calculation_reviews": [
             {
                 "calculation_id": item["calculation_id"],
                 "equation_checked": True,
                 "inputs_checked": True,
+                "input_pointers_checked": True,
+                "dependency_edges_checked": True,
                 "output_reproduced": True,
                 "disposition": "credit-as-bounded",
             }
             for item in bundle["calculations"]
+        ],
+        "retrieval_attempt_reviews": [
+            {
+                "attempt_id": item["attempt_id"],
+                "url_checked": True,
+                "time_checked": True,
+                "outcome_checked": True,
+                "disposition": (
+                    "independently-retrieved"
+                    if item["outcome"] == "retrieved"
+                    else "retained-failed-attempt"
+                ),
+            }
+            for item in bundle["retrieval_attempts"]
         ],
         "dependency_reviews": [
             {
@@ -152,7 +214,12 @@ def promote(tmp_path: Path, *, model_family: str = "codex") -> Path:
     destination.mkdir(parents=True)
     shutil.copy2(submission / "proposal.json", destination / "proposal.json")
     shutil.copy2(submission / "intake.json", destination / "intake.json")
-    review = review_for(bundle, intake, model_family=model_family)
+    attestation = controller_attestation(intake)
+    (destination / "controller-attestation.json").write_text(
+        json.dumps(attestation, indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    review = review_for(bundle, intake, attestation, model_family=model_family)
     (destination / "review.json").write_text(
         json.dumps(review, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
@@ -170,6 +237,9 @@ def promote(tmp_path: Path, *, model_family: str = "codex") -> Path:
         ).hexdigest(),
         "review_sha256": hashlib.sha256(
             (destination / "review.json").read_bytes()
+        ).hexdigest(),
+        "controller_attestation_sha256": hashlib.sha256(
+            (destination / "controller-attestation.json").read_bytes()
         ).hexdigest(),
         "reviewer": review["reviewer"],
     }
@@ -218,8 +288,6 @@ def test_cli_prepares_submission_but_performs_no_git_or_review_action(
                 "run-1",
                 "--prompt-sha256",
                 prompt_digest("1"),
-                "--submitted-at",
-                "2026-08-29T20:00:00Z",
             ]
         )
         == 0
@@ -230,6 +298,78 @@ def test_cli_prepares_submission_but_performs_no_git_or_review_action(
     assert result["admitted"] is False
     assert result["next_steps"][-1].startswith("gh pr create --draft")
     assert not (tmp_path / ".git").exists()
+
+
+def test_local_submission_chronology_fails_closed(tmp_path: Path) -> None:
+    bundle = valid_proposal()
+    with pytest.raises(
+        ValueError,
+        match="runtime completed_at must not follow intake submitted_at",
+    ):
+        prepare_submission(
+            tmp_path,
+            bundle,
+            trace_for(bundle),
+            agent_id="claude-cold-start",
+            model_family="claude",
+            run_id="claude-run-001",
+            prompt_sha256=prompt_digest("1"),
+            submitted_at="2026-08-28T23:59:59Z",
+        )
+
+
+def test_accepted_base_submission_validator_closes_server_chronology(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    repository = tmp_path / "repo"
+    repository.mkdir()
+
+    def run_git(*args: str) -> str:
+        return subprocess.run(
+            ["git", "-C", str(repository), *args],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+
+    run_git("init", "-b", "main")
+    run_git("config", "user.name", "Test Contributor")
+    run_git("config", "user.email", "contributor@example.invalid")
+    (repository / "README.md").write_text("accepted base\n")
+    run_git("add", "README.md")
+    run_git("commit", "-m", "base")
+    base = run_git("rev-parse", "HEAD")
+    prepared(repository)
+    run_git("add", "research/open-dockets/submissions")
+    run_git("commit", "-m", "submit docket")
+    head = run_git("rev-parse", "HEAD")
+
+    monkeypatch.setenv("CURRENT_PR_NUMBER", "100")
+    monkeypatch.setenv("GITHUB_REPOSITORY", "yoheinakajima/epistemedia")
+    monkeypatch.setenv("GITHUB_TOKEN", "test-token")
+
+    def fake_github_json(path: str):
+        if path == "pulls/100":
+            return {
+                "head": {"sha": head},
+                "base": {"sha": base},
+                "state": "open",
+                "draft": True,
+                "created_at": "2026-08-29T20:02:00Z",
+            }
+        if path == f"commits/{head}":
+            return {
+                "commit": {
+                    "author": {"date": "2026-08-29T19:59:00Z"},
+                    "committer": {"date": "2026-08-29T20:01:00Z"},
+                }
+            }
+        raise AssertionError(path)
+
+    monkeypatch.setattr(submission_validator, "github_json", fake_github_json)
+    result = submission_validator.validate(repository, base)
+    assert result["valid"] is False
+    assert any("chronology must satisfy" in error for error in result["errors"])
 
 
 @pytest.mark.parametrize(
@@ -300,6 +440,50 @@ def test_same_model_family_cannot_review_its_own_submission(tmp_path: Path) -> N
     assert any("model_family must differ" in error for error in errors)
 
 
+def test_controller_observed_model_must_match_contributor(tmp_path: Path) -> None:
+    destination = promote(tmp_path)
+    attestation_path = destination / "controller-attestation.json"
+    attestation = json.loads(attestation_path.read_text())
+    attestation["model_family"] = "gemini"
+    attestation_path.write_text(json.dumps(attestation, indent=2, sort_keys=True) + "\n")
+    _, errors = load_open_dockets(tmp_path)
+    assert any(
+        "known controller-observed model family must match" in error
+        for error in errors
+    )
+
+
+def test_unknown_controller_model_earns_no_independence_credit(tmp_path: Path) -> None:
+    destination = promote(tmp_path)
+    attestation_path = destination / "controller-attestation.json"
+    attestation = json.loads(attestation_path.read_text())
+    attestation["model_family"] = "unknown"
+    attestation["unavailable_fields"] = ["model_family"]
+    attestation_path.write_text(json.dumps(attestation, indent=2, sort_keys=True) + "\n")
+
+    review_path = destination / "review.json"
+    review = json.loads(review_path.read_text())
+    review["binding"]["controller_attestation_sha256"] = hashlib.sha256(
+        attestation_path.read_bytes()
+    ).hexdigest()
+    review_path.write_text(json.dumps(review, indent=2, sort_keys=True) + "\n")
+
+    receipt_path = destination / "promotion-receipt.json"
+    receipt = json.loads(receipt_path.read_text())
+    receipt["controller_attestation_sha256"] = hashlib.sha256(
+        attestation_path.read_bytes()
+    ).hexdigest()
+    receipt["review_sha256"] = hashlib.sha256(review_path.read_bytes()).hexdigest()
+    receipt_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+
+    _, errors = load_open_dockets(tmp_path)
+    assert any(
+        "unresolved controller-observed model identity earns no reviewer-independence credit"
+        in error
+        for error in errors
+    )
+
+
 def test_model_family_comparison_is_case_insensitive(tmp_path: Path) -> None:
     promote(tmp_path, model_family="Claude")
     _, errors = load_open_dockets(tmp_path)
@@ -345,6 +529,29 @@ def test_missing_span_review_fails_closed(tmp_path: Path) -> None:
     assert any("coverage does not exactly match" in error for error in errors)
 
 
+@pytest.mark.parametrize(
+    ("field", "expected"),
+    [
+        ("claim_atom_reviews", "claim atom review coverage does not exactly match"),
+        (
+            "retrieval_attempt_reviews",
+            "retrieval attempt review coverage does not exactly match",
+        ),
+    ],
+)
+def test_new_review_surfaces_require_exact_coverage(
+    tmp_path: Path, field: str, expected: str
+) -> None:
+    destination = promote(tmp_path)
+    review_path = destination / "review.json"
+    review = json.loads(review_path.read_text())
+    review[field] = []
+    review_path.write_text(json.dumps(review, indent=2, sort_keys=True) + "\n")
+    dockets, errors = load_open_dockets(tmp_path)
+    assert dockets == []
+    assert any(expected in error for error in errors)
+
+
 def test_forged_quote_digest_fails_closed(tmp_path: Path) -> None:
     destination = promote(tmp_path)
     review = json.loads((destination / "review.json").read_text())
@@ -387,10 +594,13 @@ def test_calculation_and_dependency_closure_are_required() -> None:
             "equation": "numerator / denominator",
             "inputs": [
                 {
+                    "input_id": "numerator",
                     "name": "numerator",
                     "value": "1",
+                    "origin": "source-span",
                     "source_id": "source-1",
                     "span_id": "missing-span",
+                    "json_pointer": "/results/numerator",
                 }
             ],
             "output": "1",
@@ -483,15 +693,19 @@ def test_ci_bootstrap_rejects_docket_paths_until_classifier_is_accepted() -> Non
     )
 
 
-def test_trusted_post_check_workflow_can_only_approve_exact_promotions() -> None:
+def test_trusted_post_check_workflow_can_only_sign_exact_promotions() -> None:
     workflow = (ROOT / ".github" / "workflows" / "approve-open-docket-promotion.yml").read_text()
     assert "workflow_run:" in workflow
     assert "github.event.workflow_run.conclusion == 'success'" in workflow
-    assert "pull-requests: write" in workflow
+    assert "actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1" in workflow
+    assert "permission-checks: write" in workflow
+    assert "pull-requests: write" not in workflow
     assert "contents: write" not in workflow
-    assert "gh pr review" in workflow
+    assert "check-runs" in workflow
+    assert "independent-review" in workflow
+    assert "gh pr review" not in workflow
     assert "gh pr merge" not in workflow
-    assert "${#paths[@]} -eq 4" in workflow
+    assert "${#paths[@]} -eq 5" in workflow
     assert "pull_request_target" not in workflow
 
 
@@ -620,6 +834,14 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
                 "base": {"sha": base},
                 "state": "open",
                 "draft": True,
+                "created_at": "2026-08-29T20:12:00Z",
+            }
+        if path == "commits/" + "a" * 40:
+            return {
+                "commit": {
+                    "author": {"date": "2026-08-29T20:10:00Z"},
+                    "committer": {"date": "2026-08-29T20:11:00Z"},
+                }
             }
         if path.startswith("pulls/100/files"):
             parent = "research/open-dockets/submissions/source"

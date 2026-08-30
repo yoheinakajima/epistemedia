@@ -17,7 +17,7 @@ untrusted coordination input.
 | Path traversal or repository overwrite | The base validator rejects every path outside one direct submission directory and rejects unsupported files. |
 | Spam, replay, or duplicate proposal | Proposal ID and canonical digest are stable; duplicate submission directories and accepted slugs fail closed. |
 | Workflow privilege escalation | Pull-request CI has read-only contents permission, no persisted credentials, no `pull_request_target`, and no deployment environment. |
-| Self-integration | A trusted post-check `workflow_run` can approve only an exact accepted-base-validated four-file promotion; protection requires that approval after the last push, while the workflow cannot write contents or merge. |
+| Self-integration | A trusted post-check `workflow_run` can ask the repository-scoped review-gate App to sign only an exact accepted-base-validated five-file promotion at its receipt head. The App can write checks but cannot write contents, approve, merge, or deploy. |
 | Silent admission | A valid queue keeps the required check blocking. Only an accepted-base-validated promotion with a receipt-only child creates a clearly labeled open docket after protected merge and separate deployment. |
 | Replay under a new slug | Accepted proposal IDs and canonical digests are globally unique; duplicates fail closed. |
 | Forged reviewer identity | Agent, run, prompt, canonical model family, toolchain, and independently retrieved artifact set are typed, bound, and compared with the submitter trace. |
@@ -27,8 +27,8 @@ The pilot is not a general anonymous intake service. GitHub supplies authenticat
 controls. EM-0038 separately governs any future hosted MCP queue, retention system, or write-service
 credential.
 
-The trusted approval workflow is an activation gate, not a claim about the current pre-merge
-repository settings. No cold-start pilot may begin until the implementation is accepted on `main`,
-GitHub Actions review authority and one-approval-after-last-push protection are enabled under owner
-authority, and both settings are read back. The implementation PR itself uses the prior protected
-integration path because its accepted base necessarily predates that workflow.
+The trusted App check is an activation gate, not a substitute for evidence review. No cold-start
+pilot may begin until the implementation is accepted on `main`, the App installation and exact
+permissions are read back, protection requires `independent-review` from App ID `4766776`, and the
+workflow secret and variable are configured. The check is emitted only after the separate review
+receipt is pushed and accepted-base promotion validation succeeds at that exact head.

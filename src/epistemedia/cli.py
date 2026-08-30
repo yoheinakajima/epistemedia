@@ -121,7 +121,6 @@ def parser() -> argparse.ArgumentParser:
     submit_research.add_argument("--model-family", required=True)
     submit_research.add_argument("--run-id", required=True)
     submit_research.add_argument("--prompt-sha256", required=True)
-    submit_research.add_argument("--submitted-at", required=True)
 
     repo = sub.add_parser("repo", help="Repository-native agent operations")
     repo_sub = repo.add_subparsers(dest="repo_command", required=True)
@@ -481,7 +480,6 @@ def main(argv: list[str] | None = None) -> int:
                     model_family=args.model_family,
                     run_id=args.run_id,
                     prompt_sha256=args.prompt_sha256,
-                    submitted_at=args.submitted_at,
                 )
             except (OSError, json.JSONDecodeError, ValueError) as exc:
                 print_json(

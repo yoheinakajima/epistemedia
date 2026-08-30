@@ -219,6 +219,9 @@ To test an autonomous contribution, point an unfamiliar coding agent at
 bounded claim, research and validate a portable proposal bundle, and open a GitHub draft pull
 request. That submitted branch is an untrusted queue item with zero evidential credit and is never
 merged directly. A separately rooted reviewer creates a different protected promotion change.
+After that reviewer pushes the exact receipt-only child, accepted-base validation can trigger the
+repository-scoped review-gate App to sign that head. The App cannot write contents, approve,
+merge, or deploy, so a valid future docket needs no owner click but still cannot promote itself.
 Hosted API/MCP submission remains unavailable.
 
 ## Target architecture

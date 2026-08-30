@@ -1,0 +1,10 @@
+{
+  "command": "protocol v0.2 and App-check implementation; 84 focused tests PASS; defect-focused Ruff PASS; full make check PASS with disclosure audit deterministic rebuild and unchanged source state; live PR69 OPEN DRAFT exact head and all three frozen file SHA-256 values match contract; Cases001-004 dossier paths unchanged; no contributor repair promotion deployment provider call or spend; independent exact-head review required",
+  "id": "em:run-receipt:sha256:a26dc69c38c0bbcc25f81bcc8e8b474be31a130325f283c40881227df744367b",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-30T04:23:13Z",
+  "run_id": "20260830-em0041-author-validation",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0041"
+}
