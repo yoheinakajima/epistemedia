@@ -58,6 +58,7 @@
     "source-license identities that use a recognized license, an exact quoted license basis, or explicit unknown or unassessed status rather than descriptive placeholder prose",
     "fresh cold-start test in which a new context-isolated Claude coding session receives only the public submission URL and the same short instruction, chooses its own claim, and receives no repair prompt or clarification",
     "fresh non-author Codex review that independently re-retrieves every credited source, closes every span, calculation, dependence, counterevidence, negative result, uncertainty, and license boundary, and either fails closed or creates the exact protected promotion shape",
+    "installed GitHub App gate read-back showing installation only on yoheinakajima/epistemedia, contents and pull requests read-only, checks read and write, and no content-write, merge, deployment, administration, secrets, webhook, organization, account, or enterprise permission",
     "full accepted-base queue and promotion validation, adversarial tests, deterministic rebuild, disclosure audit, interface parity, exact path-scope comparison, protected merge, resulting-main validation, separately authorized Pages deployment, and live route and release-identity read-back"
   ],
   "acceptance": [
@@ -70,11 +71,12 @@
     "PR 69 remains an unchanged, open or otherwise retained, non-admitted submission record and is never used as accepted knowledge",
     "a second cold-start Claude session completes research and opens a new exact three-file draft queue PR from the public protocol and the same one-line user prompt with no additional owner or operator message",
     "the queue PR remains mechanically non-mergeable, while a separate exact-head promotion PR can pass only after a fresh Codex reviewer independently reproduces all credited evidence and adds the sole receipt child",
-    "the trusted post-validation approval occurs after the promotion receipt push, the protected squash merge uses no bypass, and the new open docket is deployed with HTML, Markdown, and JSON twins plus exact release-identity read-back",
+    "the trusted App-signed independent-review check occurs after the promotion receipt push, is bound by the protected ruleset to GitHub App ID 4766776 and the exact reviewed head, requires no owner click, and the protected squash merge uses no bypass before the new open docket is deployed with HTML, Markdown, and JSON twins plus exact release-identity read-back",
     "the existing four numbered cases, accepted dossier bytes, policies, counts, evaluations, and public meanings remain unchanged"
   ],
   "limitations": [
     "A second failed cold-start remains a valid negative result and must not be repaired, promoted, or hidden merely to satisfy the pilot objective.",
+    "The review-gate App may read repository contents and pull requests and write check results only; it cannot write repository contents, merge, deploy, administer the repository, access secrets, or replace the substantive non-author review receipt.",
     "The controller attestation records only user-visible runtime metadata and never hidden reasoning, private prompts, credentials, or provider internals.",
     "This remains a GitHub-native pilot, not the authenticated hosted MCP queue governed by EM-0038.",
     "An independently reviewed open docket is not automatically a numbered How We Know case, scientific consensus, legal advice, or universal truth.",
