@@ -1,0 +1,86 @@
+{
+  "id": "EM-0042",
+  "title": "Close autonomous docket selection, clock, and exact-head gaps",
+  "status": "ready",
+  "change_class": "governance-normative",
+  "objective": "Preserve the second cold-start submission as an immutable failed queue receipt, close the exact-head, runtime-clock, and prior-art-selection gaps it exposed, and permit a third cold start only after a rebuilt implementation passes fresh independent review from the accepted contract base.",
+  "depends_on": [
+    "EM-0041"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**",
+      ".github/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      "tasks/contracts/**",
+      "catalog/dossiers/**",
+      "research/how-we-know/**",
+      "research/open-dockets/submissions/**"
+    ]
+  },
+  "evidence": [
+    {
+      "kind": "failed-second-cold-start-submission-binding",
+      "repository": "yoheinakajima/epistemedia",
+      "pull_request": 72,
+      "head": "3f965831031b88f4efff954550ecb383fec0e5a8",
+      "tree": "c67de1a45bd9d97aac6cd39c0f63aa73a30b3a2d",
+      "base": "71439e9bb3e95a0121956a9721e736bd91961034",
+      "validate_run": 33294032543,
+      "validate_job": 99210517338,
+      "files": {
+        "research/open-dockets/submissions/did-gpt-4-score-in-approximately-the-90th-f616475ae6/PR_BODY.md": "395753246185eddefa9dbe5c8419f3cad3550a3d169d6e44a0f6599287387440",
+        "research/open-dockets/submissions/did-gpt-4-score-in-approximately-the-90th-f616475ae6/intake.json": "d5d176ae68e67e8a897e8326ecd0ac79b5a0cd9432fcb52a3a65a3a9591bb494",
+        "research/open-dockets/submissions/did-gpt-4-score-in-approximately-the-90th-f616475ae6/proposal.json": "8ffd2546758e47ed70eed233f9828668a31f978ea3576ac1b628a26249c73444"
+      }
+    },
+    {
+      "kind": "canonical-cold-start-prompt",
+      "text": "Open https://epistemedia.org/agents/submit/. Choose one contestable claim worth auditing, follow every instruction, and submit the result.",
+      "sha256": "ec8200e61a3c8d94c2c62e5d55d707564914276aa45ec600d4095772141eb1ef"
+    }
+  ],
+  "required_evaluation": [
+    "contract-only registration accepted before implementation begins, followed by an implementation branch rebuilt from that accepted base",
+    "fresh independent governance review loaded from the accepted base before implementation approval",
+    "exact preservation of PR 72 at its recorded base, head, tree, three contributor files, open draft state, and blocking queue status, with no repair, review, promotion, merge, or warrant credit",
+    "pull-request CI checkout bound to the immutable source head rather than a synthetic merge ref, with exact-head regression coverage",
+    "server chronology requiring accepted base commit time at or before runtime start, followed by runtime completion, intake submission, commit author time, commit committer time, and server PR creation",
+    "isolated chronology adversaries for a base commit after runtime start and malformed or missing base commit timestamps",
+    "executable-captured runtime start, completion, and submit-time completion resealing without trusting contributor-invented timestamps",
+    "bounded prior-art comparison against every accepted dossier and reviewed open docket that fails closed on unreadable, missing, malformed, or incomplete comparison records",
+    "subject-aware near-duplicate adversaries covering close paraphrase, acronym and number-word variants, unrelated shared vocabulary, malformed accepted dossiers, and malformed reviewed open dockets",
+    "public cold-start instructions requiring accepted, reviewed, and queued prior-art inspection before research begins",
+    "append-only run receipt binding exact commands, accepted base, candidate head and tree, tests, output identities, UTC timestamps, and limitations",
+    "full accepted-base validation, focused adversarial tests, deterministic rebuild, disclosure audit, interface parity, exact protected-path comparison, clean state, exact-head independent review, protected merge without bypass, resulting-main validation, separately authorized Pages deployment, and live release-identity read-back before any third provider run"
+  ],
+  "acceptance": [
+    "EM-0042 is registered and accepted before its implementation branch is created from main",
+    "candidate CI checks the immutable pull-request head and compares it to the source PR head without relying on GitHub's synthetic merge commit",
+    "an otherwise valid submission fails when accepted base commit time follows runtime start, and malformed or absent base commit time also fails closed",
+    "research prepare captures runtime start, research complete captures runtime completion, and research submit reseals completion immediately before canonical queue bytes are created",
+    "accepted-dossier and reviewed-open-docket comparison records cannot be skipped on parse, path, field, or retrieval failure",
+    "close paraphrases of an accepted claim are rejected while unrelated questions sharing generic research vocabulary are not rejected",
+    "the public submission guide tells a cold-start agent to reject accepted, reviewed, queued, or closely restated claims and record the prior-art comparison",
+    "PR 72 remains unchanged, open, draft, blocking, and non-admitted; Cases 001-004 and every accepted dossier, review, policy, count, evaluation, and public meaning remain unchanged",
+    "the exact implementation head passes CI, full deterministic checks, disclosure audit, path-scope comparison, and a fresh non-author review before protected merge",
+    "no third cold-start provider run occurs until the reviewed implementation is merged, resulting-main validation passes, and the exact release is deployed and read back live"
+  ],
+  "limitations": [
+    "A lexical or structured prior-art gate can reject obvious restatements but cannot establish semantic novelty; unresolved or borderline novelty receives no automatic acceptance credit and remains a review question.",
+    "The second failed cold start remains a valid negative result and must not be repaired, promoted, hidden, or merged to satisfy the pilot objective.",
+    "This remains the GitHub-native pilot, not the hosted authenticated MCP queue governed by EM-0038.",
+    "No new provider call, credential or account action, spend, DNS change, package release, deployment, publication, branch deletion, or unrelated mutation is authorized by registering this contract.",
+    "The existing review-gate App remains limited to repository read access plus exact check-result writes and cannot write contents, approve, merge, deploy, or replace substantive independent review."
+  ]
+}

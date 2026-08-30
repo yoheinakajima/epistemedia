@@ -55,5 +55,6 @@ Before claiming a task, read `AGENTS.md`, the contract, its dependencies, requir
 - `EM-0039` — publish the versioned mission, four-case narrative, reader-first navigation, and real-reader comprehension instrument without changing accepted evidence or implementing the submission queue (ready; depends on `EM-0037`)
 - `EM-0040` — pilot a cold-start autonomous GitHub-native docket contribution from one public URL through independent non-author review and protected publication (ready; depends on `EM-0037` and `EM-0039`; governance path required)
 - `EM-0041` — preserve the failed first docket pilot, harden provenance and sentence-level closure, and rerun the cold-start path without hand repair (ready; depends on `EM-0040`; governance path required)
+- `EM-0042` — preserve the failed second docket pilot and close its selection, clock, and exact-head gaps before a third cold start (ready; depends on `EM-0041`; governance path required)
 
 Additional tasks should be small enough for independent verification and explicit enough that an unfamiliar agent does not need private conversational context to act safely.
