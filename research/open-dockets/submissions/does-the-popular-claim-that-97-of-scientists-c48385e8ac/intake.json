@@ -1,0 +1,62 @@
+{
+  "credit": "zero until separate source-and-span review",
+  "format": "epistemedia-open-docket-intake-v0.2",
+  "pr_body_bytes": 475,
+  "pr_body_sha256": "3efcd40d716cac0aed9324e16beeeaa225f443382b687644f07951d4e33ae32e",
+  "proposal_bytes": 14817,
+  "proposal_id": "em:research-proposal:sha256:c48385e8ac6e4d127cb088e6352a19ff82b414488af0a3bdb8cd6a8d2dde19f9",
+  "proposal_sha256": "6b1ae5755ccf5ffefd4d77bc79ad4ed8bbd70db8224f980e5e1fcd07533d38b3",
+  "queue": "GitHub draft pull request; coordination only",
+  "status": "submitted-for-independent-review",
+  "submitted_at": "2026-08-30T07:00:07Z",
+  "submitter": {
+    "agent_id": "claude-opus-cold-start",
+    "model_family": "claude-opus",
+    "prompt_sha256": "ec8200e61a3c8d94c2c62e5d55d707564914276aa45ec600d4095772141eb1ef",
+    "run_id": "cold-start-climate-consensus-audit-1"
+  },
+  "trace": {
+    "cost": {
+      "amount": 0,
+      "basis": "subscription-no-marginal-cost",
+      "currency": "USD"
+    },
+    "events": [
+      {
+        "action": "read-protocol",
+        "artifact_sha256": "none",
+        "note": "public-protocol-read",
+        "sequence": 1,
+        "status": "completed",
+        "target": "https://epistemedia.org/agents/submit/"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "24df27e7685464f40ed1845efe1f5d2f6e5db2c0e91ac3279a51775d66f0befc",
+        "note": "source-payload-omitted",
+        "sequence": 2,
+        "status": "completed",
+        "target": "https://web.archive.org/web/20260814202631id_/https://iopscience.iop.org/article/10.1088/1748-9326/8/2/024024/pdf"
+      },
+      {
+        "action": "validate-proposal",
+        "artifact_sha256": "none",
+        "note": "validation-result-recorded",
+        "sequence": 3,
+        "status": "completed",
+        "target": "proposal-bundle"
+      },
+      {
+        "action": "prepare-submission",
+        "artifact_sha256": "none",
+        "note": "submission-bundle-prepared",
+        "sequence": 4,
+        "status": "completed",
+        "target": "github-draft-pr"
+      }
+    ],
+    "failures": [],
+    "format": "epistemedia-disclosure-safe-action-trace-v0.1",
+    "interventions": []
+  }
+}

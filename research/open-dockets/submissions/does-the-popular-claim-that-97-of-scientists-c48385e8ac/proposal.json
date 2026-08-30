@@ -1,0 +1,384 @@
+{
+  "calculations": [
+    {
+      "calculation_id": "calculation-1",
+      "depends_on": [],
+      "equation": "endorse / (endorse + reject + uncertain) = 3896 / (3896 + 78 + 40) = 3896 / 4014 = 0.9706",
+      "inputs": [
+        {
+          "input_id": "endorse",
+          "json_pointer": "/table-3/endorse-agw/count",
+          "name": "endorsing abstracts (categories 1-3)",
+          "origin": "source-span",
+          "source_id": "source-1",
+          "span_id": "span-4",
+          "value": "3896"
+        },
+        {
+          "input_id": "reject",
+          "json_pointer": "/table-3/reject-agw/count",
+          "name": "rejecting abstracts (categories 5-7)",
+          "origin": "source-span",
+          "source_id": "source-1",
+          "span_id": "span-5",
+          "value": "78"
+        },
+        {
+          "input_id": "uncertain",
+          "json_pointer": "/table-3/uncertain-agw/count",
+          "name": "uncertain abstracts (category 4b)",
+          "origin": "source-span",
+          "source_id": "source-1",
+          "span_id": "span-6",
+          "value": "40"
+        }
+      ],
+      "output": "97.1% (3896/4014)",
+      "uncertainty": "3896/4014 = 97.06%, which rounds to the paper's reported 97.1%."
+    }
+  ],
+  "counterevidence": [
+    {
+      "claim": "The 97% consensus is only an artifact of excluding no-position abstracts.",
+      "evidence": "A second, independent method (author self-ratings of full papers) yielded 97.2% endorsement among self-rated papers expressing a position.",
+      "exact_span_ids": [
+        "span-7"
+      ],
+      "qualification": "This corroborates high endorsement among position-takers, but still conditions on papers that expressed a position.",
+      "source_ids": [
+        "source-1"
+      ]
+    }
+  ],
+  "cutoff": "2026-08-30",
+  "dependencies": [
+    {
+      "dependency_id": "dependency-1",
+      "description": "The 97.1% rate and the no-position share depend on Cook et al (2013) abstract ratings.",
+      "exact_span_ids": [
+        "span-1"
+      ],
+      "kind": "source",
+      "source_ids": [
+        "source-1"
+      ]
+    },
+    {
+      "dependency_id": "dependency-2",
+      "description": "Reproducing 97.1% depends on the Table 3 endorse, reject, and uncertain counts.",
+      "exact_span_ids": [
+        "span-4"
+      ],
+      "kind": "data",
+      "source_ids": [
+        "source-1"
+      ]
+    }
+  ],
+  "format": "epistemedia-research-proposal-v0.2",
+  "license": {
+    "bundle": "CC0-1.0",
+    "source_material": "Cook et al (2013) is under CC-BY-3.0; quoted spans are minimal and attributed."
+  },
+  "limitations": [
+    "Single-source bundle: only Cook et al (2013) is examined; other consensus estimates such as direct surveys of scientists are out of scope.",
+    "Abstract ratings capture the position stated in each abstract, not the authors' full private views."
+  ],
+  "lineage": {
+    "prompt_sha256": "sha256:ec8200e61a3c8d94c2c62e5d55d707564914276aa45ec600d4095772141eb1ef",
+    "provider_model_identity": "Anthropic Claude Opus 4.8",
+    "retrieval_environment": "public HTTPS via an Internet Archive Wayback capture of IOP Publishing",
+    "run_identity": "cold-start-climate-consensus-audit-1",
+    "shared_dependencies": [
+      "single primary source (Cook et al 2013)",
+      "single retrieval environment",
+      "single cold-start prompt"
+    ]
+  },
+  "negative_results": [
+    {
+      "disposition": "Retained as a scope boundary, not converted to a null result.",
+      "exact_span_ids": [
+        "span-2"
+      ],
+      "kind": "no-evidence-located",
+      "result": "No single figure describing 97% of all abstracts or 97% of all scientists was located in the source; the 97.1% is explicitly conditioned on position-expressing abstracts.",
+      "retrieval_attempt_ids": [
+        "attempt-1"
+      ],
+      "scope": "The Cook et al (2013) abstract and results sections searched.",
+      "source_ids": [
+        "source-1"
+      ]
+    }
+  ],
+  "question": "Does the popular claim that 97% of scientists agree on human-caused climate change accurately represent Cook et al 2013, whose 97.1% figure covers only the abstracts that expressed a position on AGW?",
+  "results": [
+    {
+      "calculation_ids": [
+        "calculation-1"
+      ],
+      "calculation_status": "reproduced",
+      "claim_atoms": [
+        {
+          "atom_id": "atom-1",
+          "exact_span_ids": [
+            "span-1",
+            "span-2"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "In Cook et al (2013), the 97.1% consensus figure is the endorsement rate among only the abstracts that expressed a position on AGW, while 66.4% of the 11 944 abstracts expressed no position; the popular 'X% of scientists agree' restatement omits that denominator."
+        },
+        {
+          "atom_id": "atom-2",
+          "exact_span_ids": [
+            "span-2"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "32.6% endorsed AGW"
+        },
+        {
+          "atom_id": "atom-3",
+          "exact_span_ids": [
+            "span-2"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "abstracts expressing a position: 32.6% endorsed, 0.7% rejected, 0.3% uncertain"
+        },
+        {
+          "atom_id": "atom-4",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "97.1% endorsed among abstracts expressing a position on AGW"
+        },
+        {
+          "atom_id": "atom-5",
+          "exact_span_ids": [
+            "span-2"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "66.4% of abstracts expressed no position on AGW"
+        },
+        {
+          "atom_id": "atom-6",
+          "exact_span_ids": [
+            "span-3"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "the 11 944 climate abstracts rated in Cook et al 2013"
+        },
+        {
+          "atom_id": "atom-7",
+          "exact_span_ids": [
+            "span-3"
+          ],
+          "kind": "boundary",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "climate abstracts from 1991-2011 matching 'global climate change' or 'global warming'"
+        },
+        {
+          "atom_id": "atom-8",
+          "exact_span_ids": [
+            "span-8"
+          ],
+          "kind": "process",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "credential-free HTTPS retrieval of the archived version-of-record PDF"
+        },
+        {
+          "atom_id": "atom-9",
+          "exact_span_ids": [
+            "span-3"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "abstracts published from 1991 to 2011"
+        },
+        {
+          "atom_id": "atom-10",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "endorsement expressed in abstract text, not a survey of scientists' personal views"
+        }
+      ],
+      "dependency_ids": [
+        "dependency-1",
+        "dependency-2"
+      ],
+      "exact_span_ids": [
+        "span-1",
+        "span-2",
+        "span-3",
+        "span-8"
+      ],
+      "interpretation": "The headline number is real but conditional: it describes the roughly one-third of abstracts that took a position, not all abstracts or all scientists. Restatements that drop the 'expressing a position' qualifier overstate the measured base.",
+      "proposition": "In Cook et al (2013), the 97.1% consensus figure is the endorsement rate among only the abstracts that expressed a position on AGW, while 66.4% of the 11 944 abstracts expressed no position; the popular 'X% of scientists agree' restatement omits that denominator.",
+      "reported_value": {
+        "comparison": "66.4% of abstracts expressed no position on AGW",
+        "denominator": "abstracts expressing a position: 32.6% endorsed, 0.7% rejected, 0.3% uncertain",
+        "numerator": "32.6% endorsed AGW",
+        "rate": "97.1% endorsed among abstracts expressing a position on AGW"
+      },
+      "result_id": "result-1",
+      "scope": {
+        "dataset_or_population": "climate abstracts from 1991-2011 matching 'global climate change' or 'global warming'",
+        "metric_scope": "endorsement expressed in abstract text, not a survey of scientists' personal views",
+        "models_or_agents": [
+          "the 11 944 climate abstracts rated in Cook et al 2013"
+        ],
+        "time": "abstracts published from 1991 to 2011",
+        "tool_and_retrieval_path": "credential-free HTTPS retrieval of the archived version-of-record PDF"
+      },
+      "source_ids": [
+        "source-1"
+      ],
+      "uncertainty": "Scope limited to one primary source and its abstract-rating phase; the study measures positions expressed in abstracts, not scientists' private views, and popular restatements vary in wording.",
+      "warrant": "The abstract states the 97.1% figure applies to abstracts expressing a position and separately reports 66.4% expressed no position; Table 3 counts reproduce 97.1% among position-takers."
+    }
+  ],
+  "retrieval_attempts": [
+    {
+      "artifact_sha256": "24df27e7685464f40ed1845efe1f5d2f6e5db2c0e91ac3279a51775d66f0befc",
+      "attempt_id": "attempt-1",
+      "attempted_at": "2026-08-30T06:57:30Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "source-1",
+      "transport": "https",
+      "url": "https://web.archive.org/web/20260814202631id_/https://iopscience.iop.org/article/10.1088/1748-9326/8/2/024024/pdf"
+    }
+  ],
+  "runtime": {
+    "agent": "claude-opus-cold-start",
+    "completed_at": "2026-08-30T07:00:07Z",
+    "started_at": "2026-08-30T06:57:29Z",
+    "toolchain": [
+      "curl HTTPS retrieval",
+      "pdftotext text extraction",
+      "epistemedia research validator"
+    ]
+  },
+  "scope": {
+    "comparison_target": "The popular restatement '97% of scientists agree' versus what Cook et al (2013) actually measured.",
+    "excluded": "Other consensus studies, opinion surveys of scientists, and the underlying merits of AGW itself.",
+    "included": "The public primary source Cook et al (2013) and the exact figures it reports for abstract ratings."
+  },
+  "search_notes": [
+    "Prior-art check: none of the accepted dossiers (agent-citation-lineage, corrections-and-familiarity-backfire, gpt-4-bar-exam-percentile, mehrabian-7-38-55) or the open docket-submission pull requests (#69 Llama-4 licence, #72 GPT-4 bar exam) concern the climate-consensus 97% statistic.",
+    "Primary source retrieved as the publisher version-of-record PDF through an immutable Internet Archive Wayback capture so the artifact hash is independently reproducible; the live IOP PDF and HTML return per-request bytes whose hashes are not stable."
+  ],
+  "sources": [
+    {
+      "creators_or_org": "Cook, Nuccitelli, Green, Richardson, Winkler, Painting, Way, Jacobs, Skuce (Environmental Research Letters)",
+      "date": "2013-05-15",
+      "edition": "Version of record (PDF), Internet Archive Wayback capture 20260814202631",
+      "exact_spans": [
+        {
+          "locator": "Abstract",
+          "quote": "Among abstracts expressing a position on AGW, 97.1% endorsed the consensus position that humans are causing global warming.",
+          "span_id": "span-1",
+          "supports": "The 97.1% rate is conditioned on abstracts expressing a position."
+        },
+        {
+          "locator": "Abstract",
+          "quote": "We find that 66.4% of abstracts expressed no position on AGW, 32.6% endorsed AGW, 0.7% rejected AGW and 0.3% were uncertain about the cause of global warming.",
+          "span_id": "span-2",
+          "supports": "Two-thirds of abstracts expressed no position; the endorsement/rejection/uncertain breakdown."
+        },
+        {
+          "locator": "Abstract",
+          "quote": "examining 11 944 climate abstracts from 1991-2011",
+          "span_id": "span-3",
+          "supports": "Population size and time window of the abstract sample."
+        },
+        {
+          "locator": "Table 3, Endorse AGW row, total column",
+          "quote": "32.6% (3896)",
+          "span_id": "span-4",
+          "supports": "Count of endorsing abstracts (3896)."
+        },
+        {
+          "locator": "Table 3, Reject AGW row, total column",
+          "quote": "0.7% (78)",
+          "span_id": "span-5",
+          "supports": "Count of rejecting abstracts (78)."
+        },
+        {
+          "locator": "Table 3, Uncertain on AGW row, total column",
+          "quote": "0.3% (40)",
+          "span_id": "span-6",
+          "supports": "Count of uncertain abstracts (40)."
+        },
+        {
+          "locator": "Abstract",
+          "quote": "Among self-rated papers expressing a position on AGW, 97.2% endorsed the consensus.",
+          "span_id": "span-7",
+          "supports": "An independent author self-rating method yields 97.2% among position-takers."
+        },
+        {
+          "locator": "Page 1 footer, licence statement",
+          "quote": "Creative Commons Attribution 3.0 licence",
+          "span_id": "span-8",
+          "supports": "Source license identity (CC-BY-3.0)."
+        }
+      ],
+      "identifier": "doi:10.1088/1748-9326/8/2/024024",
+      "license": {
+        "basis_span_id": "span-8",
+        "identifier": "CC-BY-3.0",
+        "status": "known"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "source-1",
+      "title": "Quantifying the consensus on anthropogenic global warming in the scientific literature",
+      "url": "https://web.archive.org/web/20260814202631id_/https://iopscience.iop.org/article/10.1088/1748-9326/8/2/024024/pdf"
+    }
+  ],
+  "status": "ready-for-review",
+  "unresolved": [
+    "Whether specific popular restatements cite Cook et al (2013) or a different consensus study is not resolved here.",
+    "The exact overlap between the abstract-rating and author self-rating subsamples is only partially reported in the abstract."
+  ]
+}
