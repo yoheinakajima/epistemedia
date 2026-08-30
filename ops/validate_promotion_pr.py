@@ -20,6 +20,14 @@ from typing import Any
 from urllib.parse import quote, urlsplit
 
 from epistemedia.open_dockets import load_open_dockets, validate_submission_directory
+from epistemedia.research_kit import parse_utc_timestamp
+
+REVIEW_GATE_APP_ID = 4_766_776
+EVIDENCE_REVIEW_CHECK = "independent-evidence-review"
+
+
+def evidence_review_external_id(review_digest: str, attestation_digest: str) -> str:
+    return f"epistemedia-review-v1:{review_digest}:{attestation_digest}"
 
 
 def git(candidate: Path, *args: str) -> str:
@@ -167,6 +175,7 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
             errors.append("promotion receipt does not bind the reviewed tree")
         slug_dir = str(Path(receipt_path).parent)
         expected_reviewed = {
+            f"{slug_dir}/controller-attestation.json",
             f"{slug_dir}/intake.json",
             f"{slug_dir}/proposal.json",
             f"{slug_dir}/review.json",
@@ -188,6 +197,34 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
         slug = Path(receipt_path).parent.name
         if sum(docket.slug == slug for docket in dockets) != 1:
             errors.append("promoted docket did not load exactly once")
+        promoted_dir = candidate / Path(receipt_path).parent
+        review_digest = hashlib.sha256(
+            (promoted_dir / "review.json").read_bytes()
+        ).hexdigest()
+        attestation_digest = hashlib.sha256(
+            (promoted_dir / "controller-attestation.json").read_bytes()
+        ).hexdigest()
+        expected_external_id = evidence_review_external_id(
+            review_digest, attestation_digest
+        )
+        review_checks = github_json(f"commits/{parent}/check-runs?per_page=100")
+        if not isinstance(review_checks, dict) or not isinstance(
+            review_checks.get("check_runs"), list
+        ):
+            errors.append("GitHub independent evidence-review checks are malformed")
+        elif not any(
+            check.get("name") == EVIDENCE_REVIEW_CHECK
+            and check.get("head_sha") == parent
+            and check.get("status") == "completed"
+            and check.get("conclusion") == "success"
+            and check.get("external_id") == expected_external_id
+            and check.get("app", {}).get("id") == REVIEW_GATE_APP_ID
+            for check in review_checks["check_runs"]
+            if isinstance(check, dict)
+        ):
+            errors.append(
+                "exact reviewed parent lacks the App-signed independent evidence-review binding"
+            )
     source_pr_number = receipt.get("source_pr_number")
     if isinstance(source_pr_number, int) and source_pr_number > 0:
         source_pr = github_json(f"pulls/{source_pr_number}")
@@ -228,13 +265,58 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
                     f"source submission: {error}"
                     for error in validate_submission_directory(submission_dir)
                 )
-            promoted_dir = candidate / Path(receipt_path).parent
             for name in ("intake.json", "proposal.json"):
                 if source_files[name] != (promoted_dir / name).read_bytes():
                     errors.append(f"promoted {name} does not match the bound source submission")
             proposal = json.loads((promoted_dir / "proposal.json").read_text(encoding="utf-8"))
             intake = json.loads((promoted_dir / "intake.json").read_text(encoding="utf-8"))
             review = json.loads((promoted_dir / "review.json").read_text(encoding="utf-8"))
+            attestation = json.loads(
+                (promoted_dir / "controller-attestation.json").read_text(encoding="utf-8")
+            )
+            if attestation.get("source_pr_number") != source_pr_number:
+                errors.append("controller attestation source PR number is invalid")
+            if attestation.get("source_pr_head") != receipt.get("source_pr_head"):
+                errors.append("controller attestation source PR head is invalid")
+            source_commit = github_json(f"commits/{source_head}")
+            chronology_errors: list[str] = []
+            chronology = [
+                parse_utc_timestamp(
+                    proposal.get("runtime", {}).get("started_at"),
+                    "proposal.runtime.started_at",
+                    chronology_errors,
+                ),
+                parse_utc_timestamp(
+                    proposal.get("runtime", {}).get("completed_at"),
+                    "proposal.runtime.completed_at",
+                    chronology_errors,
+                ),
+                parse_utc_timestamp(
+                    intake.get("submitted_at"),
+                    "intake.submitted_at",
+                    chronology_errors,
+                ),
+                parse_utc_timestamp(
+                    source_commit.get("commit", {}).get("author", {}).get("date"),
+                    "source commit author time",
+                    chronology_errors,
+                ),
+                parse_utc_timestamp(
+                    source_commit.get("commit", {}).get("committer", {}).get("date"),
+                    "source commit committer time",
+                    chronology_errors,
+                ),
+                parse_utc_timestamp(
+                    source_pr.get("created_at"),
+                    "source PR created_at",
+                    chronology_errors,
+                ),
+            ]
+            if not chronology_errors and all(value is not None for value in chronology):
+                values = [value for value in chronology if value is not None]
+                if values != sorted(values):
+                    chronology_errors.append("source submission chronology is impossible")
+            errors.extend(chronology_errors)
             source_reviews = {
                 item["source_id"]: item for item in review.get("source_reviews", [])
                 if isinstance(item, dict) and isinstance(item.get("source_id"), str)
@@ -251,7 +333,18 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
                         source["url"], max_bytes=min(25_000_000, remaining_budget)
                     )
                 except Exception as exc:
+                    if (
+                        source.get("retrieval_status") == "inaccessible"
+                        and source_reviews.get(source_id, {}).get("retrieval_status")
+                        == "confirmed-inaccessible"
+                    ):
+                        continue
                     errors.append(f"independent CI retrieval failed for {source_id}: {exc}")
+                    continue
+                if source.get("retrieval_status") == "inaccessible":
+                    errors.append(
+                        f"source {source_id} was proposed inaccessible but CI retrieved it"
+                    )
                     continue
                 aggregate_retrieved_bytes += len(artifact)
                 digest = hashlib.sha256(artifact).hexdigest()

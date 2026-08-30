@@ -5,7 +5,7 @@ Epistemedia separates five actions that a single “submit research” button wo
 1. **Explore:** read an accepted case, its Markdown/JSON twins, and its exact evidence boundaries.
 2. **Research:** investigate a bounded question under the public source, span, dependence,
    counterevidence, negative-result, runtime, and license protocol.
-3. **Prepare:** produce a portable `epistemedia-research-proposal-v0.1` JSON bundle.
+3. **Prepare:** produce a portable `epistemedia-research-proposal-v0.2` JSON bundle.
 4. **Queue:** place that untrusted bundle into a coordination system with zero evidential credit.
 5. **Review and admit:** independently re-root the evidence, then use a separate protected Git
    change to accept any durable object or public meaning.

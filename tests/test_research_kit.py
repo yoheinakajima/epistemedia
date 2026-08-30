@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 from pathlib import Path
 
@@ -63,6 +64,40 @@ def valid_proposal() -> dict:
                 "calculation_ids": ["calculation-1"],
                 "calculation_status": "reproduced",
                 "dependency_ids": ["dependency-1"],
+                "claim_atoms": [
+                    {
+                        "atom_id": "atom-1",
+                        "text": "The tested source supports the bounded proposition.",
+                        "kind": "finding",
+                        "status": "supported",
+                        "source_ids": ["source-1"],
+                        "exact_span_ids": ["span-1"],
+                    },
+                    *[
+                        {
+                            "atom_id": f"atom-{index}",
+                            "text": text,
+                            "kind": kind,
+                            "status": "supported",
+                            "source_ids": ["source-1"],
+                            "exact_span_ids": ["span-1"],
+                        }
+                        for index, (text, kind) in enumerate(
+                            (
+                                ("1 supported proposition", "finding"),
+                                ("1 tested proposition", "finding"),
+                                ("1/1 in this bounded example", "finding"),
+                                ("No claim about other propositions.", "comparison"),
+                                ("2026-08-29", "date"),
+                                ("test-agent", "metadata"),
+                                ("One public primary source.", "boundary"),
+                                ("Credential-free HTTPS retrieval.", "process"),
+                                ("Exact source-to-proposition support.", "metadata"),
+                            ),
+                            start=2,
+                        )
+                    ],
+                ],
             }
         ],
         "calculations": [
@@ -71,16 +106,22 @@ def valid_proposal() -> dict:
                 "equation": "1 supported proposition / 1 tested proposition",
                 "inputs": [
                     {
+                        "input_id": "supported",
                         "name": "supported propositions",
                         "value": "1",
+                        "origin": "source-span",
                         "source_id": "source-1",
                         "span_id": "span-1",
+                        "json_pointer": "/results/supported",
                     },
                     {
+                        "input_id": "tested",
                         "name": "tested propositions",
                         "value": "1",
+                        "origin": "source-span",
                         "source_id": "source-1",
                         "span_id": "span-1",
+                        "json_pointer": "/results/tested",
                     },
                 ],
                 "output": "1/1",
@@ -97,6 +138,20 @@ def valid_proposal() -> dict:
                 "exact_span_ids": ["span-1"],
             }
         ],
+        "retrieval_attempts": [
+            {
+                "attempt_id": "attempt-1",
+                "source_id": "source-1",
+                "url": "https://example.org/primary",
+                "attempted_at": "2026-08-29T00:00:30Z",
+                "transport": "https",
+                "outcome": "retrieved",
+                "failure_code": "none",
+                "artifact_sha256": hashlib.sha256(
+                    b"The bounded result was observed."
+                ).hexdigest(),
+            }
+        ],
         "sources": [
             {
                 "source_id": "source-1",
@@ -108,7 +163,11 @@ def valid_proposal() -> dict:
                 "edition": "Version of record",
                 "retrieval_status": "retrieved",
                 "media_type": "text/html",
-                "license": "CC BY 4.0",
+                "license": {
+                    "status": "known",
+                    "identifier": "CC-BY-4.0",
+                    "basis_span_id": "span-1",
+                },
                 "exact_spans": [
                     {
                         "span_id": "span-1",
@@ -131,9 +190,11 @@ def valid_proposal() -> dict:
         "negative_results": [
             {
                 "result": "No independent reproduction was located in the bounded search.",
+                "kind": "no-evidence-located",
                 "scope": "The declared search only.",
                 "source_ids": ["source-1"],
                 "exact_span_ids": ["span-1"],
+                "retrieval_attempt_ids": ["attempt-1"],
                 "disposition": "Retained as unresolved, not converted to a null result.",
             }
         ],
@@ -265,6 +326,193 @@ def test_valid_proposal_closes_sources_spans_and_never_submits() -> None:
     assert result["proposal_id"].startswith("em:research-proposal:sha256:")
 
 
+def test_v2_chronology_and_retrieval_attempts_fail_closed() -> None:
+    bundle = valid_proposal()
+    bundle["runtime"]["started_at"] = "2026-08-29T00:02:00Z"
+    result = validate_proposal(bundle)
+    assert any("started_at must not be after completed_at" in error for error in result["errors"])
+
+    bundle = valid_proposal()
+    bundle["retrieval_attempts"][0]["attempted_at"] = "2026-08-28T23:59:59Z"
+    result = validate_proposal(bundle)
+    assert any("precedes runtime.started_at" in error for error in result["errors"])
+
+    bundle = valid_proposal()
+    bundle["retrieval_attempts"][0].update(
+        outcome="blocked", failure_code="http-403", artifact_sha256="none"
+    )
+    bundle["sources"][0]["retrieval_status"] = "inaccessible"
+    bundle["sources"][0]["exact_spans"] = []
+    bundle["sources"][0]["license"] = {
+        "status": "unassessed",
+        "identifier": "unassessed",
+        "basis_span_id": "none",
+    }
+    bundle["results"][0]["source_ids"] = []
+    bundle["results"][0]["exact_span_ids"] = []
+    for atom in bundle["results"][0]["claim_atoms"]:
+        atom.update(status="unresolved", source_ids=[], exact_span_ids=[])
+    bundle["calculations"] = []
+    bundle["results"][0].update(
+        reported_value={
+            "numerator": "not reported",
+            "denominator": "not reported",
+            "rate": "not reported",
+            "comparison": "not reported",
+        },
+        calculation_ids=[],
+        calculation_status="not-applicable-no-derived-value",
+    )
+    bundle["negative_results"][0].update(
+        kind="failed-retrieval",
+        source_ids=["source-1"],
+        exact_span_ids=[],
+        retrieval_attempt_ids=[],
+    )
+    result = validate_proposal(bundle)
+    assert any("failed retrieval must bind" in error for error in result["errors"])
+    assert any("failed retrieval attempts lack negative-result bindings" in error for error in result["errors"])
+
+
+def test_v2_material_claim_atoms_and_license_identity_fail_closed() -> None:
+    bundle = valid_proposal()
+    bundle["results"][0]["claim_atoms"] = [
+        atom
+        for atom in bundle["results"][0]["claim_atoms"]
+        if atom["text"] != "No claim about other propositions."
+    ]
+    result = validate_proposal(bundle)
+    assert any("material proposition, date, comparison" in error for error in result["errors"])
+
+    bundle = valid_proposal()
+    process_atom = bundle["results"][0]["claim_atoms"][0]
+    process_atom.update(kind="process", status="hypothesis")
+    result = validate_proposal(bundle)
+    assert any("cannot claim evidence while retained as hypothesis" in error for error in result["errors"])
+
+    bundle = valid_proposal()
+    bundle["sources"][0]["license"]["identifier"] = (
+        "per-model licences referenced elsewhere"
+    )
+    result = validate_proposal(bundle)
+    assert any("recognized identifier or exact license name" in error for error in result["errors"])
+
+
+def test_v2_every_material_result_scope_literal_requires_a_claim_atom() -> None:
+    for field in ("dataset_or_population", "tool_and_retrieval_path", "metric_scope"):
+        bundle = valid_proposal()
+        removed = bundle["results"][0]["scope"][field]
+        bundle["results"][0]["claim_atoms"] = [
+            atom
+            for atom in bundle["results"][0]["claim_atoms"]
+            if atom["text"] != removed
+        ]
+        result = validate_proposal(bundle)
+        assert result["valid"] is False
+        assert any(removed in error for error in result["errors"])
+
+    bundle = valid_proposal()
+    date_atom = next(
+        atom
+        for atom in bundle["results"][0]["claim_atoms"]
+        if atom["text"] == "2026-08-29"
+    )
+    date_atom.update(status="hypothesis", source_ids=[], exact_span_ids=[])
+    result = validate_proposal(bundle)
+    assert result["valid"] is False
+    assert any("2026-08-29" in error for error in result["errors"])
+
+
+def test_v2_inaccessible_source_requires_a_failed_typed_attempt() -> None:
+    bundle = valid_proposal()
+    inaccessible = copy.deepcopy(bundle["sources"][0])
+    inaccessible.update(
+        source_id="source-2",
+        url="https://example.org/inaccessible",
+        retrieval_status="inaccessible",
+        exact_spans=[],
+        license={"status": "unknown", "identifier": "unknown", "basis_span_id": "none"},
+    )
+    bundle["sources"].append(inaccessible)
+    result = validate_proposal(bundle)
+    assert result["valid"] is False
+    assert any(
+        "source source-2 lacks a typed retrieval attempt" in error
+        for error in result["errors"]
+    )
+
+    bundle["retrieval_attempts"].append(
+        {
+            "attempt_id": "attempt-2",
+            "source_id": "source-2",
+            "url": "https://example.org/inaccessible",
+            "attempted_at": "2026-08-29T00:00:40Z",
+            "transport": "https",
+            "outcome": "blocked",
+            "failure_code": "http-403",
+            "artifact_sha256": "none",
+        }
+    )
+    bundle["negative_results"].append(
+        {
+            "result": "The second carrier returned HTTP 403.",
+            "kind": "failed-retrieval",
+            "scope": "One credential-free HTTPS attempt.",
+            "source_ids": ["source-2"],
+            "exact_span_ids": [],
+            "retrieval_attempt_ids": ["attempt-2"],
+            "disposition": "Retained as inaccessible, not counted as contrary evidence.",
+        }
+    )
+    assert validate_proposal(bundle)["valid"] is True
+
+    bundle["negative_results"][-1]["source_ids"] = ["source-1"]
+    result = validate_proposal(bundle)
+    assert result["valid"] is False
+    assert any(
+        "failed retrieval attempt source is outside source_ids" in error
+        for error in result["errors"]
+    )
+
+
+def test_v2_calculation_inputs_and_consumed_outputs_fail_closed() -> None:
+    bundle = valid_proposal()
+    bundle["calculations"][0]["inputs"][0]["json_pointer"] = "none"
+    result = validate_proposal(bundle)
+    assert any("must bind an exact field or cell pointer" in error for error in result["errors"])
+
+    bundle = valid_proposal()
+    bundle["calculations"].append(
+        {
+            "calculation_id": "calculation-2",
+            "equation": "cosmetic dependency",
+            "inputs": [
+                {
+                    "input_id": "source-only",
+                    "name": "source-only",
+                    "value": "1",
+                    "origin": "source-span",
+                    "source_id": "source-1",
+                    "span_id": "span-1",
+                    "json_pointer": "/results/source-only",
+                }
+            ],
+            "output": "1",
+            "uncertainty": "Fixture-only.",
+            "depends_on": [
+                {
+                    "calculation_id": "calculation-1",
+                    "input_id": "source-only",
+                    "consumed_output": "1/1",
+                }
+            ],
+        }
+    )
+    bundle["results"][0]["calculation_ids"].append("calculation-2")
+    result = validate_proposal(bundle)
+    assert any("does not bind a calculation-output input" in error for error in result["errors"])
+
+
 @pytest.mark.parametrize(
     ("mutation", "error_fragment"),
     [
@@ -328,7 +576,9 @@ def test_valid_proposal_closes_sources_spans_and_never_submits() -> None:
         ),
         (
             lambda value: (
-                value["sources"][0].update(license="unknown"),
+                value["sources"][0].update(
+                    license={"status": "unknown", "identifier": "unknown", "basis_span_id": "none"}
+                ),
                 value["sources"][0]["exact_spans"][0].update(quote="x" * 321),
             ),
             "unknown-license quote-minimal limit",
