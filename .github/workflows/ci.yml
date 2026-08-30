@@ -15,6 +15,7 @@ concurrency:
 jobs:
   check:
     permissions:
+      checks: read
       contents: read
       pull-requests: read
     runs-on: ubuntu-latest

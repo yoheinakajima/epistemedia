@@ -668,6 +668,8 @@ def test_ci_uses_base_validator_for_submission_only_pull_requests() -> None:
     assert "steps.classify.outputs.mode == 'promotion'" in workflow
     assert "persist-credentials: false" in workflow
     assert "pull_request_target" not in workflow
+    assert "checks: read" in workflow
+    assert "checks: write" not in workflow
     assert "cache-dependency-path: candidate/pyproject.toml" in workflow
     assert "--diff-filter" not in (ROOT / "ops" / "validate_submission_pr.py").read_text()
 

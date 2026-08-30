@@ -1,0 +1,10 @@
+{
+  "command": "added checks read only permission required for accepted-base promotion validation to authenticate the exact parent independent-evidence-review App check; checks write remains absent; focused tests workflow YAML defect-focused Ruff PASS; full deterministic make check and exact-head rereview required",
+  "id": "em:run-receipt:sha256:cfd3473e493cac39d4a2a62e1f1e330e3b1dcbe039b588aaf7b59bb35df2902b",
+  "kind": "run-receipt",
+  "recorded_at": "2026-08-30T04:43:01Z",
+  "run_id": "20260830-em0041-checks-read-correction",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0041"
+}

@@ -16,7 +16,7 @@ untrusted coordination input.
 | Forged or incomplete review | Review binds proposal ID, exact bytes/digest, source PR identity, and exact source/span coverage; promotion fails closed on drift or missing coverage. |
 | Path traversal or repository overwrite | The base validator rejects every path outside one direct submission directory and rejects unsupported files. |
 | Spam, replay, or duplicate proposal | Proposal ID and canonical digest are stable; duplicate submission directories and accepted slugs fail closed. |
-| Workflow privilege escalation | Pull-request CI has read-only contents permission, no persisted credentials, no `pull_request_target`, and no deployment environment. |
+| Workflow privilege escalation | Pull-request CI has read-only contents, pull-request, and Checks permissions, no persisted credentials, no `pull_request_target`, and no deployment environment. Checks access is read-only so promotion validation can authenticate the parent review binding. |
 | Self-integration | Accepted-base promotion validation first requires an `independent-evidence-review` check from App ID `4766776` on the exact reviewed parent, cryptographically binding the review and controller-attestation bytes. Only then may a trusted post-check `workflow_run` ask the same repository-scoped App to sign the exact receipt child. The App can write checks but cannot write contents, approve, merge, or deploy. |
 | Silent admission | A valid queue keeps the required check blocking. Only an accepted-base-validated promotion with a receipt-only child creates a clearly labeled open docket after protected merge and separate deployment. |
 | Replay under a new slug | Accepted proposal IDs and canonical digests are globally unique; duplicates fail closed. |
