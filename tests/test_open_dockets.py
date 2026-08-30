@@ -250,6 +250,8 @@ def test_cli_prepares_submission_but_performs_no_git_or_review_action(
         lambda value: value["events"][0].update(note="github_pat_" + "a" * 24),
         lambda value: value["events"][0].update(artifact_sha256="not-a-digest"),
         lambda value: value["events"].append(copy.deepcopy(value["events"][0])),
+        lambda value: value["cost"].update(currency="SOURCE_PAYLOAD_" * 500),
+        lambda value: value["cost"].update(basis="SOURCE_PAYLOAD_" * 500),
     ],
 )
 def test_disclosure_safe_trace_fails_closed(mutation) -> None:

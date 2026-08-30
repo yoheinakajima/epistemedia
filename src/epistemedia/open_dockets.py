@@ -66,6 +66,13 @@ TRACE_INTERVENTION_CODES = {
     "proposal-repair",
     "git-repair",
 }
+TRACE_CURRENCIES = {"USD", "unknown"}
+TRACE_COST_BASES = {
+    "provider-reported",
+    "subscription-no-marginal-cost",
+    "not-incurred",
+    "unknown",
+}
 
 
 def canonical_json(value: Any) -> bytes:
@@ -177,9 +184,10 @@ def validate_action_trace(trace: Any) -> list[str]:
     else:
         if not isinstance(cost.get("amount"), (int, float)) or cost["amount"] < 0:
             errors.append("trace.cost.amount must be a non-negative number")
-        for key in ("currency", "basis"):
-            if not isinstance(cost.get(key), str) or not cost[key].strip():
-                errors.append(f"trace.cost.{key} must be a non-empty string")
+        if cost.get("currency") not in TRACE_CURRENCIES:
+            errors.append("trace.cost.currency must use a disclosure-safe currency code")
+        if cost.get("basis") not in TRACE_COST_BASES:
+            errors.append("trace.cost.basis must use a disclosure-safe cost-basis code")
     if _contains_disallowed_text(trace):
         errors.append("trace contains private-context, secret-shaped, or prohibited reasoning text")
     if len(canonical_json(trace)) > 32_768:
@@ -202,7 +210,7 @@ def trace_template() -> dict[str, Any]:
         ],
         "failures": [],
         "interventions": [],
-        "cost": {"amount": 0, "currency": "USD", "basis": "reported or unknown"},
+        "cost": {"amount": 0, "currency": "USD", "basis": "unknown"},
     }
 
 
