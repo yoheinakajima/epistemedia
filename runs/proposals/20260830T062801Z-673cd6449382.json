@@ -1,0 +1,61 @@
+{
+  "accepted_base": "a11c24edafa30e375bc099b7cfe3260bde7f0555",
+  "actor": {
+    "agent_id": "codex-em0042-author-v2",
+    "role": "implementation-author"
+  },
+  "candidate_head": "db2006f28ead8d78a1e3da4f46f841e715a1a8b6",
+  "candidate_tree": "a6fb01bbd93458aa03812a28cb867b9fdcbdac83",
+  "command": "PYTHONPATH=src make check PYTHON=/private/tmp/epistemedia-polish.RSSkx9/repo/.venv/bin/python",
+  "commands": [
+    "PYTHONPATH=src /private/tmp/epistemedia-polish.RSSkx9/repo/.venv/bin/python -m pytest -q tests/test_open_dockets.py tests/test_research_kit.py tests/test_workflow_security.py",
+    "PYTHONPATH=src /private/tmp/epistemedia-polish.RSSkx9/repo/.venv/bin/ruff check --select E9,F63,F7,F82 src/epistemedia/open_dockets.py src/epistemedia/cli.py src/epistemedia/research_kit.py ops/validate_submission_pr.py tests/test_open_dockets.py tests/test_research_kit.py tests/test_workflow_security.py",
+    "ruby -e 'require \"yaml\"; YAML.load_file(\".github/workflows/ci.yml\"); puts \"workflow yaml: valid\"'",
+    "git diff --check a11c24edafa30e375bc099b7cfe3260bde7f0555...HEAD",
+    "PYTHONPATH=src make check PYTHON=/private/tmp/epistemedia-polish.RSSkx9/repo/.venv/bin/python"
+  ],
+  "ended_at": "2026-08-30T06:27:38Z",
+  "id": "em:run-receipt:sha256:673cd644938221af0b66a0633ad47410cd3c5d554d796bef8fa8327b7038bb19",
+  "inputs": {
+    "frozen_submission_head": "3f965831031b88f4efff954550ecb383fec0e5a8",
+    "frozen_submission_pr": 72,
+    "frozen_submission_tree": "c67de1a45bd9d97aac6cd39c0f63aa73a30b3a2d",
+    "task_contract": "tasks/contracts/EM-0042.json"
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "Subject-aware deterministic comparison rejects bounded restatements but does not establish semantic novelty; borderline cases retain zero automatic acceptance credit.",
+    "The clean-worktree bootstrap still requires the documented PYTHONPATH=src verified-environment workaround.",
+    "This receipt binds the committed, tested content head before its own append-only receipt commit; the final exact PR head requires independent revalidation."
+  ],
+  "outputs": {
+    "catalog_id": "em:catalog:sha256:53318cd112e450c72477a7ce365ed9721d2e8dae8eb8a25729a50fc230312999",
+    "frontier": "em:frontier:sha256:99391fbedaa46ae2bf9da55afd87189938f78ae4bf1768d302b5014170129aba",
+    "object_count": 220,
+    "topic_count": 11
+  },
+  "recorded_at": "2026-08-30T06:28:01Z",
+  "run_id": "em0042-v2-superseding-author-20260830T062511Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-08-30T06:25:11Z",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "757616103cb355c9e2f7cf69989033a84b494296b4d44fdf4b7b7189b30ad76d",
+    "id": "em:run-receipt:sha256:445af7db9b7a4d80231f891e3e1904a311487b36c9ca6bff0bf4abf77c49b66e",
+    "path": "runs/proposals/20260830T061029Z-445af7db9b7a.json",
+    "reason": "Pre-commit catalog identity and non-executable display form for one YAML command; preserved as an invalidated receipt."
+  },
+  "task_id": "EM-0042",
+  "tests": {
+    "broken_reviewed_root_symlink": "pass-fails-closed",
+    "defect_focused_ruff": "pass",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_open_docket_research_workflow_suite": "pass-101-of-101",
+    "full_repository_check": "pass",
+    "full_repository_suite": "pass-212-of-212",
+    "reviewed_docket_directory_symlink": "pass-fails-closed",
+    "source_state": "unchanged",
+    "workflow_yaml_parse": "pass"
+  }
+}
