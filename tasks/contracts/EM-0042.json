@@ -37,7 +37,12 @@
       "tree": "c67de1a45bd9d97aac6cd39c0f63aa73a30b3a2d",
       "base": "71439e9bb3e95a0121956a9721e736bd91961034",
       "validate_run": 33294032543,
-      "validate_job": 99210517338
+      "validate_job": 99210517338,
+      "files": {
+        "research/open-dockets/submissions/did-gpt-4-score-in-approximately-the-90th-f616475ae6/PR_BODY.md": "395753246185eddefa9dbe5c8419f3cad3550a3d169d6e44a0f6599287387440",
+        "research/open-dockets/submissions/did-gpt-4-score-in-approximately-the-90th-f616475ae6/intake.json": "d5d176ae68e67e8a897e8326ecd0ac79b5a0cd9432fcb52a3a65a3a9591bb494",
+        "research/open-dockets/submissions/did-gpt-4-score-in-approximately-the-90th-f616475ae6/proposal.json": "8ffd2546758e47ed70eed233f9828668a31f978ea3576ac1b628a26249c73444"
+      }
     },
     {
       "kind": "canonical-cold-start-prompt",
