@@ -1,0 +1,52 @@
+{
+  "accepted_base": "a11c24edafa30e375bc099b7cfe3260bde7f0555",
+  "actor": {
+    "agent_id": "codex-em0042-author-v2",
+    "role": "implementation-author"
+  },
+  "candidate_head": "59229b2e3876a3d9af811297c588ed19e6eddf8b",
+  "candidate_tree": "286393bad36deb1409ed3a52bd394b0f05fb142f",
+  "command": "PYTHONPATH=src make check PYTHON=/private/tmp/epistemedia-polish.RSSkx9/repo/.venv/bin/python",
+  "commands": [
+    "PYTHONPATH=src /private/tmp/epistemedia-polish.RSSkx9/repo/.venv/bin/python -m pytest -q tests/test_open_dockets.py tests/test_research_kit.py tests/test_workflow_security.py",
+    "PYTHONPATH=src /private/tmp/epistemedia-polish.RSSkx9/repo/.venv/bin/ruff check --select E9,F63,F7,F82 src/epistemedia/open_dockets.py src/epistemedia/cli.py src/epistemedia/research_kit.py ops/validate_submission_pr.py tests/test_open_dockets.py tests/test_research_kit.py tests/test_workflow_security.py",
+    "ruby -e require-yaml-and-load .github/workflows/ci.yml",
+    "git diff --check",
+    "PYTHONPATH=src make check PYTHON=/private/tmp/epistemedia-polish.RSSkx9/repo/.venv/bin/python"
+  ],
+  "ended_at": "2026-08-30T06:10:00Z",
+  "id": "em:run-receipt:sha256:445af7db9b7a4d80231f891e3e1904a311487b36c9ca6bff0bf4abf77c49b66e",
+  "inputs": {
+    "frozen_submission_head": "3f965831031b88f4efff954550ecb383fec0e5a8",
+    "frozen_submission_pr": 72,
+    "frozen_submission_tree": "c67de1a45bd9d97aac6cd39c0f63aa73a30b3a2d",
+    "task_contract": "tasks/contracts/EM-0042.json"
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "Subject-aware deterministic comparison rejects bounded restatements but does not establish semantic novelty; borderline cases retain zero automatic acceptance credit.",
+    "The clean-worktree bootstrap still requires the documented PYTHONPATH=src verified-environment workaround.",
+    "This receipt binds the tested content commit and tree immediately before the append-only receipt commit; the final exact PR head must be independently revalidated."
+  ],
+  "outputs": {
+    "catalog_id": "em:catalog:sha256:6c60d8c1d736f0674086e09a4806f4caca519d34bae9ed78d6258c55950c22d1",
+    "frontier": "em:frontier:sha256:1e1f3838b11d6fa4c7a95eb9fa81d53a00096470c7263bccc896019dc86c4303",
+    "object_count": 220,
+    "topic_count": 11
+  },
+  "recorded_at": "2026-08-30T06:10:29Z",
+  "run_id": "em0042-v2-author-20260830T060759Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-08-30T06:07:59Z",
+  "status": "reported",
+  "task_id": "EM-0042",
+  "tests": {
+    "defect_focused_ruff": "pass",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_open_docket_research_workflow_suite": "pass-99-of-99",
+    "full_repository_check": "pass",
+    "source_state": "unchanged",
+    "workflow_yaml_parse": "pass"
+  }
+}

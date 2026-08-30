@@ -3,12 +3,12 @@
 
 from __future__ import annotations
 
+import datetime as dt
 import hashlib
 import html
 import json
 import math
 import re
-import datetime as dt
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -23,6 +23,65 @@ DOCKET_FORMAT = "epistemedia-open-docket-v0.2"
 PROMOTION_RECEIPT_FORMAT = "epistemedia-open-docket-promotion-receipt-v0.2"
 SUBMISSION_ROOT = Path("research/open-dockets/submissions")
 ACCEPTED_ROOT = Path("research/open-dockets")
+DOSSIER_MANIFEST_ROOT = Path("catalog/dossiers")
+QUESTION_STOPWORDS = {
+    "a",
+    "an",
+    "and",
+    "are",
+    "as",
+    "at",
+    "be",
+    "by",
+    "did",
+    "do",
+    "does",
+    "for",
+    "from",
+    "how",
+    "in",
+    "is",
+    "it",
+    "of",
+    "on",
+    "or",
+    "the",
+    "to",
+    "was",
+    "were",
+    "what",
+    "when",
+    "where",
+    "which",
+    "who",
+    "why",
+    "with",
+}
+SUBJECT_KEY_STOPWORDS = QUESTION_STOPWORDS | {"case", "claim", "research"}
+CONCEPT_ALIASES = {
+    "agents": "agent",
+    "citations": "citation",
+    "cited": "citation",
+    "citing": "citation",
+    "claims": "claim",
+    "claimed": "claim",
+    "communications": "communication",
+    "corrected": "correction",
+    "correcting": "correction",
+    "corrections": "correction",
+    "percentiles": "percentile",
+    "ranked": "rank",
+    "ranking": "rank",
+    "ranks": "rank",
+    "reported": "report",
+    "reporting": "report",
+    "reports": "report",
+    "scored": "score",
+    "scores": "score",
+    "weighted": "weight",
+    "weighting": "weight",
+    "weights": "weight",
+}
 MAX_TRACE_EVENTS = 100
 MAX_TRACE_COST_AMOUNT = 1_000_000
 SHA256 = re.compile(r"^[0-9a-f]{64}$")
@@ -87,6 +146,153 @@ def canonical_json(value: Any) -> bytes:
 
 def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
+
+
+def _concept_tokens(value: str) -> tuple[str, ...]:
+    normalized = value.casefold()
+    replacements = (
+        (r"\b(?:seven\s*[-–—/]\s*thirty[ -]?eight\s*[-–—/]\s*fifty[ -]?five|7\s*[-–—/]\s*38\s*[-–—/]\s*55)\b", " rule73855 "),
+        (r"\bgpt\s*[-–—]?\s*4\b", " gpt4 "),
+        (r"\buniform\s+bar\s+examination\b", " ube "),
+        (r"\b(?:simulated\s+)?bar\s+(?:exam(?:ination)?|test)\b", " ube "),
+        (r"\bninetieth\b", " 90th "),
+        (r"\bninety\b", " 90 "),
+    )
+    for pattern, replacement in replacements:
+        normalized = re.sub(pattern, replacement, normalized)
+    return tuple(
+        CONCEPT_ALIASES.get(token, token)
+        for token in re.findall(r"[a-z0-9]+", normalized)
+        if token not in QUESTION_STOPWORDS
+    )
+
+
+def _closely_restates(question: str, accepted_question: str, subject_key: str) -> bool:
+    candidate_tokens = _concept_tokens(question)
+    accepted_tokens = _concept_tokens(accepted_question)
+    if not candidate_tokens or not accepted_tokens:
+        return question.strip().casefold() == accepted_question.strip().casefold()
+    if candidate_tokens == accepted_tokens:
+        return True
+    candidate = set(candidate_tokens)
+    accepted = set(accepted_tokens)
+    subject_anchors = set(_concept_tokens(subject_key)) - SUBJECT_KEY_STOPWORDS
+    shared_anchors = candidate & subject_anchors
+    if "rule73855" in shared_anchors:
+        return True
+    if len(shared_anchors) >= 2:
+        return True
+    if len(shared_anchors) == 1:
+        shared_context = (candidate & accepted) - shared_anchors
+        return len(shared_context) >= 2
+    return False
+
+
+def _load_prior_art_record(
+    root: Path,
+    record_path: Path,
+    *,
+    label: str,
+    subject_key: str,
+    errors: list[str],
+) -> tuple[str, str, str] | None:
+    if record_path.is_symlink() or not record_path.is_file():
+        errors.append(f"{label} record is missing or is not a regular file: {record_path.relative_to(root)}")
+        return None
+    try:
+        record = json.loads(record_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"{label} record is unreadable or malformed: {exc}")
+        return None
+    if not isinstance(record, dict):
+        errors.append(f"{label} record must be a JSON object")
+        return None
+    question = record.get("question")
+    if not isinstance(question, str) or not question.strip():
+        errors.append(f"{label} record question must be a non-empty string")
+        return None
+    return label, subject_key, question
+
+
+def validate_question_novelty(root: Path, question: str) -> list[str]:
+    """Reject subject-aware near duplicates and fail closed on prior-art gaps."""
+    errors: list[str] = []
+    if not isinstance(question, str) or not question.strip():
+        return ["proposal question must be a non-empty string for prior-art comparison"]
+    resolved_root = root.resolve()
+    manifest_root = root / DOSSIER_MANIFEST_ROOT
+    if manifest_root.is_symlink() or not manifest_root.is_dir():
+        return [f"accepted dossier manifest directory is missing or invalid: {DOSSIER_MANIFEST_ROOT}"]
+    manifest_paths = sorted(manifest_root.glob("*.json"))
+    if not manifest_paths:
+        return [f"accepted dossier manifest directory contains no JSON records: {DOSSIER_MANIFEST_ROOT}"]
+
+    comparisons: list[tuple[str, str, str]] = []
+    for manifest_path in manifest_paths:
+        label = f"accepted dossier {manifest_path.stem}"
+        if manifest_path.is_symlink() or not manifest_path.is_file():
+            errors.append(f"{label} manifest is missing or is not a regular file")
+            continue
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append(f"{label} manifest is unreadable or malformed: {exc}")
+            continue
+        if not isinstance(manifest, dict):
+            errors.append(f"{label} manifest must be a JSON object")
+            continue
+        dossier_path_value = manifest.get("dossier_path")
+        if not isinstance(dossier_path_value, str) or not dossier_path_value.strip():
+            errors.append(f"{label} manifest dossier_path must be a non-empty string")
+            continue
+        dossier_path = (root / dossier_path_value).resolve()
+        try:
+            dossier_path.relative_to(resolved_root)
+        except ValueError:
+            errors.append(f"{label} dossier_path escapes the repository root")
+            continue
+        record = _load_prior_art_record(
+            root,
+            dossier_path,
+            label=label,
+            subject_key=manifest_path.stem,
+            errors=errors,
+        )
+        if record is not None:
+            comparisons.append(record)
+
+    accepted_root = root / ACCEPTED_ROOT
+    if accepted_root.is_symlink():
+        errors.append(f"reviewed open-docket root is a symlink: {ACCEPTED_ROOT}")
+    elif accepted_root.exists():
+        if not accepted_root.is_dir():
+            errors.append(f"reviewed open-docket root is not a regular directory: {ACCEPTED_ROOT}")
+        else:
+            for docket_path in sorted(accepted_root.iterdir()):
+                if docket_path.name == "submissions":
+                    continue
+                label = f"reviewed open docket {docket_path.name}"
+                if docket_path.is_symlink():
+                    errors.append(f"{label} path must not be a symlink")
+                    continue
+                if not docket_path.is_dir():
+                    continue
+                record = _load_prior_art_record(
+                    root,
+                    docket_path / "proposal.json",
+                    label=label,
+                    subject_key=docket_path.name,
+                    errors=errors,
+                )
+                if record is not None:
+                    comparisons.append(record)
+
+    errors.extend(
+        f"proposal question closely restates {label}"
+        for label, subject_key, accepted_question in comparisons
+        if _closely_restates(question, accepted_question, subject_key)
+    )
+    return errors
 
 
 def _contains_disallowed_text(value: Any) -> bool:
@@ -305,10 +511,13 @@ def prepare_submission(
     submitted_at: str | None = None,
 ) -> dict[str, Any]:
     validation = validate_proposal(bundle)
+    novelty_errors = validate_question_novelty(root, str(bundle.get("question", "")))
     trace_errors = [*validate_action_trace(trace), *validate_trace_against_bundle(trace, bundle)]
-    if not validation["valid"] or trace_errors:
-        raise ValueError("; ".join([*validation["errors"], *trace_errors]))
-    submitted_at = submitted_at or dt.datetime.now(dt.timezone.utc).replace(
+    if not validation["valid"] or novelty_errors or trace_errors:
+        raise ValueError(
+            "; ".join([*validation["errors"], *novelty_errors, *trace_errors])
+        )
+    submitted_at = submitted_at or dt.datetime.now(dt.UTC).replace(
         microsecond=0
     ).isoformat().replace("+00:00", "Z")
     timestamp_errors: list[str] = []
@@ -1372,10 +1581,12 @@ def submission_guide(base_url: str) -> dict[str, Any]:
             "cd epistemedia",
             "python3.12 -m venv .venv",
             ".venv/bin/python -m pip install -e .",
+            "inspect https://epistemedia.org/.well-known/epistemedia.json, https://epistemedia.org/open-dockets/, and open [docket submission] pull requests; reject accepted, reviewed, queued, or closely restated claims and record the prior-art comparison in proposal search_notes",
             ".venv/bin/python -m epistemedia research prepare --question \"YOUR QUESTION\" --output proposal.json",
             "curl -fsSLo action-trace.json https://epistemedia.org/agents/action-trace-template.json",
             "complete proposal.json and action-trace.json from public primary-source research",
             "ensure action-trace.json has one retrieve-source event per proposal source with exact URL and artifact SHA-256, but no source payload",
+            ".venv/bin/python -m epistemedia research complete proposal.json",
             ".venv/bin/python -m epistemedia research validate proposal.json",
             ".venv/bin/python -m epistemedia research submit proposal.json --trace action-trace.json --agent-id YOUR_AGENT --model-family YOUR_MODEL_FAMILY --run-id YOUR_RUN_ID --prompt-sha256 PROMPT_SHA256",
             "git switch -c submission/<generated-slug>",
