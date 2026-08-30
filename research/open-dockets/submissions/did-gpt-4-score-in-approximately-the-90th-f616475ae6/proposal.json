@@ -1,0 +1,360 @@
+{
+  "calculations": [
+    {
+      "calculation_id": "calculation-1",
+      "depends_on": [],
+      "equation": "percentile_upper_bound = 100 - top_percent_band",
+      "inputs": [
+        {
+          "input_id": "input-1",
+          "json_pointer": "/abstract#top-10-percent-of-test-takers",
+          "name": "top_percent_band",
+          "origin": "source-span",
+          "source_id": "source-1",
+          "span_id": "span-1",
+          "value": "10"
+        }
+      ],
+      "output": "90",
+      "uncertainty": "Pure restatement identity: 'top 10%' equals an approximate 90th-percentile upper bound. It does not compute a percentile against any specific test-taker cohort."
+    }
+  ],
+  "counterevidence": [
+    {
+      "claim": "GPT-4 scored around the 90th percentile of Uniform Bar Exam test takers.",
+      "evidence": "A peer-reviewed reanalysis finds OpenAI's UBE percentile is overinflated; measured against those who passed the exam, GPT-4 drops to about the 48th percentile overall and about the 15th percentile on essays.",
+      "exact_span_ids": [
+        "span-4",
+        "span-5"
+      ],
+      "qualification": "Bounded to the reanalysis's stated cohorts and conservative statistical assumptions; it revises the reference population rather than disputing GPT-4's raw scaled score.",
+      "source_ids": [
+        "source-2"
+      ]
+    }
+  ],
+  "cutoff": "2026-08-28",
+  "dependencies": [
+    {
+      "dependency_id": "dependency-1",
+      "description": "The audited percentile is entirely dependent on OpenAI's self-reported GPT-4 Technical Report abstract; no independent administration or scoring is available in this bundle.",
+      "exact_span_ids": [
+        "span-1"
+      ],
+      "kind": "source",
+      "source_ids": [
+        "source-1"
+      ]
+    }
+  ],
+  "format": "epistemedia-research-proposal-v0.2",
+  "license": {
+    "bundle": "CC0-1.0",
+    "source_material": "Each source retains its recorded license and treatment."
+  },
+  "limitations": [
+    "The audited claim is documented from the GPT-4 Technical Report abstract, not the full report body.",
+    "Both sources ultimately depend on OpenAI's self-reported UBE scoring; they are not independent measurements."
+  ],
+  "lineage": {
+    "prompt_sha256": "ec8200e61a3c8d94c2c62e5d55d707564914276aa45ec600d4095772141eb1ef",
+    "provider_model_identity": "anthropic-claude-opus-4-8",
+    "retrieval_environment": "macOS terminal, curl over HTTPS, poppler pdftotext",
+    "run_identity": "epistemedia-cold-start-2026-08-28-gpt4-bar-exam",
+    "shared_dependencies": [
+      "Both the audited claim and the counter-analysis trace to OpenAI's self-reported UBE scoring; they are not independent evidence roots."
+    ]
+  },
+  "negative_results": [
+    {
+      "disposition": "Retained as an open gap; absence of a single-cohort dataset is not evidence of a 90th percentile.",
+      "exact_span_ids": [
+        "span-5"
+      ],
+      "kind": "no-evidence-located",
+      "result": "No independent primary NCBE dataset resolving GPT-4's percentile against a single first-time July test-taker cohort was retrieved within this bundle's scope.",
+      "retrieval_attempt_ids": [],
+      "scope": "Public primary NCBE administration data for a single-cohort percentile of the exact GPT-4 score.",
+      "source_ids": [
+        "source-2"
+      ]
+    }
+  ],
+  "question": "Did GPT-4 score in approximately the 90th percentile (top 10%) of test takers on the Uniform Bar Examination, as reported by OpenAI?",
+  "results": [
+    {
+      "calculation_ids": [
+        "calculation-1"
+      ],
+      "calculation_status": "reproduced",
+      "claim_atoms": [
+        {
+          "atom_id": "atom-proposition",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "OpenAI's GPT-4 Technical Report states that GPT-4 passed a simulated bar exam with a score around the top 10% of test takers, i.e. approximately the 90th percentile."
+        },
+        {
+          "atom_id": "atom-numerator",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "a score around the top 10% of test takers"
+        },
+        {
+          "atom_id": "atom-denominator",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "a simulated Uniform Bar Examination"
+        },
+        {
+          "atom_id": "atom-rate",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "qualified",
+          "text": "approximately the 90th percentile"
+        },
+        {
+          "atom_id": "atom-comparison",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "as self-reported by OpenAI in the GPT-4 Technical Report"
+        },
+        {
+          "atom_id": "atom-metric-scope",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "boundary",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "qualified",
+          "text": "A self-reported percentile band relative to unspecified test takers; the abstract does not state the reference cohort, administration, or grading method."
+        },
+        {
+          "atom_id": "atom-dataset",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "qualified",
+          "text": "A single simulated Uniform Bar Examination administered and scored by OpenAI"
+        },
+        {
+          "atom_id": "atom-models",
+          "exact_span_ids": [
+            "span-1"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "GPT-4 (2023 OpenAI release) as described in the GPT-4 Technical Report"
+        },
+        {
+          "atom_id": "atom-time",
+          "exact_span_ids": [
+            "span-2"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "March 2023, the GPT-4 launch reporting period"
+        },
+        {
+          "atom_id": "atom-tool",
+          "exact_span_ids": [
+            "span-3"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "OpenAI GPT-4 Technical Report abstract as published on arXiv at arXiv:2303.08774"
+        }
+      ],
+      "dependency_ids": [
+        "dependency-1"
+      ],
+      "exact_span_ids": [
+        "span-1",
+        "span-2",
+        "span-3"
+      ],
+      "interpretation": "The report asserts the top-10% figure as a headline capability. It does not, in the cited abstract, identify the reference population, administration, or grading method, and a peer-reviewed reanalysis contests the percentile (see counterevidence).",
+      "proposition": "OpenAI's GPT-4 Technical Report states that GPT-4 passed a simulated bar exam with a score around the top 10% of test takers, i.e. approximately the 90th percentile.",
+      "reported_value": {
+        "comparison": "as self-reported by OpenAI in the GPT-4 Technical Report",
+        "denominator": "a simulated Uniform Bar Examination",
+        "numerator": "a score around the top 10% of test takers",
+        "rate": "approximately the 90th percentile"
+      },
+      "result_id": "result-1",
+      "scope": {
+        "dataset_or_population": "A single simulated Uniform Bar Examination administered and scored by OpenAI",
+        "metric_scope": "A self-reported percentile band relative to unspecified test takers; the abstract does not state the reference cohort, administration, or grading method.",
+        "models_or_agents": [
+          "GPT-4 (2023 OpenAI release) as described in the GPT-4 Technical Report"
+        ],
+        "time": "March 2023, the GPT-4 launch reporting period",
+        "tool_and_retrieval_path": "OpenAI GPT-4 Technical Report abstract as published on arXiv at arXiv:2303.08774"
+      },
+      "source_ids": [
+        "source-1"
+      ],
+      "uncertainty": "The 90th-percentile figure is a self-reported band whose reference cohort is unstated in the abstract; the counter-source and the audited claim both trace to OpenAI's own UBE scoring, so they are not independent measurements.",
+      "warrant": "The cited abstract span states verbatim that GPT-4 passed a simulated bar exam 'with a score around the top 10% of test takers', which is the source of the popular 90th-percentile restatement audited here."
+    }
+  ],
+  "retrieval_attempts": [
+    {
+      "artifact_sha256": "a3c36ab41e1ba2bccc7734ebe4c239321484b1f2f30ac903b2dbfc0b45f888e2",
+      "attempt_id": "attempt-1",
+      "attempted_at": "2026-08-28T12:10:00Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "source-1",
+      "transport": "https",
+      "url": "https://arxiv.org/abs/2303.08774"
+    },
+    {
+      "artifact_sha256": "24dd9af53616532b4457494499c2b9275845217664ae2a87d5d0d4a8588d2d77",
+      "attempt_id": "attempt-2",
+      "attempted_at": "2026-08-28T12:20:00Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "source-2",
+      "transport": "https",
+      "url": "https://nysba.org/wp-content/uploads/2024/04/Eric-Martinez-Paper-SSRN-id4441311.pdf"
+    }
+  ],
+  "runtime": {
+    "agent": "epistemedia-cold-start-agent",
+    "completed_at": "2026-08-28T12:30:00Z",
+    "started_at": "2026-08-28T12:00:00Z",
+    "toolchain": [
+      "curl",
+      "poppler-pdftotext",
+      "shasum-256",
+      "epistemedia-research-validate"
+    ]
+  },
+  "scope": {
+    "comparison_target": "The reference population against which the approximately-90th-percentile figure is measured: all UBE test takers versus first-time takers versus those who passed.",
+    "excluded": "GPT-4's raw scaled UBE score of 298, other benchmarks, later GPT models, and jurisdiction-specific licensing outcomes.",
+    "included": "OpenAI's self-reported percentile claim for GPT-4 on a simulated Uniform Bar Examination, and one peer-reviewed reanalysis of that percentile."
+  },
+  "search_notes": [
+    "Retrieved the GPT-4 Technical Report abstract from arXiv and the Martinez reanalysis PDF from the NYSBA-hosted SSRN copy.",
+    "Independently computed SHA-256 digests over the exact retrieved bytes."
+  ],
+  "sources": [
+    {
+      "creators_or_org": "OpenAI",
+      "date": "2023-03-15",
+      "edition": "arXiv v6, last revised 4 Mar 2024",
+      "exact_spans": [
+        {
+          "locator": "Abstract, final sentence",
+          "quote": "human-level performance on various professional and academic benchmarks, including passing a simulated bar exam with a score around the top 10% of test takers.",
+          "span_id": "span-1",
+          "supports": "the reported top-10% / approximately-90th-percentile bar exam claim"
+        },
+        {
+          "locator": "Submission history header",
+          "quote": "Submitted on 15 Mar 2023",
+          "span_id": "span-2",
+          "supports": "the March 2023 reporting period"
+        },
+        {
+          "locator": "arXiv identifier header",
+          "quote": "arXiv:2303.08774",
+          "span_id": "span-3",
+          "supports": "the exact arXiv retrieval path and identifier"
+        }
+      ],
+      "identifier": "arXiv:2303.08774",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "text/html",
+      "retrieval_status": "retrieved",
+      "source_id": "source-1",
+      "title": "GPT-4 Technical Report (abstract)",
+      "url": "https://arxiv.org/abs/2303.08774"
+    },
+    {
+      "creators_or_org": "Eric Martinez",
+      "date": "2023-05-08",
+      "edition": "SSRN preprint id4441311 (NYSBA-hosted PDF); published in Artificial Intelligence and Law (2025)",
+      "exact_spans": [
+        {
+          "locator": "Abstract",
+          "quote": "OpenAI’s estimates of GPT-4’s UBE percentile are overinflated.",
+          "span_id": "span-4",
+          "supports": "the finding that the reported percentile is overinflated"
+        },
+        {
+          "locator": "Abstract, fourth finding",
+          "quote": "when examining only those who passed the exam (i.e. licensed or license-pending attorneys), GPT-4’s performance is estimated to drop to ∼48th percentile overall, and ∼15th percentile on essays.",
+          "span_id": "span-5",
+          "supports": "the recomputed percentile against those who passed the exam"
+        }
+      ],
+      "identifier": "SSRN 4441311",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "source-2",
+      "title": "Re-evaluating GPT-4's bar exam performance (SSRN preprint)",
+      "url": "https://nysba.org/wp-content/uploads/2024/04/Eric-Martinez-Paper-SSRN-id4441311.pdf"
+    }
+  ],
+  "status": "ready-for-review",
+  "unresolved": [
+    "The exact reference cohort behind OpenAI's top-10% figure is not stated in the cited abstract.",
+    "Whether the essay components were graded to NCBE standards remains contested."
+  ]
+}

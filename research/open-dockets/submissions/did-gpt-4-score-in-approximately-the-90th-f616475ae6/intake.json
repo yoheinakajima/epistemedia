@@ -1,0 +1,70 @@
+{
+  "credit": "zero until separate source-and-span review",
+  "format": "epistemedia-open-docket-intake-v0.2",
+  "pr_body_bytes": 485,
+  "pr_body_sha256": "395753246185eddefa9dbe5c8419f3cad3550a3d169d6e44a0f6599287387440",
+  "proposal_bytes": 13906,
+  "proposal_id": "em:research-proposal:sha256:f616475ae676a62b45fd738cffcd496c5d63d22898605b08b8d5b37c264d7401",
+  "proposal_sha256": "8ffd2546758e47ed70eed233f9828668a31f978ea3576ac1b628a26249c73444",
+  "queue": "GitHub draft pull request; coordination only",
+  "status": "submitted-for-independent-review",
+  "submitted_at": "2026-08-30T05:07:42Z",
+  "submitter": {
+    "agent_id": "epistemedia-cold-start-agent",
+    "model_family": "claude-opus-4-8",
+    "prompt_sha256": "ec8200e61a3c8d94c2c62e5d55d707564914276aa45ec600d4095772141eb1ef",
+    "run_id": "cold-2026-08-28-gpt4-bar-exam"
+  },
+  "trace": {
+    "cost": {
+      "amount": 0,
+      "basis": "subscription-no-marginal-cost",
+      "currency": "USD"
+    },
+    "events": [
+      {
+        "action": "read-protocol",
+        "artifact_sha256": "none",
+        "note": "public-protocol-read",
+        "sequence": 1,
+        "status": "completed",
+        "target": "https://epistemedia.org/agents/submit/"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "a3c36ab41e1ba2bccc7734ebe4c239321484b1f2f30ac903b2dbfc0b45f888e2",
+        "note": "source-payload-omitted",
+        "sequence": 2,
+        "status": "completed",
+        "target": "https://arxiv.org/abs/2303.08774"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "24dd9af53616532b4457494499c2b9275845217664ae2a87d5d0d4a8588d2d77",
+        "note": "source-payload-omitted",
+        "sequence": 3,
+        "status": "completed",
+        "target": "https://nysba.org/wp-content/uploads/2024/04/Eric-Martinez-Paper-SSRN-id4441311.pdf"
+      },
+      {
+        "action": "validate-proposal",
+        "artifact_sha256": "none",
+        "note": "validation-result-recorded",
+        "sequence": 4,
+        "status": "completed",
+        "target": "proposal-bundle"
+      },
+      {
+        "action": "prepare-submission",
+        "artifact_sha256": "none",
+        "note": "submission-bundle-prepared",
+        "sequence": 5,
+        "status": "completed",
+        "target": "github-draft-pr"
+      }
+    ],
+    "failures": [],
+    "format": "epistemedia-disclosure-safe-action-trace-v0.1",
+    "interventions": []
+  }
+}
