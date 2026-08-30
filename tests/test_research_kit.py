@@ -664,7 +664,19 @@ def test_cli_and_mcp_prepare_validate_without_write_authority(
     assert prepared["valid"] is False
     assert prepared["submitted"] is False
     assert prepared["admitted"] is False
-    assert json.loads(draft.read_text())["status"] == "draft"
+    draft_bundle = json.loads(draft.read_text())
+    assert draft_bundle["status"] == "draft"
+    assert draft_bundle["runtime"]["started_at"] != "unknown"
+    assert draft_bundle["runtime"]["completed_at"] == "unknown"
+
+    completable_path = tmp_path / "completable.json"
+    completable = valid_proposal()
+    completable["runtime"]["completed_at"] = "unknown"
+    completable_path.write_text(json.dumps(completable))
+    assert main(["--root", str(ROOT), "research", "complete", str(completable_path)]) == 0
+    completed = json.loads(capsys.readouterr().out)
+    assert completed["valid"] is True
+    assert json.loads(completable_path.read_text())["runtime"]["completed_at"] != "unknown"
 
     valid_path = tmp_path / "valid.json"
     valid_path.write_text(json.dumps(valid_proposal()))
