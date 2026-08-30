@@ -1,0 +1,85 @@
+{
+  "id": "EM-0041",
+  "title": "Harden and rerun the autonomous docket pilot",
+  "status": "ready",
+  "change_class": "governance-normative",
+  "objective": "Preserve the first cold-start submission as a failed queue receipt, close every provenance and evidence-closure gap found by its independent review, and rerun the one-prompt Claude-to-independent-review-to-publication pilot without repairing either contributor submission by hand.",
+  "depends_on": [
+    "EM-0040"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "research/open-dockets/**",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**",
+      ".github/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      "tasks/contracts/**",
+      "catalog/dossiers/**",
+      "research/how-we-know/**"
+    ]
+  },
+  "evidence": [
+    {
+      "kind": "failed-cold-start-submission-binding",
+      "repository": "yoheinakajima/epistemedia",
+      "pull_request": 69,
+      "head": "91019affb065cc78d2190e6449121e9a1350cba6",
+      "tree": "0c2e418e6ec1501e59000955dcdaec78ee156a28",
+      "files": {
+        "research/open-dockets/submissions/does-the-llama-4-community-license-qualify-as-695672767c/PR_BODY.md": "faaf39a947ce32b6367ca9c21928d878df71283f65a94d2d1923da7f9d11e162",
+        "research/open-dockets/submissions/does-the-llama-4-community-license-qualify-as-695672767c/intake.json": "9847912c4836bef7736970e6f0ff86d6d14794add1401a37078319b6e18099d6",
+        "research/open-dockets/submissions/does-the-llama-4-community-license-qualify-as-695672767c/proposal.json": "a89a5f2966dae1e1f197685ddde9f32a53f891ffd5d9193fb13ba61c6c1a0a70"
+      }
+    },
+    {
+      "kind": "canonical-cold-start-prompt",
+      "text": "Open https://epistemedia.org/agents/submit/. Choose one contestable claim worth auditing, follow every instruction, and submit the result.",
+      "sha256": "ec8200e61a3c8d94c2c62e5d55d707564914276aa45ec600d4095772141eb1ef"
+    }
+  ],
+  "required_evaluation": [
+    "independent governance review loaded from the accepted base branch before implementation approval",
+    "exact preservation of PR 69 and its three contributor-authored queue files as the immutable failed first-pilot record, with no repair, promotion, merge, or warrant credit",
+    "adversarial chronology checks covering malformed timestamps and started_at, completed_at, intake submitted_at, immutable commit time, and server-observed submission ordering",
+    "controller-authored runtime attestation outside contributor bytes that binds the visible session, model family or explicit unavailable state, effort where exposed, and observation time without chain-of-thought, credentials, personal data, or private model context",
+    "claim-atom closure requiring every material proposition component, date, comparison, and metadata literal to bind the exact source, edition, and span that supports it",
+    "typed calculation inputs with source cells or JSON pointers and explicit consumed-output dependency edges, including cycle, orphan, cosmetic-dependency, and unbound-field adversaries",
+    "typed disclosure-safe failed-retrieval attempts with URL, attempt time, transport outcome, failure code, and negative-result bindings, without source payload or unrestricted free text",
+    "source-license identities that use a recognized license, an exact quoted license basis, or explicit unknown or unassessed status rather than descriptive placeholder prose",
+    "fresh cold-start test in which a new context-isolated Claude coding session receives only the public submission URL and the same short instruction, chooses its own claim, and receives no repair prompt or clarification",
+    "fresh non-author Codex review that independently re-retrieves every credited source, closes every span, calculation, dependence, counterevidence, negative result, uncertainty, and license boundary, and either fails closed or creates the exact protected promotion shape",
+    "installed GitHub App gate read-back showing installation only on yoheinakajima/epistemedia, contents and pull requests read-only, checks read and write, and no content-write, merge, deployment, administration, secrets, webhook, organization, account, or enterprise permission",
+    "full accepted-base queue and promotion validation, adversarial tests, deterministic rebuild, disclosure audit, interface parity, exact path-scope comparison, protected merge, resulting-main validation, separately authorized Pages deployment, and live route and release-identity read-back"
+  ],
+  "acceptance": [
+    "proposal preparation rejects impossible or future chronology and binds contributor time to an immutable server-observed submission event without trusting a self-declared clock",
+    "known controller-observed runtime identity cannot be replaced by contributor unknown, and unresolved model identity earns no reviewer-independence credit",
+    "each result is decomposed into typed material claim atoms whose source and span closure is exact and independently reviewable",
+    "each calculation binds the exact input field or cell it consumes and names only dependencies whose outputs are explicitly consumed",
+    "each inaccessible-carrier or failed-retrieval claim binds a typed disclosure-safe retrieval-attempt record; unsupported process explanations remain hypotheses rather than evidence",
+    "each source has a real license identity, exact license basis, or explicit unknown or unassessed status",
+    "PR 69 remains an unchanged, open or otherwise retained, non-admitted submission record and is never used as accepted knowledge",
+    "a second cold-start Claude session completes research and opens a new exact three-file draft queue PR from the public protocol and the same one-line user prompt with no additional owner or operator message",
+    "the queue PR remains mechanically non-mergeable, while a separate exact-head promotion PR can pass only after a fresh Codex reviewer independently reproduces all credited evidence and adds the sole receipt child",
+    "the trusted App-signed independent-review check occurs after the promotion receipt push, is bound by the protected ruleset to GitHub App ID 4766776 and the exact reviewed head, requires no owner click, and the protected squash merge uses no bypass before the new open docket is deployed with HTML, Markdown, and JSON twins plus exact release-identity read-back",
+    "the existing four numbered cases, accepted dossier bytes, policies, counts, evaluations, and public meanings remain unchanged"
+  ],
+  "limitations": [
+    "A second failed cold-start remains a valid negative result and must not be repaired, promoted, or hidden merely to satisfy the pilot objective.",
+    "The review-gate App may read repository contents and pull requests and write check results only; it cannot write repository contents, merge, deploy, administer the repository, access secrets, or replace the substantive non-author review receipt.",
+    "The controller attestation records only user-visible runtime metadata and never hidden reasoning, private prompts, credentials, or provider internals.",
+    "This remains a GitHub-native pilot, not the authenticated hosted MCP queue governed by EM-0038.",
+    "An independently reviewed open docket is not automatically a numbered How We Know case, scientific consensus, legal advice, or universal truth.",
+    "No new paid provider call, credential, account provisioning, DNS change, package release, or unrelated publication is authorized."
+  ]
+}
