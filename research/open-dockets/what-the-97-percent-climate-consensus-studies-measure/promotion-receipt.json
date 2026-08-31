@@ -1,0 +1,34 @@
+{
+  "controller_attestation_sha256": "6ce1c6734fb014e5d9736e8795eb2f770ca9d52e2558bf60f12aa5b304933c7c",
+  "decision": "pass",
+  "format": "epistemedia-open-docket-promotion-receipt-v0.2",
+  "proposal_sha256": "4d74e12ecaadaa9612fa310a8bf2be9c198dece77ba6c675bd84595a4bae754d",
+  "recorded_at": "2026-08-31T12:06:14Z",
+  "review_sha256": "6b7499ab8363db8d945953fcc798cdea283a21615ae49f7f20287c70e8da5064",
+  "reviewed_head": "556577e6a96fa62dc97632209cbfa9cbb3ade6b0",
+  "reviewed_tree": "7b014634c9f7045abe14ef36412c9a65dbb05f08",
+  "reviewer": {
+    "agent_id": "codex-independent-evidence-reviewer",
+    "author_notes_seen": false,
+    "authoring_agent_artifacts_used": false,
+    "fresh_clone": true,
+    "model_family": "openai-codex",
+    "prompt_sha256": "fb1fbf92a4976099fbb645ce15ef600fe30f7a647cc27df32e364589bdbf0c6a",
+    "run_id": "codex-pr82-independent-review-20260831",
+    "source_artifact_sha256s": [
+      "24df27e7685464f40ed1845efe1f5d2f6e5db2c0e91ac3279a51775d66f0befc",
+      "3ffc8f65c756b3f09159fb0c791260fd77c84a09b20ab86a4e4ef668c21aca24",
+      "8434e97bd6a45a9540ce6581f831163be3b4df2810469b111dad7cf857dc46da",
+      "9011f78ea25bcbe512b0df8b2fb1844d113656c3c032b8b0396274cd80790ffe",
+      "a7af1291b7f9125f4b63b2d98e07cecf450801b1c04cf1d47ff1ea6e5237f963"
+    ],
+    "toolchain": [
+      "Codex web retrieval",
+      "Git exact-head inspection",
+      "Python arithmetic reproduction",
+      "SHA-256 digest verification"
+    ]
+  },
+  "source_pr_head": "e480afb93be5ec210c9e2f98fe0a895c748546e4",
+  "source_pr_number": 82
+}

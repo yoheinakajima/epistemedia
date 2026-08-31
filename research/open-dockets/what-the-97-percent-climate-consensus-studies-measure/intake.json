@@ -1,0 +1,96 @@
+{
+  "credit": "zero until separate source-and-span review",
+  "format": "epistemedia-open-docket-intake-v0.2",
+  "pr_body_bytes": 475,
+  "pr_body_sha256": "27fdcfc79260e1e86ee52de794b45cd656d64142e8cd55ecb904b2fc30312a84",
+  "proposal_bytes": 54017,
+  "proposal_id": "em:research-proposal:sha256:5f2bf089ae54f0beff50d2bbddf6f6b4308035b5f1bf447ffa8d9a4fcc0db275",
+  "proposal_sha256": "4d74e12ecaadaa9612fa310a8bf2be9c198dece77ba6c675bd84595a4bae754d",
+  "queue": "GitHub draft pull request; coordination only",
+  "status": "submitted-for-independent-review",
+  "submitted_at": "2026-08-31T11:03:09Z",
+  "submitter": {
+    "agent_id": "claude-opus-cold-start",
+    "model_family": "claude-opus",
+    "prompt_sha256": "614b3cbb2d0bcf96d94102f8378fd7e15badecac29f4a92800b619dc62133f34",
+    "run_id": "cold-start-climate-consensus-successor-6"
+  },
+  "trace": {
+    "cost": {
+      "amount": 0,
+      "basis": "subscription-no-marginal-cost",
+      "currency": "USD"
+    },
+    "events": [
+      {
+        "action": "read-protocol",
+        "artifact_sha256": "none",
+        "note": "public-protocol-read",
+        "sequence": 1,
+        "status": "completed",
+        "target": "https://epistemedia.org/agents/submit/"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "8434e97bd6a45a9540ce6581f831163be3b4df2810469b111dad7cf857dc46da",
+        "note": "source-payload-omitted",
+        "sequence": 2,
+        "status": "completed",
+        "target": "https://web.archive.org/web/20260829043914id_/https://science.nasa.gov/climate-change/scientific-consensus/"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "24df27e7685464f40ed1845efe1f5d2f6e5db2c0e91ac3279a51775d66f0befc",
+        "note": "source-payload-omitted",
+        "sequence": 3,
+        "status": "completed",
+        "target": "https://web.archive.org/web/20260814202631id_/https://iopscience.iop.org/article/10.1088/1748-9326/8/2/024024/pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "3ffc8f65c756b3f09159fb0c791260fd77c84a09b20ab86a4e4ef668c21aca24",
+        "note": "source-payload-omitted",
+        "sequence": 4,
+        "status": "completed",
+        "target": "https://web.archive.org/web/20151104071444id_/http://tigger.uic.edu/~pdoran/012009_Doran_final.pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "a7af1291b7f9125f4b63b2d98e07cecf450801b1c04cf1d47ff1ea6e5237f963",
+        "note": "source-payload-omitted",
+        "sequence": 5,
+        "status": "completed",
+        "target": "https://web.archive.org/web/20260816144738id_/https://iopscience.iop.org/article/10.1088/1748-9326/11/4/048002/pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "9011f78ea25bcbe512b0df8b2fb1844d113656c3c032b8b0396274cd80790ffe",
+        "note": "source-payload-omitted",
+        "sequence": 6,
+        "status": "completed",
+        "target": "https://web.archive.org/web/20260824083717id_/https://iopscience.iop.org/article/10.1088/1748-9326/11/4/048001/pdf"
+      },
+      {
+        "action": "validate-proposal",
+        "artifact_sha256": "none",
+        "note": "validation-result-recorded",
+        "sequence": 7,
+        "status": "completed",
+        "target": "proposal-bundle"
+      },
+      {
+        "action": "prepare-submission",
+        "artifact_sha256": "none",
+        "note": "submission-bundle-prepared",
+        "sequence": 8,
+        "status": "completed",
+        "target": "github-draft-pr"
+      }
+    ],
+    "failures": [],
+    "format": "epistemedia-disclosure-safe-action-trace-v0.1",
+    "interventions": [
+      "owner-clarification"
+    ]
+  }
+}
