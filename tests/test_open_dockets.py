@@ -996,6 +996,9 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
     run_git("add", "CHANGELOG.md")
     run_git("commit", "-m", "advance accepted main")
     base = run_git("rev-parse", "HEAD")
+    non_ancestor = run_git(
+        "commit-tree", run_git("rev-parse", "HEAD^{tree}"), "-m", "unrelated root"
+    )
 
     destination = promote(repository)
     submission = next((repository / "research" / "open-dockets" / "submissions").iterdir())
@@ -1109,13 +1112,14 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
     result = promotion_validator.validate(repository, base)
     assert result["valid"] is True, result["errors"]
 
-    source_pr_base["sha"] = "f" * 40
-    result = promotion_validator.validate(repository, base)
-    assert result["valid"] is False
-    assert any(
-        "source pull request base is not an ancestor of the promotion base" in error
-        for error in result["errors"]
-    )
+    for invalid_source_base in ("HEAD^", base[:7], non_ancestor, "f" * 40):
+        source_pr_base["sha"] = invalid_source_base
+        result = promotion_validator.validate(repository, base)
+        assert result["valid"] is False
+        assert any(
+            "source pull request base is not an ancestor of the promotion base" in error
+            for error in result["errors"]
+        )
     source_pr_base["sha"] = source_base
 
     for field, forged in (

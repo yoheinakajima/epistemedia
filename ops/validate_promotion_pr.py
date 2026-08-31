@@ -244,8 +244,10 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
         if source_pr.get("head", {}).get("sha") != receipt.get("source_pr_head"):
             errors.append("source pull request head drifted from the review binding")
         source_base = source_pr.get("base", {}).get("sha")
-        if not isinstance(source_base, str) or not git_is_ancestor(
-            candidate, source_base, base_sha
+        if (
+            not isinstance(source_base, str)
+            or re.fullmatch(r"[0-9a-f]{40}", source_base) is None
+            or not git_is_ancestor(candidate, source_base, base_sha)
         ):
             errors.append(
                 "source pull request base is not an ancestor of the promotion base"
