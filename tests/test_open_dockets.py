@@ -852,17 +852,19 @@ def test_human_open_docket_projection_retains_full_reviewable_record(tmp_path: P
         assert label in rendered
 
 
-def test_public_build_exposes_submit_and_empty_open_docket_routes(tmp_path: Path) -> None:
+def test_public_build_exposes_submit_and_current_open_docket_routes(tmp_path: Path) -> None:
     public = tmp_path / "public"
     build_public(ROOT, public)
     submit = (public / "agents" / "submit" / "index.html").read_text()
     llms = (public / "llms.txt").read_text()
     discovery = json.loads((public / ".well-known" / "epistemedia.json").read_text())
+    dockets, errors = load_open_dockets(ROOT)
+    assert errors == []
     assert "Point an agent here" in submit
     assert "separate reviewer" in submit
     assert "/agents/submit/" in llms
     assert discovery["agent_research"]["github_submission_available"] is True
-    assert discovery["open_dockets"]["count"] == 0
+    assert discovery["open_dockets"]["count"] == len(dockets)
     assert (public / "open-dockets" / "index.html").is_file()
 
 
@@ -1175,14 +1177,15 @@ def test_submission_guide_and_open_dockets_have_read_only_interface_parity(
     assert main(["--root", str(ROOT), "research", "submission-guide"]) == 0
     assert json.loads(capsys.readouterr().out) == guide
 
-    assert gateway.call_tool("list_open_dockets", {}) == []
+    expected_dockets = gateway.call_tool("list_open_dockets", {})
+    assert isinstance(expected_dockets, list)
     status, _, response = gateway.handle_api(
         Request("GET", "/v1/open-dockets", {}, {}, b"")
     )
     assert status == 200
-    assert response["data"] == []
+    assert response["data"] == expected_dockets
     assert main(["--root", str(ROOT), "open-dockets", "list"]) == 0
-    assert json.loads(capsys.readouterr().out)["data"] == []
+    assert json.loads(capsys.readouterr().out)["data"] == expected_dockets
     names = {tool["name"] for tool in tool_definitions()}
     assert {"get_docket_submission_guide", "list_open_dockets", "get_open_docket"} <= names
     assert all(tool["annotations"]["readOnlyHint"] is True for tool in tool_definitions())
