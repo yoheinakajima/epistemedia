@@ -1,0 +1,14 @@
+{
+  "attestor": "epistemedia-control-room",
+  "effort": "high",
+  "format": "epistemedia-controller-runtime-attestation-v0.1",
+  "model_family": "claude-opus",
+  "model_label": "claude-opus-4-8",
+  "observation_source": "controller-visible-session-metadata",
+  "observed_at": "2026-08-31T11:03:54Z",
+  "provider": "anthropic",
+  "session_identity_sha256": "3a2e63e454a8e1d18c9cfc1952bd89c137fc53f1488790bcc084b116f086e8ca",
+  "source_pr_head": "e480afb93be5ec210c9e2f98fe0a895c748546e4",
+  "source_pr_number": 82,
+  "unavailable_fields": []
+}

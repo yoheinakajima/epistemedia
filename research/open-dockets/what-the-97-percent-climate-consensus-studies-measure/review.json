@@ -1,0 +1,699 @@
+{
+  "binding": {
+    "controller_attestation_sha256": "6ce1c6734fb014e5d9736e8795eb2f770ca9d52e2558bf60f12aa5b304933c7c",
+    "proposal_bytes": 54017,
+    "proposal_id": "em:research-proposal:sha256:5f2bf089ae54f0beff50d2bbddf6f6b4308035b5f1bf447ffa8d9a4fcc0db275",
+    "proposal_sha256": "4d74e12ecaadaa9612fa310a8bf2be9c198dece77ba6c675bd84595a4bae754d",
+    "source_pr_head": "e480afb93be5ec210c9e2f98fe0a895c748546e4",
+    "source_pr_number": 82,
+    "source_pr_url": "https://github.com/yoheinakajima/epistemedia/pull/82"
+  },
+  "calculation_reviews": [
+    {
+      "calculation_id": "calc-c13-abstract",
+      "dependency_edges_checked": true,
+      "disposition": "credit-as-bounded",
+      "equation_checked": true,
+      "input_pointers_checked": true,
+      "inputs_checked": true,
+      "output_reproduced": true
+    },
+    {
+      "calculation_id": "calc-c13-self",
+      "dependency_edges_checked": true,
+      "disposition": "credit-as-bounded",
+      "equation_checked": true,
+      "input_pointers_checked": true,
+      "inputs_checked": true,
+      "output_reproduced": true
+    },
+    {
+      "calculation_id": "calc-doran",
+      "dependency_edges_checked": true,
+      "disposition": "credit-as-bounded",
+      "equation_checked": true,
+      "input_pointers_checked": true,
+      "inputs_checked": true,
+      "output_reproduced": true
+    },
+    {
+      "calculation_id": "calc-c16",
+      "dependency_edges_checked": true,
+      "disposition": "credit-as-bounded",
+      "equation_checked": true,
+      "input_pointers_checked": true,
+      "inputs_checked": true,
+      "output_reproduced": true
+    }
+  ],
+  "claim_atom_reviews": [
+    {
+      "atom_id": "atom-1",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "cff64379d41a8559f44bffea3543a0e05c009ef058e7030a6f21d122a765e939"
+    },
+    {
+      "atom_id": "atom-2",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "314a3c742f2bdb8db350a6264b118415e592f17138de9cba43cb72a843f0e361"
+    },
+    {
+      "atom_id": "atom-3",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "acc8c085ffecf26cd03cd844d77c445b31a37abef1eb5cfb973b76aa159b8a33"
+    },
+    {
+      "atom_id": "atom-4",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "74a2dfec4c774eb7cba49de3bbf763ef0e3755c0e6fc8fd580f2536806ffc44f"
+    },
+    {
+      "atom_id": "atom-5",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "8834eff2cfaac030403a94c433d0d2740aed15fd3c7fb43f13d64b374589498b"
+    },
+    {
+      "atom_id": "atom-6",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "86e67c439fcad652175263f8490daf26ec3f85c09aac832b106a65cf168ca0f8"
+    },
+    {
+      "atom_id": "atom-7",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "0ab57961eb5896fbff85ef2fa0efa22cada0bacdec6f29d74301ac2135ef7edc"
+    },
+    {
+      "atom_id": "atom-8",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "50b155677f660ee2793a9f1cb32358a2282ea45b776eaccde91825ee107e17a1"
+    },
+    {
+      "atom_id": "atom-9",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "9d2ed5fe22c75147fa580c1a51f11880119032c29f98324fcdcff6d47da4e028"
+    },
+    {
+      "atom_id": "atom-10",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "df698b3f6e9ef6a4ff4fab41dfd9bf2d79b65f853235069c69f1f2926aaa617f"
+    },
+    {
+      "atom_id": "atom-11",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "d9105e9c53c448606a33977cdf1ce15d07d84443d3cb41c2486c3752407e7010"
+    },
+    {
+      "atom_id": "atom-12",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "5671ef4eba41424688fe0bce82b34103f23f653759d022c4429cac8cd6bc1076"
+    },
+    {
+      "atom_id": "atom-13",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "07d2dfbeb96fd73dbab4eb09b5341885d507d762f5bd1f0d84fd8461e5e9c48c"
+    },
+    {
+      "atom_id": "atom-14",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "3033cba1a9d269c2473a16a97d134661ac9ebf49e02c27a434907dfd7b93e290"
+    },
+    {
+      "atom_id": "atom-15",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "e623706bfa861125c297f1c7f0089ea185813f3228089b0369ba768b3e118df1"
+    },
+    {
+      "atom_id": "atom-16",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "32e38af08f0cc9e9e357f4558f31d4e1f70da95d470cb88f9bf6f235c55762e9"
+    },
+    {
+      "atom_id": "atom-17",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "9060b54fa83f65cdc25647ad8b5b03f6b749d18d69c5117cd393a2c17dc08065"
+    },
+    {
+      "atom_id": "atom-18",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "ba63dc6670870a0c1f6d7b5075e8190a1e99e9fafe6448a3a3cd54c9108db0d1"
+    },
+    {
+      "atom_id": "atom-19",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "c2b531d9bffabbbbd2578db7d9986c878a7c7e8b1d9ba2a86a47fc2185b2c61b"
+    },
+    {
+      "atom_id": "atom-20",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "18e63818996c1eb406bd4101aae1ebb1ddd3f3459d4dbd0fbc948b173d116f19"
+    },
+    {
+      "atom_id": "atom-21",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "04a5ac9538761b5f5193a3b41e64a7e90b2265a96bed331fbc2cda859764df85"
+    },
+    {
+      "atom_id": "atom-22",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "e0007b941f0a5da2dc63bcf9ec2792ed269ea647e219693666d74069ae4ba5ac"
+    },
+    {
+      "atom_id": "atom-23",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "b510a2b9ce491f2df8806ad6af2f07516e27c415f930dbd750512f4f5250df06"
+    },
+    {
+      "atom_id": "atom-24",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "147e60de45326453e19ca932df2ad93a89432958559beeef5a4bdab24729d6b1"
+    },
+    {
+      "atom_id": "atom-25",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "004bd0011805e115bb43c5c503c122ddc020bba303144384a668823cee18a6f6"
+    },
+    {
+      "atom_id": "atom-26",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "0e404508fa7a685e6e3612383726f3b31b8316b72fd1f97822cd4c0ff5b433ef"
+    },
+    {
+      "atom_id": "atom-27",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "9a41de600feb177871671ce5e71baee6ee6aea86fb41a933d232ab18691b895e"
+    },
+    {
+      "atom_id": "atom-28",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "136f606c5ebefc01cb2c2bf3b868b55a6bc89a1f04f3eb3ba9ee11dd9fcf89f0"
+    },
+    {
+      "atom_id": "atom-29",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "d633d1776593d7658cbb59a7b8b476567c3ade1e3c34218526c1e01cdb7802fc"
+    },
+    {
+      "atom_id": "atom-30",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "016978576a5b5fbc9a40c44721d2a0dec34f6acf083cdb67fddd23dc80520172"
+    },
+    {
+      "atom_id": "atom-31",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "3440472a15327054f7030150c1d8fac95fd7723fa2b2e58dea6bef22ebb6e16f"
+    },
+    {
+      "atom_id": "atom-32",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "18e9bac70c4bc40872a81bd2f9b93c16c0bc140e62d045a91965e290686796ab"
+    },
+    {
+      "atom_id": "atom-33",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "05c10783ef987583fbcaa3b14e041ca319167e94ca29207bee16f594f77fbdb3"
+    },
+    {
+      "atom_id": "atom-34",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "de49065d0b8df1ec58f2ab90fadeac8333a1b2ad60884a523e03443f849fe350"
+    },
+    {
+      "atom_id": "atom-35",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "205e208b83506f17a329c59225fcad025573756b160fbab6cdc89295bd31dc4a"
+    },
+    {
+      "atom_id": "atom-36",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "b1a89aff1aab571941f1fa37a788d64f595a5d9321d165d5902b45ba61bfeb3e"
+    },
+    {
+      "atom_id": "atom-37",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "b69f440fd10d624fb64b6eff3abd9b4ec4e46fc4fc632c67c34c929e0a03a2b0"
+    },
+    {
+      "atom_id": "atom-38",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "6e4ec927a808a649fb803757705b29cfba5ccc306d8cb3136f905e780e8b818e"
+    },
+    {
+      "atom_id": "atom-39",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "60990465f8ea0185a688993b9c3a66e24fbcaa0c080146849497d8abf0c41a34"
+    },
+    {
+      "atom_id": "atom-40",
+      "disposition": "credit-as-bounded",
+      "source_span_checked": true,
+      "text_sha256": "fcb6e823d00f6fe22d95bb79eb5f4a67707501154228a6fe651fbeb7be289da5"
+    }
+  ],
+  "decision": "pass",
+  "dependency_reviews": [
+    {
+      "dependency_id": "dep-c13a-evidence",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    },
+    {
+      "dependency_id": "dep-c13a-counts",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    },
+    {
+      "dependency_id": "dep-c13a-4014",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    },
+    {
+      "dependency_id": "dep-c13s-evidence",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    },
+    {
+      "dependency_id": "dep-c13s-counts",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    },
+    {
+      "dependency_id": "dep-doran-evidence",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    },
+    {
+      "dependency_id": "dep-doran-counts",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    },
+    {
+      "dependency_id": "dep-c16-evidence",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    },
+    {
+      "dependency_id": "dep-c16-calc",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    },
+    {
+      "dependency_id": "dep-c16-comparison",
+      "disposition": "credit-as-bounded",
+      "kind_checked": true,
+      "source_span_checked": true
+    }
+  ],
+  "format": "epistemedia-open-docket-review-v0.2",
+  "limitations": [
+    "This record compares selected primary studies and one public carrier; it does not create a new combined estimate across their distinct measures.",
+    "Cook 2013 and Cook 2016 share lead authorship and do not receive independent-lineage credit from that overlap.",
+    "The NASA carrier and Doran 2009 licenses remain unassessed; only quote-minimal spans are retained.",
+    "The Tol 2014 re-analysis was not retrieved; the critique boundary is represented through Tol's open 2016 comment and Cook et al.'s response.",
+    "The source submission followed a directed successor chain with an owner clarification, rather than an independent cold start.",
+    "An independently reviewed open docket is not a numbered How We Know case or a universal consensus adjudication."
+  ],
+  "public": {
+    "bounded_reading": "Cook 2013 abstract ratings, its author self-ratings, Doran and Zimmerman 2009 survey responses, and Cook 2016's synthesis range are related evidence, but they do not measure one identical population and quantity.",
+    "practical_reading": "When citing a percentage, name the study, denominator, population or document set, question or coding rule, and whether the figure covers only records that expressed a position.",
+    "slug": "what-the-97-percent-climate-consensus-studies-measure",
+    "title": "What the 97% climate-consensus studies measure",
+    "why_it_matters": "The familiar 97% shorthand can blur materially different populations and measured quantities."
+  },
+  "retrieval_attempt_reviews": [
+    {
+      "attempt_id": "attempt-1",
+      "disposition": "independently-retrieved",
+      "outcome_checked": true,
+      "time_checked": true,
+      "url_checked": true
+    },
+    {
+      "attempt_id": "attempt-2",
+      "disposition": "independently-retrieved",
+      "outcome_checked": true,
+      "time_checked": true,
+      "url_checked": true
+    },
+    {
+      "attempt_id": "attempt-3",
+      "disposition": "independently-retrieved",
+      "outcome_checked": true,
+      "time_checked": true,
+      "url_checked": true
+    },
+    {
+      "attempt_id": "attempt-4",
+      "disposition": "independently-retrieved",
+      "outcome_checked": true,
+      "time_checked": true,
+      "url_checked": true
+    },
+    {
+      "attempt_id": "attempt-5",
+      "disposition": "independently-retrieved",
+      "outcome_checked": true,
+      "time_checked": true,
+      "url_checked": true
+    }
+  ],
+  "reviewed_at": "2026-08-31T11:10:37Z",
+  "reviewer": {
+    "agent_id": "codex-independent-evidence-reviewer",
+    "author_notes_seen": false,
+    "authoring_agent_artifacts_used": false,
+    "fresh_clone": true,
+    "model_family": "openai-codex",
+    "prompt_sha256": "fb1fbf92a4976099fbb645ce15ef600fe30f7a647cc27df32e364589bdbf0c6a",
+    "run_id": "codex-pr82-independent-review-20260831",
+    "source_artifact_sha256s": [
+      "24df27e7685464f40ed1845efe1f5d2f6e5db2c0e91ac3279a51775d66f0befc",
+      "3ffc8f65c756b3f09159fb0c791260fd77c84a09b20ab86a4e4ef668c21aca24",
+      "8434e97bd6a45a9540ce6581f831163be3b4df2810469b111dad7cf857dc46da",
+      "9011f78ea25bcbe512b0df8b2fb1844d113656c3c032b8b0396274cd80790ffe",
+      "a7af1291b7f9125f4b63b2d98e07cecf450801b1c04cf1d47ff1ea6e5237f963"
+    ],
+    "toolchain": [
+      "Codex web retrieval",
+      "Git exact-head inspection",
+      "Python arithmetic reproduction",
+      "SHA-256 digest verification"
+    ]
+  },
+  "source_reviews": [
+    {
+      "artifact_sha256": "8434e97bd6a45a9540ce6581f831163be3b4df2810469b111dad7cf857dc46da",
+      "license_checked": true,
+      "license_disposition": "retained-unassessed",
+      "retrieval_status": "independently-retrieved",
+      "retrieved_url": "https://web.archive.org/web/20260829043914id_/https://science.nasa.gov/climate-change/scientific-consensus/",
+      "source_id": "source-1",
+      "spans": [
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "2803e61a1253c61864c89adcf76b9451e71be54e67fe80e79f4e0ae2585a9170",
+          "span_id": "span-nasa-multi"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "4ce6e6359f3677ed61d63f4e300fc7177526c819abab70830593b312ca956894",
+          "span_id": "span-nasa-97"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "8455aff0e3824c5ac9227648f9753d0262c6389b2b23bd6aba72691609b49858",
+          "span_id": "span-nasa-cook13"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "13d00e0079228e0f64fd3273c93a100185ad08fcb3ff565ac3ec888fbbe6ab4a",
+          "span_id": "span-nasa-cook16"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "f5c7b96c786cbe185dbeadd33471eb6eb98c7ff0b20185f62303fd7864db3772",
+          "span_id": "span-nasa-doran"
+        }
+      ]
+    },
+    {
+      "artifact_sha256": "24df27e7685464f40ed1845efe1f5d2f6e5db2c0e91ac3279a51775d66f0befc",
+      "license_checked": true,
+      "license_disposition": "confirmed-known",
+      "retrieval_status": "independently-retrieved",
+      "retrieved_url": "https://web.archive.org/web/20260814202631id_/https://iopscience.iop.org/article/10.1088/1748-9326/8/2/024024/pdf",
+      "source_id": "source-2",
+      "spans": [
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "41e21abe52f26ace162751640d8308f2381311ee203ea5e8a320520f4716fb76",
+          "span_id": "span-c13-rate"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "0dd9318c33b0b7a4d7dc7efff0f9a9a42a4f83d54eb24130001b40346799d0dc",
+          "span_id": "span-c13-breakdown"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "eb8a14d239aac9189676ea7fd73bd9294a7f18e818ff50c32916be09b2b25dfa",
+          "span_id": "span-c13-sample"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "c8619ee219b0457d65d1c2255bc981110951e558163f07df88a5307816b5e9ba",
+          "span_id": "span-c13-method"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "63ccf35e992799c20112ece93221dcbe7d41574d56c0d45781cc19723433e0f5",
+          "span_id": "span-c13-endorse"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "8d37d736d89ce4f9c91f419471aa76efb17dcf570165f1e3da330fe6b67fa2ac",
+          "span_id": "span-c13-reject"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "e7920d20d463015b6e398b86383a7f869ca19628e0e6700d63e95068b1da1860",
+          "span_id": "span-c13-uncertain"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "fec2816a625c38d87aa8c4dd173e75086cf8a3fd8cc02e45383e8d3f1b4ab6c1",
+          "span_id": "span-c13-selfrate"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "0bbeacaf9116359efcca41ef9f9722a10ad6d2ea9e18575c24637d40d8459031",
+          "span_id": "span-c13-self-method"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "59dfb5f0494c6241deb999d78ac724076c85be9234ce86e784ca3962ade6cd3e",
+          "span_id": "span-c13-self-endorse"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "b129a177ec441cc3ade79bef9c4102111f694c6b3be4831db1a2981cbe6dfee2",
+          "span_id": "span-c13-self-reject"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "1efd1731cc4aadafeef36095a904b5ad25d500b3c497e51561c68d5b8d0cf807",
+          "span_id": "span-c13-license"
+        }
+      ]
+    },
+    {
+      "artifact_sha256": "3ffc8f65c756b3f09159fb0c791260fd77c84a09b20ab86a4e4ef668c21aca24",
+      "license_checked": true,
+      "license_disposition": "retained-unassessed",
+      "retrieval_status": "independently-retrieved",
+      "retrieved_url": "https://web.archive.org/web/20151104071444id_/http://tigger.uic.edu/~pdoran/012009_Doran_final.pdf",
+      "source_id": "source-3",
+      "spans": [
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "bb99d727074b727a71aaee406e904fd08241c71bedaebba584d4364ed15973a0",
+          "span_id": "span-doran-spec"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "73d08da2a2d8dd63e350918b89b901c10959be006d5d209f48ce3fdd58ae2969",
+          "span_id": "span-doran-q2"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "7e1427b64617d857b47b2bde604bbe1e6d299b5778bfa8c7cc1e0886b440c879",
+          "span_id": "span-doran-method"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "ebee1c1c055691a58b21ca3993de7024ea2a2322685d688600cb0231e6cafcf2",
+          "span_id": "span-doran-974"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "9d0e2f46f04d29681dbff46e3f16d40d8cba0ce91a8658c010e329481aada24e",
+          "span_id": "span-doran-overall"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "54a0e8dba9456606a763420bb053abca6125127a27230e706bcec3d70b5c4a72",
+          "span_id": "span-doran-broad"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "be96a0accc8265cd31a40ea37c2d0e91d784f7d4bb948b04c81e850ac50cb37d",
+          "span_id": "span-doran-date"
+        }
+      ]
+    },
+    {
+      "artifact_sha256": "a7af1291b7f9125f4b63b2d98e07cecf450801b1c04cf1d47ff1ea6e5237f963",
+      "license_checked": true,
+      "license_disposition": "confirmed-known",
+      "retrieval_status": "independently-retrieved",
+      "retrieved_url": "https://web.archive.org/web/20260816144738id_/https://iopscience.iop.org/article/10.1088/1748-9326/11/4/048002/pdf",
+      "source_id": "source-4",
+      "spans": [
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "100d2f40549656265bf14f2e60830c59578d92cf1a131f4fb3a560807fad59d0",
+          "span_id": "span-c16-4014"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "0e52a5b548422ec6171f424879c5b72dd5b82f18bd44305fa729bcdd8acc939d",
+          "span_id": "span-c16-method"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "76f2edb2aa2379196f12a0e16be313e304d06151662b0086739102aa291b23ba",
+          "span_id": "span-c16-date"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "8f3fb528ef6bb296699cf5427b59b72192b573fd4421cc8e750fff365e7ec90b",
+          "span_id": "span-c16-tolresp"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "7db6a2df1eb039e0e2c9b79c60da3d9c25d1cd103dd4567ab5d19f3427874c06",
+          "span_id": "span-c16-license"
+        }
+      ]
+    },
+    {
+      "artifact_sha256": "9011f78ea25bcbe512b0df8b2fb1844d113656c3c032b8b0396274cd80790ffe",
+      "license_checked": true,
+      "license_disposition": "confirmed-known",
+      "retrieval_status": "independently-retrieved",
+      "retrieved_url": "https://web.archive.org/web/20260824083717id_/https://iopscience.iop.org/article/10.1088/1748-9326/11/4/048001/pdf",
+      "source_id": "source-5",
+      "spans": [
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "0c1edada054666ce2d5236cfbe384ab8f9dbc498538de9e55b892b90441b8fcb",
+          "span_id": "span-tol-crit"
+        },
+        {
+          "disposition": "credit-as-bounded",
+          "located": true,
+          "locator_checked": true,
+          "quote_sha256": "7db6a2df1eb039e0e2c9b79c60da3d9c25d1cd103dd4567ab5d19f3427874c06",
+          "span_id": "span-tol-license"
+        }
+      ]
+    }
+  ]
+}
