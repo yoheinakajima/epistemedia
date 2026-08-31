@@ -1,0 +1,1061 @@
+{
+  "calculations": [
+    {
+      "calculation_id": "calc-cook13",
+      "depends_on": [],
+      "equation": "3896 / (3896 + 78 + 40) = 3896 / 4014 = 0.9706",
+      "inputs": [
+        {
+          "input_id": "endorse",
+          "json_pointer": "/table-3/endorse/count",
+          "name": "endorsing abstracts (categories 1-3)",
+          "origin": "source-span",
+          "source_id": "source-2",
+          "span_id": "span-c13-endorse",
+          "value": "3896"
+        },
+        {
+          "input_id": "reject",
+          "json_pointer": "/table-3/reject/count",
+          "name": "rejecting abstracts (categories 5-7)",
+          "origin": "source-span",
+          "source_id": "source-2",
+          "span_id": "span-c13-reject",
+          "value": "78"
+        },
+        {
+          "input_id": "uncertain",
+          "json_pointer": "/table-3/uncertain/count",
+          "name": "uncertain abstracts (category 4b)",
+          "origin": "source-span",
+          "source_id": "source-2",
+          "span_id": "span-c13-uncertain",
+          "value": "40"
+        }
+      ],
+      "output": "97.1% (3896/4014)",
+      "uncertainty": "3896/4014 = 97.06%, rounding to Cook 2013's reported 97.1%."
+    },
+    {
+      "calculation_id": "calc-doran",
+      "depends_on": [],
+      "equation": "75 / 77 = 0.9740",
+      "inputs": [
+        {
+          "input_id": "yes",
+          "json_pointer": "/specialists/q2/yes",
+          "name": "specialists answering yes to question 2",
+          "origin": "source-span",
+          "source_id": "source-3",
+          "span_id": "span-doran-974",
+          "value": "75"
+        },
+        {
+          "input_id": "answered",
+          "json_pointer": "/specialists/q2/answered",
+          "name": "specialists answering question 2",
+          "origin": "source-span",
+          "source_id": "source-3",
+          "span_id": "span-doran-974",
+          "value": "77"
+        }
+      ],
+      "output": "97.4% (75/77)",
+      "uncertainty": "75/77 = 97.40%, matching Doran 2009's reported 97.4%."
+    }
+  ],
+  "counterevidence": [
+    {
+      "claim": "Cook et al 2013's endorsement rate is a robust, method-independent consensus measure.",
+      "evidence": "Tol 2016 comments that Cook et al 2013 finds different results than previous studies and omits tests for systematic differences between raters.",
+      "exact_span_ids": [
+        "span-tol-crit"
+      ],
+      "qualification": "An independent published comment (different author) on Cook 2013 specifically, not on the 2016 synthesis range.",
+      "source_ids": [
+        "source-5"
+      ]
+    },
+    {
+      "claim": "Tol 2016's critique overturns the 97% consensus finding.",
+      "evidence": "Cook et al 2016 respond that Tol reaches a different conclusion using surveys of non-experts such as economic geologists and a self-selected group of rejecters.",
+      "exact_span_ids": [
+        "span-c16-tolresp"
+      ],
+      "qualification": "The response shares lead author John Cook with Cook 2013, so it is not independent confirmation.",
+      "source_ids": [
+        "source-4"
+      ]
+    }
+  ],
+  "cutoff": "2026-08-31",
+  "dependencies": [
+    {
+      "dependency_id": "dep-c13-data",
+      "description": "Cook 2013's 97.1% reproduction depends on the Table 3 counts and the position breakdown.",
+      "exact_span_ids": [
+        "span-c13-endorse",
+        "span-c13-breakdown"
+      ],
+      "kind": "data",
+      "source_ids": [
+        "source-2"
+      ]
+    },
+    {
+      "dependency_id": "dep-doran-data",
+      "description": "Doran 2009's 97.4% depends on the specialist question-2 yes-rate (75 of 77).",
+      "exact_span_ids": [
+        "span-doran-974"
+      ],
+      "kind": "data",
+      "source_ids": [
+        "source-3"
+      ]
+    },
+    {
+      "dependency_id": "dep-carrier",
+      "description": "The carrier claim depends on the NASA statement, its AAAS 97% line, and its reference list.",
+      "exact_span_ids": [
+        "span-nasa-97",
+        "span-nasa-cite"
+      ],
+      "kind": "source",
+      "source_ids": [
+        "source-1"
+      ]
+    },
+    {
+      "dependency_id": "dep-synthesis",
+      "description": "Comparing populations depends on the Cook 2016 synthesis range across six studies.",
+      "exact_span_ids": [
+        "span-c16-range"
+      ],
+      "kind": "method",
+      "source_ids": [
+        "source-4"
+      ]
+    },
+    {
+      "dependency_id": "dep-anderegg",
+      "description": "A further distinct lineage (Anderegg et al 2010, 97-98% of the 200 most-published) is reported via the Cook 2016 synthesis.",
+      "exact_span_ids": [
+        "span-c16-anderegg"
+      ],
+      "kind": "data",
+      "source_ids": [
+        "source-4"
+      ]
+    },
+    {
+      "dependency_id": "dep-critique",
+      "description": "The represented disagreement depends on Tol 2016's comment on Cook 2013.",
+      "exact_span_ids": [
+        "span-tol-crit"
+      ],
+      "kind": "source",
+      "source_ids": [
+        "source-5"
+      ]
+    },
+    {
+      "dependency_id": "dep-c13-self",
+      "description": "Cook 2013 also reports an author self-rating phase (97.2%), a distinct method within the same study.",
+      "exact_span_ids": [
+        "span-c13-self"
+      ],
+      "kind": "method",
+      "source_ids": [
+        "source-2"
+      ]
+    }
+  ],
+  "format": "epistemedia-research-proposal-v0.2",
+  "license": {
+    "bundle": "CC0-1.0",
+    "source_material": "Cook 2013, Cook 2016, and Tol 2016 are CC-BY-3.0; NASA content is a US-Government work but marked unassessed pending line-item check; Doran & Zimmerman 2009 is under AGU copyright and quoted minimally."
+  },
+  "limitations": [
+    "This is a directed successor authorized on PR #77, not an independent cold start; see lineage.shared_dependencies for the full exposure and intervention chain.",
+    "The scope literals tool_and_retrieval_path and time describe agent-side retrieval and temporal framing; they are bound to the nearest provenance or content span because no source asserts the retrieval path itself.",
+    "The NASA carrier and Doran 2009 licenses are marked unassessed; their quotes are held under the tighter unknown-license length limit.",
+    "Cook 2013 and Cook 2016 share lead author John Cook and are not independent lineages.",
+    "The Tol 2014 Energy Policy re-analysis (doi:10.1016/j.enpol.2014.04.045) was not independently retrieved (subscription-gated); Tol's critique is represented via the open-access ERL 2016 comment."
+  ],
+  "lineage": {
+    "prompt_sha256": "sha256:2fe8a84a853afd18256cdd453597505fad84ad6610b844c6f62c07732c940eea",
+    "provider_model_identity": "Anthropic Claude Opus 4.8",
+    "retrieval_environment": "public HTTPS via Internet Archive Wayback captures of NASA, IOP Publishing, and a UIC author-hosted copy",
+    "run_identity": "cold-start-climate-consensus-successor-2",
+    "shared_dependencies": [
+      "Directed successor to PR #76 and PR #77, both preserved needs-evidence receipts",
+      "Prior independent-review replies on PR #76 and PR #77",
+      "Owner directions on PR #76 and PR #77",
+      "Causal notification digest 2933235e23739bc6140eb5381f1a142a72833bd05c41b73120c862158110f953",
+      "Causal notification digest e8450671fd05c0516f980f7af8e1ed63296b9a555edbfce2f81ba9feaac24b5e",
+      "Authorizing notification digest 2fe8a84a853afd18256cdd453597505fad84ad6610b844c6f62c07732c940eea",
+      "Cook 2013 and Cook 2016 share lead author John Cook - not independent lineage",
+      "Single retrieval environment (Internet Archive Wayback)"
+    ]
+  },
+  "negative_results": [
+    {
+      "disposition": "Retained as a scope boundary, not converted to a null result.",
+      "exact_span_ids": [
+        "span-nasa-97",
+        "span-nasa-cite"
+      ],
+      "kind": "no-evidence-located",
+      "result": "The retrieved NASA carrier does not state that its 'about 97%' figure is an aggregate computed from the studies it cites.",
+      "retrieval_attempt_ids": [
+        "attempt-1"
+      ],
+      "scope": "The NASA carrier page only.",
+      "source_ids": [
+        "source-1"
+      ]
+    }
+  ],
+  "question": "When public statements report that about 97% of scientists agree humans cause climate change, do the primary studies commonly associated with that figure - Cook et al 2013 abstract ratings, Doran and Zimmerman 2009's survey of scientists, and the Cook et al 2016 synthesis - measure the same population and quantity?",
+  "results": [
+    {
+      "calculation_ids": [
+        "calc-cook13"
+      ],
+      "calculation_status": "reproduced",
+      "claim_atoms": [
+        {
+          "atom_id": "atom-1",
+          "exact_span_ids": [
+            "span-c13-rate",
+            "span-c13-breakdown",
+            "span-c16-4014"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-2",
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "Cook et al 2013 report that 97.1% of the 4014 abstracts expressing a position on AGW endorsed human causation (3896 of 4014), while 66.4% of all 11 944 abstracts expressed no position."
+        },
+        {
+          "atom_id": "atom-2",
+          "exact_span_ids": [
+            "span-c13-endorse"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-2"
+          ],
+          "status": "supported",
+          "text": "3896 endorsing abstracts (Cook 2013 categories 1-3)"
+        },
+        {
+          "atom_id": "atom-3",
+          "exact_span_ids": [
+            "span-c13-breakdown",
+            "span-c16-4014"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-2",
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "4014 abstracts expressing a position on AGW (32.6% endorse, 0.7% reject, 0.3% uncertain)"
+        },
+        {
+          "atom_id": "atom-4",
+          "exact_span_ids": [
+            "span-c13-rate"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-2"
+          ],
+          "status": "supported",
+          "text": "97.1% endorsement among abstracts expressing a position"
+        },
+        {
+          "atom_id": "atom-5",
+          "exact_span_ids": [
+            "span-c13-breakdown"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "source-2"
+          ],
+          "status": "supported",
+          "text": "66.4% of all abstracts expressed no position on AGW"
+        },
+        {
+          "atom_id": "atom-6",
+          "exact_span_ids": [
+            "span-c13-rate"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-2"
+          ],
+          "status": "supported",
+          "text": "Cook et al 2013 abstract ratings"
+        },
+        {
+          "atom_id": "atom-7",
+          "exact_span_ids": [
+            "span-c13-sample"
+          ],
+          "kind": "boundary",
+          "source_ids": [
+            "source-2"
+          ],
+          "status": "supported",
+          "text": "11 944 climate abstracts from 1991-2011"
+        },
+        {
+          "atom_id": "atom-8",
+          "exact_span_ids": [
+            "span-c13-license"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-2"
+          ],
+          "status": "supported",
+          "text": "quoted from the CC-BY-3.0 version of record in Environmental Research Letters"
+        },
+        {
+          "atom_id": "atom-9",
+          "exact_span_ids": [
+            "span-c13-sample"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "source-2"
+          ],
+          "status": "supported",
+          "text": "abstracts published from 1991 to 2011"
+        },
+        {
+          "atom_id": "atom-10",
+          "exact_span_ids": [
+            "span-c13-rate"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-2"
+          ],
+          "status": "supported",
+          "text": "positions expressed in abstract text among position-taking abstracts, not a poll of scientists"
+        }
+      ],
+      "dependency_ids": [
+        "dep-c13-data"
+      ],
+      "exact_span_ids": [
+        "span-c13-breakdown",
+        "span-c13-endorse",
+        "span-c13-license",
+        "span-c13-rate",
+        "span-c13-sample",
+        "span-c16-4014"
+      ],
+      "interpretation": "Cook 2013's headline number is the endorsement share among the roughly one-third of abstracts that took a position; the 66.4% no-position share is silence, not disagreement.",
+      "proposition": "Cook et al 2013 report that 97.1% of the 4014 abstracts expressing a position on AGW endorsed human causation (3896 of 4014), while 66.4% of all 11 944 abstracts expressed no position.",
+      "reported_value": {
+        "comparison": "66.4% of all abstracts expressed no position on AGW",
+        "denominator": "4014 abstracts expressing a position on AGW (32.6% endorse, 0.7% reject, 0.3% uncertain)",
+        "numerator": "3896 endorsing abstracts (Cook 2013 categories 1-3)",
+        "rate": "97.1% endorsement among abstracts expressing a position"
+      },
+      "result_id": "result-cook13",
+      "scope": {
+        "dataset_or_population": "11 944 climate abstracts from 1991-2011",
+        "metric_scope": "positions expressed in abstract text among position-taking abstracts, not a poll of scientists",
+        "models_or_agents": [
+          "Cook et al 2013 abstract ratings"
+        ],
+        "time": "abstracts published from 1991 to 2011",
+        "tool_and_retrieval_path": "quoted from the CC-BY-3.0 version of record in Environmental Research Letters"
+      },
+      "source_ids": [
+        "source-2",
+        "source-4"
+      ],
+      "uncertainty": "Measures abstract text, not authors' full views; a same-study self-rating phase (97.2%) is a distinct method.",
+      "warrant": "The abstract and Table 3 state the rate, breakdown, and counts, and Cook 2016 independently confirms the 4014 position-taking figure."
+    },
+    {
+      "calculation_ids": [
+        "calc-doran"
+      ],
+      "calculation_status": "reproduced",
+      "claim_atoms": [
+        {
+          "atom_id": "atom-11",
+          "exact_span_ids": [
+            "span-doran-974",
+            "span-doran-spec"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "Doran and Zimmerman 2009 report that 97.4% of surveyed specialist climatologists (75 of 77) answered that human activity is a significant contributing factor, a population distinct from rated abstracts."
+        },
+        {
+          "atom_id": "atom-12",
+          "exact_span_ids": [
+            "span-doran-974"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "75 specialist climatologists answered yes"
+        },
+        {
+          "atom_id": "atom-13",
+          "exact_span_ids": [
+            "span-doran-974"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "77 specialist climatologists answered question 2"
+        },
+        {
+          "atom_id": "atom-14",
+          "exact_span_ids": [
+            "span-doran-974"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "97.4% among surveyed specialist climatologists"
+        },
+        {
+          "atom_id": "atom-15",
+          "exact_span_ids": [
+            "span-doran-spec"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "79 surveyed specialist climatologists, not rated abstracts or all scientists"
+        },
+        {
+          "atom_id": "atom-16",
+          "exact_span_ids": [
+            "span-doran-974"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "Doran & Zimmerman 2009 survey of specialist climatologists"
+        },
+        {
+          "atom_id": "atom-17",
+          "exact_span_ids": [
+            "span-doran-spec"
+          ],
+          "kind": "boundary",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "79 specialists who publish more than 50% of recent papers on climate change"
+        },
+        {
+          "atom_id": "atom-18",
+          "exact_span_ids": [
+            "span-doran-974"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "quoted from the Eos article's reported survey results"
+        },
+        {
+          "atom_id": "atom-19",
+          "exact_span_ids": [
+            "span-doran-spec"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "respondents selected on their recent peer-reviewed publications"
+        },
+        {
+          "atom_id": "atom-20",
+          "exact_span_ids": [
+            "span-doran-spec"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-3"
+          ],
+          "status": "supported",
+          "text": "self-reported survey answers of specialists, not abstract text"
+        }
+      ],
+      "dependency_ids": [
+        "dep-doran-data"
+      ],
+      "exact_span_ids": [
+        "span-doran-974",
+        "span-doran-spec"
+      ],
+      "interpretation": "Doran's 97.4% is a direct survey of publishing specialists - the lineage that most closely matches 'of scientists' - and is a different measurement from Cook 2013's abstract ratings.",
+      "proposition": "Doran and Zimmerman 2009 report that 97.4% of surveyed specialist climatologists (75 of 77) answered that human activity is a significant contributing factor, a population distinct from rated abstracts.",
+      "reported_value": {
+        "comparison": "79 surveyed specialist climatologists, not rated abstracts or all scientists",
+        "denominator": "77 specialist climatologists answered question 2",
+        "numerator": "75 specialist climatologists answered yes",
+        "rate": "97.4% among surveyed specialist climatologists"
+      },
+      "result_id": "result-doran",
+      "scope": {
+        "dataset_or_population": "79 specialists who publish more than 50% of recent papers on climate change",
+        "metric_scope": "self-reported survey answers of specialists, not abstract text",
+        "models_or_agents": [
+          "Doran & Zimmerman 2009 survey of specialist climatologists"
+        ],
+        "time": "respondents selected on their recent peer-reviewed publications",
+        "tool_and_retrieval_path": "quoted from the Eos article's reported survey results"
+      },
+      "source_ids": [
+        "source-3"
+      ],
+      "uncertainty": "Small specialist subsample (77 answering); the broader respondent pool (3146) shows lower agreement.",
+      "warrant": "The specialist definition and the 75-of-77 result are stated in the article's results."
+    },
+    {
+      "calculation_ids": [],
+      "calculation_status": "not-applicable-no-derived-value",
+      "claim_atoms": [
+        {
+          "atom_id": "atom-21",
+          "exact_span_ids": [
+            "span-nasa-97",
+            "span-nasa-multi",
+            "span-c16-range",
+            "span-tol-crit",
+            "span-nasa-cite"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-1",
+            "source-4",
+            "source-5"
+          ],
+          "status": "supported",
+          "text": "The public 'about 97%' figure that NASA carries via an AAAS statement is not a single measurement: the primary studies commonly associated with it measure different populations and quantities and one (Cook 2013) is contested by Tol 2016; NASA presents the society figure alongside a separate multiple-studies claim and a reference list, and the retrieved sources do not state that the figure is an aggregate computed from those studies."
+        },
+        {
+          "atom_id": "atom-22",
+          "exact_span_ids": [
+            "span-c16-range",
+            "span-c16-anderegg"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "no single ratio applies across the studies"
+        },
+        {
+          "atom_id": "atom-23",
+          "exact_span_ids": [
+            "span-c13-rate",
+            "span-doran-spec",
+            "span-c16-anderegg"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-2",
+            "source-3",
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "the studies measure distinct populations"
+        },
+        {
+          "atom_id": "atom-24",
+          "exact_span_ids": [
+            "span-c16-range"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "estimates converge near a high consensus but are not one measurement"
+        },
+        {
+          "atom_id": "atom-25",
+          "exact_span_ids": [
+            "span-nasa-97",
+            "span-nasa-multi",
+            "span-nasa-cite"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "NASA presents a society figure alongside a separate multiple-studies claim and a reference list"
+        },
+        {
+          "atom_id": "atom-26",
+          "exact_span_ids": [
+            "span-nasa-97"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-1"
+          ],
+          "status": "supported",
+          "text": "NASA public scientific-consensus statement"
+        },
+        {
+          "atom_id": "atom-27",
+          "exact_span_ids": [
+            "span-c16-range"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "Cook et al 2016 synthesis"
+        },
+        {
+          "atom_id": "atom-28",
+          "exact_span_ids": [
+            "span-tol-crit"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-5"
+          ],
+          "status": "supported",
+          "text": "Tol 2016 comment on Cook 2013"
+        },
+        {
+          "atom_id": "atom-29",
+          "exact_span_ids": [
+            "span-c13-rate",
+            "span-doran-spec",
+            "span-c16-anderegg"
+          ],
+          "kind": "boundary",
+          "source_ids": [
+            "source-2",
+            "source-3",
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "rated abstracts, surveyed specialists, and publication analyses across the studies"
+        },
+        {
+          "atom_id": "atom-30",
+          "exact_span_ids": [
+            "span-c16-license"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "quoted from the CC-BY-3.0 version of record of the synthesis"
+        },
+        {
+          "atom_id": "atom-31",
+          "exact_span_ids": [
+            "span-c16-range"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "a synthesis of consensus estimates across multiple studies"
+        },
+        {
+          "atom_id": "atom-32",
+          "exact_span_ids": [
+            "span-c13-rate",
+            "span-doran-spec",
+            "span-c16-anderegg"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "source-2",
+            "source-3",
+            "source-4"
+          ],
+          "status": "supported",
+          "text": "the studies measure distinct populations and quantities, not one"
+        }
+      ],
+      "dependency_ids": [
+        "dep-carrier",
+        "dep-synthesis",
+        "dep-anderegg",
+        "dep-critique",
+        "dep-c13-self"
+      ],
+      "exact_span_ids": [
+        "span-c13-rate",
+        "span-c16-anderegg",
+        "span-c16-license",
+        "span-c16-range",
+        "span-doran-spec",
+        "span-nasa-97",
+        "span-nasa-cite",
+        "span-nasa-multi",
+        "span-tol-crit"
+      ],
+      "interpretation": "The '97% of scientists' message is broadly supported by convergent but methodologically distinct evidence; it is not a single measured fraction, and the retrieved carrier does not compute it from the cited studies.",
+      "proposition": "The public 'about 97%' figure that NASA carries via an AAAS statement is not a single measurement: the primary studies commonly associated with it measure different populations and quantities and one (Cook 2013) is contested by Tol 2016; NASA presents the society figure alongside a separate multiple-studies claim and a reference list, and the retrieved sources do not state that the figure is an aggregate computed from those studies.",
+      "reported_value": {
+        "comparison": "NASA presents a society figure alongside a separate multiple-studies claim and a reference list",
+        "denominator": "the studies measure distinct populations",
+        "numerator": "no single ratio applies across the studies",
+        "rate": "estimates converge near a high consensus but are not one measurement"
+      },
+      "result_id": "result-synthesis",
+      "scope": {
+        "dataset_or_population": "rated abstracts, surveyed specialists, and publication analyses across the studies",
+        "metric_scope": "the studies measure distinct populations and quantities, not one",
+        "models_or_agents": [
+          "NASA public scientific-consensus statement",
+          "Cook et al 2016 synthesis",
+          "Tol 2016 comment on Cook 2013"
+        ],
+        "time": "a synthesis of consensus estimates across multiple studies",
+        "tool_and_retrieval_path": "quoted from the CC-BY-3.0 version of record of the synthesis"
+      },
+      "source_ids": [
+        "source-1",
+        "source-2",
+        "source-3",
+        "source-4",
+        "source-5"
+      ],
+      "uncertainty": "Cook 2013 and Cook 2016 share lead authorship; no source establishes a computed aggregate or a specific viral attribution.",
+      "warrant": "NASA states the society figure, the multi-study claim, and a reference list; Cook 2016 gives the 90-100% range; the studies define distinct populations; Tol 2016 supplies the published disagreement."
+    }
+  ],
+  "retrieval_attempts": [
+    {
+      "artifact_sha256": "8434e97bd6a45a9540ce6581f831163be3b4df2810469b111dad7cf857dc46da",
+      "attempt_id": "attempt-1",
+      "attempted_at": "2026-08-31T10:03:34Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "source-1",
+      "transport": "https",
+      "url": "https://web.archive.org/web/20260829043914id_/https://science.nasa.gov/climate-change/scientific-consensus/"
+    },
+    {
+      "artifact_sha256": "24df27e7685464f40ed1845efe1f5d2f6e5db2c0e91ac3279a51775d66f0befc",
+      "attempt_id": "attempt-2",
+      "attempted_at": "2026-08-31T10:03:34Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "source-2",
+      "transport": "https",
+      "url": "https://web.archive.org/web/20260814202631id_/https://iopscience.iop.org/article/10.1088/1748-9326/8/2/024024/pdf"
+    },
+    {
+      "artifact_sha256": "3ffc8f65c756b3f09159fb0c791260fd77c84a09b20ab86a4e4ef668c21aca24",
+      "attempt_id": "attempt-3",
+      "attempted_at": "2026-08-31T10:03:34Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "source-3",
+      "transport": "https",
+      "url": "https://web.archive.org/web/20151104071444id_/http://tigger.uic.edu/~pdoran/012009_Doran_final.pdf"
+    },
+    {
+      "artifact_sha256": "a7af1291b7f9125f4b63b2d98e07cecf450801b1c04cf1d47ff1ea6e5237f963",
+      "attempt_id": "attempt-4",
+      "attempted_at": "2026-08-31T10:03:34Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "source-4",
+      "transport": "https",
+      "url": "https://web.archive.org/web/20260816144738id_/https://iopscience.iop.org/article/10.1088/1748-9326/11/4/048002/pdf"
+    },
+    {
+      "artifact_sha256": "9011f78ea25bcbe512b0df8b2fb1844d113656c3c032b8b0396274cd80790ffe",
+      "attempt_id": "attempt-5",
+      "attempted_at": "2026-08-31T10:03:34Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "source-5",
+      "transport": "https",
+      "url": "https://web.archive.org/web/20260824083717id_/https://iopscience.iop.org/article/10.1088/1748-9326/11/4/048001/pdf"
+    }
+  ],
+  "runtime": {
+    "agent": "claude-opus-cold-start",
+    "completed_at": "2026-08-31T10:05:58Z",
+    "started_at": "2026-08-31T10:03:34Z",
+    "toolchain": [
+      "curl HTTPS retrieval",
+      "pdftotext text extraction",
+      "epistemedia research validator"
+    ]
+  },
+  "scope": {
+    "comparison_target": "Whether the primary studies associated with the public 'about 97%' figure measure the same population and quantity.",
+    "excluded": "The truth of anthropogenic warming itself, sources not retrieved (e.g. the Tol 2014 Energy Policy re-analysis), and public statements other than the NASA carrier.",
+    "included": "Five public primary sources - the NASA consensus carrier, Cook et al 2013, Doran & Zimmerman 2009, Cook et al 2016, and Tol 2016 - and the exact figures and populations they report."
+  },
+  "search_notes": [
+    "Prior art: PR #76 and PR #77 are preserved needs-evidence receipts for earlier versions of this audit; this successor closes their review gaps. None of the accepted dossiers concern the climate-consensus statistic.",
+    "All five sources retrieved as byte-stable Internet Archive Wayback id_ captures so each artifact SHA-256 is independently reproducible; publisher-live PDFs and HTML return per-request bytes with unstable hashes."
+  ],
+  "sources": [
+    {
+      "creators_or_org": "U.S. National Aeronautics and Space Administration",
+      "date": "2022-06-15",
+      "edition": "Web page (published 2022-06-15, updated 2024-10-21), Internet Archive Wayback capture 20260829043914",
+      "exact_spans": [
+        {
+          "locator": "Scientific consensus, opening paragraph",
+          "quote": "multiple studies published in peer-reviewed scientific journals",
+          "span_id": "span-nasa-multi",
+          "supports": "NASA cites multiple studies, not one."
+        },
+        {
+          "locator": "Scientific consensus, opening paragraph",
+          "quote": "climate-warming trends over the past century are extremely likely due to human activities",
+          "span_id": "span-nasa-agg",
+          "supports": "NASA's own human-causation claim."
+        },
+        {
+          "locator": "Statements from scientific organizations (AAAS, 2014)",
+          "quote": "about 97% of climate scientists have concluded that human-caused climate change is happening.",
+          "span_id": "span-nasa-97",
+          "supports": "The '~97%' figure NASA carries via an AAAS statement."
+        },
+        {
+          "locator": "References list",
+          "quote": "P. T. Doran & M. K. Zimmerman, \"Examining the Scientific Consensus on Climate Change\"",
+          "span_id": "span-nasa-cite",
+          "supports": "NASA's reference list includes the Doran survey."
+        }
+      ],
+      "identifier": "nasa:climate-change/scientific-consensus",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "text/html",
+      "retrieval_status": "retrieved",
+      "source_id": "source-1",
+      "title": "NASA Global Climate Change - Scientific Consensus",
+      "url": "https://web.archive.org/web/20260829043914id_/https://science.nasa.gov/climate-change/scientific-consensus/"
+    },
+    {
+      "creators_or_org": "Cook, Nuccitelli, Green, Richardson, Winkler, Painting, Way, Jacobs, Skuce (Environmental Research Letters)",
+      "date": "2013-05-15",
+      "edition": "Version of record (PDF), Internet Archive Wayback capture 20260814202631",
+      "exact_spans": [
+        {
+          "locator": "Abstract",
+          "quote": "Among abstracts expressing a position on AGW, 97.1% endorsed the consensus position that humans are causing global warming.",
+          "span_id": "span-c13-rate",
+          "supports": "Cook 2013's 97.1% is conditioned on position-expressing abstracts."
+        },
+        {
+          "locator": "Abstract",
+          "quote": "We find that 66.4% of abstracts expressed no position on AGW, 32.6% endorsed AGW, 0.7% rejected AGW and 0.3% were uncertain about the cause of global warming.",
+          "span_id": "span-c13-breakdown",
+          "supports": "The endorse/reject/uncertain/no-position breakdown."
+        },
+        {
+          "locator": "Abstract",
+          "quote": "examining 11 944 climate abstracts from 1991-2011",
+          "span_id": "span-c13-sample",
+          "supports": "Population and time window of the abstract sample."
+        },
+        {
+          "locator": "Table 3, Endorse AGW row",
+          "quote": "32.6% (3896)",
+          "span_id": "span-c13-endorse",
+          "supports": "Count of endorsing abstracts (3896)."
+        },
+        {
+          "locator": "Table 3, Reject AGW row",
+          "quote": "0.7% (78)",
+          "span_id": "span-c13-reject",
+          "supports": "Count of rejecting abstracts (78)."
+        },
+        {
+          "locator": "Table 3, Uncertain on AGW row",
+          "quote": "0.3% (40)",
+          "span_id": "span-c13-uncertain",
+          "supports": "Count of uncertain abstracts (40)."
+        },
+        {
+          "locator": "Abstract",
+          "quote": "Among self-rated papers expressing a position on AGW, 97.2% endorsed the consensus.",
+          "span_id": "span-c13-self",
+          "supports": "A distinct author self-rating method within the same study (97.2%)."
+        },
+        {
+          "locator": "Page 1 footer, licence statement",
+          "quote": "Creative Commons Attribution 3.0 licence",
+          "span_id": "span-c13-license",
+          "supports": "Cook 2013 licence identity (CC-BY-3.0)."
+        }
+      ],
+      "identifier": "doi:10.1088/1748-9326/8/2/024024",
+      "license": {
+        "basis_span_id": "span-c13-license",
+        "identifier": "CC-BY-3.0",
+        "status": "known"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "source-2",
+      "title": "Quantifying the consensus on anthropogenic global warming in the scientific literature",
+      "url": "https://web.archive.org/web/20260814202631id_/https://iopscience.iop.org/article/10.1088/1748-9326/8/2/024024/pdf"
+    },
+    {
+      "creators_or_org": "P. T. Doran & M. K. Zimmerman (Eos, Transactions AGU 90(3))",
+      "date": "2009-01-20",
+      "edition": "Author-hosted PDF (UIC), Internet Archive Wayback capture 20151104071444",
+      "exact_spans": [
+        {
+          "locator": "Results paragraph, specialist definition",
+          "quote": "published more than 50% of their recent peer-reviewed papers on the subject of climate change (79 individuals in total)",
+          "span_id": "span-doran-spec",
+          "supports": "Defines the surveyed specialist-climatologist population (79)."
+        },
+        {
+          "locator": "Results, specialists, question 2",
+          "quote": "97.4% (75 of 77)",
+          "span_id": "span-doran-974",
+          "supports": "97.4% of specialist climatologists answered yes on human contribution."
+        }
+      ],
+      "identifier": "doi:10.1029/2009EO030002",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "source-3",
+      "title": "Examining the Scientific Consensus on Climate Change",
+      "url": "https://web.archive.org/web/20151104071444id_/http://tigger.uic.edu/~pdoran/012009_Doran_final.pdf"
+    },
+    {
+      "creators_or_org": "Cook, Oreskes, Doran, Anderegg, Verheggen, Maibach, Carlton, Lewandowsky, Skuce, Green, Nuccitelli, Winkler, Painting, Rice (Environmental Research Letters)",
+      "date": "2016-04-13",
+      "edition": "Version of record (PDF), Internet Archive Wayback capture 20260816144738",
+      "exact_spans": [
+        {
+          "locator": "Abstract",
+          "quote": "The consensus that humans are causing recent global warming is shared by 90%-100% of publishing climate scientists according to six independent studies by co-authors of this paper.",
+          "span_id": "span-c16-range",
+          "supports": "The synthesis reports a 90-100% range across six studies."
+        },
+        {
+          "locator": "Abstract",
+          "quote": "consistent with the 97% consensus reported by Cook et al (Environ. Res. Lett. 8 024024) based on 11 944 abstracts of research papers, of which 4014 took a position",
+          "span_id": "span-c16-4014",
+          "supports": "Independently states 4014 Cook-2013 abstracts took a position."
+        },
+        {
+          "locator": "Body, expertise studies",
+          "quote": "97%-98% of the 200 most-published climate scientists",
+          "span_id": "span-c16-anderegg",
+          "supports": "Anderegg et al 2010 is a further distinct lineage (publication analysis)."
+        },
+        {
+          "locator": "Abstract",
+          "quote": "Tol (2016 Environ. Res. Lett. 11 048001) comes to a different conclusion using results from surveys of non-experts such as economic geologists and a self-selected group of those who reject the consensus.",
+          "span_id": "span-c16-tolresp",
+          "supports": "Cook 2016's response to Tol 2016."
+        },
+        {
+          "locator": "Article footer, licence statement",
+          "quote": "Commons Attribution 3.0",
+          "span_id": "span-c16-license",
+          "supports": "Cook 2016 licence identity (CC-BY-3.0)."
+        }
+      ],
+      "identifier": "doi:10.1088/1748-9326/11/4/048002",
+      "license": {
+        "basis_span_id": "span-c16-license",
+        "identifier": "CC-BY-3.0",
+        "status": "known"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "source-4",
+      "title": "Consensus on consensus: a synthesis of consensus estimates on human-caused global warming",
+      "url": "https://web.archive.org/web/20260816144738id_/https://iopscience.iop.org/article/10.1088/1748-9326/11/4/048002/pdf"
+    },
+    {
+      "creators_or_org": "Richard S J Tol (Environmental Research Letters)",
+      "date": "2016-04-13",
+      "edition": "Version of record (PDF), Internet Archive Wayback capture 20260824083717",
+      "exact_spans": [
+        {
+          "locator": "Abstract",
+          "quote": "different results than previous studies in the consensus literature. It omits tests for systematic differences between raters.",
+          "span_id": "span-tol-crit",
+          "supports": "Tol 2016 contests Cook 2013's method and comparability."
+        },
+        {
+          "locator": "Article footer, licence statement",
+          "quote": "Commons Attribution 3.0",
+          "span_id": "span-tol-license",
+          "supports": "Tol 2016 licence identity (CC-BY-3.0)."
+        }
+      ],
+      "identifier": "doi:10.1088/1748-9326/11/4/048001",
+      "license": {
+        "basis_span_id": "span-tol-license",
+        "identifier": "CC-BY-3.0",
+        "status": "known"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "source-5",
+      "title": "Comment on 'Quantifying the consensus on anthropogenic global warming in the scientific literature'",
+      "url": "https://web.archive.org/web/20260824083717id_/https://iopscience.iop.org/article/10.1088/1748-9326/11/4/048001/pdf"
+    }
+  ],
+  "status": "ready-for-review",
+  "unresolved": [
+    "Whether any specific viral restatement of '97%' cites Cook 2013, Doran 2009, or the NASA aggregate is not resolved by these five sources.",
+    "A full quantitative reconciliation of the 90-100% synthesis range across the component studies is not reproduced here."
+  ]
+}
