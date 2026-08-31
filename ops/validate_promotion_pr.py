@@ -39,6 +39,15 @@ def git(candidate: Path, *args: str) -> str:
     ).stdout.strip()
 
 
+def git_is_ancestor(candidate: Path, ancestor: str, descendant: str) -> bool:
+    return subprocess.run(
+        ["git", "-C", str(candidate), "merge-base", "--is-ancestor", ancestor, descendant],
+        check=False,
+        capture_output=True,
+        text=True,
+    ).returncode == 0
+
+
 def changed(candidate: Path, start: str, end: str) -> list[str]:
     return git(candidate, "diff", "--name-only", f"{start}...{end}").splitlines()
 
@@ -234,8 +243,15 @@ def validate(candidate: Path, base_sha: str) -> dict[str, Any]:
             errors.append("source pull request URL is not canonical")
         if source_pr.get("head", {}).get("sha") != receipt.get("source_pr_head"):
             errors.append("source pull request head drifted from the review binding")
-        if source_pr.get("base", {}).get("sha") != base_sha:
-            errors.append("source pull request does not target the promotion base")
+        source_base = source_pr.get("base", {}).get("sha")
+        if (
+            not isinstance(source_base, str)
+            or re.fullmatch(r"[0-9a-f]{40}", source_base) is None
+            or not git_is_ancestor(candidate, source_base, base_sha)
+        ):
+            errors.append(
+                "source pull request base is not an ancestor of the promotion base"
+            )
         if source_pr.get("state") != "open" or source_pr.get("draft") is not True:
             errors.append("source submission must remain open and draft")
         if source_pr_number == int(os.environ.get("CURRENT_PR_NUMBER", "0")):

@@ -991,7 +991,14 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
     (repository / "README.md").write_text("accepted base\n")
     run_git("add", "README.md")
     run_git("commit", "-m", "base")
+    source_base = run_git("rev-parse", "HEAD")
+    (repository / "CHANGELOG.md").write_text("accepted after submission\n")
+    run_git("add", "CHANGELOG.md")
+    run_git("commit", "-m", "advance accepted main")
     base = run_git("rev-parse", "HEAD")
+    non_ancestor = run_git(
+        "commit-tree", run_git("rev-parse", "HEAD^{tree}"), "-m", "unrelated root"
+    )
 
     destination = promote(repository)
     submission = next((repository / "research" / "open-dockets" / "submissions").iterdir())
@@ -1049,6 +1056,7 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
         "app_id": 4_766_776,
         "external_id": expected_external_id,
     }
+    source_pr_base = {"sha": source_base}
 
     def fake_github_json(path: str):
         if path == f"commits/{reviewed_head}/check-runs?per_page=100":
@@ -1072,7 +1080,7 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
             return {
                 "html_url": "https://github.com/yoheinakajima/epistemedia/pull/100",
                 "head": {"sha": "a" * 40},
-                "base": {"sha": base},
+                "base": {"sha": source_pr_base["sha"]},
                 "state": "open",
                 "draft": True,
                 "created_at": "2026-08-29T20:12:00Z",
@@ -1103,6 +1111,16 @@ def test_accepted_base_promotion_validator_closes_git_and_live_source_bindings(
     )
     result = promotion_validator.validate(repository, base)
     assert result["valid"] is True, result["errors"]
+
+    for invalid_source_base in ("HEAD^", base[:7], non_ancestor, "f" * 40):
+        source_pr_base["sha"] = invalid_source_base
+        result = promotion_validator.validate(repository, base)
+        assert result["valid"] is False
+        assert any(
+            "source pull request base is not an ancestor of the promotion base" in error
+            for error in result["errors"]
+        )
+    source_pr_base["sha"] = source_base
 
     for field, forged in (
         ("present", False),
