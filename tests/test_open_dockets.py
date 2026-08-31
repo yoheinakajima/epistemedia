@@ -855,16 +855,47 @@ def test_human_open_docket_projection_retains_full_reviewable_record(tmp_path: P
 def test_public_build_exposes_submit_and_current_open_docket_routes(tmp_path: Path) -> None:
     public = tmp_path / "public"
     build_public(ROOT, public)
+    home = (public / "index.html").read_text()
+    home_markdown = (public / "index.md").read_text()
+    how_we_know = (public / "how-we-know" / "index.html").read_text()
+    how_we_know_markdown = (public / "how-we-know" / "index.md").read_text()
+    how_we_know_json = json.loads(
+        (public / "how-we-know" / "index.json").read_text()
+    )
+    agents = (public / "agents" / "index.html").read_text()
+    agents_markdown = (public / "agents" / "index.md").read_text()
+    agents_json = json.loads((public / "agents" / "index.json").read_text())
     submit = (public / "agents" / "submit" / "index.html").read_text()
+    submit_markdown = (public / "agents" / "submit" / "index.md").read_text()
     llms = (public / "llms.txt").read_text()
     discovery = json.loads((public / ".well-known" / "epistemedia.json").read_text())
     dockets, errors = load_open_dockets(ROOT)
     assert errors == []
+    assert dockets
+    first = dockets[0].projection("https://epistemedia.org")
+    docket_url = first["representations"]["html"]
+    docket_markdown_url = first["representations"]["markdown"]
+    docket_json_url = first["representations"]["json"]
     assert "Point an agent here" in submit
     assert "separate reviewer" in submit
+    assert f'href="{docket_url}"' in home
+    assert f'href="{docket_url}"' in how_we_know
+    assert f'href="{docket_url}"' in agents
+    assert 'href="https://epistemedia.org/open-dockets/"' in submit
+    assert docket_markdown_url in home_markdown
+    assert docket_markdown_url in how_we_know_markdown
+    assert docket_markdown_url in agents_markdown
+    assert "[reviewed open-docket library]" in submit_markdown
     assert "/agents/submit/" in llms
+    assert docket_markdown_url in llms
+    assert docket_json_url in llms
     assert discovery["agent_research"]["github_submission_available"] is True
     assert discovery["open_dockets"]["count"] == len(dockets)
+    assert how_we_know_json["data"]["reviewed_open_dockets"]["count"] == len(
+        dockets
+    )
+    assert agents_json["data"]["reviewed_open_dockets"]["count"] == len(dockets)
+    assert "remain distinct from numbered How We Know cases" in how_we_know
     assert (public / "open-dockets" / "index.html").is_file()
 
 
