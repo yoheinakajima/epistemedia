@@ -868,8 +868,8 @@ REGISTER_SITE_CSS = r"""
   --paper-deep:var(--paper-2);
   --ink:#171717;
   --ink-2:#3d3d38;
-  --muted:#696961;
-  --faint:#97978e;
+  --muted:#5b5b54;
+  --faint:#5f5f58;
   --rule:#dcdcd4;
   --rule-2:#bdbdb4;
   --deep:#24332a;
@@ -878,7 +878,7 @@ REGISTER_SITE_CSS = r"""
   --accent-wash:#e2f1ea;
   --ok:#18794e;
   --ok-wash:#e9f7ef;
-  --open:#a96512;
+  --open:#8c510d;
   --open-wash:#f7ecd6;
   --stop:#9a2d25;
   --stop-wash:#f9e7e5;
@@ -1109,9 +1109,13 @@ main{padding:0 0 56px}
 .participation-card>h3,.participation-card>p,.docket-card>h2,.docket-card>p{grid-column:2}
 .library-case h2,.failure-card h3,.participation-card h3,.docket-card h2{font-size:15.5px}
 .library-case .qualification{min-height:0}
-.method-strip{padding:24px;border:0;border-top:2px solid var(--ink);background:var(--paper-2)}
+.method-strip{padding:24px;border:0;border-top:2px solid var(--ink);background:var(--paper-2);color:var(--ink)}
+.method-strip>.eyebrow,.method-strip>h2,.method-strip>p{color:var(--ink)}
+.method-strip>p a{color:var(--accent)}
 .method-strip ol{gap:0;border-top:1px solid var(--rule)}
 .method-strip li{padding:12px 0;border-bottom:1px solid var(--rule)}
+.current-state,.current-state h2{color:var(--ink)}
+.current-state a{color:var(--accent)}
 .lineage-ledger,.evidence-ledger,.case-lexicon,.topic-index,.failure-map,.mission-direction{padding-top:24px}
 .ledger-groups{gap:0;border-top:1px solid var(--rule)}
 .ledger-group{padding:16px 0;border:0;border-bottom:1px solid var(--rule);background:transparent;background-image:none}
