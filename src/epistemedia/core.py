@@ -1037,7 +1037,7 @@ main{padding:0 0 56px}
 .numbers[data-style="readout"] .number b{font-size:18px}
 .purpose-note,.practical-reading,.mission-bridge,.mission-problem,.agent-research-cue,
 .agent-kit-home,.library-cue,.case-finding,.verdict-panel,.projection-receipt,
-.case-index-row,.review-decision,.reader-instructions,.reader-boundary,.current-state{
+.case-index-row,.review-decision,.reader-instructions,.reader-boundary,.current-state,.scope-note{
   border:0;
   border-top:1px solid var(--rule-2);
   border-bottom:1px solid var(--rule);

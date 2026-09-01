@@ -383,6 +383,14 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
     assert "Epistemedia Register adapter" in design_css
     assert "MIT License" in design_css
     assert "5.25rem" not in design_css
+    scope_override = (
+        ".case-index-row,.review-decision,.reader-instructions,.reader-boundary,"
+        ".current-state,.scope-note{"
+    )
+    assert scope_override in design_css
+    assert design_css.rfind(scope_override) > design_css.find(
+        ".scope-note{\n  margin:var(--space-3) 0 0;"
+    )
 
     pages = sorted(public.rglob("index.html"))
     assert pages
