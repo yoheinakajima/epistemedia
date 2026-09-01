@@ -1,0 +1,49 @@
+{
+  "id": "EM-0044",
+  "title": "Correct excessive left gutters in public layouts",
+  "status": "ready",
+  "change_class": "maintenance",
+  "objective": "Correct the excessive empty left rails introduced by EM-0043 without undoing the Register-derived hierarchy. Widen the responsive public register, tighten the metadata column, and rebalance editorial sections so labels, headings, actions, and prose use the available canvas intentionally across every generated human HTML surface.",
+  "depends_on": [
+    "EM-0043"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "tasks/contracts/EM-0044.json",
+      "docs/execution-plans/EM-0044.md",
+      "src/epistemedia/core.py",
+      "tests/test_interfaces.py",
+      "runs/proposals/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "catalog/**",
+      "research/**",
+      "releases/**"
+    ]
+  },
+  "required_evaluation": [
+    "live desktop review of the homepage, About, How We Know, For agents, Explore, a topic projection, and representative case pages at the deployed EM-0043 release",
+    "computed-layout comparison confirming that the public register uses more of a wide viewport and repeated metadata rails no longer dominate the reading column",
+    "desktop and 390 px browser review covering representative routes, one H1, one stylesheet, zero scripts, no page-level overflow, and intentional section alignment",
+    "focused interface tests plus full deterministic make check, public-projection audit, source-state check, and exact changed-path audit",
+    "fresh exact-head independent review before protected integration"
+  ],
+  "acceptance": [
+    "the public page width increases responsively on desktop while preserving readable prose measures and 16 px minimum viewport gutters",
+    "the register metadata column is compact enough to support rather than displace human-readable content",
+    "the homepage mission bridge places its action in the heading rail instead of leaving that rail empty beneath the heading",
+    "the About problem section distributes its three paragraphs across the available reading area instead of stacking all copy in one offset column",
+    "representative pages remain complete without JavaScript and have no horizontal overflow at 390 px",
+    "accepted cases, mission text, evidence records, policies, identifiers, and Markdown or JSON twins remain unchanged"
+  ],
+  "limitations": [
+    "This is a layout-density correction, not a new visual identity or content rewrite.",
+    "No evidence, verdict, mission wording, policy, schema, protocol, admission rule, contribution automation, credential, DNS, or provider setting enters scope.",
+    "Merge and deployment retain the repository's independent review and protected release gates."
+  ]
+}
