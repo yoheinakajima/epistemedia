@@ -391,6 +391,10 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
     assert design_css.rfind(scope_override) > design_css.find(
         ".scope-note{\n  margin:var(--space-3) 0 0;"
     )
+    assert (
+        ".source-document p,.source-document li,.source-document dd,.source-document code{"
+        in design_css
+    )
 
     pages = sorted(public.rglob("index.html"))
     assert pages

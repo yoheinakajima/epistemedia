@@ -1174,6 +1174,11 @@ main{padding:0 0 56px}
 .object-facts dd{color:var(--muted);font:11px/1.5 var(--mono)}
 .source-document{padding-top:24px}
 .source-document>h2{padding:8px 0;border-top:2px solid var(--ink);border-bottom:0;font:600 15.5px/1.3 var(--sans)}
+.source-document p,.source-document li,.source-document dd,.source-document code{
+  min-width:0;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
 .reader-question{padding:16px 0;border-color:var(--rule)}
 .answer-line{border-color:var(--rule-2)}
 
