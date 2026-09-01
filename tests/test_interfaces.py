@@ -378,6 +378,30 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
     assert "Reproducible projection" in home_html
     assert "h1{font-size:clamp(30px,4vw,44px)" in design_css
     assert "font-size:clamp(28px,9vw,38px)" in design_css
+    assert "--page:1320px" in design_css
+    assert "--register:88px" in design_css
+    assert "--muted:#5b5b54" in design_css
+    assert "--faint:#5f5f58" in design_css
+    assert "--open:#8c510d" in design_css
+    assert (
+        ".method-strip{padding:24px;border:0;border-top:2px solid var(--ink);"
+        "background:var(--paper-2);color:var(--ink)}"
+    ) in design_css
+    assert ".method-strip>.eyebrow,.method-strip>h2,.method-strip>p{color:var(--ink)}" in design_css
+    assert ".method-strip>p a{color:var(--accent)}" in design_css
+    assert ".current-state,.current-state h2{color:var(--ink)}" in design_css
+    assert ".current-state a{color:var(--accent)}" in design_css
+    assert ".purpose-note,.practical-reading{grid-template-columns:220px minmax(0,1fr)}" in design_css
+    assert (
+        ".mission-bridge>p:last-child:not(.eyebrow):not(.mission-contrast){"
+        "grid-column:1;grid-row:3"
+    ) in design_css
+    assert design_css.count(
+        ".mission-bridge>p:last-child:not(.eyebrow):not(.mission-contrast)"
+    ) == 2
+    assert ".mission-problem>p:nth-of-type(4){grid-column:2/4;grid-row:3" in design_css
+    assert ".mission-page{max-width:none;margin-inline:0}" in design_css
+    assert ".mission-problem>p:not(.eyebrow){\n    grid-column:1;\n    grid-row:auto;" in design_css
     assert "text-transform:uppercase" not in design_css
     assert "#000" not in design_css
     assert "Epistemedia Register adapter" in design_css
@@ -395,6 +419,29 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
         ".source-document p,.source-document li,.source-document dd,.source-document code{"
         in design_css
     )
+
+    palette = dict(re.findall(r"--([a-z0-9-]+):(#[0-9a-f]{6})", design_css))
+
+    def luminance(value: str) -> float:
+        channels = [int(value[index : index + 2], 16) / 255 for index in (1, 3, 5)]
+        linear = [
+            channel / 12.92
+            if channel <= 0.04045
+            else ((channel + 0.055) / 1.055) ** 2.4
+            for channel in channels
+        ]
+        return 0.2126 * linear[0] + 0.7152 * linear[1] + 0.0722 * linear[2]
+
+    def contrast(foreground: str, background: str) -> float:
+        first, second = luminance(foreground), luminance(background)
+        return (max(first, second) + 0.05) / (min(first, second) + 0.05)
+
+    for foreground in ("muted", "faint", "accent", "open", "stop"):
+        for background in ("paper", "paper-2", "rule"):
+            assert contrast(palette[foreground], palette[background]) >= 4.5, (
+                foreground,
+                background,
+            )
 
     pages = sorted(public.rglob("index.html"))
     assert pages

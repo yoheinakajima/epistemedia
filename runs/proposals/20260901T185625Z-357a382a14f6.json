@@ -1,0 +1,76 @@
+{
+  "accepted_base": "b6bf5f53cc249c8c5e41d39bbdc0c986b4dfb446",
+  "actor": {
+    "agent_id": "codex-em0044-builder",
+    "role": "implementation-author"
+  },
+  "candidate_head": "2af7e50053ca218cee226701f6aabfbbee11e1a0",
+  "candidate_tree": "0a5042a5bf020337b0ea7b805073d56a4e396472",
+  "command": "PYTHONPATH=src make check PYTHON=python3.11",
+  "commands": [
+    "PYTHONPATH=src python3.11 -m pytest -q tests/test_interfaces.py",
+    "PYTHONPATH=src make check PYTHON=python3.11",
+    "local in-app browser audit against disposable exact-source projection at 1440 px and 390 px",
+    "git diff --check"
+  ],
+  "id": "em:run-receipt:sha256:357a382a14f60a82c5d14848bade881e0e4a85a16992522ca26ddab52e53b733",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0044.md",
+      "sha256": "8397d89a0fd32a82f0de5426af3c0e5640f19f2045e6eca4271cb001722f8232"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0044.json",
+      "sha256": "b2b81b554f69e6bc937ccf7be180db54b3a7af63074646253c15bc2365c2412f"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "The 390 px and desktop checks used local Chrome against a disposable build, not the live custom domain. Live deployment and external read-back remain separate post-merge gates.",
+    "The browser audit was performed through the in-app browser session and was not persisted as a standalone repository artifact. This receipt reports the observed route/width matrix; independent review must reproduce the responsive checks.",
+    "The browser projection was compiled from the final page-producing source bytes before the execution-plan status note was appended; the CSS and compiler source did not change before the tested content commit.",
+    "This receipt binds the tested content head immediately before its append-only receipt commit. The final PR head requires fresh exact-head CI and independent review."
+  ],
+  "outputs": {
+    "browser_audit": {
+      "defects": 0,
+      "observations": 32,
+      "routes": 16,
+      "widths_px": [
+        1440,
+        390
+      ]
+    },
+    "catalog_id": "em:catalog:sha256:522ecc62e14f38a77f2f69d7475f32a364f8c5e9c2d90fc7fb0cf9f0d574a9f9",
+    "frontier": "em:frontier:sha256:03717c3e6ef6b793232e91a6ecf6ec92a172d988ed0e999b4f05c4f58034043d",
+    "object_count": 229,
+    "topic_count": 11
+  },
+  "recorded_at": "2026-09-01T18:56:25Z",
+  "run_id": "em0044-layout-density-structured-exact-content-head-20260901T185625Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "c34a7932a60d828e6610f041dd4965eb20cc39228b2bc89bf78b039b604d4c63",
+    "id": "em:run-receipt:sha256:fbfc387d9b9ce4097a9ef4674c35d439f0563bb40050e910a1af027becaa62ae",
+    "path": "runs/proposals/20260901T185542Z-fbfc387d9b9c.json",
+    "reason": "The CLI receipt records only task, command, run, and time metadata; this append-only receipt binds the tested head/tree and completion evidence required by AGENTS.md."
+  },
+  "task_id": "EM-0044",
+  "tests": {
+    "accepted_input_validation": "pass-229-objects-11-topics",
+    "browser_accessibility_structure": "pass-32-of-32-observations",
+    "browser_page_overflow": "pass-zero-at-390px-and-1440px",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_interface_suite": "pass-32-of-32",
+    "full_repository_check": "pass",
+    "full_repository_suite": "pass-212-of-212",
+    "source_state": "unchanged"
+  },
+  "versions": {
+    "chrome": "152.0.7977.65",
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}

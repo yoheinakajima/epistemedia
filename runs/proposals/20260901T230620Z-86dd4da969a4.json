@@ -1,0 +1,10 @@
+{
+  "command": "PYTHONPATH=src make check PYTHON=python3.11; exact local 390px public route sweep",
+  "id": "em:run-receipt:sha256:86dd4da969a4c84388906ee10f991efadc5c3a66bd83cb0c4e95422268c6e901",
+  "kind": "run-receipt",
+  "recorded_at": "2026-09-01T23:06:20Z",
+  "run_id": "em0044-contrast-phone-exact-f4f92036-20260901T2306Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0044"
+}

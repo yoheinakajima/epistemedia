@@ -1,0 +1,56 @@
+{
+  "accepted_base": "b6bf5f53cc249c8c5e41d39bbdc0c986b4dfb446",
+  "actor": {
+    "agent_id": "codex-em0044-builder",
+    "role": "implementation-author"
+  },
+  "candidate_head": "f4f92036c9df6849e4c5837bd246c6b74abeaede",
+  "candidate_tree": "cf0bc442bb6594b6ae563f23b5181df49d14e927",
+  "command": "PYTHONPATH=src python3.11 -m epistemedia build --output /private/tmp/em0044-repro-f4-output",
+  "id": "em:run-receipt:sha256:25a3cc98e5e9be78c28792a438014bac1e60b69aae3842ec2a68c63c528981ef",
+  "inputs": {
+    "api_url": "https://api.epistemedia.org/v1",
+    "base_url": "https://epistemedia.org",
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0044.md",
+      "sha256": "02fbc80144b7340ed4e1344f07e85141e20259f0f0373664672d2656a3ee4555"
+    },
+    "mcp_url": "https://mcp.epistemedia.org/mcp",
+    "task_contract": {
+      "path": "tasks/contracts/EM-0044.json",
+      "sha256": "b2b81b554f69e6bc937ccf7be180db54b3a7af63074646253c15bc2365c2412f"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "This supersession corrects only the endpoint-sensitive release-manifest binding in the prior structured receipt; it does not alter the reviewed CSS, tests, contrast sweep, catalog, frontier, or task scope.",
+    "The build was reproduced from a disposable detached worktree at the candidate head. Live deployment and external-domain read-back remain separate post-merge gates.",
+    "This record is append-only and requires fresh CI and independent review at the PR head that contains it."
+  ],
+  "outputs": {
+    "catalog_id": "em:catalog:sha256:8ce788dc6da110fdfa0bf7207afaed5f3cc1142e4eb7f5b572c2cbc497e641b0",
+    "frontier": "em:frontier:sha256:f33c0dea8dc4ca3589eba2ebb258ce70231e08ab71327ee0ab773d178e630ab3",
+    "manifest_id": "em:release-manifest:sha256:bf4c9faf62accac18ad9056101c264eebd5d00af5e634ce7054388bea9384b33",
+    "object_count": 229,
+    "topic_count": 11
+  },
+  "recorded_at": "2026-09-01T23:17:45Z",
+  "run_id": "em0044-manifest-endpoint-supersession-f4f92036-20260901T231745Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "56fed9919fa561bfe58e59899dbda643860636131cbdbedaefeb0b7afa5fdf92",
+    "id": "em:run-receipt:sha256:9b4ff0d55cba061d13d964b459939c96a6066da409867e17eb3b10ea7c098ebe",
+    "path": "runs/proposals/20260901T230633Z-em0044-contrast-structured.json",
+    "reason": "The prior receipt recorded a manifest produced with localhost endpoint overrides but omitted those endpoint inputs. This receipt binds the default canonical endpoints and independently reproducible manifest identity."
+  },
+  "task_id": "EM-0044",
+  "tests": {
+    "canonical_endpoint_build": "pass-reproduced-twice-at-f4f92036",
+    "manifest_binding": "pass-bf4c9faf62accac18ad9056101c264eebd5d00af5e634ce7054388bea9384b33"
+  },
+  "versions": {
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}
