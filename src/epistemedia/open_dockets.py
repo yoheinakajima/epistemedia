@@ -1510,7 +1510,8 @@ def docket_html(data: dict[str, Any]) -> str:
         for item in data["retrieval_attempts"]
     ) or "<li>None recorded.</li>"
     lineage = "".join(
-        f"<li><strong>{html.escape(label)}:</strong> {html.escape(str(value))}</li>"
+        f"<li><strong>{html.escape(label)}:</strong> "
+        f"<code>{html.escape(str(value))}</code></li>"
         for label, value in (
             ("Prompt digest", data["lineage"]["prompt_sha256"]),
             ("Run", data["lineage"]["run_identity"]),

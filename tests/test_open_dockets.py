@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import html
 import json
 import re
 import shutil
@@ -850,6 +851,13 @@ def test_human_open_docket_projection_retains_full_reviewable_record(tmp_path: P
         "Independent review receipt",
     ):
         assert label in rendered
+    for value in (
+        data["lineage"]["prompt_sha256"],
+        data["lineage"]["run_identity"],
+        data["lineage"]["provider_model_identity"],
+        data["lineage"]["retrieval_environment"],
+    ):
+        assert f"<code>{html.escape(str(value))}</code>" in rendered
 
 
 def test_public_build_exposes_submit_and_current_open_docket_routes(tmp_path: Path) -> None:
