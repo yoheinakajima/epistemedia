@@ -1,0 +1,10 @@
+{
+  "command": "PYTHONPATH=src make check PYTHON=python3.11",
+  "id": "em:run-receipt:sha256:50fddfa9c72482e0d00f32040c85c632d1c4f2d65b6cc4564b81455a62588692",
+  "kind": "run-receipt",
+  "recorded_at": "2026-09-01T14:08:37Z",
+  "run_id": "em0043-register-design-full-check",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0043"
+}

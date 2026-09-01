@@ -1,0 +1,109 @@
+{
+  "accepted_base": "cf0c09fa01967c727d5f37f823f4bf745c44b083",
+  "actor": {
+    "agent_id": "codex-em0043-author",
+    "role": "implementation-author"
+  },
+  "candidate_head": "760e361a8b1d947df5b629bf897f24d857b45979",
+  "candidate_tree": "83f89fb69dc0b3b46547e0db1e2a0d308ab0c4be",
+  "command": "PYTHONPATH=src make check PYTHON=python3.11",
+  "commands": [
+    "PYTHONPATH=src python3.11 -m pytest -q tests/test_interfaces.py::test_public_design_system_is_shared_accessible_and_structured",
+    "PYTHONPATH=src make check PYTHON=python3.11",
+    "PYTHONPATH=src python3.11 -m epistemedia build --output /private/tmp/epistemedia-em0043.3gfaLY/public --base-url http://127.0.0.1:4181 --api-url http://127.0.0.1:4181/v1 --mcp-url http://127.0.0.1:4181/mcp",
+    "node /private/tmp/em0043_visual_audit.mjs",
+    "git diff --check",
+    "shasum -a 256 /private/tmp/epistemedia-em0043.3gfaLY/public/register.css /private/tmp/em0043-visual-audit.json /private/tmp/em0043-build-mobile-exact-head.json /private/tmp/em0043_visual_audit.mjs"
+  ],
+  "ended_at": "2026-09-01T14:47:28Z",
+  "id": "em:run-receipt:sha256:5f3aa1d6a0802bd5e1533d4c40bf9f547e85d72de395a5b8d11f388f54dd1798",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0043.md",
+      "sha256": "4a7b93bffbd818da9dc70b9f9286e666af637888ea4dbeda7a5901ba50b0e1ce"
+    },
+    "independent_review_history": [
+      {
+        "decision": "changes-required",
+        "head": "bc43b4d7a2b626cadd0ef0948075cce456dc2702",
+        "tree": "531034aa2cd225686a24c6d095700df09fcfd3a4"
+      },
+      {
+        "decision": "changes-required",
+        "head": "1280605a8a84331cf0187fe4d5dedb91f5610025",
+        "tree": "0bebea23f8e7cfdc40e5ed4d3dfd1a4386cc06b5"
+      }
+    ],
+    "pull_request": 88,
+    "register_design_source": {
+      "commit": "5ac05e2758885d92ed2a9a8cfd4c6eb70ccbdbe4",
+      "repository": "yoheinakajima/register",
+      "tree": "0185dffffa8d49d1ee6a5394c887f6244ebf07ca"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0043.json",
+      "sha256": "066e3d69a48cda4bb29c2b3e5450f506cf929a019521c230cd4772d1cf7b3855"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "The public design-slop-cop npm package was unavailable during the source-template audit. The execution plan maps each Register requirement explicitly; no 0/14 or scorer-equivalent result is claimed.",
+    "The 390 px and desktop checks used local headless Chrome against an exact-head disposable build, not the live custom domain. Live deployment and external read-back remain separate post-merge gates.",
+    "The browser harness was a bounded temporary script rather than a repository artifact; its exact SHA-256 is recorded with the result so the independent reviewer can identify the evidence used.",
+    "This receipt binds the mobile-overflow-corrected tested content head immediately before its append-only receipt commit. The final PR head requires fresh exact-head CI and independent review."
+  ],
+  "outputs": {
+    "browser_audit": {
+      "defects": 0,
+      "observations": 34,
+      "routes": 17,
+      "sha256": "a4efe298fef4868ea3cf914b9173f11dc79fd3a33f7917deb1aa4af33c168e3e",
+      "target_mobile_client_width": 390,
+      "target_mobile_scroll_width": 390,
+      "widths_px": [
+        1440,
+        390
+      ]
+    },
+    "browser_audit_script_sha256": "499a1afb5b97d2f21d33699070a2ab13cd25dad22da27ce43922b8a5c7a3e371",
+    "build_capture_sha256": "501e0e1e79f2503bb15e37878afc9f2189b1e8d9fd6b61284ac1ad2d76047f7a",
+    "catalog_id": "em:catalog:sha256:87cc942405fa2b584ac186e3fe956d89d3ab7eac845eb51a3e02599a0b5f469e",
+    "file_count": 1139,
+    "frontier": "em:frontier:sha256:322d42de3e9f0aa223bba468fd6bcb0d02702a255e55cdbff15339d4a760cf73",
+    "manifest_id": "em:release-manifest:sha256:020d08a5235486c0a467cc945c2f7b1bebf6aff7839e40f863023112ffa326e5",
+    "object_count": 227,
+    "register_css_sha256": "b44c8aae6a48bdd4c9018ae39c3b1192b82240aaae38f0ff1e89007560f352c7",
+    "topic_count": 11
+  },
+  "recorded_at": "2026-09-01T14:47:34Z",
+  "run_id": "em0043-register-design-mobile-corrected-exact-head-20260901T144407Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-09-01T14:44:07Z",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "5816fb5872ece4025eba2656ce62b8e348a3e7894de0acee0253d4422c992b0c",
+    "id": "em:run-receipt:sha256:c044aa50396d918bf255e37bf1812cdc1fad0cd25a1c44ff8bf08ac10e234d56",
+    "path": "runs/proposals/20260901T143017Z-c044aa50396d.json",
+    "reason": "The prior structured receipt predates the source-document mobile-overflow correction and its 17-route browser regression; it remains preserved as superseded evidence."
+  },
+  "task_id": "EM-0043",
+  "tests": {
+    "accepted_input_validation": "pass-227-objects-11-topics",
+    "browser_accessibility_structure": "pass-34-of-34-observations",
+    "browser_page_overflow": "pass-zero-at-390px-and-1440px",
+    "browser_pathological_object_overflow": "pass-390-client-390-scroll",
+    "browser_scope_note_treatment": "pass-no-gradient-no-left-stripe",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_source_document_wrapping_regression": "pass",
+    "full_repository_check": "pass",
+    "full_repository_suite": "pass-212-of-212",
+    "source_state": "unchanged"
+  },
+  "versions": {
+    "chrome": "152.0.7977.65",
+    "epistemedia_compiler": "0.2.0",
+    "playwright": "1.57.0",
+    "python": "3.11.15"
+  }
+}

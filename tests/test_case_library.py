@@ -504,6 +504,7 @@ def test_case002_human_routes_are_no_script_accessible_and_count_closed(
     build_public(ROOT, public)
     default_html = (public / "how-we-know" / CASE_002 / "index.html").read_text()
     skeptical_html = (public / "how-we-know" / CASE_002 / "skeptical" / "index.html").read_text()
+    stylesheet = (public / "register.css").read_text()
     data = json.loads((public / "how-we-know" / CASE_002 / "index.json").read_text())["data"]
     assert default_html.count("<h1>") == 1
     assert skeptical_html.count("<h1>") == 1
@@ -520,12 +521,12 @@ def test_case002_human_routes_are_no_script_accessible_and_count_closed(
         assert f'id="{card["anchor"]}"' in default_html
         assert len(data["count_ledgers"][card["ledger_key"]]) == card["value"]
     assert "work, edition, span, retrieval, digest, and license" in default_html
-    assert "overflow-wrap:anywhere" in default_html
+    assert "overflow-wrap:anywhere" in stylesheet
     assert (
         ".receipt-grid dd{min-width:0;margin:0;overflow-wrap:anywhere;word-break:break-word}"
-        in default_html
+        in stylesheet
     )
     assert (
         ".source-card blockquote{max-width:78ch;color:var(--ink);font-family:var(--serif);"
-        "overflow-wrap:anywhere;word-break:break-word}" in default_html
+        "overflow-wrap:anywhere;word-break:break-word}" in stylesheet
     )

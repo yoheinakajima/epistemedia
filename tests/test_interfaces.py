@@ -122,6 +122,7 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     expected = [
         "index.html",
         "index.md",
+        "register.css",
         "llms.txt",
         "llms-full.txt",
         "catalog.json",
@@ -229,9 +230,12 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     assert manifest["catalog_id"] in object_html
 
     home_html = (public / "index.html").read_text()
-    assert "overflow-wrap:anywhere;word-break:break-word" in home_html
-    assert "pre code{padding:0;overflow-wrap:normal;word-break:normal}" in home_html
-    assert "minmax(min(100%,245px),1fr)" in home_html
+    design_css = (public / "register.css").read_text()
+    assert "overflow-wrap:anywhere;word-break:break-word" in design_css
+    assert "pre code{padding:0;overflow-wrap:normal;word-break:normal}" in design_css
+    assert "minmax(min(100%,245px),1fr)" in design_css
+    assert '<link rel="stylesheet" href="https://epistemedia.org/register.css">' in home_html
+    assert "<style>" not in home_html
     assert "Does repeating misinformation" in home_html
     assert "How We Know" in home_html
     assert "Case 001" in home_html
@@ -351,31 +355,46 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
     build_public(ROOT, public)
     catalog = PublicCatalog.build(ROOT)
     home_html = (public / "index.html").read_text()
+    design_css = (public / "register.css").read_text()
 
     for token in (
         "--paper:",
         "--ink:",
-        "--forest:",
-        "--amber:",
-        "--serif:",
+        "--deep:",
+        "--accent:",
+        "--open:",
+        "--stop:",
         "--sans:",
         "--mono:",
         "--space-1:",
         "--rule:",
     ):
-        assert token in home_html
-    assert "a:focus-visible,summary:focus-visible" in home_html
-    assert "@media (max-width:640px)" in home_html
-    assert "grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr))" in home_html
-    assert "word-break:break-word" in home_html
-    assert "min-height:44px" in home_html
+        assert token in design_css
+    assert "a:focus-visible,summary:focus-visible" in design_css
+    assert "@media(max-width:600px)" in design_css
+    assert "word-break:break-word" in design_css
     assert "brand-mark" in home_html
     assert "docket-card" in home_html
     assert "Reproducible projection" in home_html
-    assert "h1{max-width:18ch;font-size:clamp(2.1rem,3.8vw,3.8rem)" in home_html
-    assert "font-size:clamp(2rem,3.6vw,3.4rem)" in home_html
-    assert "h1{font-size:clamp(1.9rem,8.2vw,2.5rem)}" in home_html
-    assert "5.25rem" not in home_html
+    assert "h1{font-size:clamp(30px,4vw,44px)" in design_css
+    assert "font-size:clamp(28px,9vw,38px)" in design_css
+    assert "text-transform:uppercase" not in design_css
+    assert "#000" not in design_css
+    assert "Epistemedia Register adapter" in design_css
+    assert "MIT License" in design_css
+    assert "5.25rem" not in design_css
+    scope_override = (
+        ".case-index-row,.review-decision,.reader-instructions,.reader-boundary,"
+        ".current-state,.scope-note{"
+    )
+    assert scope_override in design_css
+    assert design_css.rfind(scope_override) > design_css.find(
+        ".scope-note{\n  margin:var(--space-3) 0 0;"
+    )
+    assert (
+        ".source-document p,.source-document li,.source-document dd,.source-document code{"
+        in design_css
+    )
 
     pages = sorted(public.rglob("index.html"))
     assert pages
@@ -404,6 +423,9 @@ def test_public_design_system_is_shared_accessible_and_structured(tmp_path: Path
         else:
             assert parser.nav_labels == base_navigation, relative
         assert parser.skip_targets == ["#content"], relative
+        assert '<link rel="stylesheet" href="https://epistemedia.org/register.css">' in page_html
+        assert "<style>" not in page_html
+        assert "<script" not in page_html
         assert "projection-receipt" in page_html, relative
         assert catalog.catalog_id in page_html, relative
         assert catalog.frontier in page_html, relative
@@ -534,11 +556,14 @@ def test_topic_human_surface_and_projection_parity(tmp_path: Path, capsys: objec
     static_json = json.loads((topic_root / "index.json").read_text())
 
     assert static_json == projection
-    assert topic_html.count('class="topic-object-card"') == projection["object_count"]
+    assert topic_html.count('class="topic-object-card row"') == projection["object_count"]
+    assert topic_html.count('class="object-kind id"') == projection["object_count"]
+    assert topic_html.count('class="topic-group register"') == len(projection["kind_counts"])
     assert topic_html.count("<summary>Technical identity</summary>") == projection["object_count"]
     assert '<details class="object-identity" open' not in topic_html
-    assert ".object-identity dd" in topic_html
-    assert "font:.64rem/1.45 var(--mono)" in topic_html
+    design_css = (public / "register.css").read_text()
+    assert ".object-identity dd" in design_css
+    assert "font:10.5px/1.45 var(--mono)" in design_css
     assert "Also filed under" in topic_html
     assert "References in source" in topic_html
     assert "related objects" not in topic_html.lower()
@@ -572,7 +597,7 @@ def test_topic_human_surface_and_projection_parity(tmp_path: Path, capsys: objec
     object_html = (public / "objects" / object_file_key / "index.html").read_text()
     object_hero = object_html.split("</section>", 1)[0]
     assert "](" not in object_hero
-    assert "font:.72rem/1.5 var(--mono)" in object_html
+    assert "font:11px/1.5 var(--mono)" in design_css
     assert "Also filed under" in object_html
     assert f"https://epistemedia.org/topics/{topic.slug}/" in object_html
 
