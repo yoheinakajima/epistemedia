@@ -1,0 +1,99 @@
+{
+  "accepted_base": "cf0c09fa01967c727d5f37f823f4bf745c44b083",
+  "actor": {
+    "agent_id": "codex-em0043-author",
+    "role": "implementation-author"
+  },
+  "candidate_head": "e24ed5085216ddf65251838892fff5eb3ed89d9b",
+  "candidate_tree": "91eb26ab2daa7eb1b66a216c32df1fe22730b879",
+  "command": "PYTHONPATH=src make check PYTHON=python3.11",
+  "commands": [
+    "PYTHONPATH=src python3.11 -m pytest -q tests/test_interfaces.py::test_public_design_system_is_shared_accessible_and_structured",
+    "PYTHONPATH=src make check PYTHON=python3.11",
+    "PYTHONPATH=src python3.11 -m epistemedia build --output /private/tmp/epistemedia-em0043.3gfaLY/public --base-url http://127.0.0.1:4181 --api-url http://127.0.0.1:4181/v1 --mcp-url http://127.0.0.1:4181/mcp",
+    "node /private/tmp/em0043_visual_audit.mjs",
+    "git diff --check",
+    "shasum -a 256 /private/tmp/epistemedia-em0043.3gfaLY/public/register.css /private/tmp/em0043-visual-audit.json /private/tmp/em0043-build-exact-head.json /private/tmp/em0043_visual_audit.mjs"
+  ],
+  "ended_at": "2026-09-01T14:29:37Z",
+  "id": "em:run-receipt:sha256:c044aa50396d918bf255e37bf1812cdc1fad0cd25a1c44ff8bf08ac10e234d56",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0043.md",
+      "sha256": "295a5a05b45716cdada15c05eec24160956d5e05d22cabfae823ec5aef5bc237"
+    },
+    "first_independent_review": {
+      "decision": "changes-required",
+      "head": "bc43b4d7a2b626cadd0ef0948075cce456dc2702",
+      "pr": 88,
+      "tree": "531034aa2cd225686a24c6d095700df09fcfd3a4"
+    },
+    "register_design_source": {
+      "commit": "5ac05e2758885d92ed2a9a8cfd4c6eb70ccbdbe4",
+      "repository": "yoheinakajima/register",
+      "tree": "0185dffffa8d49d1ee6a5394c887f6244ebf07ca"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0043.json",
+      "sha256": "066e3d69a48cda4bb29c2b3e5450f506cf929a019521c230cd4772d1cf7b3855"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "The public design-slop-cop npm package was unavailable during the source-template audit. The execution plan maps each Register requirement explicitly; no 0/14 or scorer-equivalent result is claimed.",
+    "The 390 px and desktop checks used local headless Chrome against an exact-head disposable build, not the live custom domain. Live deployment and external read-back remain separate post-merge gates.",
+    "The browser harness was a bounded temporary script rather than a repository artifact; its exact SHA-256 is recorded with the result so the independent reviewer can identify the evidence used.",
+    "This receipt binds the corrected tested content head immediately before its append-only receipt commit. The final PR head requires fresh exact-head CI and independent review."
+  ],
+  "outputs": {
+    "browser_audit": {
+      "defects": 0,
+      "observations": 32,
+      "routes": 16,
+      "sha256": "e2f0896bdc65637cf1293539ef26846e88c5c0eb805065450757fc7c3e2fb294",
+      "widths_px": [
+        1440,
+        390
+      ]
+    },
+    "browser_audit_script_sha256": "e1c65db3950c4e607d2026b0772462f926139ebc45a3a15c96cdd30279dcb4ea",
+    "build_capture_sha256": "d2f6e6499e79fb3825d47f7ecf0305cae01ec0bb37feaf2205e332fe7d29631f",
+    "catalog_id": "em:catalog:sha256:d74fee472e7fac882793c74fcb7f6140aaa673f6ed92b7484f2a2da4c35d24e1",
+    "file_count": 1139,
+    "frontier": "em:frontier:sha256:4aaf0937676948f81dc6cb92a02a5c09a3838ae285a15b310bb5d8bca8be9e9e",
+    "manifest_id": "em:release-manifest:sha256:2b682a7277005511beff5795dd3d14c8b5c3f0cc9671c987faddac56ac3c31e9",
+    "object_count": 227,
+    "register_css_sha256": "e565d21272260d2420700e6a42a61d54a8a3f2392fac21e992d04a15f310c492",
+    "topic_count": 11
+  },
+  "recorded_at": "2026-09-01T14:30:17Z",
+  "run_id": "em0043-register-design-corrected-exact-head-20260901T142628Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-09-01T14:26:28Z",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "4dbf7760cfcfdb1e59c8b2838b0c771568a0a3b361dc91cd94946d25173ee525",
+    "id": "em:run-receipt:sha256:50fddfa9c72482e0d00f32040c85c632d1c4f2d65b6cc4564b81455a62588692",
+    "path": "runs/proposals/20260901T140837Z-50fddfa9c724.json",
+    "reason": "The CLI receipt records only task, command, run, and time metadata; this append-only receipt binds the corrected tested head/tree and full completion evidence required by AGENTS.md."
+  },
+  "task_id": "EM-0043",
+  "tests": {
+    "accepted_input_validation": "pass-227-objects-11-topics",
+    "browser_accessibility_structure": "pass-32-of-32-observations",
+    "browser_page_overflow": "pass-zero-at-390px-and-1440px",
+    "browser_scope_note_treatment": "pass-no-gradient-no-left-stripe",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_scope_note_regression": "pass",
+    "full_repository_check": "pass",
+    "full_repository_suite": "pass-212-of-212",
+    "source_state": "unchanged"
+  },
+  "versions": {
+    "chrome": "152.0.7977.65",
+    "epistemedia_compiler": "0.2.0",
+    "playwright": "1.57.0",
+    "python": "3.11.15"
+  }
+}
