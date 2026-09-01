@@ -1867,6 +1867,8 @@ def build_public(
     )
     from .open_dockets import (
         docket_html,
+        docket_library_cue_html,
+        docket_library_cue_markdown,
         docket_markdown,
         load_open_dockets,
         submission_guide,
@@ -1891,6 +1893,22 @@ def build_public(
     open_dockets, open_docket_errors = load_open_dockets(root)
     if open_docket_errors:
         raise ValueError("; ".join(open_docket_errors))
+    docket_projections = [docket.projection(base_url) for docket in open_dockets]
+    docket_summaries = [
+        {
+            "slug": data["slug"],
+            "title": data["title"],
+            "question": data["question"],
+            "proposal_id": data["proposal_id"],
+            "representations": data["representations"],
+        }
+        for data in docket_projections
+    ]
+    docket_library_data = {
+        "status": "reviewed-contributions-not-numbered-cases",
+        "count": len(docket_summaries),
+        "dockets": docket_summaries,
+    }
     featured = library.lead if library is not None else None
     dossier_summaries = library.summaries(catalog) if library is not None else []
     featured_default = (
@@ -2280,15 +2298,19 @@ def build_public(
             "failure_modes": mission["cases"],
             "featured": featured.summary(catalog),
             "dossiers": dossier_summaries,
+            "reviewed_open_dockets": docket_library_data,
         }
         how_we_know_envelope = envelope(catalog, how_we_know_data)
         write_json(tmp / "how-we-know" / "index.json", how_we_know_envelope)
         write_text(
             tmp / "how-we-know" / "index.md",
-            how_we_know_markdown(mission, dossier_summaries, base_url),
+            how_we_know_markdown(mission, dossier_summaries, base_url)
+            + "\n\n"
+            + docket_library_cue_markdown(docket_projections, base_url),
         )
         how_we_know_body = (
             how_we_know_html(mission, dossier_summaries, base_url)
+            + docket_library_cue_html(docket_projections, base_url)
             + method_html(base_url)
             + agent_home_html(base_url)
             + projection_receipt_html(
@@ -2323,6 +2345,7 @@ def build_public(
             + method_html(base_url)
             + participation_html(mission, base_url)
             + agent_home_html(base_url)
+            + docket_library_cue_html(docket_projections, base_url)
             + '<section><div class="section-head"><div><p class="eyebrow">'
             'Operating substrate</p><h2>Explore how the record is built</h2></div>'
             f'<p class="meta">{len(catalog.objects)} distinct public objects · '
@@ -2388,6 +2411,8 @@ def build_public(
             + f"[Read mission v{mission['version']}]({base_url}/about/) · "
             + f"[Run your own test]({base_url}/agents/) · "
             + f"[Take the reader check]({base_url}/about/reader-check/)\n"
+            + "\n"
+            + docket_library_cue_markdown(docket_projections, base_url)
             + "\n## Operating substrate\n\n"
             f"{len(catalog.objects)} distinct public objects · "
             f"{catalog.topic_membership_count()} topic memberships across "
@@ -2575,6 +2600,7 @@ def build_public(
     write_json(tmp / "agents" / "index.json", envelope(catalog, {
         "protocol": research_protocol,
         "submission": research_status,
+        "reviewed_open_dockets": docket_library_data,
     }))
     write_text(
         tmp / "agents" / "index.md",
@@ -2583,8 +2609,10 @@ def build_public(
         f"- [Research protocol]({base_url}/agents/research-protocol.md)\n"
         f"- [Proposal template]({base_url}/agents/proposal-template.json)\n"
         f"- [Submit an open docket]({base_url}/agents/submit/)\n"
+        f"- [Browse reviewed open dockets]({base_url}/open-dockets/)\n"
         f"- [Submission status]({base_url}/agents/submission-status.json)\n\n"
-        "Prepared proposals are untrusted intake with zero evidential credit. The GitHub draft-PR queue is the autonomous pilot; hosted MCP submission is not deployed.\n",
+        "Prepared proposals are untrusted intake with zero evidential credit. The GitHub draft-PR queue is the autonomous pilot; hosted MCP submission is not deployed.\n\n"
+        + docket_library_cue_markdown(docket_projections, base_url),
     )
     write_text(tmp / "agents" / "research-protocol.md", protocol_markdown(base_url))
     write_json(
@@ -2619,6 +2647,7 @@ def build_public(
         html_shell(
                 "Agent research kit",
                 agent_index_html(base_url)
+                + docket_library_cue_html(docket_projections, base_url)
                 + projection_receipt_html(
                     catalog_id=catalog.catalog_id,
                     frontier=catalog.frontier,
@@ -2633,7 +2662,6 @@ def build_public(
         ),
     )
 
-    docket_projections = [docket.projection(base_url) for docket in open_dockets]
     write_json(
         tmp / "open-dockets" / "index.json",
         envelope(
@@ -2642,16 +2670,7 @@ def build_public(
                 "format": "epistemedia-open-docket-library-v0.1",
                 "status": "reviewed-contributions-not-numbered-cases",
                 "count": len(docket_projections),
-                "dockets": [
-                    {
-                        "slug": data["slug"],
-                        "title": data["title"],
-                        "question": data["question"],
-                        "proposal_id": data["proposal_id"],
-                        "representations": data["representations"],
-                    }
-                    for data in docket_projections
-                ],
+                "dockets": docket_summaries,
             },
         ),
     )
@@ -2740,6 +2759,14 @@ def build_public(
                     f"- [Case {number} agent research brief]({base_url}/how-we-know/{accepted.slug}/research-brief.md)",
                 ]
             )
+    docket_llms: list[str] = []
+    for docket in docket_summaries:
+        docket_llms.extend(
+            [
+                f"- [Reviewed open docket — {docket['title']}]({docket['representations']['markdown']})",
+                f"- [Reviewed open docket JSON — {docket['title']}]({docket['representations']['json']})",
+            ]
+        )
     llms = [
         "# Epistemedia",
         "> Knowledge that can show its work. An open, federated knowledge network for humans and agents.",
@@ -2764,6 +2791,7 @@ def build_public(
         f"- [Proposal template]({base_url}/agents/proposal-template.json)",
         f"- [Autonomous GitHub submission guide]({base_url}/agents/submit/index.md)",
         f"- [Open-docket library]({base_url}/open-dockets/index.md)",
+        *docket_llms,
         f"- [Submission status — GitHub pilot available; hosted MCP queue not deployed]({base_url}/agents/submission-status.json)",
         f"Ask your coding agent only: Open {base_url}/agents/submit/. Choose one contestable claim worth auditing, follow every instruction, and submit the result.",
         "",

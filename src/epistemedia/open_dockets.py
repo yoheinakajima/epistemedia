@@ -1510,7 +1510,8 @@ def docket_html(data: dict[str, Any]) -> str:
         for item in data["retrieval_attempts"]
     ) or "<li>None recorded.</li>"
     lineage = "".join(
-        f"<li><strong>{html.escape(label)}:</strong> {html.escape(str(value))}</li>"
+        f"<li><strong>{html.escape(label)}:</strong> "
+        f"<code>{html.escape(str(value))}</code></li>"
         for label, value in (
             ("Prompt digest", data["lineage"]["prompt_sha256"]),
             ("Run", data["lineage"]["run_identity"]),
@@ -1564,6 +1565,57 @@ def docket_html(data: dict[str, Any]) -> str:
     )
 
 
+def docket_library_cue_html(dockets: list[dict[str, Any]], base_url: str) -> str:
+    if not dockets:
+        return ""
+    featured = max(
+        dockets,
+        key=lambda item: str(item.get("review", {}).get("reviewed_at", "")),
+    )
+    count = len(dockets)
+    label = "reviewed open docket" if count == 1 else "reviewed open dockets"
+    base = html.escape(base_url.rstrip("/"))
+    return (
+        '<section class="library-cue open-docket-cue" aria-labelledby="open-docket-cue-title">'
+        '<p class="eyebrow">Reviewed contributions</p>'
+        '<h2 id="open-docket-cue-title">Open dockets</h2>'
+        '<p>Agent-submitted source records that passed separate review. They remain distinct '
+        'from numbered How We Know cases and universal verdicts.</p>'
+        f'<p><strong><a href="{html.escape(featured["representations"]["html"])}">'
+        f'{html.escape(featured["title"])}</a></strong><br>'
+        f'{html.escape(featured["bounded_reading"])}</p>'
+        f'<p><a href="{base}/open-dockets/">Browse all {count} {label}</a></p>'
+        f'<p class="meta-line">{count} {label}<br>Separate reviewer<br>HTML · Markdown · JSON</p>'
+        "</section>"
+    )
+
+
+def docket_library_cue_markdown(
+    dockets: list[dict[str, Any]], base_url: str
+) -> str:
+    if not dockets:
+        return ""
+    featured = max(
+        dockets,
+        key=lambda item: str(item.get("review", {}).get("reviewed_at", "")),
+    )
+    count = len(dockets)
+    label = "reviewed open docket" if count == 1 else "reviewed open dockets"
+    base = base_url.rstrip("/")
+    return "\n".join(
+        [
+            "## Reviewed open dockets",
+            "",
+            "Agent-submitted source records that passed separate review. They are not numbered How We Know cases or universal verdicts.",
+            "",
+            f"- [{featured['title']}]({featured['representations']['markdown']}) — {featured['bounded_reading']}",
+            "",
+            f"[Browse all {count} {label}]({base}/open-dockets/)",
+            "",
+        ]
+    )
+
+
 def submission_guide(base_url: str) -> dict[str, Any]:
     base = base_url.rstrip("/")
     return {
@@ -1602,6 +1654,7 @@ def submission_guide(base_url: str) -> dict[str, Any]:
             "trace": f"{base}/agents/action-trace-template.json",
             "protocol": f"{base}/agents/research-protocol.md",
         },
+        "reviewed_library": f"{base}/open-dockets/",
     }
 
 
@@ -1621,6 +1674,7 @@ def submission_guide_markdown(base_url: str) -> str:
             "",
             "The submitting agent must stop after opening the draft pull request. A separately rooted reviewer re-fetches every credited source and span and creates a different promotion pull request. The submitted branch is never merged directly.",
             "A valid queue PR deliberately retains a blocking required check. That red check is the mechanical never-merge control, not a request to repair or bypass the queue.",
+            f"Accepted contributions appear in the [reviewed open-docket library]({guide['reviewed_library']}).",
             "",
             "## Procedure",
             "",
@@ -1651,6 +1705,7 @@ def submission_guide_html(base_url: str) -> str:
         f"<blockquote>{html.escape(guide['agent_prompt'])}</blockquote></section>"
         '<section><h2>What the agent must do</h2>'
         f"<ol>{commands}</ol></section>"
-        '<section><h2>What happens next</h2><p>The draft pull request is a queue item, not knowledge. A separate reviewer re-fetches every credited source and span, then creates a different promotion pull request. Only that reviewed artifact can reach the public open-docket library.</p></section>'
+        '<section><h2>What happens next</h2><p>The draft pull request is a queue item, not knowledge. A separate reviewer re-fetches every credited source and span, then creates a different promotion pull request. Only that reviewed artifact can reach the '
+        f'<a href="{html.escape(guide["reviewed_library"])}">public open-docket library</a>.</p></section>'
         f'<p class="scope-note"><strong>Boundary:</strong> {html.escape(guide["boundary"])}</p></article>'
     )
