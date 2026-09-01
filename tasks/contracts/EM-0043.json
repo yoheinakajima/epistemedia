@@ -54,7 +54,7 @@
     "This task changes visual presentation, shared HTML chrome, and accessibility-oriented markup only; it does not change evidence, conclusions, policies, schemas, protocol semantics, governance authority, admission rules, or contribution automation.",
     "Register is a design source, not an epistemic source. Its sample content, sample identifiers, navigation destinations, and example numbers are not imported into Epistemedia.",
     "A visual resemblance to Register is not sufficient: the implementation must preserve Epistemedia's existing content density, exact twins, interlinks, and disclosure-safe deterministic compilation.",
-    "The public npm package design-slop-cop was unavailable during the source-template audit. Its score may not be claimed unless the package becomes available; the repository's explicit fourteen design rules must instead be checked directly and the bounded tooling gap recorded.",
+    "The public npm package design-slop-cop was unavailable during the source-template audit. Its 0/14 score may not be claimed unless the package becomes available; every explicit DESIGN.md requirement must instead be checked through the enumerated fallback checklist in the EM-0043 execution plan, and the bounded tooling gap must remain recorded.",
     "No research provider call, evidence admission, case creation, policy change, constitution change, credential or account action, spend, DNS change, merge, publication, or deployment is authorized merely by registering this task; protected integration and deployment retain their normal gates."
   ]
 }
