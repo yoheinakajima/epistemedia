@@ -1,0 +1,60 @@
+{
+  "id": "EM-0043",
+  "title": "Adopt the Register design system across public human projections",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Replace Epistemedia's oversized, card-heavy forensic shell with a compact, human-readable public design system derived from the owner-approved Register template at yoheinakajima/register commit 5ac05e2758885d92ed2a9a8cfd4c6eb70ccbdbe4. Apply one coherent hierarchy across every deterministically generated HTML surface while preserving accepted evidence, policy-relative readings, machine-readable twins, public identities, and contribution semantics.",
+  "depends_on": [
+    "EM-0039",
+    "EM-0042"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "README.md",
+      "src/**",
+      "tests/**",
+      "docs/**",
+      "ops/**",
+      "runs/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      ".github/**",
+      "tasks/contracts/**",
+      "catalog/**",
+      "research/**",
+      "releases/**"
+    ]
+  },
+  "required_evaluation": [
+    "exact source review of the Register DESIGN.md contract, register.css grammar, representative dossier and program examples, and responsive behavior at owner-approved source commit 5ac05e2758885d92ed2a9a8cfd4c6eb70ccbdbe4",
+    "design-token and component mapping that adopts Register's compact sans hierarchy, monospace identity layer, hairline alignment, restrained surfaces, state semantics, and no-JavaScript degradation without importing sample claims or changing Epistemedia's evidence model",
+    "representative desktop and 390 px visual review of the homepage, How We Know library, Cases 001-004, About, For agents, Open Dockets, Explore, a topic projection, an object page, status, documentation, and review or projection receipts",
+    "accessibility review covering semantic headings, skip link, keyboard-visible focus, native details and summary behavior, link affordance, contrast, readable line length, reduced motion, and absence of horizontal page overflow except explicitly scrollable technical tables or code",
+    "human-readable substrate review confirming that object kind and stable identity are subordinate to title and summary, related-object links remain available, and technical identifiers wrap safely rather than competing with prose",
+    "HTML, Markdown, JSON, llms.txt, sitemap, local REST, MCP, and CLI parity; accepted dossier, source-span, relation, count, evaluation, review-receipt, open-docket, and mission bytes and meanings remain unchanged",
+    "license and provenance review for any substantial Register-derived stylesheet material, retaining the Register MIT copyright and permission notice where required",
+    "deterministic make check, clean tracked state, generated-output comparison, disclosure audit, exact path-scope audit, and fresh-clone exact-head independent review",
+    "protected merge, resulting-main validation, separately authorized Pages deployment, and live custom-domain release-identity plus representative-route read-back before claiming the redesign is live"
+  ],
+  "acceptance": [
+    "all generated human HTML surfaces use one shared Register-derived visual grammar and remain complete without JavaScript",
+    "headlines are compact and sans-serif, prose remains comfortably readable, identifiers and metadata use a visibly smaller monospace layer, and no routine page relies on oversized hero text",
+    "hierarchy comes primarily from alignment, whitespace, and hairlines; routine cards have no blurred shadow, decorative gradient, rounded container, colored edge stripe, or ornamental background grid",
+    "topic and object projections render as readable register rows or equivalent aligned records with inspectable interlinks and collapsed technical identity rather than equal-weight HTML bullet dumps or dense card walls",
+    "numbers and states retain explicit labels, source or receipt context, and non-color cues; every displayed total remains derived from typed members",
+    "representative pages have one H1, no scripts, visible keyboard focus, no page-level horizontal overflow at 390 px, and stable canonical and twin links",
+    "accepted Cases 001-004, mission, reviewed open dockets, policies, evidence records, public IDs, and machine-readable representations remain semantically unchanged",
+    "full deterministic validation and an exact-head independent review pass before protected integration"
+  ],
+  "limitations": [
+    "This task changes visual presentation, shared HTML chrome, and accessibility-oriented markup only; it does not change evidence, conclusions, policies, schemas, protocol semantics, governance authority, admission rules, or contribution automation.",
+    "Register is a design source, not an epistemic source. Its sample content, sample identifiers, navigation destinations, and example numbers are not imported into Epistemedia.",
+    "A visual resemblance to Register is not sufficient: the implementation must preserve Epistemedia's existing content density, exact twins, interlinks, and disclosure-safe deterministic compilation.",
+    "The public npm package design-slop-cop was unavailable during the source-template audit. Its score may not be claimed unless the package becomes available; the repository's explicit fourteen design rules must instead be checked directly and the bounded tooling gap recorded.",
+    "No research provider call, evidence admission, case creation, policy change, constitution change, credential or account action, spend, DNS change, merge, publication, or deployment is authorized merely by registering this task; protected integration and deployment retain their normal gates."
+  ]
+}
