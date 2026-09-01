@@ -1,0 +1,10 @@
+{
+  "command": "PYTHONPATH=src make check PYTHON=python3.11",
+  "id": "em:run-receipt:sha256:fbfc387d9b9ce4097a9ef4674c35d439f0563bb40050e910a1af027becaa62ae",
+  "kind": "run-receipt",
+  "recorded_at": "2026-09-01T18:55:42Z",
+  "run_id": "em0044-layout-density-exact-content-head-20260901",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "task_id": "EM-0044"
+}
