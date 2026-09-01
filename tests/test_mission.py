@@ -141,6 +141,7 @@ def test_navigation_discovery_and_sitemap_keep_human_and_agent_doors_open(
     public = tmp_path / "public"
     build_public(ROOT, public)
     home = (public / "index.html").read_text()
+    stylesheet = (public / "register.css").read_text()
     assert '<nav class="primary-nav" aria-label="Primary">' in home
     assert '>How We Know</a>' in home
     assert '>About</a>' in home
@@ -149,8 +150,8 @@ def test_navigation_discovery_and_sitemap_keep_human_and_agent_doors_open(
     for label in ("Substrate", "Docs", "Status", "GitHub"):
         assert f">{label}</a>" in home
     assert '<details class="utility-menu"><summary>Project</summary>' in home
-    assert "@media (max-width:640px)" in home
-    assert ".utility-menu{display:block}" in home
+    assert "@media (max-width:640px)" in stylesheet
+    assert ".utility-menu{display:block}" in stylesheet
 
     llms = (public / "llms.txt").read_text()
     assert "Mission v0.3" in llms
