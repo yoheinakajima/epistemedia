@@ -1,0 +1,78 @@
+{
+  "accepted_base": "b6bf5f53cc249c8c5e41d39bbdc0c986b4dfb446",
+  "actor": {
+    "agent_id": "codex-em0044-builder",
+    "role": "implementation-author"
+  },
+  "candidate_head": "f4f92036c9df6849e4c5837bd246c6b74abeaede",
+  "candidate_tree": "cf0bc442bb6594b6ae563f23b5181df49d14e927",
+  "command": "PYTHONPATH=src make check PYTHON=python3.11",
+  "commands": [
+    "git diff --check",
+    "PYTHONPATH=src python3.11 -m pytest -q tests/test_interfaces.py",
+    "PYTHONPATH=src make check PYTHON=python3.11",
+    "local in-app browser exact-source projection audit at 390 px across 16 representative public routes"
+  ],
+  "id": "em:run-receipt:sha256:9b4ff0d55cba061d13d964b459939c96a6066da409867e17eb3b10ea7c098ebe",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0044.md",
+      "sha256": "02fbc80144b7340ed4e1344f07e85141e20259f0f0373664672d2656a3ee4555"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0044.json",
+      "sha256": "b2b81b554f69e6bc937ccf7be180db54b3a7af63074646253c15bc2365c2412f"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "The phone sweep used a disposable localhost projection compiled from the exact candidate source, not the live custom domain. Deployment and external read-back remain separate post-merge gates.",
+    "Every disclosure was verified by click and every summary remained a named native focusable control. The in-app browser's synthetic Enter and Space dispatch focused the summary but did not toggle its native details state; independent review must reproduce physical-keyboard activation in its clean browser environment.",
+    "This receipt binds the tested content head before its own append-only receipt commit. The final PR head requires fresh CI and exact-head independent review."
+  ],
+  "outputs": {
+    "browser_audit": {
+      "console_errors": 0,
+      "contrast_failures": 0,
+      "details_controls_exercised": 16,
+      "details_click_toggles_passed": 16,
+      "focusable_controls_without_names": 0,
+      "h1_count_per_route": 1,
+      "horizontal_overflow_routes": 0,
+      "positive_tabindex_controls": 0,
+      "routes": 16,
+      "script_count_per_route": 0,
+      "source_order_routes_passed": 16,
+      "stylesheet_count_per_route": 1,
+      "widths_px": [390]
+    },
+    "catalog_id": "em:catalog:sha256:8ce788dc6da110fdfa0bf7207afaed5f3cc1142e4eb7f5b572c2cbc497e641b0",
+    "frontier": "em:frontier:sha256:f33c0dea8dc4ca3589eba2ebb258ce70231e08ab71327ee0ab773d178e630ab3",
+    "manifest_id": "em:release-manifest:sha256:077c227ee506115ba4fb4df70c31aa8836b1a9c36263c7eb5ee350b7fcbde01a",
+    "object_count": 229,
+    "topic_count": 11
+  },
+  "recorded_at": "2026-09-01T23:06:33Z",
+  "run_id": "em0044-contrast-phone-structured-exact-f4f92036-20260901T230633Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "5422dfa4b7946e35a0e4814faaffef24df4be4e349363ce1103cb6322ba2529e",
+    "id": "em:run-receipt:sha256:86dd4da969a4c84388906ee10f991efadc5c3a66bd83cb0c4e95422268c6e901",
+    "path": "runs/proposals/20260901T230620Z-86dd4da969a4.json",
+    "reason": "The CLI receipt records command identity; this append-only record binds the exact candidate head, tree, validated phone sweep, outputs, and limitations required by AGENTS.md."
+  },
+  "task_id": "EM-0044",
+  "tests": {
+    "accepted_input_validation": "pass-229-objects-11-topics",
+    "focused_interface_suite": "pass-32-of-32",
+    "full_repository_check": "pass",
+    "public_projection_audit": "pass-no-findings",
+    "source_state_before_receipt": "unchanged",
+    "deterministic_rebuild": "pass"
+  },
+  "versions": {
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}
