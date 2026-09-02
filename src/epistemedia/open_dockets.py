@@ -1468,10 +1468,20 @@ def docket_markdown(data: dict[str, Any]) -> str:
 def _production_receipt(data: dict[str, Any]) -> dict[str, Any]:
     runtime = data["runtime"]
     elapsed = "unknown — not recorded"
-    try:
-        started = parse_utc_timestamp(runtime["started_at"])
-        completed = parse_utc_timestamp(runtime["completed_at"])
-        total_seconds = max(0, int((completed - started).total_seconds()))
+    timestamp_errors: list[str] = []
+    started = parse_utc_timestamp(
+        runtime.get("started_at"), "runtime.started_at", timestamp_errors
+    )
+    completed = parse_utc_timestamp(
+        runtime.get("completed_at"), "runtime.completed_at", timestamp_errors
+    )
+    if (
+        not timestamp_errors
+        and started is not None
+        and completed is not None
+        and completed >= started
+    ):
+        total_seconds = int((completed - started).total_seconds())
         hours, remainder = divmod(total_seconds, 3600)
         minutes, seconds = divmod(remainder, 60)
         parts = []
@@ -1481,8 +1491,6 @@ def _production_receipt(data: dict[str, Any]) -> dict[str, Any]:
             parts.append(f"{minutes}m")
         parts.append(f"{seconds}s")
         elapsed = " ".join(parts)
-    except (KeyError, TypeError, ValueError):
-        pass
     trace = data["intake"]["trace"]
     cost = trace["cost"]
     return {

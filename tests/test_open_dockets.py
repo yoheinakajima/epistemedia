@@ -867,6 +867,45 @@ def test_human_open_docket_projection_retains_full_reviewable_record(tmp_path: P
         assert f"<code>{html.escape(str(value))}</code>" in rendered
 
 
+@pytest.mark.parametrize(
+    ("runtime", "expected"),
+    [
+        (
+            {
+                "started_at": "2026-08-29T00:00:00Z",
+                "completed_at": "2026-08-29T00:01:00Z",
+            },
+            "1m 0s",
+        ),
+        ({}, "unknown — not recorded"),
+        (
+            {
+                "started_at": "not-a-timestamp",
+                "completed_at": "2026-08-29T00:01:00Z",
+            },
+            "unknown — not recorded",
+        ),
+        (
+            {
+                "started_at": "2026-08-29T00:02:00Z",
+                "completed_at": "2026-08-29T00:01:00Z",
+            },
+            "unknown — not recorded",
+        ),
+    ],
+)
+def test_production_receipt_elapsed_is_validated(
+    tmp_path: Path, runtime: dict[str, str], expected: str
+) -> None:
+    promote(tmp_path)
+    dockets, errors = load_open_dockets(tmp_path)
+    assert errors == []
+    data = dockets[0].projection("https://epistemedia.org")
+    data["runtime"] = runtime
+    assert f"**Research elapsed:** {expected}" in docket_markdown(data)
+    assert f"<dd>{expected}</dd>" in docket_html(data)
+
+
 def test_public_build_exposes_submit_and_current_open_docket_routes(tmp_path: Path) -> None:
     public = tmp_path / "public"
     build_public(ROOT, public)
