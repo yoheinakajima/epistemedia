@@ -25,6 +25,7 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
           persist-credentials: false
       - name: Classify exact accepted-base promotion shape
         id: classify
@@ -35,13 +36,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          actual_head="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq .head.sha)"
-          [[ "$actual_head" == "$REVIEWED_HEAD" ]]
-          paths_file="${RUNNER_TEMP}/attestation-pr-paths.json"
-          gh api --paginate "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files?per_page=100" \
-            --slurp > "$paths_file"
+          pr_file="${RUNNER_TEMP}/attestation-pr.json"
+          gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" > "$pr_file"
+          git fetch --no-tags origin "refs/pull/${PR_NUMBER}/head"
+          [[ "$(git rev-parse FETCH_HEAD)" == "$REVIEWED_HEAD" ]]
           python3 ops/classify_attestation_pr.py \
-            --paths-file "$paths_file" \
+            --pr-file "$pr_file" \
+            --repository "$GITHUB_WORKSPACE" \
+            --reviewed-head "$REVIEWED_HEAD" \
             --github-output "$GITHUB_OUTPUT"
       - name: Create short-lived review-gate App token
         if: steps.classify.outputs.eligible == 'true'
@@ -62,6 +64,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          pr_identity="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq '[.state, .base.sha, .head.sha] | @tsv')"
+          IFS=$'\t' read -r pr_state current_base current_head <<< "$pr_identity"
+          [[ "$pr_state" == "open" ]]
+          [[ "$current_base" == "${{ steps.classify.outputs.base }}" ]]
+          [[ "$current_head" == "$REVIEWED_HEAD" ]]
           gh api --method POST "repos/${GITHUB_REPOSITORY}/check-runs" \
             -f name='independent-review' \
             -f head_sha="$REVIEWED_HEAD" \

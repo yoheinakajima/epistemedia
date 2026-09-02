@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path, PurePosixPath
 
@@ -18,22 +19,64 @@ PROMOTION_FILES = {
     "review.json",
 }
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+SHA = re.compile(r"^[0-9a-f]{40}$")
 
 
-def paths_from_api_payload(payload: object) -> list[str]:
-    """Extract filenames from gh api --paginate --slurp output."""
+def pull_request_identity(payload: object, reviewed_head: str) -> tuple[str, str]:
+    """Return one exact base/head pair or reject a stale workflow-run binding."""
 
-    if not isinstance(payload, list):
-        raise ValueError("changed-file API response must be a JSON array of pages")
-    paths: list[str] = []
-    for page in payload:
-        if not isinstance(page, list):
-            raise ValueError("each changed-file API page must be a JSON array")
-        for item in page:
-            if not isinstance(item, dict) or not isinstance(item.get("filename"), str):
-                raise ValueError("each changed-file API item must have a string filename")
-            paths.append(item["filename"])
-    return paths
+    if not SHA.fullmatch(reviewed_head):
+        raise ValueError("reviewed head must be an exact lowercase commit SHA")
+    if not isinstance(payload, dict):
+        raise ValueError("pull-request response must be a JSON object")
+    try:
+        state = payload["state"]
+        base = payload["base"]["sha"]
+        head = payload["head"]["sha"]
+    except (KeyError, TypeError) as exc:
+        raise ValueError("pull-request response lacks state/base/head identity") from exc
+    if state != "open":
+        raise ValueError("pull request must remain open")
+    if not isinstance(base, str) or not SHA.fullmatch(base):
+        raise ValueError("pull-request base must be an exact lowercase commit SHA")
+    if not isinstance(head, str) or not SHA.fullmatch(head):
+        raise ValueError("pull-request head must be an exact lowercase commit SHA")
+    if head != reviewed_head:
+        raise ValueError("pull-request head moved after the validation run")
+    return base, head
+
+
+def exact_git_changes(repository: Path, base: str, head: str) -> list[tuple[str, str]]:
+    """Read an immutable merge-base diff without rename collapsing."""
+
+    for label, value in (("base", base), ("head", head)):
+        if not SHA.fullmatch(value):
+            raise ValueError(f"{label} must be an exact lowercase commit SHA")
+    command = [
+        "git",
+        "-C",
+        str(repository),
+        "diff",
+        "--name-status",
+        "--no-renames",
+        "-z",
+        f"{base}...{head}",
+        "--",
+    ]
+    completed = subprocess.run(command, check=True, capture_output=True)
+    fields = completed.stdout.split(b"\0")
+    if fields[-1:] == [b""]:
+        fields.pop()
+    if len(fields) % 2:
+        raise ValueError("git name-status output has an incomplete record")
+    changes: list[tuple[str, str]] = []
+    for index in range(0, len(fields), 2):
+        status = fields[index].decode("ascii")
+        path = fields[index + 1].decode("utf-8")
+        if len(status) != 1 or status not in "ACDMTUXB":
+            raise ValueError(f"unsupported git change status: {status}")
+        changes.append((status, path))
+    return changes
 
 
 def classify_attestation_paths(paths: list[str]) -> dict[str, str | bool | None]:
@@ -65,19 +108,42 @@ def classify_attestation_paths(paths: list[str]) -> dict[str, str | bool | None]
     return {"mode": "promotion", "eligible": True, "parent": str(parent)}
 
 
+def classify_attestation_changes(
+    changes: list[tuple[str, str]],
+) -> dict[str, str | bool | None]:
+    """Classify exact-SHA changes, requiring every promotion member to be newly added."""
+
+    paths = [path for _, path in changes]
+    if not any(path.startswith(OPEN_DOCKET_PREFIX) for path in paths):
+        return classify_attestation_paths(paths)
+    if any(status != "A" for status, _ in changes):
+        raise ValueError("every exact promotion member must be newly added")
+    return classify_attestation_paths(paths)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--paths-file", type=Path, required=True)
+    parser.add_argument("--pr-file", type=Path, required=True)
+    parser.add_argument("--repository", type=Path, required=True)
+    parser.add_argument("--reviewed-head", required=True)
     parser.add_argument("--github-output", type=Path, required=True)
     args = parser.parse_args()
     try:
-        payload = json.loads(args.paths_file.read_text(encoding="utf-8"))
-        paths = paths_from_api_payload(payload)
-        result = classify_attestation_paths(paths)
-    except (OSError, json.JSONDecodeError, ValueError) as exc:
+        payload = json.loads(args.pr_file.read_text(encoding="utf-8"))
+        base, head = pull_request_identity(payload, args.reviewed_head)
+        changes = exact_git_changes(args.repository, base, head)
+        result = classify_attestation_changes(changes)
+    except (
+        OSError,
+        UnicodeDecodeError,
+        json.JSONDecodeError,
+        subprocess.CalledProcessError,
+        ValueError,
+    ) as exc:
         print(f"attestation classification failed: {exc}", file=sys.stderr)
         return 1
     with args.github_output.open("a", encoding="utf-8") as output:
+        output.write(f"base={base}\n")
         output.write(f"mode={result['mode']}\n")
         output.write(f"eligible={str(result['eligible']).lower()}\n")
         if result["parent"] is not None:
