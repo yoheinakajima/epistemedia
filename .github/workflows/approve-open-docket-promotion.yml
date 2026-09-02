@@ -25,30 +25,38 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           ref: ${{ github.event.repository.default_branch }}
+          fetch-depth: 0
           persist-credentials: false
-      - name: Confirm exact accepted-base promotion shape
+      - name: Classify exact accepted-base promotion shape
+        id: classify
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
           REVIEWED_HEAD: ${{ github.event.workflow_run.head_sha }}
+          VALIDATED_BASE: ${{ github.event.workflow_run.pull_requests[0].base.sha }}
+          VALIDATED_BASE_REF: ${{ github.event.workflow_run.pull_requests[0].base.ref }}
+          VALIDATED_BASE_REPOSITORY: ${{ github.event.workflow_run.pull_requests[0].base.repo.url }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          REPOSITORY_URL: ${{ github.event.repository.url }}
         shell: bash
         run: |
           set -euo pipefail
-          actual_head="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq .head.sha)"
-          [[ "$actual_head" == "$REVIEWED_HEAD" ]]
-          mapfile -t paths < <(gh api --paginate "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}/files?per_page=100" --jq '.[].filename')
-          [[ ${#paths[@]} -eq 5 ]]
-          parent=""
-          for path in "${paths[@]}"; do
-            [[ "$path" =~ ^research/open-dockets/[^/]+/(controller-attestation\.json|intake\.json|proposal\.json|promotion-receipt\.json|review\.json)$ ]]
-            current_parent="${path%/*}"
-            if [[ -z "$parent" ]]; then
-              parent="$current_parent"
-            else
-              [[ "$parent" == "$current_parent" ]]
-            fi
-          done
+          pr_file="${RUNNER_TEMP}/attestation-pr.json"
+          gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" > "$pr_file"
+          git fetch --no-tags origin "refs/pull/${PR_NUMBER}/head"
+          [[ "$(git rev-parse FETCH_HEAD)" == "$REVIEWED_HEAD" ]]
+          python3 ops/classify_attestation_pr.py \
+            --pr-file "$pr_file" \
+            --repository "$GITHUB_WORKSPACE" \
+            --reviewed-head "$REVIEWED_HEAD" \
+            --validated-base "$VALIDATED_BASE" \
+            --validated-base-ref "$VALIDATED_BASE_REF" \
+            --validated-base-repository "$VALIDATED_BASE_REPOSITORY" \
+            --default-branch "$DEFAULT_BRANCH" \
+            --repository-url "$REPOSITORY_URL" \
+            --github-output "$GITHUB_OUTPUT"
       - name: Create short-lived review-gate App token
+        if: steps.classify.outputs.eligible == 'true'
         id: app-token
         uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
         with:
@@ -58,13 +66,28 @@ jobs:
           permission-contents: read
           permission-pull-requests: read
       - name: Sign the exact promotion receipt head
+        if: steps.classify.outputs.eligible == 'true'
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           REVIEWED_HEAD: ${{ github.event.workflow_run.head_sha }}
           PR_NUMBER: ${{ github.event.workflow_run.pull_requests[0].number }}
+          VALIDATED_BASE: ${{ github.event.workflow_run.pull_requests[0].base.sha }}
+          VALIDATED_BASE_REF: ${{ github.event.workflow_run.pull_requests[0].base.ref }}
+          VALIDATED_BASE_REPOSITORY: ${{ github.event.workflow_run.pull_requests[0].base.repo.url }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          REPOSITORY_URL: ${{ github.event.repository.url }}
         shell: bash
         run: |
           set -euo pipefail
+          pr_identity="$(gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" --jq '[.state, .base.repo.url, .base.ref, .base.sha, .head.sha] | @tsv')"
+          IFS=$'\t' read -r pr_state current_base_repository current_base_ref current_base current_head <<< "$pr_identity"
+          [[ "$pr_state" == "open" ]]
+          [[ "$VALIDATED_BASE_REPOSITORY" == "$REPOSITORY_URL" ]]
+          [[ "$VALIDATED_BASE_REF" == "$DEFAULT_BRANCH" ]]
+          [[ "$current_base_repository" == "$VALIDATED_BASE_REPOSITORY" ]]
+          [[ "$current_base_ref" == "$VALIDATED_BASE_REF" ]]
+          [[ "$current_base" == "$VALIDATED_BASE" ]]
+          [[ "$current_head" == "$REVIEWED_HEAD" ]]
           gh api --method POST "repos/${GITHUB_REPOSITORY}/check-runs" \
             -f name='independent-review' \
             -f head_sha="$REVIEWED_HEAD" \

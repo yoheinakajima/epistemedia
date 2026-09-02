@@ -1,8 +1,17 @@
 from __future__ import annotations
 
 import re
+import subprocess
 from pathlib import Path
 
+import pytest
+
+from ops.classify_attestation_pr import (
+    classify_attestation_changes,
+    classify_attestation_paths,
+    exact_git_changes,
+    pull_request_identity,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = ROOT / ".github" / "workflows"
@@ -78,6 +87,166 @@ def test_pull_request_validation_has_no_secret_or_write_authority() -> None:
     for permission in ("checks: write", "contents: write", "pull-requests: write"):
         assert permission not in text
     assert "run: make check" in text
+
+
+def test_attestation_workflow_is_a_secretless_noop_for_ordinary_prs() -> None:
+    assert classify_attestation_paths(
+        ["README.md", "docs/api-mcp-cli.md", "tests/test_interfaces.py"]
+    ) == {"mode": "ordinary", "eligible": False, "parent": None}
+
+    text = workflow("approve-open-docket-promotion.yml")
+    assert 'gh api "repos/${GITHUB_REPOSITORY}/pulls/${PR_NUMBER}" > "$pr_file"' in text
+    assert "refs/pull/${PR_NUMBER}/head" in text
+    assert '[[ "$(git rev-parse FETCH_HEAD)" == "$REVIEWED_HEAD" ]]' in text
+    assert "--reviewed-head \"$REVIEWED_HEAD\"" in text
+    assert "--validated-base \"$VALIDATED_BASE\"" in text
+    assert "--validated-base-ref \"$VALIDATED_BASE_REF\"" in text
+    assert "--validated-base-repository \"$VALIDATED_BASE_REPOSITORY\"" in text
+    assert "pulls/${PR_NUMBER}/files" not in text
+    assert "python3 ops/classify_attestation_pr.py" in text
+    assert text.count("if: steps.classify.outputs.eligible == 'true'") == 2
+    sign_step = text.split("- name: Sign the exact promotion receipt head", 1)[1]
+    assert '[[ "$pr_state" == "open" ]]' in sign_step
+    assert '[[ "$VALIDATED_BASE_REPOSITORY" == "$REPOSITORY_URL" ]]' in sign_step
+    assert '[[ "$VALIDATED_BASE_REF" == "$DEFAULT_BRANCH" ]]' in sign_step
+    assert '[[ "$current_base_repository" == "$VALIDATED_BASE_REPOSITORY" ]]' in sign_step
+    assert '[[ "$current_base_ref" == "$VALIDATED_BASE_REF" ]]' in sign_step
+    assert '[[ "$current_base" == "$VALIDATED_BASE" ]]' in sign_step
+    assert '[[ "$current_head" == "$REVIEWED_HEAD" ]]' in sign_step
+    token_step = text.split(
+        "- name: Create short-lived review-gate App token", 1
+    )[1].split("- name: Sign the exact promotion receipt head", 1)[0]
+    assert "if: steps.classify.outputs.eligible == 'true'" in token_step
+    assert "secrets.REVIEW_GATE_APP_PRIVATE_KEY" in token_step
+
+
+def test_attestation_classifier_accepts_only_one_exact_receipt_child() -> None:
+    parent = "research/open-dockets/example-claim"
+    exact = [
+        f"{parent}/{name}"
+        for name in (
+            "controller-attestation.json",
+            "intake.json",
+            "proposal.json",
+            "promotion-receipt.json",
+            "review.json",
+        )
+    ]
+    assert classify_attestation_paths(exact) == {
+        "mode": "promotion",
+        "eligible": True,
+        "parent": parent,
+    }
+
+    invalid_fixtures = [
+        exact[:-1],
+        exact + ["README.md"],
+        [path.replace("example-claim", "submissions/example-claim") for path in exact],
+        [path.replace("example-claim", "submissions") for path in exact],
+        [*exact[:-1], f"{parent}/author-supplied-review.json"],
+        [*exact[:-1], "research/open-dockets/another-claim/review.json"],
+    ]
+    for paths in invalid_fixtures:
+        try:
+            classify_attestation_paths(paths)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"docket-sensitive fixture did not fail closed: {paths}")
+
+    assert classify_attestation_changes([("A", path) for path in exact])["eligible"]
+    with pytest.raises(ValueError, match="newly added"):
+        classify_attestation_changes(
+            [("D", exact[0]), ("A", "README.md")]
+        )
+
+
+def test_attestation_diff_is_bound_to_immutable_base_and_head(tmp_path: Path) -> None:
+    def git(*args: str) -> str:
+        return subprocess.run(
+            ["git", "-C", str(tmp_path), *args],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+
+    git("init", "-b", "main")
+    git("config", "user.name", "Fixture")
+    git("config", "user.email", "fixture@example.invalid")
+    (tmp_path / "README.md").write_text("base\n")
+    git("add", "README.md")
+    git("commit", "-m", "base")
+    base = git("rev-parse", "HEAD")
+
+    (tmp_path / "README.md").write_text("ordinary head\n")
+    git("commit", "-am", "ordinary")
+    reviewed_head = git("rev-parse", "HEAD")
+    docket = tmp_path / "research" / "open-dockets" / "later"
+    docket.mkdir(parents=True)
+    for name in (
+        "controller-attestation.json",
+        "intake.json",
+        "proposal.json",
+        "promotion-receipt.json",
+        "review.json",
+    ):
+        (docket / name).write_text("{}\n")
+    git("add", "research")
+    git("commit", "-m", "later mutable head")
+    later_head = git("rev-parse", "HEAD")
+
+    changes = exact_git_changes(tmp_path, base, reviewed_head)
+    assert changes == [("M", "README.md")]
+    assert classify_attestation_changes(changes) == {
+        "mode": "ordinary",
+        "eligible": False,
+        "parent": None,
+    }
+    repository_url = "https://api.github.com/repos/yoheinakajima/epistemedia"
+    identity = {
+        "state": "open",
+        "base": {"sha": base, "ref": "main", "repo": {"url": repository_url}},
+        "head": {"sha": reviewed_head},
+    }
+    assert pull_request_identity(
+        identity,
+        reviewed_head,
+        base,
+        "main",
+        repository_url,
+        "main",
+        repository_url,
+    ) == (base, reviewed_head)
+    with pytest.raises(ValueError, match="head moved"):
+        pull_request_identity(
+            {**identity, "head": {"sha": later_head}},
+            reviewed_head,
+            base,
+            "main",
+            repository_url,
+            "main",
+            repository_url,
+        )
+    with pytest.raises(ValueError, match="base moved"):
+        pull_request_identity(
+            {**identity, "base": {**identity["base"], "sha": later_head}},
+            reviewed_head,
+            base,
+            "main",
+            repository_url,
+            "main",
+            repository_url,
+        )
+    with pytest.raises(ValueError, match="base ref changed"):
+        pull_request_identity(
+            {**identity, "base": {**identity["base"], "ref": "release"}},
+            reviewed_head,
+            base,
+            "main",
+            repository_url,
+            "main",
+            repository_url,
+        )
 
 
 def test_validation_does_not_inject_a_global_clock() -> None:

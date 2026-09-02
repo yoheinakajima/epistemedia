@@ -1,0 +1,56 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0047",
+  "title": "Fail quietly for ordinary PRs at the promotion attestation gate",
+  "status": "ready",
+  "change_class": "governance-normative",
+  "objective": "Prevent the trusted open-docket attestation workflow from reporting false failures for ordinary pull requests while preserving exact-head binding, default-deny promotion classification, App-authenticated signing, and every existing required check.",
+  "depends_on": [
+    "EM-0041",
+    "EM-0046"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "tasks/contracts/EM-0047.json",
+      "docs/execution-plans/EM-0047.md",
+      "docs/agent-ops/open-docket-threat-model.md",
+      ".github/workflows/approve-open-docket-promotion.yml",
+      "ops/classify_attestation_pr.py",
+      "tests/test_open_dockets.py",
+      "tests/test_workflow_security.py",
+      "runs/proposals/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      "research/**",
+      "releases/**",
+      "catalog/**",
+      "src/**",
+      "Dockerfile",
+      "compose.yaml",
+      "server.json"
+    ]
+  },
+  "required_evaluation": [
+    "fixtures covering immutable exact-SHA diffs, head drift, base retargeting, renames, ordinary paths, the exact five-added-file promotion shape, malformed docket-sensitive paths, submission paths, and mixed promotion-plus-unrelated paths",
+    "workflow security checks proving ordinary PRs cannot request the App token or create the protected check",
+    "full deterministic make check, disclosure audit, and changed-path audit",
+    "fresh exact-head independent review before integration"
+  ],
+  "acceptance": [
+    "a successful ordinary pull-request validation produces no false failure from the open-docket attestation workflow",
+    "ordinary pull requests do not evaluate the App secret, request an App token, or create an independent-review check through this workflow",
+    "a docket-sensitive change set that is not exactly one five-new-file receipt-child promotion fails closed before any signing step",
+    "only the validation-event-bound canonical-repository/default-branch/exact-base/exact-head five-new-file promotion shape can request the App token, and all identities are rebound before signing the exact validated head",
+    "the ruleset, required checks, App permissions, accepted promotion validator, and open-docket records remain unchanged",
+    "the change stops at a draft pull request and does not merge, deploy, publish, admit, promote, delete, or rewrite anything"
+  ],
+  "limitations": [
+    "This change removes false workflow failures; it does not automate substantive independent review for ordinary pull requests.",
+    "The protected independent-review requirement remains satisfied only by the installed Review Gate App after a separate exact-head review.",
+    "The attestation workflow remains intentionally specialized to reviewed open-docket receipt children."
+  ]
+}

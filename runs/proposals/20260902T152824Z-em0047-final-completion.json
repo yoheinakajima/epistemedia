@@ -1,0 +1,85 @@
+{
+  "accepted_base": "9711dea6948f944daf663c7df51429f228a506e2",
+  "actor": {
+    "agent_id": "codex-primary",
+    "role": "implementation-author"
+  },
+  "candidate_head": "0f7303a8ff78b312013e71336074c522be4a3191",
+  "candidate_tree": "83ec2cd4a84fb4ec3cf969db14d5a98f23557d76",
+  "command": "PATH=/Users/yoheinakajima/Documents/Codex/2026-08-21/i-downloaded-this-locally-into-yoheinakajima/epistemedia/.venv/bin:$PATH PYTHONPATH=.:src make check",
+  "commands": [
+    "ruff check ops/classify_attestation_pr.py tests/test_workflow_security.py",
+    "PYTHONPATH=.:src pytest tests/test_workflow_security.py tests/test_open_dockets.py -q",
+    "ruby -e 'require \"yaml\"; YAML.load_file(\".github/workflows/approve-open-docket-promotion.yml\")'",
+    "python3 ops/classify_attestation_pr.py --pr-file <pr-92-snapshot> --repository . --reviewed-head 6e5f0da2dc5c7e9bda1f39545c8e1c5a76da3aee --validated-base 9711dea6948f944daf663c7df51429f228a506e2 --validated-base-ref main --validated-base-repository https://api.github.com/repos/yoheinakajima/epistemedia --default-branch main --repository-url https://api.github.com/repos/yoheinakajima/epistemedia --github-output <temporary-output>",
+    "repeat classifier probe with wrong valid-40-hex validated base f8f263c93442b55803c58a36e0b8a47b61c76c08 and require nonzero exit",
+    "PATH=/Users/yoheinakajima/Documents/Codex/2026-08-21/i-downloaded-this-locally-into-yoheinakajima/epistemedia/.venv/bin:$PATH PYTHONPATH=.:src make check"
+  ],
+  "ended_at": "2026-09-02T15:28:24Z",
+  "id": "em:run-receipt:sha256:10303641174a2cd6e36d9cb6cb3f85d279c129381237a7e1c7bd992366b26470",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0047.md",
+      "sha256": "2ff6b5ccf2b846e43f0db51d8b26c6dd133c211dfc6c7b11b0fae22ced29d450"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0047.json",
+      "sha256": "39436adb68a17abc0a8af1ba3030eae6d4c23f939ddfdd2605ea6fc10679c9d3"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "This append-only receipt supersedes the prior hardened EM-0047 receipt after exact-head independent review found that the mutable PR base was not bound to the successful validation event; both earlier receipts and reviewed commits remain unchanged.",
+    "The exact committed content head was validated from the clean scoped worktree before and after the full deterministic wall; this was not a second fresh clone.",
+    "The current PR still runs the superseded attester from main because workflow_run loads the default-branch workflow. A successful live ordinary-PR no-op can only be observed on a later PR after owner-approved integration.",
+    "This receipt binds the final content head before its own append-only receipt commit. The receipt-inclusive pull-request head requires fresh CI and fresh exact-head independent review.",
+    "No App token, private key, secret, check run, review, merge, deployment, publication, admission, or other external mutation was performed."
+  ],
+  "outputs": {
+    "catalog_id": "em:catalog:sha256:4492a3070cd4ef31fa6f8f99dac1f3164f6704453c949af23a8609780cf85585",
+    "frontier": "em:frontier:sha256:7e930ff515998cabb43e724878f9efee658d2811b340a27072cb1041a0af653f",
+    "object_count": 235,
+    "ordinary_fixture": {
+      "eligible": false,
+      "mode": "ordinary",
+      "parent": null
+    },
+    "topic_count": 11,
+    "worktree": {
+      "post_validation_status": "empty",
+      "pre_validation_status": "empty"
+    }
+  },
+  "recorded_at": "2026-09-02T15:28:24Z",
+  "run_id": "em0047-exact-content-0f7303a-20260902T152824Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-09-02T15:26:26Z",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "b09dfbb9ca7fe5017d9960c08ebefe0a5a14fd6882c97a394fe655394cc0ed0e",
+    "id": "em:run-receipt:sha256:d799943cff1a8ad60a665d56a7c8ee0ab49a77da3d23b90036b1ff8b9add661d",
+    "path": "runs/proposals/20260902T150823Z-em0047-hardened-completion.json",
+    "reason": "Fresh independent review of PR #92 at head 6e5f0da2dc5c7e9bda1f39545c8e1c5a76da3aee required binding the canonical repository, default-branch ref, base SHA, and head SHA to the successful validation event and rechecking all identities before signing. This successor records that correction without rewriting prior evidence."
+  },
+  "task_id": "EM-0047",
+  "tests": {
+    "accepted_input_validation": "pass-235-objects-11-topics",
+    "attestation_base_retarget_fixture": "pass-fail-closed",
+    "attestation_exact_sha_binding": "pass",
+    "attestation_head_drift_fixture": "pass-fail-closed",
+    "attestation_rename_fixture": "pass-fail-closed",
+    "canonical_repository_default_branch_binding": "pass",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_open_docket_and_workflow_suite": "pass",
+    "full_repository_check": "pass",
+    "public_projection_audit": "pass-no-findings",
+    "source_state": "unchanged",
+    "workflow_yaml_parse": "pass",
+    "worktree_pre_post_status": "pass-empty"
+  },
+  "versions": {
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}
