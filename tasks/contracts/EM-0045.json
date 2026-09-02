@@ -1,0 +1,63 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0045",
+  "title": "Close the public external-agent loop",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Turn the four-case public alpha into a measurable external-agent loop by deploying the accepted visual release, exposing concise open-docket scope and production receipts, proving the existing human-first Case 002 projection, and activating the already-bounded read-only API and MCP gateway when provider and identity checks can be completed without expanding its authority.",
+  "depends_on": [
+    "EM-0008",
+    "EM-0013",
+    "EM-0014",
+    "EM-0044"
+  ],
+  "authority": {
+    "allowed_paths": [
+      "tasks/contracts/EM-0045.json",
+      "docs/execution-plans/EM-0045.md",
+      "README.md",
+      "docs/**",
+      "ops/**",
+      "src/**",
+      "tests/**",
+      "runs/**",
+      ".github/**",
+      "Dockerfile",
+      "compose.yaml",
+      "server.json",
+      "pyproject.toml"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "catalog/**",
+      "governance/events/**",
+      "research/**",
+      "releases/**"
+    ]
+  },
+  "required_evaluation": [
+    "external read-back of the Pages release identity and representative desktop and 390 px routes",
+    "open-docket projection tests proving that scope and production metrics are derived from accepted records without changing evidence or verdicts",
+    "Case 002 browser review confirming that repeated exact spans and secondary ledgers are collapsed by default while complete machine records remain reachable",
+    "API and MCP protocol, identity-parity, Origin, error, resource-bound, and disclosure checks against the exact accepted deployment",
+    "full deterministic make check, public-projection audit, changed-path audit, and fresh exact-head independent review before integration"
+  ],
+  "acceptance": [
+    "the current accepted main release is deployed and its live manifest identifies the accepted commit",
+    "each reviewed open docket states its bounded scope in the first reading screen and exposes a compact production receipt derived from existing runtime, source, span, result, trace, intervention, review, and cost records",
+    "open-docket social metadata describes a bounded contribution rather than an unqualified universal verdict",
+    "Case 002 remains readable by default without deleting, weakening, or hiding access to any accepted occurrence, span, ledger, or machine-readable representation",
+    "the public agent handoff supplies a minimal cold-start instruction that requires no private context or owner-selected claim",
+    "if activated, anonymous REST and Streamable HTTP MCP reads expose the same commit, catalog, frontier, policies, and compiler as the human projection and grant no mutation or arbitrary-fetch authority",
+    "provider, DNS, release, and endpoint state are described as live only after direct HTTPS read-back",
+    "accepted cases, evidence, evaluations, policies, schemas, identifiers, contribution admission rules, and research records remain unchanged"
+  ],
+  "limitations": [
+    "This task measures and presents the existing contribution protocol; it does not auto-admit agent output or weaken independent review.",
+    "Historical effort is not reconstructed when the accepted record lacks it; unknown remains a valid production-receipt value.",
+    "No secret enters Git, no paid plan or unbounded provider resource is authorized, and no API or MCP write capability is introduced.",
+    "A provider or DNS action that cannot be completed through an already authenticated owner-controlled surface must stop at an exact handoff rather than soliciting credentials in chat."
+  ]
+}

@@ -837,6 +837,7 @@ def test_human_open_docket_projection_retains_full_reviewable_record(tmp_path: P
         "Counterevidence",
         "Negative results",
         "Lineage",
+        "Production receipt",
         "Independent review receipt",
         "Edition",
         "License",
@@ -848,9 +849,15 @@ def test_human_open_docket_projection_retains_full_reviewable_record(tmp_path: P
         "Counterevidence",
         "Negative results",
         "Lineage",
+        "Production receipt",
         "Independent review receipt",
     ):
         assert label in rendered
+    assert "answers only the stated question" in markdown
+    assert "answers only the stated question" in rendered
+    assert "Recorded interventions" in markdown
+    assert "Reported marginal cost" in rendered
+    assert str(len(data["sources"])) in rendered
     for value in (
         data["lineage"]["prompt_sha256"],
         data["lineage"]["run_identity"],
@@ -905,6 +912,15 @@ def test_public_build_exposes_submit_and_current_open_docket_routes(tmp_path: Pa
     assert agents_json["data"]["reviewed_open_dockets"]["count"] == len(dockets)
     assert "remain distinct from numbered How We Know cases" in how_we_know
     assert (public / "open-dockets" / "index.html").is_file()
+    docket_html_text = (
+        public / "open-dockets" / first["slug"] / "index.html"
+    ).read_text()
+    assert '<meta property="og:title"' in docket_html_text
+    assert (
+        '<meta property="og:description" content="Bounded, independently reviewed open docket.'
+        in docket_html_text
+    )
+    assert '<meta name="twitter:card" content="summary">' in docket_html_text
 
 
 def test_ci_uses_base_validator_for_submission_only_pull_requests() -> None:
