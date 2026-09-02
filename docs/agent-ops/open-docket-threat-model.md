@@ -18,6 +18,7 @@ untrusted coordination input.
 | Spam, replay, or duplicate proposal | Proposal ID and canonical digest are stable; duplicate submission directories and accepted slugs fail closed. |
 | Workflow privilege escalation | Pull-request CI has read-only contents, pull-request, and Checks permissions, no persisted credentials, no `pull_request_target`, and no deployment environment. Checks access is read-only so promotion validation can authenticate the parent review binding. |
 | Self-integration | Accepted-base promotion validation first requires an `independent-evidence-review` check from App ID `4766776` on the exact reviewed parent, cryptographically binding the review and controller-attestation bytes. Only then may a trusted post-check `workflow_run` ask the same repository-scoped App to sign the exact receipt child. The App can write checks but cannot write contents, approve, merge, or deploy. |
+| Attestation scope confusion | The trusted post-check workflow binds the current PR head before inspecting its complete path list. Ordinary PRs are an explicit no-op before App-token creation. Any docket-sensitive diff that is not exactly one five-file receipt child fails closed. |
 | Silent admission | A valid queue keeps the required check blocking. Only an accepted-base-validated promotion with a receipt-only child creates a clearly labeled open docket after protected merge and separate deployment. |
 | Replay under a new slug | Accepted proposal IDs and canonical digests are globally unique; duplicates fail closed. |
 | Forged reviewer identity | Agent, run, prompt, canonical model family, toolchain, and independently retrieved artifact set are typed, bound, and compared with the submitter trace. |
@@ -28,6 +29,9 @@ controls. EM-0038 separately governs any future hosted MCP queue, retention syst
 credential.
 
 The trusted receipt-head App check is an activation gate, not a substitute for evidence review.
+It is specialized to exact open-docket receipt children. Ordinary pull requests can satisfy the
+same protected check only through a separate App-authenticated exact-head review path; this
+workflow neither signs nor reports a failure for an all-ordinary path set.
 The separate parent-head `independent-evidence-review` check is emitted by the control room only
 after a fresh non-author reviewer returns an exact-head receipt; contributor-authored reviewer JSON
 cannot create or satisfy it. No cold-start

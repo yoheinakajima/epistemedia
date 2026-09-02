@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
+from ops.classify_attestation_pr import classify_attestation_paths, paths_from_api_payload
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = ROOT / ".github" / "workflows"
@@ -78,6 +79,64 @@ def test_pull_request_validation_has_no_secret_or_write_authority() -> None:
     for permission in ("checks: write", "contents: write", "pull-requests: write"):
         assert permission not in text
     assert "run: make check" in text
+
+
+def test_attestation_workflow_is_a_secretless_noop_for_ordinary_prs() -> None:
+    assert paths_from_api_payload(
+        [[{"filename": "README.md"}], [{"filename": "docs/api-mcp-cli.md"}]]
+    ) == ["README.md", "docs/api-mcp-cli.md"]
+    assert classify_attestation_paths(
+        ["README.md", "docs/api-mcp-cli.md", "tests/test_interfaces.py"]
+    ) == {"mode": "ordinary", "eligible": False, "parent": None}
+
+    text = workflow("approve-open-docket-promotion.yml")
+    assert "actual_head" in text
+    assert '[[ "$actual_head" == "$REVIEWED_HEAD" ]]' in text
+    assert "--paginate" in text
+    assert "--slurp" in text
+    assert "--slurp --jq" not in text
+    assert "python3 ops/classify_attestation_pr.py" in text
+    assert text.count("if: steps.classify.outputs.eligible == 'true'") == 2
+    token_step = text.split(
+        "- name: Create short-lived review-gate App token", 1
+    )[1].split("- name: Sign the exact promotion receipt head", 1)[0]
+    assert "if: steps.classify.outputs.eligible == 'true'" in token_step
+    assert "secrets.REVIEW_GATE_APP_PRIVATE_KEY" in token_step
+
+
+def test_attestation_classifier_accepts_only_one_exact_receipt_child() -> None:
+    parent = "research/open-dockets/example-claim"
+    exact = [
+        f"{parent}/{name}"
+        for name in (
+            "controller-attestation.json",
+            "intake.json",
+            "proposal.json",
+            "promotion-receipt.json",
+            "review.json",
+        )
+    ]
+    assert classify_attestation_paths(exact) == {
+        "mode": "promotion",
+        "eligible": True,
+        "parent": parent,
+    }
+
+    invalid_fixtures = [
+        exact[:-1],
+        exact + ["README.md"],
+        [path.replace("example-claim", "submissions/example-claim") for path in exact],
+        [path.replace("example-claim", "submissions") for path in exact],
+        [*exact[:-1], f"{parent}/author-supplied-review.json"],
+        [*exact[:-1], "research/open-dockets/another-claim/review.json"],
+    ]
+    for paths in invalid_fixtures:
+        try:
+            classify_attestation_paths(paths)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"docket-sensitive fixture did not fail closed: {paths}")
 
 
 def test_validation_does_not_inject_a_global_clock() -> None:

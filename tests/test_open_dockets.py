@@ -1012,7 +1012,11 @@ def test_trusted_post_check_workflow_can_only_sign_exact_promotions() -> None:
     assert "independent-review" in workflow
     assert "gh pr review" not in workflow
     assert "gh pr merge" not in workflow
-    assert "${#paths[@]} -eq 5" in workflow
+    assert "python3 ops/classify_attestation_pr.py" in workflow
+    assert workflow.count("if: steps.classify.outputs.eligible == 'true'") == 2
+    assert workflow.index("actual_head") < workflow.index(
+        "python3 ops/classify_attestation_pr.py"
+    )
     assert "pull_request_target" not in workflow
 
 
