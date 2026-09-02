@@ -4,7 +4,7 @@
 >
 > An open, federated knowledge system for humans and agents—built from sources, claims, evidence, provenance, policies, and reproducible projections rather than one canonical page.
 
-**Status:** public alpha with the canonical static site live at <https://epistemedia.org/> and HTTPS enforced. `www.epistemedia.org` redirects to the canonical origin. The repository, local site, API/MCP implementation, CLI, governance substrate, and deterministic build pipeline are implemented; the `episte.media` sharing redirect and hosted API/MCP runtime have not passed production read-back and are not asserted as live.
+**Status:** public alpha. The canonical static site is live at <https://epistemedia.org/> with HTTPS enforced, and `www.epistemedia.org` redirects to that origin. The anonymous read-only REST API at <https://api.epistemedia.org/v1> and Streamable HTTP MCP endpoint at <https://mcp.epistemedia.org/mcp> have passed production read-back from the same v0.2.0 release identity. The gateway runs on free compute, can cold-start after inactivity, and carries no availability commitment. The `episte.media` sharing redirect and hosted authenticated submission queue are not live.
 
 The owner-approved, versioned public mission is [`Knowledge that can show its work`](catalog/mission.json). Its human projection is compiled at [`/about/`](https://epistemedia.org/about/) after deployment; its machine twin preserves the same version, current-state boundaries, and amendment status.
 
@@ -170,7 +170,7 @@ epistemedia research validate proposal.json
 epistemedia mcp serve
 ```
 
-Remote-read commands are implemented for use after the public gateway is activated:
+Remote-read commands use the live anonymous gateway:
 
 ```bash
 epistemedia search "federated knowledge" --remote
@@ -226,7 +226,8 @@ this predicate. After the reviewer pushes the exact receipt-only child, accepted
 can trigger the repository-scoped review-gate App to sign that receipt head. The App cannot write
 contents, approve, merge, or deploy, so a valid future docket needs no owner click but still cannot
 promote itself or forge the substantive review gate.
-Hosted API/MCP submission remains unavailable.
+The live API and MCP service is read-only. Hosted API/MCP submission remains unavailable; GitHub
+draft pull requests are the active untrusted queue.
 
 ## Target architecture
 
@@ -288,19 +289,23 @@ https://epistemedia.org/openapi.json    Static API contract
 https://epistemedia.org/mcp/server.json Static MCP descriptor
 ```
 
-Generated in the current candidate projection, pending separately authorized deployment and live
-provider read-back:
+Verified live agent surface:
 
 ```text
 https://epistemedia.org/agents/         Agent research kit
 ```
 
-Reserved production destinations, published in static discovery metadata but not yet backed by a verified hosted runtime:
+Verified live anonymous read-only destinations:
 
 ```text
 https://api.epistemedia.org/v1          Read-only public API
 https://mcp.epistemedia.org/mcp         Remote MCP
 ```
+
+Both gateway hostnames serve the same accepted v0.2.0 commit, catalog, frontier, and compiler as
+the static release. They run on a free service that may sleep after inactivity; see the
+[`v0.2.0 public-gateway activation receipt`](ops/activation/2026-09-01-v0.2.0-public-gateway.md)
+for exact identities, security probes, and limitations.
 
 `https://episte.media/<path>` is reserved as a shorter path-preserving sharing redirect to `https://epistemedia.org`; the redirect is not live yet and will not host a second canonical copy.
 
@@ -339,9 +344,9 @@ The threat model includes source prompt injection, evaluator collusion, Sybil sw
 
 ## Project status
 
-Current maturity: **public alpha / staged service activation**.
+Current maturity: **public alpha / read-only gateway pilot**.
 
-Implemented locally and in the repository:
+Implemented and externally verified where noted:
 
 - protocol and reference kernel;
 - deterministic site compiler;
@@ -350,16 +355,19 @@ Implemented locally and in the repository:
 - executable governance and contribution substrate;
 - CI, Pages, container, release, and package workflows;
 - canonical GitHub Pages deployment at `https://epistemedia.org` with externally verified HTTPS, routes, and artifact identity.
+- anonymous read-only REST and Streamable HTTP MCP endpoints, externally verified against the
+  v0.2.0 release identity.
 
 Not yet asserted as live:
 
 - the `episte.media` sharing redirect;
-- public API/MCP runtime;
+- hosted authenticated API/MCP submission or any remote write surface;
 - PyPI package publication;
 - MCP Registry publication;
 - autonomous privileged integration controller.
 
-See [`docs/pre-public-owner-handoff.md`](docs/pre-public-owner-handoff.md) and [`ops/activation/`](ops/activation/) for activation state and owner-only steps.
+See the [`v0.2.0 public-gateway activation receipt`](ops/activation/2026-09-01-v0.2.0-public-gateway.md)
+and [`ops/activation/`](ops/activation/) for current and historical activation evidence.
 
 ## License
 

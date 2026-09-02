@@ -1,0 +1,74 @@
+{
+  "accepted_base": "f92846570180dfa4511263f8ba98ecd18f7772c9",
+  "actor": {
+    "agent_id": "codex-primary",
+    "role": "implementation-author"
+  },
+  "candidate_head": "c308fb1fe04a6a4545254150ad5fec47cdb84d20",
+  "candidate_tree": "01379c9f1a6ef71148c4c33af5fa8bb15d70dd7e",
+  "command": "PYTHONPATH=src PATH=/private/tmp/epistemedia-docs.Eu1pC3/repo/.venv/bin:$PATH make check PYTHON=/private/tmp/epistemedia-docs.Eu1pC3/repo/.venv/bin/python",
+  "commands": [
+    "git clone https://github.com/yoheinakajima/epistemedia.git /private/tmp/em46-receipt-repro.Agd9Vl/repo",
+    "git checkout --detach c308fb1fe04a6a4545254150ad5fec47cdb84d20",
+    "git status --short",
+    "PYTHONPATH=src PATH=/private/tmp/epistemedia-docs.Eu1pC3/repo/.venv/bin:$PATH make check PYTHON=/private/tmp/epistemedia-docs.Eu1pC3/repo/.venv/bin/python",
+    "git status --short"
+  ],
+  "ended_at": "2026-09-02T05:21:11Z",
+  "id": "em:run-receipt:sha256:64d3a6f010c6a8c0db5ae1053eb48f0472178f93b602c2f1324d0337e6616784",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0046.md",
+      "sha256": "7c78213efc56298e4380e5075af8e3c53a22b8993fba7243a10e61d0359ab778"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0046.json",
+      "sha256": "52c47560159d4c6184e5faf56a38086f6d97ce1143de3ba08258dd419b8d90d3"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "This receipt supersedes only the incorrect catalog and frontier identity in the preserved prior completion receipt. It retains that receipt as an auditable failed measurement rather than rewriting it.",
+    "The clean detached reproduction used the existing verified dependency environment without installing or modifying the fresh clone; its Git status was empty before and after validation.",
+    "The exact public service identity and provider observations remain recorded in ops/activation/2026-09-01-v0.2.0-public-gateway.md. This run did not redeploy, mutate DNS, publish a release, or exercise a write surface.",
+    "Render free compute may cold-start after inactivity and carries no availability commitment.",
+    "This superseding receipt binds the cleanly reproduced committed content head before its own append-only receipt commit. The final receipt-inclusive pull-request head requires fresh CI and exact-head independent review before integration.",
+    "Merging the documentation does not deploy Pages automatically. Any later coordinated static and runtime release must preserve exact commit, catalog, frontier, and compiler parity."
+  ],
+  "outputs": {
+    "catalog_id": "em:catalog:sha256:cc48f25c9c894c6667cbbd71ade9a7268e10a2950afdb48b6f6c077c04b41fbe",
+    "clean_clone": {
+      "post_validation_status": "empty",
+      "pre_validation_status": "empty"
+    },
+    "frontier": "em:frontier:sha256:05c0c278d39d88a3371ea353ef40c0689c8b9c9cb1e551ea6b7974bb0c0f5bc0",
+    "object_count": 233,
+    "topic_count": 11
+  },
+  "recorded_at": "2026-09-02T05:21:11Z",
+  "run_id": "em0046-clean-clone-reproducible-c308fb1-20260902T052111Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-09-02T05:19:07Z",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "1908443a2d1925e205cea936ea6f33395c9ba8416f2174803f8c27a7db3165b4",
+    "id": "em:run-receipt:sha256:04b6b0a8818d55093f1142797679acd83c1b904348c979fe1e9020ed6e41044e",
+    "path": "runs/proposals/20260902T030220Z-em0046-completion.json",
+    "reason": "The prior receipt recorded catalog and frontier values generated before its declared content commit existed, so those values do not reproduce from that commit. This append-only successor records a clean detached checkout of the declared commit and its exact reproducible identities."
+  },
+  "task_id": "EM-0046",
+  "tests": {
+    "accepted_input_validation": "pass-233-objects-11-topics",
+    "clean_clone_pre_post_status": "pass-empty",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "full_repository_check": "pass",
+    "full_repository_suite": "pass",
+    "public_projection_audit": "pass-no-findings",
+    "source_state": "unchanged"
+  },
+  "versions": {
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}

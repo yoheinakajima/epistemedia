@@ -4,6 +4,14 @@ The API and MCP gateway is a read-only projection service. It receives an accept
 
 Local conformance does not mean the production endpoints are live. A provider deployment becomes public state only after external HTTPS read-back records its URL, accepted commit, catalog, frontier, policies, compiler, content digest, limits, and smoke-test results.
 
+## Current public deployment
+
+The v0.2.0 anonymous read-only gateway passed external DNS, TLS, REST, MCP, and identity read-back
+on 2026-09-01. Both `api.epistemedia.org` and `mcp.epistemedia.org` serve the exact container digest
+recorded in the [v0.2.0 public-gateway activation receipt](../ops/activation/2026-09-01-v0.2.0-public-gateway.md).
+It is a free-compute pilot that may cold-start and carries no SLA. This receipt activates no write,
+submission, arbitrary-fetch, admission, deployment, or publication authority.
+
 ## Application limits
 
 The gateway enforces the following defaults. A deployment may lower them, but must not raise them without a recorded resource review.

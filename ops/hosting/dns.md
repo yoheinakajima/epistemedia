@@ -12,6 +12,11 @@ The accepted deployment topology is:
 
 DNS records are external authority and are not canonical until a production run receipt records the actual provider configuration, observed TLS certificates, redirects, endpoint manifests, accepted commit, catalog ID, and frontier.
 
+Current read-back: the v0.2.0 public-gateway receipt records verified CNAME, TLS, REST, and MCP
+identity for `api.epistemedia.org` and `mcp.epistemedia.org`. The `episte.media` redirect remains
+reserved and unverified. See
+[`ops/activation/2026-09-01-v0.2.0-public-gateway.md`](../activation/2026-09-01-v0.2.0-public-gateway.md).
+
 ## Deployment invariants
 
 - The custom domain does not participate in canonical catalog identity.

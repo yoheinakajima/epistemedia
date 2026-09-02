@@ -149,10 +149,10 @@
     "governance_open": true,
     "four_case_library_live_after_deployment_readback": true,
     "cold_start_research_kit_live_after_deployment_readback": true,
-    "hosted_api_live": false,
-    "hosted_mcp_live": false,
+    "hosted_api_live": true,
+    "hosted_mcp_live": true,
     "authenticated_submission_queue_live": false,
     "second_realm_live": false,
-    "note": "The repository, deterministic compiler, four reviewed cases, and public read-only research kit are implemented. The hosted API, hosted MCP service, authenticated submission queue, and second realm are not live."
+    "note": "The repository, deterministic compiler, four reviewed cases, public research kit, and anonymous read-only REST and MCP gateway are live. The gateway runs on free compute and may cold-start. The authenticated submission queue and second realm are not live; GitHub draft pull requests remain the untrusted submission queue."
   }
 }

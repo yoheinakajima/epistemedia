@@ -138,16 +138,8 @@ def load_mission(root: Path) -> dict[str, Any]:
     for key in state_fields - {"summary", "note"}:
         if not isinstance(state[key], bool):
             raise MissionError(f"current_state.{key} must be boolean")
-    if any(
-        state[key]
-        for key in (
-            "hosted_api_live",
-            "hosted_mcp_live",
-            "authenticated_submission_queue_live",
-            "second_realm_live",
-        )
-    ):
-        raise MissionError("future public services must fail closed in mission v0.3")
+    if state["authenticated_submission_queue_live"] or state["second_realm_live"]:
+        raise MissionError("unactivated public services must fail closed in mission v0.3")
     source_bytes = path.read_bytes()
     result = dict(raw)
     result["mission_id"] = "em:mission:sha256:" + hashlib.sha256(
@@ -444,7 +436,7 @@ def reader_check_document(mission: dict[str, Any], base_url: str) -> dict[str, A
             {
                 "id": "current-limit",
                 "question": "Name one important thing Epistemedia does not currently provide or claim.",
-                "success_signal": "The reader names a real boundary such as no hosted API/MCP queue, no global truth stamp, or no second realm.",
+                "success_signal": "The reader names a real boundary such as no hosted submission queue, no global truth stamp, or no second realm.",
             },
             {
                 "id": "inspect-source",

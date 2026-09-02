@@ -4,6 +4,10 @@ Status: owner-directed product brief, 2026-08-21.
 
 This document records product and experience direction. It does not amend the constitution, establish protocol semantics, admit factual claims, or authorize a task to evaluate or merge itself. Implementation authority remains in immutable task contracts and accepted repository policy.
 
+Current-state note, 2026-09-01: Cases 001–004, the public research kit, and the anonymous read-only
+REST/MCP gateway are now live. Historical sequencing below remains the accepted rationale; the
+authenticated submission queue, second realm, and broader public launch remain open.
+
 ## Product decision
 
 Epistemedia's first outward-facing knowledge realm will be presented to people as **How We Know**.
@@ -40,9 +44,10 @@ Before the first reviewed vertical slice, the reader experience remained a boots
 
 The accepted research dossier and EM-0020 compiler work address that first-vertical-slice gap in
 repository source: the homepage leads with an external question, source spans are inspectable,
-lineage counts are derived, and two named policies materially differ. Wider coverage, hosted
-API/MCP activation, and evidence from real-reader comprehension remain open work. Deployment is
-only live when the Pages provider and public routes pass read-back.
+lineage counts are derived, and two named policies materially differ. Wider coverage and evidence
+from real-reader comprehension remained open at that stage. The later v0.2.0 read-only gateway
+activation is recorded separately; any deployment is live only when its provider and public routes
+pass read-back.
 
 ## Product promise
 
@@ -149,7 +154,9 @@ Other lens names may remain machine-readable experimental metadata, but the publ
 4. Research and admit one real lineage-collapse dossier under explicit source, license, span, and review requirements.
 5. Compile sentence X-ray, lineage collapse, two real policy views, and the featured homepage from the same dossier objects.
 6. Pilot five claim families and measure extraction fidelity, review time, lineage precision, policy divergence, and reader comprehension.
-7. Only after the pilot passes, build conversation import, newsletter capture, high-volume extraction, consolidation proposals, hosted API/MCP activation, and broader realm growth.
+7. Only after the pilot passes, activate a bounded read-only API/MCP gateway; keep conversation
+   import, newsletter capture, high-volume extraction, consolidation proposals, authenticated
+   submission, and broader realm growth separately gated.
 
 ## Pilot measurements and stop conditions
 
@@ -183,7 +190,7 @@ Synthetic usability checks may validate mechanics. Claims about human understand
 - public federation or incentive design;
 - automatic admission of extracted model output;
 - high-volume capture before a reviewed vertical slice;
-- activating hosted API or MCP merely because endpoints exist;
+- treating a hosted endpoint as live before exact identity and external provider read-back;
 - presenting application-level dossier fields as a stable protocol standard;
 - replacing the append-only governance, disclosure, and no-self-authorization spine.
 
