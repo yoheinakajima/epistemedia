@@ -1,0 +1,74 @@
+{
+  "accepted_base": "9711dea6948f944daf663c7df51429f228a506e2",
+  "actor": {
+    "agent_id": "codex-primary",
+    "role": "implementation-author"
+  },
+  "candidate_head": "f8f263c93442b55803c58a36e0b8a47b61c76c08",
+  "candidate_tree": "a6725589e5509757ec9ba9973fa09188415dec0d",
+  "command": "PATH=/Users/yoheinakajima/Documents/Codex/2026-08-21/i-downloaded-this-locally-into-yoheinakajima/epistemedia/.venv/bin:$PATH PYTHONPATH=.:src make check",
+  "commands": [
+    "ruff check ops/classify_attestation_pr.py tests/test_workflow_security.py",
+    "PYTHONPATH=.:src pytest tests/test_workflow_security.py tests/test_open_dockets.py -q",
+    "ruby -e 'require \"yaml\"; YAML.load_file(\".github/workflows/approve-open-docket-promotion.yml\")'",
+    "gh api --paginate repos/yoheinakajima/epistemedia/pulls/91/files?per_page=100 --slurp > <temporary-pages>",
+    "python3 ops/classify_attestation_pr.py --paths-file <temporary-pages> --github-output <temporary-output>",
+    "PATH=/Users/yoheinakajima/Documents/Codex/2026-08-21/i-downloaded-this-locally-into-yoheinakajima/epistemedia/.venv/bin:$PATH PYTHONPATH=.:src make check"
+  ],
+  "ended_at": "2026-09-02T14:45:56Z",
+  "id": "em:run-receipt:sha256:bfee1a9801d08af2f67f5676027d51ff465328b45657564701342b15ca7523ee",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0047.md",
+      "sha256": "ed0a29b5ba909a4f41692f84aab2d0aab09fd1b34ea4942fe3ca4f0b2207b583"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0047.json",
+      "sha256": "d89aaced1d7dd40412ad9a91fee9b78edd9611f3292cd1c969ef6d9cbc23362f"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "The workflow transport was exercised against the public changed-file payload for merged ordinary PR #91; no App token, private key, secret, check run, review, or repository mutation was requested.",
+    "The exact committed content head was validated from a clean scoped worktree before and after the full deterministic wall; this was not a second fresh clone.",
+    "This receipt binds the committed content head before its own append-only receipt commit. The final receipt-inclusive pull-request head still requires CI and fresh exact-head independent review.",
+    "This repair only makes the specialized open-docket attester a successful no-op for ordinary PRs. It does not automate substantive review or change the protected independent-review requirement."
+  ],
+  "outputs": {
+    "catalog_id": "em:catalog:sha256:311fffae200c3c538b2898d07dd3465fc9cddf5f6d9b312c9066bf642e8cd465",
+    "frontier": "em:frontier:sha256:5b0f0a12d5c7dbb9d7c14f45d547d9c2f97bd9336534e7df154599b5bf076949",
+    "object_count": 235,
+    "ordinary_fixture": {
+      "eligible": false,
+      "mode": "ordinary",
+      "parent": null
+    },
+    "topic_count": 11,
+    "worktree": {
+      "post_validation_status": "empty",
+      "pre_validation_status": "empty"
+    }
+  },
+  "recorded_at": "2026-09-02T14:45:56Z",
+  "run_id": "em0047-exact-content-f8f263c-20260902T144556Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-09-02T14:44:00Z",
+  "status": "reported",
+  "task_id": "EM-0047",
+  "tests": {
+    "accepted_input_validation": "pass-235-objects-11-topics",
+    "attestation_pagination_transport": "pass-live-ordinary-pr-payload",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_open_docket_and_workflow_suite": "pass",
+    "full_repository_check": "pass",
+    "public_projection_audit": "pass-no-findings",
+    "source_state": "unchanged",
+    "workflow_yaml_parse": "pass",
+    "worktree_pre_post_status": "pass-empty"
+  },
+  "versions": {
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}
