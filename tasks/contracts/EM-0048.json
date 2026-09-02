@@ -1,0 +1,54 @@
+{
+  "$schema": "https://epistemedia.com/schemas/task-contract-v1.json",
+  "id": "EM-0048",
+  "title": "Add a reversible philosophy inquiry application profile",
+  "status": "ready",
+  "change_class": "ordinary-implementation",
+  "objective": "Add an argument-agnostic, application-level philosophy inquiry bundle validator, disclosure-safe projector, deterministic Markdown/JSON renderer, branch comparison, and read-only adapter without changing normative protocol semantics or accepted public knowledge.",
+  "depends_on": ["EM-0018"],
+  "authority": {
+    "allowed_paths": [
+      "tasks/contracts/EM-0048.json",
+      "docs/execution-plans/EM-0048.md",
+      "docs/philosophy-inquiry.md",
+      "src/epistemedia/philosophy_inquiry.py",
+      "tests/fixtures/philosophy-inquiry/**",
+      "tests/test_philosophy_inquiry.py",
+      "runs/proposals/**"
+    ],
+    "forbidden_paths": [
+      "constitution/**",
+      "policies/**",
+      "schemas/**",
+      "governance/events/**",
+      "research/**",
+      "catalog/**",
+      "generated/**",
+      "site/**",
+      "releases/**",
+      "src/epistemedia/cli.py",
+      "src/epistemedia/server.py",
+      ".github/**"
+    ]
+  },
+  "required_evaluation": [
+    "fictional fixtures covering referential closure, content identities, argument/source distinctions, evaluation frontiers, branch diffs, and private/public noninterference",
+    "tests proving reordered and duplicate imports produce the same content-addressed projection",
+    "tests proving private mutations cannot affect any public count, text, topology, ordering, or manifest digest",
+    "full deterministic make check and changed-path audit",
+    "exact-head independent review before integration"
+  ],
+  "acceptance": [
+    "a strict application-level philosophy inquiry bundle distinguishes propositions from assertions, premise roles from textual evidence, source works from snapshots and spans, inferential support from evidential support, and policy-relative evaluation from truth",
+    "the importer fails closed on unknown references, hash mismatches, duplicate conflicting identities, and forbidden intrinsic truth or confidence fields",
+    "private and disclosure-safe public dossiers compile deterministically to Markdown and JSON twins from the same validated bundle",
+    "branch comparison exposes added, removed, and revised claims, changed inference edges, concessions, scope changes, sources, objections, replies, and manuscript consequences",
+    "the generic implementation and fixtures contain no unpublished competition content, private logs, rankings, selections, prompts, manuscripts, or private-state-revealing hashes",
+    "the change stops at a draft pull request and does not merge, deploy, publish a release, admit knowledge, or alter normative authority"
+  ],
+  "limitations": [
+    "The profile is a reversible application contract, not an Epistemic Mesh protocol standard.",
+    "The bounded task exposes Python read adapters; integrating new public CLI, REST, or MCP routes requires a separate contract because those paths are intentionally forbidden here.",
+    "Fictional fixtures prove software behavior, not the truth or originality of any philosophical argument."
+  ]
+}
