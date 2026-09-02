@@ -1,0 +1,97 @@
+{
+  "accepted_base": "0f0f0d06a0f7581cbdf86719088f5e97cb44737e",
+  "actor": {
+    "agent_id": "codex-primary",
+    "role": "implementation-author"
+  },
+  "candidate_head": "b89bf54d4432f122d9416e596a75ae2c1ed7001d",
+  "candidate_tree": "7d489c8204a2c97607553e6e5d4793bf4d76c1c0",
+  "command": "PYTHONPATH=src PATH=.venv/bin:$PATH make check PYTHON=.venv/bin/python",
+  "commands": [
+    "git diff --check",
+    "PYTHONPATH=src .venv/bin/python -m pytest -q tests/test_open_dockets.py",
+    "PYTHONPATH=src PATH=.venv/bin:$PATH make check PYTHON=.venv/bin/python",
+    "local in-app browser exact-source projection audit at 390 px",
+    "external HTTPS read-back of the accepted Pages release manifest",
+    "read-only DNS and provider-authority inspection"
+  ],
+  "ended_at": "2026-09-02T00:55:14Z",
+  "id": "em:run-receipt:sha256:26ab45025765f941917415d552161952567eb2150aa7123c0f498a8482cab4bd",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0045.md",
+      "sha256": "baf1a5db213ef9c6d3a666fb8462120e304219e939fee2bc1833dba25db9019b"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0045.json",
+      "sha256": "503074081307424eb3471731dc01d961d489cc6b56280d4f14495a63be52138f"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "The exact 390 px candidate audit covered the representative reviewed open docket after the elapsed-time correction. The independent reviewer separately completed a twelve-route 390 px audit of the preceding content head with no overflow, contrast, focus, or disclosure defects.",
+    "The live Pages release read-back remains bound to accepted base 0f0f0d06a0f7581cbdf86719088f5e97cb44737e. This candidate requires protected integration, a separate Pages deployment, and resulting-main external verification.",
+    "The REST and Streamable HTTP MCP gateway is locally conformant but not hosted. No authenticated Render or DNS authority is available in this task environment, and api.epistemedia.org and mcp.epistemedia.org have no DNS records.",
+    "Render free-compute quotas, workspace billing state, and included custom-domain usage require live owner-controlled read-back before service creation. This task does not claim guaranteed no-spend or production availability.",
+    "This receipt binds the tested content head immediately before its own append-only receipt commit. The final PR head requires fresh CI and exact-head independent review."
+  ],
+  "outputs": {
+    "browser_audit": {
+      "console_errors_or_warnings": 0,
+      "details_open_by_default": 0,
+      "details_total": 7,
+      "h1_count": 1,
+      "horizontal_overflow": false,
+      "production_elapsed": "2m 26s",
+      "route": "/open-dockets/what-the-97-percent-climate-consensus-studies-measure/",
+      "script_count": 0,
+      "stylesheet_count": 1,
+      "viewport_client_width_px": 390,
+      "viewport_scroll_width_px": 390
+    },
+    "catalog_id": "em:catalog:sha256:9291e1a6ef89309d13442381e71d2ffa9d67d8f4fb87b4e35f4cd6a5603029e9",
+    "frontier": "em:frontier:sha256:b304f8000c8af0fff54dd8feeac6828f4fd161d6ed8a629a531e160b352a851e",
+    "hosted_gateway": {
+      "api_dns_record": "absent",
+      "mcp_dns_record": "absent",
+      "provider_authority": "unavailable",
+      "status": "not-live"
+    },
+    "live_pages_base": {
+      "catalog_id": "em:catalog:sha256:fd1864d85b22bad4687331ef0f1f748e2908e7cd4e0e7c5ade0512920e24dd04",
+      "commit": "0f0f0d06a0f7581cbdf86719088f5e97cb44737e",
+      "deploy_job": "100078988381",
+      "frontier": "em:frontier:sha256:33523719d6bddc84515f64c73704dea5b92d788f5f3db1ed82d0c389877f9e1b",
+      "workflow_run": "33575506443"
+    },
+    "object_count": 231,
+    "topic_count": 11
+  },
+  "recorded_at": "2026-09-02T00:55:14Z",
+  "run_id": "em0045-public-agent-loop-exact-b89bf54d-20260902T005514Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-09-02T00:31:21Z",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "a972c63575c7a80fcea30104c70722e58fd8f74a59096bfcdb57d3aa83efc070",
+    "id": "em:task-claim:sha256:1cece9d8956c0a67d960ace3b8a669e553d247eff793ce03f86cbdbd2116f2b8",
+    "path": "runs/proposals/20260902T003121Z-1cece9d8956c.json",
+    "reason": "The append-only task claim records only task ownership. This completion receipt binds exact content, validation, browser, deployment, provider, and limitation evidence required by AGENTS.md."
+  },
+  "task_id": "EM-0045",
+  "tests": {
+    "accepted_input_validation": "pass-231-objects-11-topics",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_open_docket_suite": "pass-63-of-63",
+    "full_repository_check": "pass",
+    "full_repository_suite": "pass-216-of-216",
+    "public_projection_audit": "pass-no-findings",
+    "source_state_before_receipt": "unchanged"
+  },
+  "versions": {
+    "chrome": "152.0.7977.65",
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}
