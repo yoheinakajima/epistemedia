@@ -99,12 +99,19 @@ def test_attestation_workflow_is_a_secretless_noop_for_ordinary_prs() -> None:
     assert "refs/pull/${PR_NUMBER}/head" in text
     assert '[[ "$(git rev-parse FETCH_HEAD)" == "$REVIEWED_HEAD" ]]' in text
     assert "--reviewed-head \"$REVIEWED_HEAD\"" in text
+    assert "--validated-base \"$VALIDATED_BASE\"" in text
+    assert "--validated-base-ref \"$VALIDATED_BASE_REF\"" in text
+    assert "--validated-base-repository \"$VALIDATED_BASE_REPOSITORY\"" in text
     assert "pulls/${PR_NUMBER}/files" not in text
     assert "python3 ops/classify_attestation_pr.py" in text
     assert text.count("if: steps.classify.outputs.eligible == 'true'") == 2
     sign_step = text.split("- name: Sign the exact promotion receipt head", 1)[1]
     assert '[[ "$pr_state" == "open" ]]' in sign_step
-    assert '[[ "$current_base" == "${{ steps.classify.outputs.base }}" ]]' in sign_step
+    assert '[[ "$VALIDATED_BASE_REPOSITORY" == "$REPOSITORY_URL" ]]' in sign_step
+    assert '[[ "$VALIDATED_BASE_REF" == "$DEFAULT_BRANCH" ]]' in sign_step
+    assert '[[ "$current_base_repository" == "$VALIDATED_BASE_REPOSITORY" ]]' in sign_step
+    assert '[[ "$current_base_ref" == "$VALIDATED_BASE_REF" ]]' in sign_step
+    assert '[[ "$current_base" == "$VALIDATED_BASE" ]]' in sign_step
     assert '[[ "$current_head" == "$REVIEWED_HEAD" ]]' in sign_step
     token_step = text.split(
         "- name: Create short-lived review-gate App token", 1
@@ -195,10 +202,50 @@ def test_attestation_diff_is_bound_to_immutable_base_and_head(tmp_path: Path) ->
         "eligible": False,
         "parent": None,
     }
-    with pytest.raises(ValueError, match="moved"):
+    repository_url = "https://api.github.com/repos/yoheinakajima/epistemedia"
+    identity = {
+        "state": "open",
+        "base": {"sha": base, "ref": "main", "repo": {"url": repository_url}},
+        "head": {"sha": reviewed_head},
+    }
+    assert pull_request_identity(
+        identity,
+        reviewed_head,
+        base,
+        "main",
+        repository_url,
+        "main",
+        repository_url,
+    ) == (base, reviewed_head)
+    with pytest.raises(ValueError, match="head moved"):
         pull_request_identity(
-            {"state": "open", "base": {"sha": base}, "head": {"sha": later_head}},
+            {**identity, "head": {"sha": later_head}},
             reviewed_head,
+            base,
+            "main",
+            repository_url,
+            "main",
+            repository_url,
+        )
+    with pytest.raises(ValueError, match="base moved"):
+        pull_request_identity(
+            {**identity, "base": {**identity["base"], "sha": later_head}},
+            reviewed_head,
+            base,
+            "main",
+            repository_url,
+            "main",
+            repository_url,
+        )
+    with pytest.raises(ValueError, match="base ref changed"):
+        pull_request_identity(
+            {**identity, "base": {**identity["base"], "ref": "release"}},
+            reviewed_head,
+            base,
+            "main",
+            repository_url,
+            "main",
+            repository_url,
         )
 
 

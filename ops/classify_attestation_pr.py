@@ -22,25 +22,49 @@ SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 SHA = re.compile(r"^[0-9a-f]{40}$")
 
 
-def pull_request_identity(payload: object, reviewed_head: str) -> tuple[str, str]:
+def pull_request_identity(
+    payload: object,
+    reviewed_head: str,
+    validated_base: str,
+    validated_base_ref: str,
+    validated_base_repository: str,
+    default_branch: str,
+    repository_url: str,
+) -> tuple[str, str]:
     """Return one exact base/head pair or reject a stale workflow-run binding."""
 
     if not SHA.fullmatch(reviewed_head):
         raise ValueError("reviewed head must be an exact lowercase commit SHA")
+    if not SHA.fullmatch(validated_base):
+        raise ValueError("validated base must be an exact lowercase commit SHA")
+    if validated_base_ref != default_branch:
+        raise ValueError("validated base ref must be the repository default branch")
+    if validated_base_repository != repository_url:
+        raise ValueError("validated base repository must be canonical")
     if not isinstance(payload, dict):
         raise ValueError("pull-request response must be a JSON object")
     try:
         state = payload["state"]
         base = payload["base"]["sha"]
+        base_ref = payload["base"]["ref"]
+        base_repository = payload["base"]["repo"]["url"]
         head = payload["head"]["sha"]
     except (KeyError, TypeError) as exc:
-        raise ValueError("pull-request response lacks state/base/head identity") from exc
+        raise ValueError(
+            "pull-request response lacks state/base-ref/repository/head identity"
+        ) from exc
     if state != "open":
         raise ValueError("pull request must remain open")
     if not isinstance(base, str) or not SHA.fullmatch(base):
         raise ValueError("pull-request base must be an exact lowercase commit SHA")
     if not isinstance(head, str) or not SHA.fullmatch(head):
         raise ValueError("pull-request head must be an exact lowercase commit SHA")
+    if base != validated_base:
+        raise ValueError("pull-request base moved after the validation run")
+    if base_ref != validated_base_ref:
+        raise ValueError("pull-request base ref changed after the validation run")
+    if base_repository != validated_base_repository:
+        raise ValueError("pull-request base repository changed after the validation run")
     if head != reviewed_head:
         raise ValueError("pull-request head moved after the validation run")
     return base, head
@@ -126,11 +150,24 @@ def main() -> int:
     parser.add_argument("--pr-file", type=Path, required=True)
     parser.add_argument("--repository", type=Path, required=True)
     parser.add_argument("--reviewed-head", required=True)
+    parser.add_argument("--validated-base", required=True)
+    parser.add_argument("--validated-base-ref", required=True)
+    parser.add_argument("--validated-base-repository", required=True)
+    parser.add_argument("--default-branch", required=True)
+    parser.add_argument("--repository-url", required=True)
     parser.add_argument("--github-output", type=Path, required=True)
     args = parser.parse_args()
     try:
         payload = json.loads(args.pr_file.read_text(encoding="utf-8"))
-        base, head = pull_request_identity(payload, args.reviewed_head)
+        base, head = pull_request_identity(
+            payload,
+            args.reviewed_head,
+            args.validated_base,
+            args.validated_base_ref,
+            args.validated_base_repository,
+            args.default_branch,
+            args.repository_url,
+        )
         changes = exact_git_changes(args.repository, base, head)
         result = classify_attestation_changes(changes)
     except (
@@ -144,6 +181,8 @@ def main() -> int:
         return 1
     with args.github_output.open("a", encoding="utf-8") as output:
         output.write(f"base={base}\n")
+        output.write(f"base_ref={args.validated_base_ref}\n")
+        output.write(f"base_repository={args.validated_base_repository}\n")
         output.write(f"mode={result['mode']}\n")
         output.write(f"eligible={str(result['eligible']).lower()}\n")
         if result["parent"] is not None:

@@ -35,7 +35,7 @@
     ]
   },
   "required_evaluation": [
-    "fixtures covering immutable exact-SHA diffs, head drift, renames, ordinary paths, the exact five-added-file promotion shape, malformed docket-sensitive paths, submission paths, and mixed promotion-plus-unrelated paths",
+    "fixtures covering immutable exact-SHA diffs, head drift, base retargeting, renames, ordinary paths, the exact five-added-file promotion shape, malformed docket-sensitive paths, submission paths, and mixed promotion-plus-unrelated paths",
     "workflow security checks proving ordinary PRs cannot request the App token or create the protected check",
     "full deterministic make check, disclosure audit, and changed-path audit",
     "fresh exact-head independent review before integration"
@@ -44,7 +44,7 @@
     "a successful ordinary pull-request validation produces no false failure from the open-docket attestation workflow",
     "ordinary pull requests do not evaluate the App secret, request an App token, or create an independent-review check through this workflow",
     "a docket-sensitive change set that is not exactly one five-new-file receipt-child promotion fails closed before any signing step",
-    "only the immutable exact-base/exact-head five-new-file promotion shape can request the App token, and the open PR base/head are rebound before signing the exact validated head",
+    "only the validation-event-bound canonical-repository/default-branch/exact-base/exact-head five-new-file promotion shape can request the App token, and all identities are rebound before signing the exact validated head",
     "the ruleset, required checks, App permissions, accepted promotion validator, and open-docket records remain unchanged",
     "the change stops at a draft pull request and does not merge, deploy, publish, admit, promote, delete, or rewrite anything"
   ],
