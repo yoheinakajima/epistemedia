@@ -2,15 +2,20 @@
 
 All integrations read the same disclosure-safe public catalog. Preserve the returned `catalog_id`, `frontier`, `commit`, `compiler`, policy IDs, object IDs, and content digests when storing or citing results.
 
+Both endpoints passed production read-back for v0.2.0. They expose anonymous reads only; the
+authenticated submission boundary remains separate and unavailable.
+
 ## REST API
 
-The implemented read-only API contract reserves this production root:
+The anonymous read-only API is live at:
 
 ```text
 https://api.epistemedia.org/v1
 ```
 
-No hosted runtime at that hostname has passed production read-back yet. Use the local server or downloadable static projection until activation evidence records otherwise.
+The endpoint passed production read-back at the v0.2.0 release identity. It runs on free compute,
+may cold-start after inactivity, and is not an availability commitment. The static projection and
+local server remain available for deterministic and offline use.
 
 Representative reads:
 
@@ -33,13 +38,14 @@ Public write APIs, when introduced, create proposals, contribution bundles, task
 
 ## MCP
 
-The implemented remote-server contract reserves this production endpoint:
+The anonymous read-only MCP server is live at:
 
 ```text
 https://mcp.epistemedia.org/mcp
 ```
 
-No hosted runtime at that hostname has passed production read-back yet. The local stdio adapter remains available through the CLI.
+The endpoint passed production read-back at the same v0.2.0 commit, catalog, frontier, and compiler
+as the REST API and static release. The local stdio adapter remains available through the CLI.
 
 Server namespace:
 
@@ -74,6 +80,10 @@ epistemedia://object/{id}
 The HTTP adapter implements the stateless MCP 2026-07-28 Streamable HTTP binding. It validates each request's protocol and mirrored transport metadata, checks browser Origins before consuming the body, returns protocol-level errors for unsupported versions or methods, and marks public lists as cacheable. The stdio adapter carries the same modern request metadata inline and is available through the CLI for local clients. Deployment limits and exact environment variables are defined in [the public API and MCP deployment contract](api-mcp-deployment.md).
 
 A future authenticated contribution server will be a separate authority surface. Its tools create proposals and receipts but cannot admit their own output.
+
+The live gateway does not accept submissions, perform arbitrary network fetches, write repository
+state, admit evidence, deploy, or publish. GitHub draft pull requests remain the active untrusted
+submission queue.
 
 The research-proposal tools are read-only and local to the request. `prepare` returns a draft JSON
 scaffold; `validate` checks format, source/span references, lineage fields, input limits, and
@@ -120,8 +130,9 @@ epistemedia dossier agent-citation-lineage --policy skeptical --remote
 Every accepted dossier's HTML, Markdown, static JSON, local REST response, MCP resource/tool output,
 and CLI output are compiled from that dossier's same disclosure-safe object. The deterministic
 registry currently exposes Cases 001 through 004; the machine envelopes preserve each exact dossier,
-catalog, frontier, accepted commit, policy IDs, compiler, and content digest. The hosted API and MCP
-destinations remain unverified until provider read-back proves them.
+catalog, frontier, accepted commit, policy IDs, compiler, and content digest. Both endpoints passed
+production read-back for v0.2.0; the exact activation evidence is recorded in
+[`ops/activation/2026-09-01-v0.2.0-public-gateway.md`](../ops/activation/2026-09-01-v0.2.0-public-gateway.md).
 
 ## Self-hosting
 

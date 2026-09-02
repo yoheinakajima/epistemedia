@@ -199,9 +199,11 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     ]
 
     llms = (public / "llms.txt").read_text()
-    assert "Static OpenAPI contract — hosted API not live" in llms
+    assert "Live read-only REST API" in llms
+    assert "Static OpenAPI contract for the live API" in llms
     assert "https://epistemedia.org/openapi.json" in llms
-    assert "Static MCP descriptor — remote MCP not live" in llms
+    assert "Live read-only MCP endpoint" in llms
+    assert "Static descriptor for the live MCP server" in llms
     assert "https://epistemedia.org/mcp/server.json" in llms
     assert "https://api.epistemedia.org/openapi.json" not in llms
     assert "Case 002 evidence dossier" in llms
@@ -318,10 +320,12 @@ def test_public_build_emits_every_interface(tmp_path: Path) -> None:
     status_markdown = (public / "status" / "index.md").read_text()
     status_html = (public / "status" / "index.html").read_text()
     assert "Canonical human site" in status_markdown
-    assert status_markdown.count("not verified live") == 3
+    assert status_markdown.count("not verified live") == 1
+    assert status_markdown.count("verified live, anonymous read-only") == 2
     assert "4 independently reviewed How We Know dossiers" in status_markdown
     assert "Verified live · HTTPS" in status_html
-    assert status_html.count("Reserved · unverified") == 3
+    assert status_html.count("Reserved · unverified") == 1
+    assert status_html.count("Verified live · read-only") == 2
 
 
 def test_homepage_count_language_reconciles_distinct_objects_and_memberships(
@@ -679,8 +683,9 @@ def test_public_status_copy_distinguishes_live_and_target_surfaces() -> None:
     readme = (ROOT / "README.md").read_text()
     launch_docs = (ROOT / "docs" / "launch.md").read_text()
     api_docs = (ROOT / "docs" / "api-mcp-cli.md").read_text()
-    assert "canonical static site live at <https://epistemedia.org/>" in readme
-    assert "sharing redirect and hosted API/MCP runtime" in readme
+    assert "canonical static site is live at <https://epistemedia.org/>" in readme
+    assert "anonymous read-only REST API" in readme
+    assert "hosted authenticated submission queue are not live" in readme
     assert "four independently reviewed, application-level dossiers" in readme
     assert "does not yet replay the normative event model" in readme
     assert "Case 001 remains the homepage lead" in readme
@@ -691,7 +696,8 @@ def test_public_status_copy_distinguishes_live_and_target_surfaces() -> None:
     assert "bootstrap topic projections from accepted dossier policy views" in launch_docs
     assert "Case 001 remains the homepage lead" in launch_docs
     assert "it remains in development" not in launch_docs
-    assert api_docs.count("No hosted runtime at that hostname has passed") == 2
+    assert "Both endpoints passed production read-back" in api_docs
+    assert "does not accept submissions" in api_docs
 
 
 def test_object_ids_are_content_and_path_addressed() -> None:

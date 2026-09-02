@@ -83,8 +83,8 @@ accepted manifests in deterministic order and rejects duplicate case numbers, sl
 identities, source paths, generated routes, and MCP resource URIs. Each profile binds exact dossier
 and review-receipt bytes, format, reviewer identity, reviewed head, and independence checks before
 producing HTML, Markdown, static JSON, local API, MCP, and CLI representations from the same
-disclosure-safe object. This makes the dossier publicly discoverable on the static site; it does
-not activate the reserved hosted API/MCP runtime.
+disclosure-safe object. This makes the dossier publicly discoverable on the static site; accepting
+a dossier does not by itself activate or redeploy any hosted API/MCP runtime.
 
 ## Construction and validation
 

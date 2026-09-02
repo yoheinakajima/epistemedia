@@ -615,16 +615,11 @@ def test_validator_fails_closed_on_adversarial_bundles(mutation, error_fragment:
     assert result["admitted"] is False
 
 
-def test_readme_keeps_agent_route_pending_until_live_readback() -> None:
+def test_readme_reports_agent_route_live_after_readback() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    live, pending = readme.split(
-        "Generated in the current candidate projection, pending separately authorized deployment",
-        1,
-    )
-    assert (
-        "https://epistemedia.org/agents/" not in live.split("Verified live human surfaces:", 1)[1]
-    )
-    assert "https://epistemedia.org/agents/" in pending
+    assert "Verified live agent surface:" in readme
+    assert "https://epistemedia.org/agents/" in readme
+    assert "pending separately authorized deployment" not in readme
 
 
 def test_validator_rejects_oversize_and_never_projects_untrusted_content() -> None:

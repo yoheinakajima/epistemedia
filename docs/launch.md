@@ -31,10 +31,14 @@ A realm can remain private and local-first. It chooses its own constitution, ont
 
 ## For an integration builder
 
-Use the static OpenAPI document with the local gateway, local stdio MCP for agent clients, the CLI for local workflows, and downloadable public projections for offline operation. The hosted API and MCP destinations remain reserved until provider read-back proves them. Avoid scraping HTML when structured objects are available. Implement content-digest verification and surface manifest metadata to downstream users.
+Use the live read-only REST API at `https://api.epistemedia.org/v1`, the live Streamable HTTP MCP
+endpoint at `https://mcp.epistemedia.org/mcp`, the static OpenAPI and MCP descriptors, local stdio
+MCP, the CLI, or downloadable projections. Avoid scraping HTML when structured objects are
+available. Preserve content digests and manifest metadata. The hosted gateway runs on free compute,
+may cold-start, and does not provide submission, arbitrary-fetch, admission, or write authority.
 
 ## Current public corpus
 
-Epistemedia still dogfoods itself through **Explore**, where the self-describing corpus compiles the project’s constitution, architecture, policies, task contracts, implementation, tests, security model, governance, and release records. Case 001 remains the homepage lead; the **How We Know** index lists four independently reviewed evidence files, each compiled into exact-source and two policy-relative projections. This is a bounded application-level library, not the normative replay graph or broad knowledge coverage. Hosted API and MCP remain unverified until external read-back proves them.
+Epistemedia still dogfoods itself through **Explore**, where the self-describing corpus compiles the project’s constitution, architecture, policies, task contracts, implementation, tests, security model, governance, and release records. Case 001 remains the homepage lead; the **How We Know** index lists four independently reviewed evidence files, each compiled into exact-source and two policy-relative projections. This is a bounded application-level library, not the normative replay graph or broad knowledge coverage. The anonymous read-only API and MCP gateway is externally verified at v0.2.0; authenticated hosted submission and a second realm remain open work.
 
 The public mission is an owner-approved, versioned project statement. It is not evidence, policy, constitution, or a stored verdict. Its current-state flags must continue to distinguish implemented local interfaces from externally verified hosted services.

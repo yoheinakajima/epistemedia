@@ -43,7 +43,7 @@ def _mission_copy(tmp_path: Path) -> tuple[Path, dict]:
     return root, data
 
 
-def test_mission_source_is_versioned_and_future_services_fail_closed() -> None:
+def test_mission_source_is_versioned_and_unactivated_services_fail_closed() -> None:
     mission = load_mission(ROOT)
     assert mission["format"] == "epistemedia-mission-v0.3"
     assert mission["version"] == "0.3"
@@ -57,8 +57,8 @@ def test_mission_source_is_versioned_and_future_services_fail_closed() -> None:
         ("004", "Scope inflation"),
     ]
     state = mission["current_state"]
-    assert state["hosted_api_live"] is False
-    assert state["hosted_mcp_live"] is False
+    assert state["hosted_api_live"] is True
+    assert state["hosted_mcp_live"] is True
     assert state["authenticated_submission_queue_live"] is False
     assert state["second_realm_live"] is False
     assert "not evidence, policy, constitution, or a stored verdict" in (
@@ -74,7 +74,7 @@ def test_mission_source_tampering_fails_closed(tmp_path: Path, mutation: str) ->
     elif mutation == "case":
         data["cases"][0]["slug"] = "another-case"
     elif mutation == "service":
-        data["current_state"]["hosted_mcp_live"] = True
+        data["current_state"]["authenticated_submission_queue_live"] = True
     else:
         data["participation"][0]["href"] = "https://collector.example/submit"
     (root / "catalog" / "mission.json").write_text(json.dumps(data))
@@ -234,8 +234,8 @@ def test_no_public_write_or_admission_surface_is_implied(tmp_path: Path) -> None
     build_public(ROOT, public)
     mission = json.loads((public / "about" / "index.json").read_text())["data"]
     state = mission["current_state"]
-    assert not state["hosted_api_live"]
-    assert not state["hosted_mcp_live"]
+    assert state["hosted_api_live"]
+    assert state["hosted_mcp_live"]
     assert not state["authenticated_submission_queue_live"]
     submission = json.loads(
         (public / "agents" / "submission-status.json").read_text()

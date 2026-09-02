@@ -2974,8 +2974,9 @@ def build_public(
         "# Epistemedia status\n\n"
         "- Canonical human site: `https://epistemedia.org` — verified live with HTTPS\n"
         "- Sharing redirect: `https://episte.media` — reserved, not verified live\n"
-        "- Hosted API: `https://api.epistemedia.org/v1` — reserved, not verified live\n"
-        "- Hosted MCP: `https://mcp.epistemedia.org/mcp` — reserved, not verified live\n"
+        "- Hosted API: `https://api.epistemedia.org/v1` — verified live, anonymous read-only\n"
+        "- Hosted MCP: `https://mcp.epistemedia.org/mcp` — verified live, anonymous read-only\n"
+        "- Gateway availability: free-compute pilot; cold starts are expected and no SLA is asserted\n"
         f"- Corpus scope: {corpus_scope}\n"
         f"- Version: `{VERSION}`\n"
         f"- Catalog: `{catalog.catalog_id}`\n"
@@ -2995,17 +2996,17 @@ def build_public(
             '<div class="status-row" data-state="reserved"><span class="status-name">Sharing redirect</span>'
             '<span class="status-value"><code>https://episte.media</code></span>'
             '<span class="status-label status-reserved">Reserved · unverified</span></div>',
-            '<div class="status-row" data-state="reserved"><span class="status-name">Hosted API</span>'
+            '<div class="status-row" data-state="live"><span class="status-name">Hosted API</span>'
             '<span class="status-value"><code>https://api.epistemedia.org/v1</code></span>'
-            '<span class="status-label status-reserved">Reserved · unverified</span></div>',
-            '<div class="status-row" data-state="reserved"><span class="status-name">Hosted MCP</span>'
+            '<span class="status-label status-live">Verified live · read-only</span></div>',
+            '<div class="status-row" data-state="live"><span class="status-name">Hosted MCP</span>'
             '<span class="status-value"><code>https://mcp.epistemedia.org/mcp</code></span>'
-            '<span class="status-label status-reserved">Reserved · unverified</span></div>',
+            '<span class="status-label status-live">Verified live · read-only</span></div>',
         ]
     )
     status_body = (
         '<section class="hero hero-compact"><p class="eyebrow">Provider read-back + build identity</p>'
-        '<h1>Status</h1><p class="dek">Live means externally observed. Reserved destinations are not presented as deployed services.</p></section>'
+        '<h1>Status</h1><p class="dek">Live means externally observed. The read-only gateway runs on free compute, can cold-start, and carries no availability commitment.</p></section>'
         '<section aria-labelledby="surface-status-title"><div class="section-head"><div>'
         '<p class="eyebrow">Service boundary</p><h2 id="surface-status-title">Public surfaces</h2>'
         f'</div></div><div class="status-list">{status_rows}</div></section>'
@@ -3232,8 +3233,10 @@ def build_public(
         f"- [Substrate topics]({base_url}/explore/index.md)",
         f"- [Current status]({base_url}/status/index.md)",
         f"- [Public catalog]({base_url}/catalog.json)",
-        f"- [Static OpenAPI contract — hosted API not live]({base_url}/openapi.json)",
-        f"- [Static MCP descriptor — remote MCP not live]({base_url}/mcp/server.json)",
+        "- [Live read-only REST API](https://api.epistemedia.org/v1/status)",
+        f"- [Static OpenAPI contract for the live API]({base_url}/openapi.json)",
+        "- [Live read-only MCP endpoint](https://mcp.epistemedia.org/mcp)",
+        f"- [Static descriptor for the live MCP server]({base_url}/mcp/server.json)",
         "",
         "## Run your own evidence test",
         f"- [Agent research kit]({base_url}/agents/index.md)",

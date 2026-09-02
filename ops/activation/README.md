@@ -4,6 +4,10 @@ This directory contains owner-controlled activation checklists. Contributor agen
 
 Current evidence:
 
+- [`2026-09-01-v0.2.0-public-gateway.md`](2026-09-01-v0.2.0-public-gateway.md) records the public
+  tag and GHCR digest, free Render service, verified API/MCP DNS and TLS, exact release-identity
+  parity, read-only security probes, and remaining submission, registry, package, and redirect
+  boundaries.
 - [`2026-08-22-custom-domain.md`](2026-08-22-custom-domain.md) records the verified `epistemedia.org` DNS set, HTTPS enforcement, canonical-domain Pages deployment, live route validation, and remaining redirect and runtime boundaries.
 - [`2026-08-22-package-readiness.md`](2026-08-22-package-readiness.md) records the corrected clean-wheel CLI smoke test and the still-blocked publication identities.
 - [`2026-08-22-social-preview.md`](2026-08-22-social-preview.md) records the locally verified social-preview asset and the still-pending GitHub upload.

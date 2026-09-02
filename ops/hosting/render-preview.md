@@ -10,6 +10,14 @@ Use one web service for both `api.epistemedia.org` and `mcp.epistemedia.org`. Th
 REST below `/v1` and Streamable HTTP MCP at `/mcp`; neither hostname grants write, arbitrary-fetch,
 repository, deployment, or admission authority.
 
+## Current deployment
+
+The v0.2.0 gateway was activated on this bounded path and passed external read-back on 2026-09-01.
+The exact service, deploy, image digest, custom domains, TLS state, identities, security probes, and
+limitations are recorded in the
+[v0.2.0 public-gateway activation receipt](../activation/2026-09-01-v0.2.0-public-gateway.md).
+The free-compute and no-SLA caveats in this handoff remain current.
+
 ## Inputs that must be exact
 
 - image: the public GHCR image built by the protected release workflow from the accepted tag;
