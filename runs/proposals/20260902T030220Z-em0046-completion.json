@@ -1,0 +1,54 @@
+{
+  "accepted_base": "f92846570180dfa4511263f8ba98ecd18f7772c9",
+  "actor": {
+    "agent_id": "codex-primary",
+    "role": "implementation-author"
+  },
+  "candidate_head": "c308fb1fe04a6a4545254150ad5fec47cdb84d20",
+  "candidate_tree": "01379c9f1a6ef71148c4c33af5fa8bb15d70dd7e",
+  "command": "PYTHONPATH=src PATH=.venv/bin:$PATH make check PYTHON=.venv/bin/python",
+  "ended_at": "2026-09-02T03:02:20Z",
+  "id": "em:run-receipt:sha256:04b6b0a8818d55093f1142797679acd83c1b904348c979fe1e9020ed6e41044e",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0046.md",
+      "sha256": "7c78213efc56298e4380e5075af8e3c53a22b8993fba7243a10e61d0359ab778"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0046.json",
+      "sha256": "52c47560159d4c6184e5faf56a38086f6d97ce1143de3ba08258dd419b8d90d3"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "The exact public service identity and provider observations are recorded in ops/activation/2026-09-01-v0.2.0-public-gateway.md; this local validation did not redeploy, mutate DNS, publish a release, or exercise a write surface.",
+    "Render free compute may cold-start after inactivity and carries no availability commitment.",
+    "The candidate head and catalog identity bind the validated content commit before this append-only receipt child. The final receipt-inclusive pull-request head requires fresh CI and exact-head independent review before integration.",
+    "Merging this documentation does not deploy Pages automatically. A later coordinated static and runtime release must preserve exact commit, catalog, frontier, and compiler parity."
+  ],
+  "outputs": {
+    "candidate_catalog_id": "em:catalog:sha256:ec9a1ecb1e2325efd1c774b6ef32241337b22ea16b0db8f8ee227349caa843a3",
+    "candidate_frontier": "em:frontier:sha256:725518068580ceceef6cf1fc068c1e573d0f77654d29808e47bc8e07ff6f1a8f",
+    "object_count": 233,
+    "topic_count": 11
+  },
+  "recorded_at": "2026-09-02T03:02:20Z",
+  "run_id": "em0046-live-service-docs-c308fb1-20260902T030220Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-09-02T02:54:30Z",
+  "status": "reported",
+  "task_id": "EM-0046",
+  "tests": {
+    "accepted_input_validation": "pass-233-objects-11-topics",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_mission_and_interface_suite": "pass",
+    "full_repository_check": "pass",
+    "public_projection_audit": "pass-no-findings",
+    "source_state": "unchanged"
+  },
+  "versions": {
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}
