@@ -1,0 +1,9 @@
+{
+  "agent_id": "codex-root",
+  "id": "em:task-claim:sha256:edc654aa0023b0a266b2e18c474cf16cf39bcdffda2d329a81e3b2810ffb780e",
+  "kind": "task-claim",
+  "recorded_at": "2026-09-02T20:03:55Z",
+  "schema": "https://epistemedia.com/schemas/task-claim-v1.json",
+  "status": "proposed",
+  "task_id": "EM-0048"
+}

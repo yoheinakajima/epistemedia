@@ -1,0 +1,33 @@
+{
+  "format": "epistemedia-philosophy-inquiry-v0.1",
+  "bundle_id": "",
+  "release_state": "private",
+  "nodes": [
+    {"id": "node-work", "kind": "source_work", "title": "The Violet Lens", "visibility": "private"},
+    {"id": "node-snapshot", "kind": "source_snapshot", "work_id": "node-work", "content_sha256": "sha256:fictional", "visibility": "private"},
+    {"id": "node-span", "kind": "source_span", "snapshot_id": "node-snapshot", "locator": "paragraph 2", "exact_text": "A lighthouse keeper may rationally delay a warning when the lens is known to distort one color.", "text_sha256": "sha256:35b2e758454c963fe99bc9f91939ec73879f759079bf108ad6392a1fe597e406", "visibility": "private"},
+    {"id": "node-proposition", "kind": "proposition", "text": "A warning rule can be evidence-relative.", "visibility": "private"},
+    {"id": "node-premise", "kind": "premise_role", "proposition_id": "node-proposition", "derivation_id": "node-derivation", "visibility": "private"},
+    {"id": "node-derivation", "kind": "derivation", "rule": "fictional lens inference", "visibility": "private"},
+    {"id": "node-candidate", "kind": "candidate_thesis", "text": "Fictional lighthouse thesis", "visibility": "private"},
+    {"id": "node-run", "kind": "model_run", "model": "fictional-agent", "visibility": "private"},
+    {"id": "node-manuscript", "kind": "manuscript_claim", "text": "The rule is evidence-relative.", "source_span_ids": ["node-span"], "premise_ids": ["node-proposition"], "branch_ids": ["branch-base"], "model_run_ids": ["node-run"], "inclusion_decision": "included by fictional compiler", "visibility": "private"}
+  ],
+  "assertions": [
+    {"id": "assertion-one", "proposition_id": "node-proposition", "actor": "fictional-agent", "stance": "asserts", "visibility": "private"}
+  ],
+  "relations": [
+    {"id": "relation-premise", "source": "node-proposition", "target": "node-derivation", "relation_type": "inferentially_supports", "semantic_class": "inferential"},
+    {"id": "relation-span", "source": "assertion-one", "target": "node-span", "relation_type": "textually_supported_by", "semantic_class": "evidential"}
+  ],
+  "branches": [
+    {"id": "branch-base", "claims": ["node-proposition"], "premise_roles": ["node-premise"], "inference_edges": ["relation-premise"], "concessions": [], "scope_changes": [], "sources": ["node-span"], "objections": [], "replies": [], "manuscript_consequences": []},
+    {"id": "branch-reply", "claims": ["node-proposition"], "premise_roles": ["node-premise"], "inference_edges": ["relation-premise"], "concessions": ["color-neutral cases"], "scope_changes": ["violet lenses only"], "sources": ["node-span"], "objections": ["objection-one"], "replies": ["reply-one"], "manuscript_consequences": ["state the lens restriction"]}
+  ],
+  "evaluations": [
+    {"id": "evaluation-one", "subject_id": "node-candidate", "policy_id": "fictional-rubric-v1", "frontier": "event-20", "label": "advance", "reason_codes": ["SOURCE_SPAN_PRESENT"]}
+  ],
+  "interventions": [
+    {"id": "intervention-one", "classification": "H0_OPERATIONAL", "summary": "Fixture path selection", "human_contaminated": false}
+  ]
+}
