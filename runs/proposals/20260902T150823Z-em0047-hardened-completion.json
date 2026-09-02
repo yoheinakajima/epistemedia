@@ -1,0 +1,82 @@
+{
+  "accepted_base": "9711dea6948f944daf663c7df51429f228a506e2",
+  "actor": {
+    "agent_id": "codex-primary",
+    "role": "implementation-author"
+  },
+  "candidate_head": "d34c202bc4d96a5318989a5d2c9a563cfcddb100",
+  "candidate_tree": "81015c74dc68954857d914e67d6ed3e53cd99b7b",
+  "command": "PATH=/Users/yoheinakajima/Documents/Codex/2026-08-21/i-downloaded-this-locally-into-yoheinakajima/epistemedia/.venv/bin:$PATH PYTHONPATH=.:src make check",
+  "commands": [
+    "ruff check ops/classify_attestation_pr.py tests/test_workflow_security.py",
+    "PYTHONPATH=.:src pytest tests/test_workflow_security.py tests/test_open_dockets.py -q",
+    "ruby -e 'require \"yaml\"; YAML.load_file(\".github/workflows/approve-open-docket-promotion.yml\")'",
+    "python3 ops/classify_attestation_pr.py --pr-file <pr-92-snapshot> --repository . --reviewed-head f28e083bd98fc6a58375d0c77ec6016bc825d3a4 --github-output <temporary-output>",
+    "PATH=/Users/yoheinakajima/Documents/Codex/2026-08-21/i-downloaded-this-locally-into-yoheinakajima/epistemedia/.venv/bin:$PATH PYTHONPATH=.:src make check"
+  ],
+  "ended_at": "2026-09-02T15:08:23Z",
+  "id": "em:run-receipt:sha256:d799943cff1a8ad60a665d56a7c8ee0ab49a77da3d23b90036b1ff8b9add661d",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0047.md",
+      "sha256": "a5adc9e7d063930fd524ebe9af1666a42ab68e2d1eecb8dc5425e76b40ae23f8"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0047.json",
+      "sha256": "3b3cf9931d40ca033e751d3aa90b05f40f4c8537abd062a4a031e5a3a6232669"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "This append-only receipt supersedes the earlier EM-0047 completion receipt after exact-head independent review found a mutable head/files race and rename-source omission in the first design; the earlier receipt and reviewed commits remain unchanged.",
+    "The exact committed content head was validated from the clean scoped worktree before and after the full deterministic wall; this was not a second fresh clone.",
+    "The current PR still runs the superseded attester from main because workflow_run loads the default-branch workflow. A successful live ordinary-PR no-op can only be observed on a later PR after owner-approved integration.",
+    "This receipt binds the hardened content head before its own append-only receipt commit. The final receipt-inclusive pull-request head requires fresh CI and fresh exact-head independent review.",
+    "No App token, private key, secret, check run, review, merge, deployment, publication, admission, or other external mutation was performed."
+  ],
+  "outputs": {
+    "catalog_id": "em:catalog:sha256:3d5cafb9fbf1e85dbc18982c2379c54911709f39c2d33700e7abb552839f94b3",
+    "frontier": "em:frontier:sha256:ba5b8815d04a8c002875d9d1288098d66e296a7928cf1084823500087a694a96",
+    "object_count": 235,
+    "ordinary_fixture": {
+      "eligible": false,
+      "mode": "ordinary",
+      "parent": null
+    },
+    "topic_count": 11,
+    "worktree": {
+      "post_validation_status": "empty",
+      "pre_validation_status": "empty"
+    }
+  },
+  "recorded_at": "2026-09-02T15:08:23Z",
+  "run_id": "em0047-exact-content-d34c202-20260902T150823Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-09-02T15:06:31Z",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "dcde5560c45052d632094af3cf9bce4d64ae5cc57d35157db86642f2f063ac6a",
+    "id": "em:run-receipt:sha256:bfee1a9801d08af2f67f5676027d51ff465328b45657564701342b15ca7523ee",
+    "path": "runs/proposals/20260902T144556Z-em0047-completion.json",
+    "reason": "Fresh independent review of PR #92 at head f28e083bd98fc6a58375d0c77ec6016bc825d3a4 required immutable exact-base/exact-head path classification and rename-source visibility. This successor binds the hardened implementation and its reproduced identities without rewriting the earlier receipt."
+  },
+  "task_id": "EM-0047",
+  "tests": {
+    "accepted_input_validation": "pass-235-objects-11-topics",
+    "attestation_exact_sha_binding": "pass",
+    "attestation_head_drift_fixture": "pass-fail-closed",
+    "attestation_rename_fixture": "pass-fail-closed",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_open_docket_and_workflow_suite": "pass",
+    "full_repository_check": "pass",
+    "public_projection_audit": "pass-no-findings",
+    "source_state": "unchanged",
+    "workflow_yaml_parse": "pass",
+    "worktree_pre_post_status": "pass-empty"
+  },
+  "versions": {
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}
