@@ -1310,6 +1310,8 @@ def docket_markdown(data: dict[str, Any]) -> str:
         "",
         f"**Why it matters:** {data['why_it_matters']}",
         "",
+        "**Scope guardrail:** This contribution answers only the stated question. It does not adjudicate broader claims outside that comparison.",
+        "",
         f"**Bounded reading:** {data['bounded_reading']}",
         "",
         f"**Practical reading:** {data['practical_reading']}",
@@ -1400,6 +1402,22 @@ def docket_markdown(data: dict[str, Any]) -> str:
             *[f"- **Shared dependency:** {item}" for item in data["lineage"]["shared_dependencies"]],
         ]
     )
+    production = _production_receipt(data)
+    lines.extend(["", "## Production receipt", ""])
+    lines.extend(
+        [
+            f"- **Research elapsed:** {production['elapsed']}",
+            f"- **Source works:** {production['source_count']}",
+            f"- **Exact spans:** {production['span_count']}",
+            f"- **Material results:** {production['result_count']}",
+            f"- **Retrieval attempts:** {production['retrieval_attempt_count']}",
+            f"- **Disclosure-safe trace events:** {production['trace_event_count']}",
+            f"- **Recorded failures:** {production['failure_count']}",
+            f"- **Recorded interventions:** {production['intervention_count']}",
+            f"- **Independent review receipts:** {production['review_receipt_count']}",
+            f"- **Reported marginal cost:** {production['cost']}",
+        ]
+    )
     lines.extend(["", "## Independent review receipt", ""])
     lines.extend(
         [
@@ -1445,6 +1463,48 @@ def docket_markdown(data: dict[str, Any]) -> str:
     )
     lines.extend(["## Boundary", "", data["boundary"], ""])
     return "\n".join(lines)
+
+
+def _production_receipt(data: dict[str, Any]) -> dict[str, Any]:
+    runtime = data["runtime"]
+    elapsed = "unknown — not recorded"
+    timestamp_errors: list[str] = []
+    started = parse_utc_timestamp(
+        runtime.get("started_at"), "runtime.started_at", timestamp_errors
+    )
+    completed = parse_utc_timestamp(
+        runtime.get("completed_at"), "runtime.completed_at", timestamp_errors
+    )
+    if (
+        not timestamp_errors
+        and started is not None
+        and completed is not None
+        and completed >= started
+    ):
+        total_seconds = int((completed - started).total_seconds())
+        hours, remainder = divmod(total_seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+        parts = []
+        if hours:
+            parts.append(f"{hours}h")
+        if minutes or hours:
+            parts.append(f"{minutes}m")
+        parts.append(f"{seconds}s")
+        elapsed = " ".join(parts)
+    trace = data["intake"]["trace"]
+    cost = trace["cost"]
+    return {
+        "elapsed": elapsed,
+        "source_count": len(data["sources"]),
+        "span_count": sum(len(source["exact_spans"]) for source in data["sources"]),
+        "result_count": len(data["results"]),
+        "retrieval_attempt_count": len(data["retrieval_attempts"]),
+        "trace_event_count": len(trace["events"]),
+        "failure_count": len(trace["failures"]),
+        "intervention_count": len(trace["interventions"]),
+        "review_receipt_count": 1,
+        "cost": f"{cost['amount']} {cost['currency']} · {cost['basis']}",
+    }
 
 
 def docket_html(data: dict[str, Any]) -> str:
@@ -1538,14 +1598,35 @@ def docket_html(data: dict[str, Any]) -> str:
         f'{html.escape(data["intake"]["trace"]["cost"]["currency"])} · '
         f'{html.escape(data["intake"]["trace"]["cost"]["basis"])}</p>'
     )
+    production = _production_receipt(data)
+    production_receipt = "".join(
+        f"<div><dt>{html.escape(label)}</dt><dd>{html.escape(str(value))}</dd></div>"
+        for label, value in (
+            ("Research elapsed", production["elapsed"]),
+            ("Source works", production["source_count"]),
+            ("Exact spans", production["span_count"]),
+            ("Material results", production["result_count"]),
+            ("Retrieval attempts", production["retrieval_attempt_count"]),
+            ("Trace events", production["trace_event_count"]),
+            ("Recorded failures", production["failure_count"]),
+            ("Recorded interventions", production["intervention_count"]),
+            ("Independent review receipts", production["review_receipt_count"]),
+            ("Reported marginal cost", production["cost"]),
+        )
+    )
     return (
         '<article class="dossier-page"><header class="hero hero-compact">'
         '<p class="eyebrow">Open docket · independently reviewed contribution</p>'
         f'<h1>{html.escape(data["title"])}</h1><p class="dek">{html.escape(data["question"])}</p>'
-        f"<p>{html.escape(data['why_it_matters'])}</p></header>"
+        f"<p>{html.escape(data['why_it_matters'])}</p>"
+        '<p class="scope-note open-docket-guardrail"><strong>Scope:</strong> This contribution answers only the stated question. It does not adjudicate broader claims outside that comparison.</p></header>'
         '<section class="case-verdict"><p class="eyebrow">Bounded reading</p>'
         f"<h2>{html.escape(data['bounded_reading'])}</h2>"
         f"<p><strong>For practice:</strong> {html.escape(data['practical_reading'])}</p></section>"
+        '<section aria-labelledby="production-receipt-title"><p class="eyebrow">Cost of proof</p>'
+        '<h2 id="production-receipt-title">Production receipt</h2>'
+        '<p>These values are derived from the accepted runtime, proposal, action trace, and review. Missing historical effort remains unknown.</p>'
+        f'<dl class="receipt-grid production-receipt">{production_receipt}</dl></section>'
         f'<section><h2>What the proposal found</h2><div class="case-grid">{results}</div></section>'
         f'<section><h2>Sources and exact spans</h2>{sources}</section>'
         f'<section class="two-column"><div><h2>Calculations</h2><ul>{calculations}</ul></div>'

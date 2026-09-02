@@ -1809,23 +1809,28 @@ def html_shell(
     canonical_url: str,
     markdown_url: str | None = None,
     social_image_url: str | None = None,
+    description: str = "Knowledge that can show its work.",
 ) -> str:
     alternates = ""
     if markdown_url:
         alternates = f'<link rel="alternate" type="text/markdown" href="{html.escape(markdown_url)}">'
-    social_meta = ""
+    twitter_card = "summary_large_image" if social_image_url else "summary"
+    social_meta = (
+        f'<meta property="og:type" content="website">'
+        f'<meta property="og:title" content="{html.escape(title)} · Epistemedia">'
+        f'<meta property="og:description" content="{html.escape(description)}">'
+        f'<meta property="og:url" content="{html.escape(canonical_url)}">'
+        f'<meta name="twitter:card" content="{twitter_card}">'
+    )
     if social_image_url:
-        social_meta = (
-            f'<meta property="og:image" content="{html.escape(social_image_url)}">'
-            '<meta name="twitter:card" content="summary_large_image">'
-        )
+        social_meta += f'<meta property="og:image" content="{html.escape(social_image_url)}">'
     return f"""<!doctype html>
 <html lang="en" data-theme="neutral" data-display="sans">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)} · Epistemedia</title>
-<meta name="description" content="Knowledge that can show its work.">
+<meta name="description" content="{html.escape(description)}">
 <link rel="canonical" href="{html.escape(canonical_url)}">
 <link rel="describedby" href="{html.escape(base_url)}/llms.txt">
 {alternates}
@@ -3149,6 +3154,11 @@ def build_public(
                 base_url=base_url,
                 canonical_url=data["representations"]["html"],
                 markdown_url=data["representations"]["markdown"],
+                description=(
+                    "Bounded, independently reviewed open docket. "
+                    + data["why_it_matters"]
+                    + " This contribution answers only its stated question."
+                ),
             ),
         )
     write_text(tmp / "open-dockets" / "index.md", "\n".join(docket_index_lines) + "\n")

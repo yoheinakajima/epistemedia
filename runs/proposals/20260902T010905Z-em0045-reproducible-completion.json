@@ -1,0 +1,95 @@
+{
+  "accepted_base": "0f0f0d06a0f7581cbdf86719088f5e97cb44737e",
+  "actor": {
+    "agent_id": "codex-primary",
+    "role": "implementation-author"
+  },
+  "candidate_head": "b89bf54d4432f122d9416e596a75ae2c1ed7001d",
+  "candidate_tree": "7d489c8204a2c97607553e6e5d4793bf4d76c1c0",
+  "command": "PYTHONPATH=src python3.11 -m epistemedia.check",
+  "commands": [
+    "git clone --no-hardlinks /private/tmp/epistemedia-next.PIWHDT/epistemedia /private/tmp/em45-git-repro.pORYK8/repo",
+    "git checkout --detach b89bf54d4432f122d9416e596a75ae2c1ed7001d",
+    "git status --short",
+    "PYTHONPATH=src python3.11 -m epistemedia validate",
+    "PYTHONPATH=src python3.11 -m epistemedia.check",
+    "git status --short"
+  ],
+  "ended_at": "2026-09-02T01:11:37Z",
+  "id": "em:run-receipt:sha256:0b6bffbb084737e47af5c60b85066c1db7a84158d8071d254b43c2eadd0c8833",
+  "inputs": {
+    "execution_plan": {
+      "path": "docs/execution-plans/EM-0045.md",
+      "sha256": "baf1a5db213ef9c6d3a666fb8462120e304219e939fee2bc1833dba25db9019b"
+    },
+    "task_contract": {
+      "path": "tasks/contracts/EM-0045.json",
+      "sha256": "503074081307424eb3471731dc01d961d489cc6b56280d4f14495a63be52138f"
+    }
+  },
+  "kind": "run-receipt",
+  "limitations": [
+    "This receipt supersedes only the incorrect catalog and frontier identity in the preserved prior completion receipt. It retains that receipt as an auditable failed measurement rather than rewriting it.",
+    "The exact 390 px browser observation was made against the same committed page-producing source at candidate head b89bf54d4432f122d9416e596a75ae2c1ed7001d; the clean-clone rerun independently revalidated its generated projection, full suite, disclosure audit, and deterministic equality.",
+    "The live Pages release remains bound to accepted base 0f0f0d06a0f7581cbdf86719088f5e97cb44737e until protected integration and a separately verified deployment complete.",
+    "The REST and Streamable HTTP MCP gateway is locally conformant but not hosted. Provider billing, free quotas, custom-domain availability, DNS, TLS, and external protocol smoke checks remain owner-controlled activation gates.",
+    "This superseding receipt binds the cleanly reproduced committed content head before its own append-only receipt commit. The final receipt-inclusive PR head requires fresh CI and exact-head independent review."
+  ],
+  "outputs": {
+    "browser_audit": {
+      "console_errors_or_warnings": 0,
+      "details_open_by_default": 0,
+      "details_total": 7,
+      "h1_count": 1,
+      "horizontal_overflow": false,
+      "production_elapsed": "2m 26s",
+      "route": "/open-dockets/what-the-97-percent-climate-consensus-studies-measure/",
+      "script_count": 0,
+      "stylesheet_count": 1,
+      "viewport_client_width_px": 390,
+      "viewport_scroll_width_px": 390
+    },
+    "catalog_id": "em:catalog:sha256:ed4e0d00d4a6900d99f78153f10f2752630285ff81030824eb7455f4512e43c3",
+    "clean_clone": {
+      "post_validation_status": "empty",
+      "pre_validation_status": "empty"
+    },
+    "frontier": "em:frontier:sha256:c065afa0f1c59e73b017576bee7e09e9979a031c241ec48f6f817aa718c4e690",
+    "hosted_gateway": {
+      "api_dns_record": "absent",
+      "mcp_dns_record": "absent",
+      "provider_authority": "unavailable",
+      "status": "not-live"
+    },
+    "object_count": 231,
+    "topic_count": 11
+  },
+  "recorded_at": "2026-09-02T01:11:37Z",
+  "run_id": "em0045-clean-clone-reproducible-b89bf54d-20260902T011137Z",
+  "schema": "https://epistemedia.com/schemas/run-receipt-v1.json",
+  "started_at": "2026-09-02T01:09:44Z",
+  "status": "reported",
+  "supersedes": {
+    "file_sha256": "d502f5dd7cc29161a72977ca2eb402ee43f8f4d66b0f78fdbea6a0b8dfa961d8",
+    "id": "em:run-receipt:sha256:26ab45025765f941917415d552161952567eb2150aa7123c0f498a8482cab4bd",
+    "path": "runs/proposals/20260902T005514Z-em0045-completion.json",
+    "reason": "The prior receipt recorded catalog and frontier values generated before the corrected files were committed, so those identities did not reproduce from its declared content head. This append-only successor records a clean detached checkout and its exact reproducible identities."
+  },
+  "task_id": "EM-0045",
+  "tests": {
+    "accepted_input_validation": "pass-231-objects-11-topics",
+    "clean_clone_pre_post_status": "pass-empty",
+    "deterministic_rebuild": "pass",
+    "disclosure_audit": "pass-no-findings",
+    "focused_open_docket_suite": "pass-63-of-63",
+    "full_repository_check": "pass",
+    "full_repository_suite": "pass-216-of-216",
+    "public_projection_audit": "pass-no-findings",
+    "source_state": "unchanged"
+  },
+  "versions": {
+    "chrome": "152.0.7977.65",
+    "epistemedia_compiler": "0.2.0",
+    "python": "3.11.15"
+  }
+}
