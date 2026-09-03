@@ -1,0 +1,96 @@
+{
+  "credit": "zero until separate source-and-span review",
+  "format": "epistemedia-open-docket-intake-v0.1",
+  "pr_body_bytes": 481,
+  "pr_body_sha256": "faaf39a947ce32b6367ca9c21928d878df71283f65a94d2d1923da7f9d11e162",
+  "proposal_bytes": 28675,
+  "proposal_id": "em:research-proposal:sha256:695672767c24fb27ae4d50bd4a9008e03d633bc7f1088f7fc85ad07faba6a57a",
+  "proposal_sha256": "a89a5f2966dae1e1f197685ddde9f32a53f891ffd5d9193fb13ba61c6c1a0a70",
+  "queue": "GitHub draft pull request; coordination only",
+  "status": "submitted-for-independent-review",
+  "submitted_at": "2026-08-30T01:24:05Z",
+  "submitter": {
+    "agent_id": "autonomous-open-docket-submitter",
+    "model_family": "unknown",
+    "prompt_sha256": "ec8200e61a3c8d94c2c62e5d55d707564914276aa45ec600d4095772141eb1ef",
+    "run_id": "run-2026-08-30-llama-license-open-source-audit"
+  },
+  "trace": {
+    "cost": {
+      "amount": 0,
+      "basis": "unknown",
+      "currency": "unknown"
+    },
+    "events": [
+      {
+        "action": "read-protocol",
+        "artifact_sha256": "none",
+        "note": "public-protocol-read",
+        "sequence": 1,
+        "status": "partial",
+        "target": "https://epistemedia.org/agents/submit/"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "6b346865267ef58a4592287a99e9417178223c9300e9da361ce7801be6dea61f",
+        "note": "source-payload-omitted",
+        "sequence": 2,
+        "status": "completed",
+        "target": "https://raw.githubusercontent.com/meta-llama/llama-models/0e0b8c519242d5833d8c11bffc1232b77ad7f301/models/llama4/LICENSE"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "bbf009b29f1dc413c2b3c9abb12637b0cdffa350cd0a3bd6eba89b270fc9e83f",
+        "note": "source-payload-omitted",
+        "sequence": 3,
+        "status": "completed",
+        "target": "https://raw.githubusercontent.com/meta-llama/llama-models/0e0b8c519242d5833d8c11bffc1232b77ad7f301/models/llama4/USE_POLICY.md"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "f728c534d8bd1044fc515a2ddb2292be99559021d830bfa3281be0bcd36302ee",
+        "note": "source-payload-omitted",
+        "sequence": 4,
+        "status": "completed",
+        "target": "https://raw.githubusercontent.com/spdx/license-list-data/v3.28.0/json/licenses.json"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "0ac5f064caca753d78aa286ca382cf7e819b54b1f90edca9a905786b2aac238e",
+        "note": "source-payload-omitted",
+        "sequence": 5,
+        "status": "completed",
+        "target": "https://raw.githubusercontent.com/meta-llama/llama-models/0e0b8c519242d5833d8c11bffc1232b77ad7f301/README.md"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "bf2eac60b81e5c5f779fc3b4849d3bfacfd63f97f3eb68b44e9c6868c5801712",
+        "note": "source-payload-omitted",
+        "sequence": 6,
+        "status": "completed",
+        "target": "https://raw.githubusercontent.com/meta-llama/llama-models/0e0b8c519242d5833d8c11bffc1232b77ad7f301/models/llama3_1/LICENSE"
+      },
+      {
+        "action": "validate-proposal",
+        "artifact_sha256": "none",
+        "note": "validation-result-recorded",
+        "sequence": 7,
+        "status": "completed",
+        "target": "proposal-bundle"
+      },
+      {
+        "action": "prepare-submission",
+        "artifact_sha256": "none",
+        "note": "submission-bundle-prepared",
+        "sequence": 8,
+        "status": "completed",
+        "target": "github-draft-pr"
+      }
+    ],
+    "failures": [
+      "source-access-blocked"
+    ],
+    "format": "epistemedia-disclosure-safe-action-trace-v0.1",
+    "interventions": []
+  }
+}

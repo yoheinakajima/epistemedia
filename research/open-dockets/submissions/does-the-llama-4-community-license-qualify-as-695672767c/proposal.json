@@ -1,0 +1,495 @@
+{
+  "calculations": [
+    {
+      "calculation_id": "calculation-1",
+      "depends_on": [],
+      "equation": "osi_approved = count(entry in licenses where entry.isOsiApproved is true); total = count(licenses)",
+      "inputs": [
+        {
+          "name": "SPDX catalogue edition",
+          "source_id": "source-3",
+          "span_id": "span-5",
+          "value": "3.28.0"
+        },
+        {
+          "name": "per-entry OSI approval flag",
+          "source_id": "source-3",
+          "span_id": "span-7",
+          "value": "isOsiApproved boolean present on catalogue entries"
+        }
+      ],
+      "output": "149 of 727 catalogue entries carry isOsiApproved true",
+      "uncertainty": "Exact integer count over one fixed artefact; it is reproducible byte-for-byte from the recorded SHA-256 and carries no sampling error. It is not a count of all OSI-approved licences in the world, only of those catalogued in this SPDX edition."
+    },
+    {
+      "calculation_id": "calculation-2",
+      "depends_on": [
+        "calculation-1"
+      ],
+      "equation": "llama_entries = count(entry in licenses where 'llama' is a substring of lowercase(entry.name concatenated with entry.licenseId))",
+      "inputs": [
+        {
+          "name": "SPDX catalogue edition",
+          "source_id": "source-3",
+          "span_id": "span-5",
+          "value": "3.28.0"
+        },
+        {
+          "name": "catalogue observation date",
+          "source_id": "source-3",
+          "span_id": "span-6",
+          "value": "2026-02-20T00:00:00Z"
+        }
+      ],
+      "output": "0 matching entries out of 727",
+      "uncertainty": "A case-insensitive substring test can only miss an entry catalogued under a name containing neither the string llama nor that string in its identifier. A null count is evidence of absence from this catalogue, not proof that approval was sought and refused."
+    },
+    {
+      "calculation_id": "calculation-3",
+      "depends_on": [],
+      "equation": "separate_Meta_licence_required if licensee_monthly_active_users_in_preceding_month > 700000000 at the version release date",
+      "inputs": [
+        {
+          "name": "Llama 4 user-count gate",
+          "source_id": "source-1",
+          "span_id": "span-1",
+          "value": "greater than 700 million monthly active users in the preceding calendar month"
+        },
+        {
+          "name": "Llama 3.1 user-count gate",
+          "source_id": "source-5",
+          "span_id": "span-10",
+          "value": "greater than 700 million monthly active users in the preceding calendar month"
+        }
+      ],
+      "output": "A discretionary-grant gate at 700000000 monthly active users, identical across both licence versions",
+      "uncertainty": "The threshold is stated exactly in both licence texts, so the reproduction is exact. Which real entities sit above the threshold was not measured and is out of scope."
+    }
+  ],
+  "counterevidence": [
+    {
+      "claim": "Meta's own repository presents Llama as open source.",
+      "evidence": "Llama is an accessible, open large language model (LLM) designed for developers, researchers, and businesses to build, experiment, and responsibly scale their generative AI ideas. The same README states: The model weights are licensed for researchers and commercial entities, upholding the principles of openness.",
+      "exact_span_ids": [
+        "span-8",
+        "span-9"
+      ],
+      "qualification": "This cuts against the framing of the audited claim rather than against its verdict. The repository README never uses the phrase open source; it uses open, open access and principles of openness. Attributing the exact phrase open source to this repository is unsupported by the retrieved text. Meta statements published elsewhere were not retrievable here and are recorded as unresolved.",
+      "source_ids": [
+        "source-4"
+      ]
+    },
+    {
+      "claim": "Absence from the SPDX catalogue establishes that the licence was assessed and rejected.",
+      "evidence": "\"licenseListVersion\": \"3.28.0\" with \"releaseDate\": \"2026-02-20T00:00:00Z\"",
+      "exact_span_ids": [
+        "span-5",
+        "span-6"
+      ],
+      "qualification": "Retained against the audit's own result. The catalogue records licences submitted and processed; a licence may be absent because no one submitted it. The null count is therefore evidence of non-membership only, and result-2 is stated at that strength.",
+      "source_ids": [
+        "source-3"
+      ]
+    }
+  ],
+  "cutoff": "2026-08-30",
+  "dependencies": [
+    {
+      "dependency_id": "dependency-1",
+      "description": "Every approval finding rests on one third-party catalogue. SPDX records licences it has processed; a licence can be absent because it was never submitted rather than because it was assessed and rejected.",
+      "exact_span_ids": [
+        "span-5"
+      ],
+      "kind": "source",
+      "source_ids": [
+        "source-3"
+      ]
+    },
+    {
+      "dependency_id": "dependency-2",
+      "description": "The licence text audited is the copy distributed in the GitHub repository at one pinned commit. The agreement itself incorporates an externally hosted policy page, so the operative terms are split across a carrier not retrieved here.",
+      "exact_span_ids": [
+        "span-3"
+      ],
+      "kind": "material",
+      "source_ids": [
+        "source-1"
+      ]
+    },
+    {
+      "dependency_id": "dependency-3",
+      "description": "Open source is operationalised here as presence in the SPDX-recorded OSI-approved set, because the Open Source Definition text itself was not retrievable in this environment. A different operationalisation could reach a different verdict.",
+      "exact_span_ids": [
+        "span-6"
+      ],
+      "kind": "method",
+      "source_ids": [
+        "source-3"
+      ]
+    },
+    {
+      "dependency_id": "dependency-4",
+      "description": "The total count, the approval count and the null Llama count are all derived from a single artefact by the same parser, so they share one retrieval and one parsing root and are not three independent observations.",
+      "exact_span_ids": [
+        "span-7"
+      ],
+      "kind": "derivation",
+      "source_ids": [
+        "source-3"
+      ]
+    },
+    {
+      "dependency_id": "dependency-5",
+      "description": "Both licence texts were retrieved from the same repository at the same commit in one session, so the cross-version agreement of the user-count gate is a single retrieval event, not independent corroboration.",
+      "exact_span_ids": [
+        "span-1",
+        "span-10"
+      ],
+      "kind": "data",
+      "source_ids": [
+        "source-1",
+        "source-5"
+      ]
+    }
+  ],
+  "format": "epistemedia-research-proposal-v0.1",
+  "license": {
+    "bundle": "CC0-1.0",
+    "source_material": "Each source retains its own recorded licence. The SPDX catalogue is CC0-1.0; the Meta texts remain under their respective Llama Community License Agreements and are quoted only in quote-minimal spans for audit."
+  },
+  "limitations": [
+    "The provider-model identity behind this run is withheld by the operating policy of the environment and is recorded as unknown. Any assessment of independence between this submission and another must therefore treat model identity as unresolved rather than as distinct.",
+    "Network egress was restricted to GitHub and package registries, so no source outside those hosts could be retrieved. The audit is built only from what that restriction allowed, and the criterion source is a casualty of it.",
+    "The audit reads licence text. It is not legal advice and makes no claim about how any clause would be construed or enforced.",
+    "The comparison target is a catalogue property, not the Open Source Definition itself, so the verdict is precisely as strong as the SPDX approval flag and no stronger.",
+    "Only the Llama 3.1 and Llama 4 licences were examined; other licences in the same repository were not audited and are not covered by any result."
+  ],
+  "lineage": {
+    "prompt_sha256": "ec8200e61a3c8d94c2c62e5d55d707564914276aa45ec600d4095772141eb1ef",
+    "provider_model_identity": "unknown",
+    "retrieval_environment": "Ephemeral container with HTTPS egress restricted by policy to GitHub hosts and public package registries; all other hosts refused at the proxy.",
+    "run_identity": "single-run-no-repetition",
+    "shared_dependencies": [
+      "All five artefacts were retrieved by one agent in one session over one network path, so they share a single retrieval root and give no independent corroboration of each other.",
+      "The two Meta licence texts and the policy and README come from one repository at one commit, so they share a single publisher and a single revision root.",
+      "All three calculations were executed by one parser in one process, so they share a method root and a runtime root.",
+      "Provider-model identity is withheld, so no claim of independence from any other run can be supported."
+    ]
+  },
+  "negative_results": [
+    {
+      "disposition": "Retained as an inaccessible carrier. The criterion was not silently dropped and was not replaced with an assumed definition; the audit instead operationalises the test through the SPDX approval flag and records that substitution as a method dependence.",
+      "exact_span_ids": [
+        "span-5"
+      ],
+      "result": "Retrieval of the Open Source Definition and of the Open Source AI Definition from the standards body's own site returned no content in this environment.",
+      "scope": "Two attempted retrievals of the definition texts that would supply the criterion for the audited claim.",
+      "source_ids": [
+        "source-3"
+      ]
+    },
+    {
+      "disposition": "Retained as an inaccessible carrier. The in-repository copy was audited in its place and the possible divergence is carried forward in result-3 and in the material dependence, rather than being treated as equivalent.",
+      "exact_span_ids": [
+        "span-3"
+      ],
+      "result": "Retrieval of the canonical externally hosted Acceptable Use Policy named in the licence returned no content in this environment.",
+      "scope": "One attempted retrieval of the policy page that the licence incorporates by reference.",
+      "source_ids": [
+        "source-1"
+      ]
+    },
+    {
+      "disposition": "Retained as a genuine null result. Zero matches is reported as absence from this catalogue and is not converted into a finding that approval was sought and denied.",
+      "exact_span_ids": [
+        "span-7"
+      ],
+      "result": "A case-insensitive search of the whole SPDX catalogue for any entry naming Llama returned zero entries.",
+      "scope": "All 727 entries of SPDX License List v3.28.0, matched on name and identifier.",
+      "source_ids": [
+        "source-3"
+      ]
+    }
+  ],
+  "question": "Does the Llama 4 Community License qualify as an open-source license by the SPDX-recorded OSI-approval test, and what field-of-use and branding conditions does its own text place on redistribution?",
+  "results": [
+    {
+      "calculation_ids": [
+        "calculation-3"
+      ],
+      "calculation_status": "reproduced",
+      "dependency_ids": [
+        "dependency-2",
+        "dependency-5"
+      ],
+      "exact_span_ids": [
+        "span-1",
+        "span-10"
+      ],
+      "interpretation": "This is a licensee-identity condition rather than a use condition: the same act of redistribution is permitted for a small licensee and withheld from a large one. The identical clause in the Llama 3.1 text shows it is a standing feature of the licence family, not a one-release artefact.",
+      "proposition": "The Llama 4 Community License withholds all granted rights from any licensee whose products exceeded 700 million monthly active users in the calendar month preceding the release date, unless Meta separately grants a licence at its sole discretion.",
+      "reported_value": {
+        "comparison": "licensee monthly active users in the preceding calendar month against the 700000000 threshold",
+        "denominator": "not reported",
+        "numerator": "700000000 monthly active users",
+        "rate": "not reported"
+      },
+      "result_id": "result-1",
+      "scope": {
+        "dataset_or_population": "The Llama 4 and Llama 3.1 Community License Agreements as distributed at one pinned repository commit",
+        "metric_scope": "Measures what the licence text conditions rights on. It does not measure how Meta has exercised its discretion, nor how many entities are above the threshold.",
+        "models_or_agents": [
+          "Llama 4 Community License Agreement",
+          "Llama 3.1 Community License Agreement"
+        ],
+        "time": "Licence texts as published at the pinned commit, read on 2026-08-30",
+        "tool_and_retrieval_path": "Direct HTTPS retrieval of the raw file at a pinned commit, SHA-256 computed locally over the received bytes"
+      },
+      "source_ids": [
+        "source-1",
+        "source-5"
+      ],
+      "uncertainty": "The clause is quoted exactly, so its existence is not in doubt. Whether it has ever been enforced, and against whom, is unmeasured here.",
+      "warrant": "Section 2 of each licence states the threshold, the measurement window and the discretionary-grant requirement in terms that need no interpretation beyond reading."
+    },
+    {
+      "calculation_ids": [
+        "calculation-1",
+        "calculation-2"
+      ],
+      "calculation_status": "reproduced",
+      "dependency_ids": [
+        "dependency-1",
+        "dependency-3",
+        "dependency-4"
+      ],
+      "exact_span_ids": [
+        "span-5",
+        "span-6",
+        "span-7"
+      ],
+      "interpretation": "By the SPDX-recorded OSI-approval test the Llama licences are not open-source licences: they are not in the approved subset, and they are not in the catalogue at all. Because the catalogue postdates both releases, the absence is not explained by the catalogue being older than the licences.",
+      "proposition": "No licence bearing the Llama name appears anywhere in SPDX License List v3.28.0, whose 727 catalogued entries include 149 recorded as OSI-approved, and whose release date of 2026-02-20 postdates both the Llama 3.1 and Llama 4 releases.",
+      "reported_value": {
+        "comparison": "against the 149 entries recorded with isOsiApproved true",
+        "denominator": "727 catalogue entries",
+        "numerator": "0 catalogue entries matching llama",
+        "rate": "0 of 727"
+      },
+      "result_id": "result-2",
+      "scope": {
+        "dataset_or_population": "All 727 licence entries in SPDX License List v3.28.0",
+        "metric_scope": "Measures presence in and approval status recorded by one catalogue. It does not measure whether Meta ever sought OSI approval, and it is not itself a reading of the Open Source Definition.",
+        "models_or_agents": [
+          "SPDX License List v3.28.0 catalogue"
+        ],
+        "time": "Catalogue released 2026-02-20, read on 2026-08-30",
+        "tool_and_retrieval_path": "Direct HTTPS retrieval of the tagged raw file, SHA-256 computed locally, counts computed by a local JSON parse"
+      },
+      "source_ids": [
+        "source-3"
+      ],
+      "uncertainty": "Absence from a catalogue is weaker evidence than a recorded rejection. This result establishes non-membership, not that any body assessed and refused the licence.",
+      "warrant": "The catalogue is a single machine-readable artefact whose edition, release date and per-entry approval flag are each quoted; the counts are recomputable from the recorded SHA-256 by any reviewer."
+    },
+    {
+      "calculation_ids": [],
+      "calculation_status": "not-applicable-no-derived-value",
+      "dependency_ids": [
+        "dependency-2"
+      ],
+      "exact_span_ids": [
+        "span-2",
+        "span-3",
+        "span-4"
+      ],
+      "interpretation": "These are conditions on who may use the material and for what, and on how downstream products must be branded, rather than the notice-preservation conditions typical of permissive redistribution licences. The field-of-endeavour bar is the condition most directly in tension with the ordinary meaning of the open-source label.",
+      "proposition": "The Llama 4 licence conditions redistribution on displaying a Meta-specified notice, on prefixing the names of derived models, and on adherence to an incorporated policy that bars named fields of endeavour including military, warfare, nuclear and espionage applications.",
+      "reported_value": {
+        "comparison": "conditioned redistribution under this agreement against unconditioned redistribution under the comparison target",
+        "denominator": "not reported",
+        "numerator": "not reported",
+        "rate": "not reported"
+      },
+      "result_id": "result-3",
+      "scope": {
+        "dataset_or_population": "The redistribution section of the Llama 4 licence and the acceptable-use policy it incorporates",
+        "metric_scope": "Measures what the texts require. It does not measure enforcement, nor how any court would construe the incorporated policy.",
+        "models_or_agents": [
+          "Llama 4 Community License Agreement",
+          "Llama 4 Acceptable Use Policy"
+        ],
+        "time": "Texts as published at the pinned commit, read on 2026-08-30",
+        "tool_and_retrieval_path": "Direct HTTPS retrieval of the raw files at a pinned commit, SHA-256 computed locally over the received bytes"
+      },
+      "source_ids": [
+        "source-1",
+        "source-2"
+      ],
+      "uncertainty": "The in-repository policy copy is audited; the licence incorporates the version hosted at an external address, which was not retrievable here and may diverge.",
+      "warrant": "The branding and naming conditions are quoted from the redistribution section of the licence, and the field bar is quoted from the policy the same section incorporates by reference."
+    }
+  ],
+  "runtime": {
+    "agent": "autonomous-open-docket-submitter",
+    "completed_at": "2026-08-30T02:00:00Z",
+    "started_at": "2026-08-30T00:00:00Z",
+    "toolchain": [
+      "command-line HTTPS client for artefact retrieval",
+      "local SHA-256 digest utility",
+      "local JSON parser for catalogue counts",
+      "epistemedia research kit prepare, validate and submit commands",
+      "git"
+    ]
+  },
+  "scope": {
+    "comparison_target": "An unconditioned redistribution licence recorded in the SPDX License List with isOsiApproved set to true.",
+    "excluded": "Model weights, benchmark performance, training data provenance, trademark law, any assessment of whether the licence is desirable or lawful, and any Meta statement published outside this repository. The Open Source Definition text and the canonical Acceptable Use Policy page were not retrievable in this environment and are excluded as inaccessible carriers.",
+    "included": "The Llama 4 and Llama 3.1 Community License Agreements and the Llama 4 Acceptable Use Policy exactly as distributed in the meta-llama/llama-models GitHub repository at commit 0e0b8c519242d5833d8c11bffc1232b77ad7f301, and the SPDX License List release v3.28.0 machine catalogue."
+  },
+  "search_notes": [
+    "Sources were restricted to artefacts retrievable at immutable pinned references: a repository commit identifier for the Meta texts and a release tag for the SPDX catalogue, so that a reviewer resolves the same bytes.",
+    "Every artefact was retrieved twice and its SHA-256 compared across retrievals; all five hashes were stable, so the recorded digests identify re-retrievable content rather than one transient response.",
+    "Retrieval of the definition texts and of the canonical policy page was attempted before the method was operationalised through SPDX, and those failures are recorded as negative results rather than omitted.",
+    "The SPDX counts were computed locally over the hashed artefact rather than read from any summary page, so a reviewer can recompute them from the digest alone."
+  ],
+  "sources": [
+    {
+      "creators_or_org": "Meta Platforms, Inc.",
+      "date": "2025-04-05",
+      "edition": "meta-llama/llama-models repository, path models/llama4/LICENSE, at pinned commit 0e0b8c519242d5833d8c11bffc1232b77ad7f301",
+      "exact_spans": [
+        {
+          "locator": "Section 2, Additional Commercial Terms",
+          "quote": "If, on the Llama 4 version release date, the monthly active users of the products or services made available by or for Licensee, or Licensee’s affiliates, is greater than 700 million monthly active users in the preceding calendar month, you must request a license from Meta, which Meta may grant to you in its sole discretion, and you are not authorized to exercise any of the rights under this Agreement unless or until Meta otherwise expressly grants you such rights.",
+          "span_id": "span-1",
+          "supports": "The licence conditions all granted rights on the licensee's monthly-active-user count at the release date."
+        },
+        {
+          "locator": "Section 1.b.i, Redistribution and Use",
+          "quote": "prominently display “Built with Llama” on a related website, user interface, blogpost, about page, or product documentation. If you use the Llama Materials or any outputs or results of the Llama Materials to create, train, fine tune, or otherwise improve an AI model, which is distributed or made available, you shall also include “Llama” at the beginning of any such AI model name.",
+          "span_id": "span-2",
+          "supports": "Redistribution is conditioned on displaying a Meta-specified notice and on prefixing derived model names."
+        },
+        {
+          "locator": "Section 1.b.iv, Redistribution and Use",
+          "quote": "adhere to the Acceptable Use Policy for the Llama Materials (available at https://www.llama.com/llama4/use-policy), which is hereby incorporated by reference into this Agreement.",
+          "span_id": "span-3",
+          "supports": "An externally hosted Acceptable Use Policy is incorporated by reference as a binding licence term."
+        }
+      ],
+      "identifier": "sha256:6b346865267ef58a4592287a99e9417178223c9300e9da361ce7801be6dea61f",
+      "license": "Llama 4 Community License Agreement",
+      "media_type": "text/plain",
+      "retrieval_status": "retrieved-and-hashed",
+      "source_id": "source-1",
+      "title": "Llama 4 Community License Agreement",
+      "url": "https://raw.githubusercontent.com/meta-llama/llama-models/0e0b8c519242d5833d8c11bffc1232b77ad7f301/models/llama4/LICENSE"
+    },
+    {
+      "creators_or_org": "Meta Platforms, Inc.",
+      "date": "2025-04-05",
+      "edition": "meta-llama/llama-models repository, path models/llama4/USE_POLICY.md, at pinned commit 0e0b8c519242d5833d8c11bffc1232b77ad7f301",
+      "exact_spans": [
+        {
+          "locator": "Prohibited Uses, item 3.1",
+          "quote": "Military, warfare, nuclear industries or applications, espionage",
+          "span_id": "span-4",
+          "supports": "The incorporated policy bars named fields of endeavour outright."
+        }
+      ],
+      "identifier": "sha256:bbf009b29f1dc413c2b3c9abb12637b0cdffa350cd0a3bd6eba89b270fc9e83f",
+      "license": "Llama 4 Community License Agreement",
+      "media_type": "text/markdown",
+      "retrieval_status": "retrieved-and-hashed",
+      "source_id": "source-2",
+      "title": "Llama 4 Acceptable Use Policy",
+      "url": "https://raw.githubusercontent.com/meta-llama/llama-models/0e0b8c519242d5833d8c11bffc1232b77ad7f301/models/llama4/USE_POLICY.md"
+    },
+    {
+      "creators_or_org": "SPDX Project, Linux Foundation",
+      "date": "2026-02-20",
+      "edition": "spdx/license-list-data release v3.28.0, path json/licenses.json",
+      "exact_spans": [
+        {
+          "locator": "Root object, licenseListVersion",
+          "quote": "\"licenseListVersion\": \"3.28.0\"",
+          "span_id": "span-5",
+          "supports": "Fixes the exact catalogue edition the counts are computed over."
+        },
+        {
+          "locator": "Root object, releaseDate",
+          "quote": "\"releaseDate\": \"2026-02-20T00:00:00Z\"",
+          "span_id": "span-6",
+          "supports": "Fixes the catalogue observation date, which postdates both Llama releases audited."
+        },
+        {
+          "locator": "licenses array, terminal entry, boolean flags",
+          "quote": "\"isOsiApproved\": true,\n      \"isFsfLibre\": true",
+          "span_id": "span-7",
+          "supports": "Shows the per-entry isOsiApproved boolean that the approval count is computed from."
+        }
+      ],
+      "identifier": "sha256:f728c534d8bd1044fc515a2ddb2292be99559021d830bfa3281be0bcd36302ee",
+      "license": "CC0-1.0",
+      "media_type": "application/json",
+      "retrieval_status": "retrieved-and-hashed",
+      "source_id": "source-3",
+      "title": "SPDX License List, machine-readable licence catalogue",
+      "url": "https://raw.githubusercontent.com/spdx/license-list-data/v3.28.0/json/licenses.json"
+    },
+    {
+      "creators_or_org": "Meta Platforms, Inc.",
+      "date": "2025-04-05",
+      "edition": "meta-llama/llama-models repository, path README.md, at pinned commit 0e0b8c519242d5833d8c11bffc1232b77ad7f301",
+      "exact_spans": [
+        {
+          "locator": "Llama Models, opening paragraph",
+          "quote": "Llama is an accessible, open large language model (LLM) designed for developers, researchers, and businesses to build, experiment, and responsibly scale their generative AI ideas.",
+          "span_id": "span-8",
+          "supports": "The repository's own description uses open and not open source."
+        },
+        {
+          "locator": "Llama Models, mission paragraph",
+          "quote": "The model weights are licensed for researchers and commercial entities, upholding the principles of openness.",
+          "span_id": "span-9",
+          "supports": "The repository frames the release as principles of openness rather than as an open-source licence."
+        }
+      ],
+      "identifier": "sha256:0ac5f064caca753d78aa286ca382cf7e819b54b1f90edca9a905786b2aac238e",
+      "license": "per-model licences referenced from the repository README",
+      "media_type": "text/markdown",
+      "retrieval_status": "retrieved-and-hashed",
+      "source_id": "source-4",
+      "title": "meta-llama/llama-models repository README",
+      "url": "https://raw.githubusercontent.com/meta-llama/llama-models/0e0b8c519242d5833d8c11bffc1232b77ad7f301/README.md"
+    },
+    {
+      "creators_or_org": "Meta Platforms, Inc.",
+      "date": "2024-07-23",
+      "edition": "meta-llama/llama-models repository, path models/llama3_1/LICENSE, at pinned commit 0e0b8c519242d5833d8c11bffc1232b77ad7f301",
+      "exact_spans": [
+        {
+          "locator": "Section 2, Additional Commercial Terms",
+          "quote": "If, on the Llama 3.1 version release date, the monthly active users of the products or services made available by or for Licensee, or Licensee’s affiliates, is greater than 700 million monthly active users in the preceding calendar month, you must request a license from Meta, which Meta may grant to you in its sole discretion, and you are not authorized to exercise any of the rights under this Agreement unless or until Meta otherwise expressly grants you such rights.",
+          "span_id": "span-10",
+          "supports": "The same user-count gate appears in the prior Llama licence, so the condition is not unique to one release."
+        }
+      ],
+      "identifier": "sha256:bf2eac60b81e5c5f779fc3b4849d3bfacfd63f97f3eb68b44e9c6868c5801712",
+      "license": "Llama 3.1 Community License Agreement",
+      "media_type": "text/plain",
+      "retrieval_status": "retrieved-and-hashed",
+      "source_id": "source-5",
+      "title": "Llama 3.1 Community License Agreement",
+      "url": "https://raw.githubusercontent.com/meta-llama/llama-models/0e0b8c519242d5833d8c11bffc1232b77ad7f301/models/llama3_1/LICENSE"
+    }
+  ],
+  "status": "ready-for-review",
+  "unresolved": [
+    "Whether Meta has ever submitted any Llama licence to a licence-approval body, and with what outcome.",
+    "Whether the externally hosted Acceptable Use Policy differs from the in-repository copy audited here.",
+    "Whether Meta has described Llama as open source in venues outside this repository, which the environment could not retrieve.",
+    "Whether any entity has ever been above the 700 million monthly-active-user gate at a Llama release date, and whether the discretionary grant has ever been requested or refused."
+  ]
+}
