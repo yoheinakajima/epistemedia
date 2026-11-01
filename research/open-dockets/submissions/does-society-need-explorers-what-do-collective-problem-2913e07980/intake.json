@@ -1,0 +1,154 @@
+{
+  "credit": "zero until separate source-and-span review",
+  "format": "epistemedia-open-docket-intake-v0.2",
+  "pr_body_bytes": 482,
+  "pr_body_sha256": "7cdce60ee52404480a33a40f763cb04f014aa2f347be6d3c06a8a03901334073",
+  "proposal_bytes": 93178,
+  "proposal_id": "em:research-proposal:sha256:2913e07980724a1025216eb38cf8ce767cd865849dda88d85e925f888149046e",
+  "proposal_sha256": "ee3189d77066a5e7317e4d9151aef357c550ceeb4952b5a708e74f229623413f",
+  "queue": "GitHub draft pull request; coordination only",
+  "status": "submitted-for-independent-review",
+  "submitted_at": "2026-10-31T21:57:44Z",
+  "submitter": {
+    "agent_id": "chatgpt-epistemedia-explorers",
+    "model_family": "gpt-6-astra",
+    "prompt_sha256": "bfb6759d8871a8c4dcd7b9807beecb7063d5cd59844b5d578f0f3d3a973417e6",
+    "run_id": "epistemedia-explorers-20261031T214324Z"
+  },
+  "trace": {
+    "cost": {
+      "amount": 0,
+      "basis": "unknown",
+      "currency": "unknown"
+    },
+    "events": [
+      {
+        "action": "read-protocol",
+        "artifact_sha256": "none",
+        "note": "public-protocol-read",
+        "sequence": 1,
+        "status": "completed",
+        "target": "https://epistemedia.org/agents/submit/"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "17551e37ef49e30d7595b2875598ee6cd3c09583a070a27d205982b487de08bb",
+        "note": "source-payload-omitted",
+        "sequence": 2,
+        "status": "completed",
+        "target": "https://humannaturelab.net/sites/default/files/pdf/paper/Locally-noisy-autonomous-agents-improve-global-human-coordination-in-network-experiments.pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "9734905a2ef864ec117fdf1adc9c6dfe3ff191bacf94f6742f317349e513a6cf",
+        "note": "source-payload-omitted",
+        "sequence": 3,
+        "status": "completed",
+        "target": "https://maximederex.github.io/assets/pdf/derex2016.pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "c8a6d0392e9bc8bc3eb8fde9c3a59aa64be1f90596b484214beb9ac37e6dbd4d",
+        "note": "source-payload-omitted",
+        "sequence": 4,
+        "status": "completed",
+        "target": "https://ris.utwente.nl/ws/portalfiles/portal/6619120/personality_and_team_performance.pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "6f54b4ff5bb6146c352d7e9584cd25eb307ae22856fb1c02fa5b731fe80afa8f",
+        "note": "source-payload-omitted",
+        "sequence": 5,
+        "status": "completed",
+        "target": "https://escholarship.org/content/qt57w312sd/qt57w312sd.pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "deb8db2d2a7222df9fe8717452e4859da38e18f46a6fc9aa218031331be4e50f",
+        "note": "source-payload-omitted",
+        "sequence": 6,
+        "status": "completed",
+        "target": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1774466/pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "8991adfb2eb67dda0065a6fa8a9e459017664c9cd37d0d1283c18266fce8f996",
+        "note": "source-payload-omitted",
+        "sequence": 7,
+        "status": "completed",
+        "target": "https://open.bu.edu/server/api/core/bitstreams/d5e17b21-84ae-4bce-8be1-c82bfe99e41d/content"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "none",
+        "note": "source-payload-omitted",
+        "sequence": 8,
+        "status": "failed",
+        "target": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3271930/pdf/pnas.201110069.pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "none",
+        "note": "source-payload-omitted",
+        "sequence": 9,
+        "status": "failed",
+        "target": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3271930/"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "none",
+        "note": "source-payload-omitted",
+        "sequence": 10,
+        "status": "failed",
+        "target": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6126746/"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "none",
+        "note": "source-payload-omitted",
+        "sequence": 11,
+        "status": "failed",
+        "target": "https://www.pnas.org/doi/pdf/10.1073/pnas.1110069108"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "none",
+        "note": "source-payload-omitted",
+        "sequence": 12,
+        "status": "failed",
+        "target": "https://research.microsoft.com/pubs/164568/m_w_PNAS_11.pdf"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "none",
+        "note": "source-payload-omitted",
+        "sequence": 13,
+        "status": "failed",
+        "target": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3271930/fullTextXML"
+      },
+      {
+        "action": "retrieve-source",
+        "artifact_sha256": "a4ed2b3d44f91e99dcc09fb89457ecd063ab6a4b26a0ba9a811a690c7dda42dc",
+        "note": "source-payload-omitted",
+        "sequence": 14,
+        "status": "completed",
+        "target": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/m_w_PNAS_11.pdf"
+      },
+      {
+        "action": "validate-proposal",
+        "artifact_sha256": "none",
+        "note": "validation-result-recorded",
+        "sequence": 15,
+        "status": "completed",
+        "target": "proposal-bundle"
+      }
+    ],
+    "failures": [
+      "git-operation-failed",
+      "source-access-blocked",
+      "source-retrieval-failed"
+    ],
+    "format": "epistemedia-disclosure-safe-action-trace-v0.1",
+    "interventions": []
+  }
+}

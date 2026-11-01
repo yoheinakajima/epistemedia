@@ -1,0 +1,2271 @@
+{
+  "calculations": [
+    {
+      "calculation_id": "calc-median-reduction",
+      "depends_on": [],
+      "equation": "saved_seconds = control_seconds - treatment_seconds = 129.3; reduction_percent = 100 * saved_seconds / control_seconds; round percentage to one decimal place",
+      "inputs": [
+        {
+          "input_id": "control-seconds",
+          "json_pointer": "/pdf-page-2/figure-2/caption/control-median-seconds",
+          "name": "control seconds",
+          "origin": "source-span",
+          "source_id": "shirado-2017",
+          "span_id": "shirado-2017-medians",
+          "value": "232.4"
+        },
+        {
+          "input_id": "treatment-seconds",
+          "json_pointer": "/pdf-page-2/figure-2/caption/central-small-noise-median-seconds",
+          "name": "treatment seconds",
+          "origin": "source-span",
+          "source_id": "shirado-2017",
+          "span_id": "shirado-2017-medians",
+          "value": "103.1"
+        }
+      ],
+      "output": "129.3 seconds saved; 55.6% reduction in median completion time",
+      "uncertainty": "Computed from the published rounded medians; not a speed ratio, causal mediation estimate, confidence interval, or raw-data reanalysis."
+    },
+    {
+      "calculation_id": "calc-route-percentages",
+      "depends_on": [],
+      "equation": "identity(constant_percent, intermittent_percent, absent_percent); no pooling or new hypothesis test",
+      "inputs": [
+        {
+          "input_id": "constant-percent",
+          "json_pointer": "/pdf-page-3/results/main-result/constant-optimum-percent",
+          "name": "constant percent",
+          "origin": "source-span",
+          "source_id": "bernstein-2018",
+          "span_id": "bernstein-2018-constant",
+          "value": "33.3%"
+        },
+        {
+          "input_id": "intermittent-percent",
+          "json_pointer": "/pdf-page-3/results/main-result/intermittent-optimum-percent",
+          "name": "intermittent percent",
+          "origin": "source-span",
+          "source_id": "bernstein-2018",
+          "span_id": "bernstein-2018-intermittent",
+          "value": "48.3%"
+        },
+        {
+          "input_id": "absent-percent",
+          "json_pointer": "/pdf-page-3/results/main-result/absent-optimum-percent",
+          "name": "absent percent",
+          "origin": "source-span",
+          "source_id": "bernstein-2018",
+          "span_id": "bernstein-2018-none",
+          "value": "44.1%"
+        }
+      ],
+      "output": "33.3%, 48.3%, and 44.1%, respectively",
+      "uncertainty": "Identity extraction of rounded source percentages without storage. Trial denominators are not reconstructed and percentages are not treated as independent samples."
+    },
+    {
+      "calculation_id": "calc-joint-discovery",
+      "depends_on": [],
+      "equation": "identity(partial_percent); encode none as zero successes; full_percent = 100 * 0 / groups_per_condition",
+      "inputs": [
+        {
+          "input_id": "partial-percent",
+          "json_pointer": "/pdf-page-2/results/partial-groups-discovering-both-percent",
+          "name": "partial percent",
+          "origin": "source-span",
+          "source_id": "derex-2016",
+          "span_id": "derex-2016-partial",
+          "value": "58.3%"
+        },
+        {
+          "input_id": "full-success-count",
+          "json_pointer": "/pdf-page-2/results/full-groups-discovering-both-count",
+          "name": "full success count",
+          "origin": "source-span",
+          "source_id": "derex-2016",
+          "span_id": "derex-2016-full",
+          "value": "0 (source says none)"
+        },
+        {
+          "input_id": "groups-per-condition",
+          "json_pointer": "/pdf-page-5/experimental-design/replicates-per-condition",
+          "name": "groups per condition",
+          "origin": "source-span",
+          "source_id": "derex-2016",
+          "span_id": "derex-2016-replicates",
+          "value": "12"
+        }
+      ],
+      "output": "58.3% partial; 0% full; 12 groups per condition",
+      "uncertainty": "Source percentages and logical zero encoding only. No exact numerator is reconstructed from a rounded percentage and no pooled effect is estimated."
+    },
+    {
+      "calculation_id": "calc-team-correlations",
+      "depends_on": [],
+      "equation": "identity(mean_N, mean_rho, variability_N, variability_rho); keep the two estimates separate",
+      "inputs": [
+        {
+          "input_id": "mean-N",
+          "json_pointer": "/table-2/elevation/conscientiousness/N",
+          "name": "mean N",
+          "origin": "source-span",
+          "source_id": "peeters-2006",
+          "span_id": "peeters-2006-mean",
+          "value": "527"
+        },
+        {
+          "input_id": "mean-rho",
+          "json_pointer": "/table-2/elevation/conscientiousness/rho-unparenthesized",
+          "name": "mean rho",
+          "origin": "source-span",
+          "source_id": "peeters-2006",
+          "span_id": "peeters-2006-mean",
+          "value": "0.20"
+        },
+        {
+          "input_id": "variability-N",
+          "json_pointer": "/table-2/variability/conscientiousness/N",
+          "name": "variability N",
+          "origin": "source-span",
+          "source_id": "peeters-2006",
+          "span_id": "peeters-2006-variability",
+          "value": "332"
+        },
+        {
+          "input_id": "variability-rho",
+          "json_pointer": "/table-2/variability/conscientiousness/rho",
+          "name": "variability rho",
+          "origin": "source-span",
+          "source_id": "peeters-2006",
+          "span_id": "peeters-2006-variability",
+          "value": "-0.24"
+        }
+      ],
+      "output": "Mean: rho=0.20, N=527 teams; variability: rho=-0.24, N=332 teams",
+      "uncertainty": "Table identity extraction checked visually. Corrections differ between elevation and variability; underlying effect sizes were not reanalyzed."
+    }
+  ],
+  "counterevidence": [
+    {
+      "claim": "Intermittent interaction improves every performance measure regardless of storage.",
+      "evidence": "The source reports broad convergence of intermittent and constant conditions with storage.",
+      "exact_span_ids": [
+        "bernstein-2018-storage"
+      ],
+      "qualification": "An internal boundary condition, not proof of equality or a null effect on every metric.",
+      "source_ids": [
+        "bernstein-2018"
+      ]
+    },
+    {
+      "claim": "Information must diffuse less efficiently for exploration to help groups.",
+      "evidence": "Efficient equal-degree networks outperformed less efficient ones in the original experiment.",
+      "exact_span_ids": [
+        "mason-2012-degree",
+        "mason-2012-result"
+      ],
+      "qualification": "Different tasks can favor different network arrangements; not a direct replication failure of the remedy or route experiments.",
+      "source_ids": [
+        "mason-2012"
+      ]
+    },
+    {
+      "claim": "The cited efficient network was fully connected.",
+      "evidence": "The synthesis uses that description, while the primary methods fix three neighbors per node.",
+      "exact_span_ids": [
+        "mason-2012-degree",
+        "smaldino-2024-mason-reference",
+        "smaldino-2024-fully-connected"
+      ],
+      "qualification": "Preserve the primary operationalization. This discrepancy does not by itself falsify the synthesis's broader mechanism.",
+      "source_ids": [
+        "mason-2012",
+        "smaldino-2024"
+      ]
+    },
+    {
+      "claim": "More personality variability is generally beneficial to teams.",
+      "evidence": "The conscientiousness variability association is negative in the selected meta-analysis.",
+      "exact_span_ids": [
+        "peeters-2006-variability",
+        "peeters-2006-measure",
+        "peeters-2006-association"
+      ],
+      "qualification": "Conscientiousness and exploration are distinct; team ratings and societal innovation are distinct outcomes.",
+      "source_ids": [
+        "peeters-2006"
+      ]
+    },
+    {
+      "claim": "The personality simulation shows that a heterogeneous mixture always wins.",
+      "evidence": "The homogeneous High composition performs best on Sphere.",
+      "exact_span_ids": [
+        "pringle-2026-sphere"
+      ],
+      "qualification": "A model-specific counterexample, not an estimate for actual people.",
+      "source_ids": [
+        "pringle-2026"
+      ]
+    }
+  ],
+  "cutoff": "2026-10-31",
+  "dependencies": [
+    {
+      "dependency_id": "dep-shirado-program",
+      "description": "One bot-coordination experimental program; treatment arms and alternative editions are not separate independent confirmations.",
+      "exact_span_ids": [
+        "shirado-2017-bots",
+        "shirado-2017-noise",
+        "shirado-2017-central",
+        "shirado-2017-medians",
+        "shirado-2017-control"
+      ],
+      "kind": "data",
+      "source_ids": [
+        "shirado-2017"
+      ]
+    },
+    {
+      "dependency_id": "dep-bernstein-program",
+      "description": "One route-optimization program. Visibility and storage conditions and repeated trials share a design; trial observations are not unique people.",
+      "exact_span_ids": [
+        "bernstein-2018-triads",
+        "bernstein-2018-task",
+        "bernstein-2018-constant",
+        "bernstein-2018-intermittent",
+        "bernstein-2018-none",
+        "bernstein-2018-storage"
+      ],
+      "kind": "data",
+      "source_ids": [
+        "bernstein-2018"
+      ]
+    },
+    {
+      "dependency_id": "dep-derex-program",
+      "description": "One cultural-accumulation experiment with complementary paths embedded in its payoff landscape; observations share treatment design.",
+      "exact_span_ids": [
+        "derex-2016-group",
+        "derex-2016-trials",
+        "derex-2016-partial",
+        "derex-2016-full",
+        "derex-2016-recombination",
+        "derex-2016-replicates"
+      ],
+      "kind": "method",
+      "source_ids": [
+        "derex-2016"
+      ]
+    },
+    {
+      "dependency_id": "dep-mason-program",
+      "description": "One fixed-degree network experiment. Network efficiency is the manipulated topology property; do not rename it complete connectivity.",
+      "exact_span_ids": [
+        "mason-2012-degree",
+        "mason-2012-result"
+      ],
+      "kind": "method",
+      "source_ids": [
+        "mason-2012"
+      ]
+    },
+    {
+      "dependency_id": "dep-peeters-meta",
+      "description": "The meta-analysis aggregates earlier samples. The mean and variability estimates use different sample sets; neither is independent of its underlying studies, which were not re-audited.",
+      "exact_span_ids": [
+        "peeters-2006-mean",
+        "peeters-2006-variability",
+        "peeters-2006-measure",
+        "peeters-2006-association"
+      ],
+      "kind": "data",
+      "source_ids": [
+        "peeters-2006"
+      ]
+    },
+    {
+      "dependency_id": "dep-smaldino-reuse",
+      "description": "The synthesis explicitly reuses Derex and Boyd and Mason and Watts. Those references add interpretation, not new participant-data roots. It does not establish a third replication of either result.",
+      "exact_span_ids": [
+        "smaldino-2024-mason-reference",
+        "smaldino-2024-derex-reference",
+        "derex-2016-partial",
+        "derex-2016-full",
+        "mason-2012-degree",
+        "mason-2012-result"
+      ],
+      "kind": "source",
+      "source_ids": [
+        "derex-2016",
+        "mason-2012",
+        "smaldino-2024"
+      ]
+    },
+    {
+      "dependency_id": "dep-smaldino-scope",
+      "description": "Interpretation compares the synthesis's defined construct and network paraphrase with the primary experiment's fixed degree. The comparison is editorial reasoning, not newly collected data.",
+      "exact_span_ids": [
+        "smaldino-2024-definition",
+        "smaldino-2024-fully-connected",
+        "mason-2012-degree",
+        "mason-2012-result"
+      ],
+      "kind": "derivation",
+      "source_ids": [
+        "mason-2012",
+        "smaldino-2024"
+      ]
+    },
+    {
+      "dependency_id": "dep-pringle-model",
+      "description": "Agent compositions share a swarm-optimization model and synthetic search environment. Repeated simulation runs are not human replications; the personality mapping remains a modeling assumption.",
+      "exact_span_ids": [
+        "pringle-2026-model",
+        "pringle-2026-mixtures",
+        "pringle-2026-orderliness",
+        "pringle-2026-validation",
+        "pringle-2026-sphere"
+      ],
+      "kind": "method",
+      "source_ids": [
+        "pringle-2026"
+      ]
+    }
+  ],
+  "format": "epistemedia-research-proposal-v0.2",
+  "license": {
+    "bundle": "CC0-1.0",
+    "source_material": "Source works retain their recorded licenses. Only attributed minimal excerpts and original descriptions are included; no full source payloads are distributed."
+  },
+  "limitations": [
+    "This is a purposive seven-work audit seeded by an earlier AI-assisted landscape, not a systematic review. Selection and interpretation may omit relevant contradictory or confirming studies.",
+    "The participant experiments manipulate different interventions and measure different outcomes. No common causal effect, meta-analytic average, or global vote count is computed.",
+    "Four experimental programs are described, not four replications of a personality-mixture claim. Participant identities and raw data have not been audited for overlap; no statistical independence beyond the documented program distinctions is asserted.",
+    "Published findings and exact passages were checked, and reported arithmetic or table values were reproduced. No primary dataset, meta-analysis, or simulation was rerun.",
+    "Short excerpts locate evidence within the named paragraph or table; a reviewer must inspect that context. Typography normalization expands ligatures, joins line-break hyphens, and collapses whitespace. Peeters Table 2 is transcribed visually because its text layer corrupts mathematical characters.",
+    "Calculation pointers name exact printed table cells or paragraph fields in RFC-6901-style form; they are semantic locators for PDFs, not a claim that the publisher distributes a corresponding JSON data object.",
+    "Source bytes are not redistributed. Sources without a confirmed reuse license are marked unknown; short attributed excerpts total at most twenty-five words per work.",
+    "The preparation timestamp records the CLI bundle phase. Orientation, candidate-source discovery, and assistance from two same-lineage research agents began earlier; all credited artifact captures occurred after preparation.",
+    "All assisting agents share authoring context and model family. Their research and preflight checks supply no independent-review or scientific-evidence credit. The proposed reading requires a separately rooted reviewer under the repository's accepted rules.",
+    "A draft submission is a non-admitting queue item. It cannot publish itself, alter accepted cases, or authorize promotion. Cost telemetry is unavailable; the trace's zero amount with unknown basis is not a claim that no compute was consumed."
+  ],
+  "lineage": {
+    "prompt_sha256": "bfb6759d8871a8c4dcd7b9807beecb7063d5cd59844b5d578f0f3d3a973417e6",
+    "provider_model_identity": "OpenAI GPT-6 Astra Pro; runtime model family gpt-6-astra; exact serving revision unavailable",
+    "retrieval_environment": "Public web search for source discovery and context; HTTPS downloads of primary editions; Python SHA-256; Poppler text extraction and page rendering. No access-controlled research material is contributed.",
+    "run_identity": "epistemedia-explorers-20261031T214324Z",
+    "shared_dependencies": [
+      "Parent author and all assisting agents share model family and task context; no independent reviewer is claimed.",
+      "Source selection was inspired by a previously supplied AI-assisted literature landscape; claims were checked against original editions.",
+      "Repeated source editions, treatment arms, review citations, and simulation runs do not automatically create independent evidence roots."
+    ]
+  },
+  "negative_results": [
+    {
+      "disposition": "Retained; it does not mean no inventions or no learning occurred.",
+      "exact_span_ids": [
+        "derex-2016-full",
+        "derex-2016-replicates"
+      ],
+      "kind": "null-result",
+      "result": "No fully connected remedy group discovered both third-level innovations.",
+      "retrieval_attempt_ids": [],
+      "scope": "Joint discovery only in the tested cultural-accumulation task.",
+      "source_ids": [
+        "derex-2016"
+      ]
+    },
+    {
+      "disposition": "Retain as unresolved; do not turn lack of validation into disproof.",
+      "exact_span_ids": [
+        "pringle-2026-orderliness",
+        "pringle-2026-validation"
+      ],
+      "kind": "no-evidence-located",
+      "result": "Real-world validation of the swarm-to-personality mapping is not supplied by the simulation.",
+      "retrieval_attempt_ids": [],
+      "scope": "The paper's explicit limitation, not a literature-wide absence claim.",
+      "source_ids": [
+        "pringle-2026"
+      ]
+    },
+    {
+      "disposition": "No source payload or evidence credit. This does not indicate a negative scientific result or an unavailable work in general.",
+      "exact_span_ids": [],
+      "kind": "failed-retrieval",
+      "result": "The PDF endpoint supplied an access/preparation interstitial rather than article bytes.",
+      "retrieval_attempt_ids": [
+        "attempt-carrier-mason2012"
+      ],
+      "scope": "This exact carrier and recorded attempt only; the work was obtained through the separately recorded institutional PDF.",
+      "source_ids": [
+        "carrier-mason2012"
+      ]
+    },
+    {
+      "disposition": "No source payload or evidence credit. This does not indicate a negative scientific result or an unavailable work in general.",
+      "exact_span_ids": [],
+      "kind": "failed-retrieval",
+      "result": "The HTML endpoint supplied an access interstitial rather than article text.",
+      "retrieval_attempt_ids": [
+        "attempt-carrier-mason2012-html"
+      ],
+      "scope": "This exact carrier and recorded attempt only; the work was obtained through the separately recorded institutional PDF.",
+      "source_ids": [
+        "carrier-mason2012-html"
+      ]
+    },
+    {
+      "disposition": "No source payload or evidence credit. This does not indicate a negative scientific result or an unavailable work in general.",
+      "exact_span_ids": [],
+      "kind": "failed-retrieval",
+      "result": "The publisher PDF request returned HTTP 403.",
+      "retrieval_attempt_ids": [
+        "attempt-carrier-mason2012-publisher"
+      ],
+      "scope": "This exact carrier and recorded attempt only; the work was obtained through the separately recorded institutional PDF.",
+      "source_ids": [
+        "carrier-mason2012-publisher"
+      ]
+    },
+    {
+      "disposition": "No source payload or evidence credit. This does not indicate a negative scientific result or an unavailable work in general.",
+      "exact_span_ids": [],
+      "kind": "failed-retrieval",
+      "result": "The legacy paper URL redirected to a generic research home page, not the article.",
+      "retrieval_attempt_ids": [
+        "attempt-carrier-mason2012-microsoft"
+      ],
+      "scope": "This exact carrier and recorded attempt only; the work was obtained through the separately recorded institutional PDF.",
+      "source_ids": [
+        "carrier-mason2012-microsoft"
+      ]
+    },
+    {
+      "disposition": "No source payload or evidence credit. This does not indicate a negative scientific result or an unavailable work in general.",
+      "exact_span_ids": [],
+      "kind": "failed-retrieval",
+      "result": "The alternate public XML endpoint returned an HTTP error; the status code was not retained.",
+      "retrieval_attempt_ids": [
+        "attempt-carrier-mason2012-xml"
+      ],
+      "scope": "This exact carrier and recorded attempt only; the work was obtained through the separately recorded institutional PDF.",
+      "source_ids": [
+        "carrier-mason2012-xml"
+      ]
+    },
+    {
+      "disposition": "No source payload or evidence credit. This does not indicate a negative scientific result or an unavailable work in general.",
+      "exact_span_ids": [],
+      "kind": "failed-retrieval",
+      "result": "The HTML endpoint supplied an access interstitial rather than article text.",
+      "retrieval_attempt_ids": [
+        "attempt-carrier-bernstein2018-html"
+      ],
+      "scope": "This exact carrier and recorded attempt only; the work was obtained through the separately recorded institutional PDF.",
+      "source_ids": [
+        "carrier-bernstein2018-html"
+      ]
+    }
+  ],
+  "question": "Does society need explorers? What do collective problem-solving studies establish about exploration versus stable personality types?",
+  "results": [
+    {
+      "calculation_ids": [
+        "calc-median-reduction"
+      ],
+      "calculation_status": "reproduced",
+      "claim_atoms": [
+        {
+          "atom_id": "result-bot-noise-atom-1",
+          "exact_span_ids": [
+            "shirado-2017-bots",
+            "shirado-2017-noise",
+            "shirado-2017-central",
+            "shirado-2017-medians",
+            "shirado-2017-control"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "supported",
+          "text": "Three central bots making random choices 10% of the time reduced median completion time in a human network-coloring experiment."
+        },
+        {
+          "atom_id": "result-bot-noise-atom-2",
+          "exact_span_ids": [
+            "shirado-2017-medians"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "qualified",
+          "text": "129.3 seconds saved"
+        },
+        {
+          "atom_id": "result-bot-noise-atom-3",
+          "exact_span_ids": [
+            "shirado-2017-medians"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "qualified",
+          "text": "232.4-second control median"
+        },
+        {
+          "atom_id": "result-bot-noise-atom-4",
+          "exact_span_ids": [
+            "shirado-2017-medians"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "qualified",
+          "text": "55.6% reduction in median completion time"
+        },
+        {
+          "atom_id": "result-bot-noise-atom-5",
+          "exact_span_ids": [
+            "shirado-2017-bots",
+            "shirado-2017-noise",
+            "shirado-2017-central",
+            "shirado-2017-control"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "supported",
+          "text": "Three central bots with 10% random choices versus human-only control"
+        },
+        {
+          "atom_id": "result-bot-noise-atom-6",
+          "exact_span_ids": [
+            "shirado-2017-bots",
+            "shirado-2017-medians"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "qualified",
+          "text": "Experimental color-coordination networks"
+        },
+        {
+          "atom_id": "result-bot-noise-atom-7",
+          "exact_span_ids": [
+            "shirado-2017-bots",
+            "shirado-2017-medians"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "qualified",
+          "text": "Published article: intervention paragraphs and Figure 2"
+        },
+        {
+          "atom_id": "result-bot-noise-atom-8",
+          "exact_span_ids": [
+            "shirado-2017-medians"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "qualified",
+          "text": "Within task sessions"
+        },
+        {
+          "atom_id": "result-bot-noise-atom-9",
+          "exact_span_ids": [
+            "shirado-2017-medians"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "qualified",
+          "text": "Median time to a conflict-free network"
+        },
+        {
+          "atom_id": "result-bot-noise-atom-10",
+          "exact_span_ids": [
+            "shirado-2017-bots",
+            "shirado-2017-control"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "shirado-2017"
+          ],
+          "status": "qualified",
+          "text": "Humans and software bots"
+        }
+      ],
+      "dependency_ids": [
+        "dep-shirado-program"
+      ],
+      "exact_span_ids": [
+        "shirado-2017-bots",
+        "shirado-2017-central",
+        "shirado-2017-control",
+        "shirado-2017-medians",
+        "shirado-2017-noise"
+      ],
+      "interpretation": "This supports a particular coordination intervention. Random bot behavior is not a measurement of spontaneity or an enduring explorer personality.",
+      "proposition": "Three central bots making random choices 10% of the time reduced median completion time in a human network-coloring experiment.",
+      "reported_value": {
+        "comparison": "Three central bots with 10% random choices versus human-only control",
+        "denominator": "232.4-second control median",
+        "numerator": "129.3 seconds saved",
+        "rate": "55.6% reduction in median completion time"
+      },
+      "result_id": "result-bot-noise",
+      "scope": {
+        "dataset_or_population": "Experimental color-coordination networks",
+        "metric_scope": "Median time to a conflict-free network",
+        "models_or_agents": [
+          "Humans and software bots"
+        ],
+        "time": "Within task sessions",
+        "tool_and_retrieval_path": "Published article: intervention paragraphs and Figure 2"
+      },
+      "source_ids": [
+        "shirado-2017"
+      ],
+      "uncertainty": "No optimal human personality mixture or society-wide benefit follows.",
+      "warrant": "The manipulation defines bot randomness and placement; the figure supplies the comparator and completion-time medians."
+    },
+    {
+      "calculation_ids": [
+        "calc-route-percentages"
+      ],
+      "calculation_status": "reproduced",
+      "claim_atoms": [
+        {
+          "atom_id": "result-intermittent-visibility-atom-1",
+          "exact_span_ids": [
+            "bernstein-2018-triads",
+            "bernstein-2018-task",
+            "bernstein-2018-constant",
+            "bernstein-2018-intermittent",
+            "bernstein-2018-none",
+            "bernstein-2018-storage"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "supported",
+          "text": "Intermittent visibility improved optimum discovery over constant visibility without storage; storage qualified that advantage."
+        },
+        {
+          "atom_id": "result-intermittent-visibility-atom-2",
+          "exact_span_ids": [
+            "bernstein-2018-constant",
+            "bernstein-2018-intermittent",
+            "bernstein-2018-none"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "qualified",
+          "text": "Optimum-finding trials"
+        },
+        {
+          "atom_id": "result-intermittent-visibility-atom-3",
+          "exact_span_ids": [
+            "bernstein-2018-constant",
+            "bernstein-2018-intermittent",
+            "bernstein-2018-none"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "qualified",
+          "text": "Trials within each treatment; not unique participants"
+        },
+        {
+          "atom_id": "result-intermittent-visibility-atom-4",
+          "exact_span_ids": [
+            "bernstein-2018-constant",
+            "bernstein-2018-intermittent",
+            "bernstein-2018-none"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "qualified",
+          "text": "33.3% constant; 48.3% intermittent; 44.1% absent"
+        },
+        {
+          "atom_id": "result-intermittent-visibility-atom-5",
+          "exact_span_ids": [
+            "bernstein-2018-constant",
+            "bernstein-2018-intermittent",
+            "bernstein-2018-none",
+            "bernstein-2018-storage"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "supported",
+          "text": "Visibility conditions without storage; constant and intermittent broadly converge with storage"
+        },
+        {
+          "atom_id": "result-intermittent-visibility-atom-6",
+          "exact_span_ids": [
+            "bernstein-2018-task"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "qualified",
+          "text": "Traveling-salesperson task"
+        },
+        {
+          "atom_id": "result-intermittent-visibility-atom-7",
+          "exact_span_ids": [
+            "bernstein-2018-triads",
+            "bernstein-2018-constant",
+            "bernstein-2018-storage"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "qualified",
+          "text": "Published article: abstract, Main Result, and Conclusion"
+        },
+        {
+          "atom_id": "result-intermittent-visibility-atom-8",
+          "exact_span_ids": [
+            "bernstein-2018-constant",
+            "bernstein-2018-intermittent",
+            "bernstein-2018-none"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "qualified",
+          "text": "During experimental trials"
+        },
+        {
+          "atom_id": "result-intermittent-visibility-atom-9",
+          "exact_span_ids": [
+            "bernstein-2018-triads",
+            "bernstein-2018-task",
+            "bernstein-2018-constant",
+            "bernstein-2018-intermittent",
+            "bernstein-2018-none"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "qualified",
+          "text": "Probability a triad finds the optimum, not societal innovation"
+        },
+        {
+          "atom_id": "result-intermittent-visibility-atom-10",
+          "exact_span_ids": [
+            "bernstein-2018-triads"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "bernstein-2018"
+          ],
+          "status": "qualified",
+          "text": "Human triads"
+        }
+      ],
+      "dependency_ids": [
+        "dep-bernstein-program"
+      ],
+      "exact_span_ids": [
+        "bernstein-2018-constant",
+        "bernstein-2018-intermittent",
+        "bernstein-2018-none",
+        "bernstein-2018-storage",
+        "bernstein-2018-task",
+        "bernstein-2018-triads"
+      ],
+      "interpretation": "A group can benefit from alternation between individual search and shared information without assigning permanent personality roles.",
+      "proposition": "Intermittent visibility improved optimum discovery over constant visibility without storage; storage qualified that advantage.",
+      "reported_value": {
+        "comparison": "Visibility conditions without storage; constant and intermittent broadly converge with storage",
+        "denominator": "Trials within each treatment; not unique participants",
+        "numerator": "Optimum-finding trials",
+        "rate": "33.3% constant; 48.3% intermittent; 44.1% absent"
+      },
+      "result_id": "result-intermittent-visibility",
+      "scope": {
+        "dataset_or_population": "Traveling-salesperson task",
+        "metric_scope": "Probability a triad finds the optimum, not societal innovation",
+        "models_or_agents": [
+          "Human triads"
+        ],
+        "time": "During experimental trials",
+        "tool_and_retrieval_path": "Published article: abstract, Main Result, and Conclusion"
+      },
+      "source_ids": [
+        "bernstein-2018"
+      ],
+      "uncertainty": "The intermittent rate is not presented as significantly higher than absent visibility. Storage attenuates the comparison; it does not establish equal performance on every outcome.",
+      "warrant": "Treatment-specific reported percentages and the storage discussion jointly bound the intervention."
+    },
+    {
+      "calculation_ids": [
+        "calc-joint-discovery"
+      ],
+      "calculation_status": "reproduced",
+      "claim_atoms": [
+        {
+          "atom_id": "result-partial-connectivity-atom-1",
+          "exact_span_ids": [
+            "derex-2016-group",
+            "derex-2016-partial",
+            "derex-2016-full",
+            "derex-2016-recombination"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "supported",
+          "text": "Partially connected groups more often preserved both developmental paths in a task requiring their recombination."
+        },
+        {
+          "atom_id": "result-partial-connectivity-atom-2",
+          "exact_span_ids": [
+            "derex-2016-partial",
+            "derex-2016-full"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "qualified",
+          "text": "Groups discovering both third-level innovations"
+        },
+        {
+          "atom_id": "result-partial-connectivity-atom-3",
+          "exact_span_ids": [
+            "derex-2016-replicates"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "qualified",
+          "text": "12 groups per condition"
+        },
+        {
+          "atom_id": "result-partial-connectivity-atom-4",
+          "exact_span_ids": [
+            "derex-2016-partial",
+            "derex-2016-full",
+            "derex-2016-replicates"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "qualified",
+          "text": "58.3% partial; 0% full"
+        },
+        {
+          "atom_id": "result-partial-connectivity-atom-5",
+          "exact_span_ids": [
+            "derex-2016-partial",
+            "derex-2016-full"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "supported",
+          "text": "Partially versus fully connected groups"
+        },
+        {
+          "atom_id": "result-partial-connectivity-atom-6",
+          "exact_span_ids": [
+            "derex-2016-group",
+            "derex-2016-trials",
+            "derex-2016-recombination"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "qualified",
+          "text": "Virtual-remedy accumulation task"
+        },
+        {
+          "atom_id": "result-partial-connectivity-atom-7",
+          "exact_span_ids": [
+            "derex-2016-group",
+            "derex-2016-partial",
+            "derex-2016-replicates"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "qualified",
+          "text": "Published article: task design, Results, and Experimental Design"
+        },
+        {
+          "atom_id": "result-partial-connectivity-atom-8",
+          "exact_span_ids": [
+            "derex-2016-trials"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "qualified",
+          "text": "72 trials per participant"
+        },
+        {
+          "atom_id": "result-partial-connectivity-atom-9",
+          "exact_span_ids": [
+            "derex-2016-partial",
+            "derex-2016-full",
+            "derex-2016-recombination"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "qualified",
+          "text": "Joint discovery of both third-level innovations"
+        },
+        {
+          "atom_id": "result-partial-connectivity-atom-10",
+          "exact_span_ids": [
+            "derex-2016-group"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "derex-2016"
+          ],
+          "status": "qualified",
+          "text": "Groups of six participants"
+        }
+      ],
+      "dependency_ids": [
+        "dep-derex-program"
+      ],
+      "exact_span_ids": [
+        "derex-2016-full",
+        "derex-2016-group",
+        "derex-2016-partial",
+        "derex-2016-recombination",
+        "derex-2016-replicates",
+        "derex-2016-trials"
+      ],
+      "interpretation": "Preserving different ingredients can help when advancement depends on combining them.",
+      "proposition": "Partially connected groups more often preserved both developmental paths in a task requiring their recombination.",
+      "reported_value": {
+        "comparison": "Partially versus fully connected groups",
+        "denominator": "12 groups per condition",
+        "numerator": "Groups discovering both third-level innovations",
+        "rate": "58.3% partial; 0% full"
+      },
+      "result_id": "result-partial-connectivity",
+      "scope": {
+        "dataset_or_population": "Virtual-remedy accumulation task",
+        "metric_scope": "Joint discovery of both third-level innovations",
+        "models_or_agents": [
+          "Groups of six participants"
+        ],
+        "time": "72 trials per participant",
+        "tool_and_retrieval_path": "Published article: task design, Results, and Experimental Design"
+      },
+      "source_ids": [
+        "derex-2016"
+      ],
+      "uncertainty": "The landscape builds in complementarity. This is not evidence that fragmentation, novelty, or personality heterogeneity always increases welfare.",
+      "warrant": "Results compare joint discoveries; the design explicitly requires both ingredients for later advancement."
+    },
+    {
+      "calculation_ids": [],
+      "calculation_status": "not-applicable-no-derived-value",
+      "claim_atoms": [
+        {
+          "atom_id": "result-efficient-networks-atom-1",
+          "exact_span_ids": [
+            "mason-2012-degree",
+            "mason-2012-result"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "mason-2012"
+          ],
+          "status": "supported",
+          "text": "Efficient networks outperformed inefficient networks while node counts and degree were held constant."
+        },
+        {
+          "atom_id": "result-efficient-networks-atom-2",
+          "exact_span_ids": [
+            "mason-2012-result"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "mason-2012"
+          ],
+          "status": "qualified",
+          "text": "Not a proportion"
+        },
+        {
+          "atom_id": "result-efficient-networks-atom-3",
+          "exact_span_ids": [
+            "mason-2012-result"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "mason-2012"
+          ],
+          "status": "qualified",
+          "text": "No pooled rate estimated"
+        },
+        {
+          "atom_id": "result-efficient-networks-atom-4",
+          "exact_span_ids": [
+            "mason-2012-degree",
+            "mason-2012-result"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "mason-2012"
+          ],
+          "status": "supported",
+          "text": "Network efficiency at equal node count and degree"
+        },
+        {
+          "atom_id": "result-efficient-networks-atom-5",
+          "exact_span_ids": [
+            "mason-2012-degree"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "mason-2012"
+          ],
+          "status": "qualified",
+          "text": "Sixteen-node networks with three neighbors per node"
+        },
+        {
+          "atom_id": "result-efficient-networks-atom-6",
+          "exact_span_ids": [
+            "mason-2012-degree",
+            "mason-2012-result"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "mason-2012"
+          ],
+          "status": "qualified",
+          "text": "Article abstract and Methods / Networks"
+        },
+        {
+          "atom_id": "result-efficient-networks-atom-7",
+          "exact_span_ids": [
+            "mason-2012-degree"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "mason-2012"
+          ],
+          "status": "qualified",
+          "text": "During experimental games"
+        },
+        {
+          "atom_id": "result-efficient-networks-atom-8",
+          "exact_span_ids": [
+            "mason-2012-degree",
+            "mason-2012-result"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "mason-2012"
+          ],
+          "status": "qualified",
+          "text": "Task performance across network topologies"
+        },
+        {
+          "atom_id": "result-efficient-networks-atom-9",
+          "exact_span_ids": [
+            "mason-2012-degree"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "mason-2012"
+          ],
+          "status": "qualified",
+          "text": "Human networked searchers"
+        }
+      ],
+      "dependency_ids": [
+        "dep-mason-program"
+      ],
+      "exact_span_ids": [
+        "mason-2012-degree",
+        "mason-2012-result"
+      ],
+      "interpretation": "Slowing information flow is not a universally beneficial way to preserve exploration.",
+      "proposition": "Efficient networks outperformed inefficient networks while node counts and degree were held constant.",
+      "reported_value": {
+        "comparison": "Network efficiency at equal node count and degree",
+        "denominator": "Not a proportion",
+        "numerator": "Not a proportion",
+        "rate": "No pooled rate estimated"
+      },
+      "result_id": "result-efficient-networks",
+      "scope": {
+        "dataset_or_population": "Sixteen-node networks with three neighbors per node",
+        "metric_scope": "Task performance across network topologies",
+        "models_or_agents": [
+          "Human networked searchers"
+        ],
+        "time": "During experimental games",
+        "tool_and_retrieval_path": "Article abstract and Methods / Networks"
+      },
+      "source_ids": [
+        "mason-2012"
+      ],
+      "uncertainty": "This does not refute the value of exploration, and it is not a direct replication of the other tasks. Fully connected is an inaccurate description of these tested networks.",
+      "warrant": "Original methods fix degree; the abstract states the direction of the efficiency comparison."
+    },
+    {
+      "calculation_ids": [
+        "calc-team-correlations"
+      ],
+      "calculation_status": "reproduced",
+      "claim_atoms": [
+        {
+          "atom_id": "result-personality-counterweight-atom-1",
+          "exact_span_ids": [
+            "peeters-2006-mean",
+            "peeters-2006-variability",
+            "peeters-2006-measure",
+            "peeters-2006-association"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "supported",
+          "text": "Higher mean conscientiousness correlated positively with team performance; greater within-team variation correlated negatively."
+        },
+        {
+          "atom_id": "result-personality-counterweight-atom-2",
+          "exact_span_ids": [
+            "peeters-2006-association"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "qualified",
+          "text": "Not a success proportion"
+        },
+        {
+          "atom_id": "result-personality-counterweight-atom-3",
+          "exact_span_ids": [
+            "peeters-2006-mean",
+            "peeters-2006-variability"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "qualified",
+          "text": "527 teams for mean; 332 for variability"
+        },
+        {
+          "atom_id": "result-personality-counterweight-atom-4",
+          "exact_span_ids": [
+            "peeters-2006-mean",
+            "peeters-2006-variability"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "qualified",
+          "text": "rho=0.20 for mean; rho=-0.24 for variability"
+        },
+        {
+          "atom_id": "result-personality-counterweight-atom-5",
+          "exact_span_ids": [
+            "peeters-2006-mean",
+            "peeters-2006-variability",
+            "peeters-2006-association"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "supported",
+          "text": "Separate meta-analytic associations for trait level and within-team variation"
+        },
+        {
+          "atom_id": "result-personality-counterweight-atom-6",
+          "exact_span_ids": [
+            "peeters-2006-mean",
+            "peeters-2006-variability",
+            "peeters-2006-association"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "qualified",
+          "text": "Samples aggregated in a personality meta-analysis"
+        },
+        {
+          "atom_id": "result-personality-counterweight-atom-7",
+          "exact_span_ids": [
+            "peeters-2006-mean",
+            "peeters-2006-variability",
+            "peeters-2006-measure"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "qualified",
+          "text": "Published Table 2 and performance-measure description"
+        },
+        {
+          "atom_id": "result-personality-counterweight-atom-8",
+          "exact_span_ids": [
+            "peeters-2006-association"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "qualified",
+          "text": "Across the included studies"
+        },
+        {
+          "atom_id": "result-personality-counterweight-atom-9",
+          "exact_span_ids": [
+            "peeters-2006-mean",
+            "peeters-2006-variability",
+            "peeters-2006-measure"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "qualified",
+          "text": "Team performance ratings and conscientiousness associations"
+        },
+        {
+          "atom_id": "result-personality-counterweight-atom-10",
+          "exact_span_ids": [
+            "peeters-2006-mean",
+            "peeters-2006-variability",
+            "peeters-2006-measure"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "peeters-2006"
+          ],
+          "status": "qualified",
+          "text": "Human teams"
+        }
+      ],
+      "dependency_ids": [
+        "dep-peeters-meta"
+      ],
+      "exact_span_ids": [
+        "peeters-2006-association",
+        "peeters-2006-mean",
+        "peeters-2006-measure",
+        "peeters-2006-variability"
+      ],
+      "interpretation": "This constrains a blanket claim that every kind of personality heterogeneity helps teams. Conscientiousness variability is not exploratory diversity.",
+      "proposition": "Higher mean conscientiousness correlated positively with team performance; greater within-team variation correlated negatively.",
+      "reported_value": {
+        "comparison": "Separate meta-analytic associations for trait level and within-team variation",
+        "denominator": "527 teams for mean; 332 for variability",
+        "numerator": "Not a success proportion",
+        "rate": "rho=0.20 for mean; rho=-0.24 for variability"
+      },
+      "result_id": "result-personality-counterweight",
+      "scope": {
+        "dataset_or_population": "Samples aggregated in a personality meta-analysis",
+        "metric_scope": "Team performance ratings and conscientiousness associations",
+        "models_or_agents": [
+          "Human teams"
+        ],
+        "time": "Across the included studies",
+        "tool_and_retrieval_path": "Published Table 2 and performance-measure description"
+      },
+      "source_ids": [
+        "peeters-2006"
+      ],
+      "uncertainty": "Associations do not identify causation. This older selected meta-analysis is a counterweight, not a current systematic synthesis or a test of society's need for explorers.",
+      "warrant": "The separate Table 2 rows provide the signs, corrected coefficients, and distinct team denominators."
+    },
+    {
+      "calculation_ids": [],
+      "calculation_status": "not-applicable-no-derived-value",
+      "claim_atoms": [
+        {
+          "atom_id": "result-transient-diversity-atom-1",
+          "exact_span_ids": [
+            "smaldino-2024-definition",
+            "smaldino-2024-mason-reference",
+            "smaldino-2024-derex-reference"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "smaldino-2024"
+          ],
+          "status": "supported",
+          "text": "Transient diversity in this synthesis means diversity of candidate solutions, and its empirical examples reuse earlier studies."
+        },
+        {
+          "atom_id": "result-transient-diversity-atom-2",
+          "exact_span_ids": [
+            "smaldino-2024-mason-reference",
+            "smaldino-2024-derex-reference"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "smaldino-2024"
+          ],
+          "status": "qualified",
+          "text": "Not an additional experimental sample"
+        },
+        {
+          "atom_id": "result-transient-diversity-atom-3",
+          "exact_span_ids": [
+            "smaldino-2024-mason-reference",
+            "smaldino-2024-derex-reference"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "smaldino-2024"
+          ],
+          "status": "qualified",
+          "text": "No new independent empirical effect credited"
+        },
+        {
+          "atom_id": "result-transient-diversity-atom-4",
+          "exact_span_ids": [
+            "smaldino-2024-definition"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "smaldino-2024"
+          ],
+          "status": "supported",
+          "text": "Diversity of solutions versus enduring personality categories"
+        },
+        {
+          "atom_id": "result-transient-diversity-atom-5",
+          "exact_span_ids": [
+            "smaldino-2024-mason-reference",
+            "smaldino-2024-derex-reference"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "smaldino-2024"
+          ],
+          "status": "qualified",
+          "text": "Previously published models and studies"
+        },
+        {
+          "atom_id": "result-transient-diversity-atom-6",
+          "exact_span_ids": [
+            "smaldino-2024-definition",
+            "smaldino-2024-mason-reference",
+            "smaldino-2024-derex-reference"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "smaldino-2024"
+          ],
+          "status": "qualified",
+          "text": "Published definition and Empirical Evidence section"
+        },
+        {
+          "atom_id": "result-transient-diversity-atom-7",
+          "exact_span_ids": [
+            "smaldino-2024-definition"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "smaldino-2024"
+          ],
+          "status": "qualified",
+          "text": "During search before convergence"
+        },
+        {
+          "atom_id": "result-transient-diversity-atom-8",
+          "exact_span_ids": [
+            "smaldino-2024-definition"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "smaldino-2024"
+          ],
+          "status": "qualified",
+          "text": "A proposed mechanism for solution quality"
+        },
+        {
+          "atom_id": "result-transient-diversity-atom-9",
+          "exact_span_ids": [
+            "smaldino-2024-definition",
+            "smaldino-2024-mason-reference",
+            "smaldino-2024-derex-reference"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "smaldino-2024"
+          ],
+          "status": "qualified",
+          "text": "A conceptual synthesis of collective problem solving"
+        },
+        {
+          "atom_id": "result-transient-diversity-atom-10",
+          "exact_span_ids": [
+            "mason-2012-degree",
+            "smaldino-2024-mason-reference",
+            "smaldino-2024-fully-connected"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "mason-2012",
+            "smaldino-2024"
+          ],
+          "status": "qualified",
+          "text": "The synthesis describes the efficient networks as fully connected; the primary methods give every node three neighbors."
+        }
+      ],
+      "dependency_ids": [
+        "dep-smaldino-reuse",
+        "dep-smaldino-scope"
+      ],
+      "exact_span_ids": [
+        "mason-2012-degree",
+        "smaldino-2024-definition",
+        "smaldino-2024-derex-reference",
+        "smaldino-2024-fully-connected",
+        "smaldino-2024-mason-reference"
+      ],
+      "interpretation": "Use the synthesis to organize mechanisms without counting its cited experiments twice. Its description of Mason and Watts as fully connected must be qualified by the original equal-degree design.",
+      "proposition": "Transient diversity in this synthesis means diversity of candidate solutions, and its empirical examples reuse earlier studies.",
+      "reported_value": {
+        "comparison": "Diversity of solutions versus enduring personality categories",
+        "denominator": "Not an additional experimental sample",
+        "numerator": "Not an additional experimental sample",
+        "rate": "No new independent empirical effect credited"
+      },
+      "result_id": "result-transient-diversity",
+      "scope": {
+        "dataset_or_population": "Previously published models and studies",
+        "metric_scope": "A proposed mechanism for solution quality",
+        "models_or_agents": [
+          "A conceptual synthesis of collective problem solving"
+        ],
+        "time": "During search before convergence",
+        "tool_and_retrieval_path": "Published definition and Empirical Evidence section"
+      },
+      "source_ids": [
+        "mason-2012",
+        "smaldino-2024"
+      ],
+      "uncertainty": "A common mechanism is an interpretation, not a pooled causal estimate or a validated map from search style to personality.",
+      "warrant": "The definition identifies the construct and named references expose shared evidence lineage; the primary methods delimit the network paraphrase."
+    },
+    {
+      "calculation_ids": [],
+      "calculation_status": "not-applicable-no-derived-value",
+      "claim_atoms": [
+        {
+          "atom_id": "result-personality-simulation-atom-1",
+          "exact_span_ids": [
+            "pringle-2026-model",
+            "pringle-2026-mixtures",
+            "pringle-2026-validation"
+          ],
+          "kind": "finding",
+          "source_ids": [
+            "pringle-2026"
+          ],
+          "status": "supported",
+          "text": "Heterogeneous simulated swarms generally performed better, but the model leaves real-world personality validation unresolved."
+        },
+        {
+          "atom_id": "result-personality-simulation-atom-2",
+          "exact_span_ids": [
+            "pringle-2026-model",
+            "pringle-2026-validation"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "pringle-2026"
+          ],
+          "status": "qualified",
+          "text": "Not a human-study count"
+        },
+        {
+          "atom_id": "result-personality-simulation-atom-3",
+          "exact_span_ids": [
+            "pringle-2026-model",
+            "pringle-2026-validation"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "pringle-2026"
+          ],
+          "status": "qualified",
+          "text": "No new empirical effect credited"
+        },
+        {
+          "atom_id": "result-personality-simulation-atom-4",
+          "exact_span_ids": [
+            "pringle-2026-mixtures",
+            "pringle-2026-sphere"
+          ],
+          "kind": "comparison",
+          "source_ids": [
+            "pringle-2026"
+          ],
+          "status": "supported",
+          "text": "Mixed versus homogeneous simulated compositions; Sphere favors the High composition"
+        },
+        {
+          "atom_id": "result-personality-simulation-atom-5",
+          "exact_span_ids": [
+            "pringle-2026-model",
+            "pringle-2026-mixtures",
+            "pringle-2026-sphere"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "pringle-2026"
+          ],
+          "status": "qualified",
+          "text": "Synthetic search landscapes"
+        },
+        {
+          "atom_id": "result-personality-simulation-atom-6",
+          "exact_span_ids": [
+            "pringle-2026-mixtures",
+            "pringle-2026-orderliness",
+            "pringle-2026-validation",
+            "pringle-2026-sphere"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "pringle-2026"
+          ],
+          "status": "qualified",
+          "text": "Publisher PDF: Discussion and Limitations"
+        },
+        {
+          "atom_id": "result-personality-simulation-atom-7",
+          "exact_span_ids": [
+            "pringle-2026-model",
+            "pringle-2026-mixtures"
+          ],
+          "kind": "date",
+          "source_ids": [
+            "pringle-2026"
+          ],
+          "status": "qualified",
+          "text": "During simulated search"
+        },
+        {
+          "atom_id": "result-personality-simulation-atom-8",
+          "exact_span_ids": [
+            "pringle-2026-model",
+            "pringle-2026-mixtures",
+            "pringle-2026-orderliness",
+            "pringle-2026-validation"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "pringle-2026"
+          ],
+          "status": "qualified",
+          "text": "Model-defined performance, not measured human personality or welfare"
+        },
+        {
+          "atom_id": "result-personality-simulation-atom-9",
+          "exact_span_ids": [
+            "pringle-2026-model"
+          ],
+          "kind": "metadata",
+          "source_ids": [
+            "pringle-2026"
+          ],
+          "status": "qualified",
+          "text": "Artificial swarm agents"
+        }
+      ],
+      "dependency_ids": [
+        "dep-pringle-model"
+      ],
+      "exact_span_ids": [
+        "pringle-2026-mixtures",
+        "pringle-2026-model",
+        "pringle-2026-orderliness",
+        "pringle-2026-sphere",
+        "pringle-2026-validation"
+      ],
+      "interpretation": "This is a useful model of the proposed personality mechanism. Its omitted orderliness facet prevents treating it as a test of planning one's life.",
+      "proposition": "Heterogeneous simulated swarms generally performed better, but the model leaves real-world personality validation unresolved.",
+      "reported_value": {
+        "comparison": "Mixed versus homogeneous simulated compositions; Sphere favors the High composition",
+        "denominator": "Not a human-study count",
+        "numerator": "Not a human-study count",
+        "rate": "No new empirical effect credited"
+      },
+      "result_id": "result-personality-simulation",
+      "scope": {
+        "dataset_or_population": "Synthetic search landscapes",
+        "metric_scope": "Model-defined performance, not measured human personality or welfare",
+        "models_or_agents": [
+          "Artificial swarm agents"
+        ],
+        "time": "During simulated search",
+        "tool_and_retrieval_path": "Publisher PDF: Discussion and Limitations"
+      },
+      "source_ids": [
+        "pringle-2026"
+      ],
+      "uncertainty": "The model's mapping to personality is assumed; no code rerun or human validation is claimed. Favorable selected benchmarks cannot establish an optimal societal mixture.",
+      "warrant": "Reported mixture performance is paired with the authors' explicit operationalization and validation limits, plus the favorable homogeneous case."
+    }
+  ],
+  "retrieval_attempts": [
+    {
+      "artifact_sha256": "17551e37ef49e30d7595b2875598ee6cd3c09583a070a27d205982b487de08bb",
+      "attempt_id": "attempt-shirado-2017",
+      "attempted_at": "2026-10-31T21:44:15Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "shirado-2017",
+      "transport": "https",
+      "url": "https://humannaturelab.net/sites/default/files/pdf/paper/Locally-noisy-autonomous-agents-improve-global-human-coordination-in-network-experiments.pdf"
+    },
+    {
+      "artifact_sha256": "8991adfb2eb67dda0065a6fa8a9e459017664c9cd37d0d1283c18266fce8f996",
+      "attempt_id": "attempt-bernstein-2018",
+      "attempted_at": "2026-10-31T21:44:45Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "bernstein-2018",
+      "transport": "https",
+      "url": "https://open.bu.edu/server/api/core/bitstreams/d5e17b21-84ae-4bce-8be1-c82bfe99e41d/content"
+    },
+    {
+      "artifact_sha256": "9734905a2ef864ec117fdf1adc9c6dfe3ff191bacf94f6742f317349e513a6cf",
+      "attempt_id": "attempt-derex-2016",
+      "attempted_at": "2026-10-31T21:44:15Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "derex-2016",
+      "transport": "https",
+      "url": "https://maximederex.github.io/assets/pdf/derex2016.pdf"
+    },
+    {
+      "artifact_sha256": "a4ed2b3d44f91e99dcc09fb89457ecd063ab6a4b26a0ba9a811a690c7dda42dc",
+      "attempt_id": "attempt-mason-2012",
+      "attempted_at": "2026-10-31T21:46:43Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "mason-2012",
+      "transport": "https",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/m_w_PNAS_11.pdf"
+    },
+    {
+      "artifact_sha256": "c8a6d0392e9bc8bc3eb8fde9c3a59aa64be1f90596b484214beb9ac37e6dbd4d",
+      "attempt_id": "attempt-peeters-2006",
+      "attempted_at": "2026-10-31T21:44:15Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "peeters-2006",
+      "transport": "https",
+      "url": "https://ris.utwente.nl/ws/portalfiles/portal/6619120/personality_and_team_performance.pdf"
+    },
+    {
+      "artifact_sha256": "6f54b4ff5bb6146c352d7e9584cd25eb307ae22856fb1c02fa5b731fe80afa8f",
+      "attempt_id": "attempt-smaldino-2024",
+      "attempted_at": "2026-10-31T21:44:15Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "smaldino-2024",
+      "transport": "https",
+      "url": "https://escholarship.org/content/qt57w312sd/qt57w312sd.pdf"
+    },
+    {
+      "artifact_sha256": "deb8db2d2a7222df9fe8717452e4859da38e18f46a6fc9aa218031331be4e50f",
+      "attempt_id": "attempt-pringle-2026",
+      "attempted_at": "2026-10-31T21:44:16Z",
+      "failure_code": "none",
+      "outcome": "retrieved",
+      "source_id": "pringle-2026",
+      "transport": "https",
+      "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1774466/pdf"
+    },
+    {
+      "artifact_sha256": "none",
+      "attempt_id": "attempt-carrier-mason2012",
+      "attempted_at": "2026-10-31T21:45:23Z",
+      "failure_code": "access-denied",
+      "outcome": "blocked",
+      "source_id": "carrier-mason2012",
+      "transport": "https",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3271930/pdf/pnas.201110069.pdf"
+    },
+    {
+      "artifact_sha256": "none",
+      "attempt_id": "attempt-carrier-mason2012-html",
+      "attempted_at": "2026-10-31T21:45:23Z",
+      "failure_code": "access-denied",
+      "outcome": "blocked",
+      "source_id": "carrier-mason2012-html",
+      "transport": "https",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3271930/"
+    },
+    {
+      "artifact_sha256": "none",
+      "attempt_id": "attempt-carrier-mason2012-publisher",
+      "attempted_at": "2026-10-31T21:45:38Z",
+      "failure_code": "http-403",
+      "outcome": "blocked",
+      "source_id": "carrier-mason2012-publisher",
+      "transport": "https",
+      "url": "https://www.pnas.org/doi/pdf/10.1073/pnas.1110069108"
+    },
+    {
+      "artifact_sha256": "none",
+      "attempt_id": "attempt-carrier-mason2012-microsoft",
+      "attempted_at": "2026-10-31T21:45:38Z",
+      "failure_code": "unknown-failure",
+      "outcome": "failed",
+      "source_id": "carrier-mason2012-microsoft",
+      "transport": "https",
+      "url": "https://research.microsoft.com/pubs/164568/m_w_PNAS_11.pdf"
+    },
+    {
+      "artifact_sha256": "none",
+      "attempt_id": "attempt-carrier-mason2012-xml",
+      "attempted_at": "2026-10-31T21:46:20Z",
+      "failure_code": "unknown-failure",
+      "outcome": "failed",
+      "source_id": "carrier-mason2012-xml",
+      "transport": "https",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3271930/fullTextXML"
+    },
+    {
+      "artifact_sha256": "none",
+      "attempt_id": "attempt-carrier-bernstein2018-html",
+      "attempted_at": "2026-10-31T21:45:23Z",
+      "failure_code": "access-denied",
+      "outcome": "blocked",
+      "source_id": "carrier-bernstein2018-html",
+      "transport": "https",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6126746/"
+    }
+  ],
+  "runtime": {
+    "agent": "chatgpt-epistemedia-explorers",
+    "completed_at": "2026-10-31T21:57:44Z",
+    "started_at": "2026-10-31T21:43:24Z",
+    "toolchain": [
+      "GitHub connector",
+      "public web search",
+      "Python 3.12",
+      "urllib HTTPS",
+      "Poppler pdftotext and pdftoppm",
+      "Epistemedia 0.2.0 CLI",
+      "Git"
+    ]
+  },
+  "scope": {
+    "comparison_target": "Does evidence that particular search or communication arrangements improve group outcomes establish that stable explorer-planner personality mixtures are necessary or outperform equally capable adaptive generalists? The selected works support conditional mechanisms but do not settle that stronger comparison. This is a scoped inference, not evidence that enduring explorers have no value.",
+    "excluded": "An exhaustive landscape review; a meta-analysis across these heterogeneous tasks; direct estimates of societal welfare; a claim that exploration requires low conscientiousness or poor dependability; an optimal percentage of explorers; new simulations or participant-data reanalysis.",
+    "included": "A bounded audit of seven selected works linking exploration, communication, and group problem solving to claims about enduring human personality diversity. It compares four experimental programs, one personality meta-analysis, one synthesis, and one simulation. Proposed reader title: Does society need explorers?"
+  },
+  "search_notes": [
+    "Repository orientation used AGENTS.md, CONTRIBUTING.md, SECURITY.md, make orient, repo next, the public agent research protocol, EM-0040 and its execution plan, and subsequent intake hardening. This uses the already implemented public submission path; it does not claim to rerun or complete the historical Claude cold-start pilot.",
+    "Prior-art check: live discovery and open-docket index list four accepted cases: correction familiarity/backfire, research-agent citation dependence, GPT-4 bar-exam percentiles, and Mehrabian communication weights. The reviewed climate-consensus docket compares survey/abstract quantities. This proposal shares auditing methods with those records but has a different subject, evidence, and comparison target.",
+    "Accepted repository base 4e86baffc3dc84a7cdc14668c651233ecd2b75d8 was inspected directly. Its four dossier JSON files and one reviewed open-docket proposal contain no exploration/personality claim. Live site discovery still identifies f92846570180dfa4511263f8ba98ecd18f7772c9; repository base and deployed projection are not silently equated.",
+    "Open PR inspection found docket submissions #69 (Llama licensing), #72 (GPT-4 bar exam), and #82 (climate consensus). Other open PRs #34, #73, and #93 concern implementation. None covers or closely restates the exploration/personality question. This is repository prior-art screening, not a claim of scientific novelty.",
+    "Primary-source verification used publisher, author, and institutional editions. Searches covered the exact titles, intervention descriptions, results, counterevidence, and limitations. The seven credited PDF artifacts were downloaded and hashed independently of search snippets.",
+    "The prior AI landscape supplied leads only. Its broad narrative, bibliography size, and agreement among assisting agents are not counted as evidence. The contributor retained negative results and relevant limits instead of importing the full landscape as a finished verdict.",
+    "The Smaldino synthesis explicitly reuses Derex and Boyd and Mason and Watts. Its Shore/Bernstein/Lazer reference is a different earlier study; no dependence on Bernstein 2018 or Shirado 2017 is claimed.",
+    "The primary Nature PDF contains an additional disclosed-bot study absent from the earlier manuscript edition consulted for orientation. Only the Figure 2 central-low-noise versus human-only comparison is quantified here; editions are not counted as separate works.",
+    "Recommended interpretation: some groups benefit from protected exploration or well-chosen behavioral variation. The evidence in this packet does not establish that society requires permanent explorer personality types. Institutional arrangements and persistent individual differences remain distinct candidate mechanisms."
+  ],
+  "sources": [
+    {
+      "creators_or_org": "Hirokazu Shirado; Nicholas A. Christakis",
+      "date": "2017-05-18",
+      "edition": "Yale Human Nature Lab-hosted published Nature article, 12 PDF pages including Methods and Extended Data; main comparison in Figure 2. Capture digest is recorded in retrieval_attempts.",
+      "exact_spans": [
+        {
+          "locator": "PDF p. 1, printed p. 370, right column, paragraph starting Within this basic setup",
+          "quote": "three bots into the network",
+          "span_id": "shirado-2017-bots",
+          "supports": "Intervention replaces human positions with bots; paragraph specifies the human-only control."
+        },
+        {
+          "locator": "PDF p. 1, printed p. 370, bot-randomness manipulation paragraph; line wrapping normalized",
+          "quote": "10% (‘small noise’)",
+          "span_id": "shirado-2017-noise",
+          "supports": "Bots choose a random color with probability ten percent; not a human personality measure."
+        },
+        {
+          "locator": "PDF p. 1, printed p. 370, final right-column paragraph defining central placement",
+          "quote": "highest network degree",
+          "span_id": "shirado-2017-central",
+          "supports": "Central placement means the positions with most neighbors."
+        },
+        {
+          "locator": "PDF p. 2, printed p. 371, Figure 2 caption, final sentence; whitespace normalized",
+          "quote": "median time to solution, from 232.4s to 103.1s.",
+          "span_id": "shirado-2017-medians",
+          "supports": "Control and central low-noise condition median completion times, in seconds."
+        },
+        {
+          "locator": "PDF p. 2, printed p. 371, Figure 2 caption, light-blue-curve description",
+          "quote": "solely human players",
+          "span_id": "shirado-2017-control",
+          "supports": "Comparator is the human-only control, not another personality composition."
+        }
+      ],
+      "identifier": "doi:10.1038/nature22332",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unknown",
+        "status": "unknown"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "shirado-2017",
+      "title": "Locally noisy autonomous agents improve global human coordination in network experiments",
+      "url": "https://humannaturelab.net/sites/default/files/pdf/paper/Locally-noisy-autonomous-agents-improve-global-human-coordination-in-network-experiments.pdf"
+    },
+    {
+      "creators_or_org": "Ethan Bernstein; Jesse Shore; David Lazer",
+      "date": "2018-08-13 online; 2018-08-28 issue",
+      "edition": "Boston University repository PDF of the published PNAS article; one repository cover followed by printed pp. 8734-8739. PDF page numbers below include the cover.",
+      "exact_spans": [
+        {
+          "locator": "PDF p. 2, printed p. 8734, abstract, treatment-design sentence",
+          "quote": "groups of three",
+          "span_id": "bernstein-2018-triads",
+          "supports": "Human triads, randomized visibility treatments."
+        },
+        {
+          "locator": "PDF p. 3, printed p. 8735, opening task-description paragraph",
+          "quote": "traveling salesperson problem",
+          "span_id": "bernstein-2018-task",
+          "supports": "Route optimization task; interpretation is confined to this task."
+        },
+        {
+          "locator": "PDF p. 3, printed p. 8735, Results / Main Result, sentence beginning CT triads",
+          "quote": "33.3%",
+          "span_id": "bernstein-2018-constant",
+          "supports": "Source-reported optimum-discovery percentage for constant visibility without storage."
+        },
+        {
+          "locator": "PDF p. 3, printed p. 8735, Results / Main Result, same sentence, IT clause",
+          "quote": "48.3%",
+          "span_id": "bernstein-2018-intermittent",
+          "supports": "Source-reported optimum-discovery percentage for intermittent visibility without storage."
+        },
+        {
+          "locator": "PDF p. 3, printed p. 8735, Results / Main Result, same sentence, NT clause",
+          "quote": "44.1%",
+          "span_id": "bernstein-2018-none",
+          "supports": "Source-reported optimum-discovery percentage for absent visibility without storage."
+        },
+        {
+          "locator": "PDF p. 5, printed p. 8737, Conclusion, paragraph ending storage is present; whitespace normalized",
+          "quote": "broad convergence between IT and CT when storage is present",
+          "span_id": "bernstein-2018-storage",
+          "supports": "Storage condition qualifies the intermittent-versus-constant comparison; does not assert identical outcomes."
+        },
+        {
+          "locator": "PDF p. 2, printed p. 8734, copyright/license paragraph; join line-break hyphen",
+          "quote": "Creative Commons Attribution-NonCommercial-NoDerivatives License 4.0",
+          "span_id": "bernstein-2018-license",
+          "supports": "Article reuse license; quoted excerpts remain attributed and minimal."
+        }
+      ],
+      "identifier": "doi:10.1073/pnas.1802407115",
+      "license": {
+        "basis_span_id": "bernstein-2018-license",
+        "identifier": "CC-BY-NC-ND-4.0",
+        "status": "known"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "bernstein-2018",
+      "title": "How intermittent breaks in interaction improve collective intelligence",
+      "url": "https://open.bu.edu/server/api/core/bitstreams/d5e17b21-84ae-4bce-8be1-c82bfe99e41d/content"
+    },
+    {
+      "creators_or_org": "Maxime Derex; Robert Boyd",
+      "date": "2016-03-15 issue",
+      "edition": "Author-hosted published PNAS PDF, printed pp. 2982-2987, six PDF pages; downloaded edition has a publisher download footer. Source bytes and that footer are not redistributed.",
+      "exact_spans": [
+        {
+          "locator": "PDF p. 2, printed p. 2983, left column, paragraph starting Participants",
+          "quote": "groups of six",
+          "span_id": "derex-2016-group",
+          "supports": "Experimental group size."
+        },
+        {
+          "locator": "PDF p. 2, printed p. 2983, same paragraph",
+          "quote": "72 trials",
+          "span_id": "derex-2016-trials",
+          "supports": "Per-person task horizon."
+        },
+        {
+          "locator": "PDF p. 2, printed p. 2983, Results, first paragraph",
+          "quote": "58.3% discovered both",
+          "span_id": "derex-2016-partial",
+          "supports": "Partially connected groups discovering both third-level innovations."
+        },
+        {
+          "locator": "PDF p. 2, printed p. 2983, Results, first paragraph, sentence ending both A3 and B3; whitespace normalized",
+          "quote": "none of the fully connected groups",
+          "span_id": "derex-2016-full",
+          "supports": "No fully connected group discovered both third-level innovations; this is not a claim that they discovered nothing."
+        },
+        {
+          "locator": "PDF p. 2, printed p. 2983, left column, paragraph describing fourth-level innovations",
+          "quote": "required triads involving both A3 and B3.",
+          "span_id": "derex-2016-recombination",
+          "supports": "The task embeds complementary development paths; advancing further requires their recombination."
+        },
+        {
+          "locator": "PDF p. 5, printed p. 2986, final paragraph of Experimental Design",
+          "quote": "12 replicates each",
+          "span_id": "derex-2016-replicates",
+          "supports": "Group-level treatment denominators, not individuals."
+        }
+      ],
+      "identifier": "doi:10.1073/pnas.1518798113",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unknown",
+        "status": "unknown"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "derex-2016",
+      "title": "Partial connectivity increases cultural accumulation within groups",
+      "url": "https://maximederex.github.io/assets/pdf/derex2016.pdf"
+    },
+    {
+      "creators_or_org": "Winter Mason; Duncan J. Watts",
+      "date": "2011-12-19 online; 2012-01-17 issue",
+      "edition": "Microsoft Research-hosted six-page PNAS article/proof PDF, file m_w_PNAS_11.pdf. Locators use PDF page numbers; journal issue metadata cross-checked against the PMC record. This is not a separately replicated study.",
+      "exact_spans": [
+        {
+          "locator": "PDF p. 3, Methods / Networks, first paragraph; whitespace normalized",
+          "quote": "All networks comprised n = 16 nodes, each with k = 3 neighbors",
+          "span_id": "mason-2012-degree",
+          "supports": "All tested network topologies have the same node count and degree."
+        },
+        {
+          "locator": "PDF p. 1, abstract, sentence beginning In contrast to prior work; typographic ligatures expanded",
+          "quote": "efficient networks outperformed inefficient networks",
+          "span_id": "mason-2012-result",
+          "supports": "Efficiency result; efficient does not mean fully connected."
+        }
+      ],
+      "identifier": "doi:10.1073/pnas.1110069108",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unknown",
+        "status": "unknown"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "mason-2012",
+      "title": "Collaborative learning in networks",
+      "url": "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/m_w_PNAS_11.pdf"
+    },
+    {
+      "creators_or_org": "Miranda A. G. Peeters; Harrie F. J. M. van Tuijl; Christel G. Rutte; Isabelle M. M. J. Reymen",
+      "date": "2006-05-25 online",
+      "edition": "University of Twente-hosted published European Journal of Personality PDF, printed pp. 377-396, 20 PDF pages. Table 2 on printed p. 390 was visually checked because the text layer misencodes minus signs and rho.",
+      "exact_spans": [
+        {
+          "locator": "PDF p. 14, printed p. 390, Table 2, Elevation / Conscientiousness row, columns Trait, k, N, mean r, rho (first unparenthesized value); visual transcription",
+          "quote": "Conscientiousness 10 527 0.15 0.20",
+          "span_id": "peeters-2006-mean",
+          "supports": "Mean conscientiousness result: ten samples, 527 teams, corrected rho .20; parenthesized alternative correction is not used."
+        },
+        {
+          "locator": "PDF p. 14, printed p. 390, Table 2, Variability / Conscientiousness row, columns Trait, k, N, mean r, rho; visual transcription",
+          "quote": "Conscientiousness 6 332 −0.17 −0.24",
+          "span_id": "peeters-2006-variability",
+          "supports": "Within-team variability result: six samples, 332 teams, corrected rho -.24."
+        },
+        {
+          "locator": "PDF p. 2, printed p. 378, Criterion Measure: Team Performance, first paragraph",
+          "quote": "subjective rating of a team",
+          "span_id": "peeters-2006-measure",
+          "supports": "Performance is generally assessed by instructors or supervisors; not societal innovation or welfare."
+        },
+        {
+          "locator": "PDF p. 10, printed p. 386, Results / Studies included in the meta-analysis",
+          "quote": "expressed in terms of correlations",
+          "span_id": "peeters-2006-association",
+          "supports": "Associational estimates, not randomized composition interventions."
+        }
+      ],
+      "identifier": "doi:10.1002/per.588",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unknown",
+        "status": "unknown"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "peeters-2006",
+      "title": "Personality and team performance: a meta-analysis",
+      "url": "https://ris.utwente.nl/ws/portalfiles/portal/6619120/personality_and_team_performance.pdf"
+    },
+    {
+      "creators_or_org": "Paul E. Smaldino; Cody Moser; Alejandro Pérez Velilla; Mikkel Werling",
+      "date": "2023-06-27 online; 2024-03 issue",
+      "edition": "UC Merced eScholarship final published PDF, 12 pages including institutional cover; printed article pp. 454-464. This is a synthesis, not another participant-data root.",
+      "exact_spans": [
+        {
+          "locator": "PDF p. 3, printed p. 455, paragraph starting Diversity is a term; whitespace normalized",
+          "quote": "diversity of solutions to a well-specified problem",
+          "span_id": "smaldino-2024-definition",
+          "supports": "Object of diversity is candidate solutions at a time, not a measured enduring personality taxonomy."
+        },
+        {
+          "locator": "PDF p. 9, printed p. 461, Empirical Evidence, paragraph discussing network structures",
+          "quote": "Mason and Watts (2012)",
+          "span_id": "smaldino-2024-mason-reference",
+          "supports": "Explicit source dependence on the experiment represented by mason-2012."
+        },
+        {
+          "locator": "PDF p. 9, printed p. 461, Empirical Evidence, same paragraph; whitespace normalized",
+          "quote": "fully connected networks performed best",
+          "span_id": "smaldino-2024-fully-connected",
+          "supports": "The review's description, retained as an assertion to audit against the original operationalization."
+        },
+        {
+          "locator": "PDF p. 9, printed p. 461, Empirical Evidence, same paragraph",
+          "quote": "Derex & Boyd, 2016",
+          "span_id": "smaldino-2024-derex-reference",
+          "supports": "Explicit source dependence on derex-2016, not an extra experiment."
+        },
+        {
+          "locator": "PDF p. 1, institutional cover, Copyright Information; following link specifies licenses/by/4.0/",
+          "quote": "Creative Commons Attribution License",
+          "span_id": "smaldino-2024-license",
+          "supports": "Institutional cover explicitly identifies CC BY with version-four link."
+        }
+      ],
+      "identifier": "doi:10.1177/17456916231180100",
+      "license": {
+        "basis_span_id": "smaldino-2024-license",
+        "identifier": "CC-BY-4.0",
+        "status": "known"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "smaldino-2024",
+      "title": "Maintaining Transient Diversity Is a General Principle for Improving Collective Problem Solving",
+      "url": "https://escholarship.org/content/qt57w312sd/qt57w312sd.pdf"
+    },
+    {
+      "creators_or_org": "Todd A. Pringle; Lyle Stramer; Michael D. Robinson",
+      "date": "2026-07-20",
+      "edition": "Official Frontiers in Psychology publisher PDF, 17 pages; DOI and publication date printed on first page. Simulation code and raw runs were not rerun.",
+      "exact_spans": [
+        {
+          "locator": "PDF p. 1, abstract, operationalization sentence",
+          "quote": "swarm agents",
+          "span_id": "pringle-2026-model",
+          "supports": "The subjects of the modeled comparison are artificial particles."
+        },
+        {
+          "locator": "PDF p. 12, Discussion, opening synthesis paragraph; line-break hyphen joined",
+          "quote": "generally outperformed non-diverse ones",
+          "span_id": "pringle-2026-mixtures",
+          "supports": "Model's reported mixed-composition advantage, conditional on its tasks and performance score."
+        },
+        {
+          "locator": "PDF p. 14, Limitations and practical implications, first paragraph; line wrapping normalized",
+          "quote": "omitting facets like orderliness",
+          "span_id": "pringle-2026-orderliness",
+          "supports": "Conscientiousness proxy does not operationalize orderliness."
+        },
+        {
+          "locator": "PDF p. 15, continuation of Limitations and practical implications",
+          "quote": "lack of real-world validation",
+          "span_id": "pringle-2026-validation",
+          "supports": "Authors explicitly acknowledge missing empirical validation."
+        },
+        {
+          "locator": "PDF p. 13, opening paragraph about the Sphere function",
+          "quote": "High displayed the best performance",
+          "span_id": "pringle-2026-sphere",
+          "supports": "Homogeneous High composition is the best reported composition on Sphere."
+        },
+        {
+          "locator": "PDF p. 1, Copyright block",
+          "quote": "Commons Attribution License (CC BY)",
+          "span_id": "pringle-2026-license",
+          "supports": "Open Creative Commons Attribution license; no version is inferred from the printed name."
+        }
+      ],
+      "identifier": "doi:10.3389/fpsyg.2026.1774466",
+      "license": {
+        "basis_span_id": "pringle-2026-license",
+        "identifier": "Creative Commons Attribution License (CC BY)",
+        "status": "known"
+      },
+      "media_type": "application/pdf",
+      "retrieval_status": "retrieved",
+      "source_id": "pringle-2026",
+      "title": "Bounded personality diversity boosts collective intelligence: a swarm optimization approach",
+      "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1774466/pdf"
+    },
+    {
+      "creators_or_org": "Winter Mason; Duncan J. Watts",
+      "date": "2011-12-19 online; 2012-01-17 issue",
+      "edition": "Attempted alternative carrier of the same work; no article content credited.",
+      "exact_spans": [],
+      "identifier": "doi:10.1073/pnas.1110069108",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "unknown",
+      "retrieval_status": "inaccessible",
+      "source_id": "carrier-mason2012",
+      "title": "Collaborative learning in networks (unsuccessful alternative carrier)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3271930/pdf/pnas.201110069.pdf"
+    },
+    {
+      "creators_or_org": "Winter Mason; Duncan J. Watts",
+      "date": "2011-12-19 online; 2012-01-17 issue",
+      "edition": "Attempted alternative carrier of the same work; no article content credited.",
+      "exact_spans": [],
+      "identifier": "doi:10.1073/pnas.1110069108",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "unknown",
+      "retrieval_status": "inaccessible",
+      "source_id": "carrier-mason2012-html",
+      "title": "Collaborative learning in networks (unsuccessful alternative carrier)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3271930/"
+    },
+    {
+      "creators_or_org": "Winter Mason; Duncan J. Watts",
+      "date": "2011-12-19 online; 2012-01-17 issue",
+      "edition": "Attempted alternative carrier of the same work; no article content credited.",
+      "exact_spans": [],
+      "identifier": "doi:10.1073/pnas.1110069108",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "unknown",
+      "retrieval_status": "inaccessible",
+      "source_id": "carrier-mason2012-publisher",
+      "title": "Collaborative learning in networks (unsuccessful alternative carrier)",
+      "url": "https://www.pnas.org/doi/pdf/10.1073/pnas.1110069108"
+    },
+    {
+      "creators_or_org": "Winter Mason; Duncan J. Watts",
+      "date": "2011-12-19 online; 2012-01-17 issue",
+      "edition": "Attempted alternative carrier of the same work; no article content credited.",
+      "exact_spans": [],
+      "identifier": "doi:10.1073/pnas.1110069108",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "unknown",
+      "retrieval_status": "inaccessible",
+      "source_id": "carrier-mason2012-microsoft",
+      "title": "Collaborative learning in networks (unsuccessful alternative carrier)",
+      "url": "https://research.microsoft.com/pubs/164568/m_w_PNAS_11.pdf"
+    },
+    {
+      "creators_or_org": "Winter Mason; Duncan J. Watts",
+      "date": "2011-12-19 online; 2012-01-17 issue",
+      "edition": "Attempted alternative carrier of the same work; no article content credited.",
+      "exact_spans": [],
+      "identifier": "doi:10.1073/pnas.1110069108",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "unknown",
+      "retrieval_status": "inaccessible",
+      "source_id": "carrier-mason2012-xml",
+      "title": "Collaborative learning in networks (unsuccessful alternative carrier)",
+      "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3271930/fullTextXML"
+    },
+    {
+      "creators_or_org": "Ethan Bernstein; Jesse Shore; David Lazer",
+      "date": "2018-08-13 online; 2018-08-28 issue",
+      "edition": "Attempted alternative carrier of the same work; no article content credited.",
+      "exact_spans": [],
+      "identifier": "doi:10.1073/pnas.1802407115",
+      "license": {
+        "basis_span_id": "none",
+        "identifier": "unassessed",
+        "status": "unassessed"
+      },
+      "media_type": "unknown",
+      "retrieval_status": "inaccessible",
+      "source_id": "carrier-bernstein2018-html",
+      "title": "How intermittent breaks in interaction improve collective intelligence (unsuccessful alternative carrier)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6126746/"
+    }
+  ],
+  "status": "ready-for-review",
+  "unresolved": [
+    "Whether persistent specialist differences outperform matched adaptive generalists after holding competence, resources, communication, and implementation opportunities comparable.",
+    "Whether everyday nonplanning, spontaneity, or low orderliness predicts beneficial exploratory behavior independently of openness, persistence, and reliability.",
+    "How to aggregate discovery, implementation, coordination costs, unequal rewards, and harmful failures into an explicit measure of societal benefit.",
+    "External validity across longer horizons, changing environments, costly mistakes, and institutions. No universal share of explorers is inferred.",
+    "The proposed specialist-versus-adaptive-generalist comparison is a research direction, not a claim of novelty established by this bounded audit."
+  ]
+}
